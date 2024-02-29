@@ -7,7 +7,7 @@
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
-  # Delete generations older than 2 days.
+  # Delete generations older than 7 days.
   nix.gc = {
     automatic = true;
     dates = "daily";

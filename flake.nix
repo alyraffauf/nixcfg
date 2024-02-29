@@ -23,7 +23,6 @@
       rustboro = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nix-flatpak.nixosModules.nix-flatpak
           ./hosts/rustboro
           ./nix
           ./flatpak
@@ -31,6 +30,7 @@
           ./network
           ./desktop/gnome
 
+          nix-flatpak.nixosModules.nix-flatpak
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
@@ -50,7 +50,6 @@
       aly-yoga9i = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nix-flatpak.nixosModules.nix-flatpak
           ./configuration.nix
           ./nix
           ./flatpak
@@ -58,6 +57,7 @@
           ./network
           ./desktop/gnome
 
+          nix-flatpak.nixosModules.nix-flatpak
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
