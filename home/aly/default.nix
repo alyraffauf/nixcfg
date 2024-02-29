@@ -48,12 +48,12 @@
         settings."org/gnome/desktop/search-providers".enabled = "['org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']";
         settings."org/gnome/shell".enabled-extensions = [
             "appindicatorsupport@rgcjonas.gmail.com"
-            "gsconnect@andyholmes.github.io"
-            "tailscale-status@maxgallup.github.com"
-            "nightthemeswitcher@romainvigier.fr"
-            "tiling-assistant@leleat-on-github"
             "blur-my-shell@aunetx"
+            "gsconnect@andyholmes.github.io"
+            "nightthemeswitcher@romainvigier.fr"
             "noannoyance-fork@vrba.dev"
+            "tailscale-status@maxgallup.github.com"
+            "tiling-assistant@leleat-on-github"
           ];
         };
     # This value determines the home Manager release that your
