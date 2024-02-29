@@ -5,9 +5,7 @@
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "com.valvesoftware.Steam"
     "org.mozilla.firefox"
-    "com.github.tchx84.Flatseal"
   ];
   services.flatpak.overrides = {
     global = {

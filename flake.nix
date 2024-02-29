@@ -30,6 +30,7 @@
           ./network
           ./desktop/gnome
           ./programs/podman
+          ./programs/steam
 
           nix-flatpak.nixosModules.nix-flatpak
           # make home-manager as a module of nixos

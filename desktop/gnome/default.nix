@@ -52,10 +52,10 @@
   ]);
 
   services.flatpak.packages = [
+    "com.github.tchx84.Flatseal"
     "org.gnome.baobab"
     "org.gnome.Builder"
     "org.gnome.Calculator"
-    # "org.gnome.Calendar"
     "org.gnome.Characters"
     "org.gnome.clocks"
     "org.gnome.Connections"
@@ -73,6 +73,7 @@
     "org.gnome.TextEditor"
     "org.gnome.Totem"
     "org.gnome.Weather"
+    # "org.gnome.Calendar"
   ];
 
   nixpkgs.overlays = [
