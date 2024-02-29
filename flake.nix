@@ -27,11 +27,9 @@
           ./hosts/rustboro
           ./nix
           ./flatpak
-          ./hardware/sound
+          ./hardware
           ./network
           ./desktop/gnome
-          ./hardware/qmk
-          ./hardware/steam
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
