@@ -10,6 +10,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable tailscale
+  services.tailscale.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -22,6 +25,7 @@
   services.avahi.publish.enable = true;
   services.avahi.publish.addresses = true;
   services.avahi.publish.workstation = true;
+
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
