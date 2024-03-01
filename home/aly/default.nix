@@ -29,6 +29,17 @@
         enableCompletion = true;
     };
 
+    programs.vscode = {
+        enable = true;
+        userSettings = {
+            "update.mode": "none",
+            "window.autoDetectColorScheme": true,
+            "window.titleBarStyle": "custom",
+        }
+    };
+
+    programs.vim.enable = true;
+
     dconf = {
         enable = true;
         settings."org/gnome/desktop/interface".clock-format = "12h";
