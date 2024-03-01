@@ -35,6 +35,7 @@
             "update.mode" = "none";
             "window.autoDetectColorScheme" = true;
             "window.titleBarStyle" = "custom";
+            "workbench.colorTheme" = "Light Modern";
         };
 	enableUpdateCheck = false;
     };
