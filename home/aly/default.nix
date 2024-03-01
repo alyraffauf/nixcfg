@@ -5,6 +5,8 @@
     home.username = "aly";
     home.homeDirectory = "/home/aly";
 
+    services.syncthing.enable = true;
+
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
 	    vscode
@@ -15,6 +17,7 @@
         git
         nnn # terminal file manager
         wget
+        syncthing
     ];
 
     # basic configuration of git, please change to your own
