@@ -1,4 +1,4 @@
-  name: Update Nix Flake Lock
+            - name: Update Nix Flake Lock
   # You may pin to the exact commit or the version.
   # uses: DeterminateSystems/update-flake-lock@a3ccb8f59719c48d6423e97744560221bcf7a3fa
   uses: DeterminateSystems/update-flake-lock@v21
