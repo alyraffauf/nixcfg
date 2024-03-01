@@ -31,6 +31,7 @@
           ./desktop/gnome
           ./programs/podman
           ./programs/steam
+          ./programs/via-qmk
 
           nix-flatpak.nixosModules.nix-flatpak
           # make home-manager as a module of nixos
