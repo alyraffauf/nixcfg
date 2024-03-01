@@ -7,15 +7,14 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-        # here is some command line tools I use frequently
-        # feel free to add your own or remove some of them
-
-        nnn # terminal file manager
-
-        # utils
+	    vscode
+        curl
+        distrobox
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
-	vscode
+        git
+        nnn # terminal file manager
+        wget
     ];
 
     # basic configuration of git, please change to your own
