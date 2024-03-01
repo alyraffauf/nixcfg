@@ -35,7 +35,7 @@
             "update.mode" = "none";
             "window.autoDetectColorScheme" = true;
             "window.titleBarStyle" = "custom";
-        }
+        };
     };
 
     programs.vim.enable = true;
