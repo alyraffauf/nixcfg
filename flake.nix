@@ -19,7 +19,8 @@
 
   outputs = inputs@{ nixpkgs, nix-flatpak, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = {
-      # TODO please change the hostname to your own
+      
+      # T440p with i5-4210M and 16GB RAM.
       rustboro = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -40,25 +41,27 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            # TODO replace aly with your own username
             home-manager.users.aly = import ./home/aly;
-
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
           # nixos-hardware configuration for t440p
           nixos-hardware.nixosModules.lenovo-thinkpad-t440p
         ];
       };
-      aly-yoga9i = nixpkgs.lib.nixosSystem {
+
+      # Lenovo Yoga 9i with i7-1360P and 16GB RAM.
+      petalburg = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./hosts/petalburg
           ./nix
           ./flatpak
-          ./hardware/sound
+          ./hardware
           ./network
           ./desktop/gnome
+          ./programs/podman
+          ./programs/steam
+          ./programs/via-qmk
 
           nix-flatpak.nixosModules.nix-flatpak
           # make home-manager as a module of nixos
@@ -67,9 +70,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
             home-manager.users.aly = import ./users/aly.nix;
-
           }
         ];
       };
