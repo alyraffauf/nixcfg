@@ -27,17 +27,20 @@
     programs.bash = {
         enable = true;
         enableCompletion = true;
+        shellAliases = {
+            ls = "eza --group-directories-first";
+        };
     };
 
     programs.vscode = {
-        enable = true;
+        enable = false;
         userSettings = {
             "update.mode" = "none";
             "window.autoDetectColorScheme" = true;
             "window.titleBarStyle" = "custom";
             "workbench.colorTheme" = "Light Modern";
         };
-	enableUpdateCheck = false;
+        enableUpdateCheck = false;
     };
 
     programs.vim.enable = true;
