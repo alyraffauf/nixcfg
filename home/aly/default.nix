@@ -15,6 +15,7 @@
         # utils
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
+	vscode
     ];
 
     # basic configuration of git, please change to your own
@@ -36,6 +37,7 @@
             "window.autoDetectColorScheme" = true;
             "window.titleBarStyle" = "custom";
         };
+	enableUpdateCheck = false;
     };
 
     programs.vim.enable = true;
