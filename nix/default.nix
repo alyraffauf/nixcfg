@@ -4,8 +4,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  system.autoUpgrade.enable = false;
-  system.autoUpgrade.allowReboot = false;
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    flake = "github:alychace/nixcfg";
+    dates = "daily";
+    operation = "boot";
+  };
 
   # Delete generations older than 7 days.
   nix.gc = {
