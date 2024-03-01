@@ -32,9 +32,9 @@
     programs.vscode = {
         enable = true;
         userSettings = {
-            "update.mode": "none",
-            "window.autoDetectColorScheme": true,
-            "window.titleBarStyle": "custom",
+            "update.mode" = "none";
+            "window.autoDetectColorScheme" = true;
+            "window.titleBarStyle" = "custom";
         }
     };
 
