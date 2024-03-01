@@ -34,6 +34,9 @@
 
     "org.onlyoffice.desktopeditors".Context.sockets = ["x11"]; # No Wayland support
   };
+
+  fonts.fontDir.enable = true;
+  
   system.fsPackages = [ pkgs.bindfs ];
   fileSystems = let
     mkRoSymBind = path: {
