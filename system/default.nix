@@ -31,7 +31,7 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = false;
-    flake = "github:alychace/nixcfg";
+    flake = "github:alyraffauf/nixcfg";
     dates = "daily";
     operation = "boot";
   };
