@@ -70,8 +70,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.aly = import ./users/aly.nix;
+            home-manager.users.aly = import ./home/aly;
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
+
         ];
       };
     };
