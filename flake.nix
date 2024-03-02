@@ -89,8 +89,10 @@
         ];
       };
     };
+
+    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { system = "x86_64-darwin"; };
+      pkgs = import nixpkgs { system = "x86_64-linux"; };
       modules = [
         ./home/aly
       ];
