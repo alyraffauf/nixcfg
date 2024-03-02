@@ -24,7 +24,7 @@
     programs.git = {
         enable = true;
         userName = "Aly Raffauf";
-        userEmail = "alychace@gmail.com";
+        userEmail = "alyraffauf@gmail.com";
     };
 
     programs.bash = {
