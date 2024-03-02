@@ -2,10 +2,13 @@
   description = "Aly's NixOS configuration.";
 
   inputs = {
+    # Main NixOS channel
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    # handles flatpaks
-    nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
-    # home-manager, used for managing user configuration
+
+    # Declarative Flatpaks
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+
+    # Home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       # The `follows` keyword in inputs is used for inheritance.
@@ -14,6 +17,8 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
