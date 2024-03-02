@@ -8,12 +8,6 @@
     "org.mozilla.firefox"
   ];
   services.flatpak.overrides = {
-
-    "com.visualstudio.code".Context = {
-      filesystems = [
-        "xdg-config/git:ro" # Expose user Git config
-        "/run/current-system/sw/bin:ro" # Expose NixOS managed software
-      ];
       sockets = [
         "gpg-agent" # Expose GPG agent
         "pcsc" # Expose smart cards (i.e. YubiKey)
