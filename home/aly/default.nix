@@ -75,6 +75,7 @@
             "noannoyance-fork@vrba.dev"
             "tailscale-status@maxgallup.github.com"
             "tiling-assistant@leleat-on-github"
+            "drive-menu@gnome-shell-extensions.gcampax.github.com"
           ];
         };
     # This value determines the home Manager release that your
