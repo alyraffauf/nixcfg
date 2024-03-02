@@ -11,7 +11,6 @@
     home.packages = with pkgs; [
 	    vscode
         curl
-        distrobox
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
         gh
