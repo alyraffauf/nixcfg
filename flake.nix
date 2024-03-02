@@ -27,7 +27,6 @@
           ./hosts/rustboro
           ./system
           ./flatpak
-          ./hardware
           ./desktop/gnome
           ./programs/podman
           ./programs/steam
@@ -55,7 +54,6 @@
           ./hosts/petalburg
           ./system
           ./flatpak
-          ./hardware
           ./desktop/gnome
           ./programs/podman
           ./programs/steam

@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./network
+      ./sound
     ];
 
   # Set your time zone.
