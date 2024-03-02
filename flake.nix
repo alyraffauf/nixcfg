@@ -2,27 +2,40 @@
   description = "Aly's NixOS configuration.";
 
   inputs = {
-    # Main NixOS channel
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # Unstable NixOS channel.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Declarative Flatpaks
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+    # Release NixOS channel.
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    # Home-manager, used for managing user configuration
+    # Declarative Flatpaks.
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
+
+    # Home-manager, used for managing user configuration.
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/master";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
       # the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+      # Home-manager, used for managing user configuration.
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-23.11";
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
+      # the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs.
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs@{ nixpkgs, nix-flatpak, home-manager, nixos-hardware, ... }: {
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, nix-flatpak, home-manager, home-manager-stable, nixos-hardware, ... }: {
+
     nixosConfigurations = {
       
       # T440p with i5-4210M and 16GB RAM.
