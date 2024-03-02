@@ -50,14 +50,15 @@
 
     dconf = {
         enable = true;
-        settings."org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
         settings."org/gnome/desktop/datetime".automatic-timezone = true;
         settings."org/gnome/desktop/interface".clock-format = "12h";
         settings."org/gnome/desktop/interface".enable-hot-corners = true;
+        settings."org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
         settings."org/gnome/desktop/search-providers".enabled = "['org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']";
         settings."org/gnome/desktop/wm/preferences".auto-raise = true;
         settings."org/gnome/mutter".dynamic-workspaces = true;
         settings."org/gnome/mutter".edge-tiling = true;
+        settings."org/gnome/settings-daemon/plugins/color".night-light-enabled = true;
         settings."org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background = "true";
