@@ -40,7 +40,7 @@
   ]) ++ (with pkgs.gnome; [
     geary # email reader
     gnome-calculator
-    # gnome-calendar
+    gnome-calendar
     gnome-characters
     gnome-clocks
     gnome-contacts
@@ -73,7 +73,7 @@
     "org.gnome.TextEditor"
     "org.gnome.Totem"
     "org.gnome.Weather"
-    # "org.gnome.Calendar"
+    "org.gnome.Calendar"
   ];
 
   nixpkgs.overlays = [
