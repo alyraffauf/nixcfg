@@ -27,22 +27,21 @@
           ./hosts/rustboro
           ./system
           ./users/aly.nix
-          ./flatpak
           ./desktop/gnome
           ./programs/podman
           ./programs/steam
           ./programs/via-qmk
 
+          # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
-          # make home-manager as a module of nixos
-          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          home-manager.nixosModules.home-manager
-          {
+
+          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
+          home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.aly = import ./home/aly;
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
+
           # nixos-hardware configuration for t440p
           nixos-hardware.nixosModules.lenovo-thinkpad-t440p
         ];
@@ -55,23 +54,20 @@
           ./hosts/petalburg
           ./system
           ./users/aly.nix
-          ./flatpak
           ./desktop/gnome
           ./programs/podman
           ./programs/steam
           ./programs/via-qmk
 
+          # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
-          # make home-manager as a module of nixos
-          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          home-manager.nixosModules.home-manager
-          {
+
+          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
+          home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.aly = import ./home/aly;
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
-
         ];
       };
     };
