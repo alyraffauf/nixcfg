@@ -24,13 +24,6 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-  
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.aly = {
-    isNormalUser = true;
-    description = "Aly Raffauf";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

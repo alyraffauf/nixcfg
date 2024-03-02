@@ -26,6 +26,7 @@
         modules = [
           ./hosts/rustboro
           ./system
+          ./users/aly.nix
           ./flatpak
           ./desktop/gnome
           ./programs/podman
@@ -53,6 +54,7 @@
         modules = [
           ./hosts/petalburg
           ./system
+          ./users/aly.nix
           ./flatpak
           ./desktop/gnome
           ./programs/podman
