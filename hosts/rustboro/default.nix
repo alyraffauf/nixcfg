@@ -17,12 +17,6 @@
 
   networking.hostName = "rustboro"; # Define your hostname.
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    easyeffects
-  ];
-
   powerManagement.cpuFreqGovernor = "ondemand";
 
   # This value determines the NixOS release from which the default
