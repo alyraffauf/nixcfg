@@ -92,7 +92,11 @@
 
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
+      pkgs = import nixpkgs { 
+        system = "x86_64-linux";
+        allowUnfree = true;
+        allowUnfreePredicate = (_: true);
+        };
       modules = [
         ./home/aly
       ];
