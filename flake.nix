@@ -90,6 +90,7 @@
       };
     };
     homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs { system = "x86_64-darwin"; };
       modules = [
         ./home/aly
       ];
