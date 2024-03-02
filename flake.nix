@@ -28,7 +28,6 @@
           ./system
           ./flatpak
           ./hardware
-          ./network
           ./desktop/gnome
           ./programs/podman
           ./programs/steam
@@ -57,7 +56,6 @@
           ./system
           ./flatpak
           ./hardware
-          ./network
           ./desktop/gnome
           ./programs/podman
           ./programs/steam

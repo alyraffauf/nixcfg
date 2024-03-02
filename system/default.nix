@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [ # Include the results of the hardware scan.
+      ./network
+    ];
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
