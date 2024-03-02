@@ -14,10 +14,11 @@
         distrobox
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
+        gh
         git
-        nnn # terminal file manager
-        wget
         syncthing
+        todoist
+        wget
     ];
 
     # basic configuration of git, please change to your own
