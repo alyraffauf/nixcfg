@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = false;
 
-  networking.hostName = "rustboro"; # Define your hostname.
+  networking.hostName = "petalburg"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
@@ -47,14 +47,6 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    easyeffects
-  ];
-
-  powerManagement.cpuFreqGovernor = "ondemand";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
