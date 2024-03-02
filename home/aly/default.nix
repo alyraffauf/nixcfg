@@ -61,6 +61,7 @@
         settings."org/gnome/settings-daemon/plugins/color".night-light-enabled = true;
         settings."org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
+        settings."org/gnome/shell/extensions/blur-my-shell/panel".style-panel = 0;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background = true;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background-dynamically = true;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".unblur-in-overview = true;
