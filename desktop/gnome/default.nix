@@ -78,7 +78,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      gnome = prev.gnome.overrideScope' (gnomeFinal: gnomePrev: {
+      gnome = prev.gnome.overrideScope (gnomeFinal: gnomePrev: {
         mutter = gnomePrev.mutter.overrideAttrs ( old: {
           src = pkgs.fetchgit {
             url = "https://gitlab.gnome.org/vanvugt/mutter.git";
