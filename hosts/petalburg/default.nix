@@ -39,15 +39,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.aly = {
-    isNormalUser = true;
-    description = "Aly Raffauf";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -25,7 +25,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/rustboro
-          ./nix
+          ./system
           ./flatpak
           ./hardware
           ./network
@@ -54,7 +54,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/petalburg
-          ./nix
+          ./system
           ./flatpak
           ./hardware
           ./network
