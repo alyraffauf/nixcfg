@@ -37,14 +37,4 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # Set up syncthing to run as aly.
-  # services = {
-  #     syncthing = {
-  #     enable = true;
-  #     user = "aly";
-  #     dataDir = "/home/aly";    # Default folder for new synced folders
-  #     configDir = "/home/aly/.config/syncthing";   # Folder for Syncthing's settings and keys
-  #     };
-  # };
 }
-
