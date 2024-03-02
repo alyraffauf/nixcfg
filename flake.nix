@@ -89,5 +89,10 @@
         ];
       };
     };
+    homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
+      modules = [
+        ./home/aly
+      ];
+    };
   };
 }
