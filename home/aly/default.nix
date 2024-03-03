@@ -67,8 +67,8 @@
         settings."org/gnome/shell/extensions/blur-my-shell/panel".blur = false;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".style-panel = 0;
-        settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background = true;
-        settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background-dynamically = true;
+        settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background = false;
+        settings."org/gnome/shell/extensions/blur-my-shell/panel".override-background-dynamically = false;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".unblur-in-overview = true;
         settings."org/gnome/system/location".enabled = true;
         settings."org/gtk/gtk4/settings/file-chooser".sort-directories-first = true;
