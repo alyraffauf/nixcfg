@@ -44,11 +44,11 @@
         modules = [
           ./hosts/rustboro
           ./system
-          ./users/aly.nix
+          ./users/aly
           ./desktop/gnome
-          ./programs/podman
-          ./programs/steam
-          ./programs/via-qmk
+          ./modules/podman
+          ./modules/steam
+          ./modules/via-qmk
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
@@ -71,11 +71,11 @@
         modules = [
           ./hosts/petalburg
           ./system
-          ./users/aly.nix
+          ./users/aly
           ./desktop/gnome
-          ./programs/podman
-          ./programs/steam
-          ./programs/via-qmk
+          ./modules/podman
+          ./modules/steam
+          ./modules/via-qmk
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
