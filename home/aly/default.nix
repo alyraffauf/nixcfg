@@ -63,7 +63,6 @@
         settings."org/gnome/desktop/wm/preferences".auto-raise = true;
         settings."org/gnome/mutter".dynamic-workspaces = true;
         settings."org/gnome/mutter".edge-tiling = true;
-        settings."org/gnome/settings-daemon/plugins/color".night-light-enabled = true;
         settings."org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".blur = false;
         settings."org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
