@@ -17,6 +17,7 @@
         git
         syncthing
         todoist
+        warp-terminal
         wget
     ];
 
