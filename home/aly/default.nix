@@ -34,8 +34,9 @@
             ls = "eza --group-directories-first";
         };
         initExtra =
-            ''
-            export PS1='\e[0;34m[\u@\H:\w]\$\e[m '
+        ''
+            export PS1="[\[$(tput setaf 27)\]\u\[$(tput setaf 135)\]@\[$(tput setaf 45)\]\h:\[$(tput setaf 33)\]\w] \[$(tput sgr0)\]$ "
+
         '';
     };
 
