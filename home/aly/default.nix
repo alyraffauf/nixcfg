@@ -33,7 +33,7 @@
         shellAliases = {
             ls = "eza --group-directories-first";
         };
-        initExtra =
+        programs.bash.initExtra =
             ''
             export PS1='[\u@\H:\w]\$ '
         '';
