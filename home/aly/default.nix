@@ -35,7 +35,7 @@
         };
         initExtra =
             ''
-            export PS1='[\u@\H:\w]\$ '
+            export PS1='\e[0;34m[\u@\H:\w]\$\e[m '
         '';
     };
 
