@@ -52,7 +52,7 @@
     #     enableUpdateCheck = false;
     # };
 
-    programs.vim.enable = true;
+    programs.neovim.enable = true;
 
     dconf = {
         enable = true;
