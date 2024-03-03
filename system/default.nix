@@ -33,7 +33,7 @@
     allowReboot = false;
     flake = "github:alyraffauf/nixcfg";
     dates = "daily";
-    operation = "boot";
+    operation = "switch";
   };
 
   # Delete generations older than 7 days.
