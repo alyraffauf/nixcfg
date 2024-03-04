@@ -88,6 +88,8 @@
             home-manager.useUserPackages = true;
             home-manager.users.aly = import ./home/aly;
           }
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
+          nixos-hardware.nixosModules.common-cpu-intel
         ];
       };
 
