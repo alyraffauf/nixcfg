@@ -39,7 +39,7 @@
   # Delete generations older than 7 days.
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
     options = "--delete-older-than 7d";
   };
 
