@@ -33,6 +33,7 @@
         enableCompletion = true;
         shellAliases = {
             ls = "eza --group-directories-first";
+            vim = "nvim";
         };
         initExtra =
         ''
