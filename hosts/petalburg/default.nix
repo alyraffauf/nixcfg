@@ -23,7 +23,7 @@ let
   pp-adjuster = pkgs.writeShellApplication {
     name = "pp-adjuster";
 
-    runtimeInputs = [ pkgs.libnotify ];
+    runtimeInputs = [ pkgs.libnotify pkgs.power-profiles-daemon ];
 
     text = ''
       current_profile=$(powerprofilesctl get | tr -d '[:space:]')
