@@ -49,6 +49,7 @@
           ./modules/podman
           ./modules/steam
           ./modules/via-qmk
+          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
@@ -76,6 +77,7 @@
           ./modules/podman
           ./modules/steam
           ./modules/via-qmk
+          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
