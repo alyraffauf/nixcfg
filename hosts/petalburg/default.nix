@@ -4,7 +4,44 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  cs-adjuster = pkgs.writeShellScriptBin "cs-adjuster" ''
+    # Get current color scheme
+    color_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
+
+    # Toggle between light and dark color schemes
+    if [ "$color_scheme" == "'default'" ] || [ "$color_scheme" == "'prefer-light'" ]; then
+        color_scheme="'prefer-dark'"
+    else
+        color_scheme="'prefer-light'"
+    fi
+
+    # Apply the updated color scheme
+    gsettings set org.gnome.desktop.interface color-scheme $color_scheme
+  '';
+
+  pp-adjuster = pkgs.writeShellApplication {
+    name = "pp-adjuster";
+
+    runtimeInputs = [ pkgs.libnotify ];
+
+    text = ''
+      current_profile=$(powerprofilesctl get | tr -d '[:space:]')
+
+      if [ "$current_profile" == "power-saver" ]; then
+          powerprofilesctl set balanced
+      elif [ "$current_profile" == "balanced" ]; then
+          powerprofilesctl set performance
+      elif [ "$current_profile" == "performance" ]; then
+          powerprofilesctl set power-saver
+      fi
+
+      new_profile=$(powerprofilesctl get | tr -d '[:space:]')
+      notify-send "Power profile set to $new_profile."
+    '';
+  };
+
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -18,6 +55,8 @@
   networking.hostName = "petalburg"; # Define your hostname.
 
   hardware.sensor.iio.enable = true;
+
+  environment.systemPackages = [ cs-adjuster pp-adjuster ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
