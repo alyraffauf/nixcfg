@@ -53,7 +53,12 @@
     #     enableUpdateCheck = false;
     # };
 
-    programs.neovim.enable = true;
+    programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+        defaultEditor = true;
+    };
 
     dconf = {
         enable = true;

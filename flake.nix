@@ -49,6 +49,7 @@
           ./modules/podman
           ./modules/steam
           ./modules/via-qmk
+          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
@@ -76,6 +77,34 @@
           ./modules/podman
           ./modules/steam
           ./modules/via-qmk
+          ./modules/logitech
+
+          # Add managed flatpak module.
+          nix-flatpak.nixosModules.nix-flatpak
+
+          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.aly = import ./home/aly;
+          }
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
+          nixos-hardware.nixosModules.common-cpu-intel
+        ];
+      };
+
+      # Ryzen 5 2600 with 16GB RAM, RX 6700.
+      mauville = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/mauville
+          ./system
+          ./users/aly
+          ./desktop/gnome
+          ./modules/podman
+          ./modules/steam
+          ./modules/via-qmk
+          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
