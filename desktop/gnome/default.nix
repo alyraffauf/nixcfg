@@ -15,6 +15,7 @@
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   environment.systemPackages = with pkgs; [
+    fractal
     gnome.gnome-software
     gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
@@ -51,11 +52,11 @@
   #   totem # video player
   # ]);
 
-  # services.flatpak.packages = [
-  #   "com.github.tchx84.Flatseal"
+
   #   "org.gnome.baobab"
   #   "org.gnome.Builder"
-  #   "org.gnome.Calculator"
+  #   "  # services.flatpak.packages = [
+  #   "com.github.tchx84.Flatseal"org.gnome.Calculator"
   #   "org.gnome.Characters"
   #   "org.gnome.clocks"
   #   "org.gnome.Connections"
