@@ -27,54 +27,54 @@
   ];
 
   # Prefer baset set of gnome apps from Flatpaks.
-  environment.gnome.excludePackages = (with pkgs; [
-    baobab
-    epiphany
-    evince
-    gnome-connections
-    gnome-photos
-    gnome-text-editor
-    gnome-tour
-    loupe
-    snapshot # webcam tool
-  ]) ++ (with pkgs.gnome; [
-    geary # email reader
-    gnome-calculator
-    gnome-calendar
-    gnome-characters
-    gnome-clocks
-    gnome-contacts
-    gnome-logs
-    gnome-music
-    gnome-weather
-    sushi
-    totem # video player
-  ]);
+  # environment.gnome.excludePackages = (with pkgs; [
+  #   baobab
+  #   epiphany
+  #   evince
+  #   gnome-connections
+  #   gnome-photos
+  #   gnome-text-editor
+  #   gnome-tour
+  #   loupe
+  #   snapshot # webcam tool
+  # ]) ++ (with pkgs.gnome; [
+  #   geary # email reader
+  #   gnome-calculator
+  #   gnome-calendar
+  #   gnome-characters
+  #   gnome-clocks
+  #   gnome-contacts
+  #   gnome-logs
+  #   gnome-music
+  #   gnome-weather
+  #   sushi
+  #   totem # video player
+  # ]);
 
-  services.flatpak.packages = [
-    "com.github.tchx84.Flatseal"
-    "org.gnome.baobab"
-    "org.gnome.Builder"
-    "org.gnome.Calculator"
-    "org.gnome.Characters"
-    "org.gnome.clocks"
-    "org.gnome.Connections"
-    "org.gnome.Contacts"
-    "org.gnome.Epiphany"
-    "org.gnome.Evince"
-    "org.gnome.Fractal"
-    "org.gnome.Geary"
-    "org.gnome.Logs"
-    "org.gnome.Loupe"
-    "org.gnome.Music"
-    "org.gnome.NautilusPreviewer"
-    "org.gnome.Photos"
-    "org.gnome.Snapshot"
-    "org.gnome.TextEditor"
-    "org.gnome.Totem"
-    "org.gnome.Weather"
-    "org.gnome.Calendar"
-  ];
+  # services.flatpak.packages = [
+  #   "com.github.tchx84.Flatseal"
+  #   "org.gnome.baobab"
+  #   "org.gnome.Builder"
+  #   "org.gnome.Calculator"
+  #   "org.gnome.Characters"
+  #   "org.gnome.clocks"
+  #   "org.gnome.Connections"
+  #   "org.gnome.Contacts"
+  #   "org.gnome.Epiphany"
+  #   "org.gnome.Evince"
+  #   "org.gnome.Fractal"
+  #   "org.gnome.Geary"
+  #   "org.gnome.Logs"
+  #   "org.gnome.Loupe"
+  #   "org.gnome.Music"
+  #   "org.gnome.NautilusPreviewer"
+  #   "org.gnome.Photos"
+  #   "org.gnome.Snapshot"
+  #   "org.gnome.TextEditor"
+  #   "org.gnome.Totem"
+  #   "org.gnome.Weather"
+  #   "org.gnome.Calendar"
+  # ];
 
   nixpkgs.overlays = [
     (final: prev: {

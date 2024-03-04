@@ -19,7 +19,9 @@
   services.flatpak.enable = true;
   services.flatpak.packages = [
     "org.mozilla.firefox"
+    "com.github.tchx84.Flatseal"
   ];
+
   # services.flatpak.overrides = {
   #   sockets = [
   #     "gpg-agent" # Expose GPG agent
