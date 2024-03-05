@@ -19,10 +19,10 @@ jobs:
 
       - run: nix flake update
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
-          branch: main
+          branch: master
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
           commit_user_name: Flake Bot # defaults to "GitHub Actions"
