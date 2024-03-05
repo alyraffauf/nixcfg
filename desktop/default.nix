@@ -18,8 +18,12 @@
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "org.mozilla.firefox"
     "com.github.tchx84.Flatseal"
+  ];
+
+  environment.systemPackages = with pkgs; [
+    firefox
+    google-chrome
   ];
 
   # services.flatpak.overrides = {
