@@ -1,4 +1,5 @@
 # nixcfg
+![](./_img/nixos-gnome.png)
 
 ## Deploying to NixOS
 > :red_circle: **READ**: **Do not deploy this flake directly to your machine. It won't work.**
