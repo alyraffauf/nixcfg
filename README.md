@@ -5,7 +5,7 @@
 ## Hosts
 
 ### Petalburg
-Lenovo Yoga 9i Gen 8 convertible running nixos-unstable. Core i7 1360P, 15GB RAM, 512GB SSD. Runs GNOME, home directory managed by [home-manager](https://github.com/nix-community/home-manager).
+Lenovo Yoga 9i Gen 8 convertible running nixos-unstable. Core i7 1360P, 16GB RAM, 512GB SSD. Runs GNOME, home directory managed by [home-manager](https://github.com/nix-community/home-manager).
 
 ### Rustboro
 Thinkpad T440p running nixos-unstable. Uses KDE Plasma 6. Home directory managed by home-manager.
