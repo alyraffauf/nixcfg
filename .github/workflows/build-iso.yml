@@ -1,4 +1,4 @@
-name: Build NixOS iso from flake
+name: Build NixOS iso
 
 on:
   schedule:
