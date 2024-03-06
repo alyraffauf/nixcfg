@@ -55,6 +55,8 @@ in {
 
   hardware.sensor.iio.enable = true;
 
+  powerManagement.powertop.enable = true;
+
   environment.systemPackages = [ cs-adjuster pp-adjuster ];
 
   # This value determines the NixOS release from which the default
