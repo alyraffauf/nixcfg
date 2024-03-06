@@ -5,6 +5,6 @@
   users.users.aly = {
     isNormalUser = true;
     description = "Aly Raffauf";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 }
