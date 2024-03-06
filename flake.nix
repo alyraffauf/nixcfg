@@ -47,7 +47,7 @@
           ./hosts/rustboro
           ./system
           ./users/aly
-          ./desktop/gnome
+          ./desktop/kde
           ./modules/podman
           ./modules/steam
           ./modules/via-qmk
