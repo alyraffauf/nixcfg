@@ -4,7 +4,7 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio = {
-    enable = false;
+    enable = lib.mkForce false;
     # Enables extra codecs like aptx.
     package = pkgs.pulseaudioFull;
   };

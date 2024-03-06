@@ -48,7 +48,7 @@
           ./system
           ./users/aly
           ./desktop/kde
-          ./modules/podman
+          ./modules/virtualization
           ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
@@ -76,7 +76,7 @@
           ./system
           ./users/aly
           ./desktop/gnome
-          ./modules/podman
+          ./modules/virtualization
           ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
@@ -103,7 +103,7 @@
           ./system
           ./users/aly
           ./desktop/gnome
-          ./modules/podman
+          ./modules/virtualization
           ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
@@ -117,6 +117,27 @@
             home-manager.useUserPackages = true;
             home-manager.users.aly = import ./home/aly;
           }
+        ];
+      };
+
+      live-gnome-unstable = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-base.nix")
+          ./system
+          ./desktop/gnome
+          ./modules/virtualization
+          ./modules/steam
+          ./modules/via-qmk
+          ./modules/logitech
+
+          # Add managed flatpak module.
+          nix-flatpak.nixosModules.nix-flatpak
+
+          # Add installer.
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ pkgs.calamares-nixos ];
+          })
         ];
       };
     };
