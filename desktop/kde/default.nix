@@ -11,11 +11,14 @@
   services.xserver.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kate
-    yakuake
-    libsForQt5.kio-gdrive
-    libsForQt5.kimageformats
-    libsForQt5.discover
+    kdePackages.kate
+    kdePackages.kio-gdrive
+    kdePackages.kimageformats
+    kdePackages.discover
+  ];
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
   ];
 
   programs.kdeconnect.enable = true;
