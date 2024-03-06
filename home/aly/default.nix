@@ -15,6 +15,7 @@
         fzf # A command-line fuzzy finder
         gh
         git
+        github-desktop
         syncthing
         todoist
         warp-terminal
