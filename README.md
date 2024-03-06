@@ -1,5 +1,6 @@
 # nixcfg
 ![](./_img/nixos-gnome.png)
+![](./_img/nixos-kde.png)
 
 ## Hosts
 
