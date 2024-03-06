@@ -2,7 +2,7 @@ name: Build NixOS iso from flake
 
 on:
   schedule:
-    cron: "0 10 * * 2"
+    - cron: "0 10 * * 2"
 
 jobs:
   build:
