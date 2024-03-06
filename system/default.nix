@@ -6,7 +6,6 @@
       ./network
       ./sound
     ];
-
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -27,6 +26,10 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  environment.systemPackages = with pkgs; [
+    eza
+  ];
 
   system.autoUpgrade = {
     enable = true;
