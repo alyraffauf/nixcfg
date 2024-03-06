@@ -6,6 +6,6 @@
     ];
 
     # TODO please change the username & home directory to your own
-    home.username = "dustin";
-    home.homeDirectory = "/home/dustin";
+    home.username = "nixos";
+    home.homeDirectory = "/home/nixos";
 }

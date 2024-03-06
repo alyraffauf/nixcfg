@@ -120,14 +120,12 @@
         ];
       };
 
-      live-gnome-unstable = nixpkgs.lib.nixosSystem {
+      live-gnome-unstable = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-base.nix")
           ./system
           ./desktop/gnome
-          ./modules/virtualization
-          ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
 
@@ -136,8 +134,14 @@
 
           # Add installer.
           ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.calamares-nixos ];
+            environment.systemPackages = [ pkgs.calamares-nixos pkgs.calamares-nixos-extensions ];
           })
+          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
+          home-manager-unstable.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nixos = import ./home/nixos;
+          }
         ];
       };
     };
