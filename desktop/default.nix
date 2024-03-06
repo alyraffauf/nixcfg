@@ -17,13 +17,15 @@
   xdg.portal.enable = true;
 
   services.flatpak.enable = true;
+  services.flatpak.update.onActivation = true;
   services.flatpak.packages = [
-    "com.github.tchx84.Flatseal"
+    "md.obsidian.Obsidian"
   ];
 
   environment.systemPackages = with pkgs; [
     firefox
     google-chrome
+    zoom-us
   ];
 
   # services.flatpak.overrides = {
