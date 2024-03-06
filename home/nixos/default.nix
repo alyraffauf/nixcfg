@@ -5,7 +5,14 @@
         ../common.nix
     ];
 
-    # TODO please change the username & home directory to your own
     home.username = "nixos";
     home.homeDirectory = "/home/nixos";
+
+    # Packages that should be installed to the user profile.
+    home.packages = with pkgs; [
+        vscode
+        gh
+        git
+        wget
+    ];
 }

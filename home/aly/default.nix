@@ -13,7 +13,7 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-	    vscode
+        vscode
         curl
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
