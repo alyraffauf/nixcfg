@@ -56,6 +56,7 @@ in {
   hardware.sensor.iio.enable = true;
 
   powerManagement.powertop.enable = true;
+  services.thermald.enable = true;
 
   environment.systemPackages = [ cs-adjuster pp-adjuster ];
 
