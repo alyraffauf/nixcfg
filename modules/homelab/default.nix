@@ -20,17 +20,23 @@
             audiobookshelf = {
                 ports = ["0.0.0.0:13378:80"];
                 image = "ghcr.io/advplyr/audiobookshelf:latest";
+                volumes = [
+                    "/mnt/Media:/Media"
+                ];
             };
             plex-server = {
                 ports = ["0.0.0.0:32400:32400"];
                 image = "plexinc/pms-docker:public";
+                volumes = [
+                    "/mnt/Media:/Media"
+                ];
             };
             transmission-server = {
                 ports = ["0.0.0.0:9091:9091"];
                 image = "linuxserver/transmission:latest";
-                # volumes = [
-                #     "/home/aly/transmission:/config"
-                # ];
+                volumes = [
+                    "/mnt/Media:/Media"
+                ];
             };
         };
     };
