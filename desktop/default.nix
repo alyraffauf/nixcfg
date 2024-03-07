@@ -18,14 +18,15 @@
 
   services.flatpak.enable = true;
   services.flatpak.update.onActivation = true;
-  services.flatpak.packages = [
-    "md.obsidian.Obsidian"
-  ];
+  # services.flatpak.packages = [
+  #   "md.obsidian.Obsidian"
+  # ];
 
   environment.systemPackages = with pkgs; [
     firefox
     google-chrome
     zoom-us
+    obsidian
   ];
 
   # services.flatpak.overrides = {
