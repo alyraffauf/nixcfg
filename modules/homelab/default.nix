@@ -47,6 +47,17 @@
                     "/mnt/Media:/Media"
                 ];
             };
+            nextcloud = {
+                ports = ["0.0.0.0:80:80" ];
+                image = "nextcloud:latest";
+                environment = {
+                    TZ = "America/New_York";
+                };
+                volumes = [
+                    "nextcloud:/var/www/html"
+                    "/mnt/Media/NextCloud:/var/www/html/data"
+                ];
+            };
         };
     };
 }
