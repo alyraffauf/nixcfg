@@ -103,7 +103,7 @@
           ./system
           ./users/aly
           ./desktop/gnome
-          ./modules/virtualization
+          ./modules/homelab
           ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
