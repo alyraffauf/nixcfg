@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 {
     # Open TCP ports for audiobookshelf, plex-server, and transmission-server.
-    networking.firewall.allowedTCPPorts = [ 13378 32400 9091 ];
+    networking.firewall.allowedTCPPorts = [ 51413 13378 32400 9091 ];
+    networking.firewall.allowedUDPPorts = [ 51413 ];
+
     virtualisation = {
         podman = {
             enable = true;
@@ -32,7 +34,7 @@
                 ];
             };
             transmission-server = {
-                ports = ["0.0.0.0:9091:9091"];
+                ports = ["0.0.0.0:9091:9091" "0.0.0.0:51413:51413"];
                 image = "linuxserver/transmission:latest";
                 volumes = [
                     "/mnt/Media:/Media"
