@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -10,12 +10,22 @@
       ./hardware-configuration.nix
     ];
 
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "mauville"; # Define your hostname.
+  
+  system.autoUpgrade = {
+    allowReboot = lib.mkForce true;
+    dates = lib.mkForce "weekly";
+    operation = lib.mkForce "boot";
+  };
+
+  # Delete generations older than 14 days.
+  nix.gc = {
+    options = lib.mkForce "--delete-older-than 14d";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
