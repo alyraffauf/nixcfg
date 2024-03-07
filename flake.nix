@@ -48,8 +48,6 @@
           ./system
           ./users/aly
           ./desktop/kde
-          ./modules/virtualization
-          ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
 
@@ -76,8 +74,6 @@
           ./system
           ./users/aly
           ./desktop/gnome
-          ./modules/virtualization
-          ./modules/steam
           ./modules/via-qmk
           ./modules/logitech
 
