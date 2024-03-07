@@ -34,7 +34,7 @@
                 image = "linuxserver/transmission:latest";
                 volumes = [
                     "transmission_config:/config"
-                    "/mnt/Torrents:/watch"
+                    "/mnt/Media/Torrents:/watch"
                     "/mnt/Media:/Media"
                 ];
             };
