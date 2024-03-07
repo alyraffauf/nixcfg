@@ -44,6 +44,9 @@ jobs:
         with:
           script: nix build .#nixosConfigurations.${{ matrix.target }}.config.system.build.isoImage
 
+      - name: Delete nix store
+        run: sudo rm -rf /nix
+
       - name: Upload iso
         uses: actions/upload-artifact@v3.1.2
         with:
