@@ -27,6 +27,20 @@
     options = lib.mkForce "--delete-older-than 14d";
   };
 
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+
+  hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  hardware.opengl.driSupport32Bit = true;
+  # For 32 bit applications 
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "aly";
 
