@@ -47,7 +47,7 @@ jobs:
       - name: Optimize nix store
         uses: workflow/nix-shell-action@v3.2.1
         with:
-          script: sudo nix store optimise
+          script: nix store optimise
 
       - name: Upload iso
         uses: actions/upload-artifact@v3.1.2
