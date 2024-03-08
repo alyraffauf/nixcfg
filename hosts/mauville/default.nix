@@ -38,9 +38,10 @@
   hardware.opengl.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk
   ];
-
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "aly";
+  
+  # Removed because it defaults the session to X11 instead of Wayland
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # services.xserver.displayManager.autoLogin.user = "aly";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
