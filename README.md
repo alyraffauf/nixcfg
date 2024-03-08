@@ -3,15 +3,16 @@
 ![](./_img/nixos-kde.png)
 
 ## Hosts
-
-### Petalburg
-Lenovo Yoga 9i Gen 8 convertible running nixos-unstable. Core i7 1360P, 16GB RAM, 512GB SSD. Runs GNOME, home directory managed by [home-manager](https://github.com/nix-community/home-manager).
-
-### Rustboro
-Thinkpad T440p running nixos-unstable. Uses KDE Plasma 6. Home directory managed by home-manager.
-
-### Mauville
-Gaming desktop & home lab running [Slateblue](https://github.com/alyraffauf/slateblue), a customized [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/) image made with [BlueBuild](https://github.com/blue-build/template). Home directory managed by home-manager. Ryzen 5 2600, 16GB RAM, Radeon RX 6700.
+| Host    |                     petalburg |                        rustboro |                            mauville |
+|---------|------------------------------:|--------------------------------:|------------------------------------:|
+| Model   |          Lenovo Yoga 9i Gen 8 |                  ThinkPad T440p |             Custom Mini-ITX Desktop |
+| Display | 14" 2880x1800 16:10 90hz OLED | 14" 1920x1080 16:9 60hz IPS LCD |     34" 3440x1440 21:9 160Hz VA LCD |
+| CPU     |           Intel Core i7-1360P |             Intel Core i5-4210M |                    AMD Ryzen 5 2600 |
+| RAM     |           16GB LPDDR5-5200Mhz |              16GB DDR3L-1600Mhz |                   16GB DDR4-3200Mhz |
+| GPU     |        Intel Iris Xe Graphics |          Intel HD Graphics 4600 |                  AMD Radeon Rx 6700 |
+| Storage |            512GB M.2 PCIe 4.0 |                  512GB SATA SSD | 1TB M.2 PCIe 4.0; 2TB 10,000RPM HDD |
+| OS      |                NixOS Unstable |                  NixOS Unstable |                      NixOS Unstable |
+| Desktop |                         GNOME |                      KDE Plasma |                               GNOME |
 
 ## Deploying to NixOS
 > :red_circle: **READ**: **Do not deploy this flake directly to your machine. It won't work.**
