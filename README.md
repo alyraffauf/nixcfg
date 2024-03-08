@@ -20,7 +20,7 @@
 > Each hardware-configuration is host-specific. If you fork this repository, replace them with the hardware-configuration.nix that NixOS generates for you.
 
 ### Enabling Flakes
-While widely used and considered stable, [flakes](https://nixos.wiki/wiki/Flakes) are still considered eperimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
+While widely used and considered stable, [flakes](https://nixos.wiki/wiki/Flakes) are still considered experimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
 ```nix
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
