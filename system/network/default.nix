@@ -29,19 +29,23 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open TXP ports for SSH and Syncthing.
+  # Open TCP ports for SSH and Syncthing.
   networking.firewall.allowedTCPPorts = [ 22 8384 22000 ];
   
   # Open UDP ports for Syncthing.
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
-  # Open ports for KDE Connect.
   networking.firewall.allowedTCPPortRanges = [
     # KDE Connect
     { from = 1714; to = 1764; }
+    # Soulseek
+    { from = 2234; to = 2239; }
   ];
+
   networking.firewall.allowedUDPPortRanges = [
     # KDE Connect
     { from = 1714; to = 1764; }
+    # Soulseek
+    { from = 2234; to = 2239; }
   ];
 }
