@@ -22,6 +22,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.gsconnect
+    gnomeExtensions.light-shell
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.noannoyance-fork
     gnomeExtensions.tailscale-status

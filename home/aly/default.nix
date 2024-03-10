@@ -24,6 +24,8 @@
         todoist
         warp-terminal
         wget
+        picard
+        nicotine-plus
     ];
 
     # basic configuration of git, please change to your own
