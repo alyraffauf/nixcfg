@@ -18,9 +18,7 @@
         audiobookshelf = {
             ports = ["0.0.0.0:13378:80"];
             image = "ghcr.io/advplyr/audiobookshelf:latest";
-            environment = {
-                TZ = "America/New_York";
-            };
+            environment = { TZ = "America/New_York"; };
             volumes = [
                 "abs_config:/config"
                 "abs_metadata:/metadata"
@@ -30,9 +28,7 @@
         plex-server = {
             ports = ["0.0.0.0:32400:32400"];
             image = "plexinc/pms-docker:public";
-            environment = {
-                TZ = "America/New_York";
-            };
+            environment = { TZ = "America/New_York"; };
             volumes = [
                 "plex_config:/config"
                 "plex_transcode:/transcode"
@@ -42,9 +38,7 @@
         transmission-server = {
             ports = ["0.0.0.0:9091:9091" "0.0.0.0:51413:51413"];
             image = "linuxserver/transmission:latest";
-            environment = {
-                TZ = "America/New_York";
-            };
+            environment = { TZ = "America/New_York"; };
             volumes = [
                 "transmission_config:/config"
                 "/mnt/Media/Torrents:/watch"
