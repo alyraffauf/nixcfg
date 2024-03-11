@@ -67,7 +67,7 @@
                     MusicFolder = "/Music";
                     DefaultTheme = "Auto";
                     SubsonicArtistParticipations = true;
-                    UIWelcomeMessage = "Welcome to Navidrome on Raffauf Labs."
+                    UIWelcomeMessage = "Welcome to Navidrome on Raffauf Labs.";
                 };
             };
             system.stateVersion = "24.05";
