@@ -14,18 +14,6 @@
 
     virtualisation = {
         oci-containers.containers = {
-            audiobookshelf = {
-                ports = ["0.0.0.0:13378:80"];
-                image = "ghcr.io/advplyr/audiobookshelf:latest";
-                environment = {
-                    TZ = "America/New_York";
-                };
-                volumes = [
-                    "abs_config:/config"
-                    "abs_metadata:/metadata"
-                    "/mnt/Media:/Media"
-                ];
-            };
             plex-server = {
                 ports = ["0.0.0.0:32400:32400"];
                 image = "plexinc/pms-docker:public";
@@ -77,6 +65,24 @@
         };
     };
 
+    containers.audiobookshelf = {
+        autoStart = true;
+        bindMounts = { 
+            "/Media" = { hostPath = "/mnt/Media";
+            isReadOnly = false; 
+            };
+        };
+        config = { config, pkgs, lib, ... }: {
+            services.audiobookshelf = {
+                enable = true;
+                openFirewall = true;
+                port = 13378;
+                host = "0.0.0.0";
+            };
+            system.stateVersion = "24.05";
+        };
+    };
+
     security.acme = {
         acceptTerms = true;
         defaults.email = "alyraffauf@gmail.com";
@@ -106,7 +112,7 @@
             forceSSL = true;
             locations."/" = {
                 proxyPass = "http://127.0.0.1:13378";
-                proxyWebsockets = true; # needed if you need to use WebSocket
+                # proxyWebsockets = true; # This breaks audiobookshelf.
                 extraConfig = ''
                     proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
                     proxy_set_header  X-Forwarded-Proto $scheme;
