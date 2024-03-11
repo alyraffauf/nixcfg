@@ -24,6 +24,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Add support for logitech unifying receivers.
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
+  # Add support for configuring QMK keyboards with Via.
+  hardware.keyboard.qmk.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

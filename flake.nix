@@ -48,8 +48,6 @@
           ./system
           ./users/aly
           ./desktop/kde
-          ./modules/via-qmk
-          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
@@ -74,8 +72,6 @@
           ./system
           ./users/aly
           ./desktop/gnome
-          ./modules/via-qmk
-          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
@@ -101,8 +97,6 @@
           ./desktop/gnome
           ./modules/homelab
           ./modules/steam
-          ./modules/via-qmk
-          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
@@ -122,8 +116,6 @@
           (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-base.nix")
           ./system
           ./desktop/gnome
-          ./modules/via-qmk
-          ./modules/logitech
 
           # Add managed flatpak module.
           nix-flatpak.nixosModules.nix-flatpak
