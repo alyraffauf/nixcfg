@@ -56,8 +56,8 @@
     containers.navidrome = {
         autoStart = true;
         bindMounts."/Music".hostPath = "/mnt/Media/Music";
-        };
         config = { config, pkgs, lib, ... }: {
+            system.stateVersion = "24.05";
             services.navidrome = {
                 enable = true;
                 openFirewall = true;
@@ -70,7 +70,6 @@
                     UIWelcomeMessage = "Welcome to Navidrome on Raffauf Labs.";
                 };
             };
-            system.stateVersion = "24.05";
         };
     };
 }
