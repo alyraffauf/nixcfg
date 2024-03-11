@@ -6,7 +6,7 @@
     ];
 
     # Open TCP ports for audiobookshelf, plex-server, and transmission-server.
-    networking.firewall.allowedTCPPorts = [ 51413 13378 32400 9091 ];
+    networking.firewall.allowedTCPPorts = [ 51413 13378 32400 9091 4533];
     networking.firewall.allowedUDPPorts = [ 51413 ];
 
     virtualisation = {
@@ -47,17 +47,30 @@
                     "/mnt/Media:/Media"
                 ];
             };
-            # nextcloud = {
-            #     ports = ["0.0.0.0:80:80" ];
-            #     image = "nextcloud:latest";
-            #     environment = {
-            #         TZ = "America/New_York";
-            #     };
-            #     volumes = [
-            #         "nextcloud:/var/www/html"
-            #         "/mnt/Media/NextCloud:/var/www/html/data"
-            #     ];
-            # };
+        };
+    };
+
+    containers.navidrome = {
+        autoStart = true;
+        bindMounts = { 
+            "/Music" = { hostPath = "/mnt/Media/Music";
+            isReadOnly = true; 
+            };
+        };
+        config = { config, pkgs, lib, ... }: {
+            services.navidrome = {
+                enable = true;
+                openFirewall = true;
+                settings = {
+                    Address = "0.0.0.0";
+                    Port = 4533;
+                    MusicFolder = "/Music";
+                    DefaultTheme = "Auto";
+                    SubsonicArtistParticipations = true;
+                    DefaultDownsamplingFormat = "aac";
+                };
+            };
+            system.stateVersion = "24.05";
         };
     };
 }
