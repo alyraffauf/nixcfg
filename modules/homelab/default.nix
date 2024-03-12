@@ -27,15 +27,12 @@
         };
         plex-server = {
             ports = ["0.0.0.0:32400:32400"];
-            image = "linuxserver/plex:latest";
+            image = "plexinc/pms-docker:public";
             environment = { TZ = "America/New_York"; };
             volumes = [
                 "plex_config:/config"
                 "plex_transcode:/transcode"
                 "/mnt/Media:/Media"
-            ];
-            extraOptions = [
-                "--device=/dev/dri:/dev/dri"
             ];
         };
         transmission-server = {
