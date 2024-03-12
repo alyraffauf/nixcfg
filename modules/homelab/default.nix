@@ -45,6 +45,16 @@
                 "/mnt/Media:/Media"
             ];
         };
+        jellyfin = {
+            ports = ["0.0.0.0:8096:8096"];
+            image = "jellyfin/jellyfin";
+            environment = { TZ = "America/New_York"; };
+            volumes = [
+                "jellyfin_config:/config"
+                "jellyfin_cache:/cache"
+                "/mnt/Media:/Media"
+            ];
+        };
     };
 
     containers.navidrome = {
