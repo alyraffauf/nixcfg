@@ -13,23 +13,23 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-        vscode
         curl
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
         gh
         git
         github-desktop
+        gnomeExtensions.appindicator
+        gnomeExtensions.blur-my-shell
+        gnomeExtensions.gsconnect
+        gnomeExtensions.light-shell
+        gnomeExtensions.night-theme-switcher
+        gnomeExtensions.noannoyance-fork
+        gnomeExtensions.tailscale-status
+        gnomeExtensions.tiling-assistant
         syncthing
-        todoist
+        vscode
         warp-terminal
         wget
     ];
-
-    # basic configuration of git, please change to your own
-    programs.git = {
-        enable = true;
-        userName = "Aly Raffauf";
-        userEmail = "alyraffauf@gmail.com";
-    };
 }
