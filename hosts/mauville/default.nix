@@ -22,6 +22,8 @@
     operation = lib.mkForce "boot";
   };
 
+  services.xserver.displayManager.gdm.autoSuspend = false;
+
   # Delete generations older than 14 days.
   nix.gc = {
     options = lib.mkForce "--delete-older-than 14d";
