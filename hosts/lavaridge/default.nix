@@ -1,6 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Framework Laptop 13 with AMD Ryzen 7640U, 32GB RAM, 1TB SSD.
 
 { config, pkgs, ... }:
 
