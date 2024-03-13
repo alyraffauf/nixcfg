@@ -12,6 +12,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Pull latest Linux kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "lavaridge"; # Define your hostname.
 
   powerManagement.powertop.enable = true;
