@@ -2,7 +2,7 @@
 
 {
     imports = [
-        ../virtualization
+        ./virtualization
         ./reverse_proxy
     ];
 
