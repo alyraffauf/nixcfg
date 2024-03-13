@@ -34,7 +34,7 @@
     
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-  };
+  };<nixos-hardware/framework/13-inch/7040-amd>
 
   outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, nix-flatpak, nixos-hardware, ... }: {
 
@@ -45,8 +45,6 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/rustboro
-          ./system
-          ./users/aly
           ./desktop/kde
 
           # Add managed flatpak module.
@@ -69,8 +67,6 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/petalburg
-          ./system
-          ./users/aly
           ./desktop/gnome
 
           # Add managed flatpak module.
@@ -92,8 +88,6 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/mauville
-          ./system
-          ./users/aly
           ./desktop/gnome
           ./modules/homelab
           ./modules/steam

@@ -22,10 +22,6 @@
     # pkgs.libsForQt5.kwalletmanager
   ];
 
-  services.flatpak.packages = [
-    "com.github.tchx84.Flatseal"
-  ];
-
   # Prefer baset set of gnome apps from Flatpaks.
   # environment.gnome.excludePackages = (with pkgs; [
   #   baobab
