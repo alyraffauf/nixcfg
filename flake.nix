@@ -89,19 +89,5 @@
         ];
       };
     };
-
-    packages.x86_64-linux.default = home-manager.defaultPackage.x86_64-linux;
-    homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs-unstable { 
-        system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-          allowUnfreePredicate = (_: true);
-        };
-      };
-      modules = [
-        ./home/aly
-      ];
-    };
   };
 }
