@@ -29,14 +29,14 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # Declarative Flatpaks.
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
+    # # Declarative Flatpaks.
+    # nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
     
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-  };<nixos-hardware/framework/13-inch/7040-amd>
+  };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, nix-flatpak, nixos-hardware, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, nixos-hardware, ... }: {
 
     nixosConfigurations = {
       
@@ -46,9 +46,6 @@
         modules = [
           ./hosts/rustboro
           ./desktop/kde
-
-          # Add managed flatpak module.
-          nix-flatpak.nixosModules.nix-flatpak
 
           # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
           home-manager-unstable.nixosModules.home-manager {
@@ -68,9 +65,6 @@
         modules = [
           ./hosts/petalburg
           ./desktop/gnome
-
-          # Add managed flatpak module.
-          nix-flatpak.nixosModules.nix-flatpak
 
           # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
           home-manager-unstable.nixosModules.home-manager {
@@ -92,37 +86,11 @@
           ./modules/homelab
           ./modules/steam
 
-          # Add managed flatpak module.
-          nix-flatpak.nixosModules.nix-flatpak
-
           # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
           home-manager-unstable.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.aly = import ./home/aly;
-          }
-        ];
-      };
-
-      live-gnome-unstable = nixpkgs-unstable.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-graphical-base.nix")
-          ./system
-          ./desktop/gnome
-
-          # Add managed flatpak module.
-          nix-flatpak.nixosModules.nix-flatpak
-
-          # Add installer.
-          ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.calamares-nixos pkgs.calamares-nixos-extensions ];
-          })
-          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
-          home-manager-unstable.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nixos = import ./home/nixos;
           }
         ];
       };
