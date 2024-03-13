@@ -10,7 +10,7 @@
 | CPU     |      AMD Ryzen 7640U |     Intel Core i7-1360P |    Intel Core i5-4210M |        AMD Ryzen 5 2600 |
 | RAM     |    32GB DDR5-5600Mhz |     16GB LPDDR5-5200Mhz |     16GB DDR3L-1600Mhz |       16GB DDR4-3200Mhz |
 | GPU     |      AMD Radeon 760M |  Intel Iris Xe Graphics | Intel HD Graphics 4600 |      AMD Radeon Rx 6700 |
-| Storage |     1TB Sk hynix P41 |      512GB M.2 PCIe 4.0 |         512GB SATA SSD |        1TB M.2 PCIe 4.0 |
+| Storage |     1TB Sk hynix P41 |      512GB M.2 PCIe 4.0 |         512GB SATA SSD |        1TB M.2 PCIe 3.0 |
 | OS      |       NixOS Unstable |          NixOS Unstable |         NixOS Unstable |          NixOS Unstable |
 | Desktop |                GNOME |                   GNOME |             KDE Plasma |                   GNOME |
 
