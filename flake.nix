@@ -1,18 +1,13 @@
 {
-  description = "Aly's NixOS configuration.";
+  description = "Aly's NixOS flake.";
 
   inputs = {
     # Latest Stable NixOS, tracked by FlakeHub.
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
 
-    # Home-manager, used for managing user configuration.
-    # Tracks latest stable version using FlakeHub.
+    # Tracks latest stable home-manager using FlakeHub.
     home-manager = {
       url = "https://flakehub.com/f/nix-community/home-manager/0.*.*.tar.gz";
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-      # the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,10 +17,6 @@
     # Home-manager, used for managing user configuration.
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-      # the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -44,11 +35,10 @@
       # lavaridge = nixpkgs-unstable.lib.nixosSystem {
       #   system = "x86_64-linux";
       #   modules = [
+      #     nixos-hardware.nixosModules.framework-13-7040-amd
+      #     home-manager-unstable.nixosModules.home-manager
       #     ./hosts/lavaridge
       #     ./desktop/gnome
-
-      #     home-manager-unstable.nixosModules.home-manager
-      #     nixos-hardware.nixosModules.framework-13-7040-amd
       #   ];
       # };
       
@@ -56,10 +46,10 @@
       rustboro = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-t440p
+          home-manager-unstable.nixosModules.home-manager
           ./hosts/rustboro
           ./desktop/kde.nix
-          home-manager-unstable.nixosModules.home-manager
-          nixos-hardware.nixosModules.lenovo-thinkpad-t440p
         ];
       };
 
@@ -67,11 +57,11 @@
       petalburg = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/petalburg
-          ./desktop/gnome
-          home-manager-unstable.nixosModules.home-manager
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           nixos-hardware.nixosModules.common-cpu-intel
+          home-manager-unstable.nixosModules.home-manager
+          ./hosts/petalburg
+          ./desktop/gnome
         ];
       };
 
@@ -79,11 +69,11 @@
       mauville = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/mauville
-          ./desktop/gnome
-          ./modules/homelab
-          ./modules/steam.nix
           home-manager-unstable.nixosModules.home-manager
+          ./hosts/mauville
+          ./modules/homelab
+          ./desktop/gnome
+          ./modules/steam.nix
         ];
       };
     };
