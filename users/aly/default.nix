@@ -7,4 +7,6 @@
     description = "Aly Raffauf";
     extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
+
+  home-manager.users.aly = import ../../home/aly;
 }

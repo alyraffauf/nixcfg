@@ -39,6 +39,20 @@
   outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, nixos-hardware, ... }: {
 
     nixosConfigurations = {
+
+      # # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
+      # lavaridge = nixpkgs-unstable.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     ./hosts/lavaridge
+      #     ./desktop/gnome
+
+      #     # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
+      #     home-manager-unstable.nixosModules.home-manager
+      #     # nixos-hardware configuration for fw13-amd.
+      #     nixos-hardware.nixosModules.framework-13-7040-amd
+      #   ];
+      # };
       
       # T440p with i5-4210M and 16GB RAM.
       rustboro = nixpkgs-unstable.lib.nixosSystem {
@@ -46,15 +60,7 @@
         modules = [
           ./hosts/rustboro
           ./desktop/kde
-
-          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
-          home-manager-unstable.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.aly = import ./home/aly;
-          }
-
-          # nixos-hardware configuration for t440p
+          home-manager-unstable.nixosModules.home-manager
           nixos-hardware.nixosModules.lenovo-thinkpad-t440p
         ];
       };
@@ -65,13 +71,7 @@
         modules = [
           ./hosts/petalburg
           ./desktop/gnome
-
-          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
-          home-manager-unstable.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.aly = import ./home/aly;
-          }
+          home-manager-unstable.nixosModules.home-manager
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           nixos-hardware.nixosModules.common-cpu-intel
         ];
@@ -85,13 +85,7 @@
           ./desktop/gnome
           ./modules/homelab
           ./modules/steam
-
-          # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
-          home-manager-unstable.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.aly = import ./home/aly;
-          }
+          home-manager-unstable.nixosModules.home-manager
         ];
       };
     };
