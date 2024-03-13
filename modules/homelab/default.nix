@@ -2,8 +2,8 @@
 
 {
     imports = [
-        ./virtualization
-        ./reverse_proxy
+        ./virtualization.nix
+        ./nginx_proxy.nix
     ];
 
     # services.ddclient.enable = true;

@@ -2,7 +2,7 @@
 
 {
     imports = [
-        ../common.nix
+        ./common.nix
     ];
 
     # TODO please change the username & home directory to your own

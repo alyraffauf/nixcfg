@@ -8,5 +8,5 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
-  home-manager.users.aly = import ../../home/aly;
+  home-manager.users.aly = import ../home/aly.nix;
 }

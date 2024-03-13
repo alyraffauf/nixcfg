@@ -59,7 +59,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/rustboro
-          ./desktop/kde
+          ./desktop/kde.nix
           home-manager-unstable.nixosModules.home-manager
           nixos-hardware.nixosModules.lenovo-thinkpad-t440p
         ];
@@ -84,7 +84,7 @@
           ./hosts/mauville
           ./desktop/gnome
           ./modules/homelab
-          ./modules/steam
+          ./modules/steam.nix
           home-manager-unstable.nixosModules.home-manager
         ];
       };

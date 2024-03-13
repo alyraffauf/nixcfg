@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include X settings.
-      ../.
+      ../common.nix
     ];
 
   # Enable Gnome and GDM.

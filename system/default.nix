@@ -3,8 +3,8 @@
 {
   imports =
     [
-      ./network
-      ./sound
+      ./network.nix
+      ./sound.nix
     ];
   # Set your time zone.
   time.timeZone = "America/New_York";
