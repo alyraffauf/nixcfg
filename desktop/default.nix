@@ -17,10 +17,6 @@
   xdg.portal.enable = true;
 
   services.flatpak.enable = true;
-  services.flatpak.update.onActivation = true;
-  # services.flatpak.packages = [
-  #   "md.obsidian.Obsidian"
-  # ];
 
   environment.systemPackages = with pkgs; [
     firefox
@@ -28,14 +24,6 @@
     zoom-us
     obsidian
   ];
-
-  # services.flatpak.overrides = {
-  #   sockets = [
-  #     "gpg-agent" # Expose GPG agent
-  #     "pcsc" # Expose smart cards (i.e. YubiKey)
-  #   ];
-  #   "org.onlyoffice.desktopeditors".Context.sockets = ["x11"]; # No Wayland support
-  # };
 
   fonts.fontDir.enable = true;
   
