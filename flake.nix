@@ -47,9 +47,7 @@
       #     ./hosts/lavaridge
       #     ./desktop/gnome
 
-      #     # Add home-manager nixos module so home-manager config deploys on nixos-rebuild.
       #     home-manager-unstable.nixosModules.home-manager
-      #     # nixos-hardware configuration for fw13-amd.
       #     nixos-hardware.nixosModules.framework-13-7040-amd
       #   ];
       # };
