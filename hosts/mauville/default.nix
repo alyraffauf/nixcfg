@@ -15,12 +15,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "mauville"; # Define your hostname.
-  
-  system.autoUpgrade = {
-    allowReboot = lib.mkForce true;
-    dates = lib.mkForce "weekly";
-    operation = lib.mkForce "boot";
-  };
 
   services.xserver.displayManager.gdm.autoSuspend = false;
 

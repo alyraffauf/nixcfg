@@ -40,10 +40,10 @@
 
   system.autoUpgrade = {
     enable = true;
-    allowReboot = false;
+    allowReboot = true;
     flake = "github:alyraffauf/nixcfg";
     dates = "daily";
-    operation = "switch";
+    operation = "boot";
   };
 
   # Delete generations older than 7 days.
