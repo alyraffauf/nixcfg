@@ -54,6 +54,8 @@ in {
   # Pull latest Linux kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.plymouth.enable = true;
+
   networking.hostName = "petalburg"; # Define your hostname.
 
   hardware.sensor.iio.enable = true;
