@@ -30,6 +30,7 @@
         "org/gnome/desktop/wm/preferences".auto-raise = true;
         "org/gnome/mutter".dynamic-workspaces = true;
         "org/gnome/mutter".edge-tiling = true;
+        "org/gnome/mutter".workspaces-only-on-primary = true;
         "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
         "org/gnome/shell/extensions/blur-my-shell/panel".blur = false;
         "org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
