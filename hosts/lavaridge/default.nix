@@ -24,7 +24,7 @@
 
   powerManagement.powertop.enable = true;
 
-  # services.fwupd.enable = true;
+  services.fwupd.enable = true;
   # # we need fwupd 1.9.7 to downgrade the fingerprint sensor firmware
   # services.fwupd.package = (import (builtins.fetchTarball {
   #   url = "https://github.com/NixOS/nixpkgs/archive/bb2009ca185d97813e75736c2b8d1d8bb81bde05.tar.gz";
