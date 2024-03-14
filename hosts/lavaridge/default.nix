@@ -19,6 +19,9 @@
 
   networking.hostName = "lavaridge"; # Define your hostname.
 
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 25;
+
   powerManagement.powertop.enable = true;
 
   {
