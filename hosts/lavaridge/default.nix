@@ -22,8 +22,6 @@
   zramSwap.enable = true;
   zramSwap.memoryPercent = 25;
 
-  powerManagement.powertop.enable = true;
-
   services.fwupd.enable = true;
   # # we need fwupd 1.9.7 to downgrade the fingerprint sensor firmware
   # services.fwupd.package = (import (builtins.fetchTarball {
