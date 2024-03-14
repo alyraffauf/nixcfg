@@ -45,6 +45,7 @@ in {
       ./hardware-configuration.nix
       ../../users/aly.nix
       ../../system
+      ../../modules/plymouth.nix
     ];
 
   # Bootloader.
@@ -53,11 +54,6 @@ in {
 
   # Pull latest Linux kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.initrd.verbose = false;
-  boot.consoleLogLevel = 0;
-
-  boot.plymouth.enable = true;
 
   networking.hostName = "petalburg"; # Define your hostname.
 
