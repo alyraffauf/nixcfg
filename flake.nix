@@ -31,16 +31,16 @@
 
     nixosConfigurations = {
 
-      # # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
-      # lavaridge = nixpkgs-unstable.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     nixos-hardware.nixosModules.framework-13-7040-amd
-      #     home-manager-unstable.nixosModules.home-manager
-      #     ./hosts/lavaridge
-      #     ./desktop/gnome
-      #   ];
-      # };
+      # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
+      lavaridge = nixpkgs-unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-hardware.nixosModules.framework-13-7040-amd
+          home-manager-unstable.nixosModules.home-manager
+          ./hosts/lavaridge
+          ./desktop/gnome
+        ];
+      };
       
       # T440p with i5-4210M and 16GB RAM.
       rustboro = nixpkgs-unstable.lib.nixosSystem {
