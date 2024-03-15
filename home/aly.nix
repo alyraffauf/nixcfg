@@ -26,7 +26,11 @@
     programs.eza = {
         enable = true;
         git = true;
-    }
+        extraOptions = [
+            "--group-directories-first"
+            "--header"
+        ];
+    };
 
     programs.fzf.enable = true;
     programs.nnn.enable = true;
