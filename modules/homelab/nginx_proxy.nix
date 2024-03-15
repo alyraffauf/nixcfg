@@ -52,6 +52,7 @@
                     proxy_set_header Connection         "upgrade";
                     proxy_redirect                      http:// https://;
                     proxy_buffering off;
+                    client_max_body_size 100M;
                 '';
             };
         };
