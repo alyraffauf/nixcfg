@@ -18,7 +18,7 @@
         };
         Archive = {
           comment = "Archive @Mauville";
-          path = "/mnt/Media";
+          path = "/mnt/Archive";
           browseable = "yes";
           "read only" = "no";
           "guest ok" = "yes";
