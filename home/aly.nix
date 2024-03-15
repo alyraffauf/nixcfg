@@ -11,6 +11,8 @@
 
     services.syncthing.enable = true;
 
+
+
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
         curl
@@ -19,7 +21,7 @@
         github-desktop
         syncthing
         vscode
-        warp-terminal
+        # warp-terminal
         wget
     ];
 
