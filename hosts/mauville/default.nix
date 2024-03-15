@@ -34,6 +34,8 @@
   hardware.opengl.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk
   ];
+
+  environment.systemPackages = [ backblaze-b2 ];
   
   # Removed because it defaults the session to X11 instead of Wayland
   # services.xserver.displayManager.autoLogin.enable = true;
