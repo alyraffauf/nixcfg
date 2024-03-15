@@ -34,11 +34,8 @@
   hardware.opengl.extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk
   ];
-<<<<<<< HEAD
 
   environment.systemPackages = [ pkgs.backblaze-b2 ];
-=======
->>>>>>> parent of 7951bcd (mauville: added backblaze-b2 cli utilit)
   
   # Removed because it defaults the session to X11 instead of Wayland
   # services.xserver.displayManager.autoLogin.enable = true;
