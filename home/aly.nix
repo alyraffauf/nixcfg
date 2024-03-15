@@ -14,8 +14,6 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
         curl
-        eza # A modern replacement for ‘ls’
-        fzf # A command-line fuzzy finder
         gh
         git
         github-desktop
@@ -24,4 +22,14 @@
         warp-terminal
         wget
     ];
+
+    programs.eza.enable = true;
+    programs.eza.git = true;
+
+    programs.fzf.enable = true;
+
+    programs.nnn.enable = true;
+
+    programs.tmux.enable = true;
+
 }
