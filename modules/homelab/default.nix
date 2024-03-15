@@ -4,6 +4,7 @@
     imports = [
         ./virtualization.nix
         ./nginx_proxy.nix
+        ./samba.nix
     ];
 
     # services.ddclient.enable = true;
