@@ -34,6 +34,7 @@
                 "plex_config:/config"
                 "plex_transcode:/transcode"
                 "/mnt/Media:/Media"
+                "/mnt/Archive:/Archive"
             ];
         };
         transmission-server = {
@@ -42,7 +43,6 @@
             environment = { TZ = "America/New_York"; };
             volumes = [
                 "transmission_config:/config"
-                "/mnt/Media/Torrents:/watch"
                 "/mnt/Media:/Media"
             ];
         };
@@ -54,6 +54,7 @@
                 "jellyfin_config:/config"
                 "jellyfin_cache:/cache"
                 "/mnt/Media:/Media"
+                "/mnt/Archive:/Archive"
             ];
         };
     };
