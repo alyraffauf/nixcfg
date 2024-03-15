@@ -44,6 +44,10 @@
     flake = "github:alyraffauf/nixcfg";
     dates = "daily";
     operation = "boot";
+    rebootWindow = {
+      lower = "01:00";
+      upper = "05:00";
+    }
   };
 
   # Delete generations older than 7 days.
