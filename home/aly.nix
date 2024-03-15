@@ -11,6 +11,8 @@
 
     services.syncthing.enable = true;
 
+
+
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
         curl
@@ -23,13 +25,13 @@
         wget
     ];
 
-    programs.eza = {
-        enable = true;
-        git = true;
-    };
+    programs.eza.enable = true;
+    programs.eza.git = true;
 
     programs.fzf.enable = true;
+
     programs.nnn.enable = true;
+
     programs.tmux.enable = true;
 
 }
