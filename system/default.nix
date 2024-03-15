@@ -34,10 +34,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    eza
-  ];
-
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
