@@ -6,9 +6,9 @@
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
-    desktopManager = {
-      xterm.enable = false;
-    };
+    excludePackages = with pkgs; [
+      xterm
+    ];
   };
 
   ## Needed for Flatpaks
