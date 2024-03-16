@@ -8,6 +8,7 @@
       ./hardware-configuration.nix
       ../../users/aly.nix
       ../../system
+      ../../modules/plymouth.nix
     ];
 
   # Bootloader.
