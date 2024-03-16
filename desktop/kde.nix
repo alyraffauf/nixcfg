@@ -18,10 +18,6 @@
     maliit-keyboard
   ];
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
-  ];
-
   programs.kdeconnect.enable = true;
 #   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 #   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
