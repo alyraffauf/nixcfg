@@ -41,11 +41,12 @@ let
 
 in {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../users/aly.nix
-      ../../system
+    [ 
+      ../../modules/gnome
       ../../modules/plymouth.nix
+      ../../system
+      ../../users/aly.nix
+      ./hardware-configuration.nix # Include the results of the hardware scan.
     ];
 
   # Bootloader.

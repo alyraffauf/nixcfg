@@ -4,11 +4,12 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      ./hardware-configuration.nix # Include the results of the hardware scan.
       ../../users/aly.nix
       ../../system
       ../../modules/plymouth.nix
+      ../../modules/kde.nix
     ];
 
   # Bootloader.

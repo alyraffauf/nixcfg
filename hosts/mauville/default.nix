@@ -5,9 +5,12 @@
 {
   imports =
     [ 
-      ./hardware-configuration.nix
-      ../../users/aly.nix
+      ../../modules/gnome
+      ../../modules/homelab
+      ../../modules/steam.nix
       ../../system
+      ../../users/aly.nix
+      ./hardware-configuration.nix
     ];
 
   # Bootloader.
