@@ -15,6 +15,7 @@
     home.packages = with pkgs; [
         # warp-terminal
         curl
+        discord
         gh
         git
         github-desktop
