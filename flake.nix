@@ -39,6 +39,7 @@
           home-manager-unstable.nixosModules.home-manager
           ./hosts/lavaridge
           ./desktop/gnome
+          ./modules/homelab/virtualization.nix
         ];
       };
       
