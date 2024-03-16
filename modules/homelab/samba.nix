@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-
+    services.avahi.nssmdns = true;
     services.samba = {
       enable = true;
       securityType = "user";

@@ -14,7 +14,6 @@
     networking.firewall.allowedTCPPorts = [ 51413 9091 ];
     networking.firewall.allowedUDPPorts = [ 51413 ];
 
-
     virtualisation.oci-containers.containers = {
         audiobookshelf = {
             ports = ["0.0.0.0:13378:80"];
