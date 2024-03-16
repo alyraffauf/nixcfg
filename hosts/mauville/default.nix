@@ -31,7 +31,7 @@
     ];
     # Add support for 32bit apps.
     driSupport32Bit = true;
-    opengl.extraPackages32 = with pkgs; [
+    extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
     ];
   };
