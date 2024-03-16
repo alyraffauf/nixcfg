@@ -9,6 +9,7 @@
       ../../modules/homelab/virtualization.nix
       ../../modules/plymouth.nix
       ../../modules/steam.nix
+      ../../modules/zram_swap.nix
       ../../system
       ../../users/aly.nix
       ./hardware-configuration.nix # Include the results of the hardware scan.
@@ -22,9 +23,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "lavaridge"; # Define your hostname.
-
-  zramSwap.enable = true;
-  zramSwap.memoryPercent = 25;
 
   # Need to change the order pam loads its modules
   # to get proper fingerprint behavior on GDM and the lockscreen.
