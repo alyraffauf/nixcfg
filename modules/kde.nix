@@ -6,9 +6,13 @@
       ./desktop.nix
     ];
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.wayland.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
+  # Enable SDDM + Plasma Desktop.
+  services = {
+    desktopManager.plasma6.enable = true;
+    xserver = {
+      displayManager.sddm.wayland.enable = true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     kdePackages.kate

@@ -6,16 +6,6 @@
       ../desktop.nix
     ];
 
-  # Enable Gnome and GDM.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  security.pam.services.gdm.enableKwallet = true;
-
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  services.gnome.tracker-miners.enable = true;
-
   environment.systemPackages = with pkgs; [
     fractal
     gnome.gnome-software
@@ -28,4 +18,17 @@
     gnomeExtensions.tailscale-status
     gnomeExtensions.tiling-assistant
   ];
+
+  # Enable keyring support for KDE apps in GNOME.
+  security.pam.services.gdm.enableKwallet = true;
+
+  # Enable GNOME and GDM.
+  services = {
+    gnome.tracker-miners.enable = true;
+    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+    xserver = {
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
+    };
+  };
 }

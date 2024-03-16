@@ -2,15 +2,13 @@
 
 {
   ## Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.excludePackages = with pkgs; [
-    xterm
-  ];
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
     xkb.layout = "us";
     xkb.variant = "";
+    desktopManager = {
+      xterm.enable = false;
+    };
   };
 
   ## Needed for Flatpaks

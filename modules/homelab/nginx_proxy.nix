@@ -5,14 +5,19 @@
     # services.ddclient.configFile = "/etc/ddclient/ddclient.conf";
 
     # Open TCP ports for audiobookshelf, plex-server, and transmission-server.
-    networking.firewall.allowedTCPPorts = [ 80 443 51413 9091 ];
-    networking.firewall.allowedUDPPorts = [ 51413 ];
-
-    networking.extraHosts = ''
-        127.0.0.1 music.raffauflabs.com
-        127.0.0.1 podcasts.raffauflabs.com
-        127.0.0.1 plex.raffauflabs.com
-    '';
+    networking = {
+        firewall = {
+            allowedTCPPorts = [ 80 443 51413 9091 ];
+            allowedUDPPorts = [ 51413 ];
+        };
+        # My router doesn't expose settings for NAT loopback
+        # So we have to use this workaround.
+        extraHosts = ''
+            127.0.0.1 music.raffauflabs.com
+            127.0.0.1 podcasts.raffauflabs.com
+            127.0.0.1 plex.raffauflabs.com
+        '';
+    };
 
     security.acme = {
         acceptTerms = true;

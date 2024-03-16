@@ -10,10 +10,6 @@
     # services.ddclient.enable = true;
     # services.ddclient.configFile = "/etc/ddclient/ddclient.conf";
 
-    # Open TCP ports for transmission-server.
-    networking.firewall.allowedTCPPorts = [ 51413 9091 ];
-    networking.firewall.allowedUDPPorts = [ 51413 ];
-
     virtualisation.oci-containers.containers = {
         audiobookshelf = {
             ports = ["0.0.0.0:13378:80"];
@@ -73,7 +69,7 @@
                     MusicFolder = "/Music";
                     DefaultTheme = "Auto";
                     SubsonicArtistParticipations = true;
-                    UIWelcomeMessage = "Welcome to Navidrome on Raffauf Labs.";
+                    UIWelcomeMessage = "Welcome to Navidrome @ raffauflabs.com.";
                 };
             };
         };
