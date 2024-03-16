@@ -43,6 +43,7 @@
             volumes = [
                 "transmission_config:/config"
                 "/mnt/Media:/Media"
+                "/mnt/Archive:/Archive"
             ];
         };
         jellyfin = {
