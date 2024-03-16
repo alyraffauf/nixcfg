@@ -35,11 +35,7 @@
         transmission-server = {
             ports = ["0.0.0.0:9091:9091" "0.0.0.0:51413:51413"];
             image = "linuxserver/transmission:latest";
-            environment = {
-                PUID = 1000;
-                PGID = 1000;
-                TZ = "America/New_York"; 
-            };
+            environment = { TZ = "America/New_York"; };
             volumes = [
                 "transmission_config:/config"
                 "/mnt/Media:/Media"
