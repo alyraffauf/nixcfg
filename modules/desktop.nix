@@ -20,7 +20,6 @@
     firefox
     google-chrome
     zoom-us
-    obsidian
   ];
 
   fonts.fontDir.enable = true;

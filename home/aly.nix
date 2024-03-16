@@ -13,13 +13,14 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
+        # warp-terminal
         curl
         gh
         git
         github-desktop
+        obsidian
         syncthing
         vscode
-        # warp-terminal
         wget
     ];
 
