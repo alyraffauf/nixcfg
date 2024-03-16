@@ -44,6 +44,7 @@ in {
     [ 
       ../../modules/gnome
       ../../modules/plymouth.nix
+      ../../modules/zram_swap.nix
       ../../system
       ../../users/aly.nix
       ./hardware-configuration.nix # Include the results of the hardware scan.
