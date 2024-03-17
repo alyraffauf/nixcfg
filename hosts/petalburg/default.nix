@@ -42,7 +42,7 @@ let
 in {
   imports =
     [ 
-      ../../modules/gnome
+      ../../modules/kde.nix
       ../../modules/plymouth.nix
       ../../modules/zram_swap.nix
       ../../system
