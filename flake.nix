@@ -40,14 +40,13 @@
           ./hosts/lavaridge
         ];
       };
-      
-      # T440p with i5-4210M and 16GB RAM.
-      rustboro = nixpkgs-unstable.lib.nixosSystem {
+
+      # Home Lab. Ryzen 5 2600 with 16GB RAM, RX 6700.
+      mauville = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nixos-hardware.nixosModules.lenovo-thinkpad-t440p
           home-manager-unstable.nixosModules.home-manager
-          ./hosts/rustboro
+          ./hosts/mauville
         ];
       };
 
@@ -61,13 +60,14 @@
           ./hosts/petalburg
         ];
       };
-
-      # Ryzen 5 2600 with 16GB RAM, RX 6700.
-      mauville = nixpkgs-unstable.lib.nixosSystem {
+      
+      # T440p with i5-4210M and 16GB RAM.
+      rustboro = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-t440p
           home-manager-unstable.nixosModules.home-manager
-          ./hosts/mauville
+          ./hosts/rustboro
         ];
       };
     };
