@@ -6,6 +6,7 @@
   imports =
     [
       ../../modules/gnome
+      ../../modules/gnome/fractional_scaling.nix
       ../../modules/homelab/virtualization.nix
       ../../modules/plymouth.nix
       ../../modules/steam.nix
