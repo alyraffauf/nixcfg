@@ -10,15 +10,19 @@
   services = {
     desktopManager.plasma6.enable = true;
     xserver = {
-      displayManager.sddm.wayland.enable = true;
+      displayManager.sddm = {
+        wayland.enable = true;
+        enableHidpi = true;
+      };
     };
   };
 
   environment.systemPackages = with pkgs; [
-    kdePackages.kate
-    kdePackages.kio-gdrive
-    kdePackages.kimageformats
     kdePackages.discover
+    kdePackages.kate
+    kdePackages.kimageformats
+    kdePackages.kio-gdrive
+    kdePackages.sddm-kcm
     maliit-keyboard
   ];
 
