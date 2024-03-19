@@ -24,6 +24,7 @@
     kdePackages.kio-gdrive
     kdePackages.sddm-kcm
     maliit-keyboard
+    nheko
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
