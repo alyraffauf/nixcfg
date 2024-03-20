@@ -72,6 +72,13 @@
       auto-optimise-store = true;
       # Enable experimental `nix` command and flakes.
       experimental-features = [ "nix-command" "flakes" ];
+      substituters = [
+        "https://nixcache.raffauflabs.com"
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "nixcache.raffauflabs.com:yFIuJde/izA4aUDI3MZmBLzynEsqVCT1OfCUghOLlt8="
+      ];
     };
   };
 
