@@ -2,11 +2,12 @@
 
 {
     imports = [
+        ./binary_cache.nix
         ./nginx_proxy.nix
+        ./nix_containers.nix
         ./oci_containers.nix
         ./samba.nix
         ./virtualization.nix
-        ./nix_containers.nix
     ];
 
     # services.ddclient.enable = true;

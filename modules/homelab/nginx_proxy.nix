@@ -14,8 +14,9 @@
         # So we have to use this workaround.
         extraHosts = ''
             127.0.0.1 music.raffauflabs.com
-            127.0.0.1 podcasts.raffauflabs.com
+            127.0.0.1 nixcache.raffauflabs.com
             127.0.0.1 plex.raffauflabs.com
+            127.0.0.1 podcasts.raffauflabs.com
         '';
     };
 
@@ -28,21 +29,37 @@
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
         recommendedGzipSettings = true;
-        # other Nginx options
-        # virtualHosts."raffauflabs.com" =  {
-        #     enableACME = true;
-        #     forceSSL = true;
-        #     locations."/" = {
-        #         proxyPass = "http://127.0.0.1:12345";
-        #         proxyWebsockets = true; # needed if you need to use WebSocket
-        #         extraConfig = ''
-        #             # required when the target is also TLS server with multiple hosts
-        #             proxy_ssl_server_name on;
-        #             # required when the server wants to use HTTP Authentication
-        #             proxy_pass_header Authorization;
-        #         '';
-        #     };
-        # };
+
+        virtualHosts."music.raffauflabs.com" =  {
+            enableACME = true;
+            forceSSL = true;
+            locations."/" = {
+                proxyPass = "http://127.0.0.1:4533";
+                proxyWebsockets = true; # needed if you need to use WebSocket
+                extraConfig = ''
+                    proxy_buffering off;
+                '';
+            };
+        };
+
+        virtualHosts."nixcache.raffauflabs.com" = {
+            enableACME = true;
+            forceSSL = true;
+            locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+        };
+
+        virtualHosts."plex.raffauflabs.com" =  {
+            enableACME = true;
+            forceSSL = true;
+            locations."/" = {
+                proxyPass = "http://127.0.0.1:32400";
+                proxyWebsockets = true; # needed if you need to use WebSocket
+                extraConfig = ''
+                    proxy_buffering off;
+                '';
+            };
+        };
+
         virtualHosts."podcasts.raffauflabs.com" =  {
             enableACME = true;
             forceSSL = true;
@@ -58,28 +75,6 @@
                     proxy_redirect                      http:// https://;
                     proxy_buffering off;
                     client_max_body_size 500M;
-                '';
-            };
-        };
-        virtualHosts."plex.raffauflabs.com" =  {
-            enableACME = true;
-            forceSSL = true;
-            locations."/" = {
-                proxyPass = "http://127.0.0.1:32400";
-                proxyWebsockets = true; # needed if you need to use WebSocket
-                extraConfig = ''
-                    proxy_buffering off;
-                '';
-            };
-        };
-        virtualHosts."music.raffauflabs.com" =  {
-            enableACME = true;
-            forceSSL = true;
-            locations."/" = {
-                proxyPass = "http://127.0.0.1:4533";
-                proxyWebsockets = true; # needed if you need to use WebSocket
-                extraConfig = ''
-                    proxy_buffering off;
                 '';
             };
         };
