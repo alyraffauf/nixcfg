@@ -14,6 +14,7 @@
       ../../users/aly.nix
       ./hardware-configuration.nix # Include the results of the hardware scan.
       # ../../modules/gnome
+      # ../../modules/gnome/fingerprint.nix
       # ../../modules/gnome/fractional_scaling.nix
     ];
 
@@ -25,29 +26,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "lavaridge"; # Define your hostname.
-
-  # Need to change the order pam loads its modules
-  # to get proper fingerprint behavior on GDM and the lockscreen.
-  security.pam.services.login.fprintAuth = false;
-  security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
-    text = ''
-      auth       required                    pam_shells.so
-      auth       requisite                   pam_nologin.so
-      auth       requisite                   pam_faillock.so      preauth
-      auth       required                    ${pkgs.fprintd}/lib/security/pam_fprintd.so
-      auth       optional                    pam_permit.so
-      auth       required                    pam_env.so
-      auth       [success=ok default=1]      ${pkgs.gnome.gdm}/lib/security/pam_gdm.so
-      auth       optional                    ${pkgs.gnome.gnome-keyring}/lib/security/pam_gnome_keyring.so
-
-      account    include                     login
-
-      password   required                    pam_deny.so
-
-      session    include                     login
-      session    optional                    ${pkgs.gnome.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
-    '';
-  };
 
   services.fwupd.enable = true;
   # # we need fwupd 1.9.7 to downgrade the fingerprint sensor firmware
