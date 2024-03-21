@@ -38,8 +38,6 @@
       driversi686Linux.amdvlk
     ];
   };
-
-  environment.systemPackages = [ pkgs.backblaze-b2 ];
   
   system.stateVersion = "23.11";
 }
