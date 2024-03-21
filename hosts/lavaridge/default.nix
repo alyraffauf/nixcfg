@@ -5,15 +5,16 @@
 {
   imports =
     [
-      ../../modules/gnome
-      ../../modules/gnome/fractional_scaling.nix
       ../../modules/homelab/virtualization.nix
+      ../../modules/kde.nix
       ../../modules/plymouth.nix
       ../../modules/steam.nix
       ../../modules/zram_swap.nix
       ../../system
       ../../users/aly.nix
       ./hardware-configuration.nix # Include the results of the hardware scan.
+      # ../../modules/gnome
+      # ../../modules/gnome/fractional_scaling.nix
     ];
 
   # Bootloader.
