@@ -18,6 +18,7 @@
 
   environment.systemPackages = with pkgs; [
     firefox
+    gnome.gnome-software
     google-chrome
     zoom-us
   ];
