@@ -5,7 +5,8 @@
 {
   imports =
     [ 
-      ../../modules/gnome
+      # ../../modules/gnome
+      ../../modules/kde.nix
       ../../modules/homelab
       ../../modules/steam.nix
       ../../system
