@@ -27,6 +27,15 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nixcache.raffauflabs.com"
+    ];
+    extra-trusted-public-keys = [
+      "nixcache.raffauflabs.com:yFIuJde/izA4aUDI3MZmBLzynEsqVCT1OfCUghOLlt8="
+    ];
+  };
+
   outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, nixos-hardware, ... }: {
 
     nixosConfigurations = {
