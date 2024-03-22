@@ -20,6 +20,7 @@
     firefox
     gnome.gnome-software
     google-chrome
+    tauon
     zoom-us
   ];
 
