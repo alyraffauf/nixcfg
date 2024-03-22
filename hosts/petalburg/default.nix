@@ -18,6 +18,18 @@ let
     gsettings set org.gnome.desktop.interface color-scheme $color_scheme
   '';
 
+  cs-adjuster-plasma = pkgs.writeShellScriptBin "cs-adjuster-plasma" ''
+    # Query the Desktop Portal Service for the current color scheme
+    color_scheme=$(qdbus org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop org.freedesktop.portal.Settings.Read org.freedesktop.appearance color-scheme)
+
+    # Check the color scheme and apply the appropriate look and feel
+    if [ "$color_scheme" = "1" ]; then
+        plasma-apply-lookandfeel -a org.kde.breeze.desktop
+    else
+        plasma-apply-lookandfeel -a org.kde.breezedark.desktop
+    fi
+  '';
+
   pp-adjuster = pkgs.writeShellApplication {
     name = "pp-adjuster";
 
@@ -64,7 +76,7 @@ in {
   powerManagement.powertop.enable = true;
   services.thermald.enable = true;
 
-  environment.systemPackages = [ cs-adjuster pp-adjuster ];
+  environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
