@@ -3,6 +3,7 @@
 {
     imports = [
         ./common.nix
+        ./shell.nix
     ];
 
     # TODO please change the username & home directory to your own
@@ -26,16 +27,17 @@
         wget
     ];
 
-    programs.eza = {
+    programs.alacritty = {
         enable = true;
-        git = true;
-        extraOptions = [
-            "--group-directories-first"
-            "--header"
-        ];
+        settings = {
+            selection.save_to_clipboard = true;
+            window = {
+                # blur = true;
+                decorations = "None";
+                dynamic_padding = true;
+                opacity = 0.8;
+                startup_mode = "Maximized";
+            };
+        };
     };
-
-    programs.fzf.enable = true;
-    programs.nnn.enable = true;
-    programs.tmux.enable = true;
 }

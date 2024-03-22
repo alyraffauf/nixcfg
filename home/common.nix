@@ -1,22 +1,6 @@
 { config, pkgs, ... }:
 
 {
-    programs.bash = {
-        enable = true;
-        enableCompletion = true;
-        initExtra =
-        ''
-            export PS1="[\[$(tput setaf 27)\]\u\[$(tput setaf 135)\]@\[$(tput setaf 45)\]\h:\[$(tput setaf 33)\]\w] \[$(tput sgr0)\]$ "
-
-        '';
-    };
-    programs.neovim = {
-        enable = true;
-        viAlias = true;
-        vimAlias = true;
-        defaultEditor = true;
-    };
-
     dconf.enable = true;
     dconf.settings = {
         "org/gnome/desktop/datetime".automatic-timezone = true;
