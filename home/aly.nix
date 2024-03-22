@@ -30,6 +30,10 @@
     programs.alacritty = {
         enable = true;
         settings = {
+            font = {
+                normal = { family = "DroidSansM Nerd Font Mono"; style = "Regular"; };
+                size = 11;
+            };
             selection.save_to_clipboard = true;
             window = {
                 # blur = true;
