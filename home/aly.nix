@@ -25,6 +25,7 @@
         syncthing
         vscode
         wget
+        nixfmt
     ];
 
     programs.alacritty = {
