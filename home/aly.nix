@@ -14,7 +14,7 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
         # warp-terminal
-        backblaze-b2
+        # backblaze-b2
         curl
         discord
         gh
