@@ -30,7 +30,7 @@
             python
             ])
         );
-        # package = pkgs.emacs-nox;
+        package = pkgs.emacs-nox;
         extraConfig = ''
             ; 4 spaces > tabs.
             (setq-default indent-tabs-mode nil)
