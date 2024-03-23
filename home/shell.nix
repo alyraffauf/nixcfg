@@ -19,6 +19,13 @@
             org-roam     
             nix-mode
             treemacs
+            projectile
+            yaml
+            yaml-mode
+            markdown-mode
+            ox-pandoc
+            use-package
+            python
             ])
         );
         package = pkgs.emacs-nox;
@@ -46,7 +53,7 @@
 
             ; Enable treemacs
             (add-hook 'emacs-startup-hook 'treemacs)
-            (setq treemacs-width 25)
+            (setq treemacs-width 20)
             (treemacs-resize-icons 16) ; Adjust the icon size according to your preference
             (setq treemacs-follow-mode t) ; Enable follow mode
             (setq treemacs-filewatch-mode t) ; Enable file watch mode
@@ -95,6 +102,7 @@
             tmuxPlugins.better-mouse-mode
             tmuxPlugins.cpu
             tmuxPlugins.battery
+            tmuxPlugins.resurrect
         ];
         terminal = "tmux-256color";
         extraConfig = ''
@@ -106,6 +114,7 @@
             run-shell ${pkgs.tmuxPlugins.weather}/share/tmux-plugins/weather/tmux-weather.tmux
             run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
             run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
+            run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/resurrect/resurrect.tmux 
         '';
     };
 }
