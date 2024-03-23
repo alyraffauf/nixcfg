@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 
 {
+
+    home.packages = with pkgs; [
+        # backblaze-b2
+        curl
+        gh
+        git
+        wget
+        nixfmt
+    ];
+
     programs.bash = {
         enable = true;
         enableCompletion = true;
@@ -13,21 +23,21 @@
         enable = true;
         extraPackages = ( epkgs: (with epkgs; [
             better-defaults
+            markdown-mode
+            nix-mode
             org
             org-bullets
             org-journal
             org-roam     
-            nix-mode
-            treemacs
-            treemacs-tab-bar
-            treemacs-projectile
+            ox-pandoc
             projectile
+            python
+            treemacs
+            treemacs-projectile
+            treemacs-tab-bar
+            use-package
             yaml
             yaml-mode
-            markdown-mode
-            ox-pandoc
-            use-package
-            python
             ])
         );
         package = pkgs.emacs-nox;

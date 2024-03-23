@@ -2,31 +2,26 @@
 
 {
     imports = [
-        ./common.nix
+        ./gnome.nix
         ./shell.nix
     ];
 
-    # TODO please change the username & home directory to your own
     home.username = "aly";
     home.homeDirectory = "/home/aly";
 
-    services.syncthing.enable = true;
+    home.stateVersion = "23.11";
+    programs.home-manager.enable = true;
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
         # warp-terminal
-        # backblaze-b2
-        curl
         discord
-        gh
-        git
         github-desktop
         obsidian
-        syncthing
         vscode
-        wget
-        nixfmt
     ];
+
+    services.syncthing.enable = true;
 
     programs.alacritty = {
         enable = true;
