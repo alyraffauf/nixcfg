@@ -19,6 +19,8 @@
             org-roam     
             nix-mode
             treemacs
+            treemacs-tab-bar
+            treemacs-projectile
             projectile
             yaml
             yaml-mode
@@ -28,7 +30,7 @@
             python
             ])
         );
-        package = pkgs.emacs-nox;
+        # package = pkgs.emacs-nox;
         extraConfig = ''
             ; 4 spaces > tabs.
             (setq-default indent-tabs-mode nil)
@@ -53,6 +55,7 @@
 
             ; Enable treemacs
             (add-hook 'emacs-startup-hook 'treemacs)
+            (treemacs-load-theme "Default")
             (setq treemacs-width 20)
             (treemacs-resize-icons 16) ; Adjust the icon size according to your preference
             (setq treemacs-follow-mode t) ; Enable follow mode
@@ -62,6 +65,7 @@
             (setq treemacs-git-integration t) ; Enable git integration
             (setq treemacs-show-hidden-files t) ; Show hidden files
             (setq treemacs-icons-dired-mode t) ; Use icons in dired buffers
+            (setq treemacs-set-scope-type 'Tabs)
 
             ; Enable column 80 line for coding
             (setq-default fill-column 80)
