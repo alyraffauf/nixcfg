@@ -38,6 +38,11 @@
 
   outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, nixos-hardware, ... }: {
 
+    homeConfigurations."aly" = home-manager-unstable.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
+      modules = [ ./home/aly.nix ];
+    };
+
     nixosConfigurations = {
 
       # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
