@@ -42,6 +42,8 @@
     keyboard.qmk.enable = true;
   };
 
+  security.polkit.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
