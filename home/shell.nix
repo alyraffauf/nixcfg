@@ -70,6 +70,10 @@
             ; Enable column 80 line for coding
             (setq-default fill-column 80)
             (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
+            (setq org-directory "~/Sync/org-roam/")
+            (setq org-roam-directory (file-truename "~/Sync/org-roam"))
+            (org-roam-db-autosync-mode)
         '';
     };
 
