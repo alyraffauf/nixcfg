@@ -19,7 +19,7 @@
             window = {
                 blur = true;
                 # decorations = "None";
-                dynamic_padding = true;
+                #dynamic_padding = true;
                 opacity = 0.6;
             };
         };
