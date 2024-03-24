@@ -12,8 +12,8 @@
                 draw_bold_text_with_bright_colors = true;
             };
             font = {
-                normal = { family = "DroidSansM Nerd Font Mono"; style = "Regular"; };
-                size = 11;
+                normal = { family = "NotoSansM Nerd Font Mono"; style = "Regular"; };
+                size = 10;
             };
             selection.save_to_clipboard = true;
             window = {

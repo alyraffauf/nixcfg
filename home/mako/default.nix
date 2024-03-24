@@ -3,8 +3,8 @@
 {
     services.mako = {
       enable = true;
-      font = "DroidSansM Nerd Font Mono 11";
-      backgroundColor = "#00000080";
+      font = "NotoSansM Nerd Font 10";
+      backgroundColor = "#00000099";
       textColor = "#FFFFFF";
       borderRadius = 10;
       defaultTimeout = 10000;
