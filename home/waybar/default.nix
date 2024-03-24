@@ -12,7 +12,7 @@
       layer = "top";
       position = "top";
       height = 36;
-      output = [ "eDP-1" "DP-1" "HDMI-A-1" ];
+      output = [ "*" ];
       modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
       modules-center = [ "hyprland/window" ];
       modules-right = [
