@@ -49,6 +49,8 @@
       }
       #workspaces button {
          padding: 5px 10px;
+         background: #000;
+         color: #FFFFFF;
       }
       #clock, #battery, #pulseaudio, #network, #tray {
         padding: 0 10px;
