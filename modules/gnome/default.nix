@@ -7,7 +7,6 @@
     ];
 
   environment.systemPackages = with pkgs; [
-    fractal
     gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.gsconnect
