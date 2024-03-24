@@ -77,6 +77,8 @@ in {
   powerManagement.powertop.enable = true;
   services.thermald.enable = true;
 
+  home-manager.users.aly = import ../../home/aly-hyprland.nix;
+
   environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
 
   # This value determines the NixOS release from which the default

@@ -39,6 +39,8 @@
       driversi686Linux.amdvlk
     ];
   };
+
+  home-manager.users.aly = import ../../home/aly-kde.nix;
   
   system.stateVersion = "23.11";
 }
