@@ -4,7 +4,7 @@
     imports = [
         ./gnome.nix
         ./shell.nix
-        # ./sway.nix
+        ./hyprland.nix
     ];
 
     home.username = "aly";
