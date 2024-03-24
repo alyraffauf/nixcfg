@@ -16,7 +16,6 @@
       pavucontrol
       playerctl
       udiskie
-      xfce.thunar
     ];
 
     services.mako = {
@@ -27,7 +26,6 @@
       borderRadius = 10;
       defaultTimeout = 10000;
       padding = "15";
-      
     };
 
     wayland.windowManager.hyprland = {
