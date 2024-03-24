@@ -3,8 +3,11 @@
 {
     imports = [
         ./gnome.nix
-        ./shell.nix
-        ./hyprland.nix
+        ./shell
+        ./hypr
+        ./waybar
+        ./mako
+        ./bemenu
     ];
 
     home.username = "aly";

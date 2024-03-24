@@ -3,62 +3,13 @@
 {
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-      bemenu
-      brightnessctl
-      hyprcursor
-      hypridle
-      hyprlock
-      hyprpaper
-      hyprshade
-      hyprshot
-      mako
       overskride
       pavucontrol
-      playerctl
-      udiskie
     ];
 
-    services.mako = {
-      enable = true;
-      font = "DroidSansM Nerd Font Mono 11";
-      backgroundColor = "#00000080";
-      textColor = "#FFFFFF";
-      borderRadius = 10;
-      defaultTimeout = 10000;
-      padding = "15";
-    };
-
-    wayland.windowManager.hyprland = {
-      enable = true;
-      extraConfig = builtins.readFile ./dotfiles/hyprland.conf;
-    };
-
-    xdg.configFile."hypr/hypridle.conf".source = ./dotfiles/hypridle.conf;
-    xdg.configFile."hypr/hyprlock.conf".source = ./dotfiles/hyprlock.conf;
+    xdg.configFile."waybar/style.css".source = ./waybar.css;
 
     programs.waybar.enable = true;
-    programs.waybar.style = ''
-      * {
-         border: none;
-         border-radius: 0;
-         font-family: DroidSansM Nerd Font Mono;
-         font-size: 14px;
-      }
-      window#waybar {
-         background: rgba (0, 0, 0, 0.5);
-         color: #FFFFFF;
-      }
-      #workspaces button {
-         padding: 5px 10px;
-         background: #000;
-         color: #FFFFFF;
-      }
-      #clock, #battery, #pulseaudio, #bluetooth, #network, #tray, #power-profiles-daemon {
-        padding: 0 10px;
-        margin: 0 5px;
-      }
-      #battery.critical { color: red; }
-    '';
     programs.waybar.settings = {
         mainBar = {
             layer = "top";
@@ -73,7 +24,7 @@
             modules-right = [ "tray" "bluetooth" "network" "pulseaudio" "battery" "power-profiles-daemon" "clock"];
 
             "hyprland/workspaces" = {
-                all-outputs = true;
+                "all-outputs" = true;
             };
             "hyprland/window" = {
                 "max-length" = 150;

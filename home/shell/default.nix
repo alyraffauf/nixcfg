@@ -7,8 +7,10 @@
         curl
         gh
         git
-        wget
         nixfmt
+        python3
+        ruby
+        wget
     ];
 
     programs.bash = {
@@ -41,7 +43,7 @@
             ])
         );
         package = pkgs.emacs-nox;
-        extraConfig = builtins.readFile ./dotfiles/emacs.el;
+        extraConfig = builtins.readFile ./emacs.el;
     };
 
     programs.eza = {
