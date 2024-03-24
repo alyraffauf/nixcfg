@@ -4,18 +4,30 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking = {
     networkmanager.enable = true;
-    
+
     firewall.allowedTCPPortRanges = [
       # KDE Connect
-      { from = 1714; to = 1764; }
+      {
+        from = 1714;
+        to = 1764;
+      }
       # Soulseek
-      { from = 2234; to = 2239; }
+      {
+        from = 2234;
+        to = 2239;
+      }
     ];
     firewall.allowedUDPPortRanges = [
       # KDE/GS Connect
-      { from = 1714; to = 1764; }
+      {
+        from = 1714;
+        to = 1764;
+      }
       # Soulseek
-      { from = 2234; to = 2239; }
+      {
+        from = 2234;
+        to = 2239;
+      }
     ];
   };
 
