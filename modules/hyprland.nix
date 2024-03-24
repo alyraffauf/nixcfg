@@ -10,11 +10,11 @@
     greeters.slick = {
       enable = true;
       extraConfig = ''
-	theme-name=breeze-gtk
-	icon-theme=breeze
-	font-name="NotoSansM Nerd Font Mono"
-	background=#000000
-	enable-hidpi=on
+        theme-name=breeze-gtk
+        icon-theme=breeze
+        font-name="NotoSansM Nerd Font Mono"
+        background=#000000
+        enable-hidpi=on
       '';
     };
   };

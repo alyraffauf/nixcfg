@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include X settings.
-      ../desktop.nix
-    ];
+  imports = [ # Include X settings.
+    ../desktop.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator

@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
 {
-    zramSwap.enable = true;
-    zramSwap.memoryPercent = 25;
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 25;
 }

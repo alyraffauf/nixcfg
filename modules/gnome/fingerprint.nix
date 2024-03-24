@@ -1,11 +1,12 @@
 { config, pkgs, ... }:
 
 {
-    # Need to change the order pam loads its modules
-    # to get proper fingerprint behavior on GDM and the lockscreen.
-    security.pam.services.login.fprintAuth = false;
-    security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
-    text = ''
+  # Need to change the order pam loads its modules
+  # to get proper fingerprint behavior on GDM and the lockscreen.
+  security.pam.services.login.fprintAuth = false;
+  security.pam.services.gdm-fingerprint =
+    lib.mkIf (config.services.fprintd.enable) {
+      text = ''
         auth       required                    pam_shells.so
         auth       requisite                   pam_nologin.so
         auth       requisite                   pam_faillock.so      preauth
@@ -21,6 +22,6 @@
 
         session    include                     login
         session    optional                    ${pkgs.gnome.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
-    '';
+      '';
     };
 }

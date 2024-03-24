@@ -6,9 +6,7 @@
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
-    excludePackages = with pkgs; [
-      xterm
-    ];
+    excludePackages = with pkgs; [ xterm ];
   };
 
   ## Needed for Flatpaks
@@ -37,7 +35,7 @@
   ];
 
   fonts.fontDir.enable = true;
-  
+
   system.fsPackages = [ pkgs.bindfs ];
   fileSystems = let
     mkRoSymBind = path: {

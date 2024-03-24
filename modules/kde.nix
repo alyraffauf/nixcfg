@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include X settings.
-      ./desktop.nix
-    ];
+  imports = [ # Include X settings.
+    ./desktop.nix
+  ];
 
   # Enable SDDM + Plasma Desktop.
   services = {
@@ -28,8 +27,8 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.kdeconnect.enable = true;
-#   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
-#   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
+  #   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
+  #   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
 }
