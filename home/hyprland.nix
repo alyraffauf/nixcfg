@@ -44,7 +44,7 @@
          font-family: DroidSansM Nerd Font Mono;
       }
       window#waybar {
-         background: #000;
+         background: rgba (0, 0, 0, 0.5);
          color: #FFFFFF;
       }
       #workspaces button {
@@ -52,10 +52,11 @@
          background: #000;
          color: #FFFFFF;
       }
-      #clock, #battery, #pulseaudio, #bluetooth, #network, #tray {
+      #clock, #battery, #pulseaudio, #bluetooth, #network, #tray, #power-profiles-daemon {
         padding: 0 10px;
         margin: 0 5px;
       }
+      #battery.critical { color: red; }
     '';
     programs.waybar.settings = {
         mainBar = {
@@ -66,9 +67,9 @@
                 "eDP-1"
                 "HDMI-A-1"
             ];
-            modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
+            modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
             modules-center = [ "hyprland/window" ];
-            modules-right = [ "tray" "bluetooth" "network" "pulseaudio" "battery" "clock"];
+            modules-right = [ "tray" "bluetooth" "network" "pulseaudio" "battery" "power-profiles-daemon" "clock"];
 
             "hyprland/workspaces" = {
                 all-outputs = true;
@@ -79,11 +80,14 @@
             "clock" = {
                 "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
                 "interval" = 60;
-                "format" = "󰅐　{:%I:%M%p}";
+                "format" = "{:%I:%M%p}";
             };
             "battery" = {
-                "format" = "󰂎　{capacity}%";
-                "on-click" = "pp-adjuster";
+                "states" = {
+                    "critical" = 20;
+                };
+                "format" = "{icon}";
+                "format-icons" = ["󰁺" "󰁼" "󰁿" "󰂁" "󰁹"];
             };
             "bluetooth" = {
                 "format" = "󰂯　{status}";
@@ -113,6 +117,17 @@
                 "tooltip-format-ethernet" = "{ifname} ";
                 "tooltip-format-disconnected" = "Disconnected";
                 "on-click" = "alacritty -e nmtui";
+            };
+            "power-profiles-daemon" = {
+                "format" = "{icon}";
+                "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
+                "tooltip" = true;
+                "format-icons" = {
+                    "default" = "󱐌";
+                    "performance" = "󱐌";
+                    "balanced" = "󰗑";
+                    "power-saver" = "󰌪";
+                };
             };
         };
     };
