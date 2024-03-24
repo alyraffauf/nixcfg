@@ -13,10 +13,10 @@
       hyprshot
       mako
       overskride
+      pavucontrol
+      playerctl
       udiskie
       xfce.thunar
-      playerctl
-      pavucontrol
     ];
 
     services.mako = {
@@ -54,7 +54,7 @@
          background: #000;
          color: #FFFFFF;
       }
-      #clock, #battery, #pulseaudio, #network, #tray {
+      #clock, #battery, #pulseaudio, #bluetooth, #network, #tray {
         padding: 0 10px;
         margin: 0 5px;
       }
@@ -70,10 +70,13 @@
             ];
             modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
             modules-center = [ "hyprland/window" ];
-            modules-right = [ "tray" "network" "pulseaudio" "battery" "clock"];
+            modules-right = [ "tray" "bluetooth" "network" "pulseaudio" "battery" "clock"];
 
             "hyprland/workspaces" = {
                 all-outputs = true;
+            };
+            "hyprland/window" = {
+                "max-length" = 150;
             };
             "clock" = {
                 "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
@@ -81,12 +84,21 @@
                 "format" = "󰥔　{:%I:%M%p}";
             };
             "battery" = {
-              "format" = "　{capacity}%";
-              "on-click" = "pp-adjuster";
+                "format" = "　{capacity}%";
+                "on-click" = "pp-adjuster";
+            };
+            "bluetooth" = {
+                "format" = "󰂯　{status}";
+                "format-disabled" = ""; # an empty format will hide the module
+                "format-connected" = "󰂯　{num_connections} connected";
+                "tooltip-format" = "{controller_alias}\t{controller_address}";
+                "tooltip-format-connected" = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+                "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
+                "on-click" = "overskride";
             };
             "pulseaudio" = {
                 "format" = "　{volume}%";
-                 "format-bluetooth" = "{volume}% {icon}";
+                 "format-bluetooth" = "{volume}% {icon}󰂯";
                  "format-muted" = "";
                  "format-icons"=  {
                      "headphones" = "";
@@ -98,6 +110,10 @@
             "network" = {
                 "format-wifi" = "　{signalStrength}%";
                 "format-disconnected" = "⚠";
+                "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
+                "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
+                "tooltip-format-ethernet" = "{ifname} ";
+                "tooltip-format-disconnected" = "Disconnected";
                 "on-click" = "alacritty -e nmtui";
             };
         };
