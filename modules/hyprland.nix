@@ -7,7 +7,9 @@
 
   services.xserver.displayManager.lightdm = {
     enable = true;
-    greeters.slick.enable = true;
+    greeters.slick = {
+      enable = true;
+      extraConfig = ''enable-hidpi=on'';
   };
   programs.hyprland.enable = true;
   services.power-profiles-daemon.enable = true;
