@@ -9,7 +9,9 @@
       ../../users/aly.nix
       ../../system
       ../../modules/plymouth.nix
-      ../../modules/kde.nix
+      # ../../modules/kde.nix
+      # ../../modules/sway.nix
+      ../../modules/hyprland.nix
     ];
 
   # Bootloader.
