@@ -54,7 +54,7 @@ let
 in {
   imports =
     [ 
-      ../../modules/kde.nix
+      # ../../modules/kde.nix
       ../../modules/hyprland.nix
       ../../modules/plymouth.nix
       ../../modules/zram_swap.nix
