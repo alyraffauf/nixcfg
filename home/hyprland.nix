@@ -79,10 +79,10 @@
             "clock" = {
                 "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
                 "interval" = 60;
-                "format" = "󰥔　{:%I:%M%p}";
+                "format" = "󰅐　{:%I:%M%p}";
             };
             "battery" = {
-                "format" = "　{capacity}%";
+                "format" = "󰂎　{capacity}%";
                 "on-click" = "pp-adjuster";
             };
             "bluetooth" = {
@@ -99,17 +99,17 @@
                  "format-bluetooth" = "{volume}% {icon}󰂯";
                  "format-muted" = "";
                  "format-icons"=  {
-                     "headphones" = "";
-                     "handsfree" = "";
-                     "headset" = "";
+                     "headphones" = "󰋋";
+                     "handsfree" = "󰋎";
+                     "headset" = "󰋎";
                  };
                 "on-click" = "pavucontrol";
             };
             "network" = {
-                "format-wifi" = "　{signalStrength}%";
+                "format-wifi" = "󰣾　{signalStrength}%";
                 "format-disconnected" = "⚠";
                 "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
-                "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
+                "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰣾";
                 "tooltip-format-ethernet" = "{ifname} ";
                 "tooltip-format-disconnected" = "Disconnected";
                 "on-click" = "alacritty -e nmtui";
