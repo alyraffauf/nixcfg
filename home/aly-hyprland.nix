@@ -2,5 +2,5 @@
 
 {
   imports =
-    [ ./common.nix ./common-gui.nix ./hypr ./waybar ./mako ./bemenu ./fuzzel ];
+    [ ./common.nix ./common-gui.nix ./hypr ./waybar ./mako ./fuzzel ];
 }
