@@ -5,7 +5,8 @@
 {
   imports = [
     # ../../modules/gnome
-    ../../modules/kde.nix
+    # ../../modules/kde.nix
+    ../../modules/hyprland.nix
     ../../modules/homelab
     ../../modules/steam.nix
     ../../system
@@ -34,7 +35,7 @@
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
-  home-manager.users.aly = import ../../home/aly-kde.nix;
+  home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
   system.stateVersion = "23.11";
 }
