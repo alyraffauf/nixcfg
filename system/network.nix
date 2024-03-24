@@ -3,7 +3,10 @@
 {
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking = {
+    wireless.iwd.enable = true;
     networkmanager.enable = true;
+    networkmanager.wifi.backend = "iwd";
+    
     firewall.allowedTCPPortRanges = [
       # KDE Connect
       { from = 1714; to = 1764; }
