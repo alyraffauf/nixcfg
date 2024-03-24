@@ -42,7 +42,7 @@
             ];
             modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
             modules-center = [ "hyprland/window" ];
-            modules-right = [ "tray" "clock"];
+            modules-right = [ "tray" "battery" "clock"];
 
             "hyprland/workspaces" = {
                 all-outputs = true;
