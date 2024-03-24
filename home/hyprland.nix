@@ -19,6 +19,17 @@
       pavucontrol
     ];
 
+    services.mako = {
+      enable = true;
+      font = "DroidSansM Nerd Font Mono 11";
+      backgroundColor = "#000000";
+      textColor = "#FFFFFF";
+      borderRadius = 10;
+      defaultTimeout = 10000;
+      padding = "15";
+      
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig = builtins.readFile ./dotfiles/hyprland.conf;
@@ -39,7 +50,7 @@
       #workspaces button {
          padding: 5px 10px;
       }
-      #clock, #battery, #pulseaudio, #network {
+      #clock, #battery, #pulseaudio, #network, #tray {
         padding: 0 10px;
         margin: 0 5px;
       }
@@ -63,7 +74,7 @@
             "clock" = {
                 "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
                 "interval" = 60;
-                "format" = "{:%I:%M%p}";
+                "format" = "󰥔　{:%I:%M%p}";
             };
             "battery" = {
               "format" = "　{capacity}%";
@@ -83,6 +94,7 @@
             "network" = {
                 "format-wifi" = "　{signalStrength}%";
                 "format-disconnected" = "⚠";
+                "on-click" = "alacritty -e nmtui";
             };
         };
     };
