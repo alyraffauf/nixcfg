@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
 {
-    imports = [
-        ./common.nix
-        ./shell
-    ];
+  imports = [ ./common.nix ./shell ];
 }

@@ -37,6 +37,8 @@
 (setq-default fill-column 80)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
+(make-directory "~/Sync/org-roam")
 (setq org-directory "~/Sync/org-roam/")
 (setq org-roam-directory (file-truename "~/Sync/org-roam"))
+(setq org-roam-dailies-directory "journal/")
 (org-roam-db-autosync-mode)
