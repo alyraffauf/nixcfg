@@ -3,16 +3,15 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ 
-      # ../../modules/gnome
-      ../../modules/kde.nix
-      ../../modules/homelab
-      ../../modules/steam.nix
-      ../../system
-      ../../users/aly.nix
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # ../../modules/gnome
+    ../../modules/kde.nix
+    ../../modules/homelab
+    ../../modules/steam.nix
+    ../../system
+    ../../users/aly.nix
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -29,18 +28,13 @@
 
   hardware.opengl = {
     # Add ROCM annd AMD Vulkan driver.
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      amdvlk
-    ];
+    extraPackages = with pkgs; [ rocmPackages.clr.icd amdvlk ];
     # Add support for 32bit apps.
     driSupport32Bit = true;
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
   home-manager.users.aly = import ../../home/aly-kde.nix;
-  
+
   system.stateVersion = "23.11";
 }

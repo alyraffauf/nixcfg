@@ -52,16 +52,15 @@ let
   };
 
 in {
-  imports =
-    [ 
-      # ../../modules/kde.nix
-      ../../modules/hyprland.nix
-      ../../modules/plymouth.nix
-      ../../modules/zram_swap.nix
-      ../../system
-      ../../users/aly.nix
-      ./hardware-configuration.nix # Include the results of the hardware scan.
-    ];
+  imports = [
+    # ../../modules/kde.nix
+    ../../modules/hyprland.nix
+    ../../modules/plymouth.nix
+    ../../modules/zram_swap.nix
+    ../../system
+    ../../users/aly.nix
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

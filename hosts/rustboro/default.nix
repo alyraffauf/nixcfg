@@ -3,16 +3,15 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix # Include the results of the hardware scan.
-      ../../users/aly.nix
-      ../../system
-      ../../modules/plymouth.nix
-      # ../../modules/kde.nix
-      # ../../modules/sway.nix
-      ../../modules/hyprland.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ../../users/aly.nix
+    ../../system
+    ../../modules/plymouth.nix
+    # ../../modules/kde.nix
+    # ../../modules/sway.nix
+    ../../modules/hyprland.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
