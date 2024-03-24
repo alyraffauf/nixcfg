@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "DroidSansM Nerd Font Mono";
+    font-family: "Noto Nerd Font Sans Mono";
     font-size: 14px;
 }
 window#waybar {
@@ -13,8 +13,14 @@ window#waybar {
     background: #000;
     color: #FFFFFF;
 }
+#workspaces button.active {
+    color: green;
+}
 #clock, #battery, #pulseaudio, #bluetooth, #network, #tray, #power-profiles-daemon {
     padding: 0 10px;
     margin: 0 5px;
 }
 #battery.critical { color: red; }
+#battery.full { color: green; }
+#battery.normal { color: #FFFFFF; }
+
