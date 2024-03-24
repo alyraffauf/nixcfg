@@ -41,7 +41,7 @@
       name = "Breeze";
     };
     font = {
-      name = "Noto Sans Regular";
+      name = "Noto Sans Nerd Font Regular";
       size = 11;
     };
   };

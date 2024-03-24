@@ -19,20 +19,21 @@
   environment.systemPackages = with pkgs; [
     firefox
     fractal
+    github-desktop
     gnome.gnome-software
     google-chrome
+    obsidian
     tauon
+    vscode
+    webcord
     zoom-us
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" "Noto" ]; })
     fira-code
     fira-code-symbols
     liberation_ttf
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
   ];
 
   fonts.fontDir.enable = true;
