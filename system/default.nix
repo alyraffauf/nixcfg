@@ -26,10 +26,6 @@
     };
   };
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
-  ];
-
   hardware = {
     # Enable Bluetooth connections.
     bluetooth.enable = true;
