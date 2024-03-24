@@ -9,7 +9,13 @@
     enable = true;
     greeters.slick = {
       enable = true;
-      extraConfig = ''enable-hidpi=on'';
+      extraConfig = ''
+	theme-name=breeze-gtk
+	icon-theme=breeze
+	font-name="NotoSansM Nerd Font Mono"
+	background=#000000
+	enable-hidpi=on
+      '';
     };
   };
   programs.hyprland.enable = true;
