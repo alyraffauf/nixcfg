@@ -42,6 +42,7 @@
          border: none;
          border-radius: 0;
          font-family: DroidSansM Nerd Font Mono;
+         font-size: 14px;
       }
       window#waybar {
          background: rgba (0, 0, 0, 0.5);
