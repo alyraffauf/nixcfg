@@ -36,6 +36,8 @@
     };
 
     xdg.configFile."hypr/hypridle.conf".source = ./dotfiles/hypridle.conf;
+    xdg.configFile."hypr/hyprlock.conf".source = ./dotfiles/hyprlock.conf;
+
     programs.waybar.enable = true;
     programs.waybar.style = ''
       * {
