@@ -15,6 +15,8 @@
       overskride
       udiskie
       xfce.thunar
+      playerctl
+      pavucontrol
     ];
 
     wayland.windowManager.hyprland = {
@@ -24,6 +26,24 @@
 
     xdg.configFile."hypr/hypridle.conf".source = ./dotfiles/hypridle.conf;
     programs.waybar.enable = true;
+    programs.waybar.style = ''
+      * {
+         border: none;
+         border-radius: 0;
+         font-family: DroidSansM Nerd Font Mono;
+      }
+      window#waybar {
+         background: #000;
+         color: #FFFFFF;
+      }
+      #workspaces button {
+         padding: 5px 10px;
+      }
+      #clock, #battery, #pulseaudio, #network {
+        padding: 0 10px;
+        margin: 0 5px;
+      }
+    '';
     programs.waybar.settings = {
         mainBar = {
             layer = "top";
@@ -35,14 +55,34 @@
             ];
             modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
             modules-center = [ "hyprland/window" ];
-            modules-right = [ "tray" "battery" "clock"];
+            modules-right = [ "tray" "network" "pulseaudio" "battery" "clock"];
 
             "hyprland/workspaces" = {
                 all-outputs = true;
             };
             "clock" = {
+                "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
                 "interval" = 60;
-                "format" = "{:%I:%M}";
+                "format" = "{:%I:%M%p}";
+            };
+            "battery" = {
+              "format" = "　{capacity}%";
+              "on-click" = "pp-adjuster";
+            };
+            "pulseaudio" = {
+                "format" = "　{volume}%";
+                 "format-bluetooth" = "{volume}% {icon}";
+                 "format-muted" = "";
+                 "format-icons"=  {
+                     "headphones" = "";
+                     "handsfree" = "";
+                     "headset" = "";
+                 };
+                "on-click" = "pavucontrol";
+            };
+            "network" = {
+                "format-wifi" = "　{signalStrength}%";
+                "format-disconnected" = "⚠";
             };
         };
     };
