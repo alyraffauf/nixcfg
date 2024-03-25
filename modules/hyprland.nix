@@ -16,7 +16,7 @@
         variant = "latte";
         tweaks = [ "normal" ];
       };
-      iconTheme.name = "Papirus-Dark";
+      iconTheme.name = "Papirus-Light";
       iconTheme.package = pkgs.catppuccin-papirus-folders.override {
         flavor = "latte";
         accent = "green";
