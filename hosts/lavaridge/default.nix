@@ -5,7 +5,7 @@
 {
   imports = [
     ../../modules/homelab/virtualization.nix
-    ../../modules/kde.nix
+    ../../modules/hyprland.nix
     ../../modules/plymouth.nix
     ../../modules/steam.nix
     ../../modules/zram_swap.nix
@@ -38,7 +38,11 @@
   # nixpkgs.config.chromium.commandLineArgs = "--ozone-platform=wayland";
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  home-manager.users.aly = import ../../home/aly-kde.nix;
+  services.fprintd.package = pkgs.fprintd.overrideAttrs {
+    mesonCheckFlags = [ "--no-suite" "fprintd:TestPamFprintd" ];
+  };
+
+  home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
