@@ -34,7 +34,7 @@
     enable = true;
     platformTheme = "kde";
     style.package = pkgs.kdePackages.breeze;
-    style.name = "Breeze-Dark";
+    style.name = "Breeze";
   };
 
   gtk = {
