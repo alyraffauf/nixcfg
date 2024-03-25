@@ -9,10 +9,25 @@
     enable = true;
     greeters.slick = {
       enable = true;
+      theme.name = "Catppuccin-Latte-Compact-Green-Light";
+      theme.package = pkgs.catppuccin-gtk.override {
+        accents = [ "green" ];
+        size = "compact";
+        variant = "latte";
+        tweaks = [ "normal" ];
+      };
+      iconTheme.name = "Papirus-Dark";
+      iconTheme.package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "latte";
+        accent = "green";
+      };
+      font.name = "NotoSansM Nerd Font Mono";
+
+      cursorTheme.package = pkgs.vanilla-dmz;
+      cursorTheme.name = "Vanilla-DMZ-AA";
+      cursorTheme.size = 32;
+      
       extraConfig = ''
-        theme-name=breeze-gtk
-        icon-theme=breeze
-        font-name="NotoSansM Nerd Font Mono"
         background=#000000
         enable-hidpi=on
       '';
