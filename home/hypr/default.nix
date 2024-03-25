@@ -64,7 +64,7 @@
       name = "Papirus-Light";
     };
     font = {
-      name = "Noto Sans Nerd Font Regular";
+      name = "NotoSans Nerd Font Regular";
       size = 11;
     };
   };
