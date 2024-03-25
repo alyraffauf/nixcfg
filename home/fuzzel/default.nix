@@ -6,7 +6,7 @@
     settings = {
       main = {
         font = "NotoSansM Nerd Font";
-        icon-theme = "breeze";
+        icon-theme = "Papirus-Dark";
         layer = "overlay";
         terminal = "${pkgs.alacritty}/bin/alacritty -e";
       };
