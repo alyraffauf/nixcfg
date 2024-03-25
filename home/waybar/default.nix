@@ -67,6 +67,7 @@
       };
       "network" = {
         "format-wifi" = "󰣾　{signalStrength}%";
+        "format-ethernet" = "󰈀";
         "format-disconnected" = "⚠";
         "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
         "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰣾";
