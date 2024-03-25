@@ -41,20 +41,27 @@
 
   qt = {
     enable = true;
-    platformTheme = "qtct";
-    # style.package = pkgs.kdePackages.breeze;
-    style.name = "Adwaita";
+    platformTheme = "gtk";
+    style.name = "Catppuccin-Frappe-Compact-Green-Dark";
   };
 
   gtk = {
     enable = true;
     theme = {
-      # package = pkgs.kdePackages.breeze-gtk;
-      name = "Adwaita";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "green" ];
+        size = "compact";
+        variant = "frappe";
+        tweaks = [ "normal" ];
+      };
+      name = "Catppuccin-Frappe-Compact-Green-Dark";
     };
     iconTheme = {
-      package = pkgs.kdePackages.breeze-icons;
-      name = "breeze";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "frappe";
+        accent = "green";
+      };
+      name = "Papirus-Dark";
     };
     font = {
       name = "Noto Sans Nerd Font Regular";
