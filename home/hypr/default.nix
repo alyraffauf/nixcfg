@@ -41,20 +41,20 @@
 
   qt = {
     enable = true;
-    platformTheme = "kde";
-    style.package = pkgs.kdePackages.breeze;
-    style.name = "Breeze";
+    platformTheme = "qtct";
+    # style.package = pkgs.kdePackages.breeze;
+    style.name = "Adwaita";
   };
 
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.kdePackages.breeze-gtk;
-      name = "Breeze-Dark";
+      # package = pkgs.kdePackages.breeze-gtk;
+      name = "Adwaita";
     };
     iconTheme = {
       package = pkgs.kdePackages.breeze-icons;
-      name = "breeze-dark";
+      name = "breeze";
     };
     font = {
       name = "Noto Sans Nerd Font Regular";
