@@ -28,7 +28,7 @@
       cursorTheme.size = 32;
       
       extraConfig = ''
-        background=#000000
+        background=#fdfdff
         enable-hidpi=on
       '';
     };
