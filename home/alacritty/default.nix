@@ -12,7 +12,7 @@
                 draw_bold_text_with_bright_colors = true;
             };
             font = {
-                normal = { family = "NotoSansM Nerd Font Mono"; style = "Regular"; };
+                normal = { family = "NotoSansM Nerd Font"; style = "Regular"; };
                 size = 10;
             };
             selection.save_to_clipboard = true;

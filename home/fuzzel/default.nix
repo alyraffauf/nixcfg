@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "NotoSansM Nerd Font";
+        font = "NotoSansM Nerd Font Regular";
         icon-theme = "Papirus-Dark";
         layer = "overlay";
         terminal = "${pkgs.alacritty}/bin/alacritty -e";

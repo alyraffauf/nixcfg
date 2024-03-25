@@ -3,7 +3,7 @@
 {
     services.mako = {
       enable = true;
-      font = "NotoSansM Nerd Font 10";
+      font = "NotoSans Nerd Font Regular 10";
       backgroundColor = "#00000099";
       textColor = "#FFFFFF";
       borderRadius = 10;
