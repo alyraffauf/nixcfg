@@ -14,6 +14,9 @@
     # Unstable NixOS channel.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Unstable-small NixOS channel.
+    nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+
     # Home-manager, used for managing user configuration.
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
@@ -35,7 +38,7 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable
-    , home-manager-unstable, nixos-hardware, ... }: {
+    , nixpkgs-unstable-small, home-manager-unstable, nixos-hardware, ... }: {
 
       homeConfigurations."aly" =
         home-manager-unstable.lib.homeManagerConfiguration {
@@ -46,7 +49,7 @@
       nixosConfigurations = {
 
         # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
-        lavaridge = nixpkgs-unstable.lib.nixosSystem {
+        lavaridge = nixpkgs-unstable-small.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.framework-13-7040-amd
