@@ -42,7 +42,7 @@
   qt = {
     enable = true;
     platformTheme = "gtk";
-    style.name = "Catppuccin-Frappe-Compact-Green-Dark";
+    style.name = "Catppuccin-Latte-Compact-Green-Light";
   };
 
   gtk = {
@@ -51,17 +51,17 @@
       package = pkgs.catppuccin-gtk.override {
         accents = [ "green" ];
         size = "compact";
-        variant = "frappe";
+        variant = "latte";
         tweaks = [ "normal" ];
       };
-      name = "Catppuccin-Frappe-Compact-Green-Dark";
+      name = "Catppuccin-Latte-Compact-Green-Light";
     };
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "frappe";
+        flavor = "latte";
         accent = "green";
       };
-      name = "Papirus-Dark";
+      name = "Papirus-Light";
     };
     font = {
       name = "Noto Sans Nerd Font Regular";
