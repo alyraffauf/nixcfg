@@ -22,6 +22,9 @@
 
   xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
   xdg.configFile."hypr/hyprlock.conf".source = ./hyprlock.conf;
+  xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
+  xdg.configFile."hypr/tokyoGreen.jpg".source = ./tokyoGreen.jpg;
+  xdg.configFile."hypr/greenCity.jpg".source = ./greenCity.jpg;
 
   home.pointerCursor = {
     gtk.enable = true;
