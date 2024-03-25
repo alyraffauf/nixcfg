@@ -23,8 +23,8 @@
       };
       font.name = "NotoSansM Nerd Font Mono";
 
-      cursorTheme.package = pkgs.vanilla-dmz;
-      cursorTheme.name = "Vanilla-DMZ-AA";
+      cursorTheme.package = pkgs.catppuccin-cursors.latteDark;
+      cursorTheme.name = "Catppuccin-Latte-Dark-Cursors";
       cursorTheme.size = 32;
       
       extraConfig = ''

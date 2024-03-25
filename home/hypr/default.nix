@@ -34,8 +34,8 @@
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
-    package = pkgs.vanilla-dmz;
-    name = "Vanilla-DMZ-AA";
+    package = pkgs.catppuccin-cursors.latteDark;
+    name = "Catppuccin-Latte-Dark-Cursors";
     size = 24;
   };
 
