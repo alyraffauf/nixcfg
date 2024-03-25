@@ -30,15 +30,22 @@
     size = 24;
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "kde";
+    style.package = pkgs.kdePackages.breeze;
+    style.name = "Breeze-Dark";
+  };
+
   gtk = {
     enable = true;
     theme = {
       package = pkgs.kdePackages.breeze-gtk;
-      name = "breeze-gtk";
+      name = "Breeze-Dark";
     };
     iconTheme = {
       package = pkgs.kdePackages.breeze-icons;
-      name = "Breeze";
+      name = "breeze-dark";
     };
     font = {
       name = "Noto Sans Nerd Font Regular";
