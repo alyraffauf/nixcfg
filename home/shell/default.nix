@@ -25,6 +25,7 @@
         enable = true;
         extraPackages = ( epkgs: (with epkgs; [
             better-defaults
+            catppuccin-theme
             markdown-mode
             nix-mode
             org

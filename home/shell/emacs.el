@@ -1,3 +1,7 @@
+; Load catppuccin theme.
+(load-theme 'catppuccin :no-confirm)
+(setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha
+
 ; 4 spaces > tabs.
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
