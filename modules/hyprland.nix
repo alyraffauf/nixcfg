@@ -40,7 +40,6 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableKwallet = true;
 
-
   programs.xfconf.enable = true;
   programs.thunar = {
     enable = true;
