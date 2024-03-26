@@ -12,10 +12,10 @@
       };
       border = { width = 2; };
       colors = {
-        background = "#00000099";
-        selection = "#000000FF";
-        selection-match = "#FF0000FF";
-        selection-text = "#008000FF";
+        background = "#23263499";
+        selection = "#232634FF";
+        selection-match = "#e78284FF";
+        selection-text = "#babbf1FF";
         text = "#FFFFFFFF";
       };
     };
