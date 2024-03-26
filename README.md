@@ -1,4 +1,5 @@
 # nixcfg
+![](./_img/nixos-hyprland.png)
 ![](./_img/nixos-gnome.png)
 ![](./_img/nixos-kde.png)
 
@@ -12,7 +13,7 @@
 | GPU     |      AMD Radeon 760M |  Intel Iris Xe Graphics | Intel HD Graphics 4600 |      AMD Radeon Rx 6700 |
 | Storage |     1TB Sk hynix P41 |      512GB M.2 PCIe 4.0 |         512GB SATA SSD |        1TB M.2 PCIe 3.0 |
 | OS      |       NixOS Unstable |          NixOS Unstable |         NixOS Unstable |          NixOS Unstable |
-| Desktop |                GNOME |                   GNOME |             KDE Plasma |                   GNOME |
+<!-- | Desktop |                GNOME |                   GNOME |             KDE Plasma |                   GNOME | -->
 
 ## Deploying to NixOS
 > :red_circle: **READ**: **Do not deploy this flake directly to your machine. It won't work.**
