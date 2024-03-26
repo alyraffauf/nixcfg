@@ -75,6 +75,9 @@
         "tooltip-format-disconnected" = "Disconnected";
         "on-click" = "alacritty -e nmtui";
       };
+      "tray" = {
+        "spacing" = 10;
+      };
       "power-profiles-daemon" = {
         "format" = "{icon}";
         "tooltip-format" = ''
