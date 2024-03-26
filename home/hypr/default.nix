@@ -34,34 +34,34 @@
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
-    package = pkgs.catppuccin-cursors.latteDark;
-    name = "Catppuccin-Latte-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.frappeDark;
+    name = "Catppuccin-Frappe-Dark-Cursors";
     size = 24;
   };
 
   qt = {
     enable = true;
     platformTheme = "gtk";
-    style.name = "Catppuccin-Latte-Compact-Green-Light";
+    style.name = "Catppuccin-Frappe-Compact-Mauve-Dark";
   };
 
   gtk = {
     enable = true;
     theme = {
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "green" ];
+        accents = [ "mauve" ];
         size = "compact";
-        variant = "latte";
+        variant = "frappe";
         tweaks = [ "normal" ];
       };
-      name = "Catppuccin-Latte-Compact-Green-Light";
+      name = "Catppuccin-Frappe-Compact-Mauve-Dark";
     };
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "latte";
-        accent = "green";
+        flavor = "frappe";
+        accent = "mauve";
       };
-      name = "Papirus-Light";
+      name = "Papirus-Dark";
     };
     font = {
       name = "NotoSans Nerd Font Regular";

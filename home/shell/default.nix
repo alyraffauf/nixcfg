@@ -84,8 +84,8 @@
         ];
         terminal = "tmux-256color";
         extraConfig = ''
-            set-option -g status-bg blue
-            set-option -g pane-active-border-style fg=blue
+            set-option -g status-bg plum4
+            set-option -g pane-active-border-style fg=plum4
             set-option -g @tmux-weather-format "%x+%t"
             set-option -g @tmux-weather-units "u"
             set -g status-right '#{cpu_percentage} CPU | #{battery_percentage} BAT | %I:%M %p | #{weather}'

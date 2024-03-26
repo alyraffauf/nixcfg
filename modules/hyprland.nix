@@ -9,26 +9,26 @@
     enable = true;
     greeters.slick = {
       enable = true;
-      theme.name = "Catppuccin-Latte-Compact-Green-Light";
+      theme.name = "Catppuccin-Frappe-Compact-Mauve-Dark";
       theme.package = pkgs.catppuccin-gtk.override {
-        accents = [ "green" ];
+        accents = [ "mauve" ];
         size = "compact";
-        variant = "latte";
+        variant = "frappe";
         tweaks = [ "normal" ];
       };
-      iconTheme.name = "Papirus-Light";
+      iconTheme.name = "Papirus-Dark";
       iconTheme.package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "latte";
-        accent = "green";
+        flavor = "frappe";
+        accent = "mauve";
       };
-      font.name = "NotoSansM Nerd Font Mono";
+      font.name = "NotoSans Nerd Font Regular";
 
       cursorTheme.package = pkgs.catppuccin-cursors.latteDark;
-      cursorTheme.name = "Catppuccin-Latte-Dark-Cursors";
+      cursorTheme.name = "Catppuccin-Frappe-Dark-Cursors";
       cursorTheme.size = 32;
       
       extraConfig = ''
-        background=#fdfdff
+        background=#ca9ee6
         enable-hidpi=on
       '';
     };

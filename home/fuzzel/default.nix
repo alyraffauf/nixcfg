@@ -15,8 +15,8 @@
         background = "#23263499";
         selection = "#232634FF";
         selection-match = "#e78284FF";
-        selection-text = "#babbf1FF";
-        text = "#FFFFFFFF";
+        selection-text = "#f4b8e4FF";
+        text = "#fafafaFF";
       };
     };
   };
