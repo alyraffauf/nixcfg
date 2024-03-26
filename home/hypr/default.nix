@@ -13,6 +13,7 @@
     hyprshade
     hyprshot
     playerctl
+    pyprland
     udiskie
   ];
 
@@ -36,6 +37,8 @@
   xdg.configFile."hypr/shaders/blue-light-filter.glsl".source =
     ./blue-light-filter.glsl;
   xdg.configFile."hypr/hyprshade.toml".source = ./hyprshade.toml;
+
+  xdg.configFile."hypr/pyprland.toml".source = ./pyprland.toml;
 
   home.pointerCursor = {
     gtk.enable = true;
