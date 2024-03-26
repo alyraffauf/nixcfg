@@ -34,6 +34,12 @@
     keyboard.qmk.enable = true;
   };
 
+  services.logind.extraConfig = ''
+    # don't shutdown when power button is short-pressed
+    HandlePowerKey=suspend
+    HandlePowerKeyLongPress=poweroff
+  '';
+
   security.polkit.enable = true;
 
   # Allow unfree packages
