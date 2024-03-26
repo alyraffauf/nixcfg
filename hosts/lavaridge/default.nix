@@ -38,11 +38,11 @@
   # nixpkgs.config.chromium.commandLineArgs = "--ozone-platform=wayland";
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # services.fprintd.package = pkgs.fprintd.overrideAttrs {
-  #   mesonCheckFlags = [ "--no-suite" "fprintd:TestPamFprintd" ];
-  # };
+  services.fprintd.package = pkgs.fprintd.overrideAttrs {
+    mesonCheckFlags = [ "--no-suite" "fprintd:TestPamFprintd" ];
+  };
 
-  services.fprintd.enable = false;
+  # services.fprintd.enable = false;
 
   home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
