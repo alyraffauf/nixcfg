@@ -23,7 +23,7 @@
       };
       font.name = "NotoSans Nerd Font Regular";
 
-      cursorTheme.package = pkgs.catppuccin-cursors.latteDark;
+      cursorTheme.package = pkgs.catppuccin-cursors.frappeDark;
       cursorTheme.name = "Catppuccin-Frappe-Dark-Cursors";
       cursorTheme.size = 32;
 
