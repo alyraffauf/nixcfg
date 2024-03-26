@@ -66,7 +66,7 @@
           "handsfree" = "󰋎";
           "headset" = "󰋎";
         };
-        "on-click" = "pavucontrol";
+        "on-click" = "pavucontrol -t 3";
       };
       "network" = {
         "format-wifi" = "󰣾　{signalStrength}%";
@@ -76,7 +76,7 @@
         "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰣾";
         "tooltip-format-ethernet" = "{ifname} ";
         "tooltip-format-disconnected" = "Disconnected";
-        "on-click" = "alacritty -e nmtui";
+        "on-click" = "alacritty --class nmtui -e nmtui";
       };
       "tray" = { "spacing" = 10; };
       "power-profiles-daemon" = {
