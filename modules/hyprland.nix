@@ -26,7 +26,7 @@
       cursorTheme.package = pkgs.catppuccin-cursors.latteDark;
       cursorTheme.name = "Catppuccin-Frappe-Dark-Cursors";
       cursorTheme.size = 32;
-      
+
       extraConfig = ''
         background=#ca9ee6
         enable-hidpi=on
