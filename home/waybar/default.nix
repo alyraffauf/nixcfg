@@ -25,7 +25,10 @@
         "clock"
       ];
 
-      "hyprland/workspaces" = { "all-outputs" = true; };
+      "hyprland/workspaces" = { "
+        all-outputs" = true;
+        "format" = "󰧞";
+      };
       "hyprland/window" = { "max-length" = 100; };
       "clock" = {
         "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
