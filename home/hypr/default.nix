@@ -8,6 +8,7 @@
     hyprcursor
     hypridle
     hyprlock
+    hyprnome
     hyprpaper
     hyprshade
     hyprshot
