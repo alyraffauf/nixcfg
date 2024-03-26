@@ -12,7 +12,7 @@
       };
       border = { width = 2; };
       colors = {
-        background = "#23263499";
+        background = "#232634CC";
         selection = "#232634FF";
         selection-match = "#e78284FF";
         selection-text = "#f4b8e4FF";
