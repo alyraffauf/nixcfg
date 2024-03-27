@@ -4,7 +4,7 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     brightnessctl
-    gnome.eog
+    evince
     hyprcursor
     hypridle
     hyprland-protocols
@@ -15,10 +15,20 @@
     hyprshot
     playerctl
     pyprland
-    udiskie
     xdg-desktop-portal-hyprland
     xfce.exo
+    xfce.ristretto
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+    xfce.thunar-volman
+    xfce.tumbler
+    xfce.xfce4-settings
+    xfce.xfce4-taskmanager
+    xfce.xfconf
   ];
+
+  services.gpg-agent.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
