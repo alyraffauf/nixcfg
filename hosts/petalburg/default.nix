@@ -54,11 +54,12 @@ let
 in {
   imports = [
     # ../../modules/kde.nix
-    ../../modules/hyprland.nix
+    ../../modules/gnome
     ../../modules/plymouth.nix
     ../../modules/zram_swap.nix
     ../../system
     ../../users/aly.nix
+    ../../users/dustin.nix
     ./hardware-configuration.nix # Include the results of the hardware scan.
   ];
 
@@ -76,7 +77,8 @@ in {
   powerManagement.powertop.enable = true;
   services.thermald.enable = true;
 
-  home-manager.users.aly = import ../../home/aly-hyprland.nix;
+  home-manager.users.aly = import ../../home/aly-gnome.nix;
+  home-manager.users.dustin = import ../../home/dustin-gnome.nix;
 
   environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
 
