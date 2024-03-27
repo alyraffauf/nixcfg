@@ -7,6 +7,7 @@
     gnome.eog
     hyprcursor
     hypridle
+    hyprland-protocols
     hyprlock
     hyprnome
     hyprpaper
@@ -15,6 +16,7 @@
     playerctl
     pyprland
     udiskie
+    xdg-desktop-portal-hyprland
   ];
 
   wayland.windowManager.hyprland = {
