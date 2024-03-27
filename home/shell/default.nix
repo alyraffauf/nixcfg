@@ -11,6 +11,7 @@
     python3
     ruby
     wget
+    browsh
   ];
 
   programs.bash = {
@@ -67,6 +68,8 @@
   };
 
   programs.nnn.enable = true;
+  
+  programs.rbw.enable = true;
 
   programs.tmux = {
     enable = true;
