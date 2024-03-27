@@ -37,6 +37,8 @@
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
+  services.dbus.packages = [ pkgs.gcr ];
+
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableKwallet = true;
 
