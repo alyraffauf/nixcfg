@@ -20,7 +20,10 @@ window#waybar {
     padding: 0 10px;
     margin: 0 5px;
 }
-#battery.critical { color: #e78284; }
-#battery.full { color: #ca9ee6; }
-#battery.normal { color: #FAFAFA; }
-
+#battery { color: #FAFAFA; }
+#battery.charging {
+    color: #ca9ee6;
+}
+#battery.critical:not(.charging) {
+    color: #e78284;
+}

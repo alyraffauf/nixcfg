@@ -25,8 +25,8 @@
         "clock"
       ];
 
-      "hyprland/workspaces" = { "
-        all-outputs" = true;
+      "hyprland/workspaces" = {
+        "all-outputs" = true;
         "format" = "󰧞";
       };
       "hyprland/window" = { "max-length" = 100; };
@@ -36,13 +36,12 @@
         "format" = "{:%I:%M%p}";
       };
       "battery" = {
-        "states" = {
-          "critical" = 20;
-          "normal" = 90;
-          "full" = 100;
-        };
+        "states" = { "critical" = 20; };
         "format" = "{icon}";
         "format-icons" = [ "󰁺" "󰁼" "󰁿" "󰂁" "󰁹" ];
+        "tooltip-format" = ''
+          {capacity}%: {timeTo}.
+          Using {power} watts.'';
       };
       "bluetooth" = {
         "format" = "󰂯　{status}";
@@ -82,7 +81,7 @@
       "power-profiles-daemon" = {
         "format" = "{icon}";
         "tooltip-format" = ''
-          Power profile: {profile}
+          Profile: {profile}
           Driver: {driver}'';
         "tooltip" = true;
         "format-icons" = {
