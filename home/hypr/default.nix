@@ -17,6 +17,7 @@
     pyprland
     udiskie
     xdg-desktop-portal-hyprland
+    xfce.exo
   ];
 
   wayland.windowManager.hyprland = {
@@ -41,6 +42,8 @@
   xdg.configFile."hypr/hyprshade.toml".source = ./hyprshade.toml;
 
   xdg.configFile."hypr/pyprland.toml".source = ./pyprland.toml;
+
+  xdg.configFile."xfce4/helpers.rc".source = ../xfce/helpers.rc;
 
   home.pointerCursor = {
     gtk.enable = true;
