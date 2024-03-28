@@ -24,7 +24,7 @@
 
   apps = {
     flatpak.enable = true;
-    steam.enable = true;
+    steam.enable = false;
   };
 
   systemConfig.plymouth.enable = true;
