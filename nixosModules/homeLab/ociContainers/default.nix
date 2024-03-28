@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    homeLab.ociContainers.enable = 
+    homeLab.ociContainers.enable =
       lib.mkEnableOption "Enables select OCI containers.";
   };
 

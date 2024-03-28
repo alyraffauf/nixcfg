@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    desktopConfig.gnome.fprintdFix.enable = 
-      lib.mkEnableOption "Fixes fprintd and pam issues with GNOME Display Manager.";
+    desktopConfig.gnome.fprintdFix.enable = lib.mkEnableOption
+      "Fixes fprintd and pam issues with GNOME Display Manager.";
   };
 
   config = lib.mkIf config.desktopConfig.gnome.fprintdFix.enable {

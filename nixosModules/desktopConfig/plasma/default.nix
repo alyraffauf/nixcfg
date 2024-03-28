@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    desktopConfig.plasma.enable = 
+    desktopConfig.plasma.enable =
       lib.mkEnableOption "Enables plasma desktop session.";
   };
 

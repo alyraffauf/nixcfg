@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    desktopConfig.gnome.tripleBuffering.enable = 
+    desktopConfig.gnome.tripleBuffering.enable =
       lib.mkEnableOption "Enables dynamic triple buffering for GNOME.";
   };
 

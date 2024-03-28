@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    homeLab.virtualization.enable = 
+    homeLab.virtualization.enable =
       lib.mkEnableOption "Enables podman and virt-manager virtualization.";
   };
 

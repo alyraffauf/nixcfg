@@ -68,7 +68,7 @@
   };
 
   programs.nnn.enable = true;
-  
+
   programs.rbw.enable = true;
 
   programs.tmux = {

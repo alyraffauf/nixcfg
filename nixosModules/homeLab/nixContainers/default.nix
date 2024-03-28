@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    homeLab.nixContainers.enable = 
+    homeLab.nixContainers.enable =
       lib.mkEnableOption "Enables select nix containers.";
   };
 

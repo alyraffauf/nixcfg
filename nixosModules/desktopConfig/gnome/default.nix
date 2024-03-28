@@ -1,11 +1,12 @@
 { pkgs, lib, config, ... }: {
 
   imports = [ # Include X settings.
-    ./fprintdFix.nix ./tripleBuffering.nix
+    ./fprintdFix.nix
+    ./tripleBuffering.nix
   ];
 
   options = {
-    desktopConfig.gnome.enable = 
+    desktopConfig.gnome.enable =
       lib.mkEnableOption "Enables GNOME desktop session.";
   };
 

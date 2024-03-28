@@ -1,10 +1,9 @@
 { pkgs, lib, config, ... }: {
 
-
   imports = [ ./gnome ./plasma ./windowManagers/hyprland ];
 
   options = {
-    desktopConfig.enable = 
+    desktopConfig.enable =
       lib.mkEnableOption "Enables basic GUI X11 and Wayland environment.";
   };
 
@@ -16,7 +15,7 @@
       xkb.variant = "";
       excludePackages = with pkgs; [ xterm ];
     };
-    
+
     # Install pretty fonts.
     fonts.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" "Noto" ]; })

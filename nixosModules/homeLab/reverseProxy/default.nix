@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    homeLab.reverseProxy.enable = 
+    homeLab.reverseProxy.enable =
       lib.mkEnableOption "Enables nginx reverse proxy.";
   };
 

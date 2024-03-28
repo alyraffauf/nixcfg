@@ -1,7 +1,8 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    apps.flatpak.enable = lib.mkEnableOption "Enables flatpak support with GUI.";
+    apps.flatpak.enable =
+      lib.mkEnableOption "Enables flatpak support with GUI.";
   };
 
   config = lib.mkIf config.apps.flatpak.enable {

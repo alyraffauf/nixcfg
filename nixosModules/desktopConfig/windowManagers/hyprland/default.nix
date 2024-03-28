@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    desktopConfig.windowManagers.hyprland.enable = 
-      lib.mkEnableOption "Enables hyprland window manager session with lightdm.";
+    desktopConfig.windowManagers.hyprland.enable = lib.mkEnableOption
+      "Enables hyprland window manager session with lightdm.";
   };
 
   config = lib.mkIf config.desktopConfig.windowManagers.hyprland.enable {

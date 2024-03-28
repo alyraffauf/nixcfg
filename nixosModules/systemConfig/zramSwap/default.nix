@@ -6,8 +6,8 @@
 
   config = lib.mkIf config.systemConfig.zramSwap.enable {
     zramSwap = {
-        enable = true;
-        memoryPercent = 25;
+      enable = true;
+      memoryPercent = 25;
     };
   };
 }

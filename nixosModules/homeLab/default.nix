@@ -10,8 +10,7 @@
   ];
 
   options = {
-    homeLab.enable = 
-      lib.mkEnableOption "Enables fully functional HomeLab.";
+    homeLab.enable = lib.mkEnableOption "Enables fully functional HomeLab.";
   };
 
   config = lib.mkIf config.homeLab.enable {
