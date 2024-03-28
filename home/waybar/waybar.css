@@ -3,6 +3,7 @@
     border-radius: 0;
     font-family: "NotoSansM Nerd Font";
     font-size: 14px;
+    font-weight: 600;
 }
 window#waybar {
     background: rgba (35, 38, 52, 0.8);
