@@ -10,9 +10,10 @@
     defaultTimeout = 10000;
     font = "NotoSans Nerd Font Regular 10";
     height = 300;
-    layer = "overlay";
+    layer = "top";
     padding = "15";
     textColor = "#FAFAFA";
     width = 400;
+    margin = "20,0";
   };
 }
