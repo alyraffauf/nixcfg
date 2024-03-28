@@ -16,7 +16,7 @@ window#waybar {
 #workspaces button.active {
     color: #ca9ee6;
 }
-#clock, #battery, #pulseaudio, #bluetooth, #network, #tray, #power-profiles-daemon {
+#clock, #battery, #bluetooth, #network, #power-profiles-daemon, #pulseaudio, #tray {
     padding: 0 10px;
     margin: 0 5px;
 }
