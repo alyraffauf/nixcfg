@@ -9,10 +9,11 @@
   programs.waybar.enable = true;
   programs.waybar.settings = {
     mainBar = {
-      layer = "top";
-      position = "top";
       height = 36;
+      layer = "top";
       output = [ "*" ];
+      position = "top";
+      reload_style_on_change = true;
       modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
       modules-center = [ "hyprland/window" ];
       modules-right = [
