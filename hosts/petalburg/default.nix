@@ -54,6 +54,7 @@ let
 in {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./home.nix
   ];
 
   boot = {
@@ -72,12 +73,7 @@ in {
   powerManagement.powertop.enable = true;
   services.thermald.enable = true;
 
-  home-manager.users.aly = import ../../home/aly-gnome.nix;
-  home-manager.users.dustin = import ../../home/dustin-gnome.nix;
-
   environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
-
-  userConfig.dustin.enable = true;
 
   desktopConfig = {
     enable = true;

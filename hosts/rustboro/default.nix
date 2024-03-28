@@ -5,6 +5,7 @@
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./home.nix
   ];
 
   # Bootloader.
@@ -15,8 +16,6 @@
   networking.hostName = "rustboro"; # Define your hostname.
 
   powerManagement.cpuFreqGovernor = "ondemand";
-
-  home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
   desktopConfig = {
     enable = true;

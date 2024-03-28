@@ -3,9 +3,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ./home.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -27,8 +25,6 @@
     driSupport32Bit = true;
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
-
-  home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
   homeLab.enable = true;
   desktopConfig.enable = true;

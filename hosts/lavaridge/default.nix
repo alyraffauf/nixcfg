@@ -1,10 +1,11 @@
 # Framework Laptop 13 with AMD Ryzen 7640U, 32GB RAM, 1TB SSD.
 
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./home.nix
   ];
 
   boot = {
@@ -23,8 +24,6 @@
   services.fprintd.package = pkgs.fprintd.overrideAttrs {
     mesonCheckFlags = [ "--no-suite" "fprintd:TestPamFprintd" ];
   };
-
-  home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
   desktopConfig = {
     enable = true;

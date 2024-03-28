@@ -34,13 +34,13 @@
     ];
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixpkgs-unstable
-    , home-manager-unstable, nixos-hardware, ... }: {
+  outputs =
+    inputs@{ nixpkgs-unstable, home-manager-unstable, nixos-hardware, ... }: {
 
       homeConfigurations."aly" =
         home-manager-unstable.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
-          modules = [ ./home/aly.nix ];
+          modules = [ ./homeManagerModules ];
         };
 
       nixosConfigurations = {
@@ -48,6 +48,7 @@
         # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
         lavaridge = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.framework-13-7040-amd
             home-manager-unstable.nixosModules.home-manager
@@ -59,6 +60,7 @@
         # Home Lab. Ryzen 5 2600 with 16GB RAM, RX 6700.
         mauville = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             home-manager-unstable.nixosModules.home-manager
             ./hosts/mauville
@@ -69,6 +71,7 @@
         # Lenovo Yoga 9i with i7-1360P and 16GB RAM.
         petalburg = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
@@ -81,6 +84,7 @@
         # T440p with i5-4210M and 16GB RAM.
         rustboro = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t440p
             home-manager-unstable.nixosModules.home-manager

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ inputs, pkgs, lib, config, ... }: {
 
   options = {
     userConfig.aly.enable = lib.mkEnableOption "Enables Aly's user.";
