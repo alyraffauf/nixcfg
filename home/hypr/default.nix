@@ -40,12 +40,13 @@
   xdg.configFile."hypr/hyprlock.conf".source = ./hyprlock.conf;
 
   xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
-  xdg.configFile."hypr/wallpapers/tokyoGreen.jpg".source =
-    ./wallpapers/tokyoGreen.jpg;
+
   xdg.configFile."hypr/wallpapers/greenCity.jpg".source =
     ./wallpapers/greenCity.jpg;
   xdg.configFile."hypr/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg".source =
     ./wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg;
+  xdg.configFile."hypr/wallpapers/salty-justice-NOMebOREvtc-unsplash.jpg".source =
+    ./wallpapers/salty-justice-NOMebOREvtc-unsplash.jpg;
 
   xdg.configFile."hypr/shaders/blue-light-filter.glsl".source =
     ./blue-light-filter.glsl;
