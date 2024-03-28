@@ -31,8 +31,12 @@
   home-manager.users.aly = import ../../home/aly-hyprland.nix;
 
   homeLab.enable = true;
-  programs.steamGames.enable = true;
   desktopConfig.enable = true;
+
+  apps = {
+    flatpak.enable = true;
+    steam.enable = true;
+  };
 
   system.stateVersion = "23.11";
 }

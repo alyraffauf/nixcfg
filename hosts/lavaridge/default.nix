@@ -31,9 +31,9 @@
     windowManagers.hyprland.enable = true;
   };
 
-  programs = {
-    flatpakSupport.enable = true;
-    steamGames.enable = true;
+  apps = {
+    flatpak.enable = true;
+    steam.enable = true;
   };
 
   homeLab.virtualization.enable = true;

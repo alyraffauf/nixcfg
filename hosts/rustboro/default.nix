@@ -23,8 +23,9 @@
     windowManagers.hyprland.enable = true;
   };
 
-  programs = {
-    flatpakSupport.enable = true;
+  apps = {
+    flatpak.enable = true;
+    steam.enable = true;
   };
 
   systemConfig.plymouth.enable = true;

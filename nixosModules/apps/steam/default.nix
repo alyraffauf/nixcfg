@@ -1,10 +1,10 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    programs.steamGames.enable = lib.mkEnableOption "Enables Steam for video games.";
+    apps.steam.enable = lib.mkEnableOption "Enables Steam for video games.";
   };
 
-  config = lib.mkIf config.programs.steamGames.enable {
+  config = lib.mkIf config.apps.steam.enable {
     hardware.steam-hardware.enable = true;
     programs.steam = {
       enable = true;

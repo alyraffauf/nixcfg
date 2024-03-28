@@ -85,9 +85,9 @@ in {
     gnome.enable = true;
   };
 
-  programs = {
-    flatpakSupport.enable = true;
-    steamGames.enable = false;
+  apps = {
+    flatpak.enable = true;
+    steam.enable = false;
   };
 
   homeLab.virtualization.enable = true;
