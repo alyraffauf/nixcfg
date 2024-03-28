@@ -53,22 +53,17 @@ let
 
 in {
   imports = [
-    # ../../modules/kde.nix
-    ../../modules/gnome
-    ../../modules/plymouth.nix
-    ../../modules/zram_swap.nix
-    ../../system
-    ../../users/aly.nix
-    ../../users/dustin.nix
     ./hardware-configuration.nix # Include the results of the hardware scan.
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    # Bootloader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
-  # Pull latest Linux kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    # Use latest Linux kernel.
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   networking.hostName = "petalburg"; # Define your hostname.
 
@@ -82,11 +77,23 @@ in {
 
   environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  userConfig.dustin.enable = true;
+
+  desktopConfig = {
+    enable = true;
+    windowManagers.hyprland.enable = false;
+    gnome.enable = true;
+  };
+
+  programs = {
+    flatpakSupport.enable = true;
+    steamGames.enable = false;
+  };
+
+  homeLab.virtualization.enable = true;
+
+  systemConfig.plymouth.enable = true;
+  systemConfig.zramSwap.enable = true;
+
+  system.stateVersion = "23.11";
 }

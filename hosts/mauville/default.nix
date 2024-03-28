@@ -4,13 +4,6 @@
 
 {
   imports = [
-    # ../../modules/gnome
-    # ../../modules/kde.nix
-    ../../modules/hyprland.nix
-    ../../modules/homelab
-    ../../modules/steam.nix
-    ../../system
-    ../../users/aly.nix
     ./hardware-configuration.nix
   ];
 
@@ -36,6 +29,10 @@
   };
 
   home-manager.users.aly = import ../../home/aly-hyprland.nix;
+
+  homeLab.enable = true;
+  programs.steamGames.enable = true;
+  desktopConfig.enable = true;
 
   system.stateVersion = "23.11";
 }

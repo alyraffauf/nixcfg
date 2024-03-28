@@ -52,6 +52,7 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
             home-manager-unstable.nixosModules.home-manager
             ./hosts/lavaridge
+            ./nixosModules
           ];
         };
 
@@ -61,6 +62,7 @@
           modules = [
             home-manager-unstable.nixosModules.home-manager
             ./hosts/mauville
+            ./nixosModules
           ];
         };
 
@@ -72,6 +74,7 @@
             nixos-hardware.nixosModules.common-cpu-intel
             home-manager-unstable.nixosModules.home-manager
             ./hosts/petalburg
+            ./nixosModules
           ];
         };
 
@@ -82,6 +85,7 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-t440p
             home-manager-unstable.nixosModules.home-manager
             ./hosts/rustboro
+            ./nixosModules
           ];
         };
       };
