@@ -2,7 +2,7 @@
 
 {
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [ overskride pavucontrol ];
+  home.packages = with pkgs; [ blueberry pavucontrol ];
 
   xdg.configFile."waybar/style.css".source = ./waybar.css;
 
@@ -54,7 +54,7 @@
           {device_enumerate}'';
         "tooltip-format-enumerate-connected" =
           "{device_alias}	{device_address}";
-        "on-click" = "overskride";
+        "on-click" = "blueberry";
       };
       "pulseaudio" = {
         "format" = "　{volume}%";
