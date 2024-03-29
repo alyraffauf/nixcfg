@@ -35,7 +35,6 @@
     # Enable basic assortment of GUI apps.
     environment.systemPackages = with pkgs; [
       fractal
-      github-desktop
       obsidian
       tauon
       webcord
