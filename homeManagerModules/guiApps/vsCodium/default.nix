@@ -6,6 +6,8 @@
 
   config = lib.mkIf config.guiApps.vsCodium.enable {
 
+    guiApps.alacritty.enable = lib.mkDefault true;
+
     # Necessary fonts.
     home.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Noto" ]; })
@@ -25,6 +27,7 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "nix.formatterPath" = "nixfmt";
+        "terminal.external.linuxExec" = "alacritty";
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.zoomPerWindow" = false;
