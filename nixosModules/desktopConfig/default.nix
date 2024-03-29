@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }: {
 
-  imports = [ ./gnome ./plasma ./windowManagers/hyprland ];
+  imports = [ ./displayManagers/lightdm ./gnome ./plasma ./windowManagers/hyprland ];
 
   options = {
     desktopConfig.enable =
