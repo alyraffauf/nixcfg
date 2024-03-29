@@ -1,11 +1,11 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    desktopConfig.gnome.fprintdFix.enable = lib.mkEnableOption
+    desktopConfig.desktopEnvironments.gnome.fprintdFix.enable = lib.mkEnableOption
       "Fixes fprintd and pam issues with GNOME Display Manager.";
   };
 
-  config = lib.mkIf config.desktopConfig.gnome.fprintdFix.enable {
+  config = lib.mkIf config.desktopConfig.desktopEnvironments.gnome.fprintdFix.enable {
     # Need to change the order pam loads its modules
     # to get proper fingerprint behavior on GDM and the lockscreen.
     security.pam.services.login.fprintAuth = false;

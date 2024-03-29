@@ -6,6 +6,7 @@
   };
 
   config = lib.mkIf config.desktopConfig.plasma.enable {
+
     # Enable SDDM + Plasma Desktop.
     services = {
       desktopManager.plasma6.enable = true;
