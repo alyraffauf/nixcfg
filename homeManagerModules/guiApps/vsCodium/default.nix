@@ -16,21 +16,22 @@
       enable = true;
       package = pkgs.vscodium;
       enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
       userSettings = {
-        "update.mode" = "none";
-        "workbench.colorTheme" = "Catppuccin Macchiato";
-        "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+        "diffEditor.ignoreTrimWhitespace" = false;
+        "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
+        "explorer.confirmDelete" = false;
+        "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
         "git.confirmSync" = false;
-        "files.autoSave" = "afterDelay";
-        "workbench.preferredLightColorTheme" = "Catppuccin Latte";
-        "window.zoomPerWindow" = false;
-        "explorer.confirmDelete" = false;
-        "workbench.iconTheme" = "catppuccin-macchiato";
-        "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
-        "window.menuBarVisibility" = "hidden";
-        "diffEditor.ignoreTrimWhitespace" = false;
         "nix.formatterPath" = "nixfmt";
+        "update.mode" = "none";
+        "window.menuBarVisibility" = "hidden";
+        "window.zoomPerWindow" = false;
+        "workbench.colorTheme" = "Catppuccin Macchiato";
+        "workbench.iconTheme" = "catppuccin-macchiato";
+        "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+        "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       };
 
       extensions = with pkgs; [
