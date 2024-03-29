@@ -8,11 +8,11 @@
     ./fuzzel
     ./librewolf
     ./mako
-    ./vsCode
+    ./vsCodium
     ./waybar
   ];
 
   guiApps.firefox.enable = lib.mkDefault true;
   guiApps.alacritty.enable = lib.mkDefault true;
-  guiApps.vsCode.enable = lib.mkDefault true;
+  guiApps.vsCodium.enable = lib.mkDefault true;
 }

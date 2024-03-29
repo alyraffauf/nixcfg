@@ -1,13 +1,13 @@
 { pkgs, lib, config, ... }: {
 
-  options = { guiApps.vsCode.enable = lib.mkEnableOption "Enables VSCodium."; };
+  options = {
+    guiApps.vsCodium.enable = lib.mkEnableOption "Enables VSCodium.";
+  };
 
-  config = lib.mkIf config.guiApps.vsCode.enable {
+  config = lib.mkIf config.guiApps.vsCodium.enable {
 
     # Necessary fonts.
-    home.packages = with pkgs; [
-        pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
-    ];
+    home.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Noto" ]; }) ];
 
     programs.vscode = {
       enable = true;
@@ -24,8 +24,7 @@
         "window.zoomPerWindow" = false;
         "explorer.confirmDelete" = false;
         "workbench.iconTheme" = "catppuccin-macchiato";
-        "editor.fontFamily" =
-          "'NotoSansM Nerd Font', 'monospace', monospace";
+        "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
         "window.menuBarVisibility" = "hidden";
         "diffEditor.ignoreTrimWhitespace" = false;
       };
