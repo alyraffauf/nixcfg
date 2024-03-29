@@ -35,7 +35,7 @@
   };
 
   services.logind.extraConfig = ''
-    # don't shutdown when power button is short-pressed
+    # Don't shutdown when power button is short-pressed
     HandlePowerKey=suspend
     HandlePowerKeyLongPress=poweroff
   '';
@@ -47,13 +47,13 @@
 
   system.autoUpgrade = {
     allowReboot = true;
-    dates = "daily";
+    dates = "04:00";
     enable = true;
     flake = "github:alyraffauf/nixcfg";
     operation = "boot";
     rebootWindow = {
       lower = "02:00";
-      upper = "05:00";
+      upper = "06:00";
     };
   };
 
