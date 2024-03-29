@@ -34,7 +34,6 @@
 
     # Enable basic assortment of GUI apps.
     environment.systemPackages = with pkgs; [
-      firefox
       fractal
       github-desktop
       google-chrome
