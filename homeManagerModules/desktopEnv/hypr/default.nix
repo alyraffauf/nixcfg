@@ -86,6 +86,7 @@
 
     gtk = {
       enable = true;
+
       theme = {
         package = pkgs.catppuccin-gtk.override {
           accents = [ "mauve" ];
@@ -95,6 +96,7 @@
         };
         name = "Catppuccin-Frappe-Compact-Mauve-Dark";
       };
+
       iconTheme = {
         package = pkgs.catppuccin-papirus-folders.override {
           flavor = "frappe";
@@ -102,10 +104,18 @@
         };
         name = "Papirus-Dark";
       };
+
       font = {
         name = "NotoSans Nerd Font Regular";
         package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
         size = 11;
+      };
+    };
+
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        gtk-theme = "Catppuccin-Frappe-Compact-Mauve-Dark";
+        color-scheme = "prefer-dark";
       };
     };
   };
