@@ -17,12 +17,15 @@
           variant = "frappe";
           tweaks = [ "normal" ];
         };
+
         iconTheme.name = "Papirus-Dark";
         iconTheme.package = pkgs.catppuccin-papirus-folders.override {
           flavor = "frappe";
           accent = "mauve";
         };
+
         font.name = "NotoSans Nerd Font Regular";
+        font.package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
 
         cursorTheme.package = pkgs.catppuccin-cursors.frappeDark;
         cursorTheme.name = "Catppuccin-Frappe-Dark-Cursors";
