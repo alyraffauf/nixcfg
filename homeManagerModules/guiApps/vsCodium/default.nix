@@ -7,7 +7,10 @@
   config = lib.mkIf config.guiApps.vsCodium.enable {
 
     # Necessary fonts.
-    home.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Noto" ]; }) ];
+    home.packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "Noto" ]; })
+      nixfmt
+    ];
 
     programs.vscode = {
       enable = true;
@@ -27,6 +30,7 @@
         "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
         "window.menuBarVisibility" = "hidden";
         "diffEditor.ignoreTrimWhitespace" = false;
+        "nix.formatterPath" = "nixfmt";
       };
 
       extensions = with pkgs; [
@@ -34,6 +38,7 @@
         vscode-extensions.catppuccin.catppuccin-vsc-icons
         vscode-extensions.github.vscode-github-actions
         vscode-extensions.github.vscode-pull-request-github
+        vscode-extensions.jnoortheen.nix-ide
         vscode-extensions.ms-python.python
         vscode-extensions.ms-vscode.cpptools-extension-pack
         vscode-extensions.rubymaniac.vscode-paste-and-indent
