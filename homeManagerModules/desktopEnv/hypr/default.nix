@@ -72,7 +72,7 @@
 
     home.pointerCursor = {
       gtk.enable = true;
-      # x11.enable = true;
+      x11.enable = true;
       package = pkgs.catppuccin-cursors.frappeDark;
       name = "Catppuccin-Frappe-Dark-Cursors";
       size = 24;
