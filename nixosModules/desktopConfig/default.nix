@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }: {
 
-  imports = [ ./displayManagers/lightdm ./gnome ./plasma ./windowManagers/hyprland ];
+  imports =
+    [ ./displayManagers/lightdm ./gnome ./plasma ./windowManagers/hyprland ];
 
   options = {
     desktopConfig.enable =
@@ -17,12 +18,19 @@
     };
 
     # Install pretty fonts.
-    fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" "Noto" ]; })
-      fira-code
-      fira-code-symbols
-      liberation_ttf
-    ];
+    fonts.packages = with pkgs;
+      [
+        liberation_ttf
+        (nerdfonts.override {
+          fonts = [
+            "DroidSansMono"
+            "FiraCode"
+            "FiraMono"
+            "Hack"
+            "Noto"
+          ];
+        })
+      ];
 
     # Enable basic assortment of GUI apps.
     environment.systemPackages = with pkgs; [
