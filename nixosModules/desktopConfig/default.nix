@@ -36,10 +36,8 @@
     environment.systemPackages = with pkgs; [
       fractal
       github-desktop
-      google-chrome
       obsidian
       tauon
-      vscode
       webcord
       zoom-us
     ];
