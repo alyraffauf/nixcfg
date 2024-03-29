@@ -15,4 +15,5 @@
   guiApps.firefox.enable = lib.mkDefault true;
   guiApps.alacritty.enable = lib.mkDefault true;
   guiApps.vsCodium.enable = lib.mkDefault true;
+  guiApps.chromium.enable = lib.mkDefault true;
 }
