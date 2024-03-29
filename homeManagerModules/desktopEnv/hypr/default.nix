@@ -104,6 +104,7 @@
       };
       font = {
         name = "NotoSans Nerd Font Regular";
+        package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
         size = 11;
       };
     };
