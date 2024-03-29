@@ -32,15 +32,6 @@
         })
       ];
 
-    # Enable basic assortment of GUI apps.
-    environment.systemPackages = with pkgs; [
-      fractal
-      obsidian
-      tauon
-      webcord
-      zoom-us
-    ];
-
     desktopConfig.windowManagers.hyprland.enable = lib.mkDefault true;
   };
 }
