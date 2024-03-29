@@ -15,6 +15,18 @@
 | OS      |       NixOS Unstable |          NixOS Unstable |         NixOS Unstable |          NixOS Unstable |
 <!-- | Desktop |                GNOME |                   GNOME |             KDE Plasma |                   GNOME | -->
 
+## Home Lab Services
+| Service          |                       Source/Runtime |                           Domain |
+|------------------|-------------------------------------:|---------------------------------:|
+| Nix Binary Cache |                  nix-serve (nixpkgs) | https://nixchace.raffauflabs.com |
+| Navidrome        |              nix-container (nixpkgs) |    https://music.raffauflabs.com |
+| Plex             |       OCI: plexinc/pms-docker:public |     https://plex.raffauflabs.com |
+| Audiobookshelf   |   OCI: advplyr/audiobookshelf:latest | https://podcasts.raffauflabs.com |
+| Transmission     | OCI: linuxserver/transmission:latest |                          Tailnet |
+| Jellyfin         |               OCI: jellyfin/jellyfin |                          Tailnet |
+| Samba            |                              nixpkgs |                          Tailnet |
+| Nginx            |                              nixpkgs |                                  |
+
 ## Deploying to NixOS
 > :red_circle: **READ**: **Do not deploy this flake directly to your machine. It won't work.**
 > This is my own [NixOS](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager) flake for my personal devices.
