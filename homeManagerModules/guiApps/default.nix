@@ -14,6 +14,7 @@
     ./vsCodium
     ./waybar
     ./webCord
+    ./wlogout
     ./zoom
   ];
 

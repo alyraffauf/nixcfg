@@ -11,6 +11,7 @@
     guiApps.waybar.enable = lib.mkDefault true;
     guiApps.mako.enable = lib.mkDefault true;
     guiApps.fuzzel.enable = lib.mkDefault true;
+    guiApps.wlogout.enable = lib.mkDefault true;
     guiApps.alacritty.enable = lib.mkDefault true;
 
     # Packages that should be installed to the user profile.
