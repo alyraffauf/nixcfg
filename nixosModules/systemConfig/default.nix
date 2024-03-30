@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./network.nix ./sound.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
-
+  imports =
+    [ ./network.nix ./sound.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
 
   systemConfig.power-profiles-daemon.enable = lib.mkDefault true;
 

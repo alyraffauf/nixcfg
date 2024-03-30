@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    systemConfig.power-profiles-daemon.enable = lib.mkEnableOption
-      "Enables power-profiles-daemon.";
+    systemConfig.power-profiles-daemon.enable =
+      lib.mkEnableOption "Enables power-profiles-daemon.";
   };
 
   config = lib.mkIf config.systemConfig.power-profiles-daemon.enable {
