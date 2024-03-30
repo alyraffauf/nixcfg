@@ -1,11 +1,6 @@
 { pkgs, lib, config, ... }: {
 
-  imports = [
-    ./hypridle
-    ./hyprlock
-    ./hyprpaper
-    ./hyprshade
-  ];
+  imports = [ ./hypridle ./hyprlock ./hyprpaper ./hyprshade ];
 
   options = {
     desktopEnv.hyprland.enable =
@@ -35,8 +30,7 @@
       hyprland-protocols
       hyprnome
       hyprshot
-      playerctl
-      pyprland
+      playerctls
       xdg-desktop-portal-hyprland
       xfce.exo
       xfce.ristretto
