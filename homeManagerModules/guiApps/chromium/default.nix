@@ -16,6 +16,7 @@
         { id = "jldhpllghnbhlbpcmnajkpdmadaolakh"; } # Todoist
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
         { id = "lcbjdhceifofjlpecfpeimnnphbcjgnc"; } # xBrowserSync
+        { id = "olhelnoplefjdmncknfphenjclimckaf"; } # catppuccin frappe
       ];
     };
   };
