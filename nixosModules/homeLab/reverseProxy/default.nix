@@ -22,6 +22,7 @@
         127.0.0.1 nixcache.raffauflabs.com
         127.0.0.1 plex.raffauflabs.com
         127.0.0.1 podcasts.raffauflabs.com
+        127.0.0.1 news.raffauflabs.com
       '';
     };
 
@@ -43,6 +44,22 @@
           proxyWebsockets = true; # needed if you need to use WebSocket
           extraConfig = ''
             proxy_buffering off;
+          '';
+        };
+      };
+
+      virtualHosts."news.raffauflabs.com" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8080";
+          proxyWebsockets = true; # needed if you need to use WebSocket
+          extraConfig = ''
+            proxy_buffering off;
+            proxy_redirect off;
+            # Forward the Authorization header for the Google Reader API.
+            proxy_set_header Authorization $http_authorization;
+            proxy_pass_header Authorization;
           '';
         };
       };
