@@ -40,6 +40,8 @@
       xfce.xfconf
     ];
 
+    services.cliphist.enable = true;
+
     services.gpg-agent.enable = true;
 
     wayland.windowManager.hyprland = {
