@@ -20,9 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # # Declarative Flatpaks.
-    # nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
-
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
@@ -37,10 +34,10 @@
   outputs =
     inputs@{ nixpkgs-unstable, home-manager-unstable, nixos-hardware, ... }: {
 
-      homeConfigurations."aly" =
+      homeConfigurations.aly =
         home-manager-unstable.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
-          modules = [ ./homeManagerModules ];
+          modules = [ ./home.nix ];
         };
 
       nixosConfigurations = {
