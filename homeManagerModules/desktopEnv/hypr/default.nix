@@ -1,11 +1,24 @@
 { pkgs, lib, config, ... }: {
 
+  imports = [
+    ./hypridle
+    ./hyprlock
+    ./hyprpaper
+    ./hyprshade
+  ];
+
   options = {
     desktopEnv.hyprland.enable =
       lib.mkEnableOption "Enables hyprland with extra apps.";
   };
 
   config = lib.mkIf config.desktopEnv.hyprland.enable {
+
+    # Hypr* modules, plguins, and tools.
+    desktopEnv.hyprland.hypridle.enable = lib.mkDefault true;
+    desktopEnv.hyprland.hyprlock.enable = lib.mkDefault true;
+    desktopEnv.hyprland.hyprpaper.enable = lib.mkDefault true;
+    desktopEnv.hyprland.hyprshade.enable = lib.mkDefault true;
 
     # Basic apps needed to run a hyprland desktop.
     guiApps.waybar.enable = lib.mkDefault true;
@@ -19,12 +32,8 @@
       brightnessctl
       evince
       hyprcursor
-      hypridle
       hyprland-protocols
-      hyprlock
       hyprnome
-      hyprpaper
-      hyprshade
       hyprshot
       playerctl
       pyprland
@@ -49,23 +58,6 @@
       enable = true;
       extraConfig = builtins.readFile ./hyprland.conf;
     };
-
-    xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
-
-    xdg.configFile."hypr/hyprlock.conf".source = ./hyprlock.conf;
-
-    xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
-
-    xdg.configFile."hypr/wallpapers/greenCity.jpg".source =
-      ./wallpapers/greenCity.jpg;
-    xdg.configFile."hypr/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg".source =
-      ./wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg;
-    xdg.configFile."hypr/wallpapers/salty-justice-NOMebOREvtc-unsplash.jpg".source =
-      ./wallpapers/salty-justice-NOMebOREvtc-unsplash.jpg;
-
-    xdg.configFile."hypr/shaders/blue-light-filter.glsl".source =
-      ./blue-light-filter.glsl;
-    xdg.configFile."hypr/hyprshade.toml".source = ./hyprshade.toml;
 
     xdg.configFile."xfce4/helpers.rc".text = ''
       TerminalEmulator=alacritty
