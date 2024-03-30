@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  imports = [ ./network.nix ./sound.nix ./plymouth ./zramSwap ];
+  imports = [ ./network.nix ./sound.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
+
+
+  systemConfig.power-profiles-daemon.enable = lib.mkDefault true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";

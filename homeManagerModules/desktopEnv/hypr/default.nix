@@ -30,8 +30,7 @@
       hyprland-protocols
       hyprnome
       hyprshot
-      playerctls
-      xdg-desktop-portal-hyprland
+      playerctl
       xfce.exo
       xfce.ristretto
       xfce.thunar
@@ -58,6 +57,12 @@
       FileManager=thunar
       WebBrowser=firefox
     '';
+
+    xdg.portal = {
+      enable = true;
+      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    };
 
     home.pointerCursor = {
       gtk.enable = true;

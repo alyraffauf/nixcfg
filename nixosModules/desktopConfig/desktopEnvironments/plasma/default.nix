@@ -31,7 +31,6 @@
     programs.kdeconnect.enable = true;
     #   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
     #   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
-    services.gnome.gnome-keyring.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
   };
 }

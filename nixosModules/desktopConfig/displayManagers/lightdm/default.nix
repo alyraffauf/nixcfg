@@ -6,6 +6,10 @@
   };
 
   config = lib.mkIf config.desktopConfig.displayManagers.lightdm.enable {
+
+    security.pam.services.lightdm.enableKwallet = true;
+    security.pam.services.lightdm.enableGnomeKeyring = true;
+
     services.xserver.displayManager.lightdm = {
       enable = true;
       greeters.slick = {

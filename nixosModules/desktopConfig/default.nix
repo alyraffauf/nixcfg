@@ -9,28 +9,26 @@
   };
 
   config = lib.mkIf config.desktopConfig.enable {
-    # Enable the X11 windowing system.
-    services.xserver = {
-      enable = true;
-      xkb.layout = "us";
-      xkb.variant = "";
-      excludePackages = with pkgs; [ xterm ];
+
+    services = {
+      gnome.gnome-keyring.enable = true;
+      gvfs.enable = true; # Mount, trash, etc.
+      # Enable the X11 windowing system.
+      xserver = {
+        enable = true;
+        xkb.layout = "us";
+        xkb.variant = "";
+        excludePackages = with pkgs; [ xterm ];
+      };
     };
 
     # Install pretty fonts.
-    fonts.packages = with pkgs;
-      [
-        liberation_ttf
-        (nerdfonts.override {
-          fonts = [
-            "DroidSansMono"
-            "FiraCode"
-            "FiraMono"
-            "Hack"
-            "Noto"
-          ];
-        })
-      ];
+    fonts.packages = with pkgs; [
+      liberation_ttf
+      (nerdfonts.override {
+        fonts = [ "DroidSansMono" "FiraCode" "FiraMono" "Hack" "Noto" ];
+      })
+    ];
 
     desktopConfig.windowManagers.hyprland.enable = lib.mkDefault true;
   };
