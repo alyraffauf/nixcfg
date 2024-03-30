@@ -17,6 +17,11 @@
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
+  systemConfig = {
+    plymouth.enable = true;
+    zramSwap.enable = true;
+  };
+
   desktopConfig = {
     enable = true;
     windowManagers.hyprland.enable = true;
@@ -26,9 +31,6 @@
     flatpak.enable = true;
     steam.enable = false;
   };
-
-  systemConfig.plymouth.enable = true;
-  systemConfig.zramSwap.enable = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

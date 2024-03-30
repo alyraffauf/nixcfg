@@ -1,16 +1,10 @@
 { pkgs, lib, config, ... }: {
 
-  imports = [
-    ./binaryCache
-    ./reverseProxy
-    ./nixContainers
-    ./ociContainers
-    ./samba
-    ./virtualization
-  ];
+  imports =
+    [ ./binaryCache ./reverseProxy ./nixContainers ./ociContainers ./samba ];
 
   options = {
-    homeLab.enable = lib.mkEnableOption "Enables fully functional HomeLab.";
+    homeLab.enable = lib.mkEnableOption "Enables fully functional Home Lab.";
   };
 
   config = lib.mkIf config.homeLab.enable {
@@ -19,6 +13,5 @@
     homeLab.ociContainers.enable = lib.mkDefault true;
     homeLab.reverseProxy.enable = lib.mkDefault true;
     homeLab.samba.enable = lib.mkDefault true;
-    homeLab.virtualization.enable = lib.mkDefault true;
   };
 }

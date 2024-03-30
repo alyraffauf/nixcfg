@@ -6,6 +6,7 @@
   };
 
   config = lib.mkIf config.homeLab.nixContainers.enable {
+
     containers.navidrome = {
       autoStart = true;
       bindMounts."/Music".hostPath = "/mnt/Media/Music";

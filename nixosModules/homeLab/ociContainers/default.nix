@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.homeLab.ociContainers.enable {
+
+    apps.podman.enable = lib.mkDefault true;
+    
     virtualisation.oci-containers.containers = {
       audiobookshelf = {
         ports = [ "0.0.0.0:13378:80" ];

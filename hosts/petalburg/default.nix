@@ -81,15 +81,17 @@ in {
     desktopEnvironments.gnome.enable = true;
   };
 
-  apps = {
-    flatpak.enable = true;
-    steam.enable = false;
+  systemConfig = {
+    plymouth.enable = true;
+    zramSwap.enable = true;
   };
 
-  homeLab.virtualization.enable = true;
-
-  systemConfig.plymouth.enable = true;
-  systemConfig.zramSwap.enable = true;
+  apps = {
+    flatpak.enable = true;
+    podman.enable = true;
+    steam.enable = true;
+    virt-manager.enable = true;
+  };
 
   system.stateVersion = "23.11";
 }

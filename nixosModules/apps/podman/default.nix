@@ -1,15 +1,13 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    homeLab.virtualization.enable =
-      lib.mkEnableOption "Enables podman and virt-manager virtualization.";
+    apps.podman.enable =
+      lib.mkEnableOption "Enables Podman for OCI container support.";
   };
 
-  config = lib.mkIf config.homeLab.virtualization.enable {
-    programs.virt-manager.enable = true;
+  config = lib.mkIf config.apps.podman.enable {
 
     virtualisation = {
-      libvirtd.enable = true;
       oci-containers = { backend = "podman"; };
       podman = {
         # Required for containers under podman-compose to be able to talk to each other.
@@ -17,5 +15,6 @@
         enable = true;
       };
     };
+
   };
 }
