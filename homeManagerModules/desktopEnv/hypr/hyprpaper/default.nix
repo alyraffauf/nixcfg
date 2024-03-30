@@ -8,9 +8,7 @@
   config = lib.mkIf config.desktopEnv.hyprland.hyprpaper.enable {
 
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [
-      hyprpaper
-    ];
+    home.packages = with pkgs; [ hyprpaper ];
 
     xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
 

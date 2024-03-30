@@ -8,9 +8,7 @@
   config = lib.mkIf config.desktopEnv.hyprland.hyprshade.enable {
 
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [
-      hyprshade
-    ];
+    home.packages = with pkgs; [ hyprshade ];
 
     xdg.configFile."hypr/shaders/blue-light-filter.glsl".source =
       ./blue-light-filter.glsl;
