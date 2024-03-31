@@ -1,0 +1,103 @@
+{
+    "output": {
+        "blocklist": [],
+        "equalizer": {
+            "balance": 0.0,
+            "bypass": false,
+            "input-gain": 0.0,
+            "left": {
+                "band0": {
+                    "frequency": 101.0,
+                    "gain": -18.1,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 4.36,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Lo-shelf"
+                },
+                "band1": {
+                    "frequency": 451.0,
+                    "gain": -5.48,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.46,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell"
+                },
+                "band2": {
+                    "frequency": 918.0,
+                    "gain": -4.76,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.44,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell"
+                },
+                "band3": {
+                    "frequency": 9700.0,
+                    "gain": 8.1,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.0,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell"
+                }
+            },
+            "mode": "IIR",
+            "num-bands": 4,
+            "output-gain": 0.0,
+            "pitch-left": 0.0,
+            "pitch-right": 0.0,
+            "right": {
+                "band0": {
+                    "frequency": 101.0,
+                    "gain": -18.1,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 4.36,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Lo-shelf"
+                },
+                "band1": {
+                    "frequency": 451.0,
+                    "gain": -5.48,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.46,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell"
+                },
+                "band2": {
+                    "frequency": 918.0,
+                    "gain": -4.76,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.44,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell"
+                },
+                "band3": {
+                    "frequency": 9700.0,
+                    "gain": 8.1,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.0,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell"
+                }
+            },
+            "split-channels": false
+        },
+        "plugins_order": [
+            "equalizer"
+        ]
+    }
+}
