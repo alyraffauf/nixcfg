@@ -21,6 +21,7 @@
     guiApps.fuzzel.enable = lib.mkDefault true;
     guiApps.wlogout.enable = lib.mkDefault true;
     guiApps.alacritty.enable = lib.mkDefault true;
+    guiApps.firefox.enable = lib.mkDefault true;
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
