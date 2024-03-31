@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./gnome ./hypr ];
+  imports = [ ./gnome ./hypr ./sway ];
 
   desktopEnv.hyprland.enable = lib.mkDefault true;
 }
