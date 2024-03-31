@@ -26,6 +26,10 @@
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
+  systemConfig = {
+    zramSwap.enable = true;
+  };
+
   homeLab.enable = true;
   desktopConfig.enable = true;
 
