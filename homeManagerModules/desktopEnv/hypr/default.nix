@@ -46,8 +46,6 @@
 
     services.cliphist.enable = true;
 
-    services.gpg-agent.enable = true;
-
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig = builtins.readFile ./hyprland.conf;
