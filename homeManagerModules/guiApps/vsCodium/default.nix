@@ -26,8 +26,8 @@
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
         "git.confirmSync" = false;
-        "nix.formatterPath" = "nixfmt";
-        "terminal.external.linuxExec" = "alacritty";
+        "nix.formatterPath" = "${pkgs.nixfmt}/bin/nixfmt";
+        "terminal.external.linuxExec" = "${pkgs.alacritty}/bin/alacritty";
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.zoomPerWindow" = false;

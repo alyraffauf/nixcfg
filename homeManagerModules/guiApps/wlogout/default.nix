@@ -8,19 +8,19 @@
       layout = [
         {
           label = "logout";
-          action = "loginctl terminate-user $USER";
+          action = "${pkgs.systemd}/bin/loginctl terminate-user $USER";
           text = "Logout";
           keybind = "e";
         }
         {
           label = "shutdown";
-          action = "systemctl poweroff";
+          action = "${pkgs.systemd}/bin/systemctl poweroff";
           text = "Shutdown";
           keybind = "s";
         }
         {
           label = "reboot";
-          action = "systemctl reboot";
+          action = "${pkgs.systemd}/bin/systemctl reboot";
           text = "Reboot";
           keybind = "r";
         }

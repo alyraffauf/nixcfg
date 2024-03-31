@@ -4,7 +4,12 @@
 
   config = lib.mkIf config.guiApps.waybar.enable {
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [ blueberry pavucontrol ];
+    home.packages = with pkgs; [
+      blueberry
+      pavucontrol
+      (nerdfonts.override { fonts = [ "Noto" ]; })
+      nixfmt
+    ];
 
     xdg.configFile."waybar/style.css".source = ./waybar.css;
 
@@ -57,7 +62,7 @@
             {device_enumerate}'';
           "tooltip-format-enumerate-connected" =
             "{device_alias}	{device_address}";
-          "on-click" = "blueberry";
+          "on-click" = "${pkgs.blueberry}/bin/blueberry";
         };
         "pulseaudio" = {
           "format" = "　{volume}%";
@@ -68,7 +73,7 @@
             "handsfree" = "󰋎";
             "headset" = "󰋎";
           };
-          "on-click" = "pavucontrol -t 3";
+          "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
         };
         "network" = {
           "format-wifi" = "󰣾　{signalStrength}%";
@@ -78,7 +83,8 @@
           "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰣾";
           "tooltip-format-ethernet" = "{ifname} ";
           "tooltip-format-disconnected" = "Disconnected";
-          "on-click" = "alacritty --class nmtui -e nmtui";
+          "on-click" =
+            "${pkgs.alacritty}/bin/alacritty --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
         };
         "tray" = { "spacing" = 10; };
         "power-profiles-daemon" = {

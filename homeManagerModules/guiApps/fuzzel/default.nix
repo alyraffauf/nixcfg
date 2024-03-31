@@ -3,6 +3,15 @@
   options = { guiApps.fuzzel.enable = lib.mkEnableOption "Enables fuzzel."; };
 
   config = lib.mkIf config.guiApps.fuzzel.enable {
+
+    home.packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "Noto" ]; })
+      (catppuccin-papirus-folders.override {
+        flavor = "frappe";
+        accent = "mauve";
+      })
+    ];
+
     programs.fuzzel = {
       enable = true;
       settings = {
@@ -19,6 +28,7 @@
           selection-match = "#e78284FF";
           selection-text = "#f4b8e4FF";
           text = "#fafafaFF";
+          border = "#ca9ee6aa";
         };
       };
     };

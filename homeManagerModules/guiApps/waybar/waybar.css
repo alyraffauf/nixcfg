@@ -5,26 +5,41 @@
     font-size: 14px;
     font-weight: 600;
 }
+
 window#waybar {
     background: rgba (35, 38, 52, 0.8);
     color: #FAFAFA;
 }
+
 #workspaces button {
     padding: 0px 5px;
     margin: 0 0px;
     color: #FAFAFA;
 }
+
 #workspaces button.active {
     color: #ca9ee6;
 }
-#clock, #battery, #bluetooth, #network, #power-profiles-daemon, #pulseaudio, #tray {
+
+#clock,
+#battery,
+#bluetooth,
+#network,
+#power-profiles-daemon,
+#pulseaudio,
+#tray {
     padding: 0 10px;
     margin: 0 5px;
 }
-#battery { color: #FAFAFA; }
+
+#battery {
+    color: #FAFAFA;
+}
+
 #battery.charging {
     color: #ca9ee6;
 }
+
 #battery.critical:not(.charging) {
     color: #e78284;
 }
