@@ -83,7 +83,9 @@ in {
 
   systemConfig = {
     plymouth.enable = true;
-    zramSwap.enable = true;
+    zramSwap = {
+      enable = true;
+    };
   };
 
   apps = {

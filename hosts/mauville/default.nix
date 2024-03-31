@@ -27,7 +27,10 @@
   };
 
   systemConfig = {
-    zramSwap.enable = true;
+    zramSwap = {
+      enable = true;
+      size = 100;
+    };
   };
 
   homeLab.enable = true;
