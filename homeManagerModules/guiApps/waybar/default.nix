@@ -72,7 +72,7 @@
             "handsfree" = "󰋎";
             "headset" = "󰋎";
           };
-          "ignored-sinks" = "Easy Effects Sink";
+          "ignored-sinks" = ["Easy Effects Sink"];
           "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
         };
         "network" = {
