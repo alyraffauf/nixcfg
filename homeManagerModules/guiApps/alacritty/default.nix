@@ -13,6 +13,7 @@
             foreground = "#fafafa";
             background = "#232634";
           };
+          transparent_background_colors = true;
           draw_bold_text_with_bright_colors = true;
         };
         font = {
@@ -20,7 +21,7 @@
             family = "NotoSansM Nerd Font";
             style = "Regular";
           };
-          size = 10;
+          size = 11;
         };
         selection.save_to_clipboard = true;
         window = {
