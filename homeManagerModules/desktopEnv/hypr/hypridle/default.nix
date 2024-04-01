@@ -43,7 +43,7 @@
 
       listener {
           timeout = 900                                 # 15min
-          on-timeout = grep [[ $(hostname) != "mauville" ]] && ${pkgs.systemd}/bin/systemctl suspend # suspend pc unless on mauville
+          on-timeout = grep [[ $(${pkgs.nettools}/bin/hostname) != "mauville" ]] && ${pkgs.systemd}/bin/systemctl suspend # suspend pc unless on mauville
       }
     '';
   };
