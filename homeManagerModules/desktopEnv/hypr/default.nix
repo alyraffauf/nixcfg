@@ -106,21 +106,12 @@
       qt_platform_theme = "gtk";
 
     in ''
-      # For lavaridge.
-      monitor=desc:BOE 0x0BCA,preferred,auto,1.566667
-      monitor=desc:BOE 0x095F,preferred,auto,1.566667
-
-      # For mauville.
-      monitor=desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2
-
-      # For rustboro.
-      monitor=desc:LG Display 0x0569,preferred,auto,1.2
-
-      # For petalburg.
-      monitor=desc:Samsung Display Corp. 0x4152,preferred,auto,2
-
-      # Workshop monitor.
-      monitor=desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2560x0,1.5
+      monitor=desc:BOE 0x0BCA,preferred,auto,1.566667 # lavaridge fw13 matte display
+      monitor=desc:BOE 0x095F,preferred,auto,1.566667# lavaridge fw13 glossy display
+      monitor=desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
+      monitor=desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
+      monitor=desc:Samsung Display Corp. 0x4152,preferred,auto,2 # petalburg
+      monitor=desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2560x0,1.5 # workshop
 
       # Use best settings for all other monitors.
       monitor=,preferred,auto,auto
@@ -135,16 +126,15 @@
 
       # Some default env vars.
       env = XCURSOR_SIZE,${cursor_size}
-      # env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
+      env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
-      # Execute your favorite apps at launch
+      # Execute necessary apps
       exec-once = ${pkgs.hyprshade} auto
       exec-once = ${wallpaperd}
       exec-once = ${bar}
       exec-once = ${notifyd}
-      exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store #Stores only text data
-      exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store #Stores only image data
-      exec-once = ${idle}
+      exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store
+      exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
@@ -190,6 +180,7 @@
 
           dim_special = 0.5
 
+          # Window-specific rules
           layerrule = blur, waybar
           layerrule = ignorezero, waybar
           layerrule = blur, launcher
