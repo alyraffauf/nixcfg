@@ -65,7 +65,7 @@
       # Delete generations older than 7 days.
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 3d";
       randomizedDelaySec = "60min";
     };
     # Run GC when there is less than 100MiB left.
