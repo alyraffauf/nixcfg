@@ -11,7 +11,7 @@
               priority = 1;
               name = "ESP";
               start = "1M";
-              end = "512M";
+              end = "1024M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -30,9 +30,9 @@
                   # Subvolume name is different from mountpoint
                   "rootfs" = { mountpoint = "/"; };
                   # For use with future impermanence setups
-                  "persistent" = {
+                  "persist" = {
                     mountpoint = "/persist";
-                    mountOptions = [ "compress=zstd" ];
+                    mountOptions = [ "compress=zstd" "noatime" ];
                   };
                   # Subvolume name is the same as the mountpoint
                   "home" = {
