@@ -7,7 +7,16 @@
 
   config = lib.mkIf config.desktopConfig.windowManagers.hyprland.enable {
 
-    desktopConfig.displayManagers.lightdm.enable = lib.mkDefault true;
+    desktopConfig.displayManagers.lightdm.enable = lib.mkDefault false;
+
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        };
+      };
+    };
 
     programs.hyprland.enable = true;
     programs.hyprland.package =
