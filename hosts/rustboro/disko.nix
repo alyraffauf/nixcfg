@@ -44,8 +44,11 @@
                     mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
+                  "var" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/var";
+                  };
                 };
-
                 mountpoint = "/partition-root";
               };
             };
