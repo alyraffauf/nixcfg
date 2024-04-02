@@ -98,13 +98,14 @@
       screenshot_folder = "~/Pictures/Screenshots";
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
 
-      # Colors
+      # Color, themes, scaling
       border_primary = "ca9ee6ee";
       border_secondary = "99d1dbee";
       border_inactive = "303446aa";
       drop_shadow = "1a1a1aee";
       cursor_size = "24";
       qt_platform_theme = "gtk";
+      gdk_scale = "1.5";
 
     in ''
     monitor = desc:BOE 0x0BCA,preferred,auto,1.566667 # lavaridge fw13 matte display
@@ -123,7 +124,7 @@
     }
 
     # toolkit-specific scale
-    env = GDK_SCALE,1.5
+    env = GDK_SCALE,${gdk_scale}
 
     # Some default env vars.
     env = XCURSOR_SIZE,${cursor_size}

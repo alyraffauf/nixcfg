@@ -6,12 +6,15 @@
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
     ./home.nix
+    ./disko.nix
   ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = false;
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
 
   networking.hostName = "rustboro"; # Define your hostname.
 
@@ -34,6 +37,9 @@
     flatpak.enable = true;
     steam.enable = false;
   };
+
+  users.users.aly.hashedPassword =
+    "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }
