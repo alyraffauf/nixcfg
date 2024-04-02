@@ -23,6 +23,8 @@
     disko-unstable.url = "github:nix-community/disko";
     disko-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     # Latest Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -40,7 +42,7 @@
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager
-    , home-manager-unstable, nixos-hardware, disko, disko-unstable, ... }: {
+    , home-manager-unstable, nixos-hardware, impermanence, disko, disko-unstable, ... }: {
 
       homeConfigurations.aly =
         home-manager-unstable.lib.homeManagerConfiguration {
@@ -92,6 +94,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             disko-unstable.nixosModules.disko
+            impermanence.nixosModules.impermanence
             nixos-hardware.nixosModules.lenovo-thinkpad-t440p
             home-manager-unstable.nixosModules.home-manager
             ./hosts/rustboro
