@@ -1,18 +1,17 @@
 {
   disko.devices = {
     disk = {
-      main = {
+      vdb = {
         type = "disk";
         device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
-            boot = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-            };
             ESP = {
-              size = "512M";
+              priority = 1;
+              name = "ESP";
+              start = "1M";
+              end = "128M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -23,9 +22,31 @@
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                # Subvolumes must set a mountpoint in order to be mounted,
+                # unless their parent is mounted
+                subvolumes = {
+                  # Subvolume name is different from mountpoint
+                  "rootfs" = { mountpoint = "/"; };
+                  # For use with future impermanence setups
+                  "persistent" = {
+                    mountpoint = "/persistent";
+                    mountOptions = [ "compress=zstd" ];
+                  };
+                  # Subvolume name is the same as the mountpoint
+                  "home" = {
+                    mountOptions = [ "compress=zstd" ];
+                    mountpoint = "/home";
+                  };
+                  # Parent is not mounted so the mountpoint must be set
+                  "nix" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountpoint = "/nix";
+                  };
+                };
+
+                mountpoint = "/partition-root";
               };
             };
           };

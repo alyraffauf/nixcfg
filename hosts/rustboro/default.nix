@@ -9,11 +9,10 @@
     ./disko.nix
   ];
 
-  # Bootloader.
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+  boot = {
+    # Bootloader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
   };
 
   networking.hostName = "rustboro"; # Define your hostname.
