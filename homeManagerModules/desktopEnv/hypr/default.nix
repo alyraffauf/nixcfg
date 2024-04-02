@@ -132,6 +132,7 @@
 
     # Execute necessary apps
     exec-once = ${pkgs.hyprshade} auto
+    exec-once = ${pkgs.hypridle}/bin/hypridle
     exec-once = ${wallpaperd}
     exec-once = ${bar}
     exec-once = ${notifyd}
