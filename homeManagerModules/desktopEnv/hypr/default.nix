@@ -104,7 +104,7 @@
       border_inactive = "303446aa";
       drop_shadow = "1a1a1aee";
       cursor_size = "24";
-      qt_platform_theme = "gtk";
+      qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
 
     in ''
