@@ -95,7 +95,7 @@
       media_previous = "${media} previous";
 
       screenshot = "${pkgs.hyprshot}/bin/hyprshot";
-      screenshot_folder = "~/Pictures/Screenshots";
+      screenshot_folder = "~/pics/screenshots";
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
 
       # Color, themes, scaling
