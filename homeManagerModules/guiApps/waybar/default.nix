@@ -34,7 +34,12 @@
 
         "hyprland/workspaces" = {
           "all-outputs" = true;
-          "format" = "󰧞";
+          "format" = "{icon}";
+          "format-icons" = {
+            "default" = "󰝥";
+            "active" = "󰪥";
+          };
+          "persistent-workspaces" = { "*" = 4; };
         };
         "hyprland/window" = { "max-length" = 100; };
         "clock" = {
@@ -72,7 +77,7 @@
             "handsfree" = "󰋎";
             "headset" = "󰋎";
           };
-          "ignored-sinks" = ["Easy Effects Sink"];
+          "ignored-sinks" = [ "Easy Effects Sink" ];
           "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
         };
         "network" = {
