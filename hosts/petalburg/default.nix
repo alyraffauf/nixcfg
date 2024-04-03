@@ -77,8 +77,7 @@ in {
 
   desktopConfig = {
     enable = true;
-    windowManagers.hyprland.enable = false;
-    desktopEnvironments.gnome.enable = true;
+    windowManagers.hyprland.enable = true;
   };
 
   systemConfig = {

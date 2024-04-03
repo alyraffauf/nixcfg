@@ -12,16 +12,13 @@
     desktopEnv.hyprland.enable = true;
   };
 
-  userConfig.dustin.enable = true;
-  home-manager.users.dustin = {
-    imports = [ ../../homeManagerModules ];
-    home.username = "dustin";
-    home.homeDirectory = "/home/dustin";
+  # userConfig.dustin.enable = true;
+  # home-manager.users.dustin = {
+  #   imports = [ ../../homeManagerModules ];
+  #   home.username = "dustin";
+  #   home.homeDirectory = "/home/dustin";
 
-    home.stateVersion = "23.11";
-    programs.home-manager.enable = true;
-
-    desktopEnv.hyprland.enable = false;
-    desktopEnv.gnome.enable = true;
-  };
+  #   home.stateVersion = "23.11";
+  #   programs.home-manager.enable = true;
+  # };
 }
