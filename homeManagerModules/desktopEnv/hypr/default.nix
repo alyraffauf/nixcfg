@@ -28,6 +28,7 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
       brightnessctl
+      celluloid
       evince
       hyprcursor
       hyprland-protocols
