@@ -89,6 +89,7 @@
       volume_up = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%+";
       volume_down = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%-";
       volume_mute = "${volume} set-mute @DEFAULT_SINK@ toggle";
+      mic_mute = "${volume} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
       media = "${pkgs.playerctl}/bin/playerctl";
       media_play = "${media} play-pause";
       media_next = "${media} next";
@@ -114,8 +115,6 @@
     monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
     monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2 # petalburg
     monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2560x0,1.5 # workshop
-
-    # Use best settings for all other monitors.
     monitor=,preferred,auto,auto
 
     # unscale XWayland apps
@@ -131,7 +130,7 @@
     env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
     # Execute necessary apps
-    exec-once = ${pkgs.hyprshade} auto
+    exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
     exec-once = ${pkgs.hypridle}/bin/hypridle
     exec-once = ${wallpaperd}
     exec-once = ${bar}
@@ -231,98 +230,93 @@
     windowrulev2 = float,class:(pavucontrol)
     windowrulev2 = suppressevent maximize, class:.*
 
-    # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-    $mainMod = ${modifier}
-
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-    bind = $mainMod, T, exec, ${terminal}
-    bind = $mainMod, F, exec, ${fileManager}
-    bind = $mainMod, B, exec, ${browser}
-    bind = $mainMod, E, exec, ${editor}
-
-    bind = $mainMod, R, exec, ${launcher}
+    bind = ${modifier}, T, exec, ${terminal}
+    bind = ${modifier}, F, exec, ${fileManager}
+    bind = ${modifier}, B, exec, ${browser}
+    bind = ${modifier}, E, exec, ${editor}
+    bind = ${modifier}, R, exec, ${launcher}
 
     # Manage session.
-    bind = $mainMod, C, killactive, 
-    bind = $mainMod, M, exec, ${logout}
-    bind = $mainMod, L, exec, ${lock}
+    bind = ${modifier}, C, killactive, 
+    bind = ${modifier}, M, exec, ${logout}
+    bind = ${modifier}, L, exec, ${lock}
 
     # Basic window management.
-    bind = $mainMod SHIFT, W, fullscreen
-    bind = $mainMod SHIFT, V, togglefloating, 
-    bind = $mainMod SHIFT, P, pseudo, # dwindle
-    bind = $mainMod SHIFT, J, togglesplit, # dwindle
+    bind = ${modifier} SHIFT, W, fullscreen
+    bind = ${modifier} SHIFT, V, togglefloating, 
+    bind = ${modifier} SHIFT, P, pseudo, # dwindle
+    bind = ${modifier} SHIFT, J, togglesplit, # dwindle
 
     # Move focus with mainMod + arrow keys
-    bind = $mainMod, left, movefocus, l
-    bind = $mainMod, right, movefocus, r
-    bind = $mainMod, up, movefocus, u
-    bind = $mainMod, down, movefocus, d
+    bind = ${modifier}, left, movefocus, l
+    bind = ${modifier}, right, movefocus, r
+    bind = ${modifier}, up, movefocus, u
+    bind = ${modifier}, down, movefocus, d
 
     # Gnome-like workspaces.
-    bind = $mainMod, 1, exec, ${hyprnome} --previous
-    bind = $mainMod, 2, exec, ${hyprnome}
-    bind = $mainMod SHIFT, 1, exec, ${hyprnome} --previous --move
-    bind = $mainMod SHIFT, 2, exec, ${hyprnome} --move
+    bind = ${modifier}, 1, exec, ${hyprnome} --previous
+    bind = ${modifier}, 2, exec, ${hyprnome}
+    bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
+    bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
 
     # # Switch workspaces with mainMod + [0-9]
-    # bind = $mainMod, 1, workspace, 1
-    # bind = $mainMod, 2, workspace, 2
-    # bind = $mainMod, 3, workspace, 3
-    # bind = $mainMod, 4, workspace, 4
-    # bind = $mainMod, 5, workspace, 5
-    # bind = $mainMod, 6, workspace, 6
-    # bind = $mainMod, 7, workspace, 7
-    # bind = $mainMod, 8, workspace, 8
-    # bind = $mainMod, 9, workspace, 9
-    # bind = $mainMod, 0, workspace, 10
+    # bind = ${modifier}, 1, workspace, 1
+    # bind = ${modifier}, 2, workspace, 2
+    # bind = ${modifier}, 3, workspace, 3
+    # bind = ${modifier}, 4, workspace, 4
+    # bind = ${modifier}, 5, workspace, 5
+    # bind = ${modifier}, 6, workspace, 6
+    # bind = ${modifier}, 7, workspace, 7
+    # bind = ${modifier}, 8, workspace, 8
+    # bind = ${modifier}, 9, workspace, 9
+    # bind = ${modifier}, 0, workspace, 10
 
     # # Move active window to a workspace with mainMod + SHIFT + [0-9]
-    # bind = $mainMod SHIFT, 1, movetoworkspace, 1
-    # bind = $mainMod SHIFT, 2, movetoworkspace, 2
-    # bind = $mainMod SHIFT, 3, movetoworkspace, 3
-    # bind = $mainMod SHIFT, 4, movetoworkspace, 4
-    # bind = $mainMod SHIFT, 5, movetoworkspace, 5
-    # bind = $mainMod SHIFT, 6, movetoworkspace, 6
-    # bind = $mainMod SHIFT, 7, movetoworkspace, 7
-    # bind = $mainMod SHIFT, 8, movetoworkspace, 8
-    # bind = $mainMod SHIFT, 9, movetoworkspace, 9
-    # bind = $mainMod SHIFT, 0, movetoworkspace, 10
+    # bind = ${modifier} SHIFT, 1, movetoworkspace, 1
+    # bind = ${modifier} SHIFT, 2, movetoworkspace, 2
+    # bind = ${modifier} SHIFT, 3, movetoworkspace, 3
+    # bind = ${modifier} SHIFT, 4, movetoworkspace, 4
+    # bind = ${modifier} SHIFT, 5, movetoworkspace, 5
+    # bind = ${modifier} SHIFT, 6, movetoworkspace, 6
+    # bind = ${modifier} SHIFT, 7, movetoworkspace, 7
+    # bind = ${modifier} SHIFT, 8, movetoworkspace, 8
+    # bind = ${modifier} SHIFT, 9, movetoworkspace, 9
+    # bind = ${modifier} SHIFT, 0, movetoworkspace, 10
 
     # Example special workspace (scratchpad)
-    bind = $mainMod, S, togglespecialworkspace, magic
-    bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+    bind = ${modifier}, S, togglespecialworkspace, magic
+    bind = ${modifier} SHIFT, S, movetoworkspace, special:magic
 
     # Scroll through existing workspaces with mainMod + scroll
-    bind = $mainMod, mouse_down, workspace, e+1
-    bind = $mainMod, mouse_up, workspace, e-1
+    bind = ${modifier}, mouse_down, workspace, e+1
+    bind = ${modifier}, mouse_up, workspace, e-1
 
     # Move/resize windows with mainMod + LMB/RMB and dragging
-    bindm = $mainMod, mouse:272, movewindow
-    bindm = $mainMod, mouse:273, resizewindow
+    bindm = ${modifier}, mouse:272, movewindow
+    bindm = ${modifier}, mouse:273, resizewindow
 
-    # Adjust display brightness.
+    # Display, volume, microphone, and media keys.
     bindle = , xf86monbrightnessup, exec, ${brightness_up}
     bindle = , xf86monbrightnessdown, exec, ${brightness_down}
-
-    # Adjust volume and play/pause.
     bindle = , xf86audioraisevolume, exec, ${volume_up};
     bindle = , xf86audiolowervolume, exec, ${volume_down};
     bindl = , xf86audiomute, exec, ${volume_mute}
+    bindl = , xf86audiomicmute, exec, ${mic_mute}
     bindl = , xf86audioplay, exec, ${media_play}
     bindl = , xf86audioprev, exec, ${media_previous}
     bindl = , xf86audionext, exec, ${media_next}
 
     # Extra bindings for petalburg.
     bind = , xf86launch4, exec, pp-adjuster
-    # bind = ,xf86launch1, exec, cs-adjuster
+    bind = , xf86launch1, exec, ${pkgs.hyprshade}/bin/hyprshade toggle
     bind = , xf86launch2, exec, ${media_play}
 
     # Screenshot with hyprshot.
     bind = , PRINT, exec, ${screenshot_screen}
 
     # Show/hide waybar.
-    bind = $mainMod, F11, exec, pkill -SIGUSR1 waybar
+    bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
     '';
 
   };
