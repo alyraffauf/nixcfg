@@ -1,8 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    desktopEnv.sway.enable =
-      lib.mkEnableOption "Sway with extra apps.";
+    desktopEnv.sway.enable = lib.mkEnableOption "Sway with extra apps.";
   };
 
   config = lib.mkIf config.desktopEnv.sway.enable {
@@ -47,7 +46,7 @@
 
     xdg.portal = {
       enable = true;
-      configPackages = [ pkgs.xdg-desktop-portal-wlr];
+      configPackages = [ pkgs.xdg-desktop-portal-wlr ];
       extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
     };
 

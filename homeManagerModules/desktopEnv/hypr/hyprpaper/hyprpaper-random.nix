@@ -30,6 +30,7 @@ in {
       # Packages that should be installed to the user profile.
       home.packages = with pkgs; [ hyprpaper-random ];
 
-      wayland.windowManager.hyprland.extraConfig = "exec-once = ${hyprpaper-random}/bin/hyprpaper-random";
+      wayland.windowManager.hyprland.extraConfig =
+        "exec-once = ${hyprpaper-random}/bin/hyprpaper-random";
     };
 }

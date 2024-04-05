@@ -8,7 +8,7 @@
   config = lib.mkIf config.homeLab.ociContainers.enable {
 
     apps.podman.enable = lib.mkDefault true;
-    
+
     virtualisation.oci-containers.containers = {
       audiobookshelf = {
         ports = [ "0.0.0.0:13378:80" ];
@@ -57,7 +57,7 @@
         ports = [ "0.0.0.0:8080:80" ];
         image = "freshrss/freshrss:latest";
         environment = {
-          TZ = "America/New_York"; 
+          TZ = "America/New_York";
           CRON_MIN = "1,31";
         };
         volumes = [

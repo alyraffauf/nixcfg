@@ -10,7 +10,7 @@
       allowUnfree = true;
     };
   };
-  
+
   xdg.userDirs = {
     enable = true;
     createDirectories = true;

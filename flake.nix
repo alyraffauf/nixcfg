@@ -42,7 +42,8 @@
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager
-    , home-manager-unstable, nixos-hardware, impermanence, disko, disko-unstable, ... }: {
+    , home-manager-unstable, nixos-hardware, impermanence, disko, disko-unstable
+    , ... }: {
 
       homeConfigurations.aly =
         home-manager-unstable.lib.homeManagerConfiguration {

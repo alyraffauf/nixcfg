@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }: {
 
-  options = { cliApps.neofetch.enable = lib.mkEnableOption "Enable neofetch."; };
+  options = {
+    cliApps.neofetch.enable = lib.mkEnableOption "Enable neofetch.";
+  };
 
   config = lib.mkIf config.cliApps.neofetch.enable {
 

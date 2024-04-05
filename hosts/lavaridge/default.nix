@@ -28,9 +28,7 @@
 
   systemConfig = {
     plymouth.enable = true;
-    zramSwap = {
-      enable = true;
-    };
+    zramSwap = { enable = true; };
   };
 
   desktopConfig = {

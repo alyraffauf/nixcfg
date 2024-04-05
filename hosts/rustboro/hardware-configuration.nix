@@ -19,9 +19,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/persist" = {
-    neededForBoot = true;
-  };
+  fileSystems."/persist" = { neededForBoot = true; };
 
   networking.useDHCP = lib.mkDefault true;
 
