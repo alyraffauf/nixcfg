@@ -9,16 +9,10 @@
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
 
-    desktopEnv.hyprland.enable = true;
+    userServices.easyeffects = {
+      enable = true;
+      preset = "LoudnessEqualizer.json";
+    };
   };
 
-  # userConfig.dustin.enable = true;
-  # home-manager.users.dustin = {
-  #   imports = [ ../../homeManagerModules ];
-  #   home.username = "dustin";
-  #   home.homeDirectory = "/home/dustin";
-
-  #   home.stateVersion = "23.11";
-  #   programs.home-manager.enable = true;
-  # };
 }
