@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ ./network.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
+  imports = [ ./network.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
 
   systemConfig.power-profiles-daemon.enable = lib.mkDefault true;
 
@@ -102,10 +101,14 @@
       auto-optimise-store = true;
       # Enable experimental `nix` command and flakes.
       experimental-features = [ "nix-command" "flakes" ];
-      substituters =
-        [ "https://nixcache.raffauflabs.com" "https://cache.nixos.org/" ];
+      substituters = [
+        "https://nixcache.raffauflabs.com"
+        "https://cache.nixos.org/"
+        "https://hyprland.cachix.org"
+      ];
       trusted-public-keys = [
         "nixcache.raffauflabs.com:yFIuJde/izA4aUDI3MZmBLzynEsqVCT1OfCUghOLlt8="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
   };
