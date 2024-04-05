@@ -2,7 +2,7 @@
 
 {
   imports =
-    [ ./network.nix ./sound.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
+    [ ./network.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
 
   systemConfig.power-profiles-daemon.enable = lib.mkDefault true;
 
@@ -25,6 +25,11 @@
     };
   };
 
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   hardware = {
     # Enable Bluetooth connections.
     bluetooth.enable = true;
@@ -35,15 +40,34 @@
     };
     # Add support for configuring QMK keyboards with Via.
     keyboard.qmk.enable = true;
+
+    pulseaudio = {
+      enable = lib.mkForce false;
+      # Enables extra codecs like aptx.
+      package = pkgs.pulseaudioFull;
+    };
   };
 
-  services.logind.extraConfig = ''
-    # Don't shutdown when power button is short-pressed
-    HandlePowerKey=suspend
-    HandlePowerKeyLongPress=poweroff
-  '';
+  sound.enable = true;
 
-  security.polkit.enable = true;
+  services = {
+    logind.extraConfig = ''
+      # Don't shutdown when power button is short-pressed
+      HandlePowerKey=suspend
+      HandlePowerKeyLongPress=poweroff
+    '';
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+  };
+
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -31,11 +31,6 @@
     ];
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   services = {
     # Enable avahi for auto network discovery.
     avahi = {
