@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [ ./cliApps ./guiApps ./desktopEnv ./userServices ];
@@ -14,14 +14,14 @@
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
-    desktop = "${config.home.homeDirectory}/dsktp";
-    documents = "${config.home.homeDirectory}/docs";
-    download = "${config.home.homeDirectory}/dwnlds";
-    music = "${config.home.homeDirectory}/music";
-    videos = "${config.home.homeDirectory}/vids";
-    pictures = "${config.home.homeDirectory}/pics";
-    publicShare = "${config.home.homeDirectory}/pub";
-    templates = "${config.home.homeDirectory}/tmplts";
+    desktop = lib.mkDefault "${config.home.homeDirectory}/dsktp";
+    documents = lib.mkDefault "${config.home.homeDirectory}/docs";
+    download = lib.mkDefault "${config.home.homeDirectory}/dwnlds";
+    music = lib.mkDefault "${config.home.homeDirectory}/music";
+    videos = lib.mkDefault "${config.home.homeDirectory}/vids";
+    pictures = lib.mkDefault "${config.home.homeDirectory}/pics";
+    publicShare = lib.mkDefault "${config.home.homeDirectory}/pub";
+    templates = lib.mkDefault "${config.home.homeDirectory}/tmplts";
     extraConfig = { XDG_SRC_DIR = "${config.home.homeDirectory}/src"; };
   };
 }
