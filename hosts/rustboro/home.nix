@@ -15,6 +15,11 @@
     programs.home-manager.enable = true;
 
     desktopEnv.hyprland.hyprpaper.randomWallpaper.enable = false;
+
+    userServices.easyeffects = {
+      enable = true;
+      preset = "LoudnessEqualizer.json";
+    };
   };
 
   users.users.aly.hashedPassword =
@@ -27,5 +32,10 @@
 
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
+
+    userServices.easyeffects = {
+      enable = true;
+      preset = "LoudnessEqualizer.json";
+    };
   };
 }

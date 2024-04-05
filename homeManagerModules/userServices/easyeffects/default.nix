@@ -15,6 +15,9 @@
     xdg.configFile."easyeffects/output/framework13.json".source =
       ./framework13.json;
 
+    xdg.configFile."easyeffects/output/LoudnessEqualizer.json".source =
+      ./LoudnessEqualizer.json;
+
     services.easyeffects = {
       enable = true;
       preset = config.userServices.easyeffects.preset;
