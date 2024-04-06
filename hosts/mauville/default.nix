@@ -14,16 +14,6 @@
   services.xserver = {
     # Prevent system sleep after reboot to login screen.
     displayManager.gdm.autoSuspend = false;
-    # Add AMDGPU driver.
-    videoDrivers = [ "amdgpu" ];
-  };
-
-  hardware.opengl = {
-    # Add ROCM annd AMD Vulkan driver.
-    extraPackages = with pkgs; [ rocmPackages.clr.icd amdvlk ];
-    # Add support for 32bit apps.
-    driSupport32Bit = true;
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
   systemConfig = {

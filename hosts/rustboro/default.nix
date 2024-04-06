@@ -42,8 +42,6 @@
 
   networking.hostName = "rustboro"; # Define your hostname.
 
-  powerManagement.cpuFreqGovernor = "ondemand";
-
   systemConfig = {
     plymouth.enable = true;
     zramSwap = {

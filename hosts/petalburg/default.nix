@@ -68,11 +68,6 @@ in {
 
   networking.hostName = "petalburg"; # Define your hostname.
 
-  hardware.sensor.iio.enable = true;
-
-  powerManagement.powertop.enable = true;
-  services.thermald.enable = true;
-
   environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
 
   desktopConfig = {
