@@ -81,6 +81,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            disko-unstable.nixosModules.disko
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             home-manager-unstable.nixosModules.home-manager

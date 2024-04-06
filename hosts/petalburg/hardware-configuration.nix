@@ -36,21 +36,6 @@
   powerManagement.powertop.enable = true;
   services.thermald.enable = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ed744c02-8854-4f1a-8e75-ed15f02775e3";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/37BB-86B6";
-    fsType = "vfat";
-  };
-
-  swapDevices = [{
-    device = "/dev/disk/by-uuid/7a33dbc2-73f7-490b-9aa6-382e119a997e";
-    priority = 1;
-  }];
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
