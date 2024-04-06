@@ -10,7 +10,7 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [ hyprshade ];
 
-    xdg.configFile."hypr/shaders/blue-light-filter.glsl".text = ''
+    xdg.configFile."hypr/shaders/custom-blue-light-filter.glsl".text = ''
       // from https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437
 
       precision highp float;
@@ -57,7 +57,7 @@
     '';
     xdg.configFile."hypr/hyprshade.toml".text = ''
       [[shades]]
-      name = "blue-light-filter"
+      name = "custom-blue-light-filter"
       start_time = 19:00:00
       end_time = 06:00:00
     '';
