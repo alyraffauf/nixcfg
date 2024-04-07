@@ -18,7 +18,7 @@
     qt = {
       enable = true;
       platformTheme = "gtk";
-      style.name = "Catppuccin-Frappe-Compact-Mauve-Dark";
+      style.name = "gtk2";
     };
 
     gtk = {
