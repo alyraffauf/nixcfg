@@ -23,6 +23,8 @@
     programs.hyprland.package =
       inputs.hyprland.packages.${pkgs.system}.hyprland;
 
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+
     nix.settings = {
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [
