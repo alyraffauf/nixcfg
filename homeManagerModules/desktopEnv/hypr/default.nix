@@ -34,6 +34,7 @@
       hyprland-protocols
       hyprnome
       hyprshot
+      kdePackages.polkit-kde-agent-1
       playerctl
       xfce.exo
       xfce.ristretto
@@ -139,6 +140,7 @@
         exec-once = ${notifyd}
         exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store
         exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store
+        exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
