@@ -8,11 +8,6 @@
     networkmanager.enable = true;
 
     firewall.allowedTCPPortRanges = [
-      # KDE Connect
-      {
-        from = 1714;
-        to = 1764;
-      }
       # Soulseek
       {
         from = 2234;
@@ -20,11 +15,6 @@
       }
     ];
     firewall.allowedUDPPortRanges = [
-      # KDE/GS Connect
-      {
-        from = 1714;
-        to = 1764;
-      }
       # Soulseek
       {
         from = 2234;
@@ -40,8 +30,9 @@
       nssmdns4 = true;
       openFirewall = true;
       publish = {
-        addresses = true;
         enable = true;
+        addresses = true;
+        userServices = true;
         workstation = true;
       };
     };
