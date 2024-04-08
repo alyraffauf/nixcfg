@@ -84,6 +84,8 @@
   };
 
   nix = {
+    # Optimize the Nix store on a schedule.
+    optimise.automatic = true;
     gc = {
       # Delete generations older than 7 days.
       automatic = true;
@@ -97,8 +99,8 @@
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
     settings = {
-      # Automatically optimize the Nix store in the background.
-      auto-optimise-store = true;
+      # Automatically optimize the Nix store during every build.
+      auto-optimise-store = false;
       # Enable experimental `nix` command and flakes.
       experimental-features = [ "nix-command" "flakes" ];
       substituters = [
