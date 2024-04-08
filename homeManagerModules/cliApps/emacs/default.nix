@@ -7,7 +7,7 @@
   options = {cliApps.emacs.enable = lib.mkEnableOption "Enables emacs.";};
 
   config = lib.mkIf config.cliApps.emacs.enable {
-    home.packages = with pkgs; [nixfmt python3];
+    home.packages = with pkgs; [python3];
 
     programs.emacs = {
       enable = true;
