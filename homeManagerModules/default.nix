@@ -1,7 +1,10 @@
-{ config, pkgs, lib, ... }:
-
 {
-  imports = [ ./cliApps ./guiApps ./desktopEnv ./userServices ];
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./cliApps ./guiApps ./desktopEnv ./userServices];
 
   nixpkgs = {
     # Configure nixpkgs instance
@@ -22,6 +25,6 @@
     pictures = lib.mkDefault "${config.home.homeDirectory}/pics";
     publicShare = lib.mkDefault "${config.home.homeDirectory}/pub";
     templates = lib.mkDefault "${config.home.homeDirectory}/tmplts";
-    extraConfig = { XDG_SRC_DIR = "${config.home.homeDirectory}/src"; };
+    extraConfig = {XDG_SRC_DIR = "${config.home.homeDirectory}/src";};
   };
 }

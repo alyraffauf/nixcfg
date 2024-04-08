@@ -1,4 +1,8 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./gnome ./plasma ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./gnome ./plasma];
 }

@@ -1,8 +1,9 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 15GB RAM, 512GB SSD.
-
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   cs-adjuster = pkgs.writeShellScriptBin "cs-adjuster" ''
     # Get current color scheme
     color_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
@@ -33,7 +34,7 @@ let
   pp-adjuster = pkgs.writeShellApplication {
     name = "pp-adjuster";
 
-    runtimeInputs = [ pkgs.libnotify pkgs.power-profiles-daemon ];
+    runtimeInputs = [pkgs.libnotify pkgs.power-profiles-daemon];
 
     text = ''
       current_profile=$(powerprofilesctl get | tr -d '[:space:]')
@@ -50,7 +51,6 @@ let
       notify-send "Power profile set to $new_profile."
     '';
   };
-
 in {
   imports = [
     ./disko.nix
@@ -69,7 +69,7 @@ in {
 
   networking.hostName = "petalburg"; # Define your hostname.
 
-  environment.systemPackages = [ cs-adjuster cs-adjuster-plasma pp-adjuster ];
+  environment.systemPackages = [cs-adjuster cs-adjuster-plasma pp-adjuster];
 
   desktopConfig = {
     enable = true;
@@ -78,7 +78,7 @@ in {
 
   systemConfig = {
     plymouth.enable = true;
-    zramSwap = { enable = true; };
+    zramSwap = {enable = true;};
   };
 
   apps = {

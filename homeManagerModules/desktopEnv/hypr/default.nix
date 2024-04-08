@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./hypridle ./hyprlock ./hyprpaper ./hyprshade ./theme.nix ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./hypridle ./hyprlock ./hyprpaper ./hyprshade ./theme.nix];
 
   options = {
     desktopEnv.hyprland.enable =
@@ -8,7 +12,6 @@
   };
 
   config = lib.mkIf config.desktopEnv.hyprland.enable {
-
     # Hypr* modules, plguins, and tools.
     desktopEnv.hyprland.hypridle.enable = lib.mkDefault true;
     desktopEnv.hyprland.hyprlock.enable = lib.mkDefault true;
@@ -58,8 +61,8 @@
 
     xdg.portal = {
       enable = true;
-      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+      configPackages = [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
 
     wayland.windowManager.hyprland.enable = true;
@@ -109,7 +112,6 @@
       cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
-
     in ''
       monitor = desc:BOE 0x0BCA,preferred,auto,1.566667 # lavaridge fw13 matte display
       monitor = desc:BOE 0x095F,preferred,auto,1.566667# lavaridge fw13 glossy display
@@ -242,13 +244,13 @@
         bind = ${modifier}, R, exec, ${launcher}
 
         # Manage session.
-        bind = ${modifier}, C, killactive, 
+        bind = ${modifier}, C, killactive,
         bind = ${modifier}, M, exec, ${logout}
         bind = ${modifier}, L, exec, ${lock}
 
         # Basic window management.
         bind = ${modifier} SHIFT, W, fullscreen
-        bind = ${modifier} SHIFT, V, togglefloating, 
+        bind = ${modifier} SHIFT, V, togglefloating,
         bind = ${modifier} SHIFT, P, pseudo, # dwindle
         bind = ${modifier} SHIFT, J, togglesplit, # dwindle
 
@@ -322,6 +324,5 @@
         # Show/hide waybar.
         bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
     '';
-
   };
 }

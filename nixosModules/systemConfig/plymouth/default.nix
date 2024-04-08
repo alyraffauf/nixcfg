@@ -1,7 +1,12 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
-    systemConfig.plymouth.enable = lib.mkEnableOption
+    systemConfig.plymouth.enable =
+      lib.mkEnableOption
       "Enables plymouth boot screen with reduced text verbosity.";
   };
 

@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     desktopEnv.gnome.enable =
       lib.mkEnableOption "Enables GNOME with basic settings configuration.";
@@ -12,8 +16,7 @@
       "org/gnome/desktop/interface".clock-format = "12h";
       "org/gnome/desktop/interface".enable-hot-corners = true;
       "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
-      "org/gnome/desktop/search-providers".enabled =
-        "['org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']";
+      "org/gnome/desktop/search-providers".enabled = "['org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']";
       "org/gnome/desktop/wm/preferences".auto-raise = true;
       "org/gnome/mutter".dynamic-workspaces = true;
       "org/gnome/mutter".edge-tiling = true;
@@ -42,8 +45,8 @@
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = [ "qemu:///system" ];
-        uris = [ "qemu:///system" ];
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
       };
     };
   };

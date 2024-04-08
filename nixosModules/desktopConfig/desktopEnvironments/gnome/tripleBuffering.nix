@@ -1,11 +1,16 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     desktopConfig.desktopEnvironments.gnome.tripleBuffering.enable =
       lib.mkEnableOption "Enables dynamic triple buffering for GNOME.";
   };
 
-  config = lib.mkIf
+  config =
+    lib.mkIf
     config.desktopConfig.desktopEnvironments.gnome.tripleBuffering.enable {
       nixpkgs.overlays = [
         (final: prev: {

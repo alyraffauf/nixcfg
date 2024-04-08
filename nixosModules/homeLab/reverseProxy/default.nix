@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     homeLab.reverseProxy.enable =
       lib.mkEnableOption "Enables nginx reverse proxy.";
@@ -12,8 +16,8 @@
     # Open TCP ports for audiobookshelf, plex-server, and transmission-server.
     networking = {
       firewall = {
-        allowedTCPPorts = [ 80 443 51413 9091 ];
-        allowedUDPPorts = [ 51413 ];
+        allowedTCPPorts = [80 443 51413 9091];
+        allowedUDPPorts = [51413];
       };
       # My router doesn't expose settings for NAT loopback
       # So we have to use this workaround.
@@ -67,10 +71,9 @@
       virtualHosts."nixcache.raffauflabs.com" = {
         enableACME = true;
         forceSSL = true;
-        locations."/".proxyPass =
-          "http://${config.services.nix-serve.bindAddress}:${
-            toString config.services.nix-serve.port
-          }";
+        locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${
+          toString config.services.nix-serve.port
+        }";
       };
 
       virtualHosts."plex.raffauflabs.com" = {

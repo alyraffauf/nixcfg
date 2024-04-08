@@ -1,5 +1,10 @@
-{ inputs, pkgs, lib, config, ... }: {
-
+{
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     userConfig.aly.enable = lib.mkEnableOption "Enables Aly's user.";
   };
@@ -9,7 +14,7 @@
     users.users.aly = {
       isNormalUser = true;
       description = "Aly Raffauf";
-      extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" ];
+      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
     };
   };
 }

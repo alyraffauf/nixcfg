@@ -1,4 +1,8 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./lightdm ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./lightdm];
 }

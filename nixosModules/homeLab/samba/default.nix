@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     homeLab.samba.enable =
       lib.mkEnableOption "Enables /Archive and /Media samba shares.";

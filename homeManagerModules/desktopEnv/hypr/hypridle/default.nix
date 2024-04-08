@@ -1,14 +1,17 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     desktopEnv.hyprland.hypridle.enable =
       lib.mkEnableOption "Enables hypridle.";
   };
 
   config = lib.mkIf config.desktopEnv.hyprland.hypridle.enable {
-
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [ hypridle brightnessctl ];
+    home.packages = with pkgs; [hypridle brightnessctl];
 
     xdg.configFile."hypr/hypridle.conf".text = ''
       general {
@@ -24,7 +27,7 @@
       }
 
       # turn off keyboard backlight, uncomment this section if have keyboard backlight.
-      #listener { 
+      #listener {
       #    timeout = 150                                          # 2.5min.
       #    on-timeout = ${pkgs.brightnessctl}/bin/brightnessctl -sd rgb:kbd_backlight set 0 # turn off keyboard backlight.
       #    on-resume = ${pkgs.brightnessctl}/bin/brightnessctl -rd rgb:kbd_backlight        # turn on keyboard backlight.

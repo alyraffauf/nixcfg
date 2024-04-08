@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     guiApps.alacritty.enable = lib.mkEnableOption "Enables alacritty.";
   };
@@ -34,4 +38,3 @@
     };
   };
 }
-

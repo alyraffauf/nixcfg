@@ -1,7 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
@@ -12,11 +16,11 @@
     "sr_mod"
     "rtsx_pci_sdmmc"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
 
-  fileSystems."/persist" = { neededForBoot = true; };
+  fileSystems."/persist" = {neededForBoot = true;};
 
   # Otherwise, CPU doesn't automatically clock down.
   powerManagement.cpuFreqGovernor = "ondemand";
@@ -24,7 +28,7 @@
   # Intel drivers with accelerated video playback support.
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver =
-      pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+      pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
   };
 
   hardware.opengl = {

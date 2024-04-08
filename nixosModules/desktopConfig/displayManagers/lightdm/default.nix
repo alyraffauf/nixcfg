@@ -1,12 +1,16 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
-    desktopConfig.displayManagers.lightdm.enable = lib.mkEnableOption
+    desktopConfig.displayManagers.lightdm.enable =
+      lib.mkEnableOption
       "Enables lightdm and slick greeter with Catppuccin theme.";
   };
 
   config = lib.mkIf config.desktopConfig.displayManagers.lightdm.enable {
-
     security.pam.services.lightdm.enableKwallet = true;
     security.pam.services.lightdm.enableGnomeKeyring = true;
 
@@ -16,10 +20,10 @@
         enable = true;
         theme.name = "Catppuccin-Frappe-Compact-Mauve-Dark";
         theme.package = pkgs.catppuccin-gtk.override {
-          accents = [ "mauve" ];
+          accents = ["mauve"];
           size = "compact";
           variant = "frappe";
-          tweaks = [ "normal" ];
+          tweaks = ["normal"];
         };
 
         iconTheme.name = "Papirus-Dark";
@@ -29,7 +33,7 @@
         };
 
         font.name = "NotoSans Nerd Font Regular";
-        font.package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+        font.package = pkgs.nerdfonts.override {fonts = ["Noto"];};
 
         cursorTheme.package = pkgs.catppuccin-cursors.frappeDark;
         cursorTheme.name = "Catppuccin-Frappe-Dark-Cursors";

@@ -1,8 +1,12 @@
-{ inputs, config, pkgs, lib, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home-manager.users.aly = {
-    imports = [ ../../homeManagerModules ];
+    imports = [../../homeManagerModules];
     home.username = "aly";
     home.homeDirectory = "/home/aly";
 

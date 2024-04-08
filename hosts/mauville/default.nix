@@ -1,9 +1,11 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
-
-{ config, pkgs, lib, ... }:
-
 {
-  imports = [ ./hardware-configuration.nix ./home.nix ];
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./hardware-configuration.nix ./home.nix];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

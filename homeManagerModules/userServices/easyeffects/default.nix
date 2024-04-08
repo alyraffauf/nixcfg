@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     userServices.easyeffects.enable =
       lib.mkEnableOption "EasyEffects user service.";
@@ -11,7 +15,6 @@
   };
 
   config = lib.mkIf config.userServices.easyeffects.enable {
-
     xdg.configFile."easyeffects/output/framework13.json".source =
       ./framework13.json;
 

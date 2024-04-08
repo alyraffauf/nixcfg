@@ -1,5 +1,8 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./flatpak ./steam ./podman ./virt-manager ];
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./flatpak ./steam ./podman ./virt-manager];
 }

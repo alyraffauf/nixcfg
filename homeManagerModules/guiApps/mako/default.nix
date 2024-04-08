@@ -1,10 +1,13 @@
-{ pkgs, lib, config, ... }: {
-
-  options = { guiApps.mako.enable = lib.mkEnableOption "Enables mako."; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {guiApps.mako.enable = lib.mkEnableOption "Enables mako.";};
 
   config = lib.mkIf config.guiApps.mako.enable {
-
-    home.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Noto" ]; }) ];
+    home.packages = with pkgs; [(nerdfonts.override {fonts = ["Noto"];})];
 
     services.mako = {
       enable = true;

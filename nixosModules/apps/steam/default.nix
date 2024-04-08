@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     apps.steam.enable = lib.mkEnableOption "Enables Steam for video games.";
   };

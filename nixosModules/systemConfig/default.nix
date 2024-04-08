@@ -1,7 +1,10 @@
-{ config, pkgs, lib, ... }:
-
 {
-  imports = [ ./network.nix ./plymouth ./power-profiles-daemon ./zramSwap ];
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./network.nix ./plymouth ./power-profiles-daemon ./zramSwap];
 
   systemConfig.power-profiles-daemon.enable = lib.mkDefault true;
 
@@ -102,7 +105,7 @@
       # Automatically optimize the Nix store during every build.
       auto-optimise-store = false;
       # Enable experimental `nix` command and flakes.
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       substituters = [
         "https://nixcache.raffauflabs.com"
         "https://cache.nixos.org/"

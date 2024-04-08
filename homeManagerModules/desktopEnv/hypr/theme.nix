@@ -1,12 +1,15 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     desktopEnv.hyprland.theme.enable =
       lib.mkEnableOption "Hyprland GTK and Qt themes.";
   };
 
   config = lib.mkIf config.desktopEnv.hyprland.theme.enable {
-
     home.pointerCursor = {
       gtk.enable = true;
       x11.enable = true;
@@ -26,10 +29,10 @@
 
       theme = {
         package = pkgs.catppuccin-gtk.override {
-          accents = [ "mauve" ];
+          accents = ["mauve"];
           size = "compact";
           variant = "frappe";
-          tweaks = [ "normal" ];
+          tweaks = ["normal"];
         };
         name = "Catppuccin-Frappe-Compact-Mauve-Dark";
       };
@@ -44,14 +47,13 @@
 
       font = {
         name = "NotoSans Nerd Font Regular";
-        package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         size = 11;
       };
 
-      gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+      gtk3.extraConfig = {gtk-application-prefer-dark-theme = 1;};
 
-      gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
-
+      gtk4.extraConfig = {gtk-application-prefer-dark-theme = 1;};
     };
 
     dconf.settings = {

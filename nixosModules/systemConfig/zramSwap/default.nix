@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     systemConfig.zramSwap.enable = lib.mkEnableOption "Enables zram swap.";
     systemConfig.zramSwap.size = lib.mkOption {

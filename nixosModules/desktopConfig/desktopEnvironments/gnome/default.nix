@@ -1,6 +1,11 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ # Include X settings.
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [
+    # Include X settings.
     ./fprintdFix.nix
     ./tripleBuffering.nix
   ];
@@ -11,7 +16,6 @@
   };
 
   config = lib.mkIf config.desktopConfig.desktopEnvironments.gnome.enable {
-
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator
       gnomeExtensions.blur-my-shell
@@ -29,7 +33,7 @@
     # Enable GNOME and GDM.
     services = {
       gnome.tracker-miners.enable = true;
-      udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+      udev.packages = with pkgs; [gnome.gnome-settings-daemon];
       xserver = {
         desktopManager.gnome.enable = true;
         displayManager.gdm.enable = true;

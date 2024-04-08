@@ -1,4 +1,8 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./hyprland ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./hyprland];
 }

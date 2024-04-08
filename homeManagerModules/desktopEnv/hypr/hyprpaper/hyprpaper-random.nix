@@ -1,6 +1,9 @@
-{ pkgs, lib, config, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   hyprpaper-random = pkgs.writeShellScriptBin "hyprpaper-random" ''
     directory=${config.home.homeDirectory}/.config/hypr/wallpapers
     monitor=`hyprctl monitors | grep Monitor | awk '{print $2}'`
@@ -24,13 +27,10 @@ in {
       lib.mkEnableOption "Enables hyprpaper random wallpaper script.";
   };
 
-  config =
-    lib.mkIf config.desktopEnv.hyprland.hyprpaper.randomWallpaper.enable {
+  config = lib.mkIf config.desktopEnv.hyprland.hyprpaper.randomWallpaper.enable {
+    # Packages that should be installed to the user profile.
+    home.packages = with pkgs; [hyprpaper-random];
 
-      # Packages that should be installed to the user profile.
-      home.packages = with pkgs; [ hyprpaper-random ];
-
-      wayland.windowManager.hyprland.extraConfig =
-        "exec-once = ${hyprpaper-random}/bin/hyprpaper-random";
-    };
+    wayland.windowManager.hyprland.extraConfig = "exec-once = ${hyprpaper-random}/bin/hyprpaper-random";
+  };
 }

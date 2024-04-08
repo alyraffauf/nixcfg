@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  options = { cliApps.neovim.enable = lib.mkEnableOption "Enables neovim."; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {cliApps.neovim.enable = lib.mkEnableOption "Enables neovim.";};
 
   config = lib.mkIf config.cliApps.neovim.enable {
     programs.neovim = {

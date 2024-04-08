@@ -1,7 +1,11 @@
-{ inputs, config, pkgs, lib, ... }:
-
 {
-  imports = [ ./homeManagerModules ];
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./homeManagerModules];
   home.username = "aly";
   home.homeDirectory = "/home/aly";
 

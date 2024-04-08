@@ -1,7 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  imports =
-    [ ./displayManagers/lightdm ./desktopEnvironments ./windowManagers ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./displayManagers/lightdm ./desktopEnvironments ./windowManagers];
 
   options = {
     desktopConfig.enable =
@@ -9,7 +12,6 @@
   };
 
   config = lib.mkIf config.desktopConfig.enable {
-
     services = {
       gnome.gnome-keyring.enable = true;
       gvfs.enable = true; # Mount, trash, etc.
@@ -18,7 +20,7 @@
         enable = true;
         xkb.layout = "us";
         xkb.variant = "";
-        excludePackages = with pkgs; [ xterm ];
+        excludePackages = with pkgs; [xterm];
       };
     };
 
@@ -26,7 +28,7 @@
     fonts.packages = with pkgs; [
       liberation_ttf
       (nerdfonts.override {
-        fonts = [ "DroidSansMono" "FiraCode" "FiraMono" "Hack" "Noto" ];
+        fonts = ["DroidSansMono" "FiraCode" "FiraMono" "Hack" "Noto"];
       })
     ];
 

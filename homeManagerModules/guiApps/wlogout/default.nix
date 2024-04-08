@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  options = { guiApps.wlogout.enable = lib.mkEnableOption "Enables wlogout."; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {guiApps.wlogout.enable = lib.mkEnableOption "Enables wlogout.";};
 
   config = lib.mkIf config.guiApps.wlogout.enable {
     programs.wlogout = {

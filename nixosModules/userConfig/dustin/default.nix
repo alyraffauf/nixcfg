@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     userConfig.dustin.enable = lib.mkEnableOption "Enables Dustin's user.";
   };
@@ -9,7 +13,7 @@
     users.users.dustin = {
       isNormalUser = true;
       description = "Dustin Raffauf";
-      extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" ];
+      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
     };
   };
 }

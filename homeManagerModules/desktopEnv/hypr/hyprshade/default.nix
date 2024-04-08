@@ -1,14 +1,17 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     desktopEnv.hyprland.hyprshade.enable =
       lib.mkEnableOption "Enables hyprshade with blue light filter.";
   };
 
   config = lib.mkIf config.desktopEnv.hyprland.hyprshade.enable {
-
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [ hyprshade ];
+    home.packages = with pkgs; [hyprshade];
 
     xdg.configFile."hypr/shaders/custom-blue-light-filter.glsl".text = ''
       // from https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437

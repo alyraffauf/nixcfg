@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./hyprpaper-random.nix ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./hyprpaper-random.nix];
 
   options = {
     desktopEnv.hyprland.hyprpaper.enable =
@@ -8,9 +12,8 @@
   };
 
   config = lib.mkIf config.desktopEnv.hyprland.hyprpaper.enable {
-
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [ hyprpaper ];
+    home.packages = with pkgs; [hyprpaper];
 
     desktopEnv.hyprland.hyprpaper.randomWallpaper.enable = lib.mkDefault true;
 

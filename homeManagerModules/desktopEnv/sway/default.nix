@@ -1,11 +1,14 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     desktopEnv.sway.enable = lib.mkEnableOption "Sway with extra apps.";
   };
 
   config = lib.mkIf config.desktopEnv.sway.enable {
-
     # Basic apps needed to run a hyprland desktop.
     guiApps.waybar.enable = lib.mkDefault true;
     guiApps.mako.enable = lib.mkDefault true;
@@ -46,8 +49,8 @@
 
     xdg.portal = {
       enable = true;
-      configPackages = [ pkgs.xdg-desktop-portal-wlr ];
-      extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+      configPackages = [pkgs.xdg-desktop-portal-wlr];
+      extraPortals = [pkgs.xdg-desktop-portal-wlr];
     };
 
     home.pointerCursor = {
@@ -69,10 +72,10 @@
 
       theme = {
         package = pkgs.catppuccin-gtk.override {
-          accents = [ "mauve" ];
+          accents = ["mauve"];
           size = "compact";
           variant = "frappe";
-          tweaks = [ "normal" ];
+          tweaks = ["normal"];
         };
         name = "Catppuccin-Frappe-Compact-Mauve-Dark";
       };
@@ -87,7 +90,7 @@
 
       font = {
         name = "NotoSans Nerd Font Regular";
-        package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         size = 11;
       };
     };

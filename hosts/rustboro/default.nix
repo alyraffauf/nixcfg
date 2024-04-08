@@ -1,8 +1,10 @@
 # Lenovo Thinkpad T440p with a Core i5 4210M, 16GB RAM, 512GB SSD.
-
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
     ./home.nix

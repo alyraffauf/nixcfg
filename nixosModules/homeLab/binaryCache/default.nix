@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     homeLab.binaryCache.enable = lib.mkEnableOption "Enables nixpkgs cache.";
   };

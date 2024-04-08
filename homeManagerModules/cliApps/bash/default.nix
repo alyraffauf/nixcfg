@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  options = { cliApps.bash.enable = lib.mkEnableOption "Enables bash."; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {cliApps.bash.enable = lib.mkEnableOption "Enables bash.";};
 
   config = lib.mkIf config.cliApps.bash.enable {
     programs.bash = {

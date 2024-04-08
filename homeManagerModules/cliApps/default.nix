@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports = [ ./bash ./emacs ./eza ./fzf ./neovim ./tmux ./neofetch ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [./bash ./emacs ./eza ./fzf ./neovim ./tmux ./neofetch];
 
   home.packages = with pkgs; [
     # backblaze-b2

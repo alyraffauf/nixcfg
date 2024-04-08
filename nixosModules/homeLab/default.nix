@@ -1,7 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  imports =
-    [ ./binaryCache ./reverseProxy ./nixContainers ./ociContainers ./samba ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./binaryCache ./reverseProxy ./nixContainers ./ociContainers ./samba];
 
   options = {
     homeLab.enable = lib.mkEnableOption "Enables fully functional Home Lab.";
