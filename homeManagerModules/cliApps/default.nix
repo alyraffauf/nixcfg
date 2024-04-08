@@ -9,7 +9,6 @@
     curl
     gh
     git
-    nixfmt
     python3
     ruby
     wget

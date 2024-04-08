@@ -1,17 +1,20 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     guiApps.vsCodium.enable = lib.mkEnableOption "Enables VSCodium.";
   };
 
   config = lib.mkIf config.guiApps.vsCodium.enable {
-
     guiApps.alacritty.enable = lib.mkDefault true;
 
     # Necessary fonts.
     home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Noto" ]; })
-      nixfmt
+      (nerdfonts.override {fonts = ["Noto"];})
+      alejandra
     ];
 
     programs.vscode = {
@@ -26,7 +29,7 @@
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
         "git.confirmSync" = false;
-        "nix.formatterPath" = "${pkgs.nixfmt}/bin/nixfmt";
+        "nix.formatterPath" = "${pkgs.alejandra}/bin/alejandra";
         "terminal.external.linuxExec" = "${pkgs.alacritty}/bin/alacritty";
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
