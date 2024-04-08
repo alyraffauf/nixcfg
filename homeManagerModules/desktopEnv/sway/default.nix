@@ -36,9 +36,13 @@
 
     services.cliphist.enable = true;
 
-    wayland.windowManager.sway = {
-      enable = true;
-      extraConfig = builtins.readFile ./config.conf;
+    wayland.windowManager.sway.enable = true;
+    wayland.windowManager.sway.config = {
+      bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+      # bars.waybar.command = "${pkgs.waybar}/bin/waybar";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      menu = "${pkgs.fuzzel}/bin/fuzzel";
+      modifier = "Mod4";
     };
 
     xdg.configFile."xfce4/helpers.rc".text = ''
@@ -51,57 +55,6 @@
       enable = true;
       configPackages = [pkgs.xdg-desktop-portal-wlr];
       extraPortals = [pkgs.xdg-desktop-portal-wlr];
-    };
-
-    home.pointerCursor = {
-      gtk.enable = true;
-      x11.enable = true;
-      package = pkgs.catppuccin-cursors.frappeDark;
-      name = "Catppuccin-Frappe-Dark-Cursors";
-      size = 24;
-    };
-
-    qt = {
-      enable = true;
-      platformTheme = "gtk";
-      style.name = "Catppuccin-Frappe-Compact-Mauve-Dark";
-    };
-
-    gtk = {
-      enable = true;
-
-      theme = {
-        package = pkgs.catppuccin-gtk.override {
-          accents = ["mauve"];
-          size = "compact";
-          variant = "frappe";
-          tweaks = ["normal"];
-        };
-        name = "Catppuccin-Frappe-Compact-Mauve-Dark";
-      };
-
-      iconTheme = {
-        package = pkgs.catppuccin-papirus-folders.override {
-          flavor = "frappe";
-          accent = "mauve";
-        };
-        name = "Papirus-Dark";
-      };
-
-      font = {
-        name = "NotoSans Nerd Font Regular";
-        package = pkgs.nerdfonts.override {fonts = ["Noto"];};
-        size = 11;
-      };
-    };
-
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        gtk-theme = "Catppuccin-Frappe-Compact-Mauve-Dark";
-        color-scheme = "prefer-dark";
-        cursor-theme = "Catppuccin-Frappe-Dark-Cursors";
-        cursor-size = 24;
-      };
     };
   };
 }
