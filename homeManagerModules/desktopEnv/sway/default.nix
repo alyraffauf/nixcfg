@@ -38,7 +38,7 @@
 
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.config = {
-      bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+      bars = [{command = "${pkgs.waybar}/bin/waybar";}];
       # bars.waybar.command = "${pkgs.waybar}/bin/waybar";
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.fuzzel}/bin/fuzzel";
