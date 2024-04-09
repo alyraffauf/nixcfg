@@ -32,7 +32,6 @@
 
 ; Enable treemacs
 (add-hook 'emacs-startup-hook 'treemacs)
-(treemacs-load-theme "Default")
 (setq treemacs-width 20)
 (treemacs-resize-icons 16) ; Adjust the icon size according to your preference
 (setq treemacs-follow-mode t) ; Enable follow mode
@@ -48,8 +47,7 @@
 (setq-default fill-column 80)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
-(make-directory "~/Sync/org-roam")
-(setq org-directory "~/Sync/org-roam/")
-(setq org-roam-directory (file-truename "~/Sync/org-roam"))
+(setq org-directory "~/sync/org-roam/")
+(setq org-roam-directory (file-truename "~/sync/org-roam"))
 (setq org-roam-dailies-directory "journal/")
 (org-roam-db-autosync-mode)
