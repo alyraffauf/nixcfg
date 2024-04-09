@@ -39,6 +39,7 @@
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
+      xarchiver
       xfce.exo
       xfce.ristretto
       xfce.thunar
