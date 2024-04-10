@@ -33,8 +33,8 @@
           "pulseaudio"
           # "wireplumber"
           "battery"
-          "inhibitor"
           "power-profiles-daemon"
+          "inhibitor"
           "custom/logout"
           "clock"
         ];
