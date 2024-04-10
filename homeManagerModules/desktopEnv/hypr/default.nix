@@ -33,17 +33,20 @@
       brightnessctl
       celluloid
       evince
-      gnome.file-roller
-      gnome.nautilus
       hyprcursor
       hyprland-protocols
       hyprnome
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
-      trayscale
       xfce.exo
       gnome.eog
+      gnome.file-roller
+      xfce.thunar
+      xfce.thunar-archive-plugin
+      xfce.thunar-media-tags-plugin
+      xfce.thunar-volman
+      xfce.tumbler
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
@@ -69,7 +72,7 @@
 
       # Default apps
       browser = pkgs.firefox + "/bin/firefox";
-      fileManager = pkgs.gnome.nautilus + "/bin/nautilus";
+      fileManager = pkgs.xfce.thunar + "/bin/thunar";
       editor = pkgs.vscodium + "/bin/codium";
       terminal = pkgs.alacritty + "/bin/alacritty";
 
@@ -115,7 +118,7 @@
       monitor = desc:BOE 0x095F,preferred,auto,1.566667# lavaridge fw13 glossy display
       monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
       monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
-      monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2 # petalburg
+      monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
       monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2560x0,1.5 # workshop
       monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
       monitor=,preferred,auto,auto
@@ -133,14 +136,15 @@
         env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
         # Execute necessary apps
-        exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
-        exec-once = ${pkgs.hypridle}/bin/hypridle
         exec-once = ${wallpaperd}
         exec-once = ${bar}
         exec-once = ${notifyd}
         exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store
         exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store
         exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1
+        exec-once = ${fileManager} --daemon
+        exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
+        exec-once = ${pkgs.hypridle}/bin/hypridle
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
@@ -227,14 +231,11 @@
 
         # Window Rules
         windowrulev2 = center(1),class:(blueberry.py)
-        windowrulev2 = center(1),class:(com.github.wwmm.easyeffects)
         windowrulev2 = center(1),class:(nmtui)
         windowrulev2 = center(1),class:(pavucontrol)
         windowrulev2 = float,class:(blueberry.py)
-        windowrulev2 = float,class:(com.github.wwmm.easyeffects)
         windowrulev2 = float,class:(nmtui)
         windowrulev2 = float,class:(pavucontrol)
-
         windowrulev2 = suppressevent maximize, class:.*
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
@@ -262,34 +263,34 @@
         bind = ${modifier}, down, movefocus, d
 
         # Gnome-like workspaces.
-        # bind = ${modifier}, 1, exec, ${hyprnome} --previous
-        # bind = ${modifier}, 2, exec, ${hyprnome}
-        # bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
-        # bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
+        bind = ${modifier}, 1, exec, ${hyprnome} --previous
+        bind = ${modifier}, 2, exec, ${hyprnome}
+        bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
+        bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
 
         # # Switch workspaces with mainMod + [0-9]
-        bind = ${modifier}, 1, workspace, 1
-        bind = ${modifier}, 2, workspace, 2
-        bind = ${modifier}, 3, workspace, 3
-        bind = ${modifier}, 4, workspace, 4
-        bind = ${modifier}, 5, workspace, 5
-        bind = ${modifier}, 6, workspace, 6
-        bind = ${modifier}, 7, workspace, 7
-        bind = ${modifier}, 8, workspace, 8
-        bind = ${modifier}, 9, workspace, 9
-        bind = ${modifier}, 0, workspace, 10
+        # bind = ${modifier}, 1, workspace, 1
+        # bind = ${modifier}, 2, workspace, 2
+        # bind = ${modifier}, 3, workspace, 3
+        # bind = ${modifier}, 4, workspace, 4
+        # bind = ${modifier}, 5, workspace, 5
+        # bind = ${modifier}, 6, workspace, 6
+        # bind = ${modifier}, 7, workspace, 7
+        # bind = ${modifier}, 8, workspace, 8
+        # bind = ${modifier}, 9, workspace, 9
+        # bind = ${modifier}, 0, workspace, 10
 
         # # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        bind = ${modifier} SHIFT, 1, movetoworkspace, 1
-        bind = ${modifier} SHIFT, 2, movetoworkspace, 2
-        bind = ${modifier} SHIFT, 3, movetoworkspace, 3
-        bind = ${modifier} SHIFT, 4, movetoworkspace, 4
-        bind = ${modifier} SHIFT, 5, movetoworkspace, 5
-        bind = ${modifier} SHIFT, 6, movetoworkspace, 6
-        bind = ${modifier} SHIFT, 7, movetoworkspace, 7
-        bind = ${modifier} SHIFT, 8, movetoworkspace, 8
-        bind = ${modifier} SHIFT, 9, movetoworkspace, 9
-        bind = ${modifier} SHIFT, 0, movetoworkspace, 10
+        # bind = ${modifier} SHIFT, 1, movetoworkspace, 1
+        # bind = ${modifier} SHIFT, 2, movetoworkspace, 2
+        # bind = ${modifier} SHIFT, 3, movetoworkspace, 3
+        # bind = ${modifier} SHIFT, 4, movetoworkspace, 4
+        # bind = ${modifier} SHIFT, 5, movetoworkspace, 5
+        # bind = ${modifier} SHIFT, 6, movetoworkspace, 6
+        # bind = ${modifier} SHIFT, 7, movetoworkspace, 7
+        # bind = ${modifier} SHIFT, 8, movetoworkspace, 8
+        # bind = ${modifier} SHIFT, 9, movetoworkspace, 9
+        # bind = ${modifier} SHIFT, 0, movetoworkspace, 10
 
         # Example special workspace (scratchpad)
         bind = ${modifier}, S, togglespecialworkspace, magic
