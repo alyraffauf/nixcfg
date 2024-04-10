@@ -233,9 +233,11 @@
         windowrulev2 = center(1),class:(blueberry.py)
         windowrulev2 = center(1),class:(nmtui)
         windowrulev2 = center(1),class:(pavucontrol)
+        windowrulev2 = center(1),class:(com.github.wwmm.easyeffects)
         windowrulev2 = float,class:(blueberry.py)
         windowrulev2 = float,class:(nmtui)
         windowrulev2 = float,class:(pavucontrol)
+        windowrulev2 = float,class:(com.github.wwmm.easyeffects)
         windowrulev2 = suppressevent maximize, class:.*
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
