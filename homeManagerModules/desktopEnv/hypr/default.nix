@@ -33,20 +33,16 @@
       brightnessctl
       celluloid
       evince
+      gnome.file-roller
+      gnome.nautilus
       hyprcursor
       hyprland-protocols
       hyprnome
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
-      xarchiver
       xfce.exo
       xfce.ristretto
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
-      xfce.thunar-volman
-      xfce.tumbler
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
@@ -72,7 +68,7 @@
 
       # Default apps
       browser = pkgs.firefox + "/bin/firefox";
-      fileManager = pkgs.xfce.thunar + "/bin/thunar";
+      fileManager = pkgs.gnome.nautilus + "/bin/nautilus";
       editor = pkgs.vscodium + "/bin/codium";
       terminal = pkgs.alacritty + "/bin/alacritty";
 
