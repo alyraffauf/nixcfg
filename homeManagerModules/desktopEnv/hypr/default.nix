@@ -121,7 +121,7 @@
       monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
       monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2560x0,1.5 # workshop
       monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
-      monitor=,preferred,auto,auto
+      monitor = ,preferred,auto,auto
 
         # unscale XWayland apps
         xwayland {
