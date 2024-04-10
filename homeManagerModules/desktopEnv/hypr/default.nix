@@ -41,6 +41,7 @@
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
+      trayscale
       xfce.exo
       xfce.ristretto
       xfce.xfce4-settings
