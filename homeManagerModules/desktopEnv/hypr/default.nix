@@ -37,7 +37,7 @@
       gnome.nautilus
       hyprcursor
       hyprland-protocols
-      # hyprnome
+      hyprnome
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
@@ -81,7 +81,7 @@
       idle = pkgs.hypridle + "/bin/hypridle";
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
-      # hyprnome = pkgs.hyprnome + "/bin/hyprnome";
+      hyprnome = pkgs.hyprnome + "/bin/hyprnome";
       hyprshade = pkgs.hyprshade + "/bin/hyprshade";
 
       # Media/hardware commands
