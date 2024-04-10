@@ -43,7 +43,7 @@
       playerctl
       trayscale
       xfce.exo
-      xfce.ristretto
+      gnome.eog
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
