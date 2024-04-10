@@ -333,7 +333,7 @@
 
         # Screenshot with hyprshot.
         bind = , PRINT, exec, ${screenshot_screen}
-        bind = ${modifier}, PRINT, exec, ${screenshot_screen}
+        bind = ${modifier}, PRINT, exec, ${screenshot_region}
 
         # Show/hide waybar.
         bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
