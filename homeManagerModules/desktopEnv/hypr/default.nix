@@ -37,7 +37,7 @@
       gnome.nautilus
       hyprcursor
       hyprland-protocols
-      hyprnome
+      # hyprnome
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
@@ -81,7 +81,7 @@
       idle = pkgs.hypridle + "/bin/hypridle";
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
-      hyprnome = pkgs.hyprnome + "/bin/hyprnome";
+      # hyprnome = pkgs.hyprnome + "/bin/hyprnome";
       hyprshade = pkgs.hyprshade + "/bin/hyprshade";
 
       # Media/hardware commands
@@ -262,34 +262,34 @@
         bind = ${modifier}, down, movefocus, d
 
         # Gnome-like workspaces.
-        bind = ${modifier}, 1, exec, ${hyprnome} --previous
-        bind = ${modifier}, 2, exec, ${hyprnome}
-        bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
-        bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
+        # bind = ${modifier}, 1, exec, ${hyprnome} --previous
+        # bind = ${modifier}, 2, exec, ${hyprnome}
+        # bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
+        # bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
 
         # # Switch workspaces with mainMod + [0-9]
-        # bind = ${modifier}, 1, workspace, 1
-        # bind = ${modifier}, 2, workspace, 2
-        # bind = ${modifier}, 3, workspace, 3
-        # bind = ${modifier}, 4, workspace, 4
-        # bind = ${modifier}, 5, workspace, 5
-        # bind = ${modifier}, 6, workspace, 6
-        # bind = ${modifier}, 7, workspace, 7
-        # bind = ${modifier}, 8, workspace, 8
-        # bind = ${modifier}, 9, workspace, 9
-        # bind = ${modifier}, 0, workspace, 10
+        bind = ${modifier}, 1, workspace, 1
+        bind = ${modifier}, 2, workspace, 2
+        bind = ${modifier}, 3, workspace, 3
+        bind = ${modifier}, 4, workspace, 4
+        bind = ${modifier}, 5, workspace, 5
+        bind = ${modifier}, 6, workspace, 6
+        bind = ${modifier}, 7, workspace, 7
+        bind = ${modifier}, 8, workspace, 8
+        bind = ${modifier}, 9, workspace, 9
+        bind = ${modifier}, 0, workspace, 10
 
         # # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        # bind = ${modifier} SHIFT, 1, movetoworkspace, 1
-        # bind = ${modifier} SHIFT, 2, movetoworkspace, 2
-        # bind = ${modifier} SHIFT, 3, movetoworkspace, 3
-        # bind = ${modifier} SHIFT, 4, movetoworkspace, 4
-        # bind = ${modifier} SHIFT, 5, movetoworkspace, 5
-        # bind = ${modifier} SHIFT, 6, movetoworkspace, 6
-        # bind = ${modifier} SHIFT, 7, movetoworkspace, 7
-        # bind = ${modifier} SHIFT, 8, movetoworkspace, 8
-        # bind = ${modifier} SHIFT, 9, movetoworkspace, 9
-        # bind = ${modifier} SHIFT, 0, movetoworkspace, 10
+        bind = ${modifier} SHIFT, 1, movetoworkspace, 1
+        bind = ${modifier} SHIFT, 2, movetoworkspace, 2
+        bind = ${modifier} SHIFT, 3, movetoworkspace, 3
+        bind = ${modifier} SHIFT, 4, movetoworkspace, 4
+        bind = ${modifier} SHIFT, 5, movetoworkspace, 5
+        bind = ${modifier} SHIFT, 6, movetoworkspace, 6
+        bind = ${modifier} SHIFT, 7, movetoworkspace, 7
+        bind = ${modifier} SHIFT, 8, movetoworkspace, 8
+        bind = ${modifier} SHIFT, 9, movetoworkspace, 9
+        bind = ${modifier} SHIFT, 0, movetoworkspace, 10
 
         # Example special workspace (scratchpad)
         bind = ${modifier}, S, togglespecialworkspace, magic
