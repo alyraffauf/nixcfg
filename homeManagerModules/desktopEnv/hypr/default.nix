@@ -33,15 +33,16 @@
       brightnessctl
       celluloid
       evince
+      gnome.eog
+      gnome.file-roller
       hyprcursor
       hyprland-protocols
-      hyprnome
+      # hyprnome
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
+      trayscale
       xfce.exo
-      gnome.eog
-      gnome.file-roller
       xfce.thunar
       xfce.thunar-archive-plugin
       xfce.thunar-media-tags-plugin
@@ -104,6 +105,7 @@
       screenshot = "${pkgs.hyprshot}/bin/hyprshot";
       screenshot_folder = "~/pics/screenshots";
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
+      screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
 
       # Color, themes, scaling
       border_primary = "ca9ee6ee";
@@ -272,34 +274,34 @@
         bind = ${modifier}, down, movefocus, d
 
         # Gnome-like workspaces.
-        bind = ${modifier}, 1, exec, ${hyprnome} --previous
-        bind = ${modifier}, 2, exec, ${hyprnome}
-        bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
-        bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
+        # bind = ${modifier}, 1, exec, ${hyprnome} --previous
+        # bind = ${modifier}, 2, exec, ${hyprnome}
+        # bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
+        # bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
 
-        # # Switch workspaces with mainMod + [0-9]
-        # bind = ${modifier}, 1, workspace, 1
-        # bind = ${modifier}, 2, workspace, 2
-        # bind = ${modifier}, 3, workspace, 3
-        # bind = ${modifier}, 4, workspace, 4
-        # bind = ${modifier}, 5, workspace, 5
-        # bind = ${modifier}, 6, workspace, 6
-        # bind = ${modifier}, 7, workspace, 7
-        # bind = ${modifier}, 8, workspace, 8
-        # bind = ${modifier}, 9, workspace, 9
-        # bind = ${modifier}, 0, workspace, 10
+        # Switch workspaces with mainMod + [0-9]
+        bind = ${modifier}, 1, workspace, 1
+        bind = ${modifier}, 2, workspace, 2
+        bind = ${modifier}, 3, workspace, 3
+        bind = ${modifier}, 4, workspace, 4
+        bind = ${modifier}, 5, workspace, 5
+        bind = ${modifier}, 6, workspace, 6
+        bind = ${modifier}, 7, workspace, 7
+        bind = ${modifier}, 8, workspace, 8
+        bind = ${modifier}, 9, workspace, 9
+        bind = ${modifier}, 0, workspace, 10
 
-        # # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        # bind = ${modifier} SHIFT, 1, movetoworkspace, 1
-        # bind = ${modifier} SHIFT, 2, movetoworkspace, 2
-        # bind = ${modifier} SHIFT, 3, movetoworkspace, 3
-        # bind = ${modifier} SHIFT, 4, movetoworkspace, 4
-        # bind = ${modifier} SHIFT, 5, movetoworkspace, 5
-        # bind = ${modifier} SHIFT, 6, movetoworkspace, 6
-        # bind = ${modifier} SHIFT, 7, movetoworkspace, 7
-        # bind = ${modifier} SHIFT, 8, movetoworkspace, 8
-        # bind = ${modifier} SHIFT, 9, movetoworkspace, 9
-        # bind = ${modifier} SHIFT, 0, movetoworkspace, 10
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        bind = ${modifier} SHIFT, 1, movetoworkspace, 1
+        bind = ${modifier} SHIFT, 2, movetoworkspace, 2
+        bind = ${modifier} SHIFT, 3, movetoworkspace, 3
+        bind = ${modifier} SHIFT, 4, movetoworkspace, 4
+        bind = ${modifier} SHIFT, 5, movetoworkspace, 5
+        bind = ${modifier} SHIFT, 6, movetoworkspace, 6
+        bind = ${modifier} SHIFT, 7, movetoworkspace, 7
+        bind = ${modifier} SHIFT, 8, movetoworkspace, 8
+        bind = ${modifier} SHIFT, 9, movetoworkspace, 9
+        bind = ${modifier} SHIFT, 0, movetoworkspace, 10
 
         # Example special workspace (scratchpad)
         bind = ${modifier}, S, togglespecialworkspace, magic
@@ -331,6 +333,7 @@
 
         # Screenshot with hyprshot.
         bind = , PRINT, exec, ${screenshot_screen}
+        bind = ${modifier}, PRINT, exec, ${screenshot_screen}
 
         # Show/hide waybar.
         bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
