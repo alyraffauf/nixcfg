@@ -31,8 +31,11 @@
           "bluetooth"
           "network"
           "pulseaudio"
+          # "wireplumber"
           "battery"
+          "inhibitor"
           "power-profiles-daemon"
+          "custom/logout"
           "clock"
         ];
 
@@ -45,9 +48,12 @@
           };
           "persistent-workspaces" = {"*" = 4;};
         };
-        "hyprland/window" = {"max-length" = 100;};
+        "hyprland/window" = {
+          "max-length" = 100;
+          "separate-outputs" = true;
+        };
         "clock" = {
-          "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
+          # "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
           "interval" = 60;
           "format" = "{:%I:%M%p}";
         };
@@ -58,6 +64,14 @@
           "tooltip-format" = ''
             {capacity}%: {timeTo}.
             Using {power} watts.'';
+        };
+        "inhibitor" = {
+          "what" = "sleep";
+          "format" = "{icon}";
+          "format-icons" = {
+            "activated" = "";
+            "deactivated" = "";
+          };
         };
         "bluetooth" = {
           "format" = "󰂯　{status}";
@@ -74,7 +88,7 @@
         "pulseaudio" = {
           "format" = "　{volume}%";
           "format-bluetooth" = "{volume}% {icon}󰂯";
-          "format-muted" = "";
+          "format-muted" = "";
           "format-icons" = {
             "headphones" = "󰋋";
             "handsfree" = "󰋎";
@@ -82,6 +96,17 @@
           };
           "ignored-sinks" = ["Easy Effects Sink"];
           "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
+        };
+        "wireplumber" = {
+          "format" = "　{volume}%";
+          "format-bluetooth" = "{volume}% {icon}󰂯";
+          "format-muted" = "";
+          "format-icons" = {
+            "headphones" = "󰋋";
+            "handsfree" = "󰋎";
+            "headset" = "󰋎";
+          };
+          "on-click" = "helvum";
         };
         "network" = {
           "format-wifi" = "󰣾　{signalStrength}%";
@@ -94,6 +119,10 @@
           "on-click" = "${pkgs.alacritty}/bin/alacritty --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
         };
         "tray" = {"spacing" = 10;};
+        "custom/logout" = {
+          "on-click" = "${pkgs.wlogout}/bin/wlogout";
+          "format" = "󰗽";
+        };
         "power-profiles-daemon" = {
           "format" = "{icon}";
           "tooltip-format" = ''

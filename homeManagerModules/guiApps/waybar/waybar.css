@@ -27,8 +27,11 @@ window#waybar {
 #network,
 #power-profiles-daemon,
 #pulseaudio,
+#wireplumber,
+#inhibitor,
+#custom-logout,
 #tray {
-    padding: 0 10px;
+    padding: 0 7.5px;
     margin: 0 5px;
 }
 
