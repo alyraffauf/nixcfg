@@ -71,7 +71,7 @@
         "battery" = {
           "states" = {"critical" = 20;};
           "format" = "{icon}";
-          "format-icons" = ["󰁺" "󰁼" "󰁿" "󰂁" "󰁹"];
+          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           "tooltip-format" = ''
             {capacity}%: {timeTo}.
             Using {power} watts.'';
@@ -121,7 +121,7 @@
           "tooltip-format-disconnected" = "Disconnected";
           "on-click" = "${pkgs.alacritty}/bin/alacritty --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
         };
-        "tray" = {"spacing" = 10;};
+        "tray" = {"spacing" = 15;};
         "custom/logout" = {
           "on-click" = "${pkgs.wlogout}/bin/wlogout";
           "format" = "󰗽";
