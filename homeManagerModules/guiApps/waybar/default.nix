@@ -85,7 +85,7 @@
           };
         };
         "bluetooth" = {
-          "format" = "󰂯　{status}";
+          "format" = "󰂯";
           "format-disabled" = ""; # an empty format will hide the module
           "format-connected" = "󰂯　{num_connections} connected";
           "tooltip-format" = "{controller_alias}	{controller_address}";
