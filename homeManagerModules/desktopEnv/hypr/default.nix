@@ -308,8 +308,8 @@
         bind = ${modifier} SHIFT, S, movetoworkspace, special:magic
 
         # Scroll through existing workspaces with mainMod + scroll
-        bind = ${modifier}, mouse_down, workspace, e+1
-        bind = ${modifier}, mouse_up, workspace, e-1
+        bind = ${modifier}, mouse_down, workspace, +1
+        bind = ${modifier}, mouse_up, workspace, -1
 
         # Move/resize windows with mainMod + LMB/RMB and dragging
         bindm = ${modifier}, mouse:272, movewindow
