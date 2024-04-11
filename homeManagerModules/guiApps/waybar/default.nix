@@ -97,34 +97,26 @@
           "on-click" = "${pkgs.blueberry}/bin/blueberry";
         };
         "pulseaudio" = {
-          "format" = "　{volume}%";
+          "format" = "{icon}";
           "format-bluetooth" = "{volume}% {icon}󰂯";
           "format-muted" = "";
           "format-icons" = {
             "headphones" = "󰋋";
             "handsfree" = "󰋎";
             "headset" = "󰋎";
+            "default" = [ "" "" "" ];
           };
+          "scroll-step" = 5;
           "ignored-sinks" = ["Easy Effects Sink"];
           "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
         };
-        "wireplumber" = {
-          "format" = "　{volume}%";
-          "format-bluetooth" = "{volume}% {icon}󰂯";
-          "format-muted" = "";
-          "format-icons" = {
-            "headphones" = "󰋋";
-            "handsfree" = "󰋎";
-            "headset" = "󰋎";
-          };
-          "on-click" = "helvum";
-        };
         "network" = {
-          "format-wifi" = "󰣾　{signalStrength}%";
+          "format-wifi" = "{icon}";
           "format-ethernet" = "󰈀";
           "format-disconnected" = "⚠";
+          "format-icons" = ["󰤟" "󰤢" "󰤥" "󰤨" ];
           "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
-          "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰣾";
+          "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
           "tooltip-format-ethernet" = "{ifname} ";
           "tooltip-format-disconnected" = "Disconnected";
           "on-click" = "${pkgs.alacritty}/bin/alacritty --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
