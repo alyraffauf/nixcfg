@@ -32,9 +32,7 @@
           "network"
           "pulseaudio"
           # "wireplumber"
-          "battery"
-          "power-profiles-daemon"
-          "inhibitor"
+          "group/power"
           "custom/logout"
           "clock"
         ];
@@ -56,6 +54,19 @@
           # "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
           "interval" = 60;
           "format" = "{:%I:%M%p}";
+        };
+        "group/power" = {
+          "orientation" = "inherit";
+          "drawer" = {
+            "transition-duration" = 500;
+            "children-class" = "not-power";
+            "transition-left-to-right" = false;
+          };
+          "modules" = [
+            "battery"
+            "power-profiles-daemon"
+            "inhibitor"
+          ];
         };
         "battery" = {
           "states" = {"critical" = 20;};
