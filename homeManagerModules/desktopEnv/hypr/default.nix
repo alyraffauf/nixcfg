@@ -30,7 +30,7 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-      brightnessctl
+      # brightnessctl
       celluloid
       evince
       gnome.eog
@@ -41,6 +41,7 @@
       hyprshot
       kdePackages.polkit-kde-agent-1
       playerctl
+      swayosd
       trayscale
       xfce.exo
       xfce.thunar
@@ -89,14 +90,22 @@
       hyprshade = pkgs.hyprshade + "/bin/hyprshade";
 
       # Media/hardware commands
-      brightness = "${pkgs.brightnessctl}/bin/brightnessctl";
-      brightness_up = "${brightness} set 5%+";
-      brightness_down = "${brightness} set 5%-";
-      volume = "${pkgs.wireplumber}/bin/wpctl";
-      volume_up = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%+";
-      volume_down = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%-";
-      volume_mute = "${volume} set-mute @DEFAULT_SINK@ toggle";
-      mic_mute = "${volume} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+      # brightness = "${pkgs.brightnessctl}/bin/brightnessctl";
+      # brightness_up = "${brightness} set 5%+";
+      # brightness_down = "${brightness} set 5%-";
+      # volume = "${pkgs.wireplumber}/bin/wpctl";
+      # volume_up = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%+";
+      # volume_down = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%-";
+      # volume_mute = "${volume} set-mute @DEFAULT_SINK@ toggle";
+      # mic_mute = "${volume} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+      brightness = "${pkgs.swayosd}/bin/swayosd-client";
+      brightness_up = "${brightness} --brightness=raise";
+      brightness_down = "${brightness} --brightness=lower";
+      volume = "${pkgs.swayosd}/bin/swayosd-client";
+      volume_up = "${volume} --output-volume=raise";
+      volume_down = "${volume} --output-volume=lower";
+      volume_mute = "${volume} --output-volume=mute-toggle";
+      mic_mute = "${volume} --input-volume=mute-toggle";
       media = "${pkgs.playerctl}/bin/playerctl";
       media_play = "${media} play-pause";
       media_next = "${media} next";
@@ -147,6 +156,7 @@
         exec-once = ${fileManager} --daemon
         exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
         exec-once = ${pkgs.hypridle}/bin/hypridle
+        exec-once = ${pkgs.swayosd}/bin/swayosd-server
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {

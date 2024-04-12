@@ -36,6 +36,7 @@
     };
 
     services.dbus.packages = [pkgs.gcr];
+    services.udev.packages = [pkgs.swayosd];
 
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
   };
