@@ -51,12 +51,21 @@
 
     services.cliphist.enable = lib.mkDefault true;
     services.kanshi.enable = true;
-    services.kanshi.profiles.framework = {
+    services.kanshi.profiles.lavaridge = {
       outputs = [
         {
           status = "enable";
           criteria = "BOE 0x095F Unknown";
           scale = 1.5;
+        }
+      ];
+    };
+    services.kanshi.profiles.petalburg = {
+      outputs = [
+        {
+          status = "enable";
+          criteria = "Samsung Display Corp. 0x4152 Unknown";
+          scale = 2.0;
         }
       ];
     };
