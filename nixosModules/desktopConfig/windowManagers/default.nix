@@ -5,4 +5,6 @@
   ...
 }: {
   imports = [./hyprland];
+
+  security.pam.services.swaylock = {};
 }

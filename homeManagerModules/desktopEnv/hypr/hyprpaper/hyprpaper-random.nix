@@ -10,7 +10,7 @@
 
     if [ -d "$directory" ]; then
         while true; do
-        sleep 30
+          sleep 30
           hyprctl hyprpaper unload all
           for m in ''${monitor[@]}; do
             random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)

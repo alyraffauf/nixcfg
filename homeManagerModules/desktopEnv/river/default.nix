@@ -4,6 +4,7 @@
   config,
   ...
 }: {
+  imports = [./randomWallpaper.nix];
   options = {
     desktopEnv.river.enable =
       lib.mkEnableOption "Enable riverwm with extra apps.";
@@ -41,7 +42,12 @@
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
+      swayidle
     ];
+
+    desktopEnv.river.randomWallpaper.enable = lib.mkDefault true;
+
+    programs.swaylock.enable = lib.mkDefault true;
 
     services.cliphist.enable = lib.mkDefault true;
     services.kanshi.enable = true;
@@ -162,6 +168,7 @@
       pkill -f nm-applet
       pkill -f swayosd-server
       pkill -f waybar
+      pkill -f swayidle
 
       touchpad=`riverctl list-inputs|grep -i touchpad`
       for t in ''${touchpad[@]}; do
@@ -326,6 +333,7 @@
       swayosd-server &
       thunar --daemon &
       waybar &
+      swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000' &
     '';
   };
 }
