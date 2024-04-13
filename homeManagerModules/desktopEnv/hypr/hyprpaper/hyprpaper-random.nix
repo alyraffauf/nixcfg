@@ -5,7 +5,7 @@
   ...
 }: let
   hyprpaper-random = pkgs.writeShellScriptBin "hyprpaper-random" ''
-    directory=${config.home.homeDirectory}/.config/hypr/wallpapers
+    directory=${config.home.homeDirectory}/.local/share/backgrounds
     monitor=`hyprctl monitors | grep Monitor | awk '{print $2}'`
 
     if [ -d "$directory" ]; then
@@ -13,7 +13,7 @@
         sleep 30
           hyprctl hyprpaper unload all
           for m in ''${monitor[@]}; do
-            random_background=$(ls $directory/* | shuf -n 1)
+            random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
             hyprctl hyprpaper preload $random_background
             hyprctl hyprpaper wallpaper "$m,$random_background"
           done

@@ -27,4 +27,6 @@
     templates = lib.mkDefault "${config.home.homeDirectory}/tmplts";
     extraConfig = {XDG_SRC_DIR = "${config.home.homeDirectory}/src";};
   };
+
+  xdg.dataFile."backgrounds/".source = ./files/wallpapers;
 }
