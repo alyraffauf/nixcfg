@@ -17,7 +17,5 @@
       enable = true;
       preset = "framework13.json";
     };
-
-    desktopEnv.river.enable = true;
   };
 }
