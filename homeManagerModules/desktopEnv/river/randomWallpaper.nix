@@ -11,8 +11,8 @@
         while true; do
           kill `pidof swaybg`
           random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
-          swaybg -i $random_background
-          sleep 900
+          swaybg -i $random_background &
+          sleep 300
         done
     fi
   '';
