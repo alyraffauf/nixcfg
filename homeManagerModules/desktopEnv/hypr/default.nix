@@ -31,15 +31,16 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
       # brightnessctl
+      # hyprnome
       celluloid
       evince
       gnome.eog
       gnome.file-roller
       hyprcursor
       hyprland-protocols
-      # hyprnome
       hyprshot
       kdePackages.polkit-kde-agent-1
+      networkmanagerapplet
       playerctl
       swayosd
       trayscale
@@ -158,6 +159,8 @@
         exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
         exec-once = ${pkgs.hypridle}/bin/hypridle
         exec-once = ${pkgs.swayosd}/bin/swayosd-server
+        exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
+
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {

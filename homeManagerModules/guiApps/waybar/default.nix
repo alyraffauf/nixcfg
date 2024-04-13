@@ -29,7 +29,7 @@
         modules-right = [
           "tray"
           "bluetooth"
-          "network"
+          # "network"
           "pulseaudio"
           # "wireplumber"
           "group/power"
