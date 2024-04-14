@@ -26,6 +26,9 @@ in {
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [swaybg swaybg-random];
 
-    wayland.windowManager.river.extraConfig = "swaybg-random &";
+    wayland.windowManager.river.extraConfig = ''
+      kill `ps aux | grep swaybg-random | grep -v grep | awk '{print $2}'`
+      swaybg-random &
+    '';
   };
 }

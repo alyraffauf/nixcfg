@@ -11,6 +11,7 @@
     ./fractal
     ./fuzzel
     ./google-chrome
+    ./kanshi
     ./librewolf
     ./mako
     ./obsidian
