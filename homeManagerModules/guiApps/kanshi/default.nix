@@ -38,7 +38,7 @@
       outputs = [
         {
           status = "enable";
-          criteria = "LG Electronics LG ULTRAWIDE 311NTAB5M720 Unknown";
+          criteria = "LG Electronics LG ULTRAWIDE 311NTAB5M720";
           scale = 1.25;
           adaptiveSync = true;
         }
