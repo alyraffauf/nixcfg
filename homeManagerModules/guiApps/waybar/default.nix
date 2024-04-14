@@ -50,6 +50,12 @@
           "max-length" = 100;
           "separate-outputs" = true;
         };
+        "river/window" = {
+          "max-length" = 100;
+        };
+        "river/tags" = {
+          "num-tags" = 4;
+        };
         "clock" = {
           # "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
           "interval" = 60;
