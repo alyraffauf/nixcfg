@@ -36,7 +36,6 @@
           "custom/logout"
           "clock"
         ];
-
         "hyprland/workspaces" = {
           "all-outputs" = true;
           "format" = "{icon}";
@@ -49,6 +48,12 @@
         "hyprland/window" = {
           "max-length" = 100;
           "separate-outputs" = true;
+        };
+        "sway/workspaces" = {
+          "all-outputs" = true;
+        };
+        "sway/window" = {
+          "max-length" = 100;
         };
         "river/window" = {
           "max-length" = 100;
