@@ -24,8 +24,8 @@
         output = ["*"];
         position = "top";
         reload_style_on_change = true;
-        modules-left = ["hyprland/workspaces" "river/tags" "hyprland/submap"];
-        modules-center = ["hyprland/window" "river/window"];
+        modules-left = ["hyprland/workspaces" "river/tags" "sway/workspaces" "hyprland/submap"];
+        modules-center = ["hyprland/window" "river/window" "sway/window"];
         modules-right = [
           "tray"
           "bluetooth"
