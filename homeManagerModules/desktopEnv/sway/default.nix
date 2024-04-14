@@ -88,7 +88,7 @@
         {command = "nm-applet";}
         {command = "swayosd-server";}
         {command = "thunar --daemon";}
-        {command = "${pkgs.swayidle} -w timeout 300 '${pkgs.swaylock}' before-sleep '${pkgs.swaylock}'";}
+        {command = "${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.swaylock}/bin/swaylock' before-sleep '${pkgs.swaylock}/bin/swaylock'";}
       ];
       output = {
         "BOE 0x095F Unknown" = {
@@ -106,6 +106,11 @@
         };
       };
     };
+
+    wayland.windowManager.sway.extraConfig = ''
+      bindgesture swipe:right workspace prev
+      bindgesture swipe:left workspace next
+    '';
 
     xdg.configFile."xfce4/helpers.rc".text = ''
       TerminalEmulator=alacritty
