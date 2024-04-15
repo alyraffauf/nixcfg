@@ -176,6 +176,7 @@
 
       gestures {
           workspace_swipe = true
+          workspace_swipe_touch = true
       }
 
       general {
@@ -259,16 +260,20 @@
       windowrulev2 = size 40% 60%,class:(pavucontrol)
       windowrulev2 = size 40% 60%,class:(com.github.wwmm.easyeffects)
 
-      windowrulev2 = workspace 1,class:(firefox)
+      windowrulev2 = suppressevent maximize, class:.*
 
-      windowrulev2 = workspace 2,class:(codium-url-handler)
+      # # Workspace #1 - Browser
+      # windowrulev2 = workspace 1,class:(firefox)
 
-      windowrulev2 = workspace 4,class:(google-chrome)
+      # # Workspace #2 - Coding
+      # workspace = name:code,2, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false, decorate:false
+      # windowrulev2 = workspace name:code,class:(codium-url-handler)
 
+      # windowrulev2 = workspace 4,class:(google-chrome)
+
+      # Scratchpad Magic
       windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
       windowrulev2 = workspace special:magic,class:(WebCord)
-
-      windowrulev2 = suppressevent maximize, class:.*
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = ${modifier}, T, exec, ${terminal}
