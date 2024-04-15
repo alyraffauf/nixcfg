@@ -25,7 +25,7 @@
         position = "top";
         reload_style_on_change = true;
         modules-left = ["hyprland/workspaces" "river/tags" "sway/workspaces" "hyprland/submap"];
-        modules-center = ["hyprland/window" "river/window" "sway/window"];
+        modules-center = ["clock"];
         modules-right = [
           "tray"
           "bluetooth"
@@ -34,11 +34,10 @@
           # "wireplumber"
           "group/power"
           "custom/logout"
-          "clock"
         ];
         "hyprland/workspaces" = {
           "all-outputs" = true;
-          "format" = "{icon}";
+          "format" = "{icon} {name}";
           "format-icons" = {
             "default" = "󰝥";
             "active" = "󰪥";
@@ -46,8 +45,10 @@
           "persistent-workspaces" = {"*" = 4;};
         };
         "hyprland/window" = {
+          "format" = "";
           "max-length" = 100;
           "separate-outputs" = true;
+          "icon" = true;
         };
         "sway/workspaces" = {
           "all-outputs" = true;
