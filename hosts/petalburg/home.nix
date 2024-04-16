@@ -13,10 +13,5 @@
 
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
-
-    userServices.easyeffects = {
-      enable = true;
-      preset = "LoudnessEqualizer.json";
-    };
   };
 }
