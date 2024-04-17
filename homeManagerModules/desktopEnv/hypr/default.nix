@@ -246,7 +246,7 @@
 
       # Window Rules
 
-      ## Firefox picture-in-picture
+      # Firefox picture-in-picture
       windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = move 75% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$ 
