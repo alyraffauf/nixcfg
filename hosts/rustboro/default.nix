@@ -52,9 +52,9 @@
     };
   };
 
-  desktopConfig = {
+  desktop = {
     enable = true;
-    windowManagers.hyprland.enable = true;
+    hyprland.enable = true;
   };
 
   apps = {

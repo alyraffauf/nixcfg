@@ -11,11 +11,11 @@
   ];
 
   options = {
-    desktopConfig.desktopEnvironments.gnome.enable =
-      lib.mkEnableOption "Enables GNOME desktop session.";
+    desktop.gnome.enable =
+      lib.mkEnableOption "Enable GNOME desktop session.";
   };
 
-  config = lib.mkIf config.desktopConfig.desktopEnvironments.gnome.enable {
+  config = lib.mkIf config.desktop.gnome.enable {
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator
       gnomeExtensions.blur-my-shell

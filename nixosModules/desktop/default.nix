@@ -4,14 +4,14 @@
   config,
   ...
 }: {
-  imports = [./displayManagers/lightdm ./desktopEnvironments ./windowManagers];
+  imports = [./gnome ./hyprland ./lightdm ./plasma];
 
   options = {
-    desktopConfig.enable =
-      lib.mkEnableOption "Enables basic GUI X11 and Wayland environment.";
+    desktop.enable =
+      lib.mkEnableOption "Enable basic GUI X11 and Wayland environment.";
   };
 
-  config = lib.mkIf config.desktopConfig.enable {
+  config = lib.mkIf config.desktop.enable {
     services = {
       gnome.gnome-keyring.enable = true;
       gvfs.enable = true; # Mount, trash, etc.
@@ -32,6 +32,6 @@
       })
     ];
 
-    desktopConfig.windowManagers.hyprland.enable = lib.mkDefault true;
+    desktop.hyprland.enable = lib.mkDefault true;
   };
 }

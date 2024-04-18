@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    desktopConfig.plasma.enable =
-      lib.mkEnableOption "Enables plasma desktop session.";
+    desktop.plasma.enable =
+      lib.mkEnableOption "Enable plasma desktop session.";
   };
 
-  config = lib.mkIf config.desktopConfig.plasma.enable {
+  config = lib.mkIf config.desktop.plasma.enable {
     # Enable SDDM + Plasma Desktop.
     services = {
       desktopManager.plasma6.enable = true;

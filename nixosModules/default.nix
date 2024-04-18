@@ -3,5 +3,5 @@
   pkgs,
   ...
 }: {
-  imports = [./desktopConfig ./homeLab ./apps ./systemConfig ./userConfig];
+  imports = [./apps ./desktop ./homeLab ./systemConfig ./userConfig];
 }

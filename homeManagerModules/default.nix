@@ -9,7 +9,7 @@
   nixpkgs = {
     # Configure nixpkgs instance
     config = {
-      # Enableunfree packages
+      # Enable unfree packages
       allowUnfree = true;
     };
   };
@@ -28,5 +28,5 @@
     extraConfig = {XDG_SRC_DIR = "${config.home.homeDirectory}/src";};
   };
 
-  xdg.dataFile."backgrounds/".source = ./files/wallpapers;
+  xdg.dataFile."backgrounds/".source = ../files/wallpapers;
 }

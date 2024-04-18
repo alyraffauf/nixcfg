@@ -6,11 +6,11 @@
   ...
 }: {
   options = {
-    desktopConfig.windowManagers.hyprland.enable =
-      lib.mkEnableOption "Enables hyprland window manager session.";
+    desktop.hyprland.enable =
+      lib.mkEnableOption "Enable hyprland and greetd.";
   };
 
-  config = lib.mkIf config.desktopConfig.windowManagers.hyprland.enable {
+  config = lib.mkIf config.desktop.hyprland.enable {
     services.greetd = {
       enable = true;
       settings = rec {
@@ -22,6 +22,7 @@
 
     security.pam.services.greetd.enableKwallet = true;
     security.pam.services.greetd.enableGnomeKeyring = true;
+    security.pam.services.swaylock = {};
 
     programs.hyprland.enable = true;
     programs.hyprland.package =

@@ -26,7 +26,7 @@
   };
 
   homeLab.enable = true;
-  desktopConfig.enable = true;
+  desktop.enable = true;
 
   apps = {
     flatpak.enable = true;

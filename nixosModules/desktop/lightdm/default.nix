@@ -5,12 +5,12 @@
   ...
 }: {
   options = {
-    desktopConfig.displayManagers.lightdm.enable =
+    desktop.lightdm.enable =
       lib.mkEnableOption
       "Enables lightdm and slick greeter with Catppuccin theme.";
   };
 
-  config = lib.mkIf config.desktopConfig.displayManagers.lightdm.enable {
+  config = lib.mkIf config.desktop.lightdm.enable {
     security.pam.services.lightdm.enableKwallet = true;
     security.pam.services.lightdm.enableGnomeKeyring = true;
 
