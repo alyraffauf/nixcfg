@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     fractal
-    google-chrome
     libreoffice-fresh
     plexamp
     vlc

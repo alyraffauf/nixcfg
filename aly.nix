@@ -13,15 +13,15 @@
   home.packages = with pkgs; [
     browsh
     curl
+    fractal
     gh
     git
+    google-chrome
+    obsidian
     python3
     ruby
     wget
     zoom-us
-    obsidian
-    google-chrome
-    fractal
   ];
 
   alyraffauf = {
