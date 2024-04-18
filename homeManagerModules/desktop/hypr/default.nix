@@ -303,6 +303,12 @@
       bind = ${modifier}, up, movefocus, u
       bind = ${modifier}, down, movefocus, d
 
+      # Move window with mainMod SHIFT + arrow keys
+      bind = ${modifier} SHIFT, left, movewindow, l
+      bind = ${modifier} SHIFT, right, movewindow, r
+      bind = ${modifier} SHIFT, up, movewindow, u
+      bind = ${modifier} SHIFT, down, movewindow, d
+
       # Gnome-like workspaces.
       bind = ${modifier}, comma, exec, ${hyprnome} --previous
       bind = ${modifier}, period, exec, ${hyprnome}
