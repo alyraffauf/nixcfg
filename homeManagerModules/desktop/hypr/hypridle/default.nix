@@ -21,7 +21,7 @@
       }
 
       listener {
-          timeout = 150                                # 2.5min.
+          timeout = 300                                # 5min.
           on-timeout = ${pkgs.brightnessctl}/bin/brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
           on-resume = ${pkgs.brightnessctl}/bin/brightnessctl -r                 # monitor backlight restor.
       }
