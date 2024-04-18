@@ -42,7 +42,6 @@
             "default" = "󰝥";
             "active" = "󰪥";
           };
-          "persistent-workspaces" = {"*" = 4;};
         };
         "hyprland/window" = {
           "format" = "";
