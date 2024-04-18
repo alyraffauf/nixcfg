@@ -4,26 +4,24 @@
   lib,
   ...
 }: {
-  imports = [./network.nix ./plymouth ./power-profiles-daemon ./zramSwap];
+  imports = [./plymouth ./power-profiles-daemon ./zramSwap];
 
   systemConfig.power-profiles-daemon.enable = lib.mkDefault true;
 
-  # Set your time zone.
   time.timeZone = "America/New_York";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
+      LC_ADDRESS = config.i18n.defaultLocale;
+      LC_IDENTIFICATION = config.i18n.defaultLocale;
+      LC_MEASUREMENT = config.i18n.defaultLocale;
+      LC_MONETARY = config.i18n.defaultLocale;
+      LC_NAME = config.i18n.defaultLocale;
+      LC_NUMERIC = config.i18n.defaultLocale;
+      LC_PAPER = config.i18n.defaultLocale;
+      LC_TELEPHONE = config.i18n.defaultLocale;
+      LC_TIME = config.i18n.defaultLocale;
     };
   };
 
@@ -33,24 +31,25 @@
   };
 
   hardware = {
-    # Enable Bluetooth connections.
     bluetooth.enable = true;
     # Add support for logitech unifying receivers.
     logitech.wireless = {
       enable = true;
       enableGraphical = true;
     };
-    # Add support for configuring QMK keyboards with Via.
     keyboard.qmk.enable = true;
 
     pulseaudio = {
       enable = lib.mkForce false;
-      # Enables extra codecs like aptx.
       package = pkgs.pulseaudioFull;
     };
   };
 
   sound.enable = true;
+
+  networking = {
+    networkmanager.enable = true;
+  };
 
   services = {
     logind.extraConfig = ''
@@ -64,6 +63,24 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        userServices = true;
+        workstation = true;
+      };
+    };
+    openssh = {
+      enable = true;
+      openFirewall = true;
+    };
+    printing.enable = true;
+    syncthing.openDefaultPorts = true;
+    tailscale.enable = true;
   };
 
   security = {
@@ -87,7 +104,6 @@
   };
 
   nix = {
-    # Optimize the Nix store on a schedule.
     optimise.automatic = true;
     gc = {
       # Delete generations older than 7 days.
@@ -102,9 +118,7 @@
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
     settings = {
-      # Automatically optimize the Nix store during every build.
       auto-optimise-store = false;
-      # Enable experimental `nix` command and flakes.
       experimental-features = ["nix-command" "flakes"];
       substituters = [
         "https://nixcache.raffauflabs.com"
