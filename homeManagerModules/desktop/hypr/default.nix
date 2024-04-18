@@ -373,6 +373,15 @@
 
       # Show/hide waybar.
       bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
+
+      bind=ALT,R,submap,resize
+      submap=resize
+      binde=,right,resizeactive,10 0
+      binde=,left,resizeactive,-10 0
+      binde=,up,resizeactive,0 -10
+      binde=,down,resizeactive,0 10
+      bind=,escape,submap,reset 
+      submap=reset
     '';
   };
 }
