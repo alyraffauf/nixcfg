@@ -39,7 +39,7 @@
       hyprcursor
       hyprland-protocols
       hyprshot
-      kdePackages.polkit-kde-agent-1
+      mate.mate-polkit
       networkmanagerapplet
       trayscale
       xfce.exo
@@ -150,7 +150,7 @@
       exec-once = ${notifyd}
       exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store
       exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store
-      exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1
+      exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
       exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
       exec-once = ${pkgs.hypridle}/bin/hypridle
