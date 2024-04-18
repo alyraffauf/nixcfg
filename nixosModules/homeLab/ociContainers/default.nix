@@ -5,12 +5,12 @@
   ...
 }: {
   options = {
-    homeLab.ociContainers.enable =
+    alyraffauf.homeLab.ociContainers.enable =
       lib.mkEnableOption "Enables select OCI containers.";
   };
 
-  config = lib.mkIf config.homeLab.ociContainers.enable {
-    apps.podman.enable = lib.mkDefault true;
+  config = lib.mkIf config.alyraffauf.homeLab.ociContainers.enable {
+    alyraffauf.apps.podman.enable = lib.mkDefault true;
 
     virtualisation.oci-containers.containers = {
       audiobookshelf = {

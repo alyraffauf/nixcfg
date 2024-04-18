@@ -11,11 +11,11 @@
   ];
 
   options = {
-    desktop.gnome.enable =
+    alyraffauf.desktop.gnome.enable =
       lib.mkEnableOption "Enable GNOME desktop session.";
   };
 
-  config = lib.mkIf config.desktop.gnome.enable {
+  config = lib.mkIf config.alyraffauf.desktop.gnome.enable {
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator
       gnomeExtensions.blur-my-shell

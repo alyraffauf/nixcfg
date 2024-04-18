@@ -71,17 +71,17 @@ in {
 
   environment.systemPackages = [cs-adjuster cs-adjuster-plasma pp-adjuster];
 
-  desktop = {
+  alyraffauf.desktop = {
     enable = true;
     hyprland.enable = true;
   };
 
-  systemConfig = {
+  alyraffauf.system = {
     plymouth.enable = true;
     zramSwap = {enable = true;};
   };
 
-  apps = {
+  alyraffauf.apps = {
     flatpak.enable = true;
     podman.enable = true;
     steam.enable = true;

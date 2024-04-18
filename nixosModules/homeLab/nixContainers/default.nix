@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    homeLab.nixContainers.enable =
+    alyraffauf.homeLab.nixContainers.enable =
       lib.mkEnableOption "Enables select nix containers.";
   };
 
-  config = lib.mkIf config.homeLab.nixContainers.enable {
+  config = lib.mkIf config.alyraffauf.homeLab.nixContainers.enable {
     containers.navidrome = {
       autoStart = true;
       bindMounts."/Music".hostPath = "/mnt/Media/Music";

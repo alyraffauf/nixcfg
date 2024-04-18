@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    apps.flatpak.enable =
+    alyraffauf.apps.flatpak.enable =
       lib.mkEnableOption "Enables flatpak support with GUI.";
   };
 
-  config = lib.mkIf config.apps.flatpak.enable {
+  config = lib.mkIf config.alyraffauf.apps.flatpak.enable {
     # Needed for Flatpaks
     xdg.portal.enable = true;
     services.flatpak.enable = true;

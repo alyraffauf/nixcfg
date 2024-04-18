@@ -7,14 +7,14 @@
   imports = [./binaryCache ./reverseProxy ./nixContainers ./ociContainers ./samba];
 
   options = {
-    homeLab.enable = lib.mkEnableOption "Enables fully functional Home Lab.";
+    alyraffauf.homeLab.enable = lib.mkEnableOption "Enables fully functional Home Lab.";
   };
 
-  config = lib.mkIf config.homeLab.enable {
-    homeLab.binaryCache.enable = lib.mkDefault true;
-    homeLab.nixContainers.enable = lib.mkDefault true;
-    homeLab.ociContainers.enable = lib.mkDefault true;
-    homeLab.reverseProxy.enable = lib.mkDefault true;
-    homeLab.samba.enable = lib.mkDefault true;
+  config = lib.mkIf config.alyraffauf.homeLab.enable {
+    alyraffauf.homeLab.binaryCache.enable = lib.mkDefault true;
+    alyraffauf.homeLab.nixContainers.enable = lib.mkDefault true;
+    alyraffauf.homeLab.ociContainers.enable = lib.mkDefault true;
+    alyraffauf.homeLab.reverseProxy.enable = lib.mkDefault true;
+    alyraffauf.homeLab.samba.enable = lib.mkDefault true;
   };
 }

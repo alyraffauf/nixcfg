@@ -44,7 +44,7 @@
 
   networking.hostName = "rustboro"; # Define your hostname.
 
-  systemConfig = {
+  alyraffauf.system = {
     plymouth.enable = true;
     zramSwap = {
       enable = true;
@@ -52,12 +52,12 @@
     };
   };
 
-  desktop = {
+  alyraffauf.desktop = {
     enable = true;
     hyprland.enable = true;
   };
 
-  apps = {
+  alyraffauf.apps = {
     flatpak.enable = true;
     steam.enable = false;
   };

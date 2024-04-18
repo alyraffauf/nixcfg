@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    desktop.plasma.enable =
+    alyraffauf.desktop.plasma.enable =
       lib.mkEnableOption "Enable plasma desktop session.";
   };
 
-  config = lib.mkIf config.desktop.plasma.enable {
+  config = lib.mkIf config.alyraffauf.desktop.plasma.enable {
     # Enable SDDM + Plasma Desktop.
     services = {
       desktopManager.plasma6.enable = true;

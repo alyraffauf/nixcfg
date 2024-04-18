@@ -29,17 +29,17 @@
     };
   };
 
-  systemConfig = {
+  alyraffauf.system = {
     plymouth.enable = true;
-    zramSwap = {enable = true;};
+    zramSwap.enable = true;
   };
 
-  desktop = {
+  alyraffauf.desktop = {
     enable = true;
     hyprland.enable = true;
   };
 
-  apps = {
+  alyraffauf.apps = {
     flatpak.enable = true;
     podman.enable = true;
     steam.enable = true;

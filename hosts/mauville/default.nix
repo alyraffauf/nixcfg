@@ -13,22 +13,17 @@
 
   networking.hostName = "mauville"; # Define your hostname.
 
-  services.xserver = {
-    # Prevent system sleep after reboot to login screen.
-    displayManager.gdm.autoSuspend = false;
-  };
-
-  systemConfig = {
+  alyraffauf.system = {
     zramSwap = {
       enable = true;
       size = 100;
     };
   };
 
-  homeLab.enable = true;
-  desktop.enable = true;
+  alyraffauf.homeLab.enable = true;
+  alyraffauf.desktop.enable = true;
 
-  apps = {
+  alyraffauf.apps = {
     flatpak.enable = true;
     steam.enable = true;
   };

@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    apps.nicotine-plus.enable =
+    alyraffauf.apps.nicotine-plus.enable =
       lib.mkEnableOption "Enable Nicotine+ soulseek client.";
   };
 
-  config = lib.mkIf config.apps.nicotine-plus.enable {
+  config = lib.mkIf config.alyraffauf.apps.nicotine-plus.enable {
     environment.systemPackages = [ pkgs.nicotine-plus ];
     networking = {
       firewall.allowedTCPPortRanges = [

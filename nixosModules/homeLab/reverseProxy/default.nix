@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    homeLab.reverseProxy.enable =
+    alyraffauf.homeLab.reverseProxy.enable =
       lib.mkEnableOption "Enables nginx reverse proxy.";
   };
 
-  config = lib.mkIf config.homeLab.reverseProxy.enable {
+  config = lib.mkIf config.alyraffauf.homeLab.reverseProxy.enable {
     # services.ddclient.enable = true;
     # services.ddclient.configFile = "/etc/ddclient/ddclient.conf";
 

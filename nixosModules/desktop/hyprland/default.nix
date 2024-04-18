@@ -6,11 +6,11 @@
   ...
 }: {
   options = {
-    desktop.hyprland.enable =
+    alyraffauf.desktop.hyprland.enable =
       lib.mkEnableOption "Enable hyprland and greetd.";
   };
 
-  config = lib.mkIf config.desktop.hyprland.enable {
+  config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
     services.greetd = {
       enable = true;
       settings = rec {

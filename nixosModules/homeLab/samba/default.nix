@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    homeLab.samba.enable =
+    alyraffauf.homeLab.samba.enable =
       lib.mkEnableOption "Enables /Archive and /Media samba shares.";
   };
 
-  config = lib.mkIf config.homeLab.samba.enable {
+  config = lib.mkIf config.alyraffauf.homeLab.samba.enable {
     services = {
       samba = {
         enable = true;

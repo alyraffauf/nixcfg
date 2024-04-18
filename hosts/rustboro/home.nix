@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  userConfig.dustin.enable = true;
+  alyraffauf.user.dustin.enable = true;
 
   users.users.dustin.hashedPassword = "$y$j9T$OXQYhj4IWjRJWWYsSwcqf.$lCcdq9S7m0EAdej9KMHWj9flH8K2pUb2gitNhLTlLG/";
 
@@ -17,9 +17,9 @@
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
 
-    desktopEnv.hyprland.hyprpaper.randomWallpaper.enable = false;
+    alyraffauf.desktop.hyprland.hyprpaper.randomWallpaper.enable = false;
 
-    userServices.easyeffects = {
+    alyraffauf.services.easyeffects = {
       enable = true;
       preset = "LoudnessEqualizer.json";
     };
@@ -35,7 +35,7 @@
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
 
-    userServices.easyeffects = {
+    alyraffauf.services.easyeffects = {
       enable = true;
       preset = "LoudnessEqualizer.json";
     };

@@ -7,11 +7,11 @@
   imports = [./gnome ./hyprland ./lightdm ./plasma];
 
   options = {
-    desktop.enable =
+    alyraffauf.desktop.enable =
       lib.mkEnableOption "Enable basic GUI X11 and Wayland environment.";
   };
 
-  config = lib.mkIf config.desktop.enable {
+  config = lib.mkIf config.alyraffauf.desktop.enable {
     services = {
       gnome.gnome-keyring.enable = true;
       gvfs.enable = true; # Mount, trash, etc.
@@ -32,6 +32,6 @@
       })
     ];
 
-    desktop.hyprland.enable = lib.mkDefault true;
+    alyraffauf.desktop.hyprland.enable = lib.mkDefault true;
   };
 }
