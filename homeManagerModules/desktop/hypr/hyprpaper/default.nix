@@ -15,8 +15,6 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [hyprpaper];
 
-    alyraffauf.desktop.hyprland.hyprpaper.randomWallpaper.enable = lib.mkDefault true;
-
     xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
   };
 }

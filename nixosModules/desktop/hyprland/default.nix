@@ -11,27 +11,33 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+    services = {
+      dbus.packages = [pkgs.gcr];
+      greetd = {
+        enable = true;
+        settings = rec {
+          default_session = {
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+          };
         };
       };
+      udev.packages = [pkgs.swayosd];
     };
 
-    security.pam.services.greetd.enableKwallet = true;
-    security.pam.services.greetd.enableGnomeKeyring = true;
-    security.pam.services.swaylock = {};
+    security.pam.services = {
+      greetd.enableKwallet = true;
+      greetd.enableGnomeKeyring = true;
+      swaylock = {};
+    };
 
-    programs.hyprland.enable = true;
-    programs.hyprland.package =
-      inputs.hyprland.packages.${pkgs.system}.hyprland;
-
-    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
-
-    services.dbus.packages = [pkgs.gcr];
-    services.udev.packages = [pkgs.swayosd];
+    programs = {
+      gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+      hyprland = {
+        enable = true;
+        package =
+          inputs.hyprland.packages.${pkgs.system}.hyprland;
+      };
+    };
 
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

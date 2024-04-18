@@ -11,14 +11,22 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.river.enable {
-    # Basic apps needed to run a riverwm desktop.
-    alyraffauf.apps.waybar.enable = lib.mkDefault true;
-    alyraffauf.apps.mako.enable = lib.mkDefault true;
-    alyraffauf.apps.fuzzel.enable = lib.mkDefault true;
-    alyraffauf.apps.wlogout.enable = lib.mkDefault true;
-    alyraffauf.apps.alacritty.enable = lib.mkDefault true;
-    alyraffauf.apps.firefox.enable = lib.mkDefault true;
-    alyraffauf.apps.kanshi.enable = lib.mkDefault true;
+    alyraffauf = {
+      apps = {
+        waybar.enable = lib.mkDefault true;
+        mako.enable = lib.mkDefault true;
+        fuzzel.enable = lib.mkDefault true;
+        wlogout.enable = lib.mkDefault true;
+        alacritty.enable = lib.mkDefault true;
+        firefox.enable = lib.mkDefault true;
+        kanshi.enable = lib.mkDefault true;
+      };
+      desktop.river.randomWallpaper.enable = lib.mkDefault true;
+    };
+
+    programs.swaylock.enable = lib.mkDefault true;
+
+    services.cliphist.enable = lib.mkDefault true;
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
@@ -44,12 +52,6 @@
       xfce.xfconf
       swayidle
     ];
-
-    alyraffauf.desktop.river.randomWallpaper.enable = lib.mkDefault true;
-
-    programs.swaylock.enable = lib.mkDefault true;
-
-    services.cliphist.enable = lib.mkDefault true;
 
     xdg.configFile."xfce4/helpers.rc".text = ''
       TerminalEmulator=alacritty

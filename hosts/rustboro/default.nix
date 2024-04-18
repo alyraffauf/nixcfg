@@ -44,23 +44,28 @@
 
   networking.hostName = "rustboro"; # Define your hostname.
 
-  alyraffauf.system = {
-    plymouth.enable = true;
-    zramSwap = {
+  alyraffauf = {
+    system = {
+      plymouth.enable = true;
+      zramSwap = {
+        enable = true;
+        size = 100;
+      };
+    };
+    user = {
+      aly.enable = true;
+      dustin.enable = true;
+    };
+    desktop = {
       enable = true;
-      size = 100;
+      hyprland.enable = true;
+    };
+    apps = {
+      steam.enable = true;
     };
   };
 
-  alyraffauf.desktop = {
-    enable = true;
-    hyprland.enable = true;
-  };
-
-  alyraffauf.apps = {
-    flatpak.enable = true;
-    steam.enable = false;
-  };
+  users.users.aly.hashedPassword = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
 
   # environment.persistence."/persist" = {
   #   hideMounts = true;

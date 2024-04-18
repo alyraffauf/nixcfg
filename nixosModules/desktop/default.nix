@@ -31,7 +31,5 @@
         fonts = ["DroidSansMono" "FiraCode" "FiraMono" "Hack" "Noto"];
       })
     ];
-
-    alyraffauf.desktop.hyprland.enable = lib.mkDefault true;
   };
 }

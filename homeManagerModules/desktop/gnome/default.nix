@@ -44,10 +44,6 @@
         "tiling-assistant@leleat-on-github"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
-      };
     };
   };
 }

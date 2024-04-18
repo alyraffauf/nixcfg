@@ -13,19 +13,28 @@
 
   networking.hostName = "mauville"; # Define your hostname.
 
-  alyraffauf.system = {
-    zramSwap = {
-      enable = true;
-      size = 100;
+  alyraffauf = {
+    system = {
+      plymouth.enable = true;
+      zramSwap = {
+        enable = true;
+        size = 100;
+      };
     };
-  };
-
-  alyraffauf.homeLab.enable = true;
-  alyraffauf.desktop.enable = true;
-
-  alyraffauf.apps = {
-    flatpak.enable = true;
-    steam.enable = true;
+    user = {
+      aly.enable = true;
+      dustin.enable = true;
+    };
+    desktop = {
+      enable = true;
+      hyprland.enable = true;
+    };
+    homeLab.enable = true;
+    apps = {
+      steam.enable = true;
+      podman.enable = true;
+      virt-manager.enable = true;
+    };
   };
 
   system.stateVersion = "23.11";

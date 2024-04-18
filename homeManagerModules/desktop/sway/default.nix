@@ -9,19 +9,19 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
-    # Basic apps needed to run a hyprland desktop.
-    alyraffauf.apps.waybar.enable = lib.mkDefault true;
-    alyraffauf.apps.mako.enable = lib.mkDefault true;
-    alyraffauf.apps.fuzzel.enable = lib.mkDefault true;
-    alyraffauf.apps.wlogout.enable = lib.mkDefault true;
-    alyraffauf.apps.alacritty.enable = lib.mkDefault true;
-    alyraffauf.apps.firefox.enable = lib.mkDefault true;
-    alyraffauf.apps.kanshi.enable = lib.mkDefault true;
-
+    alyraffauf = {
+      apps = {
+        waybar.enable = lib.mkDefault true;
+        mako.enable = lib.mkDefault true;
+        fuzzel.enable = lib.mkDefault true;
+        wlogout.enable = lib.mkDefault true;
+        alacritty.enable = lib.mkDefault true;
+        firefox.enable = lib.mkDefault true;
+        kanshi.enable = lib.mkDefault true;
+      };
+    };
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-      # brightnessctl
-      # hyprnome
       celluloid
       evince
       gnome.eog

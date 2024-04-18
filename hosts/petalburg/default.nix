@@ -71,22 +71,27 @@ in {
 
   environment.systemPackages = [cs-adjuster cs-adjuster-plasma pp-adjuster];
 
-  alyraffauf.desktop = {
-    enable = true;
-    hyprland.enable = true;
+  alyraffauf = {
+    system = {
+      plymouth.enable = true;
+      zramSwap = {enable = true;};
+    };
+    user = {
+      aly.enable = true;
+      dustin.enable = true;
+    };
+    desktop = {
+      enable = true;
+      hyprland.enable = true;
+    };
+    apps = {
+      steam.enable = true;
+      podman.enable = true;
+      virt-manager.enable = true;
+    };
   };
 
-  alyraffauf.system = {
-    plymouth.enable = true;
-    zramSwap = {enable = true;};
-  };
-
-  alyraffauf.apps = {
-    flatpak.enable = true;
-    podman.enable = true;
-    steam.enable = true;
-    virt-manager.enable = true;
-  };
+  users.users.aly.hashedPassword = "$y$j9T$Ug0ZLHQQuRciFJDgOI6r00$eHc.KyQY0oU4k0LKRiZiGWJ19jkKNWHpOoyCJbtJif8";
 
   system.stateVersion = "23.11";
 }

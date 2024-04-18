@@ -28,10 +28,10 @@
     alyraffauf.apps.alacritty.enable = lib.mkDefault true;
     alyraffauf.apps.firefox.enable = lib.mkDefault true;
 
+    services.cliphist.enable = lib.mkDefault true;
+
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-      # brightnessctl
-      # hyprnome
       celluloid
       evince
       gnome.eog
@@ -52,8 +52,6 @@
       xfce.xfce4-taskmanager
       xfce.xfconf
     ];
-
-    services.cliphist.enable = lib.mkDefault true;
 
     xdg.configFile."xfce4/helpers.rc".text = ''
       TerminalEmulator=alacritty
@@ -158,6 +156,7 @@
       exec-once = ${pkgs.hypridle}/bin/hypridle
       exec-once = ${pkgs.swayosd}/bin/swayosd-server
       exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
+      exec-once = ${pkgs.trayscale}/bin/trayscale --hide-window
 
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
@@ -249,7 +248,7 @@
       # Firefox picture-in-picture
       windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
-      windowrulev2 = move 75% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$ 
+      windowrulev2 = move 75% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
 
       windowrulev2 = center(1),class:(blueberry.py)
       windowrulev2 = center(1),class:(nmtui)
