@@ -158,7 +158,6 @@
       exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
       exec-once = ${pkgs.trayscale}/bin/trayscale --hide-window
 
-
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
           kb_layout = us
@@ -305,10 +304,10 @@
       bind = ${modifier}, down, movefocus, d
 
       # Gnome-like workspaces.
-      # bind = ${modifier}, 1, exec, ${hyprnome} --previous
-      # bind = ${modifier}, 2, exec, ${hyprnome}
-      # bind = ${modifier} SHIFT, 1, exec, ${hyprnome} --previous --move
-      # bind = ${modifier} SHIFT, 2, exec, ${hyprnome} --move
+      bind = ${modifier}, comma, exec, ${hyprnome} --previous
+      bind = ${modifier}, period, exec, ${hyprnome}
+      bind = ${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move
+      bind = ${modifier} SHIFT, period, exec, ${hyprnome} --move
 
       # Switch workspaces with mainMod + [0-9]
       bind = ${modifier}, 1, workspace, 1
