@@ -275,9 +275,9 @@
 
       # windowrulev2 = workspace 4,class:(google-chrome)
 
-      # Scratchpad Magic
-      windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
-      windowrulev2 = workspace special:magic,class:(WebCord)
+      # # Scratchpad Magic
+      # windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
+      # windowrulev2 = workspace special:magic,class:(WebCord)
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = ${modifier}, T, exec, ${terminal}
