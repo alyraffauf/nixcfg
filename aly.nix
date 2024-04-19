@@ -47,4 +47,26 @@
       webCord.enable = true;
     };
   };
+  wayland.windowManager.hyprland.extraConfig = ''
+    # Workspace - Browser
+    # workspace = name:browser,1, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false
+    # windowrulev2 = workspace name:browser,class:(firefox)
+    windowrulev2 = workspace 1,class:(firefox)
+
+    # Workspace - Coding
+    workspace = 2, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false
+    # windowrulev2 = workspace name:code,class:(codium-url-handler)
+    windowrulev2 = workspace 2,class:(codium-url-handler)
+
+    # Workspace - Zoom
+    workspace = name:zoom, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false
+    windowrulev2 = workspace name:zoom,class:(zoom)
+
+    # Workspace - Chrome
+    windowrulev2 = workspace 4,class:(google-chrome)
+
+    # Scratchpad Magic
+    windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
+    windowrulev2 = workspace special:magic,class:(WebCord)
+  '';
 }
