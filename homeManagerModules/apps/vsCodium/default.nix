@@ -41,6 +41,7 @@
       };
 
       extensions = with pkgs; [
+        vscode-extensions.bbenoist.nix
         vscode-extensions.catppuccin.catppuccin-vsc
         vscode-extensions.catppuccin.catppuccin-vsc-icons
         vscode-extensions.github.vscode-github-actions
