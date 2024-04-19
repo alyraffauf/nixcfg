@@ -21,6 +21,11 @@ window#waybar {
     color: #ca9ee6;
 }
 
+#submap {
+    padding: 0 15px;
+    margin: 0 5px;
+}
+
 #tags button {
     padding: 0px 5px;
     margin: 0 0px;

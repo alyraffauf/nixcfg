@@ -43,6 +43,9 @@
             "active" = "󰪥";
           };
         };
+        "hyprland/submap" = {
+          "on-click" = "${pkgs.hyprland}/bin/hyprctl dispatch submap reset";
+        };
         "hyprland/window" = {
           "format" = "";
           "max-length" = 100;
