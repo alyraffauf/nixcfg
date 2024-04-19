@@ -382,6 +382,30 @@
       binde=,down,resizeactive,0 10
       bind=,escape,submap,reset 
       submap=reset
+
+      bind=ALT,M,submap,move
+      submap=move
+      # Move window with arrow keys
+      bind = , left, movewindow, l
+      bind = , right, movewindow, r
+      bind = , up, movewindow, u
+      bind = , down, movewindow, d
+      # Move active window to a workspace with [0-9]
+      bind = , 1, movetoworkspace, 1
+      bind = , 2, movetoworkspace, 2
+      bind = , 3, movetoworkspace, 3
+      bind = , 4, movetoworkspace, 4
+      bind = , 5, movetoworkspace, 5
+      bind = , 6, movetoworkspace, 6
+      bind = , 7, movetoworkspace, 7
+      bind = , 8, movetoworkspace, 8
+      bind = , 9, movetoworkspace, 9
+      bind = , 0, movetoworkspace, 10
+      # hyprnome
+      bind = , comma, exec, ${hyprnome} --previous --move
+      bind = , period, exec, ${hyprnome} --move
+      bind=,escape,submap,reset 
+      submap=reset
     '';
   };
 }
