@@ -247,7 +247,7 @@
       # Firefox picture-in-picture
       windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
-      windowrulev2 = move 75% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
+      windowrulev2 = move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
 
       windowrulev2 = center(1),class:(blueberry.py)
       windowrulev2 = center(1),class:(nmtui)
