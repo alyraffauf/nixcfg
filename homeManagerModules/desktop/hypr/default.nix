@@ -226,6 +226,7 @@
       }
 
       dwindle {
+          no_gaps_when_only = 1
           preserve_split = yes # you probably want this
           pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       }
@@ -265,19 +266,6 @@
       windowrulev2 = size 40% 60%,class:(com.github.wwmm.easyeffects)
 
       windowrulev2 = suppressevent maximize, class:.*
-
-      # # Workspace #1 - Browser
-      # windowrulev2 = workspace 1,class:(firefox)
-
-      # # Workspace #2 - Coding
-      # workspace = name:code,2, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false, decorate:false
-      # windowrulev2 = workspace name:code,class:(codium-url-handler)
-
-      # windowrulev2 = workspace 4,class:(google-chrome)
-
-      # # Scratchpad Magic
-      # windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
-      # windowrulev2 = workspace special:magic,class:(WebCord)
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = ${modifier}, T, exec, ${terminal}
