@@ -14,10 +14,10 @@
     services = {
       dbus.packages = [pkgs.gcr];
       greetd = {
-        enable = true;
+        enable = lib.mkDefault true;
         settings = rec {
           default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+            command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
           };
         };
       };
