@@ -21,7 +21,7 @@ window#waybar {
     color: #ca9ee6;
 }
 
-#submap {
+#submap, #mode {
     padding: 0 15px;
     margin: 0 5px;
     color: #e78284;

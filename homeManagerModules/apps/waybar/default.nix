@@ -24,14 +24,12 @@
         output = ["*"];
         position = "top";
         reload_style_on_change = true;
-        modules-left = ["hyprland/workspaces" "river/tags" "sway/workspaces" "hyprland/submap"];
+        modules-left = lib.mkDefault ["hyprland/workspaces" "hyprland/submap"];
         modules-center = ["clock"];
         modules-right = [
           "tray"
           "bluetooth"
-          # "network"
           "pulseaudio"
-          # "wireplumber"
           "group/power"
           "custom/logout"
         ];

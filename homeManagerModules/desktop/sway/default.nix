@@ -47,6 +47,12 @@
 
     services.cliphist.enable = lib.mkDefault true;
 
+    programs.waybar.settings = {
+      mainBar = {
+        modules-left = ["sway/workspaces" "sway/mode"];
+      };
+    };
+
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.config = let
       modifier = "Mod4";

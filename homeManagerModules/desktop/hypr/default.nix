@@ -65,6 +65,12 @@
       extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
 
+    programs.waybar.settings = {
+      mainBar = {
+        modules-left = ["hyprland/workspaces" "hyprland/submap"];
+      };
+    };
+
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
@@ -368,7 +374,7 @@
       binde=,left,resizeactive,-10 0
       binde=,up,resizeactive,0 -10
       binde=,down,resizeactive,0 10
-      bind=,escape,submap,reset 
+      bind=,escape,submap,reset
       submap=reset
 
       bind=ALT,M,submap,move
@@ -392,7 +398,7 @@
       # hyprnome
       bind = , comma, exec, ${hyprnome} --previous --move
       bind = , period, exec, ${hyprnome} --move
-      bind=,escape,submap,reset 
+      bind=,escape,submap,reset
       submap=reset
     '';
   };

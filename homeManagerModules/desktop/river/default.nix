@@ -109,6 +109,12 @@
       }
     '';
 
+    programs.waybar.settings = {
+      mainBar = {
+        modules-left = ["river/tags" "river/mode"];
+      };
+    };
+
     wayland.windowManager.river.enable = true;
     wayland.windowManager.river.extraConfig = let
       modifier = "Super";
