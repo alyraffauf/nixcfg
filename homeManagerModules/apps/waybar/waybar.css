@@ -24,6 +24,7 @@ window#waybar {
 #submap {
     padding: 0 15px;
     margin: 0 5px;
+    color: #e78284;
 }
 
 #tags button {
