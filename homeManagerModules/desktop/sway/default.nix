@@ -137,6 +137,7 @@
       startup = [
         {command = "${wallpaperd}";}
         {command = "${pkgs.kanshi}/bin/kanshi";}
+        {command = "${pkgs.autotiling}/bin/autotiling";}
         {command = "${notifyd}";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
