@@ -44,12 +44,12 @@
   }: {
     homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {system = "x86_64-linux";};
-      modules = [./aly.nix];
+      modules = [hyprland.homeManagerModules.default ./aly.nix];
     };
 
     homeConfigurations.dustin = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {system = "x86_64-linux";};
-      modules = [./dustin.nix];
+      modules = [hyprland.homeManagerModules.default ./dustin.nix];
     };
 
     nixosConfigurations = {
