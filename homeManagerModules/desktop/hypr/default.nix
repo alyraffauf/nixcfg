@@ -39,7 +39,6 @@
       hyprcursor
       hyprland-protocols
       hyprshot
-      mate.mate-polkit
       networkmanagerapplet
       trayscale
       xfce.exo

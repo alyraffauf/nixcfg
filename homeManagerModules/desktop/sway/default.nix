@@ -28,9 +28,9 @@
       evince
       gnome.eog
       gnome.file-roller
-      kdePackages.polkit-kde-agent-1
       networkmanagerapplet
       playerctl
+      swayidle
       swayosd
       trayscale
       xfce.exo
@@ -42,7 +42,6 @@
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
-      swayidle
     ];
 
     programs.swaylock.enable = lib.mkDefault true;
