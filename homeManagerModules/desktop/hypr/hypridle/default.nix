@@ -6,12 +6,12 @@
 }: {
   options = {
     alyraffauf.desktop.hyprland.hypridle.enable =
-      lib.mkEnableOption "Enables hypridle.";
+      lib.mkEnableOption "Enable hypridle.";
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.hypridle.enable {
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [hypridle brightnessctl];
+    home.packages = with pkgs; [hypridle];
 
     xdg.configFile."hypr/hypridle.conf".text = ''
       general {
@@ -39,7 +39,7 @@
       }
 
       listener {
-          timeout = 360                                 # 5.5min
+          timeout = 330                                 # 5.5min
           on-timeout = ${pkgs.hyprland}/bin/hyprctl dispatch dpms off        # screen off when timeout has passed
           on-resume = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
       }
