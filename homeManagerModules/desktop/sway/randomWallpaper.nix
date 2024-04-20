@@ -12,7 +12,7 @@
           kill `pidof swaybg`
           random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
           ${pkgs.swaybg}/bin/swaybg -i $random_background &
-          sleep 300
+          sleep 900
         done
     fi
   '';
