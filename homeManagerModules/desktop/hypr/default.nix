@@ -232,7 +232,7 @@
       }
 
       dwindle {
-          no_gaps_when_only = 1
+          # no_gaps_when_only = 1
           preserve_split = yes # you probably want this
           pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       }
