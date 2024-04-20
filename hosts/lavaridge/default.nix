@@ -24,9 +24,6 @@
 
   services = {
     fwupd.enable = true;
-    fprintd.package = pkgs.fprintd.overrideAttrs {
-      mesonCheckFlags = ["--no-suite" "fprintd:TestPamFprintd"];
-    };
   };
 
   alyraffauf = {
