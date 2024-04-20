@@ -17,7 +17,7 @@ window#waybar {
     color: #FAFAFA;
 }
 
-#workspaces button.active {
+#workspaces button.active, #workspaces button.focused {
     color: #ca9ee6;
 }
 

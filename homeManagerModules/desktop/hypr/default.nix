@@ -112,7 +112,7 @@
       media = "${pkgs.playerctl}/bin/playerctl";
       media_play = "${media} play-pause";
       media_next = "${media} next";
-      media_previous = "${media} previous";
+      media_prev = "${media} previous";
 
       screenshot = "${pkgs.hyprshot}/bin/hyprshot";
       screenshot_folder = "~/pics/screenshots";
@@ -274,16 +274,16 @@
       windowrulev2 = suppressevent maximize, class:.*
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = ${modifier}, T, exec, ${terminal}
-      bind = ${modifier}, F, exec, ${fileManager}
       bind = ${modifier}, B, exec, ${browser}
       bind = ${modifier}, E, exec, ${editor}
+      bind = ${modifier}, F, exec, ${fileManager}
       bind = ${modifier}, R, exec, ${launcher}
+      bind = ${modifier}, T, exec, ${terminal}
 
       # Manage session.
       bind = ${modifier}, C, killactive,
-      bind = ${modifier}, M, exec, ${logout}
       bind = ${modifier}, L, exec, ${lock}
+      bind = ${modifier}, M, exec, ${logout}
 
       # Basic window management.
       bind = ${modifier} SHIFT, W, fullscreen
@@ -333,7 +333,7 @@
       bind = ${modifier} SHIFT, 9, movetoworkspace, 9
       bind = ${modifier} SHIFT, 0, movetoworkspace, 10
 
-      # Example special workspace (scratchpad)
+      # Scratchpad show and move
       bind = ${modifier}, S, togglespecialworkspace, magic
       bind = ${modifier} SHIFT, S, movetoworkspace, special:magic
 
@@ -353,7 +353,7 @@
       bindl = , xf86audiomute, exec, ${volume_mute}
       bindl = , xf86audiomicmute, exec, ${mic_mute}
       bindl = , xf86audioplay, exec, ${media_play}
-      bindl = , xf86audioprev, exec, ${media_previous}
+      bindl = , xf86audioprev, exec, ${media_prev}
       bindl = , xf86audionext, exec, ${media_next}
 
       # Extra bindings for petalburg.

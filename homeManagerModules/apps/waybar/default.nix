@@ -53,6 +53,15 @@
         };
         "sway/workspaces" = {
           "all-outputs" = true;
+          "format" = "{icon} {name}";
+          "format-icons" = {
+            "default" = "󰝥";
+            "focused" = "󰪥";
+          };
+          "sort-by" = "id";
+        };
+        "sway/mode" = {
+          "on-click" = "${pkgs.sway}/bin/swaymsg mode default";
         };
         "sway/window" = {
           "max-length" = 100;
