@@ -23,11 +23,11 @@
   '';
 in {
   options = {
-    alyraffauf.desktop.hyprland.hyprpaper.randomWallpaper.enable =
+    alyraffauf.desktop.hyprland.hyprpaper.randomWallpaper =
       lib.mkEnableOption "Enables hyprpaper random wallpaper script.";
   };
 
-  config = lib.mkIf config.alyraffauf.desktop.hyprland.hyprpaper.randomWallpaper.enable {
+  config = lib.mkIf config.alyraffauf.desktop.hyprland.hyprpaper.randomWallpaper {
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [hyprpaper-random];
 

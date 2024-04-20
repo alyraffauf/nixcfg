@@ -28,7 +28,7 @@
     services.syncthing.enable = true;
     desktop.hyprland = {
       enable = true;
-      hyprpaper.randomWallpaper.enable = true;
+      hyprpaper.randomWallpaper = true;
     };
     apps = {
       alacritty.enable = true;
@@ -46,6 +46,9 @@
       vsCodium.enable = true;
       webCord.enable = true;
     };
+  };
+  wayland.windowManager.sway.config.assigns = {
+    "workspace 1" = [{ app_id = "firefox"; }];
   };
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser

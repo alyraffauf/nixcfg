@@ -21,7 +21,7 @@
   alyraffauf = {
     desktop.hyprland = {
       enable = true;
-      hyprpaper.randomWallpaper.enable = false;
+      hyprpaper.randomWallpaper = false;
     };
     apps = {
       alacritty.enable = true;
