@@ -39,7 +39,7 @@
         {
           status = "enable";
           criteria = "LG Display 0x0569 Unknown";
-          scale = 1.2;
+          scale = 1.5;
         }
       ];
     };
