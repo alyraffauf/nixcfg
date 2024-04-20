@@ -18,11 +18,11 @@
   '';
 in {
   options = {
-    alyraffauf.desktop.sway.randomWallpaper.enable =
+    alyraffauf.desktop.sway.randomWallpaper =
       lib.mkEnableOption "Enable Sway random wallpaper script.";
   };
 
-  config = lib.mkIf config.alyraffauf.desktop.sway.randomWallpaper.enable {
+  config = lib.mkIf config.alyraffauf.desktop.sway.randomWallpaper {
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [swaybg sway-randomWallpaper];
 
