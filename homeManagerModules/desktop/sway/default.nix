@@ -4,6 +4,7 @@
   config,
   ...
 }: {
+  imports = [./randomWallpaper.nix];
   options = {
     alyraffauf.desktop.sway.enable = lib.mkEnableOption "Sway with extra apps.";
   };
@@ -19,6 +20,7 @@
         firefox.enable = lib.mkDefault true;
         kanshi.enable = lib.mkDefault true;
       };
+      desktop.sway.randomWallpaper.enable = lib.mkDefault true;
     };
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
@@ -135,7 +137,6 @@
         size = 12.0;
       };
       startup = [
-        {command = "${wallpaperd}";}
         {command = "${pkgs.autotiling}/bin/autotiling";}
         {command = "${notifyd}";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
