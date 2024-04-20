@@ -64,6 +64,14 @@
       steam.enable = true;
     };
   };
+  
+  services.greetd = {
+    settings = rec {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+      };
+    };
+  };
 
   users.users.aly.hashedPassword = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
 

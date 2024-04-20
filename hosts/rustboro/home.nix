@@ -7,9 +7,12 @@
 }: {
   home-manager.users.aly = {
     imports = [../../homeManagerModules ../../aly.nix];
-    alyraffauf.services.easyeffects = {
-      enable = true;
-      preset = "LoudnessEqualizer.json";
+    alyraffauf = {
+      desktop.sway.enable = true;
+      services.easyeffects = {
+        enable = true;
+        preset = "LoudnessEqualizer.json";
+      };
     };
     home.stateVersion = "23.11";
   };
