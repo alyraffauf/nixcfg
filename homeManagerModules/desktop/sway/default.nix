@@ -56,6 +56,7 @@
 
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.package = pkgs.swayfx;
+    wayland.windowManager.sway.wrapperFeatures.gtk = true;
     wayland.windowManager.sway.config = let
       modifier = "Mod4";
 
@@ -93,17 +94,16 @@
       # screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
 
       # Color, themes, scaling
-      colorPrimary = "ca9ee6ee";
-      colorSecondary = "99d1dbee";
-      border_inactive = "303446aa";
-      drop_shadow = "1a1a1aee";
+      colorText = "#FAFAFA";
+      colorPrimary = "#CA9EE6EE";
+      colorSecondary = "#99D1DBEE";
+      border_inactive = "#303446AA";
+      drop_shadow = "#1A1A1AEE";
       cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in {
       bars = [{command = "${bar}";}];
-      terminal = "${terminal}";
-      menu = "${launcher}";
       modifier = "${modifier}";
       colors.background = "${colorPrimary}";
       colors.focused = {
@@ -111,58 +111,35 @@
         border = "${colorPrimary}";
         childBorder = "${colorPrimary}";
         indicator = "${colorPrimary}";
-        text = "#ffffff";
+        text = "${colorText}";
       };
       colors.focusedInactive = {
         background = "${colorSecondary}";
         border = "${colorSecondary}";
         childBorder = "${colorSecondary}";
         indicator = "${colorSecondary}";
-        text = "#ffffff";
+        text = "${colorText}";
       };
       colors.unfocused = {
         background = "${colorSecondary}";
         border = "${colorSecondary}";
         childBorder = "${colorSecondary}";
         indicator = "${colorSecondary}";
-        text = "#ffffff";
+        text = "${colorText}";
       };
-      gaps.inner = 5;
-      gaps.outer = 10;
-      window.titlebar = false;
+      defaultWorkspace = "workspace number 1";
+      focus = {
+        followMouse = "always";
+        newWindow = "smart";
+        mouseWarping = "container";
+      };
       fonts = {
         names = ["Noto SansM Nerd Font"];
         style = "Bold";
         size = 12.0;
       };
-      startup = [
-        {command = "${pkgs.autotiling}/bin/autotiling";}
-        {command = "${notifyd}";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
-        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = "${fileManager} --daemon";}
-        {command = "${pkgs.swayosd}/bin/swayosd-server";}
-        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
-        {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
-        {
-          command = ''
-            ${pkgs.swayidle}/bin/swayidle -w \
-              timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
-                resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
-              timeout 300 '${pkgs.swaylock}/bin/swaylock -f -c 000000' \
-              timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
-                resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
-              timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
-              before-sleep '${pkgs.swaylock}/bin/swaylock -f -c 000000'
-          '';
-        }
-      ];
-      output = {
-        "BOE 0x095F Unknown" = {
-          scale = "1.5";
-        };
-      };
+      gaps.inner = 5;
+      gaps.outer = 10;
       input = {
         "type:touchpad" = {
           click_method = "clickfinger";
@@ -262,17 +239,10 @@
         # Show/hide waybar
         "${modifier}+F11" = "exec pkill -SIGUSR1 waybar";
 
-        "Mod1+R" = "mode resize";
         "Mod1+M" = "mode move";
+        "Mod1+R" = "mode resize";
       };
       modes = {
-        resize = {
-          Escape = "mode default";
-          Left = "resize shrink width 10 px";
-          Down = "resize grow height 10 px";
-          Up = "resize shrink height 10 px";
-          Right = "resize grow width 10 px";
-        };
         move = {
           Escape = "mode default";
           Left = "move left";
@@ -293,7 +263,52 @@
           "0" = "move container to workspace number 10";
           S = "move scratchpad";
         };
+        resize = {
+          Escape = "mode default";
+          Left = "resize shrink width 10 px";
+          Down = "resize grow height 10 px";
+          Up = "resize shrink height 10 px";
+          Right = "resize grow width 10 px";
+        };
       };
+      startup = [
+        {command = "${pkgs.autotiling}/bin/autotiling";}
+        {command = "${notifyd}";}
+        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
+        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
+        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+        {command = "${fileManager} --daemon";}
+        {command = "${pkgs.swayosd}/bin/swayosd-server";}
+        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
+        {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
+        {
+          command = ''
+            ${pkgs.swayidle}/bin/swayidle -w \
+              timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
+                resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+              timeout 300 '${pkgs.swaylock}/bin/swaylock -f -c 000000' \
+              timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
+                resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+              timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
+              before-sleep '${pkgs.swaylock}/bin/swaylock -f -c 000000'
+          '';
+        }
+      ];
+      output = {
+        "BOE 0x095F Unknown" = {
+          scale = "1.5";
+        };
+        "LG Display 0x0569 Unknown" = {
+          scale = "1.25";
+        };
+        "LG Electronics LG ULTRAWIDE 311NTAB5M720" = {
+          scale = "1.25";
+        };
+        "Samsung Display Corp. 0x4152 Unknown" = {
+          scale = "2.0";
+        };
+      };
+      window.titlebar = false;
     };
 
     wayland.windowManager.sway.extraConfig = ''
