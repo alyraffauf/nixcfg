@@ -146,7 +146,18 @@
         {command = "${pkgs.swayosd}/bin/swayosd-server";}
         {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
         {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
-        {command = "${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.swaylock}/bin/swaylock' before-sleep '${pkgs.swaylock}/bin/swaylock'";}
+        {
+          command = ''
+            ${pkgs.swayidle}/bin/swayidle -w \
+              timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
+                resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+              timeout 300 '${pkgs.swaylock}/bin/swaylock -f -c 000000' \
+              timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
+                resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+              timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
+              before-sleep '${pkgs.swaylock}/bin/swaylock -f -c 000000'
+          '';
+        }
       ];
       output = {
         "BOE 0x095F Unknown" = {
