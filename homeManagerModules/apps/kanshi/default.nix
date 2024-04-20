@@ -34,6 +34,15 @@
         }
       ];
     };
+    services.kanshi.profiles.rustboro = {
+      outputs = [
+        {
+          status = "enable";
+          criteria = "LG Display 0x0569 Unknown";
+          scale = 1.2;
+        }
+      ];
+    };
     services.kanshi.profiles.mauville = {
       outputs = [
         {
