@@ -129,7 +129,7 @@
       bar = pkgs.waybar + "/bin/waybar";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
-      wallpaperd = pkgs.swaybg + "/bin/swaybg";
+      wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
       idle = pkgs.swayidle + "/bin/swayidle";
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.swaylock + "/bin/swaylock -f -c 000000";
@@ -148,16 +148,17 @@
       media_next = "${media} next";
       media_previous = "${media} previous";
 
-      # screenshot = "${pkgs.hyprshot}/bin/hyprshot";
-      # screenshot_folder = "~/pics/screenshots";
-      # screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
+      screenshot = "${pkgs.grim}/bin/grim";
+      screenshot_folder = "~/pics/screenshots";
+      screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
       # screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
 
       # Color, themes, scaling
-      border_primary = "ca9ee6ee";
-      border_secondary = "99d1dbee";
-      border_inactive = "303446aa";
-      drop_shadow = "1a1a1aee";
+      colorText = "#FAFAFA";
+      colorPrimary = "#CA9EE6EE";
+      colorSecondary = "#99D1DBEE";
+      colorInactive = "#303446AA";
+      drop_shadow = "#1A1A1AEE";
       cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
@@ -314,8 +315,8 @@
 
       # Set background and border color
       ${riverctl} background-color 0x00000000
-      ${riverctl} border-color-focused 0x${border_primary}
-      ${riverctl} border-color-unfocused 0x${border_secondary}
+      ${riverctl} border-color-focused 0x${colorPrimary}
+      ${riverctl} border-color-unfocused 0x${colorSecondary}
 
       # Set keyboard repeat rate
       ${riverctl} set-repeat 50 300
