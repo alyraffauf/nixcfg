@@ -8,7 +8,10 @@
   home-manager.users.aly = {
     imports = [../../homeManagerModules ../../aly.nix];
     alyraffauf = {
-      desktop.sway.enable = true;
+      desktop.sway = {
+        enable = true;
+        randomWallpaper = true;
+      };
       services.easyeffects = {
         enable = true;
         preset = "LoudnessEqualizer.json";
