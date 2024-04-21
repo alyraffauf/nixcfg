@@ -96,7 +96,7 @@
       colorText = "#FAFAFA";
       colorPrimary = "#CA9EE6EE";
       colorSecondary = "#99D1DBEE";
-      border_inactive = "#303446AA";
+      colorInactive = "#303446AA";
       drop_shadow = "#1A1A1AEE";
       cursor_size = "24";
       qt_platform_theme = "gtk2";
