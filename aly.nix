@@ -26,9 +26,15 @@
 
   alyraffauf = {
     services.syncthing.enable = true;
-    desktop.hyprland = {
-      enable = true;
-      hyprpaper.randomWallpaper = true;
+    desktop = {
+      hyprland = {
+        enable = true;
+        hyprpaper.randomWallpaper = true;
+      };
+      sway = {
+        enable = true;
+        randomWallpaper = true;
+      };
     };
     apps = {
       alacritty.enable = true;
@@ -48,7 +54,8 @@
     };
   };
   wayland.windowManager.sway.config.assigns = {
-    "workspace 1" = [{ app_id = "firefox"; }];
+    "workspace 1" = [{app_id = "firefox";}];
+    "workspace 2" = [{app_id = "codium-url-handler";}];
   };
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser
