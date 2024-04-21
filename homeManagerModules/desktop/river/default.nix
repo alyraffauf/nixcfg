@@ -22,7 +22,7 @@
         firefox.enable = lib.mkDefault true;
         kanshi.enable = lib.mkDefault true;
       };
-      desktop.river.randomWallpaper.enable = lib.mkDefault true;
+      desktop.river.randomWallpaper = lib.mkDefault true;
     };
 
     programs.swaylock.enable = lib.mkDefault true;
@@ -139,8 +139,7 @@
                   timeout 300 '${lock} \
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
-                  before-sleep '${lock}'
-        ''
+                  before-sleep '${lock}' ''
         else ''
           ${pkgs.swayidle}/bin/swayidle -w \
                   timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
@@ -149,8 +148,7 @@
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
                   timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
-                  before-sleep '${lock}'
-        '';
+                  before-sleep '${lock}' '';
       riverctl = pkgs.river + "/bin/riverctl";
 
       brightness = "${pkgs.swayosd}/bin/swayosd-client";
@@ -351,7 +349,7 @@
       ${fileManager} --daemon &
       ${bar} &
       ${idled} &
-      ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 & 
+      ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
     '';
   };
 }

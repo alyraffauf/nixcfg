@@ -18,11 +18,11 @@
   '';
 in {
   options = {
-    alyraffauf.desktop.river.randomWallpaper.enable =
+    alyraffauf.desktop.river.randomWallpaper =
       lib.mkEnableOption "Enables swaybg random wallpaper script.";
   };
 
-  config = lib.mkIf config.alyraffauf.desktop.river.randomWallpaper.enable {
+  config = lib.mkIf config.alyraffauf.desktop.river.randomWallpaper {
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [swaybg swaybg-random];
 
