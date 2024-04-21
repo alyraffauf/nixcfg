@@ -31,15 +31,13 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-      # brightnessctl
-      # hyprnome
       celluloid
       evince
       gnome.eog
       gnome.file-roller
-      kdePackages.polkit-kde-agent-1
       networkmanagerapplet
       playerctl
+      swayidle
       swayosd
       trayscale
       xfce.exo
@@ -51,7 +49,6 @@
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
-      swayidle
     ];
 
     xdg.configFile."xfce4/helpers.rc".text = ''
@@ -354,6 +351,7 @@
       ${fileManager} --daemon &
       ${bar} &
       ${idled} &
+      ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 & 
     '';
   };
 }
