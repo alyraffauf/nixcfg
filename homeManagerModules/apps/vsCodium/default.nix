@@ -46,6 +46,7 @@
         vscode-extensions.github.vscode-github-actions
         vscode-extensions.github.vscode-pull-request-github
         vscode-extensions.jnoortheen.nix-ide
+        vscode-extensions.justusadam.language-haskell
         vscode-extensions.ms-python.python
         vscode-extensions.ms-vscode.cpptools-extension-pack
         vscode-extensions.rubymaniac.vscode-paste-and-indent
