@@ -72,7 +72,7 @@
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
       logout = pkgs.wlogout + "/bin/wlogout";
-      lock = pkgs.swaylock + "/bin/swaylock -f -c 000000";
+      lock = pkgs.swaylock + "/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font 'Noto SansM Nerd Font Regular' --ring-color ca9ee6 --inside-color 303446";
       idled =
         if osConfig.networking.hostName == "mauville"
         then ''
