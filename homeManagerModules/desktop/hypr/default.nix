@@ -127,8 +127,7 @@
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in ''
-      monitor = desc:BOE 0x0BCA,preferred,auto,1.566667 # lavaridge fw13 matte display
-      monitor = desc:BOE 0x095F,preferred,auto,1.566667# lavaridge fw13 glossy display
+      monitor = desc:BOE 0x095F,preferred,auto,1.566667 # lavaridge/fallarbor fw13 glossy display
       monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
       monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
       monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
@@ -136,6 +135,12 @@
       monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
       monitor = desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto
       monitor = ,preferred,auto,auto
+
+      # Turn off the internal display when lid is closed.
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
+      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "desc:BOE 0x095F,preferred,auto,1.566667"
+      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "desc:LG Display 0x0569,preferred,auto,1.2"
+      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"
 
       # unscale XWayland apps
       xwayland {
