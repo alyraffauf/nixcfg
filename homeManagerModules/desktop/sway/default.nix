@@ -271,6 +271,7 @@
         };
       };
       startup = [
+        {command = "${pkgs.gammastep}/bin/gammastep -l 31.1:-94.1";} # TODO: automatic locations
         {command = "${pkgs.autotiling}/bin/autotiling";}
         {command = "${notifyd}";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
