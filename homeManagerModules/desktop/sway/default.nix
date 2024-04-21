@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }: {
   imports = [./randomWallpaper.nix];
@@ -70,9 +71,29 @@
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
-      idle = pkgs.swayidle + "/bin/swayidle";
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.swaylock + "/bin/swaylock -f -c 000000";
+      idled =
+        if osConfig.networking.hostName == "mauville"
+        then ''
+          ${pkgs.swayidle}/bin/swayidle -w \
+                  timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
+                    resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+                  timeout 300 '${lock} \
+                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
+                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  before-sleep '${lock}'
+        ''
+        else ''
+          ${pkgs.swayidle}/bin/swayidle -w \
+                  timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
+                    resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+                  timeout 300 '${lock}' \
+                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
+                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
+                  before-sleep '${lock}'
+        '';
 
       brightness = "${pkgs.swayosd}/bin/swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
@@ -281,18 +302,7 @@
         {command = "${pkgs.swayosd}/bin/swayosd-server";}
         {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
         {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
-        {
-          command = ''
-            ${pkgs.swayidle}/bin/swayidle -w \
-              timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
-                resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
-              timeout 300 '${pkgs.swaylock}/bin/swaylock -f -c 000000' \
-              timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
-                resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
-              timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
-              before-sleep '${pkgs.swaylock}/bin/swaylock -f -c 000000'
-          '';
-        }
+        {command = "${idled}";}
       ];
       output = {
         "BOE 0x095F Unknown" = {

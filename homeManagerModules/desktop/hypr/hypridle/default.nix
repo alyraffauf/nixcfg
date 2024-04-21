@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }: {
   options = {
@@ -46,7 +47,7 @@
 
       listener {
           timeout = 900                                 # 15min
-          on-timeout = [ $(${pkgs.nettools}/bin/hostname) != "mauville" ] && ${pkgs.systemd}/bin/systemctl suspend # suspend pc unless on mauville
+          on-timeout = ${if osConfig.networking.hostName == "mauville" then "" else "${pkgs.systemd}/bin/systemctl suspend"} # suspend pc unless on mauville
       }
     '';
   };

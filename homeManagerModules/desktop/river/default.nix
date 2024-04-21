@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }: {
   imports = [./randomWallpaper.nix];
@@ -130,9 +131,29 @@
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
-      idle = pkgs.swayidle + "/bin/swayidle";
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.swaylock + "/bin/swaylock -f -c 000000";
+      idled =
+        if osConfig.networking.hostName == "mauville"
+        then ''
+          ${pkgs.swayidle}/bin/swayidle -w \
+                  timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
+                    resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+                  timeout 300 '${lock} \
+                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
+                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  before-sleep '${lock}'
+        ''
+        else ''
+          ${pkgs.swayidle}/bin/swayidle -w \
+                  timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
+                    resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+                  timeout 300 '${lock}' \
+                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
+                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
+                  before-sleep '${lock}'
+        '';
       riverctl = pkgs.river + "/bin/riverctl";
 
       brightness = "${pkgs.swayosd}/bin/swayosd-client";
@@ -332,7 +353,7 @@
       ${pkgs.swayosd}/bin/swayosd-server &
       ${fileManager} --daemon &
       ${bar} &
-      ${idle} -w timeout 300 '${lock}' before-sleep '${lock}' &
+      ${idled} &
     '';
   };
 }
