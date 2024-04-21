@@ -12,6 +12,7 @@
       services.syncthing.enable = true;
       desktop.sway = {
         enable = true;
+        randomWallpaper = true;
       };
     };
   };
