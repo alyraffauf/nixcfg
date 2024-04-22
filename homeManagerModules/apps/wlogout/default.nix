@@ -12,7 +12,7 @@
       layout = [
         {
           label = "logout";
-          action = "${pkgs.systemd}/bin/loginctl terminate-user $USER";
+          action = "${pkgs.systemd}/bin/loginctl terminate-user ${config.home.username}";
           text = "Logout";
           keybind = "e";
         }
