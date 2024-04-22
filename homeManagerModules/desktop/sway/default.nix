@@ -72,7 +72,7 @@
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
       logout = pkgs.wlogout + "/bin/wlogout";
-      lock = pkgs.swaylock + "/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font 'Noto SansM Nerd Font Regular' --ring-color ca9ee6 --inside-color 303446";
+      lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --inside-color 303446'';
       idled =
         if osConfig.networking.hostName == "mauville"
         then ''
@@ -311,11 +311,15 @@
         "LG Display 0x0569 Unknown" = {
           scale = "1.25";
         };
+        "Samsung Display Corp. 0x4152 Unknown" = {
+          scale = "2.0";
+        };
         "LG Electronics LG ULTRAWIDE 311NTAB5M720" = {
           scale = "1.25";
         };
-        "Samsung Display Corp. 0x4152 Unknown" = {
-          scale = "2.0";
+        "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 0000000000001" = {
+          scale = "1.5";
+          pos = "-2560 0";
         };
       };
       window.titlebar = false;
