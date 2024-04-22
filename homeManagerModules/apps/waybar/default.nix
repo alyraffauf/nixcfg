@@ -23,14 +23,15 @@
         layer = "top";
         output = ["*"];
         position = "top";
-        reload_style_on_change = true;
         modules-left = lib.mkDefault ["hyprland/workspaces" "hyprland/submap"];
         modules-center = ["clock"];
         modules-right = [
           "tray"
           "bluetooth"
           "pulseaudio"
-          "group/power"
+          # "group/power"
+          "power-profiles-daemon"
+          "battery"
           "custom/logout"
         ];
         "hyprland/workspaces" = {
@@ -77,19 +78,19 @@
           "interval" = 60;
           "format" = "{:%I:%M%p}";
         };
-        "group/power" = {
-          "orientation" = "inherit";
-          "drawer" = {
-            "transition-duration" = 500;
-            "children-class" = "not-power";
-            "transition-left-to-right" = false;
-          };
-          "modules" = [
-            "battery"
-            "power-profiles-daemon"
-            "inhibitor"
-          ];
-        };
+        # "group/power" = {
+        #   "orientation" = "inherit";
+        #   "drawer" = {
+        #     "transition-duration" = 500;
+        #     "children-class" = "not-power";
+        #     "transition-left-to-right" = false;
+        #   };
+        #   "modules" = [
+        #     "battery"
+        #     "power-profiles-daemon"
+        #     "inhibitor"
+        #   ];
+        # };
         "battery" = {
           "states" = {"critical" = 20;};
           "format" = "{icon}";
