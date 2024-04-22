@@ -4,5 +4,5 @@
   config,
   ...
 }: {
-  imports = [./flatpak ./nicotine-plus ./steam ./podman ./virt-manager];
+  imports = [./nicotine-plus ./steam ./podman ./virt-manager];
 }

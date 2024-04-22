@@ -26,6 +26,9 @@
   };
 
   alyraffauf = {
+    services = {
+      flatpak.enable = true;
+    };
     system = {
       plymouth.enable = true;
       zramSwap = {enable = true;};
@@ -39,7 +42,6 @@
       hyprland.enable = true;
     };
     apps = {
-      flatpak.enable = true;
       steam.enable = true;
     };
   };
