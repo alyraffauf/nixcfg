@@ -372,7 +372,7 @@
       # Show/hide waybar.
       bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
 
-      bind=ALT,R,submap,resize
+      bind=CTRL ALT,R,submap,resize
       submap=resize
       binde=,right,resizeactive,10 0
       binde=,left,resizeactive,-10 0
@@ -381,7 +381,7 @@
       bind=,escape,submap,reset
       submap=reset
 
-      bind=ALT,M,submap,move
+      bind=CTRL ALT,M,submap,move
       submap=move
       # Move window with arrow keys
       bind = , left, movewindow, l

@@ -259,8 +259,8 @@
         # Show/hide waybar
         "${modifier}+F11" = "exec pkill -SIGUSR1 waybar";
 
-        "Mod1+M" = "mode move";
-        "Mod1+R" = "mode resize";
+        "Ctrl+Mod1+M" = "mode move";
+        "Ctrl+Mod1+R" = "mode resize";
       };
       modes = {
         move = {
