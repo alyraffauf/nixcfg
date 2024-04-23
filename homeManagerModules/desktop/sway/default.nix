@@ -79,7 +79,7 @@
           ${pkgs.swayidle}/bin/swayidle -w \
                   timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
                     resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
-                  timeout 300 '${lock} \
+                  timeout 300 '${lock}' \
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
                   before-sleep '${lock}'
