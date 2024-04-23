@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  email = "alyraffauf@gmail.com";
+  acmeEmail = "alyraffauf@gmail.com";
   hostName = "mauville";
   domain = "raffauflabs.com";
   mediaDirectory = "/mnt/Media";
@@ -79,7 +79,7 @@ in {
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = email;
+    defaults.email = acmeEmail;
   };
 
   services = {
