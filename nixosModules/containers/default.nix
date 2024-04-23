@@ -4,5 +4,5 @@
   config,
   ...
 }: {
-  imports = [./binaryCache ./flatpak];
+  imports = [./nixos ./oci];
 }
