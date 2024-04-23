@@ -17,12 +17,17 @@
       default = "/mnt/Archive";
       type = lib.types.str;
     };
+    alyraffauf.containers.oci.plexMediaServer.port = lib.mkOption {
+      description = "Port for Plex Media Server.";
+      default = 32400;
+      type = lib.types.int;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.containers.oci.plexMediaServer.enable {
     virtualisation.oci-containers.containers = {
       plexMediaServer = {
-        ports = ["0.0.0.0:32400:32400"];
+        ports = ["0.0.0.0:${toString config.alyraffauf.containers.oci.plexMediaServer.port}:32400"];
         image = "plexinc/pms-docker:public";
         environment = {TZ = "America/New_York";};
         volumes = [

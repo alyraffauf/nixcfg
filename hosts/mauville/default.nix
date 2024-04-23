@@ -10,7 +10,6 @@
   domain = "raffauflabs.com";
   mediaDirectory = "/mnt/Media";
   archiveDirectory = "/mnt/Archive";
-  openPorts = [80 443 51413 9091];
 in {
   imports = [./hardware-configuration.nix ./home.nix];
 
@@ -59,9 +58,12 @@ in {
   };
 
   networking = {
-    firewall = {
-      allowedTCPPorts = openPorts;
-      allowedUDPPorts = openPorts;
+    firewall = let
+      transmissionPort = config.alyraffauf.containers.oci.transmission.port;
+      bitTorrentPort = config.alyraffauf.containers.oci.transmission.bitTorrentPort;
+    in {
+      allowedTCPPorts = [80 443 transmissionPort bitTorrentPort];
+      allowedUDPPorts = [bitTorrentPort];
     };
     # My router doesn't expose settings for NAT loopback
     # So we have to use this workaround.
@@ -102,7 +104,7 @@ in {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:8080";
+          proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.freshRSS.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
           extraConfig = ''
             proxy_buffering off;
@@ -126,7 +128,7 @@ in {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:32400";
+          proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.plexMediaServer.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
           extraConfig = ''
             proxy_buffering off;
@@ -138,7 +140,7 @@ in {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:13378";
+          proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.audiobookshelf.port}";
           # proxyWebsockets = true; # This breaks audiobookshelf.
           extraConfig = ''
             proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;

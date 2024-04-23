@@ -17,12 +17,17 @@
       default = "/mnt/Archive";
       type = lib.types.str;
     };
+    alyraffauf.containers.oci.jellyfin.port = lib.mkOption {
+      description = "Port for Jellyfin.";
+      default = 8096;
+      type = lib.types.int;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.containers.oci.jellyfin.enable {
     virtualisation.oci-containers.containers = {
       jellyfin = {
-        ports = ["0.0.0.0:8096:8096"];
+        ports = ["0.0.0.0:${toString config.alyraffauf.containers.oci.jellyfin.port}:8096"];
         image = "jellyfin/jellyfin";
         environment = {TZ = "America/New_York";};
         volumes = [
