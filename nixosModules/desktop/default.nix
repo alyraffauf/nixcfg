@@ -4,7 +4,14 @@
   config,
   ...
 }: {
-  imports = [./gnome ./hyprland ./lightdm ./plasma];
+  imports = [
+    ./gnome
+    ./greetd
+    ./hyprland
+    ./lightdm
+    ./plasma
+    ./sway
+  ];
 
   options = {
     alyraffauf.desktop.enable =

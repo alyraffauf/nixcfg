@@ -58,18 +58,14 @@
     };
     desktop = {
       enable = true;
-      hyprland.enable = true;
+      greetd = {
+        enable = true;
+        session = config.programs.sway.package + "/bin/sway";
+      };
+      sway.enable = true;
     };
     apps = {
       steam.enable = true;
-    };
-  };
-  
-  services.greetd = {
-    settings = rec {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
-      };
     };
   };
 

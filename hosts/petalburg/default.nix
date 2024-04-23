@@ -82,6 +82,7 @@ in {
     };
     desktop = {
       enable = true;
+      greetd.enable = true;
       hyprland.enable = true;
     };
     apps = {

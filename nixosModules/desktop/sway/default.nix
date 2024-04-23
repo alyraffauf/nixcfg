@@ -6,11 +6,11 @@
   ...
 }: {
   options = {
-    alyraffauf.desktop.hyprland.enable =
-      lib.mkEnableOption "Enable hyprland wayland compositor.";
+    alyraffauf.desktop.sway.enable =
+      lib.mkEnableOption "Enable sway wayland compositor.";
   };
 
-  config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
+  config = lib.mkIf config.alyraffauf.desktop.sway.enable {
     services = {
       dbus.packages = [pkgs.gcr];
       udev.packages = [pkgs.swayosd];
@@ -24,20 +24,12 @@
 
     programs = {
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
-      hyprland = {
+      sway = {
         enable = true;
-        package =
-          inputs.hyprland.packages.${pkgs.system}.hyprland;
+        package = pkgs.swayfx;
       };
     };
 
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-    nix.settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      ];
-    };
   };
 }
