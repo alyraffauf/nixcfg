@@ -4,14 +4,21 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  email = "alyraffauf@gmail.com";
+  hostName = "mauville";
+  domain = "raffauflabs.com";
+  mediaDirectory = "/mnt/Media";
+  archiveDirectory = "/mnt/Archive";
+  openPorts = [80 443 51413 9091];
+in {
   imports = [./hardware-configuration.nix ./home.nix];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "mauville"; # Define your hostname.
+  networking.hostName = hostName; # Define your hostname.
 
   alyraffauf = {
     apps = {
@@ -53,23 +60,23 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [80 443 51413 9091];
-      allowedUDPPorts = [51413];
+      allowedTCPPorts = openPorts;
+      allowedUDPPorts = openPorts;
     };
     # My router doesn't expose settings for NAT loopback
     # So we have to use this workaround.
     extraHosts = ''
-      127.0.0.1 music.raffauflabs.com
-      127.0.0.1 nixcache.raffauflabs.com
-      127.0.0.1 plex.raffauflabs.com
-      127.0.0.1 podcasts.raffauflabs.com
-      127.0.0.1 news.raffauflabs.com
+      127.0.0.1 music.${domain}
+      127.0.0.1 nixcache.${domain}
+      127.0.0.1 plex.${domain}
+      127.0.0.1 podcasts.${domain}
+      127.0.0.1 news.${domain}
     '';
   };
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "alyraffauf@gmail.com";
+    defaults.email = email;
   };
 
   services = {
@@ -79,7 +86,7 @@
       recommendedTlsSettings = true;
       recommendedGzipSettings = true;
 
-      virtualHosts."music.raffauflabs.com" = {
+      virtualHosts."music.${domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
@@ -91,7 +98,7 @@
         };
       };
 
-      virtualHosts."news.raffauflabs.com" = {
+      virtualHosts."news.${domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
@@ -107,7 +114,7 @@
         };
       };
 
-      virtualHosts."nixcache.raffauflabs.com" = {
+      virtualHosts."nixcache.${domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${
@@ -115,7 +122,7 @@
         }";
       };
 
-      virtualHosts."plex.raffauflabs.com" = {
+      virtualHosts."plex.${domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
@@ -127,7 +134,7 @@
         };
       };
 
-      virtualHosts."podcasts.raffauflabs.com" = {
+      virtualHosts."podcasts.${domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
@@ -152,8 +159,8 @@
       openFirewall = true;
       shares = {
         Media = {
-          comment = "Media @ ${config.networking.hostName}";
-          path = "/mnt/Media";
+          comment = "Media @ ${hostName}";
+          path = mediaDirectory;
           browseable = "yes";
           "read only" = "no";
           "guest ok" = "yes";
@@ -161,8 +168,8 @@
           "directory mask" = "0755";
         };
         Archive = {
-          comment = "Archive @ ${config.networking.hostName}";
-          path = "/mnt/Archive";
+          comment = "Archive @ ${hostName}";
+          path = archiveDirectory;
           browseable = "yes";
           "read only" = "no";
           "guest ok" = "yes";
