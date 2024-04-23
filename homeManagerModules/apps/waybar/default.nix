@@ -23,7 +23,7 @@
         layer = "top";
         output = ["*"];
         position = "top";
-        modules-left = lib.mkDefault ["hyprland/workspaces" "hyprland/submap"];
+        modules-left = lib.mkDefault [];
         modules-center = ["clock"];
         modules-right = [
           "tray"
