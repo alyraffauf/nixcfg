@@ -33,7 +33,7 @@
     };
     user = {
       aly.enable = true;
-      dustin.enable = true;
+      dustin.enable = false;
     };
     desktop = {
       enable = true;

@@ -78,7 +78,7 @@ in {
     };
     user = {
       aly.enable = true;
-      dustin.enable = true;
+      dustin.enable = false;
     };
     desktop = {
       enable = true;
@@ -87,8 +87,6 @@ in {
     };
     apps = {
       steam.enable = true;
-      podman.enable = true;
-      virt-manager.enable = true;
     };
   };
 
