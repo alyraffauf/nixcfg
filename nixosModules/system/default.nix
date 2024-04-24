@@ -8,6 +8,28 @@
 
   alyraffauf.system.power-profiles-daemon.enable = lib.mkDefault true;
 
+  console = {
+    colors = [
+      "303446"
+      "e78284"
+      "a6d189"
+      "e5c890"
+      "8caaee"
+      "f4b8e4"
+      "81c8be"
+      "b5bfe2"
+      "626880"
+      "303446"
+      "e78284"
+      "a6d189"
+      "e5c890"
+      "8caaee"
+      "f4b8e4"
+      "81c8be"
+      "a5adce"
+    ];
+  };
+
   time.timeZone = "America/New_York";
 
   i18n = {
