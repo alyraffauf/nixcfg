@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }: {
   imports = [./hypridle ./hyprlock ./hyprpaper ./hyprshade ./theme.nix];
@@ -13,8 +14,8 @@
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
     # Hypr* modules, plguins, and tools.
-    alyraffauf.desktop.hyprland.hypridle.enable = lib.mkDefault true;
-    alyraffauf.desktop.hyprland.hyprlock.enable = lib.mkDefault true;
+    alyraffauf.desktop.hyprland.hypridle.enable = lib.mkDefault false;
+    alyraffauf.desktop.hyprland.hyprlock.enable = lib.mkDefault false;
     alyraffauf.desktop.hyprland.hyprpaper.enable = lib.mkDefault true;
     alyraffauf.desktop.hyprland.hyprshade.enable = lib.mkDefault true;
 
@@ -85,9 +86,19 @@
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.hyprpaper + "/bin/hyprpaper";
-      idle = pkgs.hypridle + "/bin/hypridle";
       logout = pkgs.wlogout + "/bin/wlogout";
-      lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
+      # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
+      # idled = pkgs.hypridle + "/bin/hypridle";
+
+      lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --inside-color 303446'';
+      idled =
+        if osConfig.networking.hostName == "mauville"
+        then ''${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' before-sleep '${lock}'
+        ''
+        else ''
+          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${lock}'
+        '';
+
       hyprnome = pkgs.hyprnome + "/bin/hyprnome";
       hyprshade = pkgs.hyprshade + "/bin/hyprshade";
 
@@ -163,7 +174,7 @@
       exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
       exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
-      exec-once = ${pkgs.hypridle}/bin/hypridle
+      exec-once = ${idled}
       exec-once = ${pkgs.swayosd}/bin/swayosd-server
       exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
       exec-once = ${pkgs.trayscale}/bin/trayscale --hide-window
