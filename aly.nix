@@ -61,6 +61,7 @@
   wayland.windowManager.sway.config.assigns = {
     "workspace 1: web" = [{app_id = "firefox";}];
     "workspace 2: code" = [{app_id = "codium-url-handler";}];
+    "workspace 3: chat" = [{app_id = "org.gnome.Fractal";} {app_id = "WebCord";}];
   };
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser
