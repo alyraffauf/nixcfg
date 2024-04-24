@@ -50,7 +50,7 @@ in {
       binaryCache.enable = true;
       ollama = {
         enable = true;
-        gpu = "amd";
+        gpu = ""; # rocm is broken on nixos unstable
         listenAddress = "0.0.0.0:11434";
       };
     };
