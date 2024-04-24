@@ -14,7 +14,14 @@
     boot = {
       consoleLogLevel = 0;
       initrd.verbose = false;
-      plymouth.enable = true;
+      plymouth = {
+        enable = true;
+        themePackages = [(pkgs.catppuccin-plymouth.override {variant = "frappe";})];
+        theme = "catppuccin-frappe";
+        font = "${pkgs.nerdfonts.override {
+          fonts = ["Noto"];
+        }}/share/fonts/truetype/NerdFonts/NotoSansNerdFont-Regular.ttf";
+      };
     };
   };
 }
