@@ -11,5 +11,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     sharedModules = [inputs.hyprland.homeManagerModules.default];
+    extraSpecialArgs = inputs;
   };
 }
