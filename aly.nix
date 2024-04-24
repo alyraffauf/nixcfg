@@ -16,7 +16,12 @@
     fractal
     gh
     git
-    google-chrome
+    (google-chrome.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    })
     obsidian
     python3
     ruby
