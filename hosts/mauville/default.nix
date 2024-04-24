@@ -48,6 +48,11 @@ in {
     };
     services = {
       binaryCache.enable = true;
+      ollama = {
+        enable = true;
+        gpu = "amd";
+        listenAddress = "0.0.0.0:11434";
+      };
     };
     system = {
       plymouth.enable = true;
