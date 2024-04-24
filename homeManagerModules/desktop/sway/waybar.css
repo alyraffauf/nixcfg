@@ -1,0 +1,7 @@
+@import url("style.css");
+
+/* Style overrides for sway */
+
+window#waybar {
+    background: rgba (35, 38, 52, 1.0);
+}

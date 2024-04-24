@@ -48,11 +48,15 @@
 
     services.cliphist.enable = lib.mkDefault true;
 
-    programs.waybar.settings = {
-      mainBar = {
-        modules-left = ["sway/workspaces" "sway/mode"];
+    programs.waybar = {
+      settings = {
+        mainBar = {
+          modules-left = ["sway/workspaces" "sway/mode"];
+        };
       };
     };
+
+    xdg.configFile."waybar/sway-style.css".source = ./waybar.css;
 
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.package = pkgs.swayfx;
@@ -67,7 +71,7 @@
       terminal = pkgs.alacritty + "/bin/alacritty";
 
       # Sway desktop utilities
-      bar = pkgs.waybar + "/bin/waybar";
+      bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/sway-style.css";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
