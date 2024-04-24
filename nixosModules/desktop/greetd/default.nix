@@ -21,7 +21,7 @@
         enable = true;
         settings = rec {
           default_session = {
-            command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+            command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
           };
         };
       };
