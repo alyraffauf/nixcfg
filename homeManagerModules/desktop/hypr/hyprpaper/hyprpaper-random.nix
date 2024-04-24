@@ -10,12 +10,12 @@
     if [ -d "$directory" ]; then
         while true; do
           sleep 30
-          hyprctl hyprpaper unload all
-          monitor=`hyprctl monitors | grep Monitor | awk '{print $2}'`
+          ${config.wayland.windowManager.hyprland.package}/bin/hyprctl hyprpaper unload all
+          monitor=`${config.wayland.windowManager.hyprland.package}/bin/hyprctl monitors | grep Monitor | awk '{print $2}'`
           for m in ''${monitor[@]}; do
             random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
-            hyprctl hyprpaper preload $random_background
-            hyprctl hyprpaper wallpaper "$m,$random_background"
+            ${config.wayland.windowManager.hyprland.package}/bin/hyprctl hyprpaper preload $random_background
+            ${config.wayland.windowManager.hyprland.package}/bin/hyprctl hyprpaper wallpaper "$m,$random_background"
           done
           sleep 870
         done
