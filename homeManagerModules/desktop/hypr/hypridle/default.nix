@@ -18,7 +18,7 @@
       general {
           lock_cmd = pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock       # avoid starting multiple hyprlock instances.
           before_sleep_cmd = ${pkgs.systemd}/bin/loginctl lock-session    # lock before suspend.
-          after_sleep_cmd = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
+          after_sleep_cmd = ${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
       }
 
       listener {
@@ -41,8 +41,8 @@
 
       listener {
           timeout = 330                                 # 5.5min
-          on-timeout = ${pkgs.hyprland}/bin/hyprctl dispatch dpms off        # screen off when timeout has passed
-          on-resume = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
+          on-timeout = ${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off        # screen off when timeout has passed
+          on-resume = ${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
       }
 
       listener {

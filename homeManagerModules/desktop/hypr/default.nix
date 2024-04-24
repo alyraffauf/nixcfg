@@ -93,10 +93,10 @@
       lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --inside-color 303446'';
       idled =
         if osConfig.networking.hostName == "mauville"
-        then ''${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' before-sleep '${lock}'
+        then ''${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' before-sleep '${lock}'
         ''
         else ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${lock}'
+          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${lock}'
         '';
 
       hyprnome = pkgs.hyprnome + "/bin/hyprnome";
