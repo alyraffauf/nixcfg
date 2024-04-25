@@ -178,6 +178,12 @@
           tap = "enabled";
           tap_button_map = "lrm";
         };
+        "1386:21186:Wacom_HID_52C2_Finger" = {
+          map_to_output = "'Samsung Display Corp. 0x4152 Unknown'";
+        };
+        "1386:21186:Wacom_HID_52C2_Pen" = {
+          map_to_output = "'Samsung Display Corp. 0x4152 Unknown'";
+        };
       };
       keybindings = {
         # Apps
