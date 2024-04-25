@@ -101,7 +101,6 @@
       openFirewall = true;
     };
     printing.enable = true;
-    syncthing.openDefaultPorts = true;
     tailscale.enable = true;
   };
 

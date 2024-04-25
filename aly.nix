@@ -30,7 +30,7 @@
   ];
 
   alyraffauf = {
-    services.syncthing.enable = true;
+    services.syncthing.enable = false;
     desktop = {
       hyprland = {
         enable = true;
