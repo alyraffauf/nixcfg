@@ -42,14 +42,15 @@
     hyprland,
     ...
   }: {
-    homeConfigurations.aly = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {system = "x86_64-linux";};
-      modules = [hyprland.homeManagerModules.default ./aly.nix];
-    };
-
-    homeConfigurations.dustin = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {system = "x86_64-linux";};
-      modules = [hyprland.homeManagerModules.default ./dustin.nix];
+    homeConfigurations = {
+      aly = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "x86_64-linux";};
+        modules = [hyprland.homeManagerModules.default ./aly.nix];
+      };
+      dustin = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "x86_64-linux";};
+        modules = [hyprland.homeManagerModules.default ./dustin.nix];
+      };
     };
 
     nixosConfigurations = {
