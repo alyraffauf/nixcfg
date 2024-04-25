@@ -23,6 +23,11 @@
       user = "aly";
       dataDir = "/home/aly";
       settings = {
+        options = {
+          localAnnounceEnabled = true;
+          relaysEnabled = true;
+          urAccepted = -1;
+        };
         devices = {
           "brawly" = {id = "BBIBWMR-CN4CFC4-2XMPLII-XFWXBT5-EPCZCAF-JOWAX5J-DHIGNM4-O3XQ4Q3";}; # Pixel 6a
           "gsgmba" = {id = "V2YCZSL-XY7H72L-FGJFWP2-JNYX72O-OJ5V2HY-V4SSSJM-77A7E3Z-7EJFAAV";}; # Work Macbook Air
