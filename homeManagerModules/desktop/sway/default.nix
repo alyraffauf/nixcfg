@@ -127,7 +127,7 @@
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in {
-      bars = [{command = "${bar}";}];
+      bars = [];
       modifier = "${modifier}";
       colors.background = "${colorPrimary}";
       colors.focused = {
@@ -296,17 +296,18 @@
         };
       };
       startup = [
-        {command = "${pkgs.gammastep}/bin/gammastep -l 31.1:-94.1";} # TODO: automatic locations
-        {command = "${pkgs.autotiling}/bin/autotiling";}
-        {command = "${notifyd}";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
-        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+        {command = "${bar}";}
         {command = "${fileManager} --daemon";}
-        {command = "${pkgs.swayosd}/bin/swayosd-server";}
-        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
-        {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
         {command = "${idled}";}
+        {command = "${notifyd}";}
+        {command = "${pkgs.autotiling}/bin/autotiling";}
+        {command = "${pkgs.gammastep}/bin/gammastep -l 31.1:-94.1";} # TODO: automatic locations
+        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
+        {command = "${pkgs.swayosd}/bin/swayosd-server";}
+        {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
+        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
+        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
       ];
       output = {
         "BOE 0x095F Unknown" = {
