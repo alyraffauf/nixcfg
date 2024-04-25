@@ -8,6 +8,11 @@
   imports = [./randomWallpaper.nix];
   options = {
     alyraffauf.desktop.sway.enable = lib.mkEnableOption "Sway with extra apps.";
+    alyraffauf.desktop.sway.autoSuspend = lib.mkOption {
+      description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
@@ -78,7 +83,7 @@
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --inside-color 303446'';
       idled =
-        if osConfig.networking.hostName == "mauville"
+        if config.alyraffauf.desktop.sway.autoSuspend
         then ''
           ${pkgs.swayidle}/bin/swayidle -w \
                   timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
@@ -86,6 +91,7 @@
                   timeout 300 '${lock}' \
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
                   before-sleep '${lock}'
         ''
         else ''
@@ -95,7 +101,6 @@
                   timeout 300 '${lock}' \
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
-                  timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
                   before-sleep '${lock}'
         '';
 
