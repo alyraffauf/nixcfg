@@ -101,11 +101,11 @@
       idled =
         if config.alyraffauf.desktop.hyprland.autoSuspend
         then ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${lock}'
+          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${lock}'
 
         ''
         else ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' before-sleep '${lock}'
+          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${lock}'
 
         '';
 
