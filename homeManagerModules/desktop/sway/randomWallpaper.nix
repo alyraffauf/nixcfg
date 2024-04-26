@@ -12,14 +12,13 @@
 
     if [ -d "$directory" ]; then
         while true; do
-
           for pid in ''${OLD_PIDS[@]}; do
             kill $pid
           done
+
           OLD_PIDS=()
 
           monitor=`${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep Output | awk '{print $2}'`
-          
           for m in ''${monitor[@]}; do
             random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
             ${pkgs.swaybg}/bin/swaybg -o $m -i $random_background &
