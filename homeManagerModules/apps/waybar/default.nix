@@ -70,7 +70,7 @@
             "num-tags" = 4;
           };
           "clock" = {
-            # "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
+            "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
             "interval" = 60;
             "format" = "{:%I:%M%p}";
           };
