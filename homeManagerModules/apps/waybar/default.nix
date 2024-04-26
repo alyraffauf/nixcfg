@@ -80,7 +80,7 @@
             "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
             "tooltip-format" = ''
               {capacity}%: {timeTo}.
-              Using {power} watts.'';
+              Draw: {power} watts.'';
           };
           "inhibitor" = {
             "what" = "sleep";
