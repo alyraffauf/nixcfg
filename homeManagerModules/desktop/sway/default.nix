@@ -131,6 +131,19 @@
       cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
+
+      cycleSwayDisplayModes = pkgs.writeShellScriptBin "cycleSwayDisplayModes" ''
+        # Only works on petalburg.
+        current_mode=$(${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep "Current mode" | grep -Eo '[0-9]+x[0-9]+ @ [0-9.]+ Hz' | tr -d " ")
+
+        if [ $current_mode = "2880x1800@90.001Hz" ]; then
+                ${config.wayland.windowManager.sway.package}/bin/swaymsg output "eDP-1" mode "2880x1800@60.001Hz";
+                ${pkgs.libnotify}/bin/notify-send "Display set to 2880x1800@60.001Hz."
+        elif [ $current_mode = "2880x1800@60.001Hz" ]; then
+                ${config.wayland.windowManager.sway.package}/bin/swaymsg output "eDP-1" mode "2880x1800@90.001Hz";
+                ${pkgs.libnotify}/bin/notify-send "Display set to 2880x1800@90.001Hz."
+        fi
+      '';
     in {
       bars = [];
       modifier = "${modifier}";
@@ -263,6 +276,9 @@
 
         # For petalburg
         "XF86Launch4" = "exec pp-adjuster";
+
+        "XF86Launch3" = "exec ${cycleSwayDisplayModes}/bin/cycleSwayDisplayModes";
+
         # TODO: night color shift
         # "XF86Launch1" =
         "XF86Launch2" = "exec ${media_play}";
