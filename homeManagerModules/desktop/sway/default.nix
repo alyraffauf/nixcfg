@@ -370,7 +370,6 @@
       corner_radius 10
       shadows enable
 
-      layer_effects waybar blur enable
       layer_effects launcher blur enable
       layer_effects logout_dialog blur enable
     '';
