@@ -10,8 +10,11 @@
     if [ -d "$directory" ]; then
         while true; do
           kill `pidof swaybg`
-          random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
-          ${pkgs.swaybg}/bin/swaybg -i $random_background &
+          monitor=`${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep Output | awk '{print $2}'`
+          for m in ''${monitor[@]}; do
+            random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
+            ${pkgs.swaybg}/bin/swaybg -o $m -i $random_background &
+          done
           sleep 900
         done
     fi
