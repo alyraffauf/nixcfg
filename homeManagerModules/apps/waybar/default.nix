@@ -40,7 +40,7 @@
             "sort-by" = "id";
           };
           "hyprland/submap" = {
-            "on-click" = "${pkgs.hyprland}/bin/hyprctl dispatch submap reset";
+            "on-click" = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch submap reset";
           };
           "hyprland/window" = {
             "format" = "";
