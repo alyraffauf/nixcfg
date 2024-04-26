@@ -28,11 +28,7 @@
           modules-center = ["clock"];
           modules-right = [
             "tray"
-            "bluetooth"
-            "pulseaudio"
-            "power-profiles-daemon"
-            "battery"
-            "custom/logout"
+            "group/hardware"
           ];
           "hyprland/workspaces" = {
             "all-outputs" = true;
@@ -148,6 +144,10 @@
               "balanced" = "󰗑";
               "power-saver" = "󰌪";
             };
+          };
+          "group/hardware" = {
+            "orientation" = "horizontal";
+            modules = ["bluetooth" "pulseaudio" "power-profiles-daemon" "battery" "custom/logout"];
           };
         };
       };

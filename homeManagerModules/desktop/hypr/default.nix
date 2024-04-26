@@ -71,6 +71,8 @@
       extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
 
+    xdg.configFile."waybar/hyprland-style.css".source = ./waybar.css;
+
     programs.waybar.settings = {
       mainBar = {
         modules-left = ["hyprland/workspaces" "hyprland/submap"];
@@ -89,7 +91,7 @@
       terminal = pkgs.alacritty + "/bin/alacritty";
 
       # Hyprland desktop utilities
-      bar = pkgs.waybar + "/bin/waybar";
+      bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/hyprland-style.css";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.hyprpaper + "/bin/hyprpaper";
