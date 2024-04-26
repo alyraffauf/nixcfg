@@ -19,10 +19,18 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Latest Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -40,6 +48,7 @@
     impermanence,
     disko,
     hyprland,
+    jovian,
     ...
   }: {
     homeConfigurations = {
@@ -54,6 +63,19 @@
     };
 
     nixosConfigurations = {
+      # Steam Deck OLED
+      mossdeep = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          disko.nixosModules.disko
+          jovian.nixosModules.default
+          home-manager.nixosModules.home-manager
+          ./hosts/mossdeep
+          ./nixosModules
+        ];
+      };
+
       # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
       lavaridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
