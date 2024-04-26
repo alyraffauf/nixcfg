@@ -43,6 +43,9 @@
     apps = {
       steam.enable = true;
     };
+    services = {
+      flatpak.enable = true;
+    };
   };
 
   jovian = {
