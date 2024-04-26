@@ -63,7 +63,7 @@
     "workspace 2: code" = [{app_id = "codium-url-handler";}];
     "workspace 3: chat" = [{app_id = "org.gnome.Fractal";} {app_id = "WebCord";}];
     "workspace 4: work" = [{app_id = "google-chrome";}];
-    "workspace 5: zoom" = [{class = "zoom";}];
+    "workspace 10: zoom" = [{class = "zoom";} {app_id = "Zoom";}];
   };
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser
