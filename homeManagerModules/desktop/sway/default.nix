@@ -324,6 +324,7 @@
       };
       startup = [
         {command = "${bar}";}
+        {command = "${wallpaperd}";}
         {command = "${fileManager} --daemon";}
         {command = "${idled}";}
         {command = "${notifyd}";}
