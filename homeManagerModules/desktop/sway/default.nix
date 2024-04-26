@@ -353,6 +353,10 @@
           scale = "1.5";
           pos = "-2560 0";
         };
+        "HP Inc. HP 24mh 3CM037248S   " = {
+          scale = "1.0";
+          pos = "-1920 0";
+        };
       };
       window.titlebar = false;
     };
