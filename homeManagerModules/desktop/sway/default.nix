@@ -173,7 +173,7 @@
       focus = {
         followMouse = "always";
         newWindow = "smart";
-        mouseWarping = "container";
+        # mouseWarping = "container";
       };
       fonts = {
         names = ["Noto SansM Nerd Font"];
