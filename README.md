@@ -1,7 +1,7 @@
 # nixcfg
-![](./_img/nixos-hyprland.png)
-![](./_img/nixos-gnome.png)
-![](./_img/nixos-kde.png)
+![](./_img/sway.png)
+![](./_img/hyprland.png)
+![](./_img/gnome.png)
 
 ## Hosts
 | Host    |            lavaridge |               petalburg |               rustboro |                mauville |
@@ -26,7 +26,8 @@
 | Transmission     | BitTorrent.                       | OCI: linuxserver/transmission:latest | Tailnet                          |
 | Jellyfin         | FOSS Plex alternative (testing).  | OCI: jellyfin/jellyfin               | Tailnet                          |
 | Samba            | LAN file shares.                  | nixpkgs                              | Tailnet                          |
-| Nginx            | Reverse proxy.                    | nixpkgs                              | Tailnet                          |
+| Nginx            | Reverse proxy.                    | nixpkgs                              | Tailnet     
+| Ollama           | Runs opensource LLMs.             | nixpkgs                              | Tailnet                          |
 
 ## Deploying to NixOS
 > :red_circle: **READ**: **Do not deploy this flake directly to your machine. It won't work.**
