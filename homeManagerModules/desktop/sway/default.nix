@@ -364,6 +364,15 @@
     };
 
     wayland.windowManager.sway.extraConfig = ''
+      mode "move" {
+        bindgesture swipe:right move container to workspace prev; workspace prev
+        bindgesture swipe:left move container to workspace next; workspace next
+        bindgesture pinch:inward+up move up
+        bindgesture pinch:inward+down move down
+        bindgesture pinch:inward+left move left
+        bindgesture pinch:inward+right move right
+      }
+
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
       
