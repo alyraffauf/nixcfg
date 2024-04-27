@@ -20,20 +20,27 @@
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
     # Hypr* modules, plguins, and tools.
-    alyraffauf.desktop.hyprland.hypridle.enable = lib.mkDefault false;
-    alyraffauf.desktop.hyprland.hyprlock.enable = lib.mkDefault false;
-    alyraffauf.desktop.hyprland.hyprpaper.enable = lib.mkDefault true;
-    alyraffauf.desktop.hyprland.hyprshade.enable = lib.mkDefault true;
-
-    alyraffauf.desktop.theme.enable = lib.mkDefault true;
-
-    # Basic apps needed to run a hyprland desktop.
-    alyraffauf.apps.waybar.enable = lib.mkDefault true;
-    alyraffauf.apps.mako.enable = lib.mkDefault true;
-    alyraffauf.apps.fuzzel.enable = lib.mkDefault true;
-    alyraffauf.apps.wlogout.enable = lib.mkDefault true;
-    alyraffauf.apps.alacritty.enable = lib.mkDefault true;
-    alyraffauf.apps.firefox.enable = lib.mkDefault true;
+    alyraffauf = {
+      desktop = {
+        hyprland = {
+          hypridle.enable = lib.mkDefault false;
+          hyprlock.enable = lib.mkDefault false;
+          hyprpaper.enable = lib.mkDefault true;
+          hyprshade.enable = lib.mkDefault true;
+        };
+        theme.enable = lib.mkDefault true;
+      };
+      apps = {
+        # Basic apps needed to run a hyprland desktop.
+        alacritty.enable = lib.mkDefault true;
+        firefox.enable = lib.mkDefault true;
+        fuzzel.enable = lib.mkDefault true;
+        mako.enable = lib.mkDefault true;
+        thunar.enable = lib.mkDefault true;
+        waybar.enable = lib.mkDefault true;
+        wlogout.enable = lib.mkDefault true;
+      };
+    };
 
     services.cliphist.enable = lib.mkDefault true;
 
@@ -48,22 +55,10 @@
       hyprshot
       networkmanagerapplet
       trayscale
-      xfce.exo
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
-      xfce.thunar-volman
-      xfce.tumbler
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
     ];
-
-    xdg.configFile."xfce4/helpers.rc".text = ''
-      TerminalEmulator=alacritty
-      FileManager=thunar
-      WebBrowser=firefox
-    '';
 
     xdg.portal = {
       enable = true;

@@ -19,6 +19,7 @@
     ./neofetch
     ./neovim
     ./tauon
+    ./thunar
     ./thunderbird
     ./tmux
     ./vsCodium

@@ -25,6 +25,7 @@
         alacritty.enable = lib.mkDefault true;
         firefox.enable = lib.mkDefault true;
         kanshi.enable = lib.mkDefault true;
+        thunar.enable = lib.mkDefault true;
       };
       desktop.theme.enable = lib.mkDefault true;
     };
@@ -39,12 +40,6 @@
       swayidle
       swayosd
       trayscale
-      xfce.exo
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
-      xfce.thunar-volman
-      xfce.tumbler
       xfce.xfce4-settings
       xfce.xfce4-taskmanager
       xfce.xfconf
@@ -394,12 +389,6 @@
 
       layer_effects launcher blur enable
       layer_effects logout_dialog blur enable
-    '';
-
-    xdg.configFile."xfce4/helpers.rc".text = ''
-      TerminalEmulator=alacritty
-      FileManager=thunar
-      WebBrowser=firefox
     '';
 
     xdg.portal = {
