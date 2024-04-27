@@ -83,8 +83,11 @@ in {
     };
     desktop = {
       enable = true;
-      greetd.enable = true;
-      hyprland.enable = true;
+      greetd = {
+        enable = true;
+        session = config.programs.sway.package + "/bin/sway";
+      };
+      sway.enable = true;
     };
     apps = {
       steam.enable = true;
