@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.alyraffauf.apps.nicotine-plus.enable {
-    environment.systemPackages = [ pkgs.nicotine-plus ];
+    environment.systemPackages = [pkgs.nicotine-plus];
     networking = {
       firewall.allowedTCPPortRanges = [
         # Soulseek

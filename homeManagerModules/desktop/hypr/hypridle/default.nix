@@ -47,7 +47,11 @@
 
       listener {
           timeout = 900                                 # 15min
-          on-timeout = ${if osConfig.networking.hostName == "mauville" then "" else "${pkgs.systemd}/bin/systemctl suspend"} # suspend pc unless on mauville
+          on-timeout = ${
+        if osConfig.networking.hostName == "mauville"
+        then ""
+        else "${pkgs.systemd}/bin/systemctl suspend"
+      } # suspend pc unless on mauville
       }
     '';
   };

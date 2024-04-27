@@ -6,7 +6,7 @@
 }: let
   hyprpaper-random = pkgs.writeShellScriptBin "hyprpaper-random" ''
     directory=${config.home.homeDirectory}/.local/share/backgrounds
-    
+
     if [ -d "$directory" ]; then
         while true; do
           sleep 30
