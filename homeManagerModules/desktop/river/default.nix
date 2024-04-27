@@ -23,6 +23,7 @@
         kanshi.enable = lib.mkDefault true;
       };
       desktop.river.randomWallpaper = lib.mkDefault true;
+      desktop.theme.enable = lib.mkDefault true;
     };
 
     programs.swaylock.enable = lib.mkDefault true;

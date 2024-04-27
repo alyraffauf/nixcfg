@@ -6,7 +6,7 @@
   hyprland,
   ...
 }: {
-  imports = [./hypridle ./hyprlock ./hyprpaper ./hyprshade ./theme.nix];
+  imports = [./hypridle ./hyprlock ./hyprpaper ./hyprshade];
 
   options = {
     alyraffauf.desktop.hyprland.enable =
@@ -25,7 +25,7 @@
     alyraffauf.desktop.hyprland.hyprpaper.enable = lib.mkDefault true;
     alyraffauf.desktop.hyprland.hyprshade.enable = lib.mkDefault true;
 
-    alyraffauf.desktop.hyprland.theme.enable = lib.mkDefault true;
+    alyraffauf.desktop.theme.enable = lib.mkDefault true;
 
     # Basic apps needed to run a hyprland desktop.
     alyraffauf.apps.waybar.enable = lib.mkDefault true;

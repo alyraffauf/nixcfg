@@ -26,6 +26,7 @@
         firefox.enable = lib.mkDefault true;
         kanshi.enable = lib.mkDefault true;
       };
+      desktop.theme.enable = lib.mkDefault true;
     };
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [

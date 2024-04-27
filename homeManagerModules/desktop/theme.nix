@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    alyraffauf.desktop.hyprland.theme.enable =
-      lib.mkEnableOption "Hyprland GTK and Qt themes.";
+    alyraffauf.desktop.theme.enable =
+      lib.mkEnableOption "GTK and Qt themes.";
   };
 
-  config = lib.mkIf config.alyraffauf.desktop.hyprland.theme.enable {
+  config = lib.mkIf config.alyraffauf.desktop.theme.enable {
     home.pointerCursor = {
       gtk.enable = true;
       x11.enable = true;
