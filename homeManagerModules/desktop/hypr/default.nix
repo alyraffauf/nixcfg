@@ -99,7 +99,7 @@
       # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
       # idled = pkgs.hypridle + "/bin/hypridle";
 
-      lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --inside-color 303446'';
+      lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --key-hl-color a6d189 --ring-ver-color a6d189 --ring-wrong-color e78284 --inside-color 303446'';
       idled =
         if config.alyraffauf.desktop.hyprland.autoSuspend
         then ''

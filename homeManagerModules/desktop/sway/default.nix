@@ -82,7 +82,7 @@
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
       logout = pkgs.wlogout + "/bin/wlogout";
-      lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --inside-color 303446'';
+      lock = pkgs.swaylock + ''/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font "Noto SansM Nerd Font Regular" --ring-color ca9ee6 --key-hl-color a6d189 --ring-ver-color a6d189 --ring-wrong-color e78284 --inside-color 303446'';
       idled =
         if config.alyraffauf.desktop.sway.autoSuspend
         then ''
@@ -383,7 +383,7 @@
 
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
-      
+
       bindswitch --reload --locked lid:on output eDP-1 disable
       bindswitch --reload --locked lid:off output eDP-1 enable
 
