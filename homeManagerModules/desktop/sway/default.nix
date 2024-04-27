@@ -136,8 +136,8 @@
       gdk_scale = "1.5";
 
       cycleSwayDisplayModes = pkgs.writeShellScriptBin "cycleSwayDisplayModes" ''
-        # Only works on petalburg.
-        current_mode=$(${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep "Current mode" | grep -Eo '[0-9]+x[0-9]+ @ [0-9.]+ Hz' | tr -d " ")
+        # TODO: remove petalburg hardcodes
+        current_mode=$(${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep "Current mode" | grep -Eo '[0-9]+x[0-9]+ @ [0-9.]+ Hz' | tr -d " " | grep 2880)
 
         if [ $current_mode = "2880x1800@90.001Hz" ]; then
                 ${config.wayland.windowManager.sway.package}/bin/swaymsg output "eDP-1" mode "2880x1800@60.001Hz";
@@ -259,6 +259,12 @@
         "${modifier}+Shift+8" = "move container to workspace number 8";
         "${modifier}+Shift+9" = "move container to workspace number 9";
         "${modifier}+Shift+0" = "move container to workspace number 10";
+
+        # Move workspace to another output.
+        "${modifier}+Control+Shift+Left" = "move workspace to output left";
+        "${modifier}+Control+Shift+Down" = "move workspace to output down";
+        "${modifier}+Control+Shift+Up" = "move workspace to output up";
+        "${modifier}+Control+Shift+Right" = "move workspace to output right";
 
         # Scratchpad show and move
         "${modifier}+S" = "scratchpad show";
