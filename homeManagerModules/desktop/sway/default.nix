@@ -366,6 +366,9 @@
     wayland.windowManager.sway.extraConfig = ''
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
+      
+      bindswitch --reload --locked lid:on output eDP-1 disable
+      bindswitch --reload --locked lid:off output eDP-1 enable
 
       blur enable
       blur_passes 1
