@@ -118,10 +118,12 @@
       media_next = "${media} next";
       media_prev = "${media} previous";
 
-      screenshot = "${pkgs.grim}/bin/grim";
-      screenshot_folder = "~/pics/screenshots";
-      screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
+      screenshot = "${pkgs.shotman}/bin/shotman";
+      # screenshot_folder = "~/pics/screenshots";
+      # screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
       # screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
+      screenshot_screen = "${screenshot} --capture output";
+      screenshot_region = "${screenshot} --capture region";
 
       # Color, themes, scaling
       colorText = "#FAFAFA";
@@ -286,7 +288,7 @@
 
         # Screenshots
         "PRINT" = "exec ${screenshot_screen}";
-        # "${modifier}+PRINT" = "${screenshot_region}";
+        "${modifier}+PRINT" = "exec ${screenshot_region}";
 
         # Show/hide waybar
         "${modifier}+F11" = "exec pkill -SIGUSR1 waybar";
@@ -335,8 +337,8 @@
         {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
         {command = "${pkgs.swayosd}/bin/swayosd-server";}
         {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
+        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store";}
+        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";}
       ];
       output = {
         "BOE 0x095F Unknown" = {
