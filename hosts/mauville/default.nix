@@ -56,7 +56,7 @@ in {
       binaryCache.enable = true;
       ollama = {
         enable = true;
-        gpu = ""; # rocm is broken on nixos unstable
+        gpu = "amd";
         listenAddress = "0.0.0.0:11434";
       };
       syncthing = {
