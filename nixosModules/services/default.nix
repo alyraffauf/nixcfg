@@ -4,5 +4,5 @@
   config,
   ...
 }: {
-  imports = [./binaryCache ./flatpak ./ollama];
+  imports = [./binaryCache ./flatpak ./ollama ./syncthing];
 }

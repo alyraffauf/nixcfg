@@ -67,6 +67,9 @@
     apps = {
       steam.enable = true;
     };
+    services = {
+      syncthing.enable = true;
+    };
   };
 
   users.users.aly.hashedPassword = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";

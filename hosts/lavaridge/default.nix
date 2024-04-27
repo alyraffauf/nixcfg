@@ -45,6 +45,9 @@
       podman.enable = true;
       virt-manager.enable = true;
     };
+    services = {
+      syncthing.enable = true;
+    };
   };
 
   users.users.aly.hashedPassword = "$y$j9T$O9NgTk6iRfh3mxiRDvfdm1$BjvsAKYEMB3C28652FF15cj/i.3TgQAObQvR0rN1E6C";

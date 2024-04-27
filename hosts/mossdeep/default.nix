@@ -45,6 +45,7 @@
     };
     services = {
       flatpak.enable = true;
+      syncthing.enable = true;
     };
   };
 

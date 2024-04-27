@@ -53,6 +53,11 @@ in {
         gpu = ""; # rocm is broken on nixos unstable
         listenAddress = "0.0.0.0:11434";
       };
+      syncthing = {
+        enable = true;
+        syncMusic = true;
+        syncMusicPath = "${mediaDirectory}/Music";
+      };
     };
     system = {
       plymouth.enable = true;
