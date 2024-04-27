@@ -78,7 +78,10 @@ in {
       zramSwap = {enable = true;};
     };
     user = {
-      aly.enable = true;
+      aly = {
+        enable = true;
+        password = "$y$j9T$Ug0ZLHQQuRciFJDgOI6r00$eHc.KyQY0oU4k0LKRiZiGWJ19jkKNWHpOoyCJbtJif8";
+      };
       dustin.enable = false;
     };
     desktop = {
@@ -96,8 +99,6 @@ in {
       syncthing.enable = true;
     };
   };
-
-  users.users.aly.hashedPassword = "$y$j9T$Ug0ZLHQQuRciFJDgOI6r00$eHc.KyQY0oU4k0LKRiZiGWJ19jkKNWHpOoyCJbtJif8";
 
   system.stateVersion = "23.11";
 }

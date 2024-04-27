@@ -33,7 +33,10 @@
       zramSwap = {enable = true;};
     };
     user = {
-      aly.enable = true;
+      aly = {
+        enable = true;
+        password = "$y$j9T$koxhEzkA4pYLsyIqZBTWM0$N8VW.JTM.HZZgNm7XgTxTXRzvYd7veA7TojG0gKOzO2";
+      };
       dustin.enable = false;
     };
     desktop = {
@@ -63,8 +66,6 @@
     devices.steamdeck.enable = true;
     steamos.useSteamOSConfig = true;
   };
-
-  users.users.aly.hashedPassword = "$y$j9T$koxhEzkA4pYLsyIqZBTWM0$N8VW.JTM.HZZgNm7XgTxTXRzvYd7veA7TojG0gKOzO2";
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

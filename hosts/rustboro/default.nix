@@ -53,7 +53,10 @@
       };
     };
     user = {
-      aly.enable = true;
+      aly = {
+        enable = true;
+        password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
+      };
       dustin.enable = false;
     };
     desktop = {
@@ -71,8 +74,6 @@
       syncthing.enable = true;
     };
   };
-
-  users.users.aly.hashedPassword = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
 
   # environment.persistence."/persist" = {
   #   hideMounts = true;

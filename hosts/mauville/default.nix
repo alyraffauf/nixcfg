@@ -43,8 +43,14 @@ in {
       hyprland.enable = true;
     };
     user = {
-      aly.enable = true;
-      dustin.enable = true;
+      aly = {
+        enable = true;
+        password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
+      };
+      dustin = {
+        enable = true;
+        password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
+      };
     };
     services = {
       binaryCache.enable = true;
