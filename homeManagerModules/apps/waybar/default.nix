@@ -20,7 +20,7 @@
       enable = true;
       settings = {
         mainBar = {
-          height = 36;
+          height = 32;
           layer = "top";
           output = ["*"];
           position = "top";
