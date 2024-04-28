@@ -367,43 +367,43 @@
         titlebar = false;
         commands = [
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               app_id = "blueberry.py";
             };
           }
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               app_id = "pavucontrol";
             };
           }
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               app_id = "com.github.wwmm.easyeffects";
             };
           }
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               window_role = "pop-up";
             };
           }
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               window_role = "dialog";
             };
           }
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               window_role = "bubble";
             };
           }
           {
-            command = "floating enable";
+            command = "floating enable; move position center";
             criteria = {
               window_type = "dialog";
             };
@@ -413,12 +413,6 @@
             criteria = {
               title = "^Picture-in-Picture$";
               app_id = "firefox";
-            };
-          }
-          {
-            command = "xwayland disable";
-            criteria = {
-              class = "vlc";
             };
           }
         ];
