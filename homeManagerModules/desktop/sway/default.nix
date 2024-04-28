@@ -170,7 +170,7 @@
       defaultWorkspace = "workspace number 1";
       focus = {
         followMouse = "always";
-        newWindow = "smart";
+        newWindow = "focus";
         # mouseWarping = "container";
       };
       fonts = {
