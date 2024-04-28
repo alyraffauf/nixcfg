@@ -14,6 +14,7 @@
       xfce.thunar-volman
       xfce.exo
       xfce.tumbler
+      xfce.xfconf
     ];
 
     xdg.configFile."xfce4/helpers.rc".text = ''
