@@ -361,7 +361,66 @@
           pos = "-1920 0";
         };
       };
-      window.titlebar = false;
+      window = {
+        titlebar = false;
+        commands = [
+          {
+            command = "floating enable";
+            criteria = {
+              app_id = "blueberry.py";
+            };
+          }
+          {
+            command = "floating enable";
+            criteria = {
+              app_id = "pavucontrol";
+            };
+          }
+          {
+            command = "floating enable";
+            criteria = {
+              app_id = "com.github.wwmm.easyeffects";
+            };
+          }
+          {
+            command = "floating enable";
+            criteria = {
+              window_role = "pop-up";
+            };
+          }
+          {
+            command = "floating enable";
+            criteria = {
+              window_role = "dialog";
+            };
+          }
+          {
+            command = "floating enable";
+            criteria = {
+              window_role = "bubble";
+            };
+          }
+          {
+            command = "floating enable";
+            criteria = {
+              window_type = "dialog";
+            };
+          }
+          {
+            command = "floating enable, resize set 70% 20%, sticky enable";
+            criteria = {
+              title = "^Picture-in-Picture$";
+              app_id = "firefox";
+            };
+          }
+          {
+            command = "xwayland disable";
+            criteria = {
+              class = "vlc";
+            };
+          }
+        ];
+      };
     };
 
     wayland.windowManager.sway.extraConfig = ''
