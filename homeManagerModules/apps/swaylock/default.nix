@@ -10,7 +10,6 @@
     home.packages = with pkgs; [swaylock];
 
     xdg.configFile."swaylock/config".text = ''
-      ignore-empty-password
       font="NotoSansMNerdFont-Regular"
 
       color=303446
