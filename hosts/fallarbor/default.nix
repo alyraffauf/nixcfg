@@ -28,6 +28,10 @@
   alyraffauf = {
     services = {
       flatpak.enable = true;
+      syncthing = {
+        enable = true;
+        syncMusic = false;
+      };
     };
     system = {
       plymouth.enable = true;
