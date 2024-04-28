@@ -185,7 +185,7 @@
       exec-once = ${idled}
       exec-once = ${pkgs.swayosd}/bin/swayosd-server
       exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
-      exec-once = ${pkgs.trayscale}/bin/trayscale --hide-window
+      exec-once = ${pkgs.playerctl}/bin/playerctld
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {

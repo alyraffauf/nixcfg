@@ -338,7 +338,7 @@
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
         {command = "${pkgs.swayosd}/bin/swayosd-server";}
-        {command = "${pkgs.trayscale}/bin/trayscale --hide-window";}
+        {command = "${pkgs.playerctl}/bin/playerctld";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";}
       ];
