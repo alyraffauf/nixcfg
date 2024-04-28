@@ -15,6 +15,8 @@
       color=303446
       image=${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg
 
+      daemonize
+
       indicator-radius=120
       indicator-thickness=20
       indicator-caps-lock
