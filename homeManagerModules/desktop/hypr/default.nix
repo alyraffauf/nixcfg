@@ -51,14 +51,9 @@
       evince
       gnome.eog
       gnome.file-roller
-      hyprcursor
       hyprland-protocols
-      hyprshot
       networkmanagerapplet
-      trayscale
-      xfce.xfce4-settings
       xfce.xfce4-taskmanager
-      xfce.xfconf
     ];
 
     xdg.portal = {

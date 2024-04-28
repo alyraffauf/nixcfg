@@ -40,16 +40,7 @@
       playerctl
       swayidle
       swayosd
-      trayscale
-      xfce.exo
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
-      xfce.thunar-volman
-      xfce.tumbler
-      xfce.xfce4-settings
       xfce.xfce4-taskmanager
-      xfce.xfconf
     ];
 
     xdg.configFile."xfce4/helpers.rc".text = ''

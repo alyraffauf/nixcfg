@@ -40,10 +40,7 @@
       playerctl
       swayidle
       swayosd
-      trayscale
-      xfce.xfce4-settings
       xfce.xfce4-taskmanager
-      xfce.xfconf
     ];
 
     programs.swaylock.enable = lib.mkDefault true;

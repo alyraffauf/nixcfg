@@ -25,6 +25,7 @@
     obsidian
     python3
     ruby
+    trayscale
     wget
     zoom-us
   ];
