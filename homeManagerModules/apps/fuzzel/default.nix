@@ -22,7 +22,8 @@
           font = "NotoSansMNerdFont-Regular";
           icon-theme = "Papirus-Dark";
           layer = "overlay";
-          width = 50;
+          width = 36;
+          lines = 3;
           terminal = "${pkgs.alacritty}/bin/alacritty";
         };
         border = {width = 2;};
