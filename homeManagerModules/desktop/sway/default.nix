@@ -417,6 +417,7 @@
           }
         ];
       };
+      workspaceAutoBackAndForth = true;
     };
 
     wayland.windowManager.sway.extraConfig = ''
