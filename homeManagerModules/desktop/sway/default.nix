@@ -69,6 +69,19 @@
       editor = pkgs.vscodium + "/bin/codium";
       terminal = pkgs.alacritty + "/bin/alacritty";
 
+      brightness = "${pkgs.swayosd}/bin/swayosd-client";
+      brightness_up = "${brightness} --brightness=raise";
+      brightness_down = "${brightness} --brightness=lower";
+      volume = "${pkgs.swayosd}/bin/swayosd-client";
+      volume_up = "${volume} --output-volume=raise";
+      volume_down = "${volume} --output-volume=lower";
+      volume_mute = "${volume} --output-volume=mute-toggle";
+      mic_mute = "${volume} --input-volume=mute-toggle";
+      media = "${pkgs.playerctl}/bin/playerctl";
+      media_play = "${media} play-pause";
+      media_next = "${media} next";
+      media_prev = "${media} previous";
+
       # Sway desktop utilities
       bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/sway-style.css";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
@@ -86,6 +99,7 @@
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
                   timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
+                  before-sleep '${media} pause' \
                   before-sleep '${lock}'
         ''
         else ''
@@ -95,21 +109,9 @@
                   timeout 300 '${lock}' \
                   timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
                     resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  before-sleep '${media} pause' \
                   before-sleep '${lock}'
         '';
-
-      brightness = "${pkgs.swayosd}/bin/swayosd-client";
-      brightness_up = "${brightness} --brightness=raise";
-      brightness_down = "${brightness} --brightness=lower";
-      volume = "${pkgs.swayosd}/bin/swayosd-client";
-      volume_up = "${volume} --output-volume=raise";
-      volume_down = "${volume} --output-volume=lower";
-      volume_mute = "${volume} --output-volume=mute-toggle";
-      mic_mute = "${volume} --input-volume=mute-toggle";
-      media = "${pkgs.playerctl}/bin/playerctl";
-      media_play = "${media} play-pause";
-      media_next = "${media} next";
-      media_prev = "${media} previous";
 
       screenshot = "${pkgs.shotman}/bin/shotman";
       # screenshot_folder = "~/pics/screenshots";

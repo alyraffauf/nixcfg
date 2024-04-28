@@ -81,30 +81,6 @@
       editor = pkgs.vscodium + "/bin/codium";
       terminal = pkgs.alacritty + "/bin/alacritty";
 
-      # Hyprland desktop utilities
-      bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/hyprland-style.css";
-      launcher = pkgs.fuzzel + "/bin/fuzzel";
-      notifyd = pkgs.mako + "/bin/mako";
-      wallpaperd = pkgs.hyprpaper + "/bin/hyprpaper";
-      logout = pkgs.wlogout + "/bin/wlogout";
-      # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
-      # idled = pkgs.hypridle + "/bin/hypridle";
-
-      lock = pkgs.swaylock + ''/bin/swaylock'';
-      idled =
-        if config.alyraffauf.desktop.hyprland.autoSuspend
-        then ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${lock}'
-
-        ''
-        else ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${lock}'
-
-        '';
-
-      hyprnome = pkgs.hyprnome + "/bin/hyprnome";
-      hyprshade = pkgs.hyprshade + "/bin/hyprshade";
-
       # Media/hardware commands
       # brightness = "${pkgs.brightnessctl}/bin/brightnessctl";
       # brightness_up = "${brightness} set 5%+";
@@ -126,6 +102,30 @@
       media_play = "${media} play-pause";
       media_next = "${media} next";
       media_prev = "${media} previous";
+
+      # Hyprland desktop utilities
+      bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/hyprland-style.css";
+      launcher = pkgs.fuzzel + "/bin/fuzzel";
+      notifyd = pkgs.mako + "/bin/mako";
+      wallpaperd = pkgs.hyprpaper + "/bin/hyprpaper";
+      logout = pkgs.wlogout + "/bin/wlogout";
+      # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
+      # idled = pkgs.hypridle + "/bin/hypridle";
+
+      lock = pkgs.swaylock + ''/bin/swaylock'';
+      idled =
+        if config.alyraffauf.desktop.hyprland.autoSuspend
+        then ''
+          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${media} pause' before-sleep '${lock}'
+
+        ''
+        else ''
+          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${media} pause' before-sleep '${lock}'
+
+        '';
+
+      hyprnome = pkgs.hyprnome + "/bin/hyprnome";
+      hyprshade = pkgs.hyprshade + "/bin/hyprshade";
 
       screenshot = "${pkgs.hyprshot}/bin/hyprshot";
       screenshot_folder = "~/pics/screenshots";
