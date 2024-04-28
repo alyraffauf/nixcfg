@@ -29,6 +29,7 @@
         };
         devices = {
           "brawly" = {id = "BBIBWMR-CN4CFC4-2XMPLII-XFWXBT5-EPCZCAF-JOWAX5J-DHIGNM4-O3XQ4Q3";}; # Pixel 6a
+          "fallarbor" = {id = "P4URLH4-YWLMO6J-W62ET7H-TQAO3Y6-T2FAYOY-C2VTI65-VQXHVGG-NQ76PAZ";}; # Framework 13 Intel 11th gen
           "gsgmba" = {id = "V2YCZSL-XY7H72L-FGJFWP2-JNYX72O-OJ5V2HY-V4SSSJM-77A7E3Z-7EJFAAV";}; # Work Macbook Air
           "iphone12" = {id = "SBQNUXS-H4XDJ3E-RBHJPT5-45WDJJA-2U43M4P-23XGUJ7-E3CNNKZ-BXSGIA3";}; # iPhone 12 Pro Max
           "lavaridge" = {id = "6ZHSHTQ-HO7NLK5-JVKGTAN-H7W7KXS-QB5FN2X-CEDETRE-7E6LDHE-U5FYLAS";}; # Framework 13 AMD
@@ -43,12 +44,12 @@
           "sync" = {
             id = "default";
             path = "/home/${config.alyraffauf.services.syncthing.user}/sync";
-            devices = ["brawly" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wattson" "winona"];
+            devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wattson" "winona"];
           };
           "camera" = {
             id = "fcsgh-dlxys";
             path = "/home/${config.alyraffauf.services.syncthing.user}/pics/camera";
-            devices = ["brawly" "lavaridge" "mauville" "petalburg" "rustboro" "wattson" "winona"];
+            devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wattson" "winona"];
           };
         };
       };
