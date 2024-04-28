@@ -11,7 +11,7 @@
 
     xdg.configFile."swaylock/config".text = ''
       ignore-empty-password
-      font="Noto SansM Nerd Font Regular"
+      font="NotoSansMNerdFont-Regular"
 
       color=303446
       image=${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg

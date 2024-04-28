@@ -32,7 +32,7 @@
           accent = "mauve";
         };
 
-        font.name = "NotoSans Nerd Font Regular";
+        font.name = "NotoSansNerdFont-Regular";
         font.package = pkgs.nerdfonts.override {fonts = ["Noto"];};
 
         cursorTheme.package = pkgs.catppuccin-cursors.frappeDark;

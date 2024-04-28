@@ -175,7 +175,7 @@
         # mouseWarping = "container";
       };
       fonts = {
-        names = ["Noto SansM Nerd Font"];
+        names = ["NotoSansNerdFont"];
         style = "Bold";
         size = 12.0;
       };

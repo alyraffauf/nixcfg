@@ -22,7 +22,7 @@
         };
         font = {
           normal = {
-            family = "NotoSansM Nerd Font";
+            family = "NotoSansMNerdFont";
             style = "Regular";
           };
           size = 11;

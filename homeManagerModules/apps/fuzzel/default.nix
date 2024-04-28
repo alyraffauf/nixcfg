@@ -19,9 +19,10 @@
       enable = true;
       settings = {
         main = {
-          font = "NotoSansM Nerd Font Regular";
+          font = "NotoSansMNerdFont-Regular";
           icon-theme = "Papirus-Dark";
           layer = "overlay";
+          width = 50;
           terminal = "${pkgs.alacritty}/bin/alacritty -e";
         };
         border = {width = 2;};
