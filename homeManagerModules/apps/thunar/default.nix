@@ -23,13 +23,13 @@
       WebBrowser=firefox
     '';
 
-    xfconf.settings = {
-      thunar = {
-        "last-menubar-visible" = false;
-        "misc-confirm-close-multiple-tabs" = false;
-        "misc-show-delete-action" = true;
-        "misc-single-click" = true;
-      };
-    };
+    # xfconf.settings = {
+    #   thunar = {
+    #     "last-menubar-visible" = false;
+    #     "misc-confirm-close-multiple-tabs" = false;
+    #     "misc-show-delete-action" = true;
+    #     "misc-single-click" = true;
+    #   };
+    # };
   };
 }
