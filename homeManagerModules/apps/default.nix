@@ -18,6 +18,7 @@
     ./mako
     ./neofetch
     ./neovim
+    ./swaylock
     ./tauon
     ./thunar
     ./thunderbird
