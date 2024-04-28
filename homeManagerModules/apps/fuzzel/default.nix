@@ -23,7 +23,7 @@
           icon-theme = "Papirus-Dark";
           layer = "overlay";
           width = 50;
-          terminal = "${pkgs.alacritty}/bin/alacritty -e";
+          terminal = "${pkgs.alacritty}/bin/alacritty";
         };
         border = {width = 2;};
         colors = {
