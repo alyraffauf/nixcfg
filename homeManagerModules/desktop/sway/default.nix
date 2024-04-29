@@ -409,7 +409,7 @@
             };
           }
           {
-            command = "floating enable, resize set 70% 20%, sticky enable";
+            command = "floating enable; sticky toggle; resize 35% 10%";
             criteria = {
               title = "^Picture-in-Picture$";
               app_id = "firefox";
