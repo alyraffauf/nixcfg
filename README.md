@@ -14,7 +14,7 @@ NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway, GN
 | GPU     | AMD Radeon 760M      | Intel Iris Xe Graphics  | Intel HD Graphics 4600 |
 | Storage | 1TB Sk hynix P41     | 512GB M.2 PCIe 4.0      | 512GB SATA SSD         |
 | OS      | NixOS Unstable       | NixOS Unstable          | NixOS Unstable         |
-| Desktop | Hyprland             | Sway                    | Sway                   |
+| Desktop | Sway                 | Sway                    | Sway                   |
 
 | Host    | mossdeep                | fallarbor              | mauville                |
 |---------|-------------------------|------------------------|-------------------------|
