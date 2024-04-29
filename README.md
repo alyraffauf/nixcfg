@@ -25,7 +25,7 @@ NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway, GN
 | GPU     | AMD RDNA 2              | Intel Iris Xe Graphics | AMD Radeon Rx 6700      |
 | Storage | 512GB M.2 PCIe SSD      | 512GB M.2 PCIe 3.0     | 1TB M.2 PCIe 3.0        |
 | OS      | NixOS Unstable          | NixOS Unstable         | NixOS Unstable          |
-| Desktop | Hyprland                | Hyprland               | Hyprland                |
+| Desktop | Hyprland                | Hyprland               | Sway                    |
 
 ## Home Lab Services
 | Service          | Description                       | Source/Runtime                       | Domain                           |
