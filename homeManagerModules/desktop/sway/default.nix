@@ -363,51 +363,34 @@
           pos = "-1920 0";
         };
       };
+      floating = {
+        criteria = [
+          {
+            app_id = "blueberry.py";
+          }
+          {
+            app_id = "pavucontrol";
+          }
+          {
+            app_id = "com.github.wwmm.easyeffects";
+          }
+          {
+            window_role = "dialog";
+          }
+          {
+            window_role = "pop-up";
+          }
+          {
+            window_role = "bubble";
+          }
+          {
+            window_type = "dialog";
+          }
+        ];
+      };
       window = {
         titlebar = false;
         commands = [
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              app_id = "blueberry.py";
-            };
-          }
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              app_id = "pavucontrol";
-            };
-          }
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              app_id = "com.github.wwmm.easyeffects";
-            };
-          }
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              window_role = "pop-up";
-            };
-          }
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              window_role = "dialog";
-            };
-          }
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              window_role = "bubble";
-            };
-          }
-          {
-            command = "floating enable; move position center";
-            criteria = {
-              window_type = "dialog";
-            };
-          }
           {
             command = "floating enable; sticky toggle; resize 35% 10%";
             criteria = {
