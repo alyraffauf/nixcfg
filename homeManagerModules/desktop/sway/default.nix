@@ -392,10 +392,22 @@
         titlebar = false;
         commands = [
           {
-            command = "floating enable; sticky toggle; resize 35% 10%";
+            command = "floating enable; sticky toggle; resize 35ppt 10ppt";
             criteria = {
               title = "^Picture-in-Picture$";
               app_id = "firefox";
+            };
+          }
+          {
+            command = "resize set 40ppt 60ppt";
+            criteria = {
+              app_id = "blueberry.py";
+            };
+          }
+          {
+            command = "resize set 40ppt 60ppt";
+            criteria = {
+              app_id = "pavucontrol";
             };
           }
         ];
