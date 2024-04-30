@@ -49,6 +49,7 @@
     services = {
       flatpak.enable = true;
       syncthing.enable = true;
+      tailscale.enable = true;
     };
   };
 

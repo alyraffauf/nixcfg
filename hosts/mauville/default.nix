@@ -67,6 +67,7 @@ in {
         syncMusic = true;
         syncMusicPath = "${mediaDirectory}/Music";
       };
+      tailscale.enable = true;
     };
     system = {
       plymouth.enable = true;

@@ -72,6 +72,7 @@
     };
     services = {
       syncthing.enable = true;
+      tailscale.enable = true;
     };
   };
 
