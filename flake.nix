@@ -70,6 +70,7 @@
         modules = [
           disko.nixosModules.disko
           jovian.nixosModules.default
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
           home-manager.nixosModules.home-manager
           ./hosts/mossdeep
           ./nixosModules
@@ -106,6 +107,8 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-cpu-amd
           home-manager.nixosModules.home-manager
           ./hosts/mauville
           ./nixosModules
@@ -133,6 +136,7 @@
         modules = [
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
           nixos-hardware.nixosModules.lenovo-thinkpad-t440p
           home-manager.nixosModules.home-manager
           ./hosts/rustboro
