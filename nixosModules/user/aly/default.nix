@@ -19,6 +19,11 @@
       description = "Aly Raffauf";
       extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
       hashedPassword = config.alyraffauf.user.aly.password;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOuRiyf9Fbl3Plqqzy5YkE2UJv8evF8YI9eG7Iu2CIRa aly@petalburg"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINHdpGTfjmnnau18CowChY4hPn/fzRkgJvXFs+yPy74I aly@mauville"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJVI6aNp95f/xsg6N+PRplmGi9MYGnfniL9/jdza3GXt aly@lavaridge"
+      ];
     };
   };
 }
