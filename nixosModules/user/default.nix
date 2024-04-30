@@ -13,4 +13,6 @@
     sharedModules = [inputs.hyprland.homeManagerModules.default];
     extraSpecialArgs = inputs;
   };
+
+  users.mutableUsers = false;
 }
