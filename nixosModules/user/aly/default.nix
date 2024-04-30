@@ -8,7 +8,7 @@
   options = {
     alyraffauf.user.aly.enable = lib.mkEnableOption "Enables Aly's user.";
     alyraffauf.user.aly.password = lib.mkOption {
-      description = "Whether to sync music folder.";
+      description = "Hashed password for user aly.";
       type = lib.types.str;
     };
   };
