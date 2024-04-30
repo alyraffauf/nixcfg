@@ -8,7 +8,7 @@
   options = {
     alyraffauf.user.dustin.enable = lib.mkEnableOption "Enables Dustin's user.";
     alyraffauf.user.dustin.password = lib.mkOption {
-      description = "Whether to sync music folder.";
+      description = "Hashed password.";
       type = lib.types.str;
     };
   };
