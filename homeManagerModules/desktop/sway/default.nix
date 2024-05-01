@@ -229,6 +229,12 @@
         "${modifier}+Shift+Up" = "move up";
         "${modifier}+Shift+Right" = "move right";
 
+        # Move window with modifier SHIFT + hjkl keys
+        "${modifier}+Shift+H" = "move left";
+        "${modifier}+Shift+J" = "move down";
+        "${modifier}+Shift+K" = "move up";
+        "${modifier}+Shift+L" = "move right";
+
         # Gnome-like workspaces.
         "${modifier}+Comma" = "workspace prev";
         "${modifier}+Period" = "workspace next";
@@ -264,6 +270,12 @@
         "${modifier}+Control+Shift+Down" = "move workspace to output down";
         "${modifier}+Control+Shift+Up" = "move workspace to output up";
         "${modifier}+Control+Shift+Right" = "move workspace to output right";
+
+        # Move workspace to another output.
+        "${modifier}+Control+Shift+H" = "move workspace to output left";
+        "${modifier}+Control+Shift+J" = "move workspace to output down";
+        "${modifier}+Control+Shift+K" = "move workspace to output up";
+        "${modifier}+Control+Shift+L" = "move workspace to output right";
 
         # Scratchpad show and move
         "${modifier}+S" = "scratchpad show";
