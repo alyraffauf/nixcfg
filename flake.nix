@@ -21,7 +21,6 @@
     # Latest Hyprland
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Pre-baked hardware support for various devices.
