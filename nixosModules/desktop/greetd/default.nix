@@ -13,6 +13,16 @@
       default = inputs.hyprland.packages.${pkgs.system}.hyprland + "/bin/Hyprland";
       type = lib.types.str;
     };
+    alyraffauf.desktop.greetd.autologin.enable = lib.mkOption {
+      description = "Whether to enable autologin.";
+      default = false;
+      type = lib.types.bool;
+    };
+    alyraffauf.desktop.greetd.autologin.user = lib.mkOption {
+      description = "User to autologin.";
+      default = "aly";
+      type = lib.types.str;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.greetd.enable {
@@ -23,6 +33,13 @@
           default_session = {
             command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
           };
+          initial_session =
+            if config.alyraffauf.desktop.greetd.autologin.enable
+            then {
+              command = config.alyraffauf.desktop.greetd.session;
+              user = config.alyraffauf.desktop.greetd.autologin.user;
+            }
+            else {};
         };
       };
     };
