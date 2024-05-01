@@ -64,6 +64,10 @@
       greetd = {
         enable = true;
         session = config.programs.sway.package + "/bin/sway";
+        autologin = {
+          enable = true;
+          user = "aly";
+        };
       };
       sway.enable = true;
     };
