@@ -52,7 +52,7 @@
       neofetch.enable = true;
       neovim.enable = true;
       tmux.enable = true;
-      chromium.enable = false;
+      chromium.enable = true;
       tauon.enable = true;
       thunderbird.enable = true;
       vsCodium.enable = true;
