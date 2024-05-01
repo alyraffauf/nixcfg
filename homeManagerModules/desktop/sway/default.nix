@@ -204,7 +204,7 @@
 
         # Manage session.
         "${modifier}+C" = "kill";
-        "${modifier}+L" = "exec ${lock}";
+        "${modifier}+Q" = "exec ${lock}";
         "${modifier}+M" = "exec ${logout}";
 
         # Basic window management.
@@ -216,6 +216,12 @@
         "${modifier}+Down" = "focus down";
         "${modifier}+Up" = "focus up";
         "${modifier}+Right" = "focus right";
+
+        # Move focus with modifier + hjkl keys (vim/ADM-3A terminal)
+        "${modifier}+H" = "focus left";
+        "${modifier}+J" = "focus down";
+        "${modifier}+K" = "focus up";
+        "${modifier}+L" = "focus right";
 
         # Move window with modifier SHIFT + arrow keys
         "${modifier}+Shift+Left" = "move left";
@@ -302,6 +308,10 @@
           Down = "move down";
           Up = "move up";
           Right = "move right";
+          H = "move left";
+          J = "move down";
+          K = "move up";
+          L = "move right";
           Comma = "move container to workspace prev; workspace prev";
           Period = "move container to workspace next; workspace next";
           "1" = "move container to workspace number 1";
