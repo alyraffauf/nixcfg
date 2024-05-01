@@ -55,8 +55,6 @@
       };
     };
 
-    xdg.configFile."waybar/sway-style.css".source = ./waybar.css;
-
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.package = pkgs.swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
@@ -83,7 +81,7 @@
       media_prev = "${media} previous";
 
       # Sway desktop utilities
-      bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/sway-style.css";
+      bar = pkgs.waybar + "/bin/waybar";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.swaybg + "/bin/swaybg -i ${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
@@ -143,7 +141,7 @@
         fi
       '';
     in {
-      bars = [];
+      bars = [{command = "${bar}";}];
       modifier = "${modifier}";
       colors.background = "${colorPrimary}";
       colors.focused = {
@@ -327,7 +325,7 @@
         };
       };
       startup = [
-        {command = "${bar}";}
+        # {command = "${bar}";}
         {command = "${wallpaperd}";}
         {command = "${fileManager} --daemon";}
         {command = "${idled}";}
