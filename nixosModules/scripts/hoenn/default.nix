@@ -11,14 +11,14 @@
 
     if [ "$1" = "sync" ]; then
       if [ "$2" == "" ] || [ "$2" == "now" ]; then
-        ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $FLAKE#$HOST
+        sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $FLAKE#$HOST
         exit 0;
       elif [ "$2" == "boot" ]; then
-        ${pkgs.nixos-rebuild}/bin/nixos-rebuild boot --flake $FLAKE#$HOST
+        bin/sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild boot --flake $FLAKE#$HOST
         exit 0;
       fi
     elif [ "$1" == "gc" ]; then
-      ${pkgs.nix}/bin/nix-collect-garbage -d
+      sudo ${pkgs.nix}/bin/nix-collect-garbage -d
       exit 0;
     elif [ "$1" == "clone" ]; then
       ${pkgs.git}/bin/git clone $FLAKE_SRC
