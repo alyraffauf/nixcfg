@@ -5,9 +5,9 @@
   ...
 }: let
   hoenn = pkgs.writeShellScriptBin "hoenn" ''
-    FLAKE="github:alyraffauf/nixcfg"
-    HOST=${config.networking.hostName}
-    FLAKE_SRC="https://github.com/alyraffauf/nixcfg.git"
+    FLAKE=''${FLAKE:-"github:alyraffauf/nixcfg"}
+    HOST=''${HOST:-${config.networking.hostName}}
+    GIT=''${GIT:-"https://github.com/alyraffauf/nixcfg.git"}
 
     if [ "$1" = "sync" ]; then
       if [ "$2" == "" ] || [ "$2" == "now" ]; then
@@ -21,7 +21,7 @@
       sudo ${pkgs.nix}/bin/nix-collect-garbage -d
       exit 0;
     elif [ "$1" == "clone" ]; then
-      ${pkgs.git}/bin/git clone $FLAKE_SRC
+      ${pkgs.git}/bin/git clone $GIT
       cd nixcfg
       exit 0;
     fi
