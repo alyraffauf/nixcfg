@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  imports = [./apps ./desktop ./services];
+  imports = [./apps ./desktop ./services ./scripts];
 
   nixpkgs = {
     # Configure nixpkgs instance

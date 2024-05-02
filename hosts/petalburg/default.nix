@@ -30,28 +30,6 @@
         plasma-apply-lookandfeel -a org.kde.breezedark.desktop
     fi
   '';
-
-  pp-adjuster = pkgs.writeShellApplication {
-    name = "pp-adjuster";
-
-    runtimeInputs = [pkgs.libnotify pkgs.power-profiles-daemon];
-
-    text = ''
-      # Only works on petalburg.
-      current_profile=$(${pkgs.power-profiles-daemon}/bin/powerprofilesctl get | tr -d '[:space:]')
-
-      if [ "$current_profile" == "power-saver" ]; then
-          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
-      elif [ "$current_profile" == "balanced" ]; then
-          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
-      elif [ "$current_profile" == "performance" ]; then
-          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
-      fi
-
-      new_profile=$(${pkgs.power-profiles-daemon}/bin/powerprofilesctl get | tr -d '[:space:]')
-      ${pkgs.libnotify}/bin/notify-send "Power profile set to $new_profile."
-    '';
-  };
 in {
   imports = [
     ./disko.nix
@@ -70,7 +48,7 @@ in {
 
   networking.hostName = "petalburg"; # Define your hostname.
 
-  environment.systemPackages = [cs-adjuster cs-adjuster-plasma pp-adjuster];
+  environment.systemPackages = [cs-adjuster cs-adjuster-plasma];
 
   alyraffauf = {
     system = {

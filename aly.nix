@@ -58,6 +58,9 @@
       vsCodium.enable = true;
       webCord.enable = true;
     };
+    scripts = {
+      pp-adjuster.enable = true;
+    };
   };
   wayland.windowManager.sway.config.assigns = {
     "workspace 1: web" = [{app_id = "firefox";}];
