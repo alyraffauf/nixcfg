@@ -29,7 +29,7 @@
 in {
   options = {
     alyraffauf.scripts.hoenn.enable =
-      lib.mkEnableOption "Enable \hoenn system configuration script";
+      lib.mkEnableOption "Enable hoenn system configuration script";
   };
 
   config = lib.mkIf config.alyraffauf.scripts.hoenn.enable {
