@@ -82,6 +82,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          disko.nixosModules.disko
           nixos-hardware.nixosModules.framework-13-7040-amd
           home-manager.nixosModules.home-manager
           ./hosts/lavaridge

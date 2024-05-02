@@ -15,18 +15,6 @@
   boot.kernelModules = ["kvm-amd" "amd-gpu"];
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/2a76d315-37f9-406d-b1b2-01fee209139a";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7BC8-F615";
-    fsType = "vfat";
-  };
-
-  swapDevices = [];
-
   hardware.opengl = {
     ## radv: an open-source Vulkan driver from freedesktop
     driSupport = true;
