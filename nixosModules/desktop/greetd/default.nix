@@ -29,18 +29,22 @@
     services = {
       greetd = {
         enable = true;
-        settings = rec {
-          default_session = {
-            command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
-          };
-          initial_session =
-            if config.alyraffauf.desktop.greetd.autologin.enable
-            then {
+        settings =
+          if config.alyraffauf.desktop.greetd.autologin.enable
+          then {
+            default_session = {
+              command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+            };
+            initial_session = {
               command = config.alyraffauf.desktop.greetd.session;
               user = config.alyraffauf.desktop.greetd.autologin.user;
-            }
-            else {};
-        };
+            };
+          }
+          else {
+            default_session = {
+              command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+            };
+          };
       };
     };
   };
