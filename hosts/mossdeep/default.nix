@@ -46,6 +46,9 @@
     apps = {
       steam.enable = true;
     };
+    scripts = {
+      hoenn.enable = true;
+    };
     services = {
       flatpak.enable = true;
       syncthing.enable = true;

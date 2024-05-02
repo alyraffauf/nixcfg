@@ -95,6 +95,9 @@ in {
     apps = {
       steam.enable = true;
     };
+    scripts = {
+      hoenn.enable = true;
+    };
     services = {
       syncthing.enable = true;
       tailscale.enable = true;

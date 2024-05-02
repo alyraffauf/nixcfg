@@ -69,6 +69,9 @@ in {
       };
       tailscale.enable = true;
     };
+    scripts = {
+      hoenn.enable = true;
+    };
     system = {
       plymouth.enable = true;
       zramSwap = {

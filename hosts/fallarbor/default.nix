@@ -55,6 +55,9 @@
     apps = {
       steam.enable = true;
     };
+    scripts = {
+      hoenn.enable = true;
+    };
   };
 
   system.stateVersion = "23.11";
