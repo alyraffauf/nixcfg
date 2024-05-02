@@ -56,6 +56,9 @@
       podman.enable = true;
       virt-manager.enable = true;
     };
+    scripts = {
+      hoenn.enable = true;
+    };
     services = {
       syncthing.enable = true;
       tailscale.enable = true;
