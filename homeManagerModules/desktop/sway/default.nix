@@ -58,7 +58,7 @@
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.package = pkgs.swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
-    wayland.windowManager.sway.checkConfig = false; 
+    wayland.windowManager.sway.checkConfig = false;
     wayland.windowManager.sway.config = let
       modifier = "Mod4";
 
@@ -454,10 +454,16 @@
 
       blur enable
       blur_passes 1
+
       corner_radius 10
       shadows enable
 
       layer_effects launcher blur enable
+      layer_effects launcher blur_ignore_transparent enable
+      layer_effects swaybar blur enable
+      layer_effects swaybar blur enable blur_ignore_transparent enable
+      layer_effects notifications blur enable
+      layer_effects notifications blur_ignore_transparent enable
       layer_effects logout_dialog blur enable
     '';
 
