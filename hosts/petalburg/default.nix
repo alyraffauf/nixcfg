@@ -58,7 +58,7 @@ in {
     user = {
       aly = {
         enable = true;
-        password = "$y$j9T$Ug0ZLHQQuRciFJDgOI6r00$eHc.KyQY0oU4k0LKRiZiGWJ19jkKNWHpOoyCJbtJif8";
+        password = "$y$j9T$TitXX3J690cnK41XciNMg/$APKHM/os6FKd9H9aXGxaHaQ8zP5SenO9EO94VYafl43";
       };
       dustin.enable = false;
     };
@@ -67,6 +67,10 @@ in {
       greetd = {
         enable = true;
         session = config.programs.sway.package + "/bin/sway";
+        autologin = {
+          enable = true;
+          user = "aly";
+        };
       };
       sway.enable = true;
     };
