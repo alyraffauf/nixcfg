@@ -31,7 +31,6 @@ in {
   };
 
   config = lib.mkIf config.alyraffauf.scripts.hoenn.enable {
-    # Packages that should be installed to the user profile.
     environment.systemPackages = with pkgs; [hoenn];
   };
 }
