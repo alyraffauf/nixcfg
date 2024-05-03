@@ -5,18 +5,16 @@
   ...
 }: let
   hoenn = pkgs.writeShellScriptBin "hoenn" ''
-    FLAKE=''${FLAKE:-"github:alyraffauf/nixcfg"}
+    FLAKE=''${2:-"github:alyraffauf/nixcfg"}
     HOST=''${HOST:-${config.networking.hostName}}
-    GIT=''${GIT:-"https://github.com/alyraffauf/nixcfg.git"}
+    GIT=https://''${FLAKE//:/\.com\/}.git
 
-    if [ "$1" = "sync" ]; then
-      if [ "$2" == "" ] || [ "$2" == "now" ]; then
-        sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $FLAKE#$HOST
-        exit 0;
-      elif [ "$2" == "boot" ]; then
-        bin/sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild boot --flake $FLAKE#$HOST
-        exit 0;
-      fi
+    if [ "$1" == "sync" ]; then
+      sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $FLAKE#$HOST
+      exit 0;
+    elif [ "$1" == "boot" ]; then
+      bin/sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild boot --flake $FLAKE#$HOST
+      exit 0;
     elif [ "$1" == "gc" ]; then
       sudo ${pkgs.nix}/bin/nix-collect-garbage -d
       exit 0;
