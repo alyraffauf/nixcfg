@@ -58,6 +58,7 @@
     wayland.windowManager.sway.enable = true;
     wayland.windowManager.sway.package = pkgs.swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
+    wayland.windowManager.sway.checkConfig = false; 
     wayland.windowManager.sway.config = let
       modifier = "Mod4";
 
