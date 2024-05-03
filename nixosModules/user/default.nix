@@ -10,7 +10,6 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    sharedModules = [inputs.hyprland.homeManagerModules.default];
     extraSpecialArgs = inputs;
   };
 

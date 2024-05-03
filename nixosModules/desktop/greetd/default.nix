@@ -10,7 +10,7 @@
       lib.mkEnableOption "Enable greetd.";
     alyraffauf.desktop.greetd.session = lib.mkOption {
       description = "Default command to execute on login.";
-      default = inputs.hyprland.packages.${pkgs.system}.hyprland + "/bin/Hyprland";
+      default = config.programs.hyprland.package + "/bin/Hyprland";
       type = lib.types.str;
     };
     alyraffauf.desktop.greetd.autologin.enable = lib.mkOption {

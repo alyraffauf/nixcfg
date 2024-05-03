@@ -18,11 +18,6 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    # Latest Hyprland
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
-
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -33,10 +28,9 @@
   };
 
   nixConfig = {
-    extra-substituters = ["https://nixcache.raffauflabs.com" "https://hyprland.cachix.org"];
+    extra-substituters = ["https://nixcache.raffauflabs.com" ];
     extra-trusted-public-keys = [
       "nixcache.raffauflabs.com:yFIuJde/izA4aUDI3MZmBLzynEsqVCT1OfCUghOLlt8="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 
@@ -46,7 +40,6 @@
     nixos-hardware,
     impermanence,
     disko,
-    hyprland,
     jovian,
     ...
   }: {
@@ -54,11 +47,11 @@
     homeConfigurations = {
       aly = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
-        modules = [hyprland.homeManagerModules.default ./aly.nix];
+        modules = [./aly.nix];
       };
       dustin = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
-        modules = [hyprland.homeManagerModules.default ./dustin.nix];
+        modules = [./dustin.nix];
       };
     };
 
