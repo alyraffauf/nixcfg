@@ -8,6 +8,7 @@
   imports = [./homeManagerModules];
   home.username = "aly";
   home.homeDirectory = "/home/aly";
+  home.stateVersion = "24.05";
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [

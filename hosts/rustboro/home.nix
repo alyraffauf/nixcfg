@@ -13,6 +13,5 @@
         preset = "LoudnessEqualizer.json";
       };
     };
-    home.stateVersion = "23.11";
   };
 }
