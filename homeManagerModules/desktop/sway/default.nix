@@ -254,16 +254,16 @@
         "${modifier}+0" = "workspace number 10";
 
         # Move active window to a workspace with modifier + SHIFT + [0-9]
-        "${modifier}+Shift+1" = "move container to workspace number 1";
-        "${modifier}+Shift+2" = "move container to workspace number 2";
-        "${modifier}+Shift+3" = "move container to workspace number 3";
-        "${modifier}+Shift+4" = "move container to workspace number 4";
-        "${modifier}+Shift+5" = "move container to workspace number 5";
-        "${modifier}+Shift+6" = "move container to workspace number 6";
-        "${modifier}+Shift+7" = "move container to workspace number 7";
-        "${modifier}+Shift+8" = "move container to workspace number 8";
-        "${modifier}+Shift+9" = "move container to workspace number 9";
-        "${modifier}+Shift+0" = "move container to workspace number 10";
+        "${modifier}+Shift+1" = "move container to workspace number 1; workspace 1";
+        "${modifier}+Shift+2" = "move container to workspace number 2; workspace 2";
+        "${modifier}+Shift+3" = "move container to workspace number 3; workspace 3";
+        "${modifier}+Shift+4" = "move container to workspace number 4; workspace 4";
+        "${modifier}+Shift+5" = "move container to workspace number 5; workspace 5";
+        "${modifier}+Shift+6" = "move container to workspace number 6; workspace 6";
+        "${modifier}+Shift+7" = "move container to workspace number 7; workspace 7";
+        "${modifier}+Shift+8" = "move container to workspace number 8; workspace 8";
+        "${modifier}+Shift+9" = "move container to workspace number 9; workspace 9";
+        "${modifier}+Shift+0" = "move container to workspace number 10; workspace 10";
 
         # Move workspace to another output.
         "${modifier}+Control+Shift+Left" = "move workspace to output left";
@@ -326,16 +326,16 @@
           L = "move right";
           Comma = "move container to workspace prev; workspace prev";
           Period = "move container to workspace next; workspace next";
-          "1" = "move container to workspace number 1";
-          "2" = "move container to workspace number 2";
-          "3" = "move container to workspace number 3";
-          "4" = "move container to workspace number 4";
-          "5" = "move container to workspace number 5";
-          "6" = "move container to workspace number 6";
-          "7" = "move container to workspace number 7";
-          "8" = "move container to workspace number 8";
-          "9" = "move container to workspace number 9";
-          "0" = "move container to workspace number 10";
+          "1" = "move container to workspace number 1; workspace 1";
+          "2" = "move container to workspace number 2; workspace 2";
+          "3" = "move container to workspace number 3; workspace 3";
+          "4" = "move container to workspace number 4; workspace 4";
+          "5" = "move container to workspace number 5; workspace 5";
+          "6" = "move container to workspace number 6; workspace 6";
+          "7" = "move container to workspace number 7; workspace 7";
+          "8" = "move container to workspace number 8; workspace 8";
+          "9" = "move container to workspace number 9; workspace 9";
+          "0" = "move container to workspace number 10; workspace 10";
           S = "move scratchpad";
         };
         resize = {
