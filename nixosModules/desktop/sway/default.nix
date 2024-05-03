@@ -14,6 +14,7 @@
     services = {
       dbus.packages = [pkgs.gcr];
       udev.packages = [pkgs.swayosd];
+      gnome.gnome-keyring.enable = true;
     };
 
     security.pam.services = {
