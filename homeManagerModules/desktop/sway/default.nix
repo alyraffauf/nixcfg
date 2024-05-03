@@ -21,7 +21,6 @@
         alacritty.enable = lib.mkDefault true;
         firefox.enable = lib.mkDefault true;
         fuzzel.enable = lib.mkDefault true;
-        kanshi.enable = lib.mkDefault true;
         mako.enable = lib.mkDefault true;
         swaylock.enable = lib.mkDefault true;
         thunar.enable = lib.mkDefault true;
