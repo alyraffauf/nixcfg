@@ -62,6 +62,13 @@
       pp-adjuster.enable = true;
     };
   };
+
+    programs.git = {
+      enable = true;
+      userName = "Aly Raffauf";
+      userEmail = "aly@raffauflabs.com";
+    };
+  
   wayland.windowManager.sway.config.assigns = {
     "workspace 1: web" = [{app_id = "firefox";}];
     "workspace 2: code" = [{app_id = "codium-url-handler";}];
