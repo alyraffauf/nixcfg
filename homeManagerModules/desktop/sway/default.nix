@@ -177,7 +177,7 @@
         size = 12.0;
       };
       gaps.inner = 5;
-      gaps.outer = 10;
+      gaps.outer = 5;
       input = {
         "type:touchpad" = {
           click_method = "clickfinger";
