@@ -25,6 +25,10 @@
             id = "6nzmu-z9der";
             path = config.alyraffauf.services.syncthing.syncMusicPath;
             devices = ["lavaridge" "mauville" "petalburg" "rustboro" "wattson"];
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "1";
+            };
           };
         };
       };

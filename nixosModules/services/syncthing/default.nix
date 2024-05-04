@@ -45,11 +45,22 @@
             id = "default";
             path = "/home/${config.alyraffauf.services.syncthing.user}/sync";
             devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wattson" "winona"];
+            versioning = {
+              type = "staggered";
+              params = {
+                cleanInterval = "3600";
+                maxAge = "365";
+              };
+            };
           };
           "camera" = {
             id = "fcsgh-dlxys";
             path = "/home/${config.alyraffauf.services.syncthing.user}/pics/camera";
             devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wattson" "winona"];
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "15";
+            };
           };
         };
       };
