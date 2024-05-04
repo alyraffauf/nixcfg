@@ -10,6 +10,7 @@
     ./chromium
     ./emacs
     ./eza
+    ./fastfetch
     ./firefox
     ./fuzzel
     ./fzf
