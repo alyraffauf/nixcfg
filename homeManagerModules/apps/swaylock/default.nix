@@ -13,7 +13,7 @@
       font="${config.alyraffauf.desktop.theme.terminalFont.name}-Regular"
 
       color=303446
-      image=${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg
+      image=${config.alyraffauf.desktop.theme.wallpaper}
 
       daemonize
 
