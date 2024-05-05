@@ -291,7 +291,7 @@
 
       # Manage session.
       bind = ${modifier}, C, killactive,
-      bind = ${modifier}, L, exec, ${lock}
+      bind = ${modifier} CONTROL, L, exec, ${lock}
       bind = ${modifier}, M, exec, ${logout}
 
       # Basic window management.

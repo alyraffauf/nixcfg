@@ -196,7 +196,7 @@
 
         # Manage session.
         "${modifier}+C" = "kill";
-        "${modifier}+Q" = "exec ${lock}";
+        "${modifier}+Control+L" = "exec ${lock}";
         "${modifier}+M" = "exec ${logout}";
 
         # Basic window management.
