@@ -35,7 +35,7 @@
     services.syncthing.enable = false;
     desktop = {
       hyprland = {
-        enable = false;
+        enable = true;
         hyprpaper.randomWallpaper = false;
       };
       sway = {
@@ -80,7 +80,9 @@
   };
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser
-    # workspace = name:browser,1, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false
+    workspace = 1,defaultName:web
+    workspace = 2,defaultName:code
+    
     # windowrulev2 = workspace name:browser,class:(firefox)
     windowrulev2 = workspace 1,class:(firefox)
 
