@@ -122,7 +122,7 @@
       colorText = "#FAFAFA";
       colorPrimary = "#CA9EE6EE";
       colorSecondary = "#99D1DBEE";
-      colorInactive = "#303446AA";
+      colorInactive = "#626880AA";
       drop_shadow = "#1A1A1AEE";
       cursor_size = "24";
       qt_platform_theme = "gtk2";
@@ -152,17 +152,17 @@
         text = "${colorText}";
       };
       colors.focusedInactive = {
-        background = "${colorSecondary}";
-        border = "${colorSecondary}";
-        childBorder = "${colorSecondary}";
-        indicator = "${colorSecondary}";
+        background = "${colorInactive}";
+        border = "${colorInactive}";
+        childBorder = "${colorInactive}";
+        indicator = "${colorInactive}";
         text = "${colorText}";
       };
       colors.unfocused = {
-        background = "${colorSecondary}";
-        border = "${colorSecondary}";
-        childBorder = "${colorSecondary}";
-        indicator = "${colorSecondary}";
+        background = "${colorInactive}";
+        border = "${colorInactive}";
+        childBorder = "${colorInactive}";
+        indicator = "${colorInactive}";
         text = "${colorText}";
       };
       defaultWorkspace = "workspace number 1";
@@ -174,7 +174,7 @@
       fonts = {
         names = ["NotoSansNerdFont"];
         style = "Bold";
-        size = 12.0;
+        size = 11.0;
       };
       gaps.inner = 5;
       gaps.outer = 5;
