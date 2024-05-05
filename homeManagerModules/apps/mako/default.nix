@@ -7,20 +7,18 @@
   options = {alyraffauf.apps.mako.enable = lib.mkEnableOption "Enables mako.";};
 
   config = lib.mkIf config.alyraffauf.apps.mako.enable {
-    home.packages = with pkgs; [(nerdfonts.override {fonts = ["Noto"];})];
-
     services.mako = {
       enable = true;
       anchor = "top-center";
-      backgroundColor = "#232634CC";
-      borderColor = "#ca9ee6";
+      backgroundColor = "${config.alyraffauf.desktop.theme.colors.background}CC";
+      borderColor = "${config.alyraffauf.desktop.theme.colors.primary}";
       borderRadius = 10;
       defaultTimeout = 10000;
-      font = "NotoSans Nerd Font Regular 10";
+      font = "${config.alyraffauf.desktop.theme.font.name} Regular ${toString config.alyraffauf.desktop.theme.font.size}";
       height = 300;
       layer = "top";
       padding = "15";
-      textColor = "#FAFAFA";
+      textColor = "${config.alyraffauf.desktop.theme.colors.text}";
       width = 400;
       margin = "20,0";
     };
