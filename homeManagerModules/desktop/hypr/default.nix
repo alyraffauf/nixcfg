@@ -62,8 +62,6 @@
       extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
 
-    xdg.configFile."waybar/hyprland-style.css".source = ./waybar.css;
-
     programs.waybar.settings = {
       mainBar = {
         modules-left = ["hyprland/workspaces" "hyprland/submap"];
