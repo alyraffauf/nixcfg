@@ -23,8 +23,8 @@
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
         "git.confirmSync" = false;
-        "nix.formatterPath" = "${pkgs.alejandra}/bin/alejandra";
-        "terminal.external.linuxExec" = "${pkgs.alacritty}/bin/alacritty";
+        "nix.formatterPath" = lib.getExe pkgs.alejandra;
+        "terminal.external.linuxExec" = lib.getExe pkgs.alacritty;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.zoomPerWindow" = false;

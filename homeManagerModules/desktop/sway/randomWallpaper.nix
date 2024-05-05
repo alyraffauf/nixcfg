@@ -14,10 +14,10 @@
         while true; do
           NEW_PIDS=()
 
-          monitor=`${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep Output | awk '{print $2}'`
+          monitor=`${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} -t get_outputs -p | grep Output | awk '{print $2}'`
           for m in ''${monitor[@]}; do
             random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
-            ${pkgs.swaybg}/bin/swaybg -o $m -i $random_background &
+            ${lib.getExe pkgs.swaybg} -o $m -i $random_background &
             NEW_PIDS+=($!)
           done
 
@@ -44,7 +44,7 @@ in {
     home.packages = with pkgs; [swaybg sway-randomWallpaper];
 
     wayland.windowManager.sway.config.startup = [
-      {command = "${sway-randomWallpaper}/bin/sway-randomWallpaper";}
+      {command = "${lib.getExe sway-randomWallpaper}";}
     ];
   };
 }

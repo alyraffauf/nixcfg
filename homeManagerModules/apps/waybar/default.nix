@@ -128,7 +128,7 @@
             "sort-by" = "id";
           };
           "hyprland/submap" = {
-            "on-click" = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch submap reset";
+            "on-click" = ''${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch submap reset'';
           };
           "hyprland/window" = {
             "format" = "";
@@ -146,7 +146,7 @@
             "sort-by" = "id";
           };
           "sway/mode" = {
-            "on-click" = "${config.wayland.windowManager.sway.package}/bin/swaymsg mode default";
+            "on-click" = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} mode default'';
           };
           "sway/window" = {
             "max-length" = 100;
@@ -188,7 +188,7 @@
 
               {device_enumerate}'';
             "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
-            "on-click" = "${pkgs.blueberry}/bin/blueberry";
+            "on-click" = lib.getExe' pkgs.blueberry "blueberry";
           };
           "pulseaudio" = {
             "format" = "{icon}";
@@ -202,7 +202,7 @@
             };
             "scroll-step" = 5;
             "ignored-sinks" = ["Easy Effects Sink"];
-            "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
+            "on-click" = "${lib.getExe pkgs.pavucontrol} -t 3";
           };
           "network" = {
             "format-wifi" = "{icon}";
@@ -213,11 +213,11 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${pkgs.alacritty}/bin/alacritty --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = "${lib.getExe pkgs.alacritty} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
           };
           "tray" = {"spacing" = 15;};
           "custom/logout" = {
-            "on-click" = "${pkgs.wlogout}/bin/wlogout";
+            "on-click" = "${lib.getExe pkgs.wlogout}";
             "format" = "󰗽";
           };
           "power-profiles-daemon" = {

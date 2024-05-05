@@ -49,56 +49,56 @@
       modifier = "Mod4";
 
       # Default apps
-      browser = pkgs.firefox + "/bin/firefox";
-      fileManager = pkgs.xfce.thunar + "/bin/thunar";
-      editor = pkgs.vscodium + "/bin/codium";
-      terminal = pkgs.alacritty + "/bin/alacritty";
+      browser = lib.getExe pkgs.firefox;
+      fileManager = lib.getExe pkgs.xfce.thunar;
+      editor = lib.getExe pkgs.vscodium;
+      terminal = lib.getExe pkgs.alacritty;
 
-      brightness = "${pkgs.swayosd}/bin/swayosd-client";
+      brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
       brightness_down = "${brightness} --brightness=lower";
-      volume = "${pkgs.swayosd}/bin/swayosd-client";
+      volume = brightness;
       volume_up = "${volume} --output-volume=raise";
       volume_down = "${volume} --output-volume=lower";
       volume_mute = "${volume} --output-volume=mute-toggle";
       mic_mute = "${volume} --input-volume=mute-toggle";
-      media = "${pkgs.playerctl}/bin/playerctl";
+      media = lib.getExe pkgs.playerctl;
       media_play = "${media} play-pause";
       media_next = "${media} next";
       media_prev = "${media} previous";
 
       # Sway desktop utilities
-      bar = pkgs.waybar + "/bin/waybar";
-      launcher = pkgs.fuzzel + "/bin/fuzzel";
-      notifyd = pkgs.mako + "/bin/mako";
-      wallpaperd = pkgs.swaybg + "/bin/swaybg -i ${config.alyraffauf.desktop.theme.wallpaper}";
-      logout = pkgs.wlogout + "/bin/wlogout";
-      lock = pkgs.swaylock + ''/bin/swaylock'';
+      bar = lib.getExe pkgs.waybar;
+      launcher = lib.getExe pkgs.fuzzel;
+      notifyd = lib.getExe pkgs.mako;
+      wallpaperd = lib.getExe pkgs.swaybg;
+      logout = lib.getExe pkgs.wlogout;
+      lock = lib.getExe pkgs.swaylock;
       idled =
         if config.alyraffauf.desktop.sway.autoSuspend
         then ''
-          ${pkgs.swayidle}/bin/swayidle -w \
-                  timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
-                    resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+          ${lib.getExe pkgs.swayidle} -w \
+                  timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
+                    resume '${lib.getExe pkgs.brightnessctl} -r' \
                   timeout 300 '${lock}' \
-                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
-                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
-                  timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
+                  timeout 330 '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms off"' \
+                    resume '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms on"' \
+                  timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \
                   before-sleep '${media} pause' \
                   before-sleep '${lock}'
         ''
         else ''
-          ${pkgs.swayidle}/bin/swayidle -w \
-                  timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
-                    resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
+          ${lib.getExe pkgs.swayidle} -w \
+                  timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
+                    resume '${lib.getExe pkgs.brightnessctl} -r' \
                   timeout 300 '${lock}' \
-                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
-                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  timeout 330 '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms off"' \
+                    resume '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms on"' \
                   before-sleep '${media} pause' \
                   before-sleep '${lock}'
         '';
 
-      screenshot = "${pkgs.shotman}/bin/shotman";
+      screenshot = lib.getExe' pkgs.shotman "shotman";
       # screenshot_folder = "~/pics/screenshots";
       # screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
       # screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
@@ -110,14 +110,14 @@
 
       cycleSwayDisplayModes = pkgs.writeShellScriptBin "cycleSwayDisplayModes" ''
         # TODO: remove petalburg hardcodes
-        current_mode=$(${config.wayland.windowManager.sway.package}/bin/swaymsg -t get_outputs -p | grep "Current mode" | grep -Eo '[0-9]+x[0-9]+ @ [0-9.]+ Hz' | tr -d " " | grep 2880)
+        current_mode=$(${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} -t get_outputs -p | grep "Current mode" | grep -Eo '[0-9]+x[0-9]+ @ [0-9.]+ Hz' | tr -d " " | grep 2880)
 
         if [ $current_mode = "2880x1800@90.001Hz" ]; then
-                ${config.wayland.windowManager.sway.package}/bin/swaymsg output "eDP-1" mode "2880x1800@60.001Hz";
-                ${pkgs.libnotify}/bin/notify-send "Display set to 2880x1800@60.001Hz."
+                ${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} output "eDP-1" mode "2880x1800@60.001Hz";
+                ${lib.getExe pkgs.libnotify} "Display set to 2880x1800@60.001Hz."
         elif [ $current_mode = "2880x1800@60.001Hz" ]; then
-                ${config.wayland.windowManager.sway.package}/bin/swaymsg output "eDP-1" mode "2880x1800@90.001Hz";
-                ${pkgs.libnotify}/bin/notify-send "Display set to 2880x1800@90.001Hz."
+                ${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} output "eDP-1" mode "2880x1800@90.001Hz";
+                ${lib.getExe pkgs.libnotify} "Display set to 2880x1800@90.001Hz."
         fi
       '';
     in {
@@ -277,7 +277,7 @@
         # For petalburg
         "XF86Launch4" = "exec pp-adjuster";
 
-        "XF86Launch3" = "exec ${cycleSwayDisplayModes}/bin/cycleSwayDisplayModes";
+        "XF86Launch3" = "exec ${lib.getExe cycleSwayDisplayModes}";
 
         # TODO: night color shift
         # "XF86Launch1" =
@@ -332,14 +332,14 @@
         {command = "${fileManager} --daemon";}
         {command = "${idled}";}
         {command = "${notifyd}";}
-        {command = "${pkgs.autotiling}/bin/autotiling";}
-        {command = "${pkgs.gammastep}/bin/gammastep -l 31.1:-94.1";} # TODO: automatic locations
+        {command = "${lib.getExe pkgs.autotiling}";}
+        {command = "${lib.getExe pkgs.gammastep} -l 31.1:-94.1";} # TODO: automatic locations
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
-        {command = "${pkgs.swayosd}/bin/swayosd-server";}
-        {command = "${pkgs.playerctl}/bin/playerctld";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";}
+        {command = ''${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}'';}
+        {command = ''${lib.getExe' pkgs.swayosd "swayosd-server"}'';}
+        {command = ''${lib.getExe' pkgs.playerctl "playerctld"}'';}
+        {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store'';}
+        {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store'';}
       ];
       output = {
         "BOE 0x095F Unknown" = {

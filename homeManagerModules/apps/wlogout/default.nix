@@ -12,19 +12,19 @@
       layout = [
         {
           label = "logout";
-          action = "${pkgs.systemd}/bin/loginctl terminate-user ${config.home.username}";
+          action = ''${lib.getExe' pkgs.systemd "loginctl"} terminate-user ${config.home.username}'';
           text = "Logout";
           keybind = "e";
         }
         {
           label = "shutdown";
-          action = "${pkgs.systemd}/bin/systemctl poweroff";
+          action = ''${lib.getExe' pkgs.systemd "systemctl"} poweroff'';
           text = "Shutdown";
           keybind = "s";
         }
         {
           label = "reboot";
-          action = "${pkgs.systemd}/bin/systemctl reboot";
+          action = ''${lib.getExe' pkgs.systemd "systemctl"} reboot'';
           text = "Reboot";
           keybind = "r";
         }

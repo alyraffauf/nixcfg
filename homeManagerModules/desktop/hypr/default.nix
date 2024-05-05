@@ -63,13 +63,13 @@
       modifier = "SUPER";
 
       # Default apps
-      browser = pkgs.firefox + "/bin/firefox";
-      fileManager = pkgs.xfce.thunar + "/bin/thunar";
-      editor = pkgs.vscodium + "/bin/codium";
-      terminal = pkgs.alacritty + "/bin/alacritty";
+      browser = lib.getExe pkgs.firefox;
+      fileManager = lib.getExe pkgs.xfce.thunar;
+      editor = lib.getExe pkgs.vscodium;
+      terminal = lib.getExe pkgs.alacritty;
 
       # Media/hardware commands
-      # brightness = "${pkgs.brightnessctl}/bin/brightnessctl";
+      # brightness = "${lib.getExe pkgs.brightnessctl}";
       # brightness_up = "${brightness} set 5%+";
       # brightness_down = "${brightness} set 5%-";
       # volume = "${pkgs.wireplumber}/bin/wpctl";
@@ -77,44 +77,44 @@
       # volume_down = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%-";
       # volume_mute = "${volume} set-mute @DEFAULT_SINK@ toggle";
       # mic_mute = "${volume} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-      brightness = "${pkgs.swayosd}/bin/swayosd-client";
+      brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
       brightness_down = "${brightness} --brightness=lower";
-      volume = "${pkgs.swayosd}/bin/swayosd-client";
+      volume = brightness;
       volume_up = "${volume} --output-volume=raise";
       volume_down = "${volume} --output-volume=lower";
       volume_mute = "${volume} --output-volume=mute-toggle";
       mic_mute = "${volume} --input-volume=mute-toggle";
-      media = "${pkgs.playerctl}/bin/playerctl";
+      media = lib.getExe pkgs.playerctl;
       media_play = "${media} play-pause";
       media_next = "${media} next";
       media_prev = "${media} previous";
 
       # Hyprland desktop utilities
-      bar = pkgs.waybar + "/bin/waybar";
-      launcher = pkgs.fuzzel + "/bin/fuzzel";
-      notifyd = pkgs.mako + "/bin/mako";
-      wallpaperd = pkgs.hyprpaper + "/bin/hyprpaper";
-      logout = pkgs.wlogout + "/bin/wlogout";
+      bar = lib.getExe pkgs.waybar;
+      launcher = lib.getExe pkgs.fuzzel;
+      notifyd = lib.getExe pkgs.mako;
+      wallpaperd = lib.getExe pkgs.hyprpaper;
+      logout = lib.getExe pkgs.wlogout;
       # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
       # idled = pkgs.hypridle + "/bin/hypridle";
 
-      lock = pkgs.swaylock + ''/bin/swaylock'';
+      lock = lib.getExe pkgs.swaylock;
       idled =
         if config.alyraffauf.desktop.hyprland.autoSuspend
         then ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' timeout 900 '${pkgs.systemd}/bin/systemctl suspend' before-sleep '${media} pause' before-sleep '${lock}'
+          ${lib.getExe pkgs.swayidle} -w timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r' timeout 300 '${lock}' timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' timeout 900 '${lib.getExe' pkgs.systemd "systemctl"}' before-sleep '${media} pause' before-sleep '${lock}'
 
         ''
         else ''
-          ${pkgs.swayidle}/bin/swayidle -w timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' resume '${pkgs.brightnessctl}/bin/brightnessctl -r' timeout 300 '${lock}' timeout 330 '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${media} pause' before-sleep '${lock}'
+          ${lib.getExe pkgs.swayidle} -w timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r' timeout 300 '${lock}' timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' before-sleep '${media} pause' before-sleep '${lock}'
 
         '';
 
-      hyprnome = pkgs.hyprnome + "/bin/hyprnome";
-      hyprshade = pkgs.hyprshade + "/bin/hyprshade";
+      hyprnome = lib.getExe pkgs.hyprnome;
+      hyprshade = lib.getExe pkgs.hyprshade;
 
-      screenshot = "${pkgs.hyprshot}/bin/hyprshot";
+      screenshot = lib.getExe  pkgs.hyprshot;
       screenshot_folder = "~/pics/screenshots";
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
       screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
@@ -153,15 +153,15 @@
       exec-once = ${wallpaperd}
       exec-once = ${bar}
       exec-once = ${notifyd}
-      exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store
-      exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store
+      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store
+      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store
       exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
-      exec = ${pkgs.hyprshade}/bin/hyprshade auto
+      exec = ${hyprshade} auto
       exec-once = ${idled}
-      exec-once = ${pkgs.swayosd}/bin/swayosd-server
-      exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
-      exec-once = ${pkgs.playerctl}/bin/playerctld
+      exec-once = ${lib.getExe' pkgs.swayosd "swayosd-server"}
+      exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
+      exec-once = ${lib.getExe' pkgs.playerctl "playerctld"}
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
