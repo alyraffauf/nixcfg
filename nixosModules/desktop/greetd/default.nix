@@ -10,7 +10,7 @@
       lib.mkEnableOption "Enable greetd.";
     alyraffauf.desktop.greetd.session = lib.mkOption {
       description = "Default command to execute on login.";
-      default = config.programs.hyprland.package + "/bin/Hyprland";
+      default = lib.getExe config.programs.hyprland.package;
       type = lib.types.str;
     };
     alyraffauf.desktop.greetd.autologin.enable = lib.mkOption {
@@ -33,7 +33,7 @@
           if config.alyraffauf.desktop.greetd.autologin.enable
           then {
             default_session = {
-              command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
             };
             initial_session = {
               command = config.alyraffauf.desktop.greetd.session;
@@ -42,7 +42,7 @@
           }
           else {
             default_session = {
-              command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
             };
           };
       };

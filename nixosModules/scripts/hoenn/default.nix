@@ -10,16 +10,16 @@
     GIT=https://''${FLAKE//:/\.com\/}.git
 
     if [ "$1" == "sync" ]; then
-      sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake $FLAKE#$HOST
+      sudo ${lib.getExe pkgs.nixos-rebuild} switch --flake $FLAKE#$HOST
       exit 0;
     elif [ "$1" == "boot" ]; then
-      bin/sudo ${pkgs.nixos-rebuild}/bin/nixos-rebuild boot --flake $FLAKE#$HOST
+      sudo ${lib.getExe pkgs.nixos-rebuild} boot --flake $FLAKE#$HOST
       exit 0;
     elif [ "$1" == "gc" ]; then
-      sudo ${pkgs.nix}/bin/nix-collect-garbage -d
+      sudo ${lib.getExe' pkgs.nix "nix-collect-garbage"} -d
       exit 0;
     elif [ "$1" == "clone" ]; then
-      ${pkgs.git}/bin/git clone $GIT
+      ${lib.getExe pkgs.git} clone $GIT
       cd nixcfg
       exit 0;
     fi
