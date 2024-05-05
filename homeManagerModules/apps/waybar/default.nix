@@ -17,7 +17,7 @@
       * {
           border: none;
           border-radius: 0;
-          font-family: "${lib.strings.removeSuffix "-Regular" config.alyraffauf.desktop.theme.terminalFont.name}";
+          font-family: "${config.alyraffauf.desktop.theme.terminalFont.name}";
           font-size: 14px;
           font-weight: 600;
       }
