@@ -10,7 +10,7 @@
     home.packages = with pkgs; [swaylock];
 
     xdg.configFile."swaylock/config".text = ''
-      font="NotoSansMNerdFont-Regular"
+      font="${config.alyraffauf.desktop.theme.terminalFont.name}-Regular"
 
       color=303446
       image=${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg
@@ -24,7 +24,7 @@
 
       key-hl-color=a6d189
 
-      separator-color=232634cc
+      separator-color=${config.alyraffauf.desktop.theme.colors.background}CC
 
       inside-color=303446cc
       inside-clear-color=303446cc
@@ -32,17 +32,17 @@
       inside-ver-color=303446cc
       inside-wrong-color=303446cc
 
-      ring-color=ca9ee6cc
+      ring-color=${config.alyraffauf.desktop.theme.colors.primary}CC
       ring-clear-color=85c1dccc
       ring-caps-lock-color=e78284cc
       ring-ver-color=a6d189cc
       ring-wrong-color=e78284cc
 
-      line-color=232634cc
-      line-clear-color=232634cc
-      line-caps-lock-color=232634cc
-      line-ver-color=232634cc
-      line-wrong-color=232634cc
+      line-color=${config.alyraffauf.desktop.theme.colors.background}CC
+      line-clear-color=${config.alyraffauf.desktop.theme.colors.background}CC
+      line-caps-lock-color=${config.alyraffauf.desktop.theme.colors.background}CC
+      line-ver-color=${config.alyraffauf.desktop.theme.colors.background}CC
+      line-wrong-color=${config.alyraffauf.desktop.theme.colors.background}CC
 
       text-clear-color=c6d0f5
       text-ver-color=c6d0f5
