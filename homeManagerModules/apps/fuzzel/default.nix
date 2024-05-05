@@ -11,8 +11,8 @@
       enable = true;
       settings = {
         main = {
-          font = "NotoSansMNerdFont-Regular";
-          icon-theme = "Papirus-Dark";
+          font = "${config.alyraffauf.desktop.theme.terminalFont.name}-Regular";
+          icon-theme = "${config.alyraffauf.desktop.theme.iconTheme.name}";
           layer = "overlay";
           width = 36;
           lines = 3;
@@ -20,12 +20,12 @@
         };
         border = {width = 2;};
         colors = {
-          background = "#232634CC";
-          selection = "#232634FF";
+          background = "${config.alyraffauf.desktop.theme.colors.background}CC";
+          selection = "${config.alyraffauf.desktop.theme.colors.background}FF";
           selection-match = "#e78284FF";
           selection-text = "#f4b8e4FF";
-          text = "#fafafaFF";
-          border = "#ca9ee6aa";
+          text = "${config.alyraffauf.desktop.theme.colors.text}FF";
+          border = "${config.alyraffauf.desktop.theme.colors.primary}AA";
         };
       };
     };
