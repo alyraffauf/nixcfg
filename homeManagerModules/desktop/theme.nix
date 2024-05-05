@@ -96,6 +96,11 @@
         default = "#FAFAFA";
         type = lib.types.str;
       };
+      background = lib.mkOption {
+        description = "Background color.";
+        default = "#232634";
+        type = lib.types.str;
+      };
       primary = lib.mkOption {
         description = "Primary color.";
         default = "#CA9EE6";

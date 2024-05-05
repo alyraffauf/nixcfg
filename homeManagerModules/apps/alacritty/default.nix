@@ -14,18 +14,18 @@
       settings = {
         colors = {
           primary = {
-            foreground = "#fafafa";
-            background = "#232634";
+            foreground = "${config.alyraffauf.desktop.theme.colors.text}";
+            background = "${config.alyraffauf.desktop.theme.colors.background}";
           };
           transparent_background_colors = true;
           draw_bold_text_with_bright_colors = true;
         };
         font = {
           normal = {
-            family = "NotoSansMNerdFont";
+            family = "${config.alyraffauf.desktop.theme.terminalFont.name}";
             style = "Regular";
           };
-          size = 11;
+          size = config.alyraffauf.desktop.theme.terminalFont.size;
         };
         selection.save_to_clipboard = true;
         window = {
