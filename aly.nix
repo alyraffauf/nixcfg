@@ -35,8 +35,8 @@
     services.syncthing.enable = false;
     desktop = {
       hyprland = {
-        enable = true;
-        hyprpaper.randomWallpaper = true;
+        enable = false;
+        hyprpaper.randomWallpaper = false;
       };
       sway = {
         enable = true;
