@@ -164,7 +164,7 @@
         # mouseWarping = "container";
       };
       fonts = {
-        names = ["NotoSansNerdFont"];
+        names = ["${config.alyraffauf.desktop.theme.font.name}"];
         style = "Bold";
         size = 11.0;
       };
