@@ -59,7 +59,7 @@
     alyraffauf.desktop.theme.font = {
       name = lib.mkOption {
         description = "Font name.";
-        default = "NotoSansNerdFont-Regular";
+        default = "NotoSansNerdFont";
         type = lib.types.str;
       };
       size = lib.mkOption {
@@ -158,7 +158,7 @@
       };
 
       font = {
-        name = config.alyraffauf.desktop.theme.font.name;
+        name = "${config.alyraffauf.desktop.theme.font.name}-Regular";
         package = config.alyraffauf.desktop.theme.font.package;
         size = config.alyraffauf.desktop.theme.font.size;
       };
