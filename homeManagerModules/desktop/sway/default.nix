@@ -43,7 +43,6 @@
     ];
 
     programs.swaylock.enable = lib.mkDefault true;
-
     services.cliphist.enable = lib.mkDefault true;
 
     programs.waybar = {
@@ -118,13 +117,6 @@
       screenshot_screen = "${screenshot} --capture output";
       screenshot_region = "${screenshot} --capture region";
 
-      # Color, themes, scaling
-      colorText = "#FAFAFA";
-      colorPrimary = "#CA9EE6EE";
-      colorSecondary = "#99D1DBEE";
-      colorInactive = "#626880AA";
-      drop_shadow = "#1A1A1AEE";
-      cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
 
@@ -143,27 +135,27 @@
     in {
       bars = [{command = "${bar}";}];
       modifier = "${modifier}";
-      colors.background = "${colorPrimary}";
+      colors.background = "${config.alyraffauf.desktop.theme.colors.primary}";
       colors.focused = {
-        background = "${colorPrimary}";
-        border = "${colorPrimary}";
-        childBorder = "${colorPrimary}";
-        indicator = "${colorPrimary}";
-        text = "${colorText}";
+        background = "${config.alyraffauf.desktop.theme.colors.primary}";
+        border = "${config.alyraffauf.desktop.theme.colors.primary}";
+        childBorder = "${config.alyraffauf.desktop.theme.colors.primary}";
+        indicator = "${config.alyraffauf.desktop.theme.colors.primary}";
+        text = "${config.alyraffauf.desktop.theme.colors.text}";
       };
       colors.focusedInactive = {
-        background = "${colorInactive}";
-        border = "${colorInactive}";
-        childBorder = "${colorInactive}";
-        indicator = "${colorInactive}";
-        text = "${colorText}";
+        background = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        border = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        text = "${config.alyraffauf.desktop.theme.colors.text}";
       };
       colors.unfocused = {
-        background = "${colorInactive}";
-        border = "${colorInactive}";
-        childBorder = "${colorInactive}";
-        indicator = "${colorInactive}";
-        text = "${colorText}";
+        background = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        border = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        text = "${config.alyraffauf.desktop.theme.colors.text}";
       };
       defaultWorkspace = "workspace number 1";
       focus = {
