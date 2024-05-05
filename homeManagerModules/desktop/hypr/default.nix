@@ -167,7 +167,7 @@
       exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store
       exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
-      exec-once = ${pkgs.hyprshade}/bin/hyprshade auto
+      exec = ${pkgs.hyprshade}/bin/hyprshade auto
       exec-once = ${idled}
       exec-once = ${pkgs.swayosd}/bin/swayosd-server
       exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
