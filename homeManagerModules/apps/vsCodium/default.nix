@@ -11,12 +11,6 @@
   config = lib.mkIf config.alyraffauf.apps.vsCodium.enable {
     alyraffauf.apps.alacritty.enable = lib.mkDefault true;
 
-    # Necessary fonts.
-    home.packages = with pkgs; [
-      (nerdfonts.override {fonts = ["Noto"];})
-      alejandra
-    ];
-
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -24,7 +18,7 @@
       enableExtensionUpdateCheck = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
+        "editor.fontFamily" = "'${config.alyraffauf.desktop.theme.terminalFont.name}', 'monospace', monospace";
         "explorer.confirmDelete" = false;
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;

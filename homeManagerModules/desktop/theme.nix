@@ -76,7 +76,7 @@
     alyraffauf.desktop.theme.terminalFont = {
       name = lib.mkOption {
         description = "Font name.";
-        default = "NotoSansMNerdFont-Regular";
+        default = "NotoSansMNerdFont";
         type = lib.types.str;
       };
       size = lib.mkOption {
