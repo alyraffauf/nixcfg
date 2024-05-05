@@ -15,6 +15,12 @@
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [hyprpaper];
 
-    xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
+    xdg.configFile."hypr/hyprpaper.conf".text = ''
+      preload = ${config.alyraffauf.desktop.theme.wallpaper}
+
+      wallpaper = ,${config.alyraffauf.desktop.theme.wallpaper}
+
+      splash = false
+    '';
   };
 }

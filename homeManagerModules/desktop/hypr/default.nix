@@ -101,7 +101,7 @@
       media_prev = "${media} previous";
 
       # Hyprland desktop utilities
-      bar = pkgs.waybar + "/bin/waybar -s ${config.xdg.configHome}/waybar/hyprland-style.css";
+      bar = pkgs.waybar + "/bin/waybar";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
       wallpaperd = pkgs.hyprpaper + "/bin/hyprpaper";
@@ -129,12 +129,6 @@
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
       screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
 
-      # Color, themes, scaling
-      border_primary = "ca9ee6ee";
-      border_secondary = "99d1dbee";
-      border_inactive = "303446aa";
-      drop_shadow = "1a1a1aee";
-      cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in ''
@@ -162,7 +156,7 @@
       env = GDK_SCALE,${gdk_scale}
 
       # Some default env vars.
-      env = XCURSOR_SIZE,${cursor_size}
+      env = XCURSOR_SIZE,${toString config.alyraffauf.desktop.theme.cursorTheme.size}
       env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
       # Execute necessary apps
@@ -202,8 +196,8 @@
           gaps_in = 5
           gaps_out = 10
           border_size = 2
-          col.active_border = rgba(${border_secondary}) rgba(${border_primary}) 45deg
-          col.inactive_border = rgba(${border_inactive})
+          col.active_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.primary}EE) 45deg
+          col.inactive_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.inactive}AA)
 
           layout = dwindle
 
@@ -220,7 +214,7 @@
           drop_shadow = yes
           shadow_range = 4
           shadow_render_power = 3
-          col.shadow = rgba(${drop_shadow})
+          col.shadow = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.shadow}EE)
 
           dim_special = 0.5
 
