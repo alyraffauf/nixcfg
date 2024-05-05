@@ -122,6 +122,11 @@
         type = lib.types.str;
       };
     };
+    alyraffauf.desktop.theme.wallpaper = lib.mkOption {
+      description = "Default wallpaper.";
+      default = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      type = lib.types.str;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.theme.enable {
