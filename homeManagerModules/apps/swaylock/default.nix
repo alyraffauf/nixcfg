@@ -9,6 +9,8 @@
   config = lib.mkIf config.alyraffauf.apps.swaylock.enable {
     home.packages = with pkgs; [swaylock];
 
+    programs.swaylock.enable = true;
+
     xdg.configFile."swaylock/config".text = ''
       font="${config.alyraffauf.desktop.theme.terminalFont.name}-Regular"
 

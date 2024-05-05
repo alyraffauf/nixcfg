@@ -13,10 +13,14 @@
 
   home.packages = with pkgs; [
     browsh
+    celluloid
     curl
+    evince
     fractal
     gh
     git
+    gnome.eog
+    gnome.file-roller
     (google-chrome.override {
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
@@ -28,6 +32,7 @@
     ruby
     trayscale
     wget
+    xfce.xfce4-taskmanager
     zoom-us
   ];
 

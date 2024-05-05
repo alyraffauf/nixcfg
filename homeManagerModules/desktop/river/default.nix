@@ -39,19 +39,7 @@
     programs.swaylock.enable = lib.mkDefault true;
 
     services.cliphist.enable = lib.mkDefault true;
-
-    # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [
-      celluloid
-      evince
-      gnome.eog
-      gnome.file-roller
-      networkmanagerapplet
-      playerctl
-      swayidle
-      swayosd
-      xfce.xfce4-taskmanager
-    ];
+    services.swayosd.enable = lib.mkDefault true;
 
     xdg.portal = {
       enable = true;

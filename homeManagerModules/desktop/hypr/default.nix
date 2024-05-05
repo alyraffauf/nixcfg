@@ -44,17 +44,7 @@
     };
 
     services.cliphist.enable = lib.mkDefault true;
-
-    # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [
-      celluloid
-      evince
-      gnome.eog
-      gnome.file-roller
-      hyprland-protocols
-      networkmanagerapplet
-      xfce.xfce4-taskmanager
-    ];
+    services.swayosd.enable = lib.mkDefault true;
 
     xdg.portal = {
       enable = true;
