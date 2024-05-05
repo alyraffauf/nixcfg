@@ -7,14 +7,6 @@
   options = {alyraffauf.apps.fuzzel.enable = lib.mkEnableOption "Enables fuzzel.";};
 
   config = lib.mkIf config.alyraffauf.apps.fuzzel.enable {
-    home.packages = with pkgs; [
-      (nerdfonts.override {fonts = ["Noto"];})
-      (catppuccin-papirus-folders.override {
-        flavor = "frappe";
-        accent = "mauve";
-      })
-    ];
-
     programs.fuzzel = {
       enable = true;
       settings = {
