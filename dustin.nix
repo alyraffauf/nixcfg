@@ -26,6 +26,10 @@
         enable = true;
         hyprpaper.randomWallpaper = false;
       };
+      sway = {
+        enable = true;
+        randomWallpaper = false;
+      };
       theme = {
         enable = true;
         gtk = {
