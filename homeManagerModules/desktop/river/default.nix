@@ -9,6 +9,16 @@
   options = {
     alyraffauf.desktop.river.enable =
       lib.mkEnableOption "Enable riverwm with extra apps.";
+    alyraffauf.desktop.river.autoSuspend = lib.mkOption {
+      description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
+    alyraffauf.desktop.river.gtkBorderFix = lib.mkOption {
+      description = "Fix GTK borders.";
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.river.enable {
@@ -43,61 +53,61 @@
       xfce.xfce4-taskmanager
     ];
 
-    xdg.configFile."xfce4/helpers.rc".text = ''
-      TerminalEmulator=alacritty
-      FileManager=thunar
-      WebBrowser=firefox
-    '';
-
     xdg.portal = {
       enable = true;
       configPackages = [pkgs.xdg-desktop-portal-wlr];
       extraPortals = [pkgs.xdg-desktop-portal-wlr];
     };
 
-    gtk.gtk3.extraCss = ''
-      /* No (default) title bar on wayland */
-      headerbar.default-decoration {
-        /* You may need to tweak these values depending on your GTK theme */
-        margin-bottom: 50px;
-        margin-top: -100px;
+    # gtk.gtk3.extraCss =
+    #   if config.alyraffauf.desktop.river.gtkBorderFix
+    #   then ''
+    #     /* No (default) title bar on wayland */
+    #     headerbar.default-decoration {
+    #       /* You may need to tweak these values depending on your GTK theme */
+    #       margin-bottom: 50px;
+    #       margin-top: -100px;
 
-        background: transparent;
-        padding: 0;
-        border: 0;
-        min-height: 0;
-        font-size: 0;
-        box-shadow: none;
-      }
+    #       background: transparent;
+    #       padding: 0;
+    #       border: 0;
+    #       min-height: 0;
+    #       font-size: 0;
+    #       box-shadow: none;
+    #     }
 
-      /* rm -rf window shadows */
-      window.csd,             /* gtk4? */
-      window.csd decoration { /* gtk3 */
-        box-shadow: none;
-      }
-    '';
+    #     /* rm -rf window shadows */
+    #     window.csd,             /* gtk4? */
+    #     window.csd decoration { /* gtk3 */
+    #       box-shadow: none;
+    #     }
+    #   ''
+    #   else "/* */";
 
-    gtk.gtk4.extraCss = ''
-      /* No (default) title bar on wayland */
-      headerbar.default-decoration {
-        /* You may need to tweak these values depending on your GTK theme */
-        margin-bottom: 50px;
-        margin-top: -100px;
+    # gtk.gtk4.extraCss =
+    #   if config.alyraffauf.desktop.river.gtkBorderFix
+    #   then ''
+    #     /* No (default) title bar on wayland */
+    #     headerbar.default-decoration {
+    #       /* You may need to tweak these values depending on your GTK theme */
+    #       margin-bottom: 50px;
+    #       margin-top: -100px;
 
-        background: transparent;
-        padding: 0;
-        border: 0;
-        min-height: 0;
-        font-size: 0;
-        box-shadow: none;
-      }
+    #       background: transparent;
+    #       padding: 0;
+    #       border: 0;
+    #       min-height: 0;
+    #       font-size: 0;
+    #       box-shadow: none;
+    #     }
 
-      /* rm -rf window shadows */
-      window.csd,             /* gtk4? */
-      window.csd decoration { /* gtk3 */
-        box-shadow: none;
-      }
-    '';
+    #     /* rm -rf window shadows */
+    #     window.csd,             /* gtk4? */
+    #     window.csd decoration { /* gtk3 */
+    #       box-shadow: none;
+    #     }
+    #   ''
+    #   else "/* */";
 
     programs.waybar.settings = {
       mainBar = {
@@ -119,29 +129,25 @@
       bar = pkgs.waybar + "/bin/waybar";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
-      wallpaperd = pkgs.swaybg + "/bin/swaybg -i ~/.local/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaperd = pkgs.swaybg + "/bin/swaybg -i ${config.alyraffauf.desktop.theme.wallpaper}";
       logout = pkgs.wlogout + "/bin/wlogout";
-      lock = pkgs.swaylock + "/bin/swaylock -l -f -c 303446 --indicator-idle-visible --font 'Noto SansM Nerd Font Regular' --ring-color ca9ee6 --inside-color 303446";
+      lock = pkgs.swaylock + "/bin/swaylock";
       idled =
-        if osConfig.networking.hostName == "mauville"
+        if config.alyraffauf.desktop.river.autoSuspend
         then ''
           ${pkgs.swayidle}/bin/swayidle -w \
                   timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
                     resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
-                  timeout 300 '${lock} \
-                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
-                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
+                  timeout 300 '${lock}' \
                   before-sleep '${lock}' ''
         else ''
           ${pkgs.swayidle}/bin/swayidle -w \
                   timeout 240 '${pkgs.brightnessctl}/bin/brightnessctl -s set 10' \
                     resume '${pkgs.brightnessctl}/bin/brightnessctl -r' \
                   timeout 300 '${lock}' \
-                  timeout 330 '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms off"' \
-                    resume '${config.wayland.windowManager.sway.package}/bin/swaymsg "output * dpms on"' \
                   timeout 900 '${pkgs.systemd}/bin/systemctl suspend' \
                   before-sleep '${lock}' '';
-      riverctl = pkgs.river + "/bin/riverctl";
+      riverctl = "${config.wayland.windowManager.river.package}/bin/riverctl";
 
       brightness = "${pkgs.swayosd}/bin/swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
@@ -156,18 +162,13 @@
       media_next = "${media} next";
       media_previous = "${media} previous";
 
-      screenshot = "${pkgs.grim}/bin/grim";
-      screenshot_folder = "~/pics/screenshots";
-      screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
+      screenshot = "${pkgs.shotman}/bin/shotman";
+      # screenshot_folder = "~/pics/screenshots";
+      # screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
       # screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
+      screenshot_screen = "${screenshot} --capture output";
+      screenshot_region = "${screenshot} --capture region";
 
-      # Color, themes, scaling
-      colorText = "#FAFAFA";
-      colorPrimary = "#CA9EE6EE";
-      colorSecondary = "#99D1DBEE";
-      colorInactive = "#303446AA";
-      drop_shadow = "#1A1A1AEE";
-      cursor_size = "24";
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in ''
@@ -323,8 +324,8 @@
 
       # Set background and border color
       ${riverctl} background-color 0x00000000
-      ${riverctl} border-color-focused 0x${colorPrimary}
-      ${riverctl} border-color-unfocused 0x${colorSecondary}
+      ${riverctl} border-color-focused 0x${config.alyraffauf.desktop.theme.colors.primary}
+      ${riverctl} border-color-unfocused 0x${config.alyraffauf.desktop.theme.colors.secondary}
 
       # Set keyboard repeat rate
       ${riverctl} set-repeat 50 300

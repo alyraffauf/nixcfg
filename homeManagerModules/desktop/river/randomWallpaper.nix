@@ -5,14 +5,28 @@
   ...
 }: let
   swaybg-random = pkgs.writeShellScriptBin "swaybg-random" ''
+    kill `pidof swaybg`
+
+    OLD_PIDS=()
     directory=${config.home.homeDirectory}/.local/share/backgrounds
 
     if [ -d "$directory" ]; then
         while true; do
-          kill `pidof swaybg`
+          NEW_PIDS=()
+
           random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
-          swaybg -i $random_background &
-          sleep 300
+          ${pkgs.swaybg}/bin/swaybg -i $random_background &
+          NEW_PIDS+=($!)
+
+          sleep 5
+
+          for pid in ''${OLD_PIDS[@]}; do
+            kill $pid
+          done
+
+          OLD_PIDS=$NEW_PIDS
+
+          sleep 895
         done
     fi
   '';
