@@ -166,7 +166,7 @@
       fonts = {
         names = ["${config.alyraffauf.desktop.theme.font.name}"];
         style = "Bold";
-        size = 11.0;
+        size = config.alyraffauf.desktop.theme.font.size + 0.0;
       };
       gaps.inner = 5;
       gaps.outer = 5;
