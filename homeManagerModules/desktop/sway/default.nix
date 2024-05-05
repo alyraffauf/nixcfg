@@ -83,7 +83,7 @@
       bar = pkgs.waybar + "/bin/waybar";
       launcher = pkgs.fuzzel + "/bin/fuzzel";
       notifyd = pkgs.mako + "/bin/mako";
-      wallpaperd = pkgs.swaybg + "/bin/swaybg -i ${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaperd = pkgs.swaybg + "/bin/swaybg -i ${config.alyraffauf.desktop.theme.wallpaper}";
       logout = pkgs.wlogout + "/bin/wlogout";
       lock = pkgs.swaylock + ''/bin/swaylock'';
       idled =
