@@ -18,7 +18,7 @@
       enableExtensionUpdateCheck = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'${config.alyraffauf.desktop.theme.terminalFont.name}', 'monospace', monospace";
+        "editor.fontFamily" = "'NotoSansM Nerd Font','${config.alyraffauf.desktop.theme.terminalFont.name}', 'monospace', monospace";
         "explorer.confirmDelete" = false;
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
