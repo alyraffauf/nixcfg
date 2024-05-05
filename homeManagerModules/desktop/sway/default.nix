@@ -135,26 +135,26 @@
     in {
       bars = [{command = "${bar}";}];
       modifier = "${modifier}";
-      colors.background = "${config.alyraffauf.desktop.theme.colors.primary}";
+      colors.background = "${config.alyraffauf.desktop.theme.colors.primary}EE";
       colors.focused = {
-        background = "${config.alyraffauf.desktop.theme.colors.primary}";
-        border = "${config.alyraffauf.desktop.theme.colors.primary}";
-        childBorder = "${config.alyraffauf.desktop.theme.colors.primary}";
-        indicator = "${config.alyraffauf.desktop.theme.colors.primary}";
+        background = "${config.alyraffauf.desktop.theme.colors.primary}EE";
+        border = "${config.alyraffauf.desktop.theme.colors.primary}EE";
+        childBorder = "${config.alyraffauf.desktop.theme.colors.primary}EE";
+        indicator = "${config.alyraffauf.desktop.theme.colors.primary}EE";
         text = "${config.alyraffauf.desktop.theme.colors.text}";
       };
       colors.focusedInactive = {
-        background = "${config.alyraffauf.desktop.theme.colors.inactive}";
-        border = "${config.alyraffauf.desktop.theme.colors.inactive}";
-        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}";
-        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        background = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
+        border = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
+        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
+        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
         text = "${config.alyraffauf.desktop.theme.colors.text}";
       };
       colors.unfocused = {
-        background = "${config.alyraffauf.desktop.theme.colors.inactive}";
-        border = "${config.alyraffauf.desktop.theme.colors.inactive}";
-        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}";
-        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}";
+        background = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
+        border = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
+        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
+        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
         text = "${config.alyraffauf.desktop.theme.colors.text}";
       };
       defaultWorkspace = "workspace number 1";
