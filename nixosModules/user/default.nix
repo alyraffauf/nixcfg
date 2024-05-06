@@ -11,6 +11,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = inputs;
+    backupFileExtension = "backup";
   };
 
   users.mutableUsers = false;
