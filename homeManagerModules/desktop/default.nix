@@ -4,5 +4,5 @@
   pkgs,
   ...
 }: {
-  imports = [./theme.nix ./gnome ./hypr ./sway ./river];
+  imports = [./defaultApps.nix ./theme.nix ./gnome ./hypr ./sway ./river];
 }

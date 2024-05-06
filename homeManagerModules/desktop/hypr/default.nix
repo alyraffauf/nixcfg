@@ -29,6 +29,7 @@
           hyprshade.enable = lib.mkDefault true;
         };
         theme.enable = lib.mkDefault true;
+        defaultApps.enable = lib.mkDefault true;
       };
       apps = {
         # Basic apps needed to run a hyprland desktop.
@@ -63,10 +64,10 @@
       modifier = "SUPER";
 
       # Default apps
-      browser = lib.getExe pkgs.firefox;
+      browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
       fileManager = lib.getExe pkgs.xfce.thunar;
-      editor = lib.getExe pkgs.vscodium;
-      terminal = lib.getExe pkgs.alacritty;
+      editor = config.alyraffauf.desktop.defaultApps.editor.exe;
+      terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
 
       # Media/hardware commands
       # brightness = "${lib.getExe pkgs.brightnessctl}";
@@ -114,7 +115,7 @@
       hyprnome = lib.getExe pkgs.hyprnome;
       hyprshade = lib.getExe pkgs.hyprshade;
 
-      screenshot = lib.getExe  pkgs.hyprshot;
+      screenshot = lib.getExe pkgs.hyprshot;
       screenshot_folder = "~/pics/screenshots";
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
       screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";

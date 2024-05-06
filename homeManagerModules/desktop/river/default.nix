@@ -32,8 +32,11 @@
         firefox.enable = lib.mkDefault true;
         kanshi.enable = lib.mkDefault true;
       };
-      desktop.river.randomWallpaper = lib.mkDefault true;
-      desktop.theme.enable = lib.mkDefault true;
+      desktop = {
+        river.randomWallpaper = lib.mkDefault true;
+        theme.enable = lib.mkDefault true;
+        defaultApps.enable = lib.mkDefault true;
+      };
     };
 
     programs.swaylock.enable = lib.mkDefault true;
@@ -108,10 +111,10 @@
       modifier = "Super";
 
       # Default apps
-      browser = pkgs.firefox + "/bin/firefox";
-      fileManager = pkgs.xfce.thunar + "/bin/thunar";
-      editor = pkgs.vscodium + "/bin/codium";
-      terminal = pkgs.alacritty + "/bin/alacritty";
+      browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
+      fileManager = lib.getExe pkgs.xfce.thunar;
+      editor = config.alyraffauf.desktop.defaultApps.editor.exe;
+      terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
 
       # River desktop utilities
       bar = pkgs.waybar + "/bin/waybar";

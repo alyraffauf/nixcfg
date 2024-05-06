@@ -28,7 +28,7 @@
   };
 
   nixConfig = {
-    extra-substituters = ["https://nixcache.raffauflabs.com" ];
+    extra-substituters = ["https://nixcache.raffauflabs.com"];
     extra-trusted-public-keys = [
       "nixcache.raffauflabs.com:yFIuJde/izA4aUDI3MZmBLzynEsqVCT1OfCUghOLlt8="
     ];

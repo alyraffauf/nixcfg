@@ -39,6 +39,7 @@
   alyraffauf = {
     services.syncthing.enable = false;
     desktop = {
+      defaultApps.enable = true;
       hyprland = {
         enable = true;
         hyprpaper.randomWallpaper = false;

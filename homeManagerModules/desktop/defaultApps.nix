@@ -7,10 +7,10 @@
   options = {
     alyraffauf.desktop.defaultApps.enable =
       lib.mkEnableOption "GTK and Qt themes.";
-    alyraffauf.desktop.defaultApps.browser = {
-      name = lib.mkOption {
+    alyraffauf.desktop.defaultApps.webBrowser = {
+      exe = lib.mkOption {
         description = "Default web browser executable name.";
-        default = "firefox";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.webBrowser.package;
         type = lib.types.str;
       };
       desktop = lib.mkOption {
@@ -20,14 +20,14 @@
       };
       package = lib.mkOption {
         description = "Default web browser package.";
-        default = pkgs.firefox;
+        default = config.programs.firefox.package;
         type = lib.types.package;
       };
     };
     alyraffauf.desktop.defaultApps.editor = {
-      name = lib.mkOption {
+      exe = lib.mkOption {
         description = "Default editor executable name.";
-        default = "codium";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.editor.package;
         type = lib.types.str;
       };
       desktop = lib.mkOption {
@@ -37,28 +37,109 @@
       };
       package = lib.mkOption {
         description = "Default editor package.";
-        default = pkgs.vsCodium;
+        default = config.programs.vscode.package;
+        type = lib.types.package;
+      };
+    };
+    alyraffauf.desktop.defaultApps.terminalEditor = {
+      exe = lib.mkOption {
+        description = "Default terminal editor executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.terminalEditor.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default terminal editor desktop file name.";
+        default = "nvim.desktop";
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default terminal editor package.";
+        default = config.programs.neovim.package;
+        type = lib.types.package;
+      };
+    };
+    alyraffauf.desktop.defaultApps.terminal = {
+      exe = lib.mkOption {
+        description = "Default terminal executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.terminal.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default terminal desktop file name.";
+        default = "alacritty.desktop";
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default terminal package.";
+        default = config.programs.alacritty.package;
+        type = lib.types.package;
+      };
+    };
+    alyraffauf.desktop.defaultApps.imageViewer = {
+      exe = lib.mkOption {
+        description = "Default image viewer executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.imageViewer.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default image viewer desktop file name.";
+        default = "org.gnome.eog.desktop";
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default image viewer package.";
+        default = pkgs.gnome.eog;
+        type = lib.types.package;
+      };
+    };
+    alyraffauf.desktop.defaultApps.pdfEditor = {
+      exe = lib.mkOption {
+        description = "Default PDF editor executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.pdfEditor.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default PDF Editor desktop file name.";
+        default = "org.gnome.Evince.desktop";
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default PDF Editor package.";
+        default = pkgs.evince;
         type = lib.types.package;
       };
     };
   };
 
-  config = lib.mkIf config.alyraffauf.desktop.theme.enable {
+  config = lib.mkIf config.alyraffauf.desktop.defaultApps.enable {
+    home.packages = with pkgs; [
+      config.alyraffauf.desktop.defaultApps.pdfEditor.package
+      config.alyraffauf.desktop.defaultApps.editor.package
+      config.alyraffauf.desktop.defaultApps.terminalEditor.package
+      config.alyraffauf.desktop.defaultApps.imageViewer.package
+      config.alyraffauf.desktop.defaultApps.webBrowser.package
+    ];
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "application/xhtml+xml" = "firefox.desktop";
-        "text/html" = "firefox.desktop";
-        "text/xml" = "firefox.desktop";
-        "x-scheme-handler/ftp" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
+        "application/pdf" = config.alyraffauf.desktop.defaultApps.pdfEditor.desktop;
+        "application/x-shellscript" = config.alyraffauf.desktop.defaultApps.editor.desktop;
+        "application/xhtml+xml" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "image/jpeg" = config.alyraffauf.desktop.defaultApps.imageViewer.desktop;
+        "image/png" = config.alyraffauf.desktop.defaultApps.imageViewer.desktop;
+        "text/html" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "text/plain" = config.alyraffauf.desktop.defaultApps.editor.desktop;
+        "text/x-python" = config.alyraffauf.desktop.defaultApps.editor.desktop;
+        "text/xml" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "x-scheme-handler/ftp" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "x-scheme-handler/http" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "x-scheme-handler/https" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
       };
     };
     home.sessionVariables = {
-      EDITOR = "${lib.getExe pkgs.neovim}";
-      BROWSER = "${lib.getExe pkgs.firefox}";
-      TERMINAL = "${lib.getExe pkgs.kitty}";
+      EDITOR = "${config.alyraffauf.desktop.defaultApps.terminalEditor.exe}";
+      BROWSER = "${config.alyraffauf.desktop.defaultApps.webBrowser.exe}";
+      TERMINAL = "${config.alyraffauf.desktop.defaultApps.terminal.exe}";
     };
   };
 }

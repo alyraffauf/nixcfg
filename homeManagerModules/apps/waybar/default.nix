@@ -213,7 +213,7 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${lib.getExe pkgs.alacritty} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = "${config.alyraffauf.desktop.defaultApps.terminalEditor.exe} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
           };
           "tray" = {"spacing" = 15;};
           "custom/logout" = {

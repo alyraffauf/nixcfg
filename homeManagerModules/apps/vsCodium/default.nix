@@ -24,7 +24,7 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "nix.formatterPath" = lib.getExe pkgs.alejandra;
-        "terminal.external.linuxExec" = lib.getExe pkgs.alacritty;
+        "terminal.external.linuxExec" = config.alyraffauf.desktop.defaultApps.terminal.exe;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.zoomPerWindow" = false;

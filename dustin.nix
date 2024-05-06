@@ -27,6 +27,7 @@
 
   alyraffauf = {
     desktop = {
+      defaultApps.enable = true;
       hyprland = {
         enable = true;
         hyprpaper.randomWallpaper = false;

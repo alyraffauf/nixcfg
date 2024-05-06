@@ -27,7 +27,10 @@
         waybar.enable = lib.mkDefault true;
         wlogout.enable = lib.mkDefault true;
       };
-      desktop.theme.enable = lib.mkDefault true;
+      desktop = {
+        theme.enable = lib.mkDefault true;
+        defaultApps.enable = lib.mkDefault true;
+      };
     };
 
     services.cliphist.enable = lib.mkDefault true;
@@ -49,10 +52,10 @@
       modifier = "Mod4";
 
       # Default apps
-      browser = lib.getExe pkgs.firefox;
+      browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
       fileManager = lib.getExe pkgs.xfce.thunar;
-      editor = lib.getExe pkgs.vscodium;
-      terminal = lib.getExe pkgs.alacritty;
+      editor = config.alyraffauf.desktop.defaultApps.editor.exe;
+      terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
 
       brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
