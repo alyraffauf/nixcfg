@@ -443,10 +443,14 @@
       layer_effects launcher blur enable
       layer_effects launcher blur_ignore_transparent enable
       layer_effects swaybar blur enable
-      layer_effects swaybar blur enable blur_ignore_transparent enable
+      layer_effects swaybar blur_ignore_transparent enable
+      layer_effects waybar blur enable
+      layer_effects waybar blur_ignore_transparent enable
       layer_effects notifications blur enable
       layer_effects notifications blur_ignore_transparent enable
       layer_effects logout_dialog blur enable
+      layer_effects swayosd blur enable
+      layer_effects swayosd blur_ignore_transparent enable
     '';
 
     xdg.portal = {
