@@ -216,6 +216,8 @@
           layerrule = blur, notifications
           layerrule = ignorezero, notifications
           layerrule = blur, logout_dialog
+          layerrule = blur, swayosd
+          layerrule = ignorezero, swayosd
       }
 
       animations {
