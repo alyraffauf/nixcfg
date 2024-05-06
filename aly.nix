@@ -13,13 +13,10 @@
 
   home.packages = with pkgs; [
     browsh
-    celluloid
     curl
-    evince
     fractal
     gh
     git
-    gnome.eog
     gnome.file-roller
     (google-chrome.override {
       commandLineArgs = [

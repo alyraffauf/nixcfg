@@ -13,10 +13,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    celluloid
-    evince
     fractal
-    gnome.eog
     gnome.file-roller
     libreoffice-fresh
     plexamp

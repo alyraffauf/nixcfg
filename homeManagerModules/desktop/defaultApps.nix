@@ -75,23 +75,6 @@
         type = lib.types.package;
       };
     };
-    alyraffauf.desktop.defaultApps.imageViewer = {
-      exe = lib.mkOption {
-        description = "Default image viewer executable name.";
-        default = lib.getExe config.alyraffauf.desktop.defaultApps.imageViewer.package;
-        type = lib.types.str;
-      };
-      desktop = lib.mkOption {
-        description = "Default image viewer desktop file name.";
-        default = "org.gnome.eog.desktop";
-        type = lib.types.str;
-      };
-      package = lib.mkOption {
-        description = "Default image viewer package.";
-        default = pkgs.gnome.eog;
-        type = lib.types.package;
-      };
-    };
     alyraffauf.desktop.defaultApps.pdfEditor = {
       exe = lib.mkOption {
         description = "Default PDF editor executable name.";
@@ -109,14 +92,67 @@
         type = lib.types.package;
       };
     };
+    alyraffauf.desktop.defaultApps.imageViewer = {
+      exe = lib.mkOption {
+        description = "Default image viewer executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.imageViewer.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default image viewer desktop file name.";
+        default = "org.gnome.eog.desktop";
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default image viewer package.";
+        default = pkgs.gnome.eog;
+        type = lib.types.package;
+      };
+    };
+    alyraffauf.desktop.defaultApps.videoPlayer = {
+      exe = lib.mkOption {
+        description = "Default video player executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.videoPlayer.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default video player desktop file name.";
+        default = "io.github.celluloid_player.Celluloid.desktop";
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default video player package.";
+        default = pkgs.celluloid;
+        type = lib.types.package;
+      };
+    };
+    alyraffauf.desktop.defaultApps.audioPlayer = {
+      exe = lib.mkOption {
+        description = "Default audio player executable name.";
+        default = lib.getExe config.alyraffauf.desktop.defaultApps.audioPlayer.package;
+        type = lib.types.str;
+      };
+      desktop = lib.mkOption {
+        description = "Default audio player desktop file name.";
+        default = config.alyraffauf.desktop.defaultApps.videoPlayer.desktop;
+        type = lib.types.str;
+      };
+      package = lib.mkOption {
+        description = "Default audio player package.";
+        default = config.alyraffauf.desktop.defaultApps.videoPlayer.package;
+        type = lib.types.package;
+      };
+    };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.defaultApps.enable {
     home.packages = with pkgs; [
-      config.alyraffauf.desktop.defaultApps.pdfEditor.package
+      config.alyraffauf.desktop.defaultApps.audioPlayer.package
       config.alyraffauf.desktop.defaultApps.editor.package
-      config.alyraffauf.desktop.defaultApps.terminalEditor.package
       config.alyraffauf.desktop.defaultApps.imageViewer.package
+      config.alyraffauf.desktop.defaultApps.pdfEditor.package
+      config.alyraffauf.desktop.defaultApps.terminalEditor.package
+      config.alyraffauf.desktop.defaultApps.videoPlayer.package
       config.alyraffauf.desktop.defaultApps.webBrowser.package
     ];
     xdg.mimeApps = {
@@ -125,12 +161,20 @@
         "application/pdf" = config.alyraffauf.desktop.defaultApps.pdfEditor.desktop;
         "application/x-shellscript" = config.alyraffauf.desktop.defaultApps.editor.desktop;
         "application/xhtml+xml" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "audio/flac" = config.alyraffauf.desktop.defaultApps.audioPlayer.desktop;
+        "audio/mpeg" = config.alyraffauf.desktop.defaultApps.audioPlayer.desktop;
+        "audio/opus" = config.alyraffauf.desktop.defaultApps.audioPlayer.desktop;
         "image/jpeg" = config.alyraffauf.desktop.defaultApps.imageViewer.desktop;
         "image/png" = config.alyraffauf.desktop.defaultApps.imageViewer.desktop;
         "text/html" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
         "text/plain" = config.alyraffauf.desktop.defaultApps.editor.desktop;
         "text/x-python" = config.alyraffauf.desktop.defaultApps.editor.desktop;
         "text/xml" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
+        "video/H264" = config.alyraffauf.desktop.defaultApps.videoPlayer.desktop;
+        "video/mp4" = config.alyraffauf.desktop.defaultApps.videoPlayer.desktop;
+        "video/mpeg" = config.alyraffauf.desktop.defaultApps.videoPlayer.desktop;
+        "video/ogg" = config.alyraffauf.desktop.defaultApps.videoPlayer.desktop;
+        "video/x-matroska" = config.alyraffauf.desktop.defaultApps.videoPlayer.desktop;
         "x-scheme-handler/ftp" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
         "x-scheme-handler/http" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
         "x-scheme-handler/https" = config.alyraffauf.desktop.defaultApps.webBrowser.desktop;
