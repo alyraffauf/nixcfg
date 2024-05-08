@@ -91,6 +91,11 @@
       };
     };
     alyraffauf.desktop.theme.colors = {
+      preferDark = lib.mkOption {
+        description = "Whether to prefer dark mode apps or not.";
+        default = true;
+        type = lib.types.bool;
+      };
       text = lib.mkOption {
         description = "Text color.";
         default = "#FAFAFA";
@@ -163,9 +168,9 @@
         size = config.alyraffauf.desktop.theme.font.size;
       };
 
-      gtk3.extraConfig = {gtk-application-prefer-dark-theme = 1;};
+      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.alyraffauf.desktop.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
 
-      gtk4.extraConfig = {gtk-application-prefer-dark-theme = 1;};
+      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.alyraffauf.desktop.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
     };
 
     dconf.settings = {

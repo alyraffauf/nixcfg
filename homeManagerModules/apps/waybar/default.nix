@@ -88,7 +88,7 @@
       #clock,
       #hardware {
           border-radius: 10;
-          background: rgba (35, 38, 52, 0.8);
+          background: rgba ${if config.alyraffauf.desktop.theme.colors.preferDark then "(35, 38, 52, 0.8);" else "(220, 224, 232, 0.8);"}
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
       }

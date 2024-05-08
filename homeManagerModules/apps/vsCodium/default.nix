@@ -28,8 +28,8 @@
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.zoomPerWindow" = false;
-        "workbench.colorTheme" = "Catppuccin Macchiato";
-        "workbench.iconTheme" = "catppuccin-macchiato";
+        "workbench.colorTheme" = if config.alyraffauf.desktop.theme.colors.preferDark then "Catppuccin Macchiato" else "Catppuccin Latte";
+        "workbench.iconTheme" = if config.alyraffauf.desktop.theme.colors.preferDark then "catppuccin-macchiato" else "catppuccin-latte";
         "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
         "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       };
