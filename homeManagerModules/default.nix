@@ -28,6 +28,15 @@
     extraConfig = {XDG_SRC_DIR = "${config.home.homeDirectory}/src";};
   };
 
+  gtk.gtk3.bookmarks = [
+    "file://${config.xdg.userDirs.documents}"
+    "file://${config.xdg.userDirs.download}"
+    "file://${config.xdg.userDirs.music}"
+    "file://${config.xdg.userDirs.videos}"
+    "file://${config.xdg.userDirs.pictures}"
+    "file://${config.home.homeDirectory}/src"
+  ];
+
   xdg.dataFile."backgrounds/".source = ../files/wallpapers;
 
   dconf = {
