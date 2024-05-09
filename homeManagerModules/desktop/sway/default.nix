@@ -369,6 +369,9 @@
       floating = {
         criteria = [
           {
+            app_id = "Bitwarden";
+          }
+          {
             app_id = "blueberry.py";
           }
           {
