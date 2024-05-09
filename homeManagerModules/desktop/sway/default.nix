@@ -39,7 +39,7 @@
     programs.waybar = {
       settings = {
         mainBar = {
-          modules-left = ["sway/workspaces" "sway/mode"];
+          modules-left = ["sway/workspaces" "sway/scratchpad" "sway/mode" ];
         };
       };
     };

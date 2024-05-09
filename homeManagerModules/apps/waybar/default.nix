@@ -84,11 +84,16 @@
       #workspaces,
       #mode,
       #submap,
+      #scratchpad,
       #tray,
       #clock,
       #hardware {
           border-radius: 10;
-          background: rgba ${if config.alyraffauf.desktop.theme.colors.preferDark then "(35, 38, 52, 0.8);" else "(220, 224, 232, 0.8);"}
+          background: rgba ${
+        if config.alyraffauf.desktop.theme.colors.preferDark
+        then "(35, 38, 52, 0.8);"
+        else "(220, 224, 232, 0.8);"
+      }
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
       }
@@ -150,6 +155,13 @@
           };
           "sway/window" = {
             "max-length" = 100;
+          };
+          "sway/scratchpad" = {
+            "format" = "{icon} {count}";
+            "show-empty" = false;
+            "format-icons" = ["" ""];
+            "tooltip" = true;
+            "tooltip-format" = "{app}: {title}";
           };
           "river/window" = {
             "max-length" = 100;
