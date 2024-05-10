@@ -52,7 +52,10 @@
       enable = true;
       enableSSHSupport = true;
     };
-    fish.enable = true;
+    fish = {
+      enable = true;
+      shellInit = "set fish_greeting";
+    };
   };
 
   hardware = {
