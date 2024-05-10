@@ -9,6 +9,7 @@
     ./gnome
     ./greetd
     ./hyprland
+    ./lightdm
     ./plasma
     ./sway
   ];
