@@ -15,10 +15,10 @@
 
   config = lib.mkIf config.alyraffauf.user.aly.enable {
     users.users.aly = {
-      isNormalUser = true;
       description = "Aly Raffauf";
       extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
       hashedPassword = config.alyraffauf.user.aly.password;
+      isNormalUser = true;
       openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
     };
   };

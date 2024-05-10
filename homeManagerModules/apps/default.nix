@@ -12,6 +12,7 @@
     ./eza
     ./fastfetch
     ./firefox
+    ./fish
     ./fuzzel
     ./fzf
     ./kanshi

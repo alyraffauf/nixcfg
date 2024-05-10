@@ -97,6 +97,7 @@
       emacs.enable = true;
       eza.enable = true;
       fastfetch.enable = true;
+      fish.enable = true;
       fzf.enable = true;
       neofetch.enable = true;
       neovim.enable = true;

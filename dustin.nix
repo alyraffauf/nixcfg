@@ -84,6 +84,7 @@
       chromium.enable = true;
       eza.enable = true;
       firefox.enable = true;
+      fish.enable = true;
       fzf.enable = true;
       vsCodium.enable = true;
       webCord.enable = true;

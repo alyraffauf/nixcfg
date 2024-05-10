@@ -47,9 +47,12 @@
     };
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    fish.enable = true;
   };
 
   hardware = {
