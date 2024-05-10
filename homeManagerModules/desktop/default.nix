@@ -4,5 +4,13 @@
   pkgs,
   ...
 }: {
-  imports = [./defaultApps.nix ./theme.nix ./gnome ./hypr ./sway ./river];
+  imports = [
+    ./budgie
+    ./defaultApps.nix
+    ./gnome
+    ./hypr
+    ./river
+    ./sway
+    ./theme.nix
+  ];
 }
