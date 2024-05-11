@@ -12,6 +12,7 @@
     ./lightdm
     ./plasma
     ./sway
+    ./xfce
   ];
 
   options = {
