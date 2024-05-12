@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./budgie
+    ./cinnamon
     ./gnome
     ./greetd
     ./hyprland
