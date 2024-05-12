@@ -375,6 +375,9 @@
             app_id = "blueberry.py";
           }
           {
+            app_id = ".blueman-manager-wrapped";
+          }
+          {
             app_id = "pavucontrol";
           }
           {
@@ -408,6 +411,12 @@
             command = "resize set 40ppt 60ppt";
             criteria = {
               app_id = "blueberry.py";
+            };
+          }
+          {
+            command = "resize set 40ppt 60ppt";
+            criteria = {
+              app_id = ".blueman-manager-wrapped";
             };
           }
           {
