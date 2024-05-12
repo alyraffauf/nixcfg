@@ -162,6 +162,7 @@
       exec-once = ${idled}
       exec-once = ${lib.getExe' pkgs.swayosd "swayosd-server"}
       exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
+      exec-once = ${lib.getExe' pkgs.blueman "blueman-applet"}
       exec-once = ${lib.getExe' pkgs.playerctl "playerctld"}
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
