@@ -149,6 +149,15 @@
       style.name = "gtk2";
     };
 
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [config.alyraffauf.desktop.theme.terminalFont.name];
+        serif = ["NotoSerifNerdFont"];
+        sansSerif = [config.alyraffauf.desktop.theme.font.name];
+      };
+    };
+
     gtk = {
       enable = true;
 
@@ -163,7 +172,7 @@
       };
 
       font = {
-        name = "${config.alyraffauf.desktop.theme.font.name}-Regular";
+        name = "${config.alyraffauf.desktop.theme.font.name}";
         package = config.alyraffauf.desktop.theme.font.package;
         size = config.alyraffauf.desktop.theme.font.size;
       };
