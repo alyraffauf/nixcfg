@@ -30,13 +30,13 @@
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
           if config.alyraffauf.desktop.theme.colors.preferDark
-          then "Catppuccin Macchiato"
+          then "Catppuccin Frappé"
           else "Catppuccin Latte";
         "workbench.iconTheme" =
           if config.alyraffauf.desktop.theme.colors.preferDark
-          then "catppuccin-macchiato"
+          then "catppuccin-frappe"
           else "catppuccin-latte";
-        "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+        "workbench.preferredDarkColorTheme" = "Catppuccin Frappé";
         "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       };
 
