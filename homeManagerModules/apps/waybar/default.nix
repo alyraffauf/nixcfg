@@ -247,7 +247,7 @@
           };
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["bluetooth" "pulseaudio" "power-profiles-daemon" "battery" "custom/logout"];
+            modules = ["pulseaudio" "power-profiles-daemon" "battery" "custom/logout"];
           };
         };
       };
