@@ -40,7 +40,7 @@
     user = {
       aly = {
         enable = true;
-        password = "$y$j9T$Ug0ZLHQQuRciFJDgOI6r00$eHc.KyQY0oU4k0LKRiZiGWJ19jkKNWHpOoyCJbtJif8";
+        password = "$y$j9T$0p6rc4p5sn0LJ/6XyAGP7.$.wmTafwMMscdW1o8kqqoHJP7U8kF.4WBmzzcPYielR3";
       };
       dustin = {
         enable = true;
