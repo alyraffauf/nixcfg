@@ -38,7 +38,7 @@
         }
 
         window {
-        	background-color: rgba(12, 12, 12, 0.0);
+        	background-color: rgba(35, 38, 52, 0.8);
         }
 
         button {
