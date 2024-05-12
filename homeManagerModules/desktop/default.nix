@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./budgie
+    ./cinnamon
     ./defaultApps.nix
     ./gnome
     ./hypr
