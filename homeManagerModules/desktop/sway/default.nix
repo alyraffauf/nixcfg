@@ -447,23 +447,29 @@
       bindswitch --reload --locked lid:on output eDP-1 disable
       bindswitch --reload --locked lid:off output eDP-1 enable
 
-      blur enable
-      blur_passes 1
+      ${
+        if config.wayland.windowManager.sway.package == pkgs.swayfx
+        then "
+        blur enable
+        blur_passes 1
 
-      corner_radius 10
-      shadows enable
+        corner_radius 10
+        shadows enable
 
-      layer_effects launcher blur enable
-      layer_effects launcher blur_ignore_transparent enable
-      layer_effects swaybar blur enable
-      layer_effects swaybar blur_ignore_transparent enable
-      layer_effects waybar blur enable
-      layer_effects waybar blur_ignore_transparent enable
-      layer_effects notifications blur enable
-      layer_effects notifications blur_ignore_transparent enable
-      layer_effects logout_dialog blur enable
-      layer_effects swayosd blur enable
-      layer_effects swayosd blur_ignore_transparent enable
+        layer_effects launcher blur enable
+        layer_effects launcher blur_ignore_transparent enable
+        layer_effects swaybar blur enable
+        layer_effects swaybar blur_ignore_transparent enable
+        layer_effects waybar blur enable
+        layer_effects waybar blur_ignore_transparent enable
+        layer_effects notifications blur enable
+        layer_effects notifications blur_ignore_transparent enable
+        layer_effects logout_dialog blur enable
+        layer_effects swayosd blur enable
+        layer_effects swayosd blur_ignore_transparent enable"
+        else ""
+      }
+
     '';
 
     xdg.portal = {
