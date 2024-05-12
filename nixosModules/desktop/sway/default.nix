@@ -15,6 +15,7 @@
       dbus.packages = [pkgs.gcr];
       udev.packages = [pkgs.swayosd];
       gnome.gnome-keyring.enable = true;
+      blueman.enable = true;
     };
 
     security.pam.services = {
