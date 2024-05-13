@@ -70,12 +70,12 @@
           package = pkgs.catppuccin-cursors.frappeDark;
         };
         font = {
-          name = "NotoSansNerdFont";
+          name = "NotoSans Nerd Font";
           size = 11;
           package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         };
         terminalFont = {
-          name = "NotoSansMNerdFont";
+          name = "NotoSansM Nerd Font";
           size = 11;
           package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         };
@@ -125,6 +125,7 @@
     "workspace 4: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";}];
     "workspace 10: zoom" = [{class = "zoom";} {app_id = "Zoom";}];
   };
+  
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser
     workspace = 1,defaultName:web

@@ -11,7 +11,7 @@
       enable = true;
       settings = {
         main = {
-          font = "${config.alyraffauf.desktop.theme.terminalFont.name}-Regular";
+          font = "${config.alyraffauf.desktop.theme.terminalFont.name} Regular";
           icon-theme = "${config.alyraffauf.desktop.theme.iconTheme.name}";
           layer = "overlay";
           width = 36;

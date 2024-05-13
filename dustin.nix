@@ -57,12 +57,12 @@
           package = pkgs.catppuccin-cursors.frappeDark;
         };
         font = {
-          name = "NotoSansNerdFont";
+          name = "NotoSans Nerd Font";
           size = 11;
           package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         };
         terminalFont = {
-          name = "NotoSansMNerdFont";
+          name = "NotoSansM Nerd Font";
           size = 11;
           package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         };

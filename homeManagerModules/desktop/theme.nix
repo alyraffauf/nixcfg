@@ -59,7 +59,7 @@
     alyraffauf.desktop.theme.font = {
       name = lib.mkOption {
         description = "Font name.";
-        default = "NotoSansNerdFont";
+        default = "NotoSans Nerd Font";
         type = lib.types.str;
       };
       size = lib.mkOption {
@@ -76,7 +76,7 @@
     alyraffauf.desktop.theme.terminalFont = {
       name = lib.mkOption {
         description = "Font name.";
-        default = "NotoSansMNerdFont";
+        default = "NotoSansM Nerd Font";
         type = lib.types.str;
       };
       size = lib.mkOption {
@@ -153,7 +153,7 @@
       enable = true;
       defaultFonts = {
         monospace = [config.alyraffauf.desktop.theme.terminalFont.name];
-        serif = ["NotoSerifNerdFont"];
+        serif = ["NotoSerif Nerd Font"];
         sansSerif = [config.alyraffauf.desktop.theme.font.name];
       };
     };
@@ -172,7 +172,7 @@
       };
 
       font = {
-        name = "${config.alyraffauf.desktop.theme.font.name}";
+        name = "${config.alyraffauf.desktop.theme.font.name} Regular";
         package = config.alyraffauf.desktop.theme.font.package;
         size = config.alyraffauf.desktop.theme.font.size;
       };
