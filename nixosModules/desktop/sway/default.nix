@@ -7,7 +7,7 @@
 }: {
   options = {
     alyraffauf.desktop.sway.enable =
-      lib.mkEnableOption "Enable sway wayland compositor.";
+      lib.mkEnableOption "Sway wayland compositor.";
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
@@ -31,7 +31,5 @@
         package = pkgs.swayfx;
       };
     };
-
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }

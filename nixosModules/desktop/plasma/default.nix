@@ -29,8 +29,6 @@
       maliit-keyboard
     ];
 
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
     programs.kdeconnect.enable = true;
     #   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
     #   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";

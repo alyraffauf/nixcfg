@@ -21,6 +21,8 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.enable {
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     services = {
       gnome.gnome-keyring.enable = true;
       gvfs.enable = true; # Mount, trash, etc.

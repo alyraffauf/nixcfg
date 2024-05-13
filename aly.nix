@@ -125,7 +125,7 @@
     "workspace 4: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";}];
     "workspace 10: zoom" = [{class = "zoom";} {app_id = "Zoom";}];
   };
-  
+
   wayland.windowManager.hyprland.extraConfig = ''
     # Workspace - Browser
     workspace = 1,defaultName:web

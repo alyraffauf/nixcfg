@@ -7,7 +7,7 @@
 }: {
   options = {
     alyraffauf.desktop.hyprland.enable =
-      lib.mkEnableOption "Enable hyprland wayland compositor.";
+      lib.mkEnableOption "Hyprland wayland compositor.";
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
@@ -30,7 +30,5 @@
         enable = true;
       };
     };
-
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }
