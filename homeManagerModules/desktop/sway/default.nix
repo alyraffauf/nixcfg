@@ -455,6 +455,10 @@
 
         corner_radius 10
         shadows enable
+        shadows_on_csd enable
+        shadow_color ${config.alyraffauf.desktop.theme.colors.shadow}
+
+        default_dim_inactive 0.05
 
         layer_effects launcher blur enable
         layer_effects launcher blur_ignore_transparent enable
