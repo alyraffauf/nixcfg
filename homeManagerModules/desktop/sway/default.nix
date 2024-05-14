@@ -266,25 +266,10 @@
 
         # TODO: scroll with mouse up/down through workspaces
 
-        # Display, volume, microphone, and media keys.
-        "XF86MonBrightnessUp" = "exec ${brightness_up}";
-        "XF86MonBrightnessDown" = "exec ${brightness_down}";
-        "XF86AudioRaiseVolume" = "exec ${volume_up}";
-        "XF86AudioLowerVolume" = "exec ${volume_down}";
-        "XF86AudioMute" = "exec ${volume_mute}";
-        "XF86AudioMicMute" = "exec ${mic_mute}";
-        "XF86AudioPlay" = "exec ${media_play}";
-        "XF86AudioPrev" = "exec ${media_prev}";
-        "XF86AudioNext" = "exec ${media_next}";
-
         # For petalburg
         "XF86Launch4" = "exec pp-adjuster";
 
         "XF86Launch3" = "exec ${lib.getExe cycleSwayDisplayModes}";
-
-        # TODO: night color shift
-        # "XF86Launch1" =
-        "XF86Launch2" = "exec ${media_play}";
 
         # Screenshots
         "PRINT" = "exec ${screenshot_screen}";
@@ -431,7 +416,31 @@
       workspaceAutoBackAndForth = true;
     };
 
-    wayland.windowManager.sway.extraConfig = ''
+    wayland.windowManager.sway.extraConfig = let
+      brightness = lib.getExe' pkgs.swayosd "swayosd-client";
+      brightness_up = "${brightness} --brightness=raise";
+      brightness_down = "${brightness} --brightness=lower";
+      volume = brightness;
+      volume_up = "${volume} --output-volume=raise";
+      volume_down = "${volume} --output-volume=lower";
+      volume_mute = "${volume} --output-volume=mute-toggle";
+      mic_mute = "${volume} --input-volume=mute-toggle";
+      media = lib.getExe pkgs.playerctl;
+      media_play = "${media} play-pause";
+      media_next = "${media} next";
+      media_prev = "${media} previous";
+    in ''
+      bindsym --locked XF86MonBrightnessUp exec ${brightness_up}
+      bindsym --locked XF86MonBrightnessDown exec ${brightness_down}
+      bindsym --locked XF86AudioRaiseVolume exec ${volume_up}
+      bindsym --locked XF86AudioLowerVolume exec ${volume_down}
+      bindsym --locked XF86AudioMute exec ${volume_mute}
+      bindsym --locked XF86AudioMicMute exec ${mic_mute}
+      bindsym --locked XF86AudioPlay exec ${media_play}
+      bindsym --locked XF86AudioPrev exec ${media_prev}
+      bindsym --locked XF86AudioNext exec ${media_next}
+      bindsym --locked XF86Launch2 exec ${media_play}
+
       mode "move" {
         bindgesture swipe:right move container to workspace prev; workspace prev
         bindgesture swipe:left move container to workspace next; workspace next
