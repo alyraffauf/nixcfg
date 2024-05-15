@@ -260,18 +260,21 @@
       windowrulev2 = move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
 
       windowrulev2 = center(1),class:(blueberry.py)
+      windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
       windowrulev2 = center(1),class:(.blueman-manager-wrapped)
       windowrulev2 = center(1),class:(nmtui)
       windowrulev2 = center(1),class:(pavucontrol)
       windowrulev2 = center(1),class:(com.github.wwmm.easyeffects)
 
       windowrulev2 = float,class:(blueberry.py)
+      windowrulev2 = float,class:(org.keepassxc.KeePassXC)
       windowrulev2 = float,class:(.blueman-manager-wrapped)
       windowrulev2 = float,class:(nmtui)
       windowrulev2 = float,class:(pavucontrol)
       windowrulev2 = float,class:(com.github.wwmm.easyeffects)
 
       windowrulev2 = size 40% 60%,class:(blueberry.py)
+      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
       windowrulev2 = size 40% 60%,class:(.blueman-manager-wrapped)
       windowrulev2 = size 40% 60%,class:(nmtui)
       windowrulev2 = size 40% 60%,class:(pavucontrol)
