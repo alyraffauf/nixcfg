@@ -354,33 +354,16 @@
       };
       floating = {
         criteria = [
-          {
-            app_id = "Bitwarden";
-          }
-          {
-            app_id = "blueberry.py";
-          }
-          {
-            app_id = ".blueman-manager-wrapped";
-          }
-          {
-            app_id = "pavucontrol";
-          }
-          {
-            app_id = "com.github.wwmm.easyeffects";
-          }
-          {
-            window_role = "dialog";
-          }
-          {
-            window_role = "pop-up";
-          }
-          {
-            window_role = "bubble";
-          }
-          {
-            window_type = "dialog";
-          }
+          {app_id = ".blueman-manager-wrapped";}
+          {app_id = "Bitwarden";}
+          {app_id = "blueberry.py";}
+          {app_id = "com.github.wwmm.easyeffects";}
+          {app_id = "org.keepassxc.KeePassXC";}
+          {app_id = "pavucontrol";}
+          {window_role = "bubble";}
+          {window_role = "dialog";}
+          {window_role = "pop-up";}
+          {window_type = "dialog";}
         ];
       };
       window = {
@@ -394,22 +377,20 @@
             };
           }
           {
-            command = "resize set 40ppt 60ppt";
-            criteria = {
-              app_id = "blueberry.py";
-            };
+            command = "resize set 40ppt 60ppt; move position center";
+            criteria = {app_id = "blueberry.py";};
           }
           {
-            command = "resize set 40ppt 60ppt";
-            criteria = {
-              app_id = ".blueman-manager-wrapped";
-            };
+            command = "resize set 80ppt 80ppt; move position center";
+            criteria = {app_id = "org.keepassxc.KeePassXC";};
           }
           {
-            command = "resize set 40ppt 60ppt";
-            criteria = {
-              app_id = "pavucontrol";
-            };
+            command = "resize set 40ppt 60ppt; move position center";
+            criteria = {app_id = ".blueman-manager-wrapped";};
+          }
+          {
+            command = "resize set 40ppt 60ppt; move position center";
+            criteria = {app_id = "pavucontrol";};
           }
         ];
       };
