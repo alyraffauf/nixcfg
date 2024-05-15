@@ -11,12 +11,12 @@
       enable = true;
       settings = {
         main = {
-          font = "${config.alyraffauf.desktop.theme.terminalFont.name} Regular";
+          font = "${config.alyraffauf.desktop.theme.terminalFont.name}:size=${toString config.alyraffauf.desktop.theme.terminalFont.size}";
           icon-theme = "${config.alyraffauf.desktop.theme.iconTheme.name}";
           layer = "overlay";
           width = 36;
           lines = 3;
-          terminal = "${pkgs.alacritty}/bin/alacritty";
+          terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
         };
         border = {width = 2;};
         colors = {
@@ -25,7 +25,7 @@
           selection-match = "#e78284FF";
           selection-text = "#f4b8e4FF";
           text = "${config.alyraffauf.desktop.theme.colors.text}FF";
-          border = "${config.alyraffauf.desktop.theme.colors.primary}AA";
+          border = "${config.alyraffauf.desktop.theme.colors.primary}EE";
         };
       };
     };
