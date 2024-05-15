@@ -12,25 +12,19 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    bitwarden
     browsh
     curl
     fractal
     gh
     git
     gnome.file-roller
-    (google-chrome.override {
-      commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--ozone-platform=wayland"
-      ];
-    })
+    google-chrome
+    keepassxc
     obsidian
     python3
     ruby
     trayscale
     wget
-    xfce.xfce4-taskmanager
     zoom-us
   ];
 
