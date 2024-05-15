@@ -112,6 +112,10 @@
     userEmail = "aly@raffauflabs.com";
   };
 
+  wayland.windowManager.sway.config.startup = [
+    {command = ''${lib.getExe' pkgs.keepassxc "keepassxc"}'';}
+  ];
+
   wayland.windowManager.sway.config.assigns = {
     "workspace 1: web" = [{app_id = "firefox";}];
     "workspace 2: code" = [{app_id = "codium-url-handler";}];
@@ -121,6 +125,8 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
+    exec-once = ${lib.getExe' pkgs.keepassxc "keepassxc"}
+    
     # Workspace - Browser
     workspace = 1,defaultName:web
     workspace = 2,defaultName:code
