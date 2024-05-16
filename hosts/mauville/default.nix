@@ -32,7 +32,7 @@ in {
       oci = {
         audiobookshelf.enable = true;
         freshRSS.enable = true;
-        jellyfin.enable = true;
+        jellyfin.enable = false;
         plexMediaServer.enable = true;
         transmission.enable = true;
       };
