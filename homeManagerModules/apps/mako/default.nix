@@ -22,6 +22,10 @@
       textColor = "${config.alyraffauf.desktop.theme.colors.text}";
       width = 400;
       margin = "20,0";
+      extraConfig = ''
+        [mode=do-not-disturb]
+        invisible=1
+      '';
     };
   };
 }
