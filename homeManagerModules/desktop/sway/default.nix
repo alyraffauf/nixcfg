@@ -55,9 +55,15 @@
     };
 
     wayland.windowManager.sway.enable = true;
-    wayland.windowManager.sway.package = pkgs.swayfx;
+    wayland.windowManager.sway.package = lib.mkDefault pkgs.swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
     wayland.windowManager.sway.checkConfig = false;
+
+    alyraffauf.desktop.theme.gtk.hideTitleBar =
+      if config.wayland.windowManager.sway.package == pkgs.sway
+      then true
+      else false;
+
     wayland.windowManager.sway.config = let
       modifier = "Mod4";
 

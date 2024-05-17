@@ -23,6 +23,11 @@
         };
         type = lib.types.package;
       };
+      hideTitleBar = lib.mkOption {
+        description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
+        default = false;
+        type = lib.types.bool;
+      };
     };
     alyraffauf.desktop.theme.iconTheme = {
       name = lib.mkOption {
@@ -180,6 +185,33 @@
       gtk3.extraConfig = lib.attrsets.optionalAttrs (config.alyraffauf.desktop.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
 
       gtk4.extraConfig = lib.attrsets.optionalAttrs (config.alyraffauf.desktop.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+
+      gtk3.extraCss =
+        if config.alyraffauf.desktop.theme.gtk.hideTitleBar
+        then ''
+          /* No (default) title bar on wayland */
+          headerbar.default-decoration {
+            /* You may need to tweak these values depending on your GTK theme */
+            margin-bottom: 50px;
+            margin-top: -100px;
+
+            background: transparent;
+            padding: 0;
+            border: 0;
+            min-height: 0;
+            font-size: 0;
+            box-shadow: none;
+          }
+
+          /* rm -rf window shadows */
+          window.csd,             /* gtk4? */
+          window.csd decoration { /* gtk3 */
+            box-shadow: none;
+          }
+        ''
+        else "/* */";
+
+      gtk4.extraCss = config.gtk.gtk3.extraCss;
     };
 
     dconf.settings = {
