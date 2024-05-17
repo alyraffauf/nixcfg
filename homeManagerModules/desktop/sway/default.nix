@@ -5,22 +5,27 @@
   osConfig,
   ...
 }: {
-  imports = [./autoRotate.nix ./randomWallpaper.nix];
+  imports = [./autoRotate.nix ./randomWallpaper.nix ./virtKeyboard.nix];
   options = {
     alyraffauf.desktop.sway.enable = lib.mkEnableOption "Sway with extra apps.";
-    alyraffauf.desktop.sway.autoSuspend = lib.mkOption {
-      description = "Whether to autosuspend on idle.";
-      default = true;
-      type = lib.types.bool;
-    };
     alyraffauf.desktop.sway.autoRotate = lib.mkOption {
       description = "Whether to autorotate screen.";
       default = false;
       type = lib.types.bool;
     };
+    alyraffauf.desktop.sway.autoSuspend = lib.mkOption {
+      description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
     alyraffauf.desktop.sway.randomWallpaper = lib.mkOption {
       description = "Whether to enable random wallpaper script.";
       default = true;
+      type = lib.types.bool;
+    };
+    alyraffauf.desktop.sway.virtKeyboard = lib.mkOption {
+      description = "Whether to enable dynamic virtual keyboard for convertibles.";
+      default = false;
       type = lib.types.bool;
     };
   };

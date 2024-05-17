@@ -7,6 +7,9 @@
 }: {
   home-manager.users.aly = {
     imports = [../../homeManagerModules ../../aly.nix];
-    alyraffauf.desktop.sway.autoRotate = true;
+    alyraffauf.desktop.sway = {
+      autoRotate = true;
+      virtKeyboard = true;
+    };
   };
 }
