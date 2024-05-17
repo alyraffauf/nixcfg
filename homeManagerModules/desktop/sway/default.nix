@@ -361,6 +361,8 @@
           {app_id = "org.keepassxc.KeePassXC";}
           {app_id = "pavucontrol";}
           {app_id = "solaar";}
+          {title = "Open File";}
+          {title = "Open Folder";}
           {window_role = "bubble";}
           {window_role = "dialog";}
           {window_role = "pop-up";}
@@ -376,6 +378,14 @@
               title = "^Picture-in-Picture$";
               app_id = "firefox";
             };
+          }
+          {
+            command = "resize set 40ppt 60ppt; move position center";
+            criteria = {title = "Open Folder";};
+          }
+          {
+            command = "resize set 40ppt 60ppt; move position center";
+            criteria = {title = "Open File";};
           }
           {
             command = "resize set 40ppt 60ppt; move position center";
