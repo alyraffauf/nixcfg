@@ -12,15 +12,17 @@
     programs.chromium = {
       enable = true;
       extensions = [
-        {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
-        {id = "bfogiafebfohielmmehodmfbbebbbpei";} # Keeper
         {id = "aomidfkchockcldhbkggjokdkkebmdll";} # Redirect Path
-        {id = "occjjkgifpmdgodlplnacmkejpdionan";} # Autoscroll
+        {id = "bfogiafebfohielmmehodmfbbebbbpei";} # Keeper
+        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # uBlock Origin
         {id = "ioalpmibngobedobkmbhgmadaphocjdn";} # OneLogin
         {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # Todoist
-        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # uBlock Origin
         {id = "lcbjdhceifofjlpecfpeimnnphbcjgnc";} # xBrowserSync
+        {id = "oboonakemofpalcgghocfoadofidjkkk";} # keepassxc
+        {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
+        {id = "occjjkgifpmdgodlplnacmkejpdionan";} # Autoscroll
         {id = "olhelnoplefjdmncknfphenjclimckaf";} # catppuccin frappe
+        # {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
       ];
     };
   };
