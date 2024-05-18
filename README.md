@@ -1,8 +1,11 @@
 # nixcfg
-NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway, GNOME, and a variety of Home Lab services running on a mix of nix-native and OCI containers. Uses home-manager for managing dotfiles and disko for automatically partioning drives.
+NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway (with options for tablet optimizations), GNOME, and a variety of Home Lab services running on a mix of nix-native and OCI containers. Uses home-manager for managing dotfiles and disko for automatically partioning drives.
 
 ## Rice
+### Sway
 ![](./_img/sway.png)
+### Sway Tablet Mode
+![](./_img/sway-tablet.png)
 
 ## Hosts
 | Host    | lavaridge            | petalburg               | rustboro               |
@@ -30,15 +33,14 @@ NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway, GN
 ## Home Lab Services
 | Service          | Description                       | Source/Runtime                       | Domain                           |
 |------------------|-----------------------------------|--------------------------------------|----------------------------------|
-| Nix Binary Cache | LAN cache for nix derivations.    | nix-serve (nixpkgs)                  | https://nixchace.raffauflabs.com |
+| Nix Binary Cache | LAN cache for nix derivations.    | nix-serve (nixpkgs)                  | https://nixcache.raffauflabs.com |
 | Navidrome        | SubSonic-compatible music server. | nix-container (nixpkgs)              | https://music.raffauflabs.com    |
 | Plex             | Music, TV, and Movie streaming.   | OCI: plexinc/pms-docker:public       | https://plex.raffauflabs.com     |
 | Audiobookshelf   | Podcasts & audiobooks.            | OCI: advplyr/audiobookshelf:latest   | https://podcasts.raffauflabs.com |
 | FreshRSS         | RSS & News reader.                | OCI: freshrss/freshrss:latest        | https://news.raffauflabs.com     |
 | Transmission     | BitTorrent.                       | OCI: linuxserver/transmission:latest | Tailnet                          |
-| Jellyfin         | FOSS Plex alternative (testing).  | OCI: jellyfin/jellyfin               | Tailnet                          |
 | Samba            | LAN file shares.                  | nixpkgs                              | Tailnet                          |
-| Nginx            | Reverse proxy.                    | nixpkgs                              | Tailnet     
+| Nginx            | Reverse proxy.                    | nixpkgs                              | Tailnet                          |
 | Ollama           | Runs opensource LLMs.             | nixpkgs                              | Tailnet                          |
 
 ## Deploying to NixOS
