@@ -49,13 +49,11 @@
         pkgs = import nixpkgs {system = "x86_64-linux";};
         modules = [./aly.nix];
         extraSpecialArgs = inputs;
-        backupFileExtension = "backup";
       };
       dustin = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
         modules = [./dustin.nix];
         extraSpecialArgs = inputs;
-        backupFileExtension = "backup";
       };
     };
 
