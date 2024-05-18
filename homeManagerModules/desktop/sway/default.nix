@@ -64,7 +64,7 @@
         mainBar = {
           modules-left =
             if config.alyraffauf.desktop.sway.tabletMode.menuButton
-            then ["custom/menu" "sway/workspaces" "sway/scratchpad" "sway/mode"]
+            then ["custom/menu" "custom/sway-close" "sway/workspaces" "sway/scratchpad" "sway/mode"]
             else ["sway/workspaces" "sway/scratchpad" "sway/mode"];
         };
       };

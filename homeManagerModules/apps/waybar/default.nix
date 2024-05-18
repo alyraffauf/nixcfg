@@ -7,11 +7,6 @@
   options = {alyraffauf.apps.waybar.enable = lib.mkEnableOption "Enables waybar.";};
 
   config = lib.mkIf config.alyraffauf.apps.waybar.enable {
-    # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [
-      blueberry
-      pavucontrol
-    ];
 
     xdg.configFile."waybar/style.css".text = ''
       * {
@@ -65,6 +60,7 @@
       #inhibitor,
       #custom-logout,
       #custom-menu,
+      #custom-sway-close,
       #tray {
           padding: 0 7.5px;
           margin: 0 5px;
@@ -89,6 +85,7 @@
       #tray,
       #clock,
       #custom-menu,
+      #custom-sway-close,
       #hardware {
           border-radius: 10;
           background: rgba ${
@@ -100,7 +97,7 @@
           padding: 0px 10px 0px 10px;
       }
 
-      #clock, #custom-menu {
+      #clock, #custom-menu, #custom-sway-close {
           padding: 0px 20px 0px 20px;
       }
 
@@ -164,6 +161,10 @@
             "format-icons" = ["" ""];
             "tooltip" = true;
             "tooltip-format" = "{app}: {title}";
+          };
+          "custom/sway-close" = {
+            "on-click" = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} kill'';
+            "format" = "󰅗";
           };
           "river/window" = {
             "max-length" = 100;
