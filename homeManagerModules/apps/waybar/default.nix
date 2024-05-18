@@ -7,7 +7,6 @@
   options = {alyraffauf.apps.waybar.enable = lib.mkEnableOption "Enables waybar.";};
 
   config = lib.mkIf config.alyraffauf.apps.waybar.enable {
-
     xdg.configFile."waybar/style.css".text = ''
       * {
           border: none;

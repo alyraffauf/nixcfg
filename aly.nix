@@ -126,7 +126,7 @@
 
   wayland.windowManager.hyprland.extraConfig = ''
     exec-once = ${lib.getExe' pkgs.keepassxc "keepassxc"}
-    
+
     # Workspace - Browser
     workspace = 1,defaultName:web
     workspace = 2,defaultName:code

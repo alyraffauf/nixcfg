@@ -33,7 +33,7 @@
           if config.alyraffauf.desktop.greetd.autologin.enable
           then {
             default_session = {
-              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
             };
             initial_session = {
               command = config.alyraffauf.desktop.greetd.session;
@@ -42,7 +42,7 @@
           }
           else {
             default_session = {
-              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
             };
           };
       };
