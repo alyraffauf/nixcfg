@@ -1,6 +1,7 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 15GB RAM, 512GB SSD.
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -66,7 +67,7 @@ in {
       enable = true;
       greetd = {
         enable = true;
-        session = config.programs.sway.package + "/bin/sway";
+        session = lib.getExe pkgs.sway;
         autologin = {
           enable = true;
           user = "aly";
