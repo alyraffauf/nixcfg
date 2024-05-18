@@ -71,7 +71,10 @@
     };
 
     wayland.windowManager.sway.enable = true;
-    wayland.windowManager.sway.package = lib.mkDefault pkgs.swayfx;
+    wayland.windowManager.sway.package =
+      if config.alyraffauf.desktop.sway.tabletMode.enable
+      then pkgs.sway
+      else pkgs.swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
     wayland.windowManager.sway.checkConfig = false;
 
