@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.sway.virtKeyboard {
+  config = lib.mkIf config.alyraffauf.desktop.sway.tabletMode.virtKeyboard {
     home.packages = with pkgs; [squeekboard];
     wayland.windowManager.sway.config.startup = [
       {command = "${lib.getExe' pkgs.squeekboard "squeekboard"}";}

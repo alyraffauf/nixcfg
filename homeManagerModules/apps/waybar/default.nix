@@ -64,6 +64,7 @@
       #wireplumber,
       #inhibitor,
       #custom-logout,
+      #custom-menu,
       #tray {
           padding: 0 7.5px;
           margin: 0 5px;
@@ -87,6 +88,7 @@
       #scratchpad,
       #tray,
       #clock,
+      #custom-menu,
       #hardware {
           border-radius: 10;
           background: rgba ${
@@ -98,7 +100,7 @@
           padding: 0px 10px 0px 10px;
       }
 
-      #clock {
+      #clock, #custom-menu {
           padding: 0px 20px 0px 20px;
       }
 
@@ -231,6 +233,10 @@
           "custom/logout" = {
             "on-click" = "${lib.getExe pkgs.wlogout}";
             "format" = "󰗽";
+          };
+          "custom/menu" = {
+            "on-click" = "${lib.getExe pkgs.nwg-drawer} -mt 5";
+            "format" = "󰀻";
           };
           "power-profiles-daemon" = {
             "format" = "{icon}";

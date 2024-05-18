@@ -8,9 +8,9 @@
   imports = [./autoRotate.nix ./randomWallpaper.nix ./virtKeyboard.nix];
   options = {
     alyraffauf.desktop.sway.enable = lib.mkEnableOption "Sway with extra apps.";
-    alyraffauf.desktop.sway.autoRotate = lib.mkOption {
-      description = "Whether to autorotate screen.";
-      default = false;
+    alyraffauf.desktop.sway.randomWallpaper = lib.mkOption {
+      description = "Whether to enable random wallpaper script.";
+      default = true;
       type = lib.types.bool;
     };
     alyraffauf.desktop.sway.autoSuspend = lib.mkOption {
@@ -18,15 +18,23 @@
       default = true;
       type = lib.types.bool;
     };
-    alyraffauf.desktop.sway.randomWallpaper = lib.mkOption {
-      description = "Whether to enable random wallpaper script.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.sway.virtKeyboard = lib.mkOption {
-      description = "Whether to enable dynamic virtual keyboard for convertibles.";
-      default = false;
-      type = lib.types.bool;
+    alyraffauf.desktop.sway.tabletMode = {
+      enable = lib.mkEnableOption "Tablet mode for Sway.";
+      autoRotate = lib.mkOption {
+        description = "Whether to autorotate screen.";
+        default = config.alyraffauf.desktop.sway.tabletMode.enable;
+        type = lib.types.bool;
+      };
+      menuButton = lib.mkOption {
+        description = "Whether to add menu button for waybar.";
+        default = config.alyraffauf.desktop.sway.tabletMode.enable;
+        type = lib.types.bool;
+      };
+      virtKeyboard = lib.mkOption {
+        description = "Whether to enable dynamic virtual keyboard.";
+        default = config.alyraffauf.desktop.sway.tabletMode.enable;
+        type = lib.types.bool;
+      };
     };
   };
 
@@ -54,7 +62,10 @@
     programs.waybar = {
       settings = {
         mainBar = {
-          modules-left = ["sway/workspaces" "sway/scratchpad" "sway/mode"];
+          modules-left =
+            if config.alyraffauf.desktop.sway.tabletMode.menuButton
+            then ["custom/menu" "sway/workspaces" "sway/scratchpad" "sway/mode"]
+            else ["sway/workspaces" "sway/scratchpad" "sway/mode"];
         };
       };
     };
