@@ -6,6 +6,6 @@
   ...
 }: {
   home-manager.users.aly = {
-    imports = [../../homeManagerModules ../../aly.nix];
+    imports = [../../aly.nix];
   };
 }

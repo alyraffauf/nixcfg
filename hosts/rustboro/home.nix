@@ -6,7 +6,7 @@
   ...
 }: {
   home-manager.users.aly = {
-    imports = [../../homeManagerModules ../../aly.nix];
+    imports = [../../aly.nix];
     alyraffauf = {
       services.easyeffects = {
         enable = true;

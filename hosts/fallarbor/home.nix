@@ -7,10 +7,10 @@
 }: {
   home-manager.users = {
     aly = {
-      imports = [../../homeManagerModules ../../aly.nix];
+      imports = [../../aly.nix];
     };
     dustin = {
-      imports = [../../homeManagerModules ../../dustin.nix];
+      imports = [../../dustin.nix];
     };
   };
 }
