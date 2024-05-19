@@ -5,7 +5,7 @@
   osConfig,
   ...
 }: {
-  imports = [./autoRotate.nix ./randomWallpaper.nix ./virtKeyboard.nix];
+  imports = [./autoRotate.nix ./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
   options = {
     alyraffauf.desktop.sway.enable = lib.mkEnableOption "Sway with extra apps.";
     alyraffauf.desktop.sway.randomWallpaper = lib.mkOption {
@@ -15,6 +15,11 @@
     };
     alyraffauf.desktop.sway.autoSuspend = lib.mkOption {
       description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
+    alyraffauf.desktop.sway.redShift = lib.mkOption {
+      description = "Whether to redshift display colors at night.";
       default = true;
       type = lib.types.bool;
     };
@@ -356,7 +361,6 @@
         {command = "${idled}";}
         {command = "${notifyd}";}
         {command = "${lib.getExe pkgs.autotiling}";}
-        {command = "${lib.getExe pkgs.gammastep} -l 31.1:-94.1";} # TODO: automatic locations
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = ''${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}'';}
         {command = ''${lib.getExe' pkgs.blueman "blueman-applet"}'';}
