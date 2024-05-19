@@ -5,13 +5,18 @@
   lib,
   ...
 }: {
-  home-manager.users.aly = {
-    imports = [../../aly.nix];
-    alyraffauf = {
-      services.easyeffects = {
-        enable = true;
-        preset = "LoudnessEqualizer.json";
-      };
-    };
+  home-manager = {
+    sharedModules = [
+      {
+        imports = [../../homeManagerModules];
+        alyraffauf = {
+          services.easyeffects = {
+            enable = true;
+            preset = "LoudnessEqualizer.json";
+          };
+        };
+      }
+    ];
+    users.aly = import ../../aly.nix;
   };
 }
