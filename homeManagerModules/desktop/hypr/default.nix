@@ -104,7 +104,7 @@
       idled =
         if config.alyraffauf.desktop.hyprland.autoSuspend
         then ''
-          ${lib.getExe pkgs.swayidle} -w timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r' timeout 300 '${lock}' timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' timeout 900 '${lib.getExe' pkgs.systemd "systemctl"}' before-sleep '${media} pause' before-sleep '${lock}'
+          ${lib.getExe pkgs.swayidle} -w timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r' timeout 300 '${lock}' timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' before-sleep '${media} pause' before-sleep '${lock}'
 
         ''
         else ''
