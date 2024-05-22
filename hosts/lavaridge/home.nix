@@ -8,7 +8,6 @@
   home-manager.sharedModules = [
     {
       imports = [../../homeManagerModules];
-      alyraffauf.desktop.sway.redShift = false;
       alyraffauf.services.easyeffects = {
         enable = true;
         preset = "framework13";
