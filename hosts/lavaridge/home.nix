@@ -5,16 +5,16 @@
   lib,
   ...
 }: {
-  home-manager.sharedModules = [
-    {
-      imports = [../../homeManagerModules];
-      alyraffauf.services.easyeffects = {
-        enable = true;
-        preset = "framework13";
-      };
-    }
-  ];
-  home-manager.users.aly = {
-    imports = [../../homeManagerModules ../../aly.nix];
+  home-manager = {
+    sharedModules = [
+      {
+        imports = [../../homeManagerModules];
+        alyraffauf.services.easyeffects = {
+          enable = true;
+          preset = "framework13";
+        };
+      }
+    ];
+    users.aly = import ../../aly.nix;
   };
 }

@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  home-manager.users.aly = {
-    imports = [../../aly.nix];
+  home-manager = {
+    users.aly = import ../../aly.nix;
   };
 }

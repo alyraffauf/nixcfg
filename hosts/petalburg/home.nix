@@ -5,10 +5,14 @@
   lib,
   ...
 }: {
-  home-manager.users.aly = {
-    imports = [../../aly.nix];
-    alyraffauf.desktop.sway = {
-      tabletMode.enable = true;
-    };
+  home-manager = {
+    sharedModules = [
+      {
+        alyraffauf.desktop.sway = {
+          tabletMode.enable = true;
+        };
+      }
+    ];
+    users.aly = import ../../aly.nix;
   };
 }

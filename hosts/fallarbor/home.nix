@@ -5,12 +5,8 @@
   lib,
   ...
 }: {
-  home-manager.users = {
-    aly = {
-      imports = [../../aly.nix];
-    };
-    dustin = {
-      imports = [../../dustin.nix];
-    };
+  home-manager = {
+    users.aly = import ../../aly.nix;
+    users.dustin = import ../../dustin.nix;
   };
 }

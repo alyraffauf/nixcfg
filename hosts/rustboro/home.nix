@@ -9,11 +9,9 @@
     sharedModules = [
       {
         imports = [../../homeManagerModules];
-        alyraffauf = {
-          services.easyeffects = {
-            enable = true;
-            preset = "LoudnessEqualizer.json";
-          };
+        alyraffauf.services.easyeffects = {
+          enable = true;
+          preset = "LoudnessEqualizer";
         };
       }
     ];
