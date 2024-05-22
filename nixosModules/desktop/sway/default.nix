@@ -12,10 +12,11 @@
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
     services = {
-      dbus.packages = [pkgs.gcr];
-      udev.packages = [pkgs.swayosd];
-      gnome.gnome-keyring.enable = true;
       blueman.enable = true;
+      dbus.packages = [pkgs.gcr];
+      geoclue2.enable = true;
+      gnome.gnome-keyring.enable = true;
+      udev.packages = [pkgs.swayosd];
     };
 
     security.pam.services = {
