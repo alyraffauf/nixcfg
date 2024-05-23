@@ -3,6 +3,7 @@
   pkgs,
   lib,
   config,
+  unstable,
   ...
 }: {
   options = {
@@ -29,7 +30,7 @@
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
       sway = {
         enable = true;
-        package = pkgs.swayfx;
+        package = unstable.swayfx;
       };
     };
   };

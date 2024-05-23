@@ -3,6 +3,7 @@
   pkgs,
   lib,
   config,
+  unstable,
   ...
 }: {
   options = {
@@ -28,6 +29,7 @@
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
       hyprland = {
         enable = true;
+        package = unstable.hyprland;
       };
     };
   };

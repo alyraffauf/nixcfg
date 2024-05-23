@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  unstable,
   ...
 }: {
   imports = [./homeManagerModules];
@@ -20,7 +21,7 @@
     gnome.file-roller
     google-chrome
     keepassxc
-    obsidian
+    unstable.obsidian
     python3
     ruby
     trayscale

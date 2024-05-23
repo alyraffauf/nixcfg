@@ -3,6 +3,7 @@
   lib,
   config,
   inputs,
+  unstable,
   ...
 }: {
   imports = [./aly ./dustin];
@@ -10,7 +11,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = inputs;
+    extraSpecialArgs = {inherit inputs; inherit unstable;};
     backupFileExtension = "backup";
   };
 

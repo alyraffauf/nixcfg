@@ -16,7 +16,7 @@ NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway (wi
 | RAM     | 32GB DDR5-5600Mhz    | 16GB LPDDR5-5200Mhz     | 16GB DDR3L-1600Mhz     |
 | GPU     | AMD Radeon 760M      | Intel Iris Xe Graphics  | Intel HD Graphics 4600 |
 | Storage | 1TB Sk hynix P41     | 512GB M.2 PCIe 4.0      | 512GB SATA SSD         |
-| OS      | NixOS Unstable       | NixOS Unstable          | NixOS Unstable         |
+| OS      | NixOS 24.05          | NixOS 24.05             | NixOS 24.05            |
 | Desktop | Sway                 | Sway                    | Sway                   |
 
 | Host    | mossdeep                | fallarbor              | mauville                |
@@ -27,7 +27,7 @@ NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway (wi
 | RAM     | 16GB LPDDR5 6400 MT/s   | 16GB DDR4-3200Mhz      | 16GB DDR4-3200Mhz       |
 | GPU     | AMD RDNA 2              | Intel Iris Xe Graphics | AMD Radeon Rx 6700      |
 | Storage | 512GB M.2 PCIe SSD      | 512GB M.2 PCIe 3.0     | 1TB M.2 PCIe 3.0        |
-| OS      | NixOS Unstable          | NixOS Unstable         | NixOS Unstable          |
+| OS      | NixOS 24.05             | NixOS 24.05            | NixOS 24.05             |
 | Desktop | Hyprland                | Hyprland               | Sway                    |
 
 ## Home Lab Services
