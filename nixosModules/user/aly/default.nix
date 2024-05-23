@@ -18,6 +18,7 @@
       isNormalUser = true;
       description = "Aly Raffauf";
       extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
+      linger = true;
       hashedPassword = config.alyraffauf.user.aly.password;
       openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
     };
