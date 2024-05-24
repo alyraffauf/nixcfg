@@ -26,7 +26,7 @@
     ruby
     trayscale
     wget
-    zoom-us
+    unstable.zoom-us
   ];
 
   alyraffauf = {
