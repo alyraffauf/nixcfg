@@ -8,13 +8,6 @@
 }: {
   imports = [./aly ./dustin];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = {inherit inputs; inherit unstable;};
-    backupFileExtension = "backup";
-  };
-
   users.mutableUsers = false;
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBK+QkM3C98BxnJtcEOuxjT7bbUG8gsUafrzW9uKuxz aly@petalburg"

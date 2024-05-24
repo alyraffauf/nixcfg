@@ -51,149 +51,97 @@
     disko,
     jovian,
     ...
-  }: {
-    formatter."x86_64-linux" = nixpkgs.legacyPackages."x86_64-linux".alejandra;
-    homeConfigurations = {
-      aly = home-manager.lib.homeManagerConfiguration rec {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        modules = [./aly.nix];
-        extraSpecialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-        };
-      };
-      dustin = home-manager.lib.homeManagerConfiguration rec {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        modules = [./dustin.nix];
-        extraSpecialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-        };
-      };
+  }: let
+    system = "x86_64-linux";
+    nixosModules = [
+      disko.nixosModules.disko
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {inherit inputs unstable;};
+        home-manager.sharedModules = [{imports = [./homeManagerModules];}];
+        home-manager.backupFileExtension = "backup";
+      }
+      ./nixosModules
+    ];
+    unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
     };
+    specialArgs = {inherit inputs unstable;};
+  in {
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     nixosConfigurations = {
       # Steam Deck OLED
       mossdeep = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          disko.nixosModules.disko
-          jovian.nixosModules.default
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-          home-manager.nixosModules.home-manager
-          ./hosts/mossdeep
-          ./nixosModules
-        ];
+        inherit system specialArgs;
+        modules =
+          nixosModules
+          ++ [
+            ./hosts/mossdeep
+            jovian.nixosModules.default
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+          ];
       };
 
       # Framework 13 with AMD Ryzen 7640U and 32GB RAM.
       lavaridge = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          disko.nixosModules.disko
-          nixos-hardware.nixosModules.framework-13-7040-amd
-          home-manager.nixosModules.home-manager
-          ./hosts/lavaridge
-          ./nixosModules
-        ];
+        inherit system specialArgs;
+        modules =
+          nixosModules
+          ++ [
+            ./hosts/lavaridge
+            nixos-hardware.nixosModules.framework-13-7040-amd
+          ];
       };
 
       # Framework 13 with 11th Gen Intel Core i5 and 16GB RAM.
       fallarbor = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          disko.nixosModules.disko
-          nixos-hardware.nixosModules.framework-11th-gen-intel
-          home-manager.nixosModules.home-manager
-          ./hosts/fallarbor
-          ./nixosModules
-        ];
+        inherit system specialArgs;
+        modules =
+          nixosModules
+          ++ [
+            ./hosts/fallarbor
+            nixos-hardware.nixosModules.framework-11th-gen-intel
+          ];
       };
 
       # Home Lab. Ryzen 5 2600 with 16GB RAM, RX 6700.
       mauville = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-cpu-amd
-          home-manager.nixosModules.home-manager
-          ./hosts/mauville
-          ./nixosModules
-        ];
+        inherit system specialArgs;
+        modules =
+          nixosModules
+          ++ [
+            ./hosts/mauville
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-pc-ssd
+          ];
       };
 
       # Lenovo Yoga 9i with i7-1360P and 16GB RAM.
       petalburg = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          disko.nixosModules.disko
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-          nixos-hardware.nixosModules.common-cpu-intel
-          home-manager.nixosModules.home-manager
-          ./hosts/petalburg
-          ./nixosModules
-        ];
+        inherit system specialArgs;
+        modules =
+          nixosModules
+          ++ [
+            ./hosts/petalburg
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+          ];
       };
 
       # T440p with i5-4210M and 16GB RAM.
       rustboro = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          disko.nixosModules.disko
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-          nixos-hardware.nixosModules.lenovo-thinkpad-t440p
-          home-manager.nixosModules.home-manager
-          ./hosts/rustboro
-          ./nixosModules
-        ];
+        inherit system specialArgs;
+        modules =
+          nixosModules
+          ++ [
+            ./hosts/rustboro
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+            nixos-hardware.nixosModules.lenovo-thinkpad-t440p
+          ];
       };
     };
   };

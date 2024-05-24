@@ -8,7 +8,6 @@
   home-manager = {
     sharedModules = [
       {
-        imports = [../../homeManagerModules];
         alyraffauf.services.easyeffects = {
           enable = true;
           preset = "LoudnessEqualizer";
