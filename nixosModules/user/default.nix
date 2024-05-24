@@ -6,7 +6,17 @@
   unstable,
   ...
 }: {
-  imports = [./aly ./dustin];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ./aly
+    ./dustin
+  ];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = {inherit inputs unstable;};
+  home-manager.sharedModules = [{imports = [../../homeManagerModules];}];
+  home-manager.backupFileExtension = "backup";
 
   users.mutableUsers = false;
   users.users.root.openssh.authorizedKeys.keys = [

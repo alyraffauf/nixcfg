@@ -116,7 +116,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
+    "nixpkgsUnstable": {
       "locked": {
         "lastModified": 1716330097,
         "narHash": "sha256-8BO3B7e3BiyIDsaKA0tY8O88rClYRTjvAp66y+VBUeU=",
@@ -139,7 +139,7 @@
         "jovian": "jovian",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgsUnstable": "nixpkgsUnstable"
       }
     }
   },

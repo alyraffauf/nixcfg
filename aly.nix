@@ -3,9 +3,13 @@
   config,
   pkgs,
   lib,
-  unstable,
   ...
-}: {
+}: let
+  unstable = import inputs.nixpkgsUnstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in {
   imports = [./homeManagerModules];
   home.username = "aly";
   home.homeDirectory = "/home/aly";

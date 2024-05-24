@@ -1,13 +1,17 @@
 # Framework 13 with 11th gen Intel Core i5, 16GB RAM, 512GB SSD.
 {
   config,
+  inputs,
+  lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
     ./disko.nix
-    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./hardware-configuration.nix
     ./home.nix
+    self.nixosModules.default
   ];
 
   boot = {

@@ -1,14 +1,17 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 15GB RAM, 512GB SSD.
 {
   config,
+  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
     ./disko.nix
-    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./hardware-configuration.nix
     ./home.nix
+    self.nixosModules.default
   ];
 
   boot = {

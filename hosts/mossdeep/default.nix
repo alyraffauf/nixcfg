@@ -1,15 +1,18 @@
-# Framework Laptop 13 with AMD Ryzen 7640U, 32GB RAM, 1TB SSD.
+# Steam Deck OLED
 {
-  inputs,
   config,
-  pkgs,
+  inputs,
   lib,
+  pkgs,
+  self,
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix # Include the results of the hardware scan.
-    ./home.nix
     ./disko.nix
+    ./hardware-configuration.nix
+    ./home.nix
+    self.nixosModules.default
+    inputs.jovian.nixosModules.default
   ];
 
   boot = {

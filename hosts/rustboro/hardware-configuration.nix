@@ -3,9 +3,14 @@
   lib,
   pkgs,
   modulesPath,
+  inputs,
   ...
 }: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t440p
+  ];
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"

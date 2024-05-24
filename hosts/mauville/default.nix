@@ -1,8 +1,10 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
-  pkgs,
+  input,
   lib,
+  pkgs,
+  self,
   ...
 }: let
   acmeEmail = "alyraffauf@gmail.com";
@@ -11,7 +13,11 @@
   mediaDirectory = "/mnt/Media";
   archiveDirectory = "/mnt/Archive";
 in {
-  imports = [./hardware-configuration.nix ./home.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ./home.nix
+    self.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

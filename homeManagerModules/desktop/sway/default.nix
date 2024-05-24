@@ -3,7 +3,6 @@
   lib,
   config,
   inputs,
-  unstable,
   ...
 }: {
   imports = [./autoRotate.nix ./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
@@ -80,7 +79,7 @@
     wayland.windowManager.sway.package =
       if config.alyraffauf.desktop.sway.tabletMode.enable
       then pkgs.sway
-      else unstable.swayfx;
+      else inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
     wayland.windowManager.sway.checkConfig = false;
 
@@ -493,7 +492,7 @@
       bindswitch --reload --locked lid:off output eDP-1 enable
 
       ${
-        if config.wayland.windowManager.sway.package == unstable.swayfx
+        if config.wayland.windowManager.sway.package == inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".swayfx
         then "
         blur enable
         blur_passes 1

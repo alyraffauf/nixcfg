@@ -4,7 +4,6 @@
   config,
   osConfig,
   inputs,
-  unstable,
   ...
 }: {
   imports = [./hypridle ./hyprlock ./hyprpaper ./hyprshade];
@@ -61,7 +60,7 @@
     };
 
     wayland.windowManager.hyprland.enable = true;
-    wayland.windowManager.hyprland.package = unstable.hyprland;
+    wayland.windowManager.hyprland.package = inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprland;
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
 
