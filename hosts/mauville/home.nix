@@ -22,10 +22,6 @@
         services.backblaze-sync = {
           Unit = {
             Description = "Backup to Backblaze.";
-            After = ["network.target"];
-          };
-          Install = {
-            WantedBy = ["default.target"];
           };
           Service = {
             ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
