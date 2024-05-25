@@ -45,6 +45,34 @@
       "x86_64-linux"
     ] (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
 
+    packages."x86_64-linux".default = inputs.nixpkgs.legacyPackages."x86_64-linux".writeShellScriptBin "clean-install" ''
+      # Check if an argument is provided
+      if [ $# -eq 0 ]; then
+        echo "Error: Please provide a flake as an argument."
+        exit 1
+      fi
+
+      # Construct the flake input
+      FLAKE_INPUT=$1
+
+      # Display a warning message
+      echo "Warning: Running this script will wipe the currently installed system."
+      read -p "Do you want to continue? (y/n): " answer
+
+      # Check the user's response
+      if [ "$answer" != "y" ]; then
+        echo "Aborted."
+        exit 0
+      fi
+
+      # Run the nix command with the updated flake input
+      sudo nix --experimental-features "nix-command flakes" run \
+          github:nix-community/disko -- --mode disko --flake $FLAKE_INPUT
+
+      # Install NixOS with the updated flake input and root settings
+      sudo nixos-install --no-root-password --root /mnt --flake $FLAKE_INPUT
+    '' ;
+
     nixosModules.default =
       import ./nixosModules inputs;
 
