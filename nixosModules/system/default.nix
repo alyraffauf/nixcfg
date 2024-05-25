@@ -126,10 +126,10 @@
   nix = {
     optimise.automatic = true;
     gc = {
-      # Delete generations older than 7 days.
       automatic = true;
       dates = "daily";
       options = "--delete-older-than 3d";
+      persistent = true;
       randomizedDelaySec = "60min";
     };
     # Run GC when there is less than 100MiB left.
