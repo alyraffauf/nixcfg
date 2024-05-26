@@ -49,6 +49,7 @@ in {
         enable = true;
         session = config.programs.sway.package + "/bin/sway";
       };
+      hyprland.enable = true;
       sway.enable = true;
     };
     user = {
