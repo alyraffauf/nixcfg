@@ -210,6 +210,10 @@
           tap = "enabled";
           tap_button_map = "lrm";
         };
+        "type:keyboard" = {
+          xkb_layout = "us";
+          xkb_variant = "altgr-intl";
+        };
         "1386:21186:Wacom_HID_52C2_Finger" = {
           map_to_output = "'Samsung Display Corp. 0x4152 Unknown'";
         };

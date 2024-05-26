@@ -9,6 +9,7 @@
   alyraffauf.system.power-profiles-daemon.enable = lib.mkDefault true;
 
   console = {
+    useXkbConfig = true;
     colors = [
       "303446"
       "e78284"

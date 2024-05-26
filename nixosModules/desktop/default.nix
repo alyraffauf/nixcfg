@@ -31,7 +31,7 @@
       xserver = {
         enable = true;
         xkb.layout = "us";
-        xkb.variant = "";
+        xkb.variant = "altgr-intl";
         excludePackages = with pkgs; [xterm];
       };
     };
