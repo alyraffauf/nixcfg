@@ -47,6 +47,7 @@
           user = "aly";
         };
       };
+      hyprland.enable = true;
       sway.enable = true;
     };
     apps = {
