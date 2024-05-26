@@ -156,10 +156,10 @@
       env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
       # Execute necessary apps
-      exec-once = ${
+      ${
         if config.alyraffauf.desktop.hyprland.randomWallpaper
-        then "true"
-        else "${wallpaperd}"
+        then ""
+        else "exec-once = ${wallpaperd}"
       }
       exec-once = ${bar}
       exec-once = ${notifyd}
