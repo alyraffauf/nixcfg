@@ -369,7 +369,7 @@
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = ''${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}'';}
         {command = ''${lib.getExe' pkgs.blueman "blueman-applet"}'';}
-        {command = ''${lib.getExe' pkgs.swayosd "swayosd-server"}'';}
+        # {command = ''${lib.getExe' pkgs.swayosd "swayosd-server"}'';}
         {command = ''${lib.getExe' pkgs.playerctl "playerctld"}'';}
         {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store'';}
         {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store'';}

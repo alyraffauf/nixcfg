@@ -168,7 +168,6 @@
       exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
       exec-once = ${idled}
-      exec-once = ${lib.getExe' pkgs.swayosd "swayosd-server"}
       exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
       exec-once = ${lib.getExe' pkgs.blueman "blueman-applet"}
       exec-once = ${lib.getExe' pkgs.playerctl "playerctld"}
@@ -305,8 +304,8 @@
       # Basic window management.
       bind = ${modifier} SHIFT, W, fullscreen
       bind = ${modifier} SHIFT, V, togglefloating,
-      bind = ${modifier} SHIFT, P, pseudo, # dwindle
-      bind = ${modifier} SHIFT, J, togglesplit, # dwindle
+      # bind = ${modifier} SHIFT, P, pseudo, # dwindle
+      # bind = ${modifier} SHIFT, J, togglesplit, # dwindle
 
       # Move focus with mainMod + arrow keys
       bind = ${modifier}, left, movefocus, l
