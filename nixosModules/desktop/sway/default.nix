@@ -11,22 +11,12 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
+    alyraffauf.desktop.waylandComp.enable = true;
     services = {
-      blueman.enable = true;
-      dbus.packages = [pkgs.gcr];
-      geoclue2.enable = true;
-      gnome.gnome-keyring.enable = true;
-      udev.packages = [pkgs.swayosd];
-    };
-
-    security.pam.services = {
-      greetd.enableKwallet = true;
-      greetd.enableGnomeKeyring = true;
-      swaylock = {};
+      geoclue2.enable = lib.mkDefault true;
     };
 
     programs = {
-      gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
       sway = {
         enable = true;
         package = inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".swayfx;

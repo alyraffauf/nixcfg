@@ -13,6 +13,7 @@
     ./lightdm
     ./plasma
     ./sway
+    ./waylandComp.nix
   ];
 
   options = {

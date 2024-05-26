@@ -11,21 +11,9 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-    services = {
-      dbus.packages = [pkgs.gcr];
-      udev.packages = [pkgs.swayosd];
-      gnome.gnome-keyring.enable = true;
-      blueman.enable = true;
-    };
-
-    security.pam.services = {
-      greetd.enableKwallet = true;
-      greetd.enableGnomeKeyring = true;
-      swaylock = {};
-    };
+     alyraffauf.desktop.waylandComp.enable = true;
 
     programs = {
-      gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
       hyprland = {
         enable = true;
         package = inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprland;
