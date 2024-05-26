@@ -134,10 +134,10 @@
       monitor = ,preferred,auto,auto
 
       # Turn off the internal display when lid is closed.
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
-      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "desc:BOE 0x095F,preferred,auto,1.566667"
-      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "desc:LG Display 0x0569,preferred,auto,1.2"
-      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"
+      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "desc:BOE 0x095F,preferred,auto,1.566667"
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "desc:LG Display 0x0569,preferred,auto,1.2"
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"
 
       # unscale XWayland apps
       xwayland {
