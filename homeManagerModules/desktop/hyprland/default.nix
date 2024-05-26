@@ -158,7 +158,7 @@
       # Execute necessary apps
       exec-once = ${
         if config.alyraffauf.desktop.hyprland.randomWallpaper
-        then ""
+        then "true"
         else "${wallpaperd}"
       }
       exec-once = ${bar}

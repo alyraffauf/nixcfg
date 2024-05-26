@@ -359,7 +359,7 @@
         {
           command =
             if config.alyraffauf.desktop.sway.randomWallpaper
-            then ""
+            then "true"
             else "${wallpaperd}";
         }
         {command = "${fileManager} --daemon";}
