@@ -25,7 +25,10 @@
         hyprland = {
           hypridle.enable = lib.mkDefault false;
           hyprlock.enable = lib.mkDefault false;
-          hyprpaper.enable = lib.mkDefault true;
+          hyprpaper = {
+            enable = lib.mkDefault true;
+            randomWallpaper = lib.mkDefault true;
+          };
           hyprshade.enable = lib.mkDefault true;
         };
         theme.enable = lib.mkDefault true;
