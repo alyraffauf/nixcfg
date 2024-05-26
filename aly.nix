@@ -141,24 +141,37 @@ in {
     exec-once = ${lib.getExe' pkgs.keepassxc "keepassxc"}
 
     # Workspace - Browser
-    workspace = 1,defaultName:web
-    workspace = 2,defaultName:code
-
-    # windowrulev2 = workspace name:browser,class:(firefox)
+    workspace = 1, defaultName:web, on-created-empty:${config.alyraffauf.desktop.defaultApps.webBrowser.exe}
     windowrulev2 = workspace 1,class:(firefox)
     windowrulev2 = workspace 1,class:(brave-browser)
 
     # Workspace - Coding
+    workspace = 2, defaultName:code, on-created-empty:${config.alyraffauf.desktop.defaultApps.editor.exe}
     windowrulev2 = workspace 2,class:(codium-url-handler)
 
     # Workspace - Zoom
     windowrulev2 = workspace name:zoom,class:(zoom)
 
     # Workspace - Chrome
-    windowrulev2 = workspace 4,class:(google-chrome)
+    windowrulev2 = workspace 3,class:(google-chrome)
 
-    # Scratchpad Magic
-    windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
-    windowrulev2 = workspace special:magic,class:(WebCord)
+    # Scratchpad Chat
+    bind = SUPER, W, togglespecialworkspace, chat
+    bind = SUPER SHIFT, W, movetoworkspace, special:chat
+    workspace = special:chat, on-created-empty:${lib.getExe pkgs.fractal}
+    windowrulev2 = workspace special:chat,class:(org.gnome.Fractal)
+    windowrulev2 = workspace special:chat,class:(WebCord)
+
+    # Scratchpad Notes
+    bind = SUPER, N, togglespecialworkspace, notes
+    bind = SUPER SHIFT, N, movetoworkspace, special:notes
+    workspace = special:notes, on-created-empty:${lib.getExe' unstable.obsidian "obsidian"}
+    windowrulev2 = workspace special:notes,class:(obsidian)
+
+    # Scratchpad Music
+    bind = SUPER, P, togglespecialworkspace, music
+    bind = SUPER SHIFT, P, movetoworkspace, special:music
+    workspace = special:music, on-created-empty:${lib.getExe' pkgs.plexamp "plexamp"}
+    windowrulev2 = workspace special:music,class:(Plexamp)
   '';
 }
