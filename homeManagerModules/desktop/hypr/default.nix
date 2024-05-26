@@ -6,7 +6,7 @@
   inputs,
   ...
 }: {
-  imports = [./hypridle ./hyprlock ./hyprshade ./randomWallpaper.nix];
+  imports = [./randomWallpaper.nix ./redShift.nix];
 
   options = {
     alyraffauf.desktop.hyprland.enable =
@@ -21,18 +21,17 @@
       default = true;
       type = lib.types.bool;
     };
+    alyraffauf.desktop.hyprland.redShift = lib.mkOption {
+      description = "Whether to redshift display colors at night.";
+      default = true;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
     # Hypr* modules, plguins, and tools.
     alyraffauf = {
       desktop = {
-        hyprland = {
-          hypridle.enable = lib.mkDefault false;
-          hyprlock.enable = lib.mkDefault false;
-
-          hyprshade.enable = lib.mkDefault true;
-        };
         theme.enable = lib.mkDefault true;
         defaultApps.enable = lib.mkDefault true;
       };
@@ -157,14 +156,17 @@
       env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
       # Execute necessary apps
-      exec-once = ${if config.alyraffauf.desktop.hyprland.randomWallpaper then "" else "${wallpaperd}"}
+      exec-once = ${
+        if config.alyraffauf.desktop.hyprland.randomWallpaper
+        then ""
+        else "${wallpaperd}"
+      }
       exec-once = ${bar}
       exec-once = ${notifyd}
       exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store
       exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store
       exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
-      exec = ${hyprshade} auto
       exec-once = ${idled}
       exec-once = ${lib.getExe' pkgs.swayosd "swayosd-server"}
       exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
@@ -373,7 +375,6 @@
 
       # Extra bindings for petalburg.
       bind = , xf86launch4, exec, pp-adjuster
-      bind = , xf86launch1, exec, ${inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshade}/bin/hyprshade toggle
       bind = , xf86launch2, exec, ${media_play}
 
       # Screenshot with hyprshot.
