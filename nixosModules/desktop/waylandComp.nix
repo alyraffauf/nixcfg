@@ -27,8 +27,12 @@
 
           # Authentication management.
           auth sufficient pam_unix.so likeauth try_first_pass likeauth nullok # unix (order 11500)
-          ${if config.services.fprintd.enable then "auth sufficient ${pkgs.fprintd}/lib/security/pam_fprintd.so # fprintd (order 11300)" else ""}
-          
+          ${
+            if config.services.fprintd.enable
+            then "auth sufficient ${pkgs.fprintd}/lib/security/pam_fprintd.so # fprintd (order 11300)"
+            else ""
+          }
+
           auth required pam_deny.so # deny (order 12300)
 
           # Password management.
