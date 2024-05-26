@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-     alyraffauf.desktop.waylandComp.enable = true;
+    alyraffauf.desktop.waylandComp.enable = true;
 
     programs = {
       hyprland = {

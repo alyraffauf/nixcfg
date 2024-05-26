@@ -71,7 +71,7 @@
 
       # Install NixOS with the updated flake input and root settings
       sudo nixos-install --no-root-password --root /mnt --flake $FLAKE_INPUT
-    '' ;
+    '';
 
     nixosModules.default =
       import ./nixosModules inputs;
