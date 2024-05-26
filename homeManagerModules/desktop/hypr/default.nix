@@ -52,8 +52,8 @@
 
     xdg.portal = {
       enable = true;
-      configPackages = [pkgs.xdg-desktop-portal-hyprland];
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      configPackages = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];
+      extraPortals = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];
     };
 
     programs.waybar.settings = {
@@ -116,10 +116,10 @@
 
         '';
 
-      hyprnome = lib.getExe pkgs.hyprnome;
-      hyprshade = lib.getExe pkgs.hyprshade;
+      hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
+      hyprshade = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshade;
 
-      screenshot = lib.getExe pkgs.hyprshot;
+      screenshot = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshot;
       screenshot_folder = "~/pics/screenshots";
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
       screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
@@ -371,7 +371,7 @@
 
       # Extra bindings for petalburg.
       bind = , xf86launch4, exec, pp-adjuster
-      bind = , xf86launch1, exec, ${pkgs.hyprshade}/bin/hyprshade toggle
+      bind = , xf86launch1, exec, ${inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshade}/bin/hyprshade toggle
       bind = , xf86launch2, exec, ${media_play}
 
       # Screenshot with hyprshot.

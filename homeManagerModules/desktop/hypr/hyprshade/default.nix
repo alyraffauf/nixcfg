@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   options = {
@@ -11,7 +12,7 @@
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.hyprshade.enable {
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [hyprshade];
+    home.packages = with pkgs; [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshade];
 
     xdg.configFile."hypr/shaders/custom-blue-light-filter.glsl".text = ''
       // from https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437

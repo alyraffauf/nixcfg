@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   options = {
@@ -11,7 +12,7 @@
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.hyprlock.enable {
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [hyprlock];
+    home.packages = with pkgs; [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprlock];
 
     xdg.configFile."hypr/hyprlock.conf".source = ./hyprlock.conf;
   };

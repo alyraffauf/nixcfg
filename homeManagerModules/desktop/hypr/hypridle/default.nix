@@ -3,6 +3,7 @@
   lib,
   config,
   osConfig,
+  inputs,
   ...
 }: {
   options = {
@@ -12,7 +13,7 @@
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.hypridle.enable {
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [hypridle];
+    home.packages = with pkgs; [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hypridle];
 
     xdg.configFile."hypr/hypridle.conf".text = ''
       general {

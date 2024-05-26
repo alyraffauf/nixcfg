@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   imports = [./hyprpaper-random.nix];
@@ -13,7 +14,7 @@
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.hyprpaper.enable {
     # Packages that should be installed to the user profile.
-    home.packages = with pkgs; [hyprpaper];
+    home.packages = with pkgs; [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprpaper];
 
     xdg.configFile."hypr/hyprpaper.conf".text = ''
       preload = ${config.alyraffauf.desktop.theme.wallpaper}
