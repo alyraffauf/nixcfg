@@ -17,6 +17,7 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    brave
     browsh
     curl
     fractal
@@ -36,7 +37,13 @@ in {
   alyraffauf = {
     services.syncthing.enable = false;
     desktop = {
-      defaultApps.enable = true;
+      defaultApps = {
+        enable = true;
+        webBrowser = {
+          package = pkgs.brave;
+          desktop = "brave-browser.desktop";
+        };
+      };
       hyprland = {
         enable = true;
         hyprpaper.randomWallpaper = false;
@@ -122,7 +129,7 @@ in {
   ];
 
   wayland.windowManager.sway.config.assigns = {
-    "workspace 1: web" = [{app_id = "firefox";}];
+    "workspace 1: web" = [{app_id = "firefox";} {app_id = "brave-browser";}];
     "workspace 2: code" = [{app_id = "codium-url-handler";}];
     "workspace 3: chat" = [{app_id = "org.gnome.Fractal";} {app_id = "WebCord";}];
     "workspace 4: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";}];
@@ -138,6 +145,7 @@ in {
 
     # windowrulev2 = workspace name:browser,class:(firefox)
     windowrulev2 = workspace 1,class:(firefox)
+    windowrulev2 = workspace 1,class:(brave-browser)
 
     # Workspace - Coding
     windowrulev2 = workspace 2,class:(codium-url-handler)
