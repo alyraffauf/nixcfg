@@ -9,7 +9,7 @@
     ./cinnamon
     ./defaultApps.nix
     ./gnome
-    ./hypr
+    ./hyprland
     ./river
     ./sway
     ./theme.nix
