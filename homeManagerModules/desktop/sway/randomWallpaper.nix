@@ -21,7 +21,9 @@
             NEW_PIDS+=($!)
           done
 
-          sleep 5
+          if [ ''${OLD_PIDS[@]} -gt 0 ]; then
+            sleep 5
+          fi
 
           for pid in ''${OLD_PIDS[@]}; do
             kill $pid
