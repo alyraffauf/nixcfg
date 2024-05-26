@@ -27,6 +27,7 @@ in {
     google-chrome
     keepassxc
     unstable.obsidian
+    plexamp
     python3
     ruby
     trayscale
