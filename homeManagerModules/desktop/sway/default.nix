@@ -114,7 +114,7 @@
       bar = lib.getExe pkgs.waybar;
       launcher = lib.getExe pkgs.fuzzel;
       notifyd = lib.getExe pkgs.mako;
-      wallpaperd = lib.getExe pkgs.swaybg;
+      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
       logout = lib.getExe pkgs.wlogout;
       lock = lib.getExe pkgs.swaylock;
       idled =
@@ -356,7 +356,12 @@
       };
       startup = [
         # {command = "${bar}";}
-        {command = "${wallpaperd}";}
+        {
+          command =
+            if config.alyraffauf.desktop.sway.randomWallpaper
+            then ""
+            else "${wallpaperd}";
+        }
         {command = "${fileManager} --daemon";}
         {command = "${idled}";}
         {command = "${notifyd}";}

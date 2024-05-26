@@ -27,7 +27,7 @@
       defaultApps.enable = true;
       hyprland = {
         enable = true;
-        hyprpaper.randomWallpaper = false;
+        randomWallpaper = false;
       };
       sway = {
         enable = true;

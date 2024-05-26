@@ -6,13 +6,18 @@
   inputs,
   ...
 }: {
-  imports = [./hypridle ./hyprlock ./hyprpaper ./hyprshade];
+  imports = [./hypridle ./hyprlock ./hyprshade ./randomWallpaper.nix];
 
   options = {
     alyraffauf.desktop.hyprland.enable =
       lib.mkEnableOption "Enables hyprland with extra apps.";
     alyraffauf.desktop.hyprland.autoSuspend = lib.mkOption {
       description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
+    alyraffauf.desktop.hyprland.randomWallpaper = lib.mkOption {
+      description = "Whether to enable random wallpaper script.";
       default = true;
       type = lib.types.bool;
     };
@@ -25,10 +30,7 @@
         hyprland = {
           hypridle.enable = lib.mkDefault false;
           hyprlock.enable = lib.mkDefault false;
-          hyprpaper = {
-            enable = lib.mkDefault true;
-            randomWallpaper = lib.mkDefault true;
-          };
+
           hyprshade.enable = lib.mkDefault true;
         };
         theme.enable = lib.mkDefault true;
@@ -99,7 +101,7 @@
       bar = lib.getExe pkgs.waybar;
       launcher = lib.getExe pkgs.fuzzel;
       notifyd = lib.getExe pkgs.mako;
-      wallpaperd = lib.getExe pkgs.hyprpaper;
+      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
       logout = lib.getExe pkgs.wlogout;
       # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
       # idled = pkgs.hypridle + "/bin/hypridle";
@@ -155,7 +157,7 @@
       env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
 
       # Execute necessary apps
-      exec-once = ${wallpaperd}
+      exec-once = ${if config.alyraffauf.desktop.hyprland.randomWallpaper then "" else "${wallpaperd}"}
       exec-once = ${bar}
       exec-once = ${notifyd}
       exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store

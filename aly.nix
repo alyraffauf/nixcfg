@@ -46,7 +46,7 @@ in {
       };
       hyprland = {
         enable = true;
-        hyprpaper.randomWallpaper = true;
+        randomWallpaper = true;
       };
       sway = {
         enable = true;
