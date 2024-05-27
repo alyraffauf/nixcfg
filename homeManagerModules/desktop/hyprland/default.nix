@@ -9,60 +9,52 @@
   imports = [./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
 
   options = {
-    alyraffauf.desktop.hyprland.enable =
-      lib.mkEnableOption "Enables hyprland with extra apps.";
-    alyraffauf.desktop.hyprland.autoSuspend = lib.mkOption {
-      description = "Whether to autosuspend on idle.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.hyprland.randomWallpaper = lib.mkOption {
-      description = "Whether to enable random wallpaper script.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.hyprland.redShift = lib.mkOption {
-      description = "Whether to redshift display colors at night.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.hyprland.tabletMode = {
-      enable = lib.mkEnableOption "Tablet mode for Hyprland.";
-      autoRotate = lib.mkOption {
-        description = "Whether to autorotate screen.";
-        default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+    alyraffauf.desktop.hyprland = {
+      enable =
+        lib.mkEnableOption "Enables hyprland with extra apps.";
+      autoSuspend = lib.mkOption {
+        description = "Whether to autosuspend on idle.";
+        default = config.alyraffauf.desktop.hyprland.enable;
         type = lib.types.bool;
       };
-      menuButton = lib.mkOption {
-        description = "Whether to add menu button for waybar.";
-        default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+      randomWallpaper = lib.mkOption {
+        description = "Whether to enable random wallpaper script.";
+        default = config.alyraffauf.desktop.hyprland.enable;
         type = lib.types.bool;
       };
-      virtKeyboard = lib.mkOption {
-        description = "Whether to enable dynamic virtual keyboard.";
-        default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+      redShift = lib.mkOption {
+        description = "Whether to redshift display colors at night.";
+        default = config.alyraffauf.desktop.hyprland.enable;
         type = lib.types.bool;
+      };
+      tabletMode = {
+        enable = lib.mkEnableOption "Tablet mode for hyprland.";
+        autoRotate = lib.mkOption {
+          description = "Whether to autorotate screen.";
+          default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+          type = lib.types.bool;
+        };
+        menuButton = lib.mkOption {
+          description = "Whether to add menu button for waybar.";
+          default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+          type = lib.types.bool;
+        };
+        virtKeyboard = lib.mkOption {
+          description = "Whether to enable dynamic virtual keyboard.";
+          default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+          type = lib.types.bool;
+        };
       };
     };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-    home.packages = [pkgs.swayosd];
     alyraffauf = {
-      apps = {
-        fuzzel.enable = lib.mkDefault true;
-        mako.enable = lib.mkDefault true;
-        swaylock.enable = lib.mkDefault true;
-        waybar.enable = lib.mkDefault true;
-        wlogout.enable = lib.mkDefault true;
-      };
       desktop = {
-        theme.enable = lib.mkDefault true;
-        defaultApps.enable = lib.mkDefault true;
+        waylandComp = lib.mkDefault true;
       };
     };
 
-    services.cliphist.enable = lib.mkDefault true;
     xdg.portal = {
       enable = true;
       configPackages = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];

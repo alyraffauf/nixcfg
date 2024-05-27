@@ -6,60 +6,53 @@
   ...
 }: {
   imports = [./autoRotate.nix ./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
+
   options = {
-    alyraffauf.desktop.sway.enable = lib.mkEnableOption "Sway with extra apps.";
-    alyraffauf.desktop.sway.randomWallpaper = lib.mkOption {
-      description = "Whether to enable random wallpaper script.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.sway.autoSuspend = lib.mkOption {
-      description = "Whether to autosuspend on idle.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.sway.redShift = lib.mkOption {
-      description = "Whether to redshift display colors at night.";
-      default = true;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.sway.tabletMode = {
-      enable = lib.mkEnableOption "Tablet mode for Sway.";
-      autoRotate = lib.mkOption {
-        description = "Whether to autorotate screen.";
-        default = config.alyraffauf.desktop.sway.tabletMode.enable;
+    alyraffauf.desktop.sway = {
+      enable =
+        lib.mkEnableOption "Enables sway with extra apps.";
+      autoSuspend = lib.mkOption {
+        description = "Whether to autosuspend on idle.";
+        default = config.alyraffauf.desktop.sway.enable;
         type = lib.types.bool;
       };
-      menuButton = lib.mkOption {
-        description = "Whether to add menu button for waybar.";
-        default = config.alyraffauf.desktop.sway.tabletMode.enable;
+      randomWallpaper = lib.mkOption {
+        description = "Whether to enable random wallpaper script.";
+        default = config.alyraffauf.desktop.sway.enable;
         type = lib.types.bool;
       };
-      virtKeyboard = lib.mkOption {
-        description = "Whether to enable dynamic virtual keyboard.";
-        default = config.alyraffauf.desktop.sway.tabletMode.enable;
+      redShift = lib.mkOption {
+        description = "Whether to redshift display colors at night.";
+        default = config.alyraffauf.desktop.sway.enable;
         type = lib.types.bool;
+      };
+      tabletMode = {
+        enable = lib.mkEnableOption "Tablet mode for sway.";
+        autoRotate = lib.mkOption {
+          description = "Whether to autorotate screen.";
+          default = config.alyraffauf.desktop.sway.tabletMode.enable;
+          type = lib.types.bool;
+        };
+        menuButton = lib.mkOption {
+          description = "Whether to add menu button for waybar.";
+          default = config.alyraffauf.desktop.sway.tabletMode.enable;
+          type = lib.types.bool;
+        };
+        virtKeyboard = lib.mkOption {
+          description = "Whether to enable dynamic virtual keyboard.";
+          default = config.alyraffauf.desktop.sway.tabletMode.enable;
+          type = lib.types.bool;
+        };
       };
     };
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
-    home.packages = [pkgs.swayosd];
     alyraffauf = {
-      apps = {
-        fuzzel.enable = lib.mkDefault true;
-        mako.enable = lib.mkDefault true;
-        swaylock.enable = lib.mkDefault true;
-        waybar.enable = lib.mkDefault true;
-        wlogout.enable = lib.mkDefault true;
-      };
       desktop = {
-        theme.enable = lib.mkDefault true;
-        defaultApps.enable = lib.mkDefault true;
+        waylandComp = lib.mkDefault true;
       };
     };
-
-    services.cliphist.enable = lib.mkDefault true;
 
     programs.waybar = {
       settings = {
@@ -294,8 +287,6 @@
         "${modifier}+S" = "scratchpad show";
         "${modifier}+Shift+S" = "move scratchpad";
 
-        # TODO: scroll with mouse up/down through workspaces
-
         # For petalburg
         "XF86Launch4" = "exec pp-adjuster";
 
@@ -345,7 +336,6 @@
         };
       };
       startup = [
-        # {command = "${bar}";}
         {
           command =
             if config.alyraffauf.desktop.sway.randomWallpaper
@@ -356,7 +346,7 @@
         {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store'';}
         {command = "${fileManager} --daemon";}
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = idled;}
+        {command = "${idled}";}
         {command = lib.getExe pkgs.autotiling;}
         {command = lib.getExe' pkgs.blueman "blueman-applet";}
         {command = lib.getExe' pkgs.networkmanagerapplet "nm-applet";}

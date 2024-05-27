@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./budgie
     ./cinnamon
     ./gnome
     ./greetd
