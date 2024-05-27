@@ -129,7 +129,8 @@
 
       idled = pkgs.writeShellScript "hyprland-idled" ''
         ${lib.getExe pkgs.swayidle} -w \
-          \
+          before-sleep '${media} pause' \
+          before-sleep '${lock}' \
           timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
             resume '${lib.getExe pkgs.brightnessctl} -r' \
           timeout 300 '${lock}' \
@@ -140,8 +141,6 @@
           then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
           else ''\''
         }
-          before-sleep '${media} pause' \
-          before-sleep '${lock}'
       '';
 
       hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
