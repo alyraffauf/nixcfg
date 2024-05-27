@@ -44,14 +44,12 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
+    home.packages = [pkgs.swayosd];
     alyraffauf = {
       apps = {
-        alacritty.enable = lib.mkDefault true;
-        firefox.enable = lib.mkDefault true;
         fuzzel.enable = lib.mkDefault true;
         mako.enable = lib.mkDefault true;
         swaylock.enable = lib.mkDefault true;
-        thunar.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
         wlogout.enable = lib.mkDefault true;
       };
@@ -62,7 +60,6 @@
     };
 
     services.cliphist.enable = lib.mkDefault true;
-    services.swayosd.enable = lib.mkDefault true;
 
     programs.waybar = {
       settings = {
@@ -134,9 +131,6 @@
       '';
 
       screenshot = lib.getExe' pkgs.shotman "shotman";
-      # screenshot_folder = "~/pics/screenshots";
-      # screenshot_screen = "${screenshot} ${screenshot_folder}/$(date +'%s_grim.png')";
-      # screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
       screenshot_screen = "${screenshot} --capture output";
       screenshot_region = "${screenshot} --capture region";
 
@@ -358,17 +352,17 @@
             then "true"
             else "${wallpaperd}";
         }
-        {command = "${fileManager} --daemon";}
-        {command = "${idled}";}
-        {command = "${notifyd}";}
-        {command = "${lib.getExe pkgs.autotiling}";}
-        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = ''${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}'';}
-        {command = ''${lib.getExe' pkgs.blueman "blueman-applet"}'';}
-        # {command = ''${lib.getExe' pkgs.swayosd "swayosd-server"}'';}
-        {command = ''${lib.getExe' pkgs.playerctl "playerctld"}'';}
         {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store'';}
         {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store'';}
+        {command = "${fileManager} --daemon";}
+        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+        {command = idled;}
+        {command = lib.getExe pkgs.autotiling;}
+        {command = lib.getExe' pkgs.blueman "blueman-applet";}
+        {command = lib.getExe' pkgs.networkmanagerapplet "nm-applet";}
+        {command = lib.getExe' pkgs.playerctl "playerctld";}
+        {command = lib.getExe' pkgs.swayosd "swayosd-server";}
+        {command = notifyd;}
       ];
       output = {
         "BOE 0x095F Unknown" = {
@@ -507,18 +501,17 @@
 
         layer_effects launcher blur enable
         layer_effects launcher blur_ignore_transparent enable
-        layer_effects swaybar blur enable
-        layer_effects swaybar blur_ignore_transparent enable
-        layer_effects waybar blur enable
-        layer_effects waybar blur_ignore_transparent enable
+        layer_effects logout_dialog blur enable
         layer_effects notifications blur enable
         layer_effects notifications blur_ignore_transparent enable
-        layer_effects logout_dialog blur enable
+        layer_effects swaybar blur enable
+        layer_effects swaybar blur_ignore_transparent enable
         layer_effects swayosd blur enable
-        layer_effects swayosd blur_ignore_transparent enable"
+        layer_effects swayosd blur_ignore_transparent enable
+        layer_effects waybar blur enable
+        layer_effects waybar blur_ignore_transparent enable"
         else ""
       }
-
     '';
 
     xdg.portal = {

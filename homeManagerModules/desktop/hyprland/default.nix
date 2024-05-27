@@ -47,28 +47,22 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-    # Hypr* modules, plguins, and tools.
+    home.packages = [pkgs.swayosd];
     alyraffauf = {
+      apps = {
+        fuzzel.enable = lib.mkDefault true;
+        mako.enable = lib.mkDefault true;
+        swaylock.enable = lib.mkDefault true;
+        waybar.enable = lib.mkDefault true;
+        wlogout.enable = lib.mkDefault true;
+      };
       desktop = {
         theme.enable = lib.mkDefault true;
         defaultApps.enable = lib.mkDefault true;
       };
-      apps = {
-        # Basic apps needed to run a hyprland desktop.
-        alacritty.enable = lib.mkDefault true;
-        firefox.enable = lib.mkDefault true;
-        fuzzel.enable = lib.mkDefault true;
-        mako.enable = lib.mkDefault true;
-        swaylock.enable = lib.mkDefault true;
-        thunar.enable = lib.mkDefault true;
-        waybar.enable = lib.mkDefault true;
-        wlogout.enable = lib.mkDefault true;
-      };
     };
 
     services.cliphist.enable = lib.mkDefault true;
-    services.swayosd.enable = lib.mkDefault true;
-
     xdg.portal = {
       enable = true;
       configPackages = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];
@@ -98,14 +92,6 @@
       terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
 
       # Media/hardware commands
-      # brightness = "${lib.getExe pkgs.brightnessctl}";
-      # brightness_up = "${brightness} set 5%+";
-      # brightness_down = "${brightness} set 5%-";
-      # volume = "${pkgs.wireplumber}/bin/wpctl";
-      # volume_up = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%+";
-      # volume_down = "${volume} set-volume -l 1.0 @DEFAULT_SINK@ 5%-";
-      # volume_mute = "${volume} set-mute @DEFAULT_SINK@ toggle";
-      # mic_mute = "${volume} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
       brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
       brightness_down = "${brightness} --brightness=lower";
@@ -153,14 +139,14 @@
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in ''
-      monitor = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
-      monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
-      monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
-      monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
-      monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6 # workshop
-      monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
-      monitor = desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto
       monitor = ,preferred,auto,auto
+      monitor = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
+      monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6 # workshop
+      monitor = desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto
+      monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
+      monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
+      monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
+      monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
 
       # Turn off the internal display when lid is closed.
       bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
@@ -185,15 +171,16 @@
         else "exec-once = ${wallpaperd}"
       }
       exec-once = ${bar}
-      exec-once = ${notifyd}
-      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store
-      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store
-      exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
       exec-once = ${fileManager} --daemon
       exec-once = ${idled}
-      exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
       exec-once = ${lib.getExe' pkgs.blueman "blueman-applet"}
+      exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
       exec-once = ${lib.getExe' pkgs.playerctl "playerctld"}
+      exec-once = ${lib.getExe' pkgs.swayosd "swayosd-server"}
+      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store
+      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store
+      exec-once = ${notifyd}
+      exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
@@ -284,33 +271,27 @@
       }
 
       # Window Rules
-
-      # Firefox picture-in-picture
-      windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
-      windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
-      windowrulev2 = move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
-
-      windowrulev2 = center(1),class:(blueberry.py)
-      windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
       windowrulev2 = center(1),class:(.blueman-manager-wrapped)
-      windowrulev2 = center(1),class:(nmtui)
-      windowrulev2 = center(1),class:(pavucontrol)
+      windowrulev2 = center(1),class:(blueberry.py)
       windowrulev2 = center(1),class:(com.github.wwmm.easyeffects)
-
-      windowrulev2 = float,class:(blueberry.py)
-      windowrulev2 = float,class:(org.keepassxc.KeePassXC)
+      windowrulev2 = center(1),class:(nmtui)
+      windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
+      windowrulev2 = center(1),class:(pavucontrol)
+      windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = float,class:(.blueman-manager-wrapped)
-      windowrulev2 = float,class:(nmtui)
-      windowrulev2 = float,class:(pavucontrol)
+      windowrulev2 = float,class:(blueberry.py)
       windowrulev2 = float,class:(com.github.wwmm.easyeffects)
-
-      windowrulev2 = size 40% 60%,class:(blueberry.py)
-      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
+      windowrulev2 = float,class:(nmtui)
+      windowrulev2 = float,class:(org.keepassxc.KeePassXC)
+      windowrulev2 = float,class:(pavucontrol)
+      windowrulev2 = move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
+      windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = size 40% 60%,class:(.blueman-manager-wrapped)
+      windowrulev2 = size 40% 60%,class:(blueberry.py)
+      windowrulev2 = size 40% 60%,class:(com.github.wwmm.easyeffects)
       windowrulev2 = size 40% 60%,class:(nmtui)
       windowrulev2 = size 40% 60%,class:(pavucontrol)
-      windowrulev2 = size 40% 60%,class:(com.github.wwmm.easyeffects)
-
+      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
       windowrulev2 = suppressevent maximize, class:.*
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
