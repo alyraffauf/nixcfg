@@ -102,23 +102,26 @@
       notifyd = lib.getExe pkgs.mako;
       wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
       logout = lib.getExe pkgs.wlogout;
-      # lock = pkgs.hyprlock + "/bin/hyprlock --immediate";
-      # idled = pkgs.hypridle + "/bin/hypridle";
-
       lock = lib.getExe pkgs.swaylock;
-      idled =
-        if config.alyraffauf.desktop.hyprland.autoSuspend
-        then ''
-          ${lib.getExe pkgs.swayidle} -w timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r' timeout 300 '${lock}' timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' before-sleep '${media} pause' before-sleep '${lock}'
 
-        ''
-        else ''
-          ${lib.getExe pkgs.swayidle} -w timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r' timeout 300 '${lock}' timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' before-sleep '${media} pause' before-sleep '${lock}'
-
-        '';
+      idled = pkgs.writeShellScript "hyprland-idled" ''
+        ${lib.getExe pkgs.swayidle} -w \
+          \
+          timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
+            resume '${lib.getExe pkgs.brightnessctl} -r' \
+          timeout 300 '${lock}' \
+          timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' \
+            resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' \
+          ${
+          if config.alyraffauf.desktop.hyprland.autoSuspend
+          then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
+          else ''\''
+        }
+          before-sleep '${media} pause' \
+          before-sleep '${lock}'
+      '';
 
       hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
-      hyprshade = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshade;
 
       screenshot = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshot;
       screenshot_folder = "~/pics/screenshots";
@@ -128,7 +131,7 @@
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in ''
-      monitor = desc:BOE 0x095F,preferred,auto,1.566667 # lavaridge/fallarbor fw13 glossy display
+      monitor = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
       monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
       monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
       monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
@@ -139,9 +142,7 @@
 
       # Turn off the internal display when lid is closed.
       bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "desc:BOE 0x095F,preferred,auto,1.566667"
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "desc:LG Display 0x0569,preferred,auto,1.2"
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"
+      bindl=,switch:off:Lid Switch,exec,hyprctl reload
 
       # unscale XWayland apps
       xwayland {

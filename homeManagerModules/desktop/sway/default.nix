@@ -117,29 +117,21 @@
       wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
       logout = lib.getExe pkgs.wlogout;
       lock = lib.getExe pkgs.swaylock;
-      idled =
-        if config.alyraffauf.desktop.sway.autoSuspend
-        then ''
-          ${lib.getExe pkgs.swayidle} -w \
-                  timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
-                    resume '${lib.getExe pkgs.brightnessctl} -r' \
-                  timeout 300 '${lock}' \
-                  timeout 330 '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms off"' \
-                    resume '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms on"' \
-                  timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \
-                  before-sleep '${media} pause' \
-                  before-sleep '${lock}'
-        ''
-        else ''
-          ${lib.getExe pkgs.swayidle} -w \
-                  timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
-                    resume '${lib.getExe pkgs.brightnessctl} -r' \
-                  timeout 300 '${lock}' \
-                  timeout 330 '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms off"' \
-                    resume '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms on"' \
-                  before-sleep '${media} pause' \
-                  before-sleep '${lock}'
-        '';
+      idled = pkgs.writeShellScript "sway-idled" ''
+        ${lib.getExe pkgs.swayidle} -w \
+          timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
+            resume '${lib.getExe pkgs.brightnessctl} -r' \
+          timeout 300 '${lock}' \
+          timeout 330 '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms off"' \
+            resume '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms on"' \
+          ${
+          if config.alyraffauf.desktop.sway.autoSuspend
+          then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
+          else ''\''
+        }
+          before-sleep '${media} pause' \
+          before-sleep '${lock}'
+      '';
 
       screenshot = lib.getExe' pkgs.shotman "shotman";
       # screenshot_folder = "~/pics/screenshots";
