@@ -5,7 +5,6 @@
   ...
 }: let
   pp-adjuster = pkgs.writeShellScriptBin "pp-adjuster" ''
-    # Only works on petalburg.
     current_profile=$(${lib.getExe' pkgs.power-profiles-daemon "powerprofilesctl"} get | tr -d '[:space:]')
 
     if [ "$current_profile" == "power-saver" ]; then
