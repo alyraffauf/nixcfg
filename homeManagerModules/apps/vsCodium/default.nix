@@ -13,7 +13,7 @@
 
     programs.vscode = {
       enable = true;
-      package = pkgs.vscodium;
+      package = pkgs.vscodium.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
       userSettings = {

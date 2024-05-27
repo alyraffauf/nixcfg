@@ -17,22 +17,21 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    brave
+    (pkgs.google-chrome.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";})
     browsh
     curl
     fractal
     gh
     git
     gnome.file-roller
-    google-chrome
     keepassxc
-    unstable.obsidian
     plexamp
     python3
     ruby
     trayscale
-    wget
+    unstable.obsidian
     unstable.zoom-us
+    wget
   ];
 
   alyraffauf = {
@@ -41,7 +40,7 @@ in {
       defaultApps = {
         enable = true;
         webBrowser = {
-          package = pkgs.brave;
+          package = pkgs.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
           desktop = "brave-browser.desktop";
         };
       };
