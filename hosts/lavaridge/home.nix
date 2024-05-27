@@ -11,9 +11,12 @@
   home-manager = {
     sharedModules = [
       {
-        alyraffauf.services.easyeffects = {
-          enable = true;
-          preset = "framework13";
+        alyraffauf = {
+          services.easyeffects = {
+            enable = true;
+            preset = "framework13";
+          };
+          desktop.sway.enable = lib.mkForce false;
         };
       }
     ];
