@@ -85,6 +85,7 @@
       #clock,
       #custom-menu,
       #custom-sway-close,
+      #custom-hyprland-close,
       #hardware {
           border-radius: 10;
           background: rgba ${
@@ -96,7 +97,7 @@
           padding: 0px 10px 0px 10px;
       }
 
-      #clock, #custom-menu, #custom-sway-close {
+      #clock, #custom-menu, #custom-sway-close, #custom-hyprland-close {
           padding: 0px 20px 0px 20px;
       }
 
@@ -163,6 +164,10 @@
           };
           "custom/sway-close" = {
             "on-click" = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} kill'';
+            "format" = "󰅗";
+          };
+          "custom/hyprland-close" = {
+            "on-click" = ''${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive'';
             "format" = "󰅗";
           };
           "river/window" = {

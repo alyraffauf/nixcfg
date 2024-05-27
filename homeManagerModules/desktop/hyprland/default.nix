@@ -6,7 +6,7 @@
   inputs,
   ...
 }: {
-  imports = [./randomWallpaper.nix ./redShift.nix];
+  imports = [./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
 
   options = {
     alyraffauf.desktop.hyprland.enable =
@@ -25,6 +25,24 @@
       description = "Whether to redshift display colors at night.";
       default = true;
       type = lib.types.bool;
+    };
+    alyraffauf.desktop.hyprland.tabletMode = {
+      enable = lib.mkEnableOption "Tablet mode for Hyprland.";
+      autoRotate = lib.mkOption {
+        description = "Whether to autorotate screen.";
+        default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+        type = lib.types.bool;
+      };
+      menuButton = lib.mkOption {
+        description = "Whether to add menu button for waybar.";
+        default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+        type = lib.types.bool;
+      };
+      virtKeyboard = lib.mkOption {
+        description = "Whether to enable dynamic virtual keyboard.";
+        default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
+        type = lib.types.bool;
+      };
     };
   };
 
@@ -57,9 +75,14 @@
       extraPortals = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];
     };
 
-    programs.waybar.settings = {
-      mainBar = {
-        modules-left = ["hyprland/workspaces" "hyprland/submap"];
+    programs.waybar = {
+      settings = {
+        mainBar = {
+          modules-left =
+            if config.alyraffauf.desktop.hyprland.tabletMode.menuButton
+            then ["hyprland/workspaces" "custom/menu" "custom/hyprland-close" "hyprland/submap"]
+            else ["hyprland/workspaces" "hyprland/submap"];
+        };
       };
     };
 
