@@ -131,18 +131,24 @@
       qt_platform_theme = "gtk2";
       gdk_scale = "1.5";
     in ''
+      $framework = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
+      $t440p = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
+      $yoga9i = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
+
       monitor = ,preferred,auto,auto
-      monitor = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
+      monitor = $framework
+      monitor = $t440p
+      monitor = $yoga9i
       monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6 # workshop
       monitor = desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto
-      monitor = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
       monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
       monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
-      monitor = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
 
       # Turn off the internal display when lid is closed.
       bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
-      bindl=,switch:off:Lid Switch,exec,hyprctl reload
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "$framework"
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "$t440p"
+      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "$yoga9i"
 
       # unscale XWayland apps
       xwayland {
