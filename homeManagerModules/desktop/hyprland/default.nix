@@ -330,7 +330,7 @@
       bind = ${modifier} SHIFT, W, fullscreen
       bind = ${modifier} SHIFT, V, togglefloating,
       # bind = ${modifier} SHIFT, P, pseudo, # dwindle
-      # bind = ${modifier} SHIFT, J, togglesplit, # dwindle
+      bind = ${modifier} SHIFT, J, togglesplit, # dwindle
 
       # Move focus with mainMod + arrow keys
       bind = ${modifier}, left, movefocus, l
