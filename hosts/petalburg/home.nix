@@ -11,7 +11,7 @@
   home-manager = {
     sharedModules = [
       {
-        alyraffauf.desktop.sway = {
+        alyraffauf.desktop.hyprland = {
           tabletMode.enable = true;
         };
       }

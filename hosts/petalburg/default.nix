@@ -41,7 +41,7 @@
       enable = true;
       greetd = {
         enable = true;
-        session = lib.getExe pkgs.sway;
+        session = lib.getExe config.programs.hyprland.package;
         autologin = {
           enable = true;
           user = "aly";
