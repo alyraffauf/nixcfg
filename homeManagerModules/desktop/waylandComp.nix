@@ -16,6 +16,7 @@
         fuzzel.enable = lib.mkDefault true;
         mako.enable = lib.mkDefault true;
         swaylock.enable = lib.mkDefault true;
+        thunar.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
         wlogout.enable = lib.mkDefault true;
       };
