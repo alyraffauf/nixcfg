@@ -20,9 +20,7 @@
   '';
 in {
   imports = [
-    # Include X settings.
     ./fprintdFix.nix
-    ./tripleBuffering.nix
   ];
 
   options = {

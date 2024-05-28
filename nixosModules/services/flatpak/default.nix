@@ -10,13 +10,8 @@
   };
 
   config = lib.mkIf config.alyraffauf.services.flatpak.enable {
-    # Needed for Flatpaks
-    xdg.portal.enable = true;
-    services.flatpak.enable = true;
-    fonts.fontDir.enable = true;
-
-    # Allow access to system fonts.
-    system.fsPackages = [pkgs.bindfs];
+    environment.systemPackages = with pkgs; [gnome.gnome-software];
+    
     fileSystems = let
       mkRoSymBind = path: {
         device = path;
@@ -33,6 +28,10 @@
       "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
       "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
     };
-    environment.systemPackages = with pkgs; [gnome.gnome-software];
+
+    fonts.fontDir.enable = true;
+    services.flatpak.enable = true;
+    system.fsPackages = [pkgs.bindfs];
+    xdg.portal.enable = true;
   };
 }

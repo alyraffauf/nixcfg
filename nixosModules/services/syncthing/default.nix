@@ -7,11 +7,23 @@
   imports = [./syncMusic.nix];
 
   options = {
-    alyraffauf.services.syncthing.enable = lib.mkEnableOption "Enable Syncthing";
-    alyraffauf.services.syncthing.user = lib.mkOption {
-      description = "Specify user Syncthing runs as.";
-      default = "aly";
-      type = lib.types.str;
+    alyraffauf.services.syncthing = {
+      enable = lib.mkEnableOption "Enable Syncthing";
+      user = lib.mkOption {
+        description = "Specify user Syncthing runs as.";
+        default = "aly";
+        type = lib.types.str;
+      };
+      syncMusic = lib.mkOption {
+        description = "Whether to sync music folder.";
+        default = true;
+        type = lib.types.bool;
+      };
+      musicPath = lib.mkOption {
+        description = "Whether to sync music folder.";
+        default = "/home/${config.alyraffauf.services.syncthing.user}/music";
+        type = lib.types.str;
+      };
     };
   };
 
@@ -19,7 +31,7 @@
     services.syncthing = {
       enable = true;
       openDefaultPorts = true;
-      user = "${config.alyraffauf.services.syncthing.user}";
+      user = config.alyraffauf.services.syncthing.user;
       dataDir = "/home/${config.alyraffauf.services.syncthing.user}";
       settings = {
         options = {
@@ -58,8 +70,8 @@
             path = "/home/${config.alyraffauf.services.syncthing.user}/pics/camera";
             devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wattson" "winona"];
             versioning = {
-              type = "trashcan";
               params.cleanoutDays = "15";
+              type = "trashcan";
             };
           };
         };

@@ -11,6 +11,10 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.waylandComp.enable {
+    programs = {
+      gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;
+    };
+
     services = {
       blueman.enable = lib.mkDefault true;
       dbus.packages = [pkgs.gcr];
@@ -43,10 +47,6 @@
           session required pam_unix.so # unix (order 10200)
         '';
       };
-    };
-
-    programs = {
-      gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;
     };
   };
 }

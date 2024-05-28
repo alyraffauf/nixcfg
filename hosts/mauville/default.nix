@@ -14,7 +14,7 @@
   archiveDirectory = "/mnt/Archive";
 in {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./home.nix
     self.nixosModules.default
   ];
@@ -72,7 +72,7 @@ in {
       syncthing = {
         enable = true;
         syncMusic = true;
-        syncMusicPath = "${mediaDirectory}/Music";
+        musicPath = "${mediaDirectory}/Music";
       };
       tailscale.enable = true;
     };

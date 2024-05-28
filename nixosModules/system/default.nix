@@ -9,7 +9,6 @@
   alyraffauf.system.power-profiles-daemon.enable = lib.mkDefault true;
 
   console = {
-    useXkbConfig = true;
     colors = [
       "303446"
       "e78284"
@@ -29,12 +28,13 @@
       "81c8be"
       "a5adce"
     ];
+    useXkbConfig = true;
   };
 
   time.timeZone = "America/New_York";
 
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = lib.mkDefault "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = config.i18n.defaultLocale;
       LC_IDENTIFICATION = config.i18n.defaultLocale;

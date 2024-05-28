@@ -10,7 +10,6 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.cinnamon.enable {
-    # Enable Cinnamon.
     services = {
       xserver = {
         enable = true;

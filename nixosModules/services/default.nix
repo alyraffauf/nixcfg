@@ -4,5 +4,11 @@
   config,
   ...
 }: {
-  imports = [./binaryCache ./flatpak ./ollama ./syncthing ./tailscale];
+  imports = [
+    ./binaryCache
+    ./flatpak
+    ./ollama
+    ./syncthing
+    ./tailscale
+  ];
 }

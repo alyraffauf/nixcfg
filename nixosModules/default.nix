@@ -3,5 +3,13 @@ inputs: {
   pkgs,
   ...
 }: {
-  imports = [./apps ./containers ./desktop ./scripts ./services ./system ./user];
+  imports = [
+    ./apps
+    ./containers
+    ./desktop
+    ./scripts
+    ./services
+    ./system
+    ./user
+  ];
 }

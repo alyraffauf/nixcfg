@@ -23,24 +23,24 @@
   config = lib.mkIf config.alyraffauf.desktop.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-    services = {
-      gnome.gnome-keyring.enable = true;
-      gvfs.enable = true; # Mount, trash, etc.
-      # Enable the X11 windowing system.
-      xserver = {
-        enable = true;
-        xkb.layout = "us";
-        xkb.variant = "altgr-intl";
-        excludePackages = with pkgs; [xterm];
-      };
-    };
-
-    # Install pretty fonts.
     fonts.packages = with pkgs; [
       liberation_ttf
       (nerdfonts.override {
         fonts = ["DroidSansMono" "Noto"];
       })
     ];
+
+    services = {
+      gnome.gnome-keyring.enable = true;
+      gvfs.enable = true; # Mount, trash, etc.
+      xserver = {
+        enable = true;
+        xkb = {
+          layout = "us";
+          variant = "altgr-intl";
+        };
+        excludePackages = with pkgs; [xterm];
+      };
+    };
   };
 }

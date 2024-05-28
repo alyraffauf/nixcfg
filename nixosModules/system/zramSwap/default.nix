@@ -5,11 +5,13 @@
   ...
 }: {
   options = {
-    alyraffauf.system.zramSwap.enable = lib.mkEnableOption "Enables zram swap.";
-    alyraffauf.system.zramSwap.size = lib.mkOption {
-      description = "Percent size of the zram swap.";
-      default = 50;
-      type = lib.types.int;
+    alyraffauf.system.zramSwap = {
+      enable = lib.mkEnableOption "Enables zram swap.";
+      size = lib.mkOption {
+        description = "Percent size of the zram swap.";
+        default = 50;
+        type = lib.types.int;
+      };
     };
   };
 

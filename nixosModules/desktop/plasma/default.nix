@@ -22,17 +22,6 @@ in {
   };
 
   config = lib.mkIf config.alyraffauf.desktop.plasma.enable {
-    # Enable SDDM + Plasma Desktop.
-    services = {
-      desktopManager.plasma6.enable = true;
-      xserver = {
-        displayManager.sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
-      };
-    };
-
     environment.systemPackages = with pkgs;
       [
         kdePackages.kate
@@ -44,8 +33,15 @@ in {
       ++ [plasmaCsAdjuster];
 
     programs.kdeconnect.enable = true;
-    #   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
-    #   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
     security.pam.services.sddm.enableGnomeKeyring = true;
+    services = {
+      desktopManager.plasma6.enable = true;
+      xserver = {
+        displayManager.sddm = {
+          enable = true;
+          wayland.enable = true;
+        };
+      };
+    };
   };
 }

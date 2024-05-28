@@ -11,33 +11,42 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.lightdm.enable {
-    security.pam.services.lightdm.enableKwallet = true;
-    security.pam.services.lightdm.enableGnomeKeyring = true;
+    security.pam.services.lightdm = {
+      enableGnomeKeyring = true;
+      enableKwallet = true;
+    };
 
     services.xserver.displayManager.lightdm = {
       enable = true;
       greeters.slick = {
         enable = true;
-        theme.name = "Catppuccin-Frappe-Compact-Mauve-Dark";
-        theme.package = pkgs.catppuccin-gtk.override {
-          accents = ["mauve"];
-          size = "compact";
-          variant = "frappe";
-          tweaks = ["normal"];
+        theme = {
+          name = "Catppuccin-Frappe-Compact-Mauve-Dark";
+          package = pkgs.catppuccin-gtk.override {
+            accents = ["mauve"];
+            size = "compact";
+            variant = "frappe";
+            tweaks = ["normal"];
+          };
         };
 
-        iconTheme.name = "Papirus-Dark";
-        iconTheme.package = pkgs.catppuccin-papirus-folders.override {
-          flavor = "frappe";
-          accent = "mauve";
+        iconTheme = {
+          name = "Papirus-Dark";
+          package = pkgs.catppuccin-papirus-folders.override {
+            flavor = "frappe";
+            accent = "mauve";
+          };
         };
 
-        font.name = "NotoSans Nerd Font Regular";
-        font.package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+        font = {
+          name = "NotoSans Nerd Font Regular";
+          package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+        };
 
-        cursorTheme.package = pkgs.catppuccin-cursors.frappeDark;
-        cursorTheme.name = "Catppuccin-Frappe-Dark-Cursors";
-        cursorTheme.size = 24;
+        cursorTheme = {
+          name = "Catppuccin-Frappe-Dark-Cursors";
+          size = 24;
+        };
 
         extraConfig = ''
           background=#303446

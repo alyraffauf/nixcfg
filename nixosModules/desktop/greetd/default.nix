@@ -6,22 +6,24 @@
   ...
 }: {
   options = {
-    alyraffauf.desktop.greetd.enable =
-      lib.mkEnableOption "Enable greetd.";
-    alyraffauf.desktop.greetd.session = lib.mkOption {
-      description = "Default command to execute on login.";
-      default = lib.getExe config.programs.hyprland.package;
-      type = lib.types.str;
-    };
-    alyraffauf.desktop.greetd.autologin.enable = lib.mkOption {
-      description = "Whether to enable autologin.";
-      default = false;
-      type = lib.types.bool;
-    };
-    alyraffauf.desktop.greetd.autologin.user = lib.mkOption {
-      description = "User to autologin.";
-      default = "aly";
-      type = lib.types.str;
+    alyraffauf.desktop.greetd = {
+      enable =
+        lib.mkEnableOption "Enable greetd.";
+      session = lib.mkOption {
+        description = "Default command to execute on login.";
+        default = lib.getExe config.programs.hyprland.package;
+        type = lib.types.str;
+      };
+      autologin.enable = lib.mkOption {
+        description = "Whether to enable autologin.";
+        default = false;
+        type = lib.types.bool;
+      };
+      autologin.user = lib.mkOption {
+        description = "User to autologin.";
+        default = "aly";
+        type = lib.types.str;
+      };
     };
   };
 

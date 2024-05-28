@@ -9,7 +9,7 @@
 }: {
   imports = [
     ./disko.nix
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./home.nix
     self.nixosModules.default
   ];
