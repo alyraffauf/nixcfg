@@ -165,10 +165,12 @@
       size = config.alyraffauf.desktop.theme.cursorTheme.size;
     };
 
-    qt.enable = true;
-    qt.platformTheme.name = "qtct";
-    qt.style.name = "kvantum";
-
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+      style.name = "kvantum";
+    };
+    
     xdg.configFile = {
       "Kvantum/${config.alyraffauf.desktop.theme.qt.name}".source = "${config.alyraffauf.desktop.theme.qt.package}/share/Kvantum/${config.alyraffauf.desktop.theme.qt.name}";
       "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
