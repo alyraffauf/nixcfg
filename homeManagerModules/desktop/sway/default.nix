@@ -127,7 +127,7 @@
       screenshot_screen = "${screenshot} --capture output";
       screenshot_region = "${screenshot} --capture region";
 
-      qt_platform_theme = "gtk2";
+      qt_platform_theme = "qt6ct";
       gdk_scale = "1.5";
 
       cycleSwayDisplayModes = pkgs.writeShellScriptBin "cycleSwayDisplayModes" ''

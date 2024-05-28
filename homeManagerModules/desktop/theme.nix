@@ -30,6 +30,21 @@
           type = lib.types.bool;
         };
       };
+      qt = {
+        name = lib.mkOption {
+          description = "Qt Kvantum theme name.";
+          default = "Catppuccin-Frappe-Mauve";
+          type = lib.types.str;
+        };
+        package = lib.mkOption {
+          description = "Qt Kvantum theme package.";
+          default = pkgs.catppuccin-kvantum.override {
+            accent = "Mauve";
+            variant = "Frappe";
+          };
+          type = lib.types.package;
+        };
+      };
       iconTheme = {
         name = lib.mkOption {
           description = "Icon theme name.";
@@ -150,10 +165,15 @@
       size = config.alyraffauf.desktop.theme.cursorTheme.size;
     };
 
-    qt = {
-      enable = true;
-      platformTheme.name = "gtk";
-      style.name = "gtk2";
+    qt.enable = true;
+    qt.platformTheme.name = "qtct";
+    qt.style.name = "kvantum";
+
+    xdg.configFile = {
+      "Kvantum/${config.alyraffauf.desktop.theme.qt.name}".source = "${config.alyraffauf.desktop.theme.qt.package}/share/Kvantum/${config.alyraffauf.desktop.theme.qt.name}";
+      "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
+        General.theme = config.alyraffauf.desktop.theme.qt.name;
+      };
     };
 
     fonts.fontconfig = {

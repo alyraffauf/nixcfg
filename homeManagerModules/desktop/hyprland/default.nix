@@ -128,7 +128,7 @@
       screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
       screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
 
-      qt_platform_theme = "gtk2";
+      qt_platform_theme = "qt6ct";
       gdk_scale = "1.5";
     in ''
       $framework = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
