@@ -47,30 +47,36 @@
       "x86_64-linux"
     ] (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);
 
-    packages."x86_64-linux".default = inputs.nixpkgs.legacyPackages."x86_64-linux".writeShellScriptBin "clean-install" ''
-      # Check if an argument is provided
-      if [ $# -eq 0 ]; then
-        echo "Error: Please provide a valid hostname as an argument."
-        exit 1
-      fi
+    packages =
+      inputs.nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ] (system: {
+        default = inputs.nixpkgs.legacyPackages."${system}".writeShellScriptBin "clean-install" ''
+          # Check if an argument is provided
+          if [ $# -eq 0 ]; then
+            echo "Error: Please provide a valid hostname as an argument."
+            exit 1
+          fi
 
-      HOST=$1
-      FLAKE=github:alyraffauf/nixcfg#$HOST
+          HOST=$1
+          FLAKE=github:alyraffauf/nixcfg#$HOST
 
-      echo "Warning: Running this script will wipe the currently installed system."
-      read -p "Do you want to continue? (y/n): " answer
+          echo "Warning: Running this script will wipe the currently installed system."
+          read -p "Do you want to continue? (y/n): " answer
 
-      if [ "$answer" != "y" ]; then
-        echo "Aborted."
-        exit 0
-      fi
+          if [ "$answer" != "y" ]; then
+            echo "Aborted."
+            exit 0
+          fi
 
-      sudo nix --experimental-features "nix-command flakes" run \
-          github:nix-community/disko -- --mode disko --flake $FLAKE
+          sudo nix --experimental-features "nix-command flakes" run \
+              github:nix-community/disko -- --mode disko --flake $FLAKE
 
-      # Install NixOS with the updated flake input and root settings
-      sudo nixos-install --no-root-password --root /mnt --flake $FLAKE
-    '';
+          # Install NixOS with the updated flake input and root settings
+          sudo nixos-install --no-root-password --root /mnt --flake $FLAKE
+        '';
+      });
 
     nixosModules.default =
       import ./nixosModules inputs;
