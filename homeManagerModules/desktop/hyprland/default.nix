@@ -73,7 +73,7 @@
     };
 
     wayland.windowManager.hyprland.enable = true;
-    wayland.windowManager.hyprland.package = inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprland;
+    wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
 
