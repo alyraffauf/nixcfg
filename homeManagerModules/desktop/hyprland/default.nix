@@ -76,6 +76,7 @@
     wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
+      hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
 
       # Default apps
       browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
@@ -112,11 +113,11 @@
           timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
             resume '${lib.getExe pkgs.brightnessctl} -r' \
           timeout 300 '${lock}' \
-          timeout 330 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' \
-            resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on' \
+          timeout 330 '${hyprctl} dispatch dpms off' \
+            resume '${hyprctl} dispatch dpms on' \
           ${
           if config.alyraffauf.desktop.hyprland.autoSuspend
-          then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
+          then '' timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
           else ''\''
         }
       '';
@@ -145,10 +146,10 @@
       monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
 
       # Turn off the internal display when lid is closed.
-      bindl=,switch:on:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "$framework"
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "$t440p"
-      bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "$yoga9i"
+      bindl=,switch:on:Lid Switch,exec,${hyprctl} keyword monitor "eDP-1, disable"
+      bindl=,switch:off:Lid Switch,exec,${hyprctl} keyword monitor "$framework"
+      bindl=,switch:off:Lid Switch,exec,${hyprctl} keyword monitor "$t440p"
+      bindl=,switch:off:Lid Switch,exec,${hyprctl} keyword monitor "$yoga9i"
 
       # unscale XWayland apps
       xwayland {

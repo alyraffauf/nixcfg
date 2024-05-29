@@ -80,6 +80,7 @@
 
     wayland.windowManager.sway.config = let
       modifier = "Mod4";
+      swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
 
       # Default apps
       browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
@@ -114,8 +115,8 @@
           timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
             resume '${lib.getExe pkgs.brightnessctl} -r' \
           timeout 300 '${lock}' \
-          timeout 330 '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms off"' \
-            resume '${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} "output * dpms on"' \
+          timeout 330 '${swaymsg} "output * dpms off"' \
+            resume '${swaymsg} "output * dpms on"' \
           ${
           if config.alyraffauf.desktop.sway.autoSuspend
           then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
