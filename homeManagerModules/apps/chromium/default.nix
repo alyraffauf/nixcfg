@@ -5,24 +5,27 @@
   ...
 }: {
   options = {
-    alyraffauf.apps.chromium.enable = lib.mkEnableOption "Enables Chromium.";
+    alyraffauf.apps.chromium = {
+      enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
+      package = lib.mkOption {
+        description = "Chromium-based browser (Brave by default).";
+        default = pkgs.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+        type = lib.types.package;
+      };
+    };
   };
 
   config = lib.mkIf config.alyraffauf.apps.chromium.enable {
     programs.chromium = {
       enable = true;
+      package = config.alyraffauf.apps.chromium.package;
       extensions = [
-        {id = "aomidfkchockcldhbkggjokdkkebmdll";} # Redirect Path
-        {id = "bfogiafebfohielmmehodmfbbebbbpei";} # Keeper
-        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # uBlock Origin
-        {id = "ioalpmibngobedobkmbhgmadaphocjdn";} # OneLogin
-        {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # Todoist
-        {id = "lcbjdhceifofjlpecfpeimnnphbcjgnc";} # xBrowserSync
+        {id = "enamippconapkdmgfgjchkhakpfinmaj";} # dearrow
+        {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist
+        {id = "mnjggcdmjocbbbhaepdhchncahnbgone";} # sponsorblock
         {id = "oboonakemofpalcgghocfoadofidjkkk";} # keepassxc
         {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
-        {id = "occjjkgifpmdgodlplnacmkejpdionan";} # Autoscroll
         {id = "olhelnoplefjdmncknfphenjclimckaf";} # catppuccin frappe
-        # {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
       ];
     };
   };

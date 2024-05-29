@@ -40,7 +40,7 @@ in {
       defaultApps = {
         enable = true;
         webBrowser = {
-          package = pkgs.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+          package = config.programs.chromium.package;
           desktop = "brave-browser.desktop";
         };
       };
@@ -98,18 +98,21 @@ in {
     };
     apps = {
       alacritty.enable = true;
-      firefox.enable = true;
       bash.enable = true;
+      chromium = {
+        enable = true;
+        package = pkgs.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+      };
       emacs.enable = true;
       eza.enable = true;
       fastfetch.enable = true;
+      firefox.enable = true;
       fzf.enable = true;
       neofetch.enable = true;
       neovim.enable = true;
-      tmux.enable = true;
-      chromium.enable = true;
       tauon.enable = true;
       thunderbird.enable = true;
+      tmux.enable = true;
       vsCodium.enable = true;
       webCord.enable = true;
     };
