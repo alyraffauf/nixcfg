@@ -143,10 +143,12 @@
       experimental-features = ["nix-command" "flakes"];
       substituters = [
         "https://nixcache.raffauflabs.com"
+        "https://hyprland.cachix.org"
         "https://cache.nixos.org/"
       ];
       trusted-public-keys = [
         "nixcache.raffauflabs.com:yFIuJde/izA4aUDI3MZmBLzynEsqVCT1OfCUghOLlt8="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
   };
