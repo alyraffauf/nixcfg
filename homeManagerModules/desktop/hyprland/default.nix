@@ -117,7 +117,7 @@
             resume '${hyprctl} dispatch dpms on' \
           ${
           if config.alyraffauf.desktop.hyprland.autoSuspend
-          then '' timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
+          then ''timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
           else ''\''
         }
       '';
@@ -352,6 +352,12 @@
       bind = ${modifier} SHIFT, 8, movetoworkspace, 8
       bind = ${modifier} SHIFT, 9, movetoworkspace, 9
       bind = ${modifier} SHIFT, 0, movetoworkspace, 10
+
+      # Move workspace to another output.
+      bind = ${modifier} CONTROL SHIFT, Left, movecurrentworkspacetomonitor, l
+      bind = ${modifier} CONTROL SHIFT, Down, movecurrentworkspacetomonitor, d
+      bind = ${modifier} CONTROL SHIFT, Up, movecurrentworkspacetomonitor, u
+      bind = ${modifier} CONTROL SHIFT, Right, movecurrentworkspacetomonitor, r
 
       # Scratchpad show and move
       bind = ${modifier}, S, togglespecialworkspace, magic
