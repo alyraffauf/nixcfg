@@ -11,7 +11,7 @@
 
   config = lib.mkIf config.alyraffauf.services.flatpak.enable {
     environment.systemPackages = with pkgs; [gnome.gnome-software];
-    
+
     fileSystems = let
       mkRoSymBind = path: {
         device = path;

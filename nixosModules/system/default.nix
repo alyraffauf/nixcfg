@@ -115,7 +115,7 @@
   system.autoUpgrade = {
     allowReboot = true;
     dates = "04:00";
-    randomizedDelaySec="20min";
+    randomizedDelaySec = "20min";
     enable = true;
     flake = "github:alyraffauf/nixcfg";
     operation = "boot";
