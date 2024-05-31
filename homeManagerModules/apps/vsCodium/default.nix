@@ -49,6 +49,7 @@
         vscode-extensions.justusadam.language-haskell
         vscode-extensions.ms-python.python
         vscode-extensions.ms-vscode.cpptools-extension-pack
+        vscode-extensions.oderwat.indent-rainbow
         vscode-extensions.rubymaniac.vscode-paste-and-indent
         vscode-extensions.rust-lang.rust-analyzer
         vscode-extensions.tomoki1207.pdf
