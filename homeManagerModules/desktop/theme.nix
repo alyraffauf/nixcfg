@@ -159,9 +159,12 @@
   config = lib.mkIf config.alyraffauf.desktop.theme.enable {
     home.pointerCursor = {
       gtk.enable = true;
-      x11.enable = true;
-      package = config.alyraffauf.desktop.theme.cursorTheme.package;
+      x11 = {
+        enable = true;
+        defaultCursor = config.alyraffauf.desktop.theme.cursorTheme.name;
+      };
       name = config.alyraffauf.desktop.theme.cursorTheme.name;
+      package = config.alyraffauf.desktop.theme.cursorTheme.package;
       size = config.alyraffauf.desktop.theme.cursorTheme.size;
     };
 
