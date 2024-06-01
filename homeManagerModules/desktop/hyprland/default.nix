@@ -80,35 +80,73 @@
 
       # Default apps
       browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
-      fileManager = lib.getExe pkgs.xfce.thunar;
       editor = config.alyraffauf.desktop.defaultApps.editor.exe;
+      fileManager = lib.getExe pkgs.xfce.thunar;
       terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
-
-      # Media/hardware commands
-      brightness = lib.getExe' pkgs.swayosd "swayosd-client";
-      brightness_up = "${brightness} --brightness=raise";
-      brightness_down = "${brightness} --brightness=lower";
-      volume = brightness;
-      volume_up = "${volume} --output-volume=raise";
-      volume_down = "${volume} --output-volume=lower";
-      volume_mute = "${volume} --output-volume=mute-toggle";
-      mic_mute = "${volume} --input-volume=mute-toggle";
-      media = lib.getExe pkgs.playerctl;
-      media_play = "${media} play-pause";
-      media_next = "${media} next";
-      media_prev = "${media} previous";
 
       # Hyprland desktop utilities
       bar = lib.getExe pkgs.waybar;
+      hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
       launcher = lib.getExe pkgs.fuzzel;
+      lock = lib.getExe pkgs.swaylock;
+      logout = lib.getExe pkgs.wlogout;
       notifyd = lib.getExe pkgs.mako;
       wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
-      logout = lib.getExe pkgs.wlogout;
-      lock = lib.getExe pkgs.swaylock;
+
+      screenshot = rec {
+        bin = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshot;
+        folder = "~/pics/screenshots";
+        screen = "${bin} -m output -o ${folder}";
+        region = "${bin} -m region -o ${folder}";
+      };
+
+      laptopMonitors = {
+        framework = "desc:BOE 0x095F,preferred,auto,1.6";
+        t440p = "desc:LG Display 0x0569,preferred,auto,1.2";
+        yoga9i = "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0";
+      };
+
+      gdk_scale = "1.5";
+
+      clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
+        NUM_MONITORS=$(${hyprctl} monitors all | grep Monitor | wc --lines)
+        if [ "$1" == "on" ]; then
+          if [ $NUM_MONITORS -gt 1 ]; then
+            ${hyprctl} keyword monitor "eDP-1, disable"
+          fi
+        elif [ "$1" == "off" ]; then
+          ${hyprctl} keyword monitor "${laptopMonitors.framework}"
+          ${hyprctl} keyword monitor "${laptopMonitors.t440p}"
+          ${hyprctl} keyword monitor "${laptopMonitors.yoga9i}"
+        fi
+      '';
+
+      # Media/hardware commands
+      brightness = rec {
+        bin = lib.getExe' pkgs.swayosd "swayosd-client";
+        up = "${bin} --brightness=raise";
+        down = "${bin} --brightness=lower";
+      };
+
+      volume = rec {
+        bin = lib.getExe' pkgs.swayosd "swayosd-client";
+        up = "${bin} --output-volume=raise";
+        down = "${bin} --output-volume=lower";
+        mute = "${bin} --output-volume=mute-toggle";
+        micMute = "${bin} --input-volume=mute-toggle";
+      };
+
+      media = rec {
+        bin = lib.getExe pkgs.playerctl;
+        play = "${bin} play-pause";
+        paus = "${bin} pause";
+        next = "${bin} next";
+        prev = "${bin} previous";
+      };
 
       idled = pkgs.writeShellScript "hyprland-idled" ''
         ${lib.getExe pkgs.swayidle} -w \
-          before-sleep '${media} pause' \
+          before-sleep '${media.paus}' \
           before-sleep '${lock}' \
           timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
             resume '${lib.getExe pkgs.brightnessctl} -r' \
@@ -121,35 +159,19 @@
           else ''\''
         }
       '';
-
-      hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
-
-      screenshot = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshot;
-      screenshot_folder = "~/pics/screenshots";
-      screenshot_screen = "${screenshot} -m output -o ${screenshot_folder}";
-      screenshot_region = "${screenshot} -m region -o ${screenshot_folder}";
-
-      qt_platform_theme = "qt6ct";
-      gdk_scale = "1.5";
     in ''
-      $framework = desc:BOE 0x095F,preferred,auto,1.6 # lavaridge/fallarbor fw13 glossy display
-      $t440p = desc:LG Display 0x0569,preferred,auto,1.2 # rustboro
-      $yoga9i = desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0 # petalburg
-
       monitor = ,preferred,auto,auto
-      monitor = $framework
-      monitor = $t440p
-      monitor = $yoga9i
+      monitor = ${laptopMonitors.framework}
+      monitor = ${laptopMonitors.t440p}
+      monitor = ${laptopMonitors.yoga9i}
       monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6 # workshop
       monitor = desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto
       monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
       monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
 
       # Turn off the internal display when lid is closed.
-      bindl=,switch:on:Lid Switch,exec,${hyprctl} keyword monitor "eDP-1, disable"
-      bindl=,switch:off:Lid Switch,exec,${hyprctl} keyword monitor "$framework"
-      bindl=,switch:off:Lid Switch,exec,${hyprctl} keyword monitor "$t440p"
-      bindl=,switch:off:Lid Switch,exec,${hyprctl} keyword monitor "$yoga9i"
+      bindl=,switch:on:Lid Switch,exec,${clamshell} on
+      bindl=,switch:off:Lid Switch,exec,${clamshell} off
 
       # unscale XWayland apps
       xwayland {
@@ -161,7 +183,7 @@
 
       # Some default env vars.
       env = XCURSOR_SIZE,${toString config.alyraffauf.desktop.theme.cursorTheme.size}
-      env = QT_QPA_PLATFORMTHEME,${qt_platform_theme}
+      env = QT_QPA_PLATFORMTHEME,qt6ct
 
       # Execute necessary apps
       ${
@@ -372,23 +394,23 @@
       bindm = ${modifier}, mouse:273, resizewindow
 
       # Display, volume, microphone, and media keys.
-      bindle = , xf86monbrightnessup, exec, ${brightness_up}
-      bindle = , xf86monbrightnessdown, exec, ${brightness_down}
-      bindle = , xf86audioraisevolume, exec, ${volume_up};
-      bindle = , xf86audiolowervolume, exec, ${volume_down};
-      bindl = , xf86audiomute, exec, ${volume_mute}
-      bindl = , xf86audiomicmute, exec, ${mic_mute}
-      bindl = , xf86audioplay, exec, ${media_play}
-      bindl = , xf86audioprev, exec, ${media_prev}
-      bindl = , xf86audionext, exec, ${media_next}
+      bindle = , xf86monbrightnessup, exec, ${brightness.up}
+      bindle = , xf86monbrightnessdown, exec, ${brightness.down}
+      bindle = , xf86audioraisevolume, exec, ${volume.up};
+      bindle = , xf86audiolowervolume, exec, ${volume.down};
+      bindl = , xf86audiomute, exec, ${volume.mute}
+      bindl = , xf86audiomicmute, exec, ${volume.micMute}
+      bindl = , xf86audioplay, exec, ${media.play}
+      bindl = , xf86audioprev, exec, ${media.prev}
+      bindl = , xf86audionext, exec, ${media.next}
 
       # Extra bindings for petalburg.
       bind = , xf86launch4, exec, pp-adjuster
-      bind = , xf86launch2, exec, ${media_play}
+      bind = , xf86launch2, exec, ${media.play}
 
       # Screenshot with hyprshot.
-      bind = , PRINT, exec, ${screenshot_screen}
-      bind = ${modifier}, PRINT, exec, ${screenshot_region}
+      bind = , PRINT, exec, ${screenshot.screen}
+      bind = ${modifier}, PRINT, exec, ${screenshot.region}
 
       # Show/hide waybar.
       bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
