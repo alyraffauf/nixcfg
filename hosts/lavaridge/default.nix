@@ -52,7 +52,8 @@
         };
       };
       hyprland.enable = true;
-      sway.enable = false;
+      sway.enable = true;
+
     };
     apps = {
       steam.enable = true;

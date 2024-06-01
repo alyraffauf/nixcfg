@@ -16,7 +16,6 @@
             enable = true;
             preset = "framework13";
           };
-          desktop.sway.enable = lib.mkForce false;
         };
       }
     ];
