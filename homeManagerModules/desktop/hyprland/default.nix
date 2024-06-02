@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  osConfig,
   inputs,
   ...
 }: {
@@ -74,19 +73,23 @@
     wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
-      hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
-
-      # Default apps
-      browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
-      editor = config.alyraffauf.desktop.defaultApps.editor.exe;
-      fileManager = lib.getExe pkgs.xfce.thunar;
-      terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
 
       # Hyprland desktop utilities
       hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
-      launcher = lib.getExe pkgs.fuzzel;
-      lock = lib.getExe pkgs.swaylock;
-      logout = lib.getExe pkgs.wlogout;
+      hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+
+      # Default apps
+      defaultApps = {
+        browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
+        editor = config.alyraffauf.desktop.defaultApps.editor.exe;
+        fileManager = lib.getExe pkgs.xfce.thunar;
+        launcher = lib.getExe pkgs.fuzzel;
+        lock = lib.getExe pkgs.swaylock;
+        logout = lib.getExe pkgs.wlogout;
+        terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
+        virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
+      };
+
       wallpaperd =
         if config.alyraffauf.desktop.hyprland.randomWallpaper
         then
@@ -122,7 +125,7 @@
         [
           wallpaperd
           (lib.getExe pkgs.waybar)
-          "${fileManager} --daemon"
+          "${defaultApps.fileManager} --daemon"
           idled
           (lib.getExe' pkgs.blueman "blueman-applet")
           (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
@@ -141,7 +144,7 @@
         )
         ++ (
           if config.alyraffauf.desktop.hyprland.tabletMode.virtKeyboard
-          then [(lib.getExe' pkgs.squeekboard "squeekboard")]
+          then [(defaultApps.virtKeyboard)]
           else []
         );
 
@@ -179,7 +182,7 @@
           ${
           lib.strings.concatStringsSep "\n"
           (
-            lib.attrsets.mapAttrsToList (name: value: ''${hyprctl} keyword monitor "${value}"'')
+            lib.attrsets.mapAttrsToList (name: monitor: ''${hyprctl} keyword monitor "${monitor}"'')
             laptopMonitors
           )
         }
@@ -212,10 +215,10 @@
       idled = pkgs.writeShellScript "hyprland-idled" ''
         ${lib.getExe pkgs.swayidle} -w \
           before-sleep '${media.paus}' \
-          before-sleep '${lock}' \
+          before-sleep '${defaultApps.lock}' \
           timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
             resume '${lib.getExe pkgs.brightnessctl} -r' \
-          timeout 300 '${lock}' \
+          timeout 300 '${defaultApps.lock}' \
           timeout 330 '${hyprctl} dispatch dpms off' \
             resume '${hyprctl} dispatch dpms on' \
           ${
@@ -333,9 +336,7 @@
       }
 
       dwindle {
-        # no_gaps_when_only = 1
-        preserve_split = yes # you probably want this
-        pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = yes
       }
 
       master {
@@ -378,16 +379,16 @@
       windowrulev2 = suppressevent maximize, class:.*
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = ${modifier}, B, exec, ${browser}
-      bind = ${modifier}, E, exec, ${editor}
-      bind = ${modifier}, F, exec, ${fileManager}
-      bind = ${modifier}, R, exec, ${launcher}
-      bind = ${modifier}, T, exec, ${terminal}
+      bind = ${modifier}, B, exec, ${defaultApps.browser}
+      bind = ${modifier}, E, exec, ${defaultApps.editor}
+      bind = ${modifier}, F, exec, ${defaultApps.fileManager}
+      bind = ${modifier}, R, exec, ${defaultApps.launcher}
+      bind = ${modifier}, T, exec, ${defaultApps.terminal}
 
       # Manage session.
       bind = ${modifier}, C, killactive,
-      bind = ${modifier} CONTROL, L, exec, ${lock}
-      bind = ${modifier}, M, exec, ${logout}
+      bind = ${modifier} CONTROL, L, exec, ${defaultApps.lock}
+      bind = ${modifier}, M, exec, ${defaultApps.logout}
 
       # Basic window management.
       bind = ${modifier} SHIFT, W, fullscreen
