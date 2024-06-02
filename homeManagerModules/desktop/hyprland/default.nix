@@ -6,8 +6,6 @@
   inputs,
   ...
 }: {
-  imports = [./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
-
   options = {
     alyraffauf.desktop.hyprland = {
       enable =
@@ -85,25 +83,88 @@
       terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
 
       # Hyprland desktop utilities
-      bar = lib.getExe pkgs.waybar;
       hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
       launcher = lib.getExe pkgs.fuzzel;
       lock = lib.getExe pkgs.swaylock;
       logout = lib.getExe pkgs.wlogout;
-      notifyd = lib.getExe pkgs.mako;
-      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
+      wallpaperd =
+        if config.alyraffauf.desktop.hyprland.randomWallpaper
+        then
+          pkgs.writeShellScript "hyprland-randomWallpaper" ''
+            OLD_PIDS=()
+            directory=${config.home.homeDirectory}/.local/share/backgrounds
+
+            if [ -d "$directory" ]; then
+                while true; do
+                  NEW_PIDS=()
+                  monitor=`${config.wayland.windowManager.hyprland.package}/bin/hyprctl monitors | grep Monitor | awk '{print $2}'`
+                  for m in ''${monitor[@]}; do
+                    random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
+                    ${lib.getExe pkgs.swaybg} -o $m -i $random_background &
+                    NEW_PIDS+=($!)
+                  done
+
+                  if [ ''${OLD_PIDS[@]} -gt 0 ]; then
+                    sleep 5
+                    for pid in ''${OLD_PIDS[@]}; do
+                      kill $pid
+                    done
+                  fi
+
+                  OLD_PIDS=$NEW_PIDS
+                  sleep 895
+                done
+            fi
+          ''
+        else "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
+
+      startupApps =
+        [
+          wallpaperd
+          (lib.getExe pkgs.waybar)
+          "${fileManager} --daemon"
+          idled
+          (lib.getExe' pkgs.blueman "blueman-applet")
+          (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
+          (lib.getExe' pkgs.playerctl "playerctld")
+          (lib.getExe' pkgs.swayosd "swayosd-server")
+          (lib.getExe pkgs.mako)
+          "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
+        ]
+        ++ (
+          if config.alyraffauf.desktop.hyprland.redShift
+          then [
+            "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/agent"
+            (lib.getExe pkgs.gammastep)
+          ]
+          else []
+        )
+        ++ (
+          if config.alyraffauf.desktop.hyprland.tabletMode.virtKeyboard
+          then [(lib.getExe' pkgs.squeekboard "squeekboard")]
+          else []
+        );
 
       screenshot = rec {
         bin = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshot;
-        folder = "~/pics/screenshots";
+        folder = "${config.xdg.userDirs.pictures}/screenshots";
         screen = "${bin} -m output -o ${folder}";
         region = "${bin} -m region -o ${folder}";
       };
+
+      defaultWorkspaces = [1 2 3 4 5 6 7 8 9];
 
       laptopMonitors = {
         framework = "desc:BOE 0x095F,preferred,auto,1.6";
         t440p = "desc:LG Display 0x0569,preferred,auto,1.2";
         yoga9i = "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0";
+      };
+
+      externalMonitors = {
+        homeOffice0 = "desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2";
+        homeOffice1 = "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto";
+        workShop = "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6";
+        weWork = "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto";
       };
 
       gdk_scale = "1.5";
@@ -115,9 +176,13 @@
             ${hyprctl} keyword monitor "eDP-1, disable"
           fi
         elif [ "$1" == "off" ]; then
-          ${hyprctl} keyword monitor "${laptopMonitors.framework}"
-          ${hyprctl} keyword monitor "${laptopMonitors.t440p}"
-          ${hyprctl} keyword monitor "${laptopMonitors.yoga9i}"
+          ${
+          lib.strings.concatStringsSep "\n"
+          (
+            lib.attrsets.mapAttrsToList (name: value: ''${hyprctl} keyword monitor "${value}"'')
+            laptopMonitors
+          )
+        }
         fi
       '';
 
@@ -160,18 +225,22 @@
         }
       '';
     in ''
+      ${
+        lib.strings.concatStringsSep "\n"
+        (
+          lib.attrsets.mapAttrsToList (name: value: "monitor = ${value}")
+          (laptopMonitors // externalMonitors)
+        )
+      }
       monitor = ,preferred,auto,auto
-      monitor = ${laptopMonitors.framework}
-      monitor = ${laptopMonitors.t440p}
-      monitor = ${laptopMonitors.yoga9i}
-      monitor = desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6 # workshop
-      monitor = desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto
-      monitor = desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto
-      monitor = desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2 # mauville
 
       # Turn off the internal display when lid is closed.
       bindl=,switch:on:Lid Switch,exec,${clamshell} on
       bindl=,switch:off:Lid Switch,exec,${clamshell} off
+
+      # Enable virtual keyboard in tablet mode
+      bindl=,switch:on:Lenovo Yoga Tablet Mode Control switch,exec,${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled true
+      bindl=,switch:off:Lenovo Yoga Tablet Mode Control switch,exec,${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled false
 
       # unscale XWayland apps
       xwayland {
@@ -187,132 +256,125 @@
 
       # Execute necessary apps
       ${
-        if config.alyraffauf.desktop.hyprland.randomWallpaper
-        then ""
-        else "exec-once = ${wallpaperd}"
+        lib.strings.concatMapStringsSep
+        "\n"
+        (x: "exec-once = ${x}")
+        startupApps
       }
-      exec-once = ${bar}
-      exec-once = ${fileManager} --daemon
-      exec-once = ${idled}
-      exec-once = ${lib.getExe' pkgs.blueman "blueman-applet"}
-      exec-once = ${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}
-      exec-once = ${lib.getExe' pkgs.playerctl "playerctld"}
-      exec-once = ${lib.getExe' pkgs.swayosd "swayosd-server"}
-      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store
-      exec-once = ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store
-      exec-once = ${notifyd}
-      exec-once = ${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {
-          kb_layout = us
-          kb_variant = altgr-intl
-          follow_mouse = 1
-          sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
-          touchpad {
-              clickfinger_behavior = true
-              drag_lock = true
-              middle_button_emulation = true
-              natural_scroll = yes
-              tap-to-click = true
-          }
+        kb_layout = us
+        kb_variant = altgr-intl
+        follow_mouse = 1
+        sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
+        touchpad {
+          clickfinger_behavior = true
+          drag_lock = true
+          middle_button_emulation = true
+          natural_scroll = yes
+          tap-to-click = true
+        }
       }
 
       gestures {
-          workspace_swipe = true
-          workspace_swipe_touch = true
+        workspace_swipe = true
+        workspace_swipe_touch = true
       }
 
       general {
-          gaps_in = 5
-          gaps_out = 6
-          border_size = 2
-          col.active_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.primary}EE) 45deg
-          col.inactive_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.inactive}AA)
+        gaps_in = 5
+        gaps_out = 6
+        border_size = 2
+        col.active_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.primary}EE) 45deg
+        col.inactive_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.inactive}AA)
 
-          layout = dwindle
+        layout = dwindle
 
-          allow_tearing = false
+        allow_tearing = false
       }
 
       decoration {
-          rounding = 10
-          blur {
-              enabled = true
-              size = 8
-              passes = 1
-          }
-          drop_shadow = yes
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.shadow}EE)
+        rounding = 10
+        blur {
+          enabled = true
+          size = 8
+          passes = 1
+        }
+        drop_shadow = yes
+        shadow_range = 4
+        shadow_render_power = 3
+        col.shadow = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.shadow}EE)
 
-          dim_special = 0.5
+        dim_special = 0.5
 
-          # Window-specific rules
-          layerrule = blur, waybar
-          layerrule = ignorezero, waybar
-          layerrule = blur, launcher
-          layerrule = blur, notifications
-          layerrule = ignorezero, notifications
-          layerrule = blur, logout_dialog
-          layerrule = blur, swayosd
-          layerrule = ignorezero, swayosd
+        # Window-specific rules
+        layerrule = blur, waybar
+        layerrule = ignorezero, waybar
+        layerrule = blur, launcher
+        layerrule = blur, notifications
+        layerrule = ignorezero, notifications
+        layerrule = blur, logout_dialog
+        layerrule = blur, swayosd
+        layerrule = ignorezero, swayosd
       }
 
       animations {
-          enabled = yes
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+        enabled = yes
+        bezier = myBezier, 0.05, 0.9, 0.1, 1.05
 
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
-          animation = fade, 1, 7, default
-          animation = specialWorkspace, 1, 6, default, slidevert
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = workspaces, 1, 6, default
+        animation = border, 1, 10, default
+        animation = borderangle, 1, 8, default
+        animation = fade, 1, 7, default
+        animation = specialWorkspace, 1, 6, default, slidevert
+        animation = windows, 1, 7, myBezier
+        animation = windowsOut, 1, 7, default, popin 80%
+        animation = workspaces, 1, 6, default
       }
 
       dwindle {
-          # no_gaps_when_only = 1
-          preserve_split = yes # you probably want this
-          pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        # no_gaps_when_only = 1
+        preserve_split = yes # you probably want this
+        pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       }
 
       master {
-          always_center_master = true
-          new_is_master = false
+        always_center_master = true
+        new_is_master = false
       }
 
       misc {
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-          focus_on_activate = true
-          vfr = true
+        disable_hyprland_logo = true
+        disable_splash_rendering = true
+        focus_on_activate = true
+        vfr = true
       }
 
       # Window Rules
-      windowrulev2 = center(1),class:(.blueman-manager-wrapped)
-      windowrulev2 = center(1),class:(blueberry.py)
-      windowrulev2 = center(1),class:(com.github.wwmm.easyeffects)
-      windowrulev2 = center(1),class:(nmtui)
+      ${
+        lib.strings.concatMapStringsSep
+        "\n"
+        (x: ''
+          windowrulev2 = center(1),class:(${x})
+          windowrulev2 = float,class:(${x})
+          windowrulev2 = size 40% 60%,class:(${x}})
+        '')
+        [
+          ".blueman-manager-wrapped"
+          "blueberry.py"
+          "com.github.wwmm.easyeffects"
+          "pavucontrol"
+        ]
+      }
+
       windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
-      windowrulev2 = center(1),class:(pavucontrol)
-      windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
-      windowrulev2 = float,class:(.blueman-manager-wrapped)
-      windowrulev2 = float,class:(blueberry.py)
-      windowrulev2 = float,class:(com.github.wwmm.easyeffects)
-      windowrulev2 = float,class:(nmtui)
       windowrulev2 = float,class:(org.keepassxc.KeePassXC)
-      windowrulev2 = float,class:(pavucontrol)
+      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
+
+      windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
       windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
-      windowrulev2 = size 40% 60%,class:(.blueman-manager-wrapped)
-      windowrulev2 = size 40% 60%,class:(blueberry.py)
-      windowrulev2 = size 40% 60%,class:(com.github.wwmm.easyeffects)
-      windowrulev2 = size 40% 60%,class:(nmtui)
-      windowrulev2 = size 40% 60%,class:(pavucontrol)
-      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
+
       windowrulev2 = suppressevent maximize, class:.*
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
@@ -351,29 +413,21 @@
       bind = ${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move
       bind = ${modifier} SHIFT, period, exec, ${hyprnome} --move
 
-      # Switch workspaces with mainMod + [0-9]
-      bind = ${modifier}, 1, workspace, 1
-      bind = ${modifier}, 2, workspace, 2
-      bind = ${modifier}, 3, workspace, 3
-      bind = ${modifier}, 4, workspace, 4
-      bind = ${modifier}, 5, workspace, 5
-      bind = ${modifier}, 6, workspace, 6
-      bind = ${modifier}, 7, workspace, 7
-      bind = ${modifier}, 8, workspace, 8
-      bind = ${modifier}, 9, workspace, 9
-      bind = ${modifier}, 0, workspace, 10
+      # Switch workspaces with mainMod + [1-9]
+      ${
+        lib.strings.concatMapStringsSep
+        "\n"
+        (x: "bind = ${modifier}, ${toString x}, workspace, ${toString x}")
+        defaultWorkspaces
+      }
 
-      # Move active window to a workspace with mainMod + SHIFT + [0-9]
-      bind = ${modifier} SHIFT, 1, movetoworkspace, 1
-      bind = ${modifier} SHIFT, 2, movetoworkspace, 2
-      bind = ${modifier} SHIFT, 3, movetoworkspace, 3
-      bind = ${modifier} SHIFT, 4, movetoworkspace, 4
-      bind = ${modifier} SHIFT, 5, movetoworkspace, 5
-      bind = ${modifier} SHIFT, 6, movetoworkspace, 6
-      bind = ${modifier} SHIFT, 7, movetoworkspace, 7
-      bind = ${modifier} SHIFT, 8, movetoworkspace, 8
-      bind = ${modifier} SHIFT, 9, movetoworkspace, 9
-      bind = ${modifier} SHIFT, 0, movetoworkspace, 10
+      # Move active window to a workspace with mainMod + SHIFT + [1-9]
+      ${
+        lib.strings.concatMapStringsSep
+        "\n"
+        (x: "bind = ${modifier} SHIFT, ${toString x}, movetoworkspace, ${toString x}")
+        defaultWorkspaces
+      }
 
       # Move workspace to another output.
       bind = ${modifier} CONTROL SHIFT, Left, movecurrentworkspacetomonitor, l
@@ -431,17 +485,13 @@
       bind = , right, movewindow, r
       bind = , up, movewindow, u
       bind = , down, movewindow, d
-      # Move active window to a workspace with [0-9]
-      bind = , 1, movetoworkspace, 1
-      bind = , 2, movetoworkspace, 2
-      bind = , 3, movetoworkspace, 3
-      bind = , 4, movetoworkspace, 4
-      bind = , 5, movetoworkspace, 5
-      bind = , 6, movetoworkspace, 6
-      bind = , 7, movetoworkspace, 7
-      bind = , 8, movetoworkspace, 8
-      bind = , 9, movetoworkspace, 9
-      bind = , 0, movetoworkspace, 10
+      # Move active window to a workspace with [1-9]
+      ${
+        lib.strings.concatMapStringsSep
+        "\n"
+        (x: "bind = , ${toString x}, movetoworkspace, ${toString x}")
+        defaultWorkspaces
+      }
       # hyprnome
       bind = , comma, exec, ${hyprnome} --previous --move
       bind = , period, exec, ${hyprnome} --move
