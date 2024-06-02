@@ -61,7 +61,7 @@
               type = "staggered";
               params = {
                 cleanInterval = "3600";
-                maxAge = "365";
+                maxAge = "1";
               };
             };
           };
@@ -70,7 +70,7 @@
             path = "/home/${config.alyraffauf.services.syncthing.user}/pics/camera";
             devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wattson" "winona"];
             versioning = {
-              params.cleanoutDays = "15";
+              params.cleanoutDays = "5";
               type = "trashcan";
             };
           };
