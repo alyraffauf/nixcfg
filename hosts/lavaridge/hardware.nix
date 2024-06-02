@@ -17,7 +17,7 @@
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd" "amd-gpu"];
-  boot.kernelParams = ["amdgpu.abmlevel=0"];
+  boot.kernelParams = ["amdgpu.abmlevel=0"]; # Disable AMD display management.
   boot.extraModulePackages = [];
 
   hardware.opengl = {
@@ -30,7 +30,10 @@
     extraPackages32 = [pkgs.driversi686Linux.amdvlk];
   };
 
-  services.xserver.videoDrivers = ["amdgpu"];
+  services = {
+    btrfs.autoScrub.enable = true;
+    xserver.videoDrivers = ["amdgpu"];
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

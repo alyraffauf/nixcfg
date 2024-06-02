@@ -30,6 +30,8 @@
   # Otherwise, CPU doesn't automatically clock down.
   powerManagement.cpuFreqGovernor = "ondemand";
 
+  services.btrfs.autoScrub.enable = true;
+
   # Intel drivers with accelerated video playback support.
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver =
