@@ -25,7 +25,6 @@
         defaultApps.enable = lib.mkDefault true;
       };
     };
-    services.cliphist.enable = lib.mkDefault true;
 
     dconf = {
       enable = true;

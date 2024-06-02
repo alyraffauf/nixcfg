@@ -343,8 +343,6 @@
             then "true"
             else "${wallpaperd}";
         }
-        {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store'';}
-        {command = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store'';}
         {command = "${fileManager} --daemon";}
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = "${idled}";}
