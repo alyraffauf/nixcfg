@@ -27,8 +27,9 @@ in {
 
   alyraffauf = {
     apps = {
-      steam.enable = true;
+      nicotine-plus.enable = true;
       podman.enable = true;
+      steam.enable = true;
       virt-manager.enable = true;
     };
     containers = {
