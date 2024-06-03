@@ -44,6 +44,13 @@
             tweaks = ["normal"];
           };
         };
+        qt = {
+          name = "Catppuccin-Frappe-Mauve";
+          package = pkgs.catppuccin-kvantum.override {
+            accent = "Mauve";
+            variant = "Frappe";
+          };
+        };
         iconTheme = {
           name = "Papirus-Dark";
           package = pkgs.catppuccin-papirus-folders.override {
