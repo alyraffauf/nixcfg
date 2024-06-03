@@ -40,19 +40,20 @@
         "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       };
 
-      extensions = with pkgs; [
-        vscode-extensions.catppuccin.catppuccin-vsc
-        vscode-extensions.catppuccin.catppuccin-vsc-icons
-        vscode-extensions.github.vscode-github-actions
-        vscode-extensions.github.vscode-pull-request-github
-        vscode-extensions.jnoortheen.nix-ide
-        vscode-extensions.justusadam.language-haskell
-        vscode-extensions.ms-python.python
-        vscode-extensions.ms-vscode.cpptools-extension-pack
-        vscode-extensions.oderwat.indent-rainbow
-        vscode-extensions.rubymaniac.vscode-paste-and-indent
-        vscode-extensions.rust-lang.rust-analyzer
-        vscode-extensions.tomoki1207.pdf
+      extensions = with pkgs.vscode-extensions; [
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
+        coolbear.systemd-unit-file
+        github.vscode-github-actions
+        github.vscode-pull-request-github
+        jnoortheen.nix-ide
+        justusadam.language-haskell
+        ms-python.python
+        ms-vscode.cpptools-extension-pack
+        oderwat.indent-rainbow
+        rubymaniac.vscode-paste-and-indent
+        rust-lang.rust-analyzer
+        tomoki1207.pdf
       ];
     };
   };
