@@ -31,6 +31,7 @@ in {
     trayscale
     unstable.obsidian
     unstable.zoom-us
+    webcord
     wget
   ];
 
@@ -118,10 +119,8 @@ in {
       neofetch.enable = true;
       neovim.enable = true;
       tauon.enable = true;
-      thunderbird.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
-      webCord.enable = true;
     };
     scripts = {
       pp-adjuster.enable = true;

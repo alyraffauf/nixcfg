@@ -19,6 +19,7 @@
     plexamp
     vlc
     xfce.xfce4-taskmanager
+    webcord
     zoom-us
   ];
 
@@ -93,7 +94,6 @@
       firefox.enable = true;
       fzf.enable = true;
       vsCodium.enable = true;
-      webCord.enable = true;
     };
   };
 }

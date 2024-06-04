@@ -14,7 +14,6 @@
     ./firefox
     ./fuzzel
     ./fzf
-    ./kanshi
     ./librewolf
     ./mako
     ./neofetch
@@ -22,11 +21,9 @@
     ./swaylock
     ./tauon
     ./thunar
-    ./thunderbird
     ./tmux
     ./vsCodium
     ./waybar
-    ./webCord
     ./wlogout
   ];
 }
