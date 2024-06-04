@@ -5,7 +5,7 @@
   inputs,
   ...
 }: {
-  imports = [./autoRotate.nix ./randomWallpaper.nix ./redShift.nix ./virtKeyboard.nix];
+  imports = [./randomWallpaper.nix ./redShift.nix];
 
   options = {
     alyraffauf.desktop.sway = {
@@ -26,24 +26,6 @@
         default = config.alyraffauf.desktop.sway.enable;
         type = lib.types.bool;
       };
-      tabletMode = {
-        enable = lib.mkEnableOption "Tablet mode for sway.";
-        autoRotate = lib.mkOption {
-          description = "Whether to autorotate screen.";
-          default = config.alyraffauf.desktop.sway.tabletMode.enable;
-          type = lib.types.bool;
-        };
-        menuButton = lib.mkOption {
-          description = "Whether to add menu button for waybar.";
-          default = config.alyraffauf.desktop.sway.tabletMode.enable;
-          type = lib.types.bool;
-        };
-        virtKeyboard = lib.mkOption {
-          description = "Whether to enable dynamic virtual keyboard.";
-          default = config.alyraffauf.desktop.sway.tabletMode.enable;
-          type = lib.types.bool;
-        };
-      };
     };
   };
 
@@ -57,19 +39,13 @@
     programs.waybar = {
       settings = {
         mainBar = {
-          modules-left =
-            if config.alyraffauf.desktop.sway.tabletMode.menuButton
-            then ["custom/menu" "custom/sway-close" "sway/workspaces" "sway/scratchpad" "sway/mode"]
-            else ["sway/workspaces" "sway/scratchpad" "sway/mode"];
+          modules-left = ["sway/workspaces" "sway/scratchpad" "sway/mode"];
         };
       };
     };
 
     wayland.windowManager.sway.enable = true;
-    wayland.windowManager.sway.package =
-      if config.alyraffauf.desktop.sway.tabletMode.enable
-      then pkgs.sway
-      else pkgs.swayfx;
+    wayland.windowManager.sway.package = pkgs.swayfx;
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
     wayland.windowManager.sway.checkConfig = false;
 
