@@ -4,12 +4,7 @@
   pkgs,
   lib,
   ...
-}: let
-  unstable = import inputs.nixpkgsUnstable {
-    system = pkgs.system;
-    config.allowUnfree = true;
-  };
-in {
+}: {
   imports = [./homeManagerModules];
   home.username = "aly";
   home.homeDirectory = "/home/aly";
@@ -17,20 +12,20 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    google-chrome
     browsh
     curl
     fractal
     gh
     git
     gnome.file-roller
+    google-chrome
     keepassxc
+    obsidian
     plexamp
     python3
     ruby
     tauon
     trayscale
-    obsidian
     webcord
     wget
   ];
@@ -171,7 +166,7 @@ in {
     # # Scratchpad Notes
     # bind = SUPER, N, togglespecialworkspace, notes
     # bind = SUPER SHIFT, N, movetoworkspace, special:notes
-    # workspace = special:notes, on-created-empty:${lib.getExe' unstable.obsidian "obsidian"}
+    # workspace = special:notes, on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}
     # windowrulev2 = workspace special:notes,class:(obsidian)
 
     # # Scratchpad Music
