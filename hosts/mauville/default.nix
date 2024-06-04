@@ -48,7 +48,11 @@ in {
       enable = true;
       greetd = {
         enable = true;
-        session = config.programs.sway.package + "/bin/sway";
+        session = lib.getExe config.programs.hyprland.package;
+        autologin = {
+          enable = true;
+          user = "aly";
+        };
       };
       hyprland.enable = true;
       sway.enable = true;
