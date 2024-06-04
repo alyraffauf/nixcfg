@@ -141,11 +141,6 @@
             (lib.getExe pkgs.gammastep)
           ]
           else []
-        )
-        ++ (
-          if config.alyraffauf.desktop.hyprland.tabletMode.virtKeyboard
-          then [(defaultApps.virtKeyboard)]
-          else []
         );
 
       screenshot = rec {
@@ -186,6 +181,19 @@
             laptopMonitors
           )
         }
+        fi
+      '';
+
+      tablet = pkgs.writeShellScript "hyprland-tablet" ''
+        STATE=`${lib.getExe pkgs.dconf} read /org/gnome/desktop/a11y/applications/screen-keyboard-enabled`
+
+        if [ $STATE -z ] || [ $STATE == "false" ]; then
+          if ! [ `pgrep -f ${defaultApps.virtKeyboard}` ]; then
+            ${defaultApps.virtKeyboard} &
+          fi
+          ${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled true
+        elif [ $STATE == "true" ]; then
+          ${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled false
         fi
       '';
 
@@ -242,8 +250,7 @@
       bindl=,switch:off:Lid Switch,exec,${clamshell} off
 
       # Enable virtual keyboard in tablet mode
-      bindl=,switch:on:Lenovo Yoga Tablet Mode Control switch,exec,${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled true
-      bindl=,switch:off:Lenovo Yoga Tablet Mode Control switch,exec,${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled false
+      bindl=,switch:Lenovo Yoga Tablet Mode Control switch,exec,${tablet}
 
       # unscale XWayland apps
       xwayland {
