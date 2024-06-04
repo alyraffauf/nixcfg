@@ -16,12 +16,7 @@
         };
         package = lib.mkOption {
           description = "GTK theme package.";
-          default = pkgs.catppuccin-gtk.override {
-            accents = ["mauve"];
-            size = "compact";
-            variant = "frappe";
-            tweaks = ["normal"];
-          };
+          default = pkgs.catppuccin-gtk;
           type = lib.types.package;
         };
         hideTitleBar = lib.mkOption {
@@ -38,10 +33,7 @@
         };
         package = lib.mkOption {
           description = "Qt Kvantum theme package.";
-          default = pkgs.catppuccin-kvantum.override {
-            accent = "Mauve";
-            variant = "Frappe";
-          };
+          default = pkgs.catppuccin-kvantum;
           type = lib.types.package;
         };
       };
@@ -53,10 +45,7 @@
         };
         package = lib.mkOption {
           description = "Icon theme package.";
-          default = pkgs.catppuccin-papirus-folders.override {
-            flavor = "frappe";
-            accent = "mauve";
-          };
+          default = pkgs.catppuccin-papirus-folders;
           type = lib.types.package;
         };
       };
@@ -90,7 +79,7 @@
         };
         package = lib.mkOption {
           description = "Font package.";
-          default = pkgs.nerdfonts.override {fonts = ["Noto"];};
+          default = pkgs.nerdfonts;
           type = lib.types.package;
         };
       };
@@ -107,7 +96,7 @@
         };
         package = lib.mkOption {
           description = "Font package.";
-          default = pkgs.nerdfonts.override {fonts = ["Noto"];};
+          default = pkgs.nerdfonts;
           type = lib.types.package;
         };
       };

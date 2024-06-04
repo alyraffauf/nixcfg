@@ -16,11 +16,9 @@
       initrd.verbose = false;
       plymouth = {
         enable = true;
-        themePackages = [(pkgs.catppuccin-plymouth.override {variant = "frappe";})];
+        themePackages = [pkgs.catppuccin-plymouth];
         theme = "catppuccin-frappe";
-        font = "${pkgs.nerdfonts.override {
-          fonts = ["Noto"];
-        }}/share/fonts/truetype/NerdFonts/NotoSansNerdFont-Regular.ttf";
+        font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/NotoSansNerdFont-Regular.ttf";
       };
     };
   };

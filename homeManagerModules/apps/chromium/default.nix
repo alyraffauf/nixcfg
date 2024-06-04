@@ -9,7 +9,7 @@
       enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
       package = lib.mkOption {
         description = "Chromium-based browser (Brave by default).";
-        default = pkgs.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+        default = pkgs.brave;
         type = lib.types.package;
       };
     };

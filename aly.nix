@@ -17,7 +17,7 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    (pkgs.google-chrome.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";})
+    google-chrome
     browsh
     curl
     fractal
@@ -30,8 +30,7 @@ in {
     ruby
     tauon
     trayscale
-    unstable.obsidian
-    unstable.zoom-us
+    obsidian
     webcord
     wget
   ];
@@ -109,7 +108,7 @@ in {
       bash.enable = true;
       chromium = {
         enable = true;
-        package = pkgs.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+        package = pkgs.brave;
       };
       emacs.enable = true;
       eza.enable = true;

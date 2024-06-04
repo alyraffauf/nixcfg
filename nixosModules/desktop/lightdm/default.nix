@@ -22,29 +22,22 @@
         enable = true;
         theme = {
           name = "Catppuccin-Frappe-Compact-Mauve-Dark";
-          package = pkgs.catppuccin-gtk.override {
-            accents = ["mauve"];
-            size = "compact";
-            variant = "frappe";
-            tweaks = ["normal"];
-          };
+          package = pkgs.catppuccin-gtk;
         };
 
         iconTheme = {
           name = "Papirus-Dark";
-          package = pkgs.catppuccin-papirus-folders.override {
-            flavor = "frappe";
-            accent = "mauve";
-          };
+          package = pkgs.catppuccin-papirus-folders;
         };
 
         font = {
           name = "NotoSans Nerd Font Regular";
-          package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+          package = pkgs.nerdfonts;
         };
 
         cursorTheme = {
           name = "Catppuccin-Frappe-Dark-Cursors";
+          package = pkgs.catppuccin-cursors.frappeDark;
           size = 24;
         };
 

@@ -1,8 +1,7 @@
 {
-  inputs,
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   options = {
@@ -16,7 +15,7 @@
     programs = {
       hyprland = {
         enable = true;
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        package = pkgs.hyprland;
       };
     };
   };

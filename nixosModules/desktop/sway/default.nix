@@ -16,7 +16,7 @@
     programs = {
       sway = {
         enable = true;
-        package = inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".swayfx;
+        package = pkgs.swayfx;
       };
     };
   };

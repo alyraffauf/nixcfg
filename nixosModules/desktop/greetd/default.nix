@@ -1,8 +1,7 @@
 {
-  inputs,
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   options = {

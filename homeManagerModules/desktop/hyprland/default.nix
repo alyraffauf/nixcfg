@@ -70,12 +70,12 @@
     };
 
     wayland.windowManager.hyprland.enable = true;
-    wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    wayland.windowManager.hyprland.package = pkgs.hyprland;
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
 
       # Hyprland desktop utilities
-      hyprnome = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprnome;
+      hyprnome = lib.getExe pkgs.hyprnome;
       hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
 
       # Default apps
