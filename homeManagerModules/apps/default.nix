@@ -19,7 +19,6 @@
     ./neofetch
     ./neovim
     ./swaylock
-    ./tauon
     ./thunar
     ./tmux
     ./vsCodium

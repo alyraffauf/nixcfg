@@ -7,9 +7,7 @@
   imports = [./apps ./desktop ./services ./scripts];
 
   nixpkgs = {
-    # Configure nixpkgs instance
     config = {
-      # Enable unfree packages
       allowUnfree = true;
     };
   };

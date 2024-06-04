@@ -14,8 +14,8 @@
       settings = {
         colors = {
           primary = {
-            foreground = "${config.alyraffauf.desktop.theme.colors.text}";
             background = "${config.alyraffauf.desktop.theme.colors.background}";
+            foreground = "${config.alyraffauf.desktop.theme.colors.text}";
           };
           transparent_background_colors = true;
           draw_bold_text_with_bright_colors = true;
@@ -30,7 +30,7 @@
         selection.save_to_clipboard = true;
         window = {
           blur = true;
-          # decorations = "None";
+          decorations = "None";
           dynamic_padding = true;
           opacity = 0.8;
         };

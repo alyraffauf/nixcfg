@@ -28,6 +28,7 @@ in {
     plexamp
     python3
     ruby
+    tauon
     trayscale
     unstable.obsidian
     unstable.zoom-us
@@ -36,7 +37,6 @@ in {
   ];
 
   alyraffauf = {
-    services.syncthing.enable = false;
     desktop = {
       defaultApps = {
         enable = true;
@@ -118,7 +118,6 @@ in {
       fzf.enable = true;
       neofetch.enable = true;
       neovim.enable = true;
-      tauon.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
     };

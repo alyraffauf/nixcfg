@@ -21,19 +21,6 @@
       "org/gnome/mutter".dynamic-workspaces = true;
       "org/gnome/mutter".edge-tiling = true;
       "org/gnome/mutter".workspaces-only-on-primary = true;
-      "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
-      "org/gnome/shell/extensions/blur-my-shell/panel".blur = false;
-      "org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
-      "org/gnome/shell/extensions/blur-my-shell/panel".style-panel = 0;
-      "org/gnome/shell/extensions/blur-my-shell/panel".override-background =
-        false;
-      "org/gnome/shell/extensions/blur-my-shell/panel".override-background-dynamically =
-        false;
-      "org/gnome/shell/extensions/blur-my-shell/panel".unblur-in-overview =
-        true;
-      "org/gnome/system/location".enabled = true;
-      "org/gtk/gtk4/settings/file-chooser".sort-directories-first = true;
-      "org/gtk/settings/file-chooser".sort-directories-first = true;
       "org/gnome/shell".enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "blur-my-shell@aunetx"
@@ -44,6 +31,16 @@
         "tiling-assistant@leleat-on-github"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
+      "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
+      "org/gnome/shell/extensions/blur-my-shell/panel".blur = false;
+      "org/gnome/shell/extensions/blur-my-shell/panel".customize = true;
+      "org/gnome/shell/extensions/blur-my-shell/panel".override-background = false;
+      "org/gnome/shell/extensions/blur-my-shell/panel".override-background-dynamically = false;
+      "org/gnome/shell/extensions/blur-my-shell/panel".style-panel = 0;
+      "org/gnome/shell/extensions/blur-my-shell/panel".unblur-in-overview = true;
+      "org/gnome/system/location".enabled = true;
+      "org/gtk/gtk4/settings/file-chooser".sort-directories-first = true;
+      "org/gtk/settings/file-chooser".sort-directories-first = true;
     };
   };
 }

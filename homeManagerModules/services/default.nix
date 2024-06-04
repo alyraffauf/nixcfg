@@ -4,5 +4,5 @@
   pkgs,
   ...
 }: {
-  imports = [./syncthing ./easyeffects ./mpd];
+  imports = [./easyeffects ./mpd];
 }

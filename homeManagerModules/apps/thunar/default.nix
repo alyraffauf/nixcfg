@@ -18,18 +18,9 @@
     ];
 
     xdg.configFile."xfce4/helpers.rc".text = ''
-      TerminalEmulator=alacritty
       FileManager=thunar
+      TerminalEmulator=alacritty
       WebBrowser=firefox
     '';
-
-    # xfconf.settings = {
-    #   thunar = {
-    #     "last-menubar-visible" = false;
-    #     "misc-confirm-close-multiple-tabs" = false;
-    #     "misc-show-delete-action" = true;
-    #     "misc-single-click" = true;
-    #   };
-    # };
   };
 }
