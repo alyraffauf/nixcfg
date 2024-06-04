@@ -30,6 +30,8 @@
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
   };
 
   nixConfig = {
