@@ -67,7 +67,7 @@
       user = "aly";
       enable = true;
       autoStart = true;
-      desktopSession = "Hyprland";
+      desktopSession = "hyprland";
     };
     decky-loader = {
       user = "aly";
