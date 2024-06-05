@@ -150,6 +150,17 @@
         region = "${bin} -m region -o ${folder}";
       };
 
+      windowManagerBinds = {
+        down = "d";
+        left = "l";
+        right = "r";
+        up = "u";
+        h = "l";
+        j = "d";
+        k = "u";
+        l = "r";
+      };
+
       defaultWorkspaces = [1 2 3 4 5 6 7 8 9];
 
       laptopMonitors = {
@@ -360,8 +371,7 @@
 
       # Window Rules
       ${
-        lib.strings.concatMapStringsSep
-        "\n"
+        lib.strings.concatMapStringsSep "\n"
         (x: ''
           windowrulev2 = center(1),class:(${x})
           windowrulev2 = float,class:(${x})
@@ -401,19 +411,22 @@
       bind = ${modifier} SHIFT, W, fullscreen
       bind = ${modifier} SHIFT, V, togglefloating,
       # bind = ${modifier} SHIFT, P, pseudo, # dwindle
-      bind = ${modifier} SHIFT, J, togglesplit, # dwindle
+      bind = ${modifier} SHIFT, backslash, togglesplit, # dwindle
 
-      # Move focus with mainMod + arrow keys
-      bind = ${modifier}, left, movefocus, l
-      bind = ${modifier}, right, movefocus, r
-      bind = ${modifier}, up, movefocus, u
-      bind = ${modifier}, down, movefocus, d
-
-      # Move window with mainMod SHIFT + arrow keys
-      bind = ${modifier} SHIFT, left, movewindow, l
-      bind = ${modifier} SHIFT, right, movewindow, r
-      bind = ${modifier} SHIFT, up, movewindow, u
-      bind = ${modifier} SHIFT, down, movewindow, d
+      # Move focus with mainMod + keys ++
+      # Move window with mainMod SHIFT + keys ++
+      # Move workspace to another output with mainMod CONTROL SHIFT + keys.
+      ${
+        lib.strings.concatStringsSep "\n"
+        (
+          lib.attrsets.mapAttrsToList (key: direction: ''
+            bind = ${modifier}, ${key}, movefocus, ${direction}
+            bind = ${modifier} SHIFT, ${key}, movewindow, ${direction}
+            bind = ${modifier} CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}
+          '')
+          windowManagerBinds
+        )
+      }
 
       # Gnome-like workspaces.
       bind = ${modifier}, comma, exec, ${hyprnome} --previous
@@ -421,27 +434,16 @@
       bind = ${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move
       bind = ${modifier} SHIFT, period, exec, ${hyprnome} --move
 
-      # Switch workspaces with mainMod + [1-9]
-      ${
-        lib.strings.concatMapStringsSep
-        "\n"
-        (x: "bind = ${modifier}, ${toString x}, workspace, ${toString x}")
-        defaultWorkspaces
-      }
-
-      # Move active window to a workspace with mainMod + SHIFT + [1-9]
-      ${
-        lib.strings.concatMapStringsSep
-        "\n"
-        (x: "bind = ${modifier} SHIFT, ${toString x}, movetoworkspace, ${toString x}")
-        defaultWorkspaces
-      }
-
-      # Move workspace to another output.
-      bind = ${modifier} CONTROL SHIFT, Left, movecurrentworkspacetomonitor, l
-      bind = ${modifier} CONTROL SHIFT, Down, movecurrentworkspacetomonitor, d
-      bind = ${modifier} CONTROL SHIFT, Up, movecurrentworkspacetomonitor, u
-      bind = ${modifier} CONTROL SHIFT, Right, movecurrentworkspacetomonitor, r
+      # Switch workspaces with mainMod + [1-9] ++
+      # Move active window to a workspace with mainMod + SHIFT + [1-9].
+    ${
+      lib.strings.concatMapStringsSep "\n"
+      (x: ''
+        bind = ${modifier}, ${toString x}, workspace, ${toString x}
+        bind = ${modifier} SHIFT, ${toString x}, movetoworkspace, ${toString x}
+      '')
+      defaultWorkspaces
+    }
 
       # Scratchpad show and move
       bind = ${modifier}, S, togglespecialworkspace, magic
@@ -479,31 +481,39 @@
 
       bind=CTRL ALT,R,submap,resize
       submap=resize
-      binde=,right,resizeactive,10 0
-      binde=,left,resizeactive,-10 0
-      binde=,up,resizeactive,0 -10
-      binde=,down,resizeactive,0 10
-      bind=,escape,submap,reset
+        binde=,down,resizeactive,0 10
+        binde=,left,resizeactive,-10 0
+        binde=,right,resizeactive,10 0
+        binde=,up,resizeactive,0 -10
+        bind=,escape,submap,reset
       submap=reset
 
       bind=CTRL ALT,M,submap,move
       submap=move
-      # Move window with arrow keys
-      bind = , left, movewindow, l
-      bind = , right, movewindow, r
-      bind = , up, movewindow, u
-      bind = , down, movewindow, d
+        # Move window with keys ++
+        # Move workspaces across monitors with CONTROL + keys.
+      ${
+        lib.strings.concatStringsSep "\n"
+        (
+          lib.attrsets.mapAttrsToList (key: direction: ''
+            bind = , ${key}, movewindow, ${direction}
+            bind = CONTROL, ${key}, movecurrentworkspacetomonitor, ${direction}
+          '')
+          windowManagerBinds
+        )
+      }
+
       # Move active window to a workspace with [1-9]
       ${
-        lib.strings.concatMapStringsSep
-        "\n"
+        lib.strings.concatMapStringsSep "\n"
         (x: "bind = , ${toString x}, movetoworkspace, ${toString x}")
         defaultWorkspaces
       }
-      # hyprnome
-      bind = , comma, exec, ${hyprnome} --previous --move
-      bind = , period, exec, ${hyprnome} --move
-      bind=,escape,submap,reset
+
+        # hyprnome
+        bind = , comma, exec, ${hyprnome} --previous --move
+        bind = , period, exec, ${hyprnome} --move
+        bind=,escape,submap,reset
       submap=reset
     '';
   };
