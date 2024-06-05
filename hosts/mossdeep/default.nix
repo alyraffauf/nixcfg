@@ -38,7 +38,7 @@
     user = {
       aly = {
         enable = true;
-        password = "$y$j9T$koxhEzkA4pYLsyIqZBTWM0$N8VW.JTM.HZZgNm7XgTxTXRzvYd7veA7TojG0gKOzO2";
+        password = "$y$j9T$tFHikyxutxISdByIElNuP/$TLzbG2fCUzKYBsxPXF//9EgjskH4c2O0oXNcVH8hu25";
       };
       dustin.enable = false;
     };
@@ -54,7 +54,10 @@
     };
     services = {
       flatpak.enable = true;
-      syncthing.enable = true;
+      syncthing = {
+        enable = true;
+        syncMusic = false;
+      };
       tailscale.enable = true;
     };
   };
@@ -64,7 +67,7 @@
       user = "aly";
       enable = true;
       autoStart = true;
-      desktopSession = "hyprland";
+      desktopSession = "Hyprland";
     };
     decky-loader = {
       user = "aly";
