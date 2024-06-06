@@ -86,6 +86,7 @@
         launcher = lib.getExe pkgs.fuzzel;
         lock = lib.getExe pkgs.swaylock;
         logout = lib.getExe pkgs.wlogout;
+        passwordManager = lib.getExe' pkgs.keepassxc "keepassxc";
         terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
         virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
       };
@@ -399,6 +400,7 @@
       bind = ${modifier}, B, exec, ${defaultApps.browser}
       bind = ${modifier}, E, exec, ${defaultApps.editor}
       bind = ${modifier}, F, exec, ${defaultApps.fileManager}
+      bind = ${modifier}, P, exec, ${defaultApps.passwordManager}
       bind = ${modifier}, R, exec, ${defaultApps.launcher}
       bind = ${modifier}, T, exec, ${defaultApps.terminal}
 
