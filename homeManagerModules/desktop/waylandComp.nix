@@ -10,7 +10,10 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.waylandComp {
-    home.packages = [pkgs.swayosd];
+    home.packages = with pkgs; [
+      swayosd
+      networkmanagerapplet
+    ];
     alyraffauf = {
       apps = {
         fuzzel.enable = lib.mkDefault true;
