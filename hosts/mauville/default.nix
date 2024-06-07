@@ -105,10 +105,10 @@ in {
     # So we have to use this workaround.
     extraHosts = ''
       127.0.0.1 music.${domain}
+      127.0.0.1 news.${domain}
       127.0.0.1 nixcache.${domain}
       127.0.0.1 plex.${domain}
       127.0.0.1 podcasts.${domain}
-      127.0.0.1 news.${domain}
     '';
   };
 
@@ -121,74 +121,76 @@ in {
     fail2ban.enable = true;
     nginx = {
       enable = true;
+      recommendedGzipSettings = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      recommendedGzipSettings = true;
 
-      virtualHosts."music.${domain}" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:4533";
-          proxyWebsockets = true; # needed if you need to use WebSocket
-          extraConfig = ''
-            proxy_buffering off;
-          '';
+      virtualHosts = {
+        "music.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:4533";
+            proxyWebsockets = true;
+            extraConfig = ''
+              proxy_buffering off;
+            '';
+          };
         };
-      };
 
-      virtualHosts."news.${domain}" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.freshRSS.port}";
-          proxyWebsockets = true; # needed if you need to use WebSocket
-          extraConfig = ''
-            proxy_buffering off;
-            proxy_redirect off;
-            # Forward the Authorization header for the Google Reader API.
-            proxy_set_header Authorization $http_authorization;
-            proxy_pass_header Authorization;
-          '';
+        "news.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.freshRSS.port}";
+            proxyWebsockets = true; # needed if you need to use WebSocket
+            extraConfig = ''
+              proxy_buffering off;
+              proxy_redirect off;
+              # Forward the Authorization header for the Google Reader API.
+              proxy_pass_header Authorization;
+              proxy_set_header Authorization $http_authorization;
+            '';
+          };
         };
-      };
 
-      virtualHosts."nixcache.${domain}" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${
-          toString config.services.nix-serve.port
-        }";
-      };
-
-      virtualHosts."plex.${domain}" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.plexMediaServer.port}";
-          proxyWebsockets = true; # needed if you need to use WebSocket
-          extraConfig = ''
-            proxy_buffering off;
-          '';
+        "nixcache.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${
+            toString config.services.nix-serve.port
+          }";
         };
-      };
 
-      virtualHosts."podcasts.${domain}" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.audiobookshelf.port}";
-          # proxyWebsockets = true; # This breaks audiobookshelf.
-          extraConfig = ''
-            proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
-            proxy_set_header  X-Forwarded-Proto $scheme;
-            proxy_set_header  Host              $host;
-            proxy_set_header Upgrade            $http_upgrade;
-            proxy_set_header Connection         "upgrade";
-            proxy_redirect                      http:// https://;
-            proxy_buffering off;
-            client_max_body_size 500M;
-          '';
+        "plex.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.plexMediaServer.port}";
+            proxyWebsockets = true;
+            extraConfig = ''
+              proxy_buffering off;
+            '';
+          };
+        };
+
+        "podcasts.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.audiobookshelf.port}";
+            # proxyWebsockets = true; # This breaks audiobookshelf.
+            extraConfig = ''
+              client_max_body_size 500M;
+              proxy_buffering off;
+              proxy_redirect                      http:// https://;
+              proxy_set_header Host               $host;
+              proxy_set_header X-Forwarded-Proto  $scheme;
+              proxy_set_header Connection         "upgrade";
+              proxy_set_header Upgrade            $http_upgrade;
+              proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
+            '';
+          };
         };
       };
     };
@@ -198,22 +200,22 @@ in {
       openFirewall = true;
       shares = {
         Media = {
+          browseable = "yes";
           comment = "Media @ ${hostName}";
           path = mediaDirectory;
-          browseable = "yes";
           "read only" = "no";
           "guest ok" = "yes";
           "create mask" = "0755";
           "directory mask" = "0755";
         };
         Archive = {
+          browseable = "yes";
           comment = "Archive @ ${hostName}";
           path = archiveDirectory;
-          browseable = "yes";
-          "read only" = "no";
-          "guest ok" = "yes";
           "create mask" = "0755";
           "directory mask" = "0755";
+          "guest ok" = "yes";
+          "read only" = "no";
         };
       };
     };
