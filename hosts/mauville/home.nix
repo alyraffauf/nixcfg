@@ -78,14 +78,23 @@
           };
           Service = {
             ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
-              BACKBLAZE=${lib.getExe pkgs.backblaze-b2}
-
-              $BACKBLAZE sync --delete /mnt/Media/Music b2://aly-music
-              $BACKBLAZE sync --delete /mnt/Media/Audiobooks b2://aly-audiobooks
-              $BACKBLAZE sync --delete /mnt/Archive/Archive b2://aly-archive
-
-              $BACKBLAZE sync --delete /home/aly/sync b2://aly-sync
-              $BACKBLAZE sync --delete /home/aly/pics/camera b2://aly-camera
+              declare -A backups
+              backups=(
+                ['/home/aly/pics/camera']="b2://aly-camera"
+                ['/home/aly/sync']="b2://aly-sync"
+                ['/mnt/Archive/Archive']="b2://aly-archive"
+                ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
+                ['/mnt/Media/Music']="b2://aly-music"
+              )
+              # Recursively backup folders to B2 with sanity checks.
+              for folder in "''${!backups[@]}"; do
+                if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
+                  ${lib.getExe pkgs.backblaze-b2} sync --delete $folder ''${backups[$folder]}
+                else
+                  echo "$folder does not exist or is empty."
+                  exit 1
+                fi
+              done
             ''}";
           };
         };
