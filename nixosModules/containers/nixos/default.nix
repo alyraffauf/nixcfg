@@ -4,5 +4,8 @@
   config,
   ...
 }: {
-  imports = [./navidrome];
+  imports = [
+    ./audiobookshelf
+    ./navidrome
+  ];
 }
