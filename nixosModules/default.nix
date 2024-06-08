@@ -21,6 +21,7 @@ in {
 
   nixpkgs.overlays = [
     (final: prev: {
+      audiobookshelf = unstable.audiobookshelf;
       brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
       catppuccin-gtk = prev.catppuccin-gtk.override {
         accents = ["mauve"];
