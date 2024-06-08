@@ -24,7 +24,10 @@
   config = lib.mkIf config.alyraffauf.containers.nixos.audiobookshelf.enable {
     containers.audiobookshelf = {
       autoStart = true;
-      bindMounts."/Media".hostPath = config.alyraffauf.containers.nixos.audiobookshelf.mediaDirectory;
+      bindMounts."/Media" = {
+        hostPath = config.alyraffauf.containers.nixos.audiobookshelf.mediaDirectory;
+        isReadOnly = false;
+      };
       config = let
         port = config.alyraffauf.containers.nixos.audiobookshelf.port;
       in

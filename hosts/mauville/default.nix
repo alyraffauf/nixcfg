@@ -34,12 +34,11 @@ in {
     };
     containers = {
       nixos = {
-	audiobookshelf.enable = true;
+        audiobookshelf.enable = true;
         navidrome.enable = true;
       };
       oci = {
         freshRSS.enable = true;
-        jellyfin.enable = false;
         plexMediaServer.enable = true;
         transmission.enable = true;
       };
