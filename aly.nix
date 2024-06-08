@@ -139,8 +139,6 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
-    exec-once = ${lib.getExe' pkgs.keepassxc "keepassxc"}
-
     # Workspace - Browser
     workspace = 1, defaultName:web, on-created-empty:${config.alyraffauf.desktop.defaultApps.webBrowser.exe}
     windowrulev2 = workspace 1,class:(firefox)
@@ -149,9 +147,6 @@
     # Workspace - Coding
     workspace = 2, defaultName:code, on-created-empty:${config.alyraffauf.desktop.defaultApps.editor.exe}
     windowrulev2 = workspace 2,class:(codium-url-handler)
-
-    # Workspace - Zoom
-    windowrulev2 = workspace name:zoom,class:(zoom)
 
     # Workspace - Chrome
     windowrulev2 = workspace 3,class:(google-chrome)
@@ -163,10 +158,10 @@
     windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
     windowrulev2 = workspace special:magic,class:(WebCord)
 
-    # # Scratchpad Notes
-    # bind = SUPER, N, togglespecialworkspace, notes
-    # bind = SUPER SHIFT, N, movetoworkspace, special:notes
-    # workspace = special:notes, on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}
+    # Scratchpad Notes
+    bind = SUPER, N, togglespecialworkspace, notes
+    bind = SUPER SHIFT, N, movetoworkspace, special:notes
+    workspace = special:notes, on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}
     # windowrulev2 = workspace special:notes,class:(obsidian)
 
     # # Scratchpad Music
