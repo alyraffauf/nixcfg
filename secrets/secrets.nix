@@ -13,6 +13,8 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMs1oChR4z/gzFkuKddB+1XrwfG2znlWbdnP+hNAdNdN root@rustboro"
   ];
 in {
+  "spotify/clientId.age".publicKeys = users ++ systems;
+  "spotify/clientSecret.age".publicKeys = users ++ systems;
   "wifi/Stargate-Discovery.age".publicKeys = users ++ systems;
   "wifi/wattson.age".publicKeys = users ++ systems;
 }
