@@ -1,12 +1,15 @@
 {
   config,
-  pkgs,
+  inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [./plymouth ./power-profiles-daemon ./zramSwap ./wifi.nix];
 
   alyraffauf.system.power-profiles-daemon.enable = lib.mkDefault true;
+
+  environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
 
   console = {
     colors = [
