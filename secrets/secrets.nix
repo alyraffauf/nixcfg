@@ -15,6 +15,7 @@ let
 in {
   "spotify/clientId.age".publicKeys = users ++ systems;
   "spotify/clientSecret.age".publicKeys = users ++ systems;
+  "tailscale/authKeyFile.age".publicKeys = users ++ systems;
   "wifi/Stargate-Discovery.age".publicKeys = users ++ systems;
   "wifi/wattson.age".publicKeys = users ++ systems;
 }
