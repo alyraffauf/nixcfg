@@ -5,10 +5,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    inputs.agenix.nixosModules.default
-  ];
-
   age.secrets.Stargate-Discovery.file = ../../secrets/wifi/Stargate-Discovery.age;
   age.secrets.wattson.file = ../../secrets/wifi/wattson.age;
 
