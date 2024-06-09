@@ -14,8 +14,10 @@
       ];
       profiles = {
         Stargate-Discovery = {
-          connection.type = "wifi";
-          connection.id = "Stargate-Discovery";
+          connection = {
+            id = "Stargate-Discovery";
+            type = "wifi";
+          };
           wifi.ssid = "Stargate-Discovery";
           wifi-security = {
             auth-alg = "open";
@@ -24,8 +26,10 @@
           };
         };
         wattson = {
-          connection.type = "wifi";
-          connection.id = "wattson";
+          connection = {
+            id = "wattson";
+            type = "wifi";
+          };
           wifi.ssid = "wattson";
           wifi-security = {
             auth-alg = "open";
@@ -34,14 +38,30 @@
           };
         };
         "Dustin’s iPhone" = {
-          connection.type = "Dustin’s iPhone";
-          connection.id = "Dustin’s iPhone";
+          connection = {
+            id = "Dustin’s iPhone";
+            type = "wifi";
+          };
           wifi.ssid = "Dustin’s iPhone";
           wifi-security = {
             auth-alg = "open";
             key-mgmt = "wpa-psk";
             psk = "$DustinsiPhonePSK";
           };
+        };
+        WeWorkWiFi = {
+          "802-1x" = {
+            eap = "peap;";
+            identity = "$WeWorkWiFiIdentity";
+            password = "$WeWorkWiFiPassword";
+            phase2-auth = "mschapv2";
+          };
+          connection = {
+            id = "WeWorkWiFi";
+            type = "wifi";
+          };
+          wifi.ssid = "WeWorkWiFi";
+          wifi-security.key-mgmt = "wpa-eap";
         };
       };
     };
