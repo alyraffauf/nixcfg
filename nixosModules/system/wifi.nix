@@ -22,7 +22,7 @@
         Stargate-Discovery = {
           connection.type = "wifi";
           connection.id = "Stargate-Discovery";
-          wifi.ssid = "Stargate-Disovery";
+          wifi.ssid = "Stargate-Discovery";
           wifi-security = {
             auth-alg = "open";
             key-mgmt = "wpa-psk";
