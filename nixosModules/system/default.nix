@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  imports = [./plymouth ./power-profiles-daemon ./zramSwap];
+  imports = [./plymouth ./power-profiles-daemon ./zramSwap ./wifi.nix];
 
   alyraffauf.system.power-profiles-daemon.enable = lib.mkDefault true;
 
