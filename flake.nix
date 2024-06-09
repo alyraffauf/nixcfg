@@ -23,12 +23,6 @@
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Useful modules for Steam Deck.
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
@@ -94,7 +88,6 @@
         "fallarbor"
         "lavaridge"
         "mauville"
-        "mossdeep"
         "petalburg"
         "rustboro"
       ] (

@@ -18,15 +18,15 @@ NixOS flake for all of mine + my husband's hosts. Modules for Hyprland, Sway (wi
 | Storage | 1TB Sk hynix P41     | 512GB M.2 PCIe 4.0      | 512GB SATA SSD         |
 | Desktop | Hyprland             | Sway (tablet mode)      | Sway                   |
 
-| Host    | mossdeep                | fallarbor              | mauville                |
-|---------|-------------------------|------------------------|-------------------------|
-| Model   | Steam Deck OLED         | Framework Laptop 13    | Custom Mini-ITX Desktop |
-| Display | 7.4" 1280x800 90Hz OLED | 13.5" 2256x1504 60Hz   | 34" 3440x1440 160Hz VA  |
-| CPU     | AMD "Sephiroth" APU     | Intel Core i5-1135G7   | AMD Ryzen 5 2600        |
-| RAM     | 16GB LPDDR5 6400 MT/s   | 16GB DDR4-3200Mhz      | 16GB DDR4-3200Mhz       |
-| GPU     | AMD RDNA 2              | Intel Iris Xe Graphics | AMD Radeon Rx 6700      |
-| Storage | 512GB M.2 PCIe SSD      | 512GB M.2 PCIe 3.0     | 1TB M.2 PCIe 3.0        |
-| Desktop | Hyprland                | Hyprland               | Sway                    |
+| Host    | fallarbor              | mauville                |
+|---------|------------------------|-------------------------|
+| Model   | Framework Laptop 13    | Custom Mini-ITX Desktop |
+| Display | 13.5" 2256x1504 60Hz   | 34" 3440x1440 160Hz VA  |
+| CPU     | Intel Core i5-1135G7   | AMD Ryzen 5 2600        |
+| RAM     | 16GB DDR4-3200Mhz      | 16GB DDR4-3200Mhz       |
+| GPU     | Intel Iris Xe Graphics | AMD Radeon Rx 6700      |
+| Storage | 512GB M.2 PCIe 3.0     | 1TB M.2 PCIe 3.0        |
+| Desktop | Hyprland               | Sway                    |
 
 ## Home Lab Services
 | Service          | Description                       | Source/Runtime                       | Domain                           |
