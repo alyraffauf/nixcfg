@@ -36,6 +36,7 @@
         enable = true;
         syncMusic = false;
       };
+      tailscale.enable = true;
     };
     system = {
       plymouth.enable = true;
