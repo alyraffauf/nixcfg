@@ -1,7 +1,8 @@
 {
-  pkgs,
-  lib,
   config,
+  inputs,
+  lib,
+  pkgs,
   self,
   ...
 }: {
@@ -21,6 +22,11 @@
   };
 
   config = lib.mkIf config.alyraffauf.containers.nixos.navidrome.enable {
+    # Spotify secrets aren't exactly safe, because they are world-readable in the nix store.
+    # But they're reasonably disposable and hidden from the public git repo.
+    age.secrets.spotifyClientId.file = ../../../../secrets/spotify/clientId.age;
+    age.secrets.spotifyClientSecret.file = ../../../../secrets/spotify/clientSecret.age;
+
     containers.navidrome = {
       autoStart = true;
       bindMounts."/Music".hostPath = config.alyraffauf.containers.nixos.navidrome.musicDirectory;
@@ -39,9 +45,9 @@
             openFirewall = true;
             settings = {
               Address = "0.0.0.0";
-              Port = port;
-              MusicFolder = "/Music";
               DefaultTheme = "Auto";
+              MusicFolder = "/Music";
+              Port = port;
               SubsonicArtistParticipations = true;
               UIWelcomeMessage = "Welcome to Navidrome! Registrations are closed.";
             };

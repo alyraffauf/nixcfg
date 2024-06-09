@@ -103,6 +103,7 @@
             specialArgs = {inherit inputs self;};
             modules = [
               ./hosts/${host}
+              inputs.agenix.nixosModules.default
             ];
           }
       );
