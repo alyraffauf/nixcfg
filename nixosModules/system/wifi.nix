@@ -5,16 +5,12 @@
   pkgs,
   ...
 }: {
-  age.secrets.DustinsiPhone.file = ../../secrets/wifi/DustinsiPhone.age;
-  age.secrets.Stargate-Discovery.file = ../../secrets/wifi/Stargate-Discovery.age;
-  age.secrets.wattson.file = ../../secrets/wifi/wattson.age;
+  age.secrets.wifi.file = ../../secrets/wifi.age;
 
   networking.networkmanager = {
     ensureProfiles = {
       environmentFiles = [
-        config.age.secrets.DustinsiPhone.path
-        config.age.secrets.Stargate-Discovery.path
-        config.age.secrets.wattson.path
+        config.age.secrets.wifi.path
       ];
       profiles = {
         Stargate-Discovery = {
@@ -51,4 +47,3 @@
     };
   };
 }
-
