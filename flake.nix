@@ -32,6 +32,11 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
