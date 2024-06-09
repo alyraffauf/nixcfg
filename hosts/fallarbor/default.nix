@@ -25,8 +25,17 @@
 
   networking.hostName = "fallarbor"; # Define your hostname.
 
+  age.secrets = {
+    syncthingCert.file = ../../secrets/hosts + "/${config.networking.hostName}/syncthing/cert.age";
+    syncthingKey.file = ../../secrets/hosts + "/${config.networking.hostName}/syncthing/key.age";
+  };
+
   services = {
     fwupd.enable = true;
+    syncthing = {
+      cert = config.age.secrets.syncthingCert.path;
+      key = config.age.secrets.syncthingKey.path;
+    };
   };
 
   alyraffauf = {

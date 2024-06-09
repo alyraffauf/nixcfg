@@ -15,6 +15,16 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMs1oChR4z/gzFkuKddB+1XrwfG2znlWbdnP+hNAdNdN root@rustboro"
   ];
 in {
+  "hosts/fallarbor/syncthing/cert.age".publicKeys = users ++ systems;
+  "hosts/fallarbor/syncthing/key.age".publicKeys = users ++ systems;
+  "hosts/lavaridge/syncthing/cert.age".publicKeys = users ++ systems;
+  "hosts/lavaridge/syncthing/key.age".publicKeys = users ++ systems;
+  "hosts/mauville/syncthing/cert.age".publicKeys = users ++ systems;
+  "hosts/mauville/syncthing/key.age".publicKeys = users ++ systems;
+  "hosts/petalburg/syncthing/cert.age".publicKeys = users ++ systems;
+  "hosts/petalburg/syncthing/key.age".publicKeys = users ++ systems;
+  "hosts/rustboro/syncthing/cert.age".publicKeys = users ++ systems;
+  "hosts/rustboro/syncthing/key.age".publicKeys = users ++ systems;
   "spotify/clientId.age".publicKeys = users ++ systems;
   "spotify/clientSecret.age".publicKeys = users ++ systems;
   "tailscale/authKeyFile.age".publicKeys = users ++ systems;
