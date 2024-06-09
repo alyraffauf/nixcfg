@@ -8,7 +8,9 @@ let
 
   systems = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHjcWpeYMjNaICoHwedu3tBt7/5tKxXQHCKaUx4ez4jm root@petalburg"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHw+EYVVKOzIIlvF2Bp625q6OQMVXnQTxZSo16YjRovW root@lavaridge"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHMOi6qdkhR5u8/3arkXCMg8W2kqZVy1HgDfBR5uGHG root@mauville"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMs1oChR4z/gzFkuKddB+1XrwfG2znlWbdnP+hNAdNdN root@rustboro"
   ];
 in {
   "wifi/Stargate-Discovery.age".publicKeys = users ++ systems;
