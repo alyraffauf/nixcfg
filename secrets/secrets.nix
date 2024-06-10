@@ -1,40 +1,31 @@
 let
-  users = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5xWjZIdMQaQE7vyPP7VRAKNHbrFeh0QtF3bAXni66V aly@lavaridge"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFpB0VgxgoLpFYK9HT38bSmmqiX+tUWhzFNmHgEUCLQE aly@rustboro"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBK+QkM3C98BxnJtcEOuxjT7bbUG8gsUafrzW9uKuxz aly@petalburg"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINBGJ03i6Bgnc/Fv6IDfQH8JtBW3435SJLaZX7WzgWBw aly@fallarbor"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINHdpGTfjmnnau18CowChY4hPn/fzRkgJvXFs+yPy74I aly@mauville"
-  ];
-
-  fallarbor = builtins.readFile ../hosts/fallarbor/ssh.pub;
-  lavaridge = builtins.readFile ../hosts/lavaridge/ssh.pub;
-  mauville = builtins.readFile ../hosts/mauville/ssh.pub;
-  petalburg = builtins.readFile ../hosts/petalburg/ssh.pub;
-  rustboro = builtins.readFile ../hosts/rustboro/ssh.pub;
-
-  systems = [
-    fallarbor
-    lavaridge
-    mauville
-    petalburg
-    rustboro
+  keys = [
+    (builtins.readFile ./publicKeys/aly_fallarbor.pub)
+    (builtins.readFile ./publicKeys/aly_lavaridge.pub)
+    (builtins.readFile ./publicKeys/aly_mauville.pub)
+    (builtins.readFile ./publicKeys/aly_petalburg.pub)
+    (builtins.readFile ./publicKeys/aly_rustboro.pub)
+    (builtins.readFile ./publicKeys/root_fallarbor.pub)
+    (builtins.readFile ./publicKeys/root_lavaridge.pub)
+    (builtins.readFile ./publicKeys/root_mauville.pub)
+    (builtins.readFile ./publicKeys/root_petalburg.pub)
+    (builtins.readFile ./publicKeys/root_rustboro.pub)
   ];
 in {
-  "hosts/fallarbor/syncthing/cert.age".publicKeys = users ++ systems;
-  "hosts/fallarbor/syncthing/key.age".publicKeys = users ++ systems;
-  "hosts/lavaridge/syncthing/cert.age".publicKeys = users ++ systems;
-  "hosts/lavaridge/syncthing/key.age".publicKeys = users ++ systems;
-  "hosts/mauville/syncthing/cert.age".publicKeys = users ++ systems;
-  "hosts/mauville/syncthing/key.age".publicKeys = users ++ systems;
-  "hosts/petalburg/syncthing/cert.age".publicKeys = users ++ systems;
-  "hosts/petalburg/syncthing/key.age".publicKeys = users ++ systems;
-  "hosts/rustboro/syncthing/cert.age".publicKeys = users ++ systems;
-  "hosts/rustboro/syncthing/key.age".publicKeys = users ++ systems;
-  "spotify/clientId.age".publicKeys = users ++ systems;
-  "spotify/clientSecret.age".publicKeys = users ++ systems;
-  "lastFM/apiKey.age".publicKeys = users ++ systems;
-  "lastFM/secret.age".publicKeys = users ++ systems;
-  "tailscale/authKeyFile.age".publicKeys = users ++ systems;
-  "wifi.age".publicKeys = users ++ systems;
+  "hosts/fallarbor/syncthing/cert.age".publicKeys = keys;
+  "hosts/fallarbor/syncthing/key.age".publicKeys = keys;
+  "hosts/lavaridge/syncthing/cert.age".publicKeys = keys;
+  "hosts/lavaridge/syncthing/key.age".publicKeys = keys;
+  "hosts/mauville/syncthing/cert.age".publicKeys = keys;
+  "hosts/mauville/syncthing/key.age".publicKeys = keys;
+  "hosts/petalburg/syncthing/cert.age".publicKeys = keys;
+  "hosts/petalburg/syncthing/key.age".publicKeys = keys;
+  "hosts/rustboro/syncthing/cert.age".publicKeys = keys;
+  "hosts/rustboro/syncthing/key.age".publicKeys = keys;
+  "spotify/clientId.age".publicKeys = keys;
+  "spotify/clientSecret.age".publicKeys = keys;
+  "lastFM/apiKey.age".publicKeys = keys;
+  "lastFM/secret.age".publicKeys = keys;
+  "tailscale/authKeyFile.age".publicKeys = keys;
+  "wifi.age".publicKeys = keys;
 }
