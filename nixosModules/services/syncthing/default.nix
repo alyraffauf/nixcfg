@@ -28,6 +28,7 @@
   };
 
   config = lib.mkIf config.alyraffauf.services.syncthing.enable {
+    systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
     services.syncthing = {
       enable = true;
       openDefaultPorts = true;
