@@ -47,11 +47,11 @@
           user = "aly";
         };
       };
-      sway.enable = true;
+      sway.enable = false;
       hyprland.enable = true;
     };
     apps = {
-      steam.enable = true;
+      steam.enable = false;
     };
     scripts = {
       hoenn.enable = true;
