@@ -33,6 +33,8 @@ in {
   "hosts/rustboro/syncthing/key.age".publicKeys = users ++ systems;
   "spotify/clientId.age".publicKeys = users ++ systems;
   "spotify/clientSecret.age".publicKeys = users ++ systems;
+  "lastFM/apiKey.age".publicKeys = users ++ systems;
+  "lastFM/secret.age".publicKeys = users ++ systems;
   "tailscale/authKeyFile.age".publicKeys = users ++ systems;
   "wifi.age".publicKeys = users ++ systems;
 }
