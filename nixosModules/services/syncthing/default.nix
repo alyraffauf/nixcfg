@@ -28,12 +28,20 @@
   };
 
   config = lib.mkIf config.alyraffauf.services.syncthing.enable {
+    age.secrets = {
+      syncthingCert.file = ../../../secrets/hosts + "/${config.networking.hostName}/syncthing/cert.age";
+      syncthingKey.file = ../../../secrets/hosts + "/${config.networking.hostName}/syncthing/key.age";
+    };
+
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
+
     services.syncthing = {
       enable = true;
+      cert = config.age.secrets.syncthingCert.path;
+      dataDir = "/home/${config.alyraffauf.services.syncthing.user}";
+      key = config.age.secrets.syncthingKey.path;
       openDefaultPorts = true;
       user = config.alyraffauf.services.syncthing.user;
-      dataDir = "/home/${config.alyraffauf.services.syncthing.user}";
       settings = {
         options = {
           localAnnounceEnabled = true;

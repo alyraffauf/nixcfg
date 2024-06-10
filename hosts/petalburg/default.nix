@@ -11,7 +11,6 @@
     ./disko.nix
     ./hardware.nix
     ./home.nix
-    self.nixosModules.default
   ];
 
   boot = {
@@ -24,16 +23,6 @@
   };
 
   networking.hostName = "petalburg"; # Define your hostname.
-
-  age.secrets = {
-    syncthingCert.file = ../../secrets/hosts + "/${config.networking.hostName}/syncthing/cert.age";
-    syncthingKey.file = ../../secrets/hosts + "/${config.networking.hostName}/syncthing/key.age";
-  };
-
-  services.syncthing = {
-    cert = config.age.secrets.syncthingCert.path;
-    key = config.age.secrets.syncthingKey.path;
-  };
 
   alyraffauf = {
     system = {
