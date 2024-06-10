@@ -334,7 +334,7 @@
           scale = "1.5";
         };
         "LG Display 0x0569 Unknown" = {
-          scale = "1.25";
+          scale = "1.0";
         };
         "Samsung Display Corp. 0x4152 Unknown" = {
           scale = "2.0";
