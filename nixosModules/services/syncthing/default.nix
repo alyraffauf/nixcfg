@@ -29,8 +29,8 @@
 
   config = lib.mkIf config.alyraffauf.services.syncthing.enable {
     age.secrets = {
-      syncthingCert.file = ../../../secrets/hosts + "/${config.networking.hostName}/syncthing/cert.age";
-      syncthingKey.file = ../../../secrets/hosts + "/${config.networking.hostName}/syncthing/key.age";
+      syncthingCert.file = ../../../secrets/syncthing + "/${config.networking.hostName}/cert.age";
+      syncthingKey.file = ../../../secrets/syncthing + "/${config.networking.hostName}/key.age";
     };
 
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
