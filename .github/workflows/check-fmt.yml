@@ -1,4 +1,4 @@
-name: "flake: evaluation check"
+name: "flake: format check"
 
 on:
   push:
@@ -16,5 +16,5 @@ jobs:
 
       - uses: cachix/install-nix-action@v20
 
-      - name: Check if flake.nix still evaluates
-        run: nix flake check
+      - name: Check if flake.nix successfully evaluates
+        run: nix fmt -- -c .

@@ -1,4 +1,4 @@
-name: Bump flake.lock
+name: "flake.lock: update"
 
 on:
   schedule:
@@ -17,15 +17,15 @@ jobs:
 
       - uses: cachix/install-nix-action@v20
 
-      - name: Update inputs in flake.nix
+      - name: Update inputs in flake.lock
         run: nix flake update
 
-      - name: Check if flake.nix still evaluates
+      - name: Check if flake still evaluates
         run: nix flake check
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Bump flake.lock
+          commit_message: "flake.lock: update"
           branch: master
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
