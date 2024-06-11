@@ -43,7 +43,7 @@ in {
       hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
       hyprnome = unstable.hyprnome;
       hyprshot = unstable.hyprshot;
-      xdg-desktop-portal-hyprland = unstable.xdg-desktop-portal-hyprland;
+      xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
       obsidian = unstable.obsidian.overrideAttrs (old: {
         installPhase =
           builtins.replaceStrings ["--ozone-platform=wayland"]
