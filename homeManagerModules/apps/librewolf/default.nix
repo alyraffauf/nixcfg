@@ -4,10 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.apps.librewolf.enable = lib.mkEnableOption "Enables librewolf.";
-  };
-
   config = lib.mkIf config.alyraffauf.apps.librewolf.enable {
     programs.librewolf = {
       enable = true;

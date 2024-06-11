@@ -4,8 +4,6 @@
   config,
   ...
 }: {
-  options = {alyraffauf.apps.wlogout.enable = lib.mkEnableOption "Enables wlogout.";};
-
   config = lib.mkIf config.alyraffauf.apps.wlogout.enable {
     programs.wlogout = {
       enable = true;
@@ -31,7 +29,7 @@
       ];
       style = ''
         * {
-          font-family: "${config.alyraffauf.desktop.theme.font.name}", sans-serif;
+          font-family: "${config.alyraffauf.theme.font.name}", sans-serif;
         	background-image: none;
         	box-shadow: none;
           transition: 20ms;
@@ -44,7 +42,7 @@
         button {
         	text-decoration-color: #FAFAFA;
           color: #FAFAFA;
-        	background-color: ${config.alyraffauf.desktop.theme.colors.background};
+        	background-color: ${config.alyraffauf.theme.colors.background};
           background-color: rgba(12, 12, 12, 0.0);
         	background-repeat: no-repeat;
         	background-size: 10%;
@@ -52,7 +50,7 @@
         }
 
         button:active, button:hover {
-        	background-color: ${config.alyraffauf.desktop.theme.colors.primary};
+        	background-color: ${config.alyraffauf.theme.colors.primary};
         	outline-style: none;
         }
 

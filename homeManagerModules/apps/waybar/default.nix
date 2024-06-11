@@ -4,32 +4,30 @@
   config,
   ...
 }: {
-  options = {alyraffauf.apps.waybar.enable = lib.mkEnableOption "Enables waybar.";};
-
   config = lib.mkIf config.alyraffauf.apps.waybar.enable {
     xdg.configFile."waybar/style.css".text = ''
       * {
           border: none;
           border-radius: 0;
-          font-family: "${config.alyraffauf.desktop.theme.terminalFont.name}";
+          font-family: "${config.alyraffauf.theme.terminalFont.name}";
           font-size: 14px;
           font-weight: 600;
       }
 
       window#waybar {
           background: rgba (35, 38, 52, 0.0);
-          color: ${config.alyraffauf.desktop.theme.colors.text};
+          color: ${config.alyraffauf.theme.colors.text};
       }
 
       #workspaces button {
           padding: 0px 5px;
           margin: 0 0px;
-          color: ${config.alyraffauf.desktop.theme.colors.text};
+          color: ${config.alyraffauf.theme.colors.text};
       }
 
       #workspaces button.active,
       #workspaces button.focused {
-          color: ${config.alyraffauf.desktop.theme.colors.primary};
+          color: ${config.alyraffauf.theme.colors.primary};
       }
 
       #submap,
@@ -42,11 +40,11 @@
       #tags button {
           padding: 0px 5px;
           margin: 0 0px;
-          color: ${config.alyraffauf.desktop.theme.colors.text};
+          color: ${config.alyraffauf.theme.colors.text};
       }
 
       #tags button.focused {
-          color: ${config.alyraffauf.desktop.theme.colors.primary};
+          color: ${config.alyraffauf.theme.colors.primary};
       }
 
       #clock,
@@ -66,11 +64,11 @@
       }
 
       #battery {
-          color: ${config.alyraffauf.desktop.theme.colors.text};
+          color: ${config.alyraffauf.theme.colors.text};
       }
 
       #battery.charging {
-          color: ${config.alyraffauf.desktop.theme.colors.primary};
+          color: ${config.alyraffauf.theme.colors.primary};
       }
 
       #battery.critical:not(.charging) {
@@ -89,7 +87,7 @@
       #hardware {
           border-radius: 10;
           background: rgba ${
-        if config.alyraffauf.desktop.theme.colors.preferDark
+        if config.alyraffauf.theme.colors.preferDark
         then "(35, 38, 52, 0.8);"
         else "(220, 224, 232, 0.8);"
       }
@@ -103,7 +101,7 @@
 
       #submap,
       #mode {
-          color: ${config.alyraffauf.desktop.theme.colors.text};
+          color: ${config.alyraffauf.theme.colors.text};
           background: rgba(231, 130, 132, 0.8);
       }
     '';
@@ -232,7 +230,7 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${config.alyraffauf.desktop.defaultApps.terminalEditor.exe} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = "${config.alyraffauf.defaultApps.terminalEditor.exe} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
           };
           "tray" = {"spacing" = 15;};
           "custom/logout" = {

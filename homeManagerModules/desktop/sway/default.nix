@@ -48,7 +48,7 @@
     wayland.windowManager.sway.wrapperFeatures.gtk = true;
     wayland.windowManager.sway.checkConfig = false;
 
-    alyraffauf.desktop.theme.gtk.hideTitleBar =
+    alyraffauf.theme.gtk.hideTitleBar =
       if config.wayland.windowManager.sway.package == pkgs.sway
       then true
       else false;
@@ -58,10 +58,10 @@
       swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
 
       # Default apps
-      browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
+      browser = config.alyraffauf.defaultApps.webBrowser.exe;
       fileManager = lib.getExe pkgs.xfce.thunar;
-      editor = config.alyraffauf.desktop.defaultApps.editor.exe;
-      terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
+      editor = config.alyraffauf.defaultApps.editor.exe;
+      terminal = config.alyraffauf.defaultApps.terminal.exe;
 
       brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
@@ -80,7 +80,7 @@
       bar = lib.getExe pkgs.waybar;
       launcher = lib.getExe pkgs.fuzzel;
       notifyd = lib.getExe pkgs.mako;
-      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
+      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.theme.wallpaper}";
       logout = lib.getExe pkgs.wlogout;
       lock = lib.getExe pkgs.swaylock;
       idled = pkgs.writeShellScript "sway-idled" ''
@@ -121,27 +121,27 @@
     in {
       bars = [{command = "${bar}";}];
       modifier = "${modifier}";
-      colors.background = "${config.alyraffauf.desktop.theme.colors.primary}EE";
+      colors.background = "${config.alyraffauf.theme.colors.primary}EE";
       colors.focused = {
-        background = "${config.alyraffauf.desktop.theme.colors.primary}EE";
-        border = "${config.alyraffauf.desktop.theme.colors.primary}EE";
-        childBorder = "${config.alyraffauf.desktop.theme.colors.primary}EE";
-        indicator = "${config.alyraffauf.desktop.theme.colors.primary}EE";
-        text = "${config.alyraffauf.desktop.theme.colors.text}";
+        background = "${config.alyraffauf.theme.colors.primary}EE";
+        border = "${config.alyraffauf.theme.colors.primary}EE";
+        childBorder = "${config.alyraffauf.theme.colors.primary}EE";
+        indicator = "${config.alyraffauf.theme.colors.primary}EE";
+        text = "${config.alyraffauf.theme.colors.text}";
       };
       colors.focusedInactive = {
-        background = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        border = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        text = "${config.alyraffauf.desktop.theme.colors.text}";
+        background = "${config.alyraffauf.theme.colors.inactive}AA";
+        border = "${config.alyraffauf.theme.colors.inactive}AA";
+        childBorder = "${config.alyraffauf.theme.colors.inactive}AA";
+        indicator = "${config.alyraffauf.theme.colors.inactive}AA";
+        text = "${config.alyraffauf.theme.colors.text}";
       };
       colors.unfocused = {
-        background = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        border = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        childBorder = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        indicator = "${config.alyraffauf.desktop.theme.colors.inactive}AA";
-        text = "${config.alyraffauf.desktop.theme.colors.text}";
+        background = "${config.alyraffauf.theme.colors.inactive}AA";
+        border = "${config.alyraffauf.theme.colors.inactive}AA";
+        childBorder = "${config.alyraffauf.theme.colors.inactive}AA";
+        indicator = "${config.alyraffauf.theme.colors.inactive}AA";
+        text = "${config.alyraffauf.theme.colors.text}";
       };
       defaultWorkspace = "workspace number 1";
       focus = {
@@ -150,9 +150,9 @@
         # mouseWarping = "container";
       };
       fonts = {
-        names = ["${config.alyraffauf.desktop.theme.font.name}"];
+        names = ["${config.alyraffauf.theme.font.name}"];
         style = "Bold";
-        size = config.alyraffauf.desktop.theme.font.size + 0.0;
+        size = config.alyraffauf.theme.font.size + 0.0;
       };
       gaps.inner = 5;
       gaps.outer = 5;
@@ -459,7 +459,7 @@
         corner_radius 10
         shadows enable
         shadows_on_csd enable
-        shadow_color ${config.alyraffauf.desktop.theme.colors.shadow}
+        shadow_color ${config.alyraffauf.theme.colors.shadow}
 
         default_dim_inactive 0.05
 

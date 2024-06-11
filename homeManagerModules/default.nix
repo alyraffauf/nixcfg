@@ -4,7 +4,15 @@ inputs: self: {
   lib,
   ...
 }: {
-  imports = [./apps ./desktop ./services ./scripts];
+  imports = [
+    ./apps
+    ./defaultApps.nix
+    ./desktop
+    ./options.nix
+    ./scripts
+    ./services
+    ./theme.nix
+  ];
 
   nixpkgs = {
     config = {

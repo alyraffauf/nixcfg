@@ -4,8 +4,6 @@
   config,
   ...
 }: {
-  options = {alyraffauf.apps.tmux.enable = lib.mkEnableOption "Enables tmux.";};
-
   config = lib.mkIf config.alyraffauf.apps.tmux.enable {
     programs.tmux = {
       enable = true;

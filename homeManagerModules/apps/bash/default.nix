@@ -4,8 +4,6 @@
   config,
   ...
 }: {
-  options = {alyraffauf.apps.bash.enable = lib.mkEnableOption "Enables bash.";};
-
   config = lib.mkIf config.alyraffauf.apps.bash.enable {
     programs.bash = {
       enable = true;

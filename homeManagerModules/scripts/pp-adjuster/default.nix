@@ -19,8 +19,6 @@
     ${lib.getExe pkgs.libnotify} "Power profile set to $new_profile."
   '';
 in {
-  options = {alyraffauf.scripts.pp-adjuster.enable = lib.mkEnableOption "Enable pp-adjuster script.";};
-
   config = lib.mkIf config.alyraffauf.scripts.pp-adjuster.enable {
     home.packages = [pp-adjuster];
   };

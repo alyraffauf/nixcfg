@@ -4,46 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.hyprland = {
-      enable =
-        lib.mkEnableOption "Enables hyprland with extra apps.";
-      autoSuspend = lib.mkOption {
-        description = "Whether to autosuspend on idle.";
-        default = config.alyraffauf.desktop.hyprland.enable;
-        type = lib.types.bool;
-      };
-      randomWallpaper = lib.mkOption {
-        description = "Whether to enable random wallpaper script.";
-        default = config.alyraffauf.desktop.hyprland.enable;
-        type = lib.types.bool;
-      };
-      redShift = lib.mkOption {
-        description = "Whether to redshift display colors at night.";
-        default = config.alyraffauf.desktop.hyprland.enable;
-        type = lib.types.bool;
-      };
-      tabletMode = {
-        enable = lib.mkEnableOption "Tablet mode for hyprland.";
-        autoRotate = lib.mkOption {
-          description = "Whether to autorotate screen.";
-          default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
-          type = lib.types.bool;
-        };
-        menuButton = lib.mkOption {
-          description = "Whether to add menu button for waybar.";
-          default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
-          type = lib.types.bool;
-        };
-        virtKeyboard = lib.mkOption {
-          description = "Whether to enable dynamic virtual keyboard.";
-          default = config.alyraffauf.desktop.hyprland.tabletMode.enable;
-          type = lib.types.bool;
-        };
-      };
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
     alyraffauf = {
       desktop = {
@@ -79,14 +39,14 @@
 
       # Default apps
       defaultApps = {
-        browser = config.alyraffauf.desktop.defaultApps.webBrowser.exe;
-        editor = config.alyraffauf.desktop.defaultApps.editor.exe;
+        browser = config.alyraffauf.defaultApps.webBrowser.exe;
+        editor = config.alyraffauf.defaultApps.editor.exe;
         fileManager = lib.getExe pkgs.xfce.thunar;
         launcher = lib.getExe pkgs.fuzzel;
         lock = lib.getExe pkgs.swaylock;
         logout = lib.getExe pkgs.wlogout;
         passwordManager = lib.getExe' pkgs.keepassxc "keepassxc";
-        terminal = config.alyraffauf.desktop.defaultApps.terminal.exe;
+        terminal = config.alyraffauf.defaultApps.terminal.exe;
         virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
       };
 
@@ -119,7 +79,7 @@
                 done
             fi
           ''
-        else "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.desktop.theme.wallpaper}";
+        else "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.theme.wallpaper}";
 
       startupApps =
         [
@@ -268,7 +228,7 @@
         env = GDK_SCALE,${gdk_scale}
 
         # Some default env vars.
-        env = XCURSOR_SIZE,${toString config.alyraffauf.desktop.theme.cursorTheme.size}
+        env = XCURSOR_SIZE,${toString config.alyraffauf.theme.cursorTheme.size}
         env = QT_QPA_PLATFORMTHEME,qt6ct
 
         # Execute necessary apps
@@ -303,8 +263,8 @@
           gaps_in = 5
           gaps_out = 6
           border_size = 2
-          col.active_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.primary}EE) 45deg
-          col.inactive_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.inactive}AA)
+          col.active_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.primary}EE) 45deg
+          col.inactive_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.inactive}AA)
 
           layout = dwindle
 
@@ -321,7 +281,7 @@
           drop_shadow = yes
           shadow_range = 4
           shadow_render_power = 3
-          col.shadow = rgba(${lib.strings.removePrefix "#" config.alyraffauf.desktop.theme.colors.shadow}EE)
+          col.shadow = rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.shadow}EE)
 
           dim_special = 0.5
 

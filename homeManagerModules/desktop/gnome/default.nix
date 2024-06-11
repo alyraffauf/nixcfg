@@ -4,11 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.gnome.enable =
-      lib.mkEnableOption "Enables GNOME with basic settings configuration.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.gnome.enable {
     dconf.enable = true;
     dconf.settings = {

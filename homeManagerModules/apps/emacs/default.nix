@@ -4,8 +4,6 @@
   config,
   ...
 }: {
-  options = {alyraffauf.apps.emacs.enable = lib.mkEnableOption "Enables emacs.";};
-
   config = lib.mkIf config.alyraffauf.apps.emacs.enable {
     programs.emacs = {
       enable = true;

@@ -4,16 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.services.mpd.enable =
-      lib.mkEnableOption "MPD user service.";
-    alyraffauf.services.mpd.musicDirectory = lib.mkOption {
-      description = "Name of music directory";
-      default = config.xdg.userDirs.music;
-      type = lib.types.str;
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.services.mpd.enable {
     services.mpd = {
       enable = true;

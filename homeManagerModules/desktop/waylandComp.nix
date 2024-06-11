@@ -4,11 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.waylandComp =
-      lib.mkEnableOption "Shared configuration for wayland compositors.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.waylandComp {
     home.packages = with pkgs; [
       swayosd
@@ -23,10 +18,8 @@
         waybar.enable = lib.mkDefault true;
         wlogout.enable = lib.mkDefault true;
       };
-      desktop = {
-        theme.enable = lib.mkDefault true;
-        defaultApps.enable = lib.mkDefault true;
-      };
+      theme.enable = lib.mkDefault true;
+      defaultApps.enable = lib.mkDefault true;
     };
 
     dconf = {
