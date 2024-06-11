@@ -2,17 +2,10 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
-    # Latest stable NixOS release.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-
-    # Stable home-manager, synced with latest stable nixpkgs.
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Unstable NixOS.
-    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Automated disk partitioning.
     disko = {
@@ -20,17 +13,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Stable home-manager, synced with latest stable nixpkgs.
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Latest hyprland from git.
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    ## Motion sensor and auto-rotate for Hyprland.
+    iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
+
     # Pre-baked hardware support for various devices.
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    # Latest stable NixOS release.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Unstable NixOS.
+    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   nixConfig = {
