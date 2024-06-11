@@ -5,22 +5,24 @@
   ...
 }: {
   imports = [./homeManagerModules];
-  home.username = "dustin";
-  home.homeDirectory = "/home/dustin";
-  home.stateVersion = "24.05";
+
+  home = {
+    username = "dustin";
+    homeDirectory = "/home/dustin";
+    stateVersion = "24.05";
+    packages = with pkgs; [
+      fractal
+      gnome.file-roller
+      libreoffice-fresh
+      plexamp
+      vlc
+      xfce.xfce4-taskmanager
+      webcord
+      zoom-us
+    ];
+  };
 
   programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [
-    fractal
-    gnome.file-roller
-    libreoffice-fresh
-    plexamp
-    vlc
-    xfce.xfce4-taskmanager
-    webcord
-    zoom-us
-  ];
 
   alyraffauf = {
     desktop = {
