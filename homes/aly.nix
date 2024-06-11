@@ -1,12 +1,11 @@
 {
-  inputs,
   config,
-  pkgs,
+  inputs,
   lib,
+  pkgs,
+  self,
   ...
 }: {
-  imports = [./homeManagerModules];
-
   home = {
     username = "aly";
     homeDirectory = "/home/aly";

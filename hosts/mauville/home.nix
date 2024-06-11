@@ -5,9 +5,6 @@
   lib,
   ...
 }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
   home-manager = {
     sharedModules = [
       {
@@ -70,7 +67,7 @@
       }
     ];
     users.aly = {
-      imports = [../../aly.nix];
+      imports = [../../homes/aly.nix];
       systemd.user = {
         services.backblaze-sync = {
           Unit = {
@@ -111,6 +108,6 @@
         };
       };
     };
-    users.dustin = import ../../dustin.nix;
+    users.dustin = import ../../homes/dustin.nix;
   };
 }

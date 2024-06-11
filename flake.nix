@@ -80,6 +80,9 @@
         '';
       });
 
+    homeManagerModules.default =
+      import ./homeManagerModules inputs self;
+
     nixosModules.default =
       import ./nixosModules inputs;
 
@@ -96,8 +99,9 @@
             specialArgs = {inherit inputs self;};
             modules = [
               ./hosts/${host}
-              self.nixosModules.default
               inputs.agenix.nixosModules.default
+              inputs.home-manager.nixosModules.home-manager
+              self.nixosModules.default
             ];
           }
       );

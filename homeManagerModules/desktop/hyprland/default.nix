@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }: {
   options = {
@@ -54,8 +53,8 @@
 
     xdg.portal = {
       enable = true;
-      configPackages = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];
-      extraPortals = [inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".xdg-desktop-portal-hyprland];
+      configPackages = [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
 
     programs.waybar = {
@@ -141,7 +140,7 @@
         ];
 
       screenshot = rec {
-        bin = lib.getExe inputs.nixpkgsUnstable.legacyPackages."${pkgs.system}".hyprshot;
+        bin = lib.getExe pkgs.hyprshot;
         folder = "${config.xdg.userDirs.pictures}/screenshots";
         screen = "${bin} -m output -o ${folder}";
         region = "${bin} -m region -o ${folder}";

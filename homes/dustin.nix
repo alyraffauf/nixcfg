@@ -1,11 +1,11 @@
 {
   config,
-  pkgs,
+  inputs,
   lib,
+  pkgs,
+  self,
   ...
 }: {
-  imports = [./homeManagerModules];
-
   home = {
     username = "dustin";
     homeDirectory = "/home/dustin";
@@ -16,8 +16,8 @@
       libreoffice-fresh
       plexamp
       vlc
-      xfce.xfce4-taskmanager
       webcord
+      xfce.xfce4-taskmanager
       zoom-us
     ];
   };

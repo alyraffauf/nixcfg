@@ -5,11 +5,8 @@
   lib,
   ...
 }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
   home-manager = {
-    users.aly = import ../../aly.nix;
-    users.dustin = import ../../dustin.nix;
+    users.aly = import ../../homes/aly.nix;
+    users.dustin = import ../../homes/dustin.nix;
   };
 }

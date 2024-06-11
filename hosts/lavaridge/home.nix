@@ -5,9 +5,6 @@
   lib,
   ...
 }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
   home-manager = {
     sharedModules = [
       {
@@ -19,6 +16,6 @@
         };
       }
     ];
-    users.aly = import ../../aly.nix;
+    users.aly = import ../../homes/aly.nix;
   };
 }

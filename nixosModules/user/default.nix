@@ -1,9 +1,9 @@
 {
-  pkgs,
-  lib,
   config,
   inputs,
-  unstable,
+  lib,
+  pkgs,
+  self,
   ...
 }: {
   imports = [
@@ -14,8 +14,7 @@
 
   home-manager = {
     backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs unstable;};
-    sharedModules = [{imports = [../../homeManagerModules];}];
+    sharedModules = [self.homeManagerModules.default];
     useGlobalPkgs = true;
     useUserPackages = true;
   };

@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }: {
   imports = [./randomWallpaper.nix ./redShift.nix];
