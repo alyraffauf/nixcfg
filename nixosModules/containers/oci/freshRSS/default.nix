@@ -4,16 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.containers.oci.freshRSS.enable =
-      lib.mkEnableOption "Enable FreshRSS news client.";
-    alyraffauf.containers.oci.freshRSS.port = lib.mkOption {
-      description = "Port for FreshRSS.";
-      default = 8080;
-      type = lib.types.int;
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.containers.oci.freshRSS.enable {
     virtualisation.oci-containers.containers = {
       freshrss = {

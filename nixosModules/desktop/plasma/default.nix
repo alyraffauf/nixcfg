@@ -16,11 +16,6 @@
     fi
   '';
 in {
-  options = {
-    alyraffauf.desktop.plasma.enable =
-      lib.mkEnableOption "Enable plasma desktop session.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.plasma.enable {
     environment.systemPackages = with pkgs;
       [

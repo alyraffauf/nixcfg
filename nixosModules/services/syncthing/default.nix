@@ -6,27 +6,6 @@
 }: {
   imports = [./syncMusic.nix];
 
-  options = {
-    alyraffauf.services.syncthing = {
-      enable = lib.mkEnableOption "Enable Syncthing";
-      user = lib.mkOption {
-        description = "Specify user Syncthing runs as.";
-        default = "aly";
-        type = lib.types.str;
-      };
-      syncMusic = lib.mkOption {
-        description = "Whether to sync music folder.";
-        default = true;
-        type = lib.types.bool;
-      };
-      musicPath = lib.mkOption {
-        description = "Whether to sync music folder.";
-        default = "/home/${config.alyraffauf.services.syncthing.user}/music";
-        type = lib.types.str;
-      };
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.services.syncthing.enable {
     age.secrets = {
       syncthingCert.file = ../../../secrets/syncthing + "/${config.networking.hostName}/cert.age";

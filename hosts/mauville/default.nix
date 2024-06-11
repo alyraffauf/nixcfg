@@ -55,7 +55,7 @@ in {
       hyprland.enable = true;
       sway.enable = true;
     };
-    user = {
+    users = {
       aly = {
         enable = true;
         password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";

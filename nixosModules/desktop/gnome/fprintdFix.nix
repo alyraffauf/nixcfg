@@ -4,12 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.gnome.fprintdFix.enable =
-      lib.mkEnableOption
-      "Fix fprintd and pam issues with GNOME Display Manager.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.gnome.fprintdFix.enable {
     # Need to change the order pam loads its modules
     # to get proper fingerprint behavior on GDM and the lockscreen.

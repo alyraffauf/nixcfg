@@ -4,11 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.scripts.hoenn.enable =
-      lib.mkEnableOption "Enable hoenn system configuration script";
-  };
-
   config = lib.mkIf config.alyraffauf.scripts.hoenn.enable {
     environment.systemPackages = [
       (pkgs.writeShellScriptBin "hoenn" ''

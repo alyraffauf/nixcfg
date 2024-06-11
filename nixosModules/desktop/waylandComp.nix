@@ -5,11 +5,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.waylandComp.enable =
-      lib.mkEnableOption "Shared defaults for wayland compositors.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.waylandComp.enable {
     programs = {
       gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;

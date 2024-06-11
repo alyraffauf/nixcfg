@@ -4,26 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.containers.oci.jellyfin.enable =
-      lib.mkEnableOption "Enable Jellyfin media server.";
-    alyraffauf.containers.oci.jellyfin.mediaDirectory = lib.mkOption {
-      description = "Media directory for Jellyfin.";
-      default = "/mnt/Media";
-      type = lib.types.str;
-    };
-    alyraffauf.containers.oci.jellyfin.archiveDirectory = lib.mkOption {
-      description = "Archive directory for Jellyfin.";
-      default = "/mnt/Archive";
-      type = lib.types.str;
-    };
-    alyraffauf.containers.oci.jellyfin.port = lib.mkOption {
-      description = "Port for Jellyfin.";
-      default = 8096;
-      type = lib.types.int;
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.containers.oci.jellyfin.enable {
     virtualisation.oci-containers.containers = {
       jellyfin = {

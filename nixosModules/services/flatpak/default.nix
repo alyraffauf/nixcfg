@@ -4,11 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.services.flatpak.enable =
-      lib.mkEnableOption "Enables flatpak support with GUI.";
-  };
-
   config = lib.mkIf config.alyraffauf.services.flatpak.enable {
     environment.systemPackages = with pkgs; [gnome.gnome-software];
 

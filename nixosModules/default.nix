@@ -13,10 +13,11 @@ in {
     ./apps
     ./containers
     ./desktop
+    ./options.nix
     ./scripts
     ./services
     ./system
-    ./user
+    ./users
   ];
 
   nixpkgs.overlays = [

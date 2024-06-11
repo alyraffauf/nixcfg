@@ -23,11 +23,6 @@ in {
     ./fprintdFix.nix
   ];
 
-  options = {
-    alyraffauf.desktop.gnome.enable =
-      lib.mkEnableOption "Enable GNOME desktop session.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.gnome.enable {
     environment.systemPackages = with pkgs;
       [

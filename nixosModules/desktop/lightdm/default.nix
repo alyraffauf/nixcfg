@@ -4,12 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.lightdm.enable =
-      lib.mkEnableOption
-      "Lightdm and slick greeter with Catppuccin theme.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.lightdm.enable {
     security.pam.services.lightdm = {
       enableGnomeKeyring = true;

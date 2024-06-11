@@ -4,10 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.apps.steam.enable = lib.mkEnableOption "Enables Steam for video games.";
-  };
-
   config = lib.mkIf config.alyraffauf.apps.steam.enable {
     hardware.steam-hardware.enable = true;
     programs.steam = {

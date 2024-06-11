@@ -33,7 +33,7 @@
       plymouth.enable = true;
       zramSwap = {enable = true;};
     };
-    user = {
+    users = {
       aly = {
         enable = true;
         password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";

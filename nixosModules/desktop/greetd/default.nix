@@ -4,28 +4,6 @@
   pkgs,
   ...
 }: {
-  options = {
-    alyraffauf.desktop.greetd = {
-      enable =
-        lib.mkEnableOption "Enable greetd.";
-      session = lib.mkOption {
-        description = "Default command to execute on login.";
-        default = lib.getExe config.programs.hyprland.package;
-        type = lib.types.str;
-      };
-      autologin.enable = lib.mkOption {
-        description = "Whether to enable autologin.";
-        default = false;
-        type = lib.types.bool;
-      };
-      autologin.user = lib.mkOption {
-        description = "User to autologin.";
-        default = "aly";
-        type = lib.types.str;
-      };
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.greetd.enable {
     security.pam.services = {
       greetd.enableKwallet = lib.mkDefault true;

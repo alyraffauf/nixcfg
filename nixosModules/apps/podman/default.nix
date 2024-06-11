@@ -4,11 +4,6 @@
   config,
   ...
 }: {
-  options = {
-    alyraffauf.apps.podman.enable =
-      lib.mkEnableOption "Enables Podman for OCI container support.";
-  };
-
   config = lib.mkIf config.alyraffauf.apps.podman.enable {
     virtualisation = {
       oci-containers = {backend = "podman";};

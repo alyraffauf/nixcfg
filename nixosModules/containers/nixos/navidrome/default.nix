@@ -6,21 +6,6 @@
   self,
   ...
 }: {
-  options = {
-    alyraffauf.containers.nixos.navidrome.enable =
-      lib.mkEnableOption "Enable navidrome nixos container.";
-    alyraffauf.containers.nixos.navidrome.musicDirectory = lib.mkOption {
-      description = "Music directory for Navidrome.";
-      default = "/mnt/Media/Music";
-      type = lib.types.str;
-    };
-    alyraffauf.containers.nixos.navidrome.port = lib.mkOption {
-      description = "Port for Navidrome.";
-      default = 4533;
-      type = lib.types.int;
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.containers.nixos.navidrome.enable {
     # Spotify secrets aren't exactly safe, because they are world-readable in the nix store.
     # But they're reasonably disposable and hidden from the public git repo.
