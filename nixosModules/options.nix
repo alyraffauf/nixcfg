@@ -16,7 +16,7 @@
         steam.enable =
           lib.mkEnableOption "Valve's Steam for video games.";
         virt-manager.enable =
-          lib.mkEnableOption "Virt-manager with TPM and EFI support.";
+          lib.mkEnableOption "Virt-manager for virtual machines with TPM and EFI support.";
       };
 
       base.enable =
@@ -26,7 +26,7 @@
         nixos = {
           audiobookshelf = {
             enable =
-              lib.mkEnableOption "audiobookshelf nixos container.";
+              lib.mkEnableOption "audiobookshelf audiobook and podcast server in NixOS container.";
             mediaDirectory = lib.mkOption {
               description = "Media directory for audiobookshelf.";
               default = "/mnt/Media";
@@ -40,7 +40,7 @@
           };
           navidrome = {
             enable =
-              lib.mkEnableOption "navidrome nixos container.";
+              lib.mkEnableOption "Navidrome music server in NixOS container.";
             musicDirectory = lib.mkOption {
               description = "Music directory for Navidrome.";
               default = "/mnt/Media/Music";
@@ -227,7 +227,7 @@
             type = lib.types.str;
           };
         };
-        tailscale.enable = lib.mkEnableOption "Enable Tailscale";
+        tailscale.enable = lib.mkEnableOption "Tailscale WireGuard VPN.";
       };
       base = {
         plymouth.enable =
@@ -240,7 +240,7 @@
         zramSwap = {
           enable = lib.mkEnableOption "Zram swap.";
           size = lib.mkOption {
-            description = "Percent size of the zram swap.";
+            description = "Percent size of the zram swap relative to RAM.";
             default = 50;
             type = lib.types.int;
           };
@@ -250,14 +250,14 @@
         aly = {
           enable = lib.mkEnableOption "Aly's user.";
           password = lib.mkOption {
-            description = "Hashed password for user aly.";
+            description = "Hashed password for aly.";
             type = lib.types.str;
           };
         };
         dustin = {
           enable = lib.mkEnableOption "Dustin's user.";
           password = lib.mkOption {
-            description = "Hashed password.";
+            description = "Hashed password for dustin.";
             type = lib.types.str;
           };
         };
