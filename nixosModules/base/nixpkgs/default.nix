@@ -40,7 +40,7 @@
           hyprnome = unstable.hyprnome;
           hyprshot = unstable.hyprshot;
           xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-          obsidian = unstable.obsidian.overrideAttrs (old: {
+          obsidian = prev.obsidian.overrideAttrs (old: {
             installPhase =
               builtins.replaceStrings ["--ozone-platform=wayland"]
               ["--ozone-platform=wayland --enable-wayland-ime"]
