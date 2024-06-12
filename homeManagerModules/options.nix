@@ -216,9 +216,12 @@
             };
           };
         };
-
-        waylandComp =
-          lib.mkEnableOption "Shared configuration for wayland compositors.";
+        waylandComp = lib.mkOption {
+          description = "Shared defaults for wayland compositors.";
+          default =
+            config.alyraffauf.desktop.hyprland.enable || config.alyraffauf.desktop.sway.enable;
+          type = lib.types.bool;
+        };
       };
       scripts = {
         pp-adjuster.enable = lib.mkEnableOption "pp-adjuster script.";

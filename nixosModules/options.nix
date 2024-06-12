@@ -18,6 +18,10 @@
         virt-manager.enable =
           lib.mkEnableOption "Virt-manager with TPM and EFI support.";
       };
+
+      base.enable =
+        lib.mkEnableOption "Basic system configuration and sane defaults.";
+
       containers = {
         nixos = {
           audiobookshelf = {
@@ -178,8 +182,13 @@
           lib.mkEnableOption "Plasma desktop session.";
         sway.enable =
           lib.mkEnableOption "Sway wayland session.";
-        waylandComp.enable =
-          lib.mkEnableOption "Shared defaults for wayland compositors.";
+        waylandComp = lib.mkOption {
+          description = "Shared defaults for wayland compositors.";
+          default =
+            config.alyraffauf.desktop.hyprland.enable
+            || config.alyraffauf.desktop.sway.enable;
+          type = lib.types.bool;
+        };
       };
       scripts.hoenn.enable =
         lib.mkEnableOption "Hoenn system configuration script";
@@ -220,11 +229,14 @@
         };
         tailscale.enable = lib.mkEnableOption "Enable Tailscale";
       };
-      system = {
+      base = {
         plymouth.enable =
           lib.mkEnableOption "Plymouth boot screen with catppuccin theme.";
-        power-profiles-daemon.enable =
-          lib.mkEnableOption "Power-profiles-daemon.";
+        power-profiles-daemon.enable = lib.mkOption {
+          description = "Power Profiles Daemon for power management.";
+          default = true;
+          type = lib.types.bool;
+        };
         zramSwap = {
           enable = lib.mkEnableOption "Zram swap.";
           size = lib.mkOption {

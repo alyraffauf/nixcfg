@@ -25,7 +25,8 @@
   networking.hostName = "petalburg"; # Define your hostname.
 
   alyraffauf = {
-    system = {
+    base = {
+      enable = true;
       plymouth.enable = true;
       zramSwap = {enable = true;};
     };

@@ -5,10 +5,6 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.desktop.waylandComp {
-    home.packages = with pkgs; [
-      swayosd
-      networkmanagerapplet
-    ];
     alyraffauf = {
       apps = {
         fuzzel.enable = lib.mkDefault true;
@@ -27,6 +23,19 @@
       settings = {
         "org/gnome/nm-applet".disable-connected-notifications = true;
       };
+    };
+
+    home.packages = with pkgs; [
+      swayosd
+      networkmanagerapplet
+    ];
+
+    xdg.portal = {
+      enable = true;
+      configPackages =
+        lib.optionals (config.alyraffauf.desktop.hyprland.enable) [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals =
+        lib.optionals (config.alyraffauf.desktop.hyprland.enable) [pkgs.xdg-desktop-portal-hyprland];
     };
   };
 }

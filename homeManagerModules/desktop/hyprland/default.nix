@@ -5,18 +5,6 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-    alyraffauf = {
-      desktop = {
-        waylandComp = lib.mkDefault true;
-      };
-    };
-
-    xdg.portal = {
-      enable = true;
-      configPackages = [pkgs.xdg-desktop-portal-hyprland];
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-    };
-
     programs.waybar = {
       settings = {
         mainBar = {

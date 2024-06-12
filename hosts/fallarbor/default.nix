@@ -37,7 +37,8 @@
       };
       tailscale.enable = true;
     };
-    system = {
+    base = {
+      enable = true;
       plymouth.enable = true;
       zramSwap = {enable = true;};
     };

@@ -29,12 +29,6 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
-    alyraffauf = {
-      desktop = {
-        waylandComp = lib.mkDefault true;
-      };
-    };
-
     programs.waybar = {
       settings = {
         mainBar = {

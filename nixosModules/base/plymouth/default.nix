@@ -1,10 +1,11 @@
 {
-  pkgs,
-  lib,
   config,
+  inputs,
+  lib,
+  pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.system.plymouth.enable {
+  config = lib.mkIf config.alyraffauf.base.plymouth.enable {
     boot = {
       consoleLogLevel = 0;
       initrd.verbose = false;
