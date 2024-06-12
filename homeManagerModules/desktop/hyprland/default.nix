@@ -5,19 +5,8 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
-    programs.waybar = {
-      settings = {
-        mainBar = {
-          modules-left =
-            if config.alyraffauf.desktop.hyprland.tabletMode.menuButton
-            then ["hyprland/workspaces" "custom/menu" "custom/hyprland-close" "hyprland/submap"]
-            else ["hyprland/workspaces" "hyprland/submap"];
-        };
-      };
-    };
-
     wayland.windowManager.hyprland.enable = true;
-    wayland.windowManager.hyprland.package = pkgs.hyprland;
+
     wayland.windowManager.hyprland.extraConfig = let
       modifier = "SUPER";
 

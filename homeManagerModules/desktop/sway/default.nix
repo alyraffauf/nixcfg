@@ -29,18 +29,11 @@
   };
 
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
-    programs.waybar = {
-      settings = {
-        mainBar = {
-          modules-left = ["sway/workspaces" "sway/scratchpad" "sway/mode"];
-        };
-      };
+    wayland.windowManager.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      checkConfig = false;
     };
-
-    wayland.windowManager.sway.enable = true;
-    wayland.windowManager.sway.package = pkgs.swayfx;
-    wayland.windowManager.sway.wrapperFeatures.gtk = true;
-    wayland.windowManager.sway.checkConfig = false;
 
     alyraffauf.theme.gtk.hideTitleBar =
       if config.wayland.windowManager.sway.package == pkgs.sway
