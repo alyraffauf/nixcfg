@@ -18,7 +18,6 @@
       git
       gnome.file-roller
       google-chrome
-      keepassxc
       obsidian
       plexamp
       python3
@@ -101,6 +100,7 @@
       fastfetch.enable = true;
       firefox.enable = true;
       fzf.enable = true;
+      keepassxc.enable = true;
       neofetch.enable = true;
       neovim.enable = true;
       tmux.enable = true;
