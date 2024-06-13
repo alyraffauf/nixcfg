@@ -37,7 +37,7 @@
       };
       defaultApps = {
         enable =
-          lib.mkEnableOption "GTK and Qt themes.";
+          lib.mkEnableOption "Set default apps and file associations.";
         webBrowser = {
           exe = lib.mkOption {
             description = "Default web browser executable name.";
