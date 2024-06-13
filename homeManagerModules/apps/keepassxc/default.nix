@@ -5,42 +5,48 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.apps.keepassxc.enable {
-    home.packages = [pkgs.keepassxc];
-    xdg.configFile."keepassxc/keepassxc.ini".text = ''
-      [General]
-      ConfigVersion=2
-      HideWindowOnCopy=true
-      MinimizeAfterUnlock=false
-      MinimizeOnOpenUrl=true
+    home = {
+      file.".cache/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
+        General.LastActiveDatabase = "/${config.home.homeDirectory}/sync/Passwords.kdbx";
+      };
+      packages = [pkgs.keepassxc];
+    };
 
-      [Browser]
-      AlwaysAllowAccess=true
-      CustomProxyLocation=
-      Enabled=true
-      SearchInAllDatabases=true
+    xdg.configFile."keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
+      Browser = {
+        AlwaysAllowAccess = true;
+        Enabled = true;
+        SearchInAllDatabases = true;
+      };
 
-      [GUI]
-      ApplicationTheme=classic
-      ColorPasswords=false
-      CompactMode=true
-      MinimizeOnClose=true
-      MinimizeOnStartup=false
-      MinimizeToTray=true
-      ShowTrayIcon=true
-      TrayIconAppearance=colorful
+      General = {
+        ConfigVersion = 2;
+        HideWindowOnCopy = true;
+        MinimizeAfterUnlock = false;
+        MinimizeOnOpenUrl = true;
+      };
 
-      [PasswordGenerator]
-      AdditionalChars=
-      ExcludedChars=
+      GUI = {
+        ApplicationTheme = "classic";
+        ColorPasswords = false;
+        CompactMode = true;
+        MinimizeOnClose = true;
+        MinimizeOnStartup = false;
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
+        TrayIconAppearance = "colorful";
+      };
 
-      [SSHAgent]
-      Enabled=true
+      Security = {
+        ClearClipboardTimeout = 15;
+        EnableCopyOnDoubleClick = true;
+        IconDownloadFallback = true;
+        LockDatabaseScreenLock = true;
+      };
 
-      [Security]
-      ClearClipboardTimeout=15
-      EnableCopyOnDoubleClick=true
-      IconDownloadFallback=true
-      LockDatabaseScreenLock=true
-    '';
+      SSHAgent = {
+        Enabled = true;
+      };
+    };
   };
 }
