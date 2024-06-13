@@ -23,6 +23,7 @@
         firefox.enable = lib.mkEnableOption "Firefox web browser.";
         fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
         fzf.enable = lib.mkEnableOption "Fzf fuzzy file finder.";
+        keepassxc.enable = lib.mkEnableOption "KeePassXC password manager.";
         librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
         mako.enable = lib.mkEnableOption "Mako notification daemon.";
         neofetch.enable = lib.mkEnableOption "Neofetch.";

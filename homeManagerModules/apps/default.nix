@@ -14,6 +14,7 @@
     ./firefox
     ./fuzzel
     ./fzf
+    ./keepassxc
     ./librewolf
     ./mako
     ./neofetch
