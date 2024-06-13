@@ -7,30 +7,26 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.containers.nixos.navidrome.enable {
-    # Spotify secrets aren't exactly safe, because they are world-readable in the nix store.
-    # But they're reasonably disposable and hidden from the public git repo.
     age.secrets.lastFMApiKey.file = ../../../../secrets/lastFM/apiKey.age;
     age.secrets.lastFMSecret.file = ../../../../secrets/lastFM/secret.age;
     age.secrets.spotifyClientId.file = ../../../../secrets/spotify/clientId.age;
     age.secrets.spotifyClientSecret.file = ../../../../secrets/spotify/clientSecret.age;
 
     containers.navidrome = let
-      navidromeConfig = builtins.toFile "navidrome.json" ''
-        {
-          "Address": "0.0.0.0",
-          "DefaultTheme": "Auto",
-          "MusicFolder": "/Music",
-          "Port": ${toString config.alyraffauf.containers.nixos.navidrome.port},
-          "SubsonicArtistParticipations": true,
-          "UIWelcomeMessage": "Welcome to Navidrome! Registrations are closed.",
-          "Spotify.ID": "@spotifyClientId@",
-          "Spotify.Secret": "@spotifyClientSecret@",
-          "LastFM.Enabled": true,
-          "LastFM.ApiKey": "@lastFMApiKey@",
-          "LastFM.Secret": "@lastFMSecret@",
-          "LastFM.Language": "en"
-        }
-      '';
+      navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
+        Address = "0.0.0.0";
+        DefaultTheme = "Auto";
+        MusicFolder = "/Music";
+        Port = config.alyraffauf.containers.nixos.navidrome.port;
+        SubsonicArtistParticipations = true;
+        UIWelcomeMessage = "Welcome to Navidrome @ RaffaufLabs.com";
+        "Spotify.ID" = "@spotifyClientId@";
+        "Spotify.Secret" = "@spotifyClientSecret@";
+        "LastFM.Enabled" = true;
+        "LastFM.ApiKey" = "@lastFMApiKey@";
+        "LastFM.Secret" = "@lastFMSecret@";
+        "LastFM.Language" = "en";
+      });
     in {
       autoStart = true;
       bindMounts = {
