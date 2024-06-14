@@ -92,6 +92,7 @@
       inputs.nixpkgs.lib.genAttrs [
         "fallarbor"
         "lavaridge"
+        "mandarin"
         "mauville"
         "petalburg"
         "rustboro"
