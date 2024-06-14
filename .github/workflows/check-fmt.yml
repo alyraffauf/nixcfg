@@ -16,5 +16,5 @@ jobs:
 
       - uses: cachix/install-nix-action@v20
 
-      - name: Check if flake.nix successfully evaluates
+      - name: Check if flake complies with default style
         run: nix fmt -- -c .
