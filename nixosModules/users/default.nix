@@ -7,9 +7,9 @@
   ...
 }: {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./aly
     ./dustin
+    ./morgan
   ];
 
   home-manager = {

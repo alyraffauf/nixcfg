@@ -261,6 +261,13 @@
             type = lib.types.str;
           };
         };
+        morgan = {
+          enable = lib.mkEnableOption "Morgan's user.";
+          password = lib.mkOption {
+            description = "Hashed password for morgan.";
+            type = lib.types.str;
+          };
+        };
       };
     };
   };
