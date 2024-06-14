@@ -39,7 +39,10 @@
       useXkbConfig = true;
     };
 
-    environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
+    environment.systemPackages = with pkgs; [
+      inputs.agenix.packages.${pkgs.system}.default
+      inxi
+    ];
 
     i18n = {
       defaultLocale = lib.mkDefault "en_US.UTF-8";
