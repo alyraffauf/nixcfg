@@ -105,6 +105,8 @@
       externalMonitors = {
         homeOffice0 = "desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2";
         homeOffice1 = "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto";
+        homeOffice3 = "desc:LG Electronics LG ULTRAWIDE 207NTHM9F673, preferred,auto,1.25,vrr,2";
+        homeOffice4 = "desc:LG Electronics LG IPS QHD 207NTVSE5615,preferred,-1152x0,1.25,transform,3";
         workShop = "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6";
         weWork = "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto";
       };
