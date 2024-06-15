@@ -60,6 +60,10 @@
       hoenn.enable = true;
     };
     services = {
+      ollama = {
+        enable = true;
+        gpu = "nvidia";
+      };
       tailscale.enable = true;
     };
   };
