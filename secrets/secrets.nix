@@ -7,8 +7,14 @@ let
     "petalburg"
     "rustboro"
   ];
+  users = [
+    "aly_lavaridge"
+    "aly_mauville"
+    "aly_petalburg"
+    "aly_rustboro"
+  ];
   systemKeys = builtins.map (host: builtins.readFile ./publicKeys/root_${host}.pub) hosts;
-  userKeys = builtins.map (host: builtins.readFile ./publicKeys/aly_${host}.pub) hosts;
+  userKeys = builtins.map (user: builtins.readFile ./publicKeys/${user}.pub) users;
   keys = systemKeys ++ userKeys;
 in {
   "lastFM/apiKey.age".publicKeys = keys;
