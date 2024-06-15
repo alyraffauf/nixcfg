@@ -3,6 +3,7 @@ let
     "fallarbor"
     "lavaridge"
     "mauville"
+    "mandarin"
     "petalburg"
     "rustboro"
   ];
