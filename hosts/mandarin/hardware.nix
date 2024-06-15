@@ -30,16 +30,21 @@
   hardware = {
     cpu.amd.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    enableAllFirmware = true;
+
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
     opengl = {
       driSupport = true;
       driSupport32Bit = true;
     };
   };
+
   services.xserver.videoDrivers = ["nvidia"];
 
   networking.useDHCP = lib.mkDefault true;
