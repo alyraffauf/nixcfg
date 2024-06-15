@@ -20,7 +20,14 @@
     ];
   };
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    git = {
+      enable = true;
+      userName = "Morgan Tamayo";
+      userEmail = "mrgntamayo@gmail.com";
+    };
+  };
 
   alyraffauf = {
     apps = {
