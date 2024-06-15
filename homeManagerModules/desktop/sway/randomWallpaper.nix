@@ -21,7 +21,7 @@
             NEW_PIDS+=($!)
           done
 
-          if [ ''${OLD_PIDS[@]} -gt 0 ]; then
+          if [[ ''${OLD_PIDS[@]} -gt 0 ]]; then
             sleep 5
           fi
 
