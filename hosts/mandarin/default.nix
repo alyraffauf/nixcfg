@@ -60,6 +60,7 @@
       hoenn.enable = true;
     };
     services = {
+      flatpak.enable = true;
       ollama = {
         enable = true;
         gpu = "nvidia";
