@@ -63,7 +63,7 @@
       flatpak.enable = true;
       ollama = {
         enable = true;
-        gpu = "rocm";
+        gpu = "amd";
       };
       tailscale.enable = true;
     };
