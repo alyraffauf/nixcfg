@@ -1,16 +1,14 @@
 # nixcfg
-NixOS flake for all of mine + my husband's hosts. Modules for Hyprland (with options for tablet optimizations), Sway, GNOME, and a variety of Home Lab services running on a mix of nix-native and OCI containers. Uses home-manager for managing dotfiles and disko for automatically partioning drives.
+NixOS flake for all mine + my husband's hosts, including modules for Hyprland, Sway, GNOME, and a variety of Home lab services running on a mix of nix-native and OCI containers. Built with [agenix](https://github.com/ryantm/agenix) for managing secrets, [disko](https://github.com/nix-community/disko) for automatically partioning drives, and [home-manager](https://github.com/nix-community/home-manager) for managing dotfiles and home configuration.
 
 ## Rice
-### Sway
-![](./_img/sway.png)
-### Sway Tablet Mode
-![](./_img/sway-tablet.png)
+![](./_img/hyprland.png)
 
 ## Deploying to NixOS
 > :red_circle: **Do not deploy this flake unmodified to your machine. It won't work.**
 > This is my own [NixOS](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager) flake for my personal devices.
-> Each hardware-configuration is host-specific. If you fork this repository, replace them with the hardware-configuration.nix that NixOS generates for you.
+> Each hardware configuration is host-specific. If you fork this repository, add a host configuration for your own hardware.
+> Secrets are encrypted with [agenix](https://github.com/ryantm/agenix) and will not be available without the private decryption keys.
 
 ### Enabling Flakes
 While widely used and considered stable, [flakes](https://nixos.wiki/wiki/Flakes) are still considered experimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
