@@ -51,10 +51,10 @@
             };
             colors = {
               preferDark = true;
-              text = "#4c4f69";
-              background = "#eff1f5";
-              primary = "#8839ef";
-              secondary = "#04a5e5";
+              text = "#FAFAFA";
+              background = "#232634";
+              primary = "#CA9EE6";
+              secondary = "#99D1DB";
               inactive = "#626880";
               shadow = "#1A1A1A";
             };
