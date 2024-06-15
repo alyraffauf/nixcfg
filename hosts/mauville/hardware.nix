@@ -15,14 +15,10 @@
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
-      kernelModules = [];
+      kernelModules = ["amdgpu"];
     };
 
     kernelModules = ["kvm-amd" "amdgpu"];
-  };
-
-  services.xserver = {
-    videoDrivers = ["amdgpu"]; # Add AMDGPU driver.
   };
 
   hardware = {
@@ -69,6 +65,10 @@
       priority = 1;
     }
   ];
+
+  services.xserver = {
+    videoDrivers = ["amdgpu"]; # Add AMDGPU driver.
+  };
 
   networking.useDHCP = lib.mkDefault true;
 

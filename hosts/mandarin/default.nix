@@ -27,7 +27,7 @@
     base = {
       enable = true;
       plymouth.enable = true;
-      zramSwap = {enable = true;};
+      zramSwap.enable = true;
     };
     users = {
       aly = {
@@ -63,7 +63,7 @@
       flatpak.enable = true;
       ollama = {
         enable = true;
-        gpu = "nvidia";
+        gpu = "rocm";
       };
       tailscale.enable = true;
     };
