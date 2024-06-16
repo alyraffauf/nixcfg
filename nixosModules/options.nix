@@ -13,8 +13,11 @@
           lib.mkEnableOption "Nicotine+ Soulseek client.";
         podman.enable =
           lib.mkEnableOption "Podman for OCI container support.";
-        steam.enable =
-          lib.mkEnableOption "Valve's Steam for video games.";
+        steam.enable = lib.mkOption {
+          description = "Valve's Steam for video games.";
+          default = config.alyraffauf.desktop.steam.enable;
+          type = lib.types.bool;
+        };
         virt-manager.enable =
           lib.mkEnableOption "Virt-manager for virtual machines with TPM and EFI support.";
       };
