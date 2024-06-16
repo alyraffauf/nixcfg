@@ -7,14 +7,14 @@
   config = lib.mkIf config.alyraffauf.apps.steam.enable {
     hardware.steam-hardware.enable = true;
     programs = {
-      gamescope.enable = true;
+      gamescope.enable = config.alyraffauf.desktop.steam.enable;
+
       steam = {
         enable = true;
-        gamescopeSession.enable = true;
-        remotePlay.openFirewall =
-          true; # Open ports in the firewall for Steam Remote Play
-        dedicatedServer.openFirewall =
-          true; # Open ports in the firewall for Source Dedicated Server
+        dedicatedServer.openFirewall = true;
+        gamescopeSession.enable = config.alyraffauf.desktop.steam.enable;
+        localNetworkGameTransfers.openFirewall = true;
+        remotePlay.openFirewall = true;
       };
     };
   };

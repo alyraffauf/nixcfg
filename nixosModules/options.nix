@@ -180,6 +180,8 @@
           "Lightdm and slick greeter with Catppuccin theme.";
         plasma.enable =
           lib.mkEnableOption "Plasma desktop session.";
+        steam.enable =
+          lib.mkEnableOption "Steam + Gamescope session.";
         sway.enable =
           lib.mkEnableOption "Sway wayland session.";
         waylandComp = lib.mkOption {
