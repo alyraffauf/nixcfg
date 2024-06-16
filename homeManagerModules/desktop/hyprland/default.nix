@@ -296,7 +296,7 @@
 
         master {
           always_center_master = true
-          new_is_master = false
+          new_status = false
         }
 
         misc {
