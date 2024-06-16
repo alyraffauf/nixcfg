@@ -17,11 +17,11 @@
   boot = {
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      kernelModules = ["amdgpu"];
     };
 
     extraModulePackages = [];
-    kernelModules = ["kvm-amd" "amd-gpu"];
+    kernelModules = ["kvm-amd" "amdgpu"];
     kernelParams = ["amdgpu.abmlevel=0"];
   };
 
