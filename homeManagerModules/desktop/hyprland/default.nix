@@ -34,6 +34,8 @@
             OLD_PIDS=()
             directory=${config.home.homeDirectory}/.local/share/backgrounds
 
+            sleep 1
+
             if [ -d "$directory" ]; then
                 while true; do
                   NEW_PIDS=()
