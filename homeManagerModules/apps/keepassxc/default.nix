@@ -41,7 +41,7 @@
         ClearClipboardTimeout = 15;
         EnableCopyOnDoubleClick = true;
         IconDownloadFallback = true;
-        LockDatabaseScreenLock = true;
+        LockDatabaseScreenLock = false;
       };
 
       SSHAgent = {
