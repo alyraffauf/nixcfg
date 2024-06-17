@@ -5,48 +5,10 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.apps.keepassxc.enable {
-    home = {
-      file.".cache/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
-        General.LastActiveDatabase = "/${config.home.homeDirectory}/sync/Passwords.kdbx";
-      };
-      packages = [pkgs.keepassxc];
-    };
+    home.packages = [pkgs.keepassxc];
 
-    xdg.configFile."keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
-      Browser = {
-        AlwaysAllowAccess = true;
-        Enabled = true;
-        SearchInAllDatabases = true;
-      };
-
-      General = {
-        ConfigVersion = 2;
-        HideWindowOnCopy = true;
-        MinimizeAfterUnlock = false;
-        MinimizeOnOpenUrl = true;
-      };
-
-      GUI = {
-        ApplicationTheme = "classic";
-        ColorPasswords = false;
-        CompactMode = true;
-        MinimizeOnClose = true;
-        MinimizeOnStartup = false;
-        MinimizeToTray = true;
-        ShowTrayIcon = true;
-        TrayIconAppearance = "colorful";
-      };
-
-      Security = {
-        ClearClipboardTimeout = 15;
-        EnableCopyOnDoubleClick = true;
-        IconDownloadFallback = true;
-        LockDatabaseScreenLock = false;
-      };
-
-      SSHAgent = {
-        Enabled = true;
-      };
-    };
+    xdg.configFile."keepassxc/keepassxc.ini".text =
+      lib.generators.toINI {}
+      config.alyraffauf.apps.keepassxc.settings;
   };
 }

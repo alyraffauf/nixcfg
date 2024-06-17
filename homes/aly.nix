@@ -7,9 +7,10 @@
   ...
 }: {
   home = {
-    username = "aly";
     homeDirectory = "/home/aly";
-    stateVersion = "24.05";
+    file.".cache/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
+      General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
+    };
     packages = with pkgs; [
       browsh
       curl
@@ -27,6 +28,8 @@
       webcord
       wget
     ];
+    stateVersion = "24.05";
+    username = "aly";
   };
 
   programs = {
@@ -100,7 +103,45 @@
       fastfetch.enable = true;
       firefox.enable = true;
       fzf.enable = true;
-      keepassxc.enable = true;
+      keepassxc = {
+        enable = true;
+        settings = {
+          Browser = {
+            AlwaysAllowAccess = true;
+            Enabled = true;
+            SearchInAllDatabases = true;
+          };
+
+          General = {
+            ConfigVersion = 2;
+            HideWindowOnCopy = true;
+            MinimizeAfterUnlock = false;
+            MinimizeOnOpenUrl = true;
+          };
+
+          GUI = {
+            ApplicationTheme = "classic";
+            ColorPasswords = false;
+            CompactMode = true;
+            MinimizeOnClose = true;
+            MinimizeOnStartup = false;
+            MinimizeToTray = true;
+            ShowTrayIcon = true;
+            TrayIconAppearance = "colorful";
+          };
+
+          Security = {
+            ClearClipboardTimeout = 15;
+            EnableCopyOnDoubleClick = true;
+            IconDownloadFallback = true;
+            LockDatabaseScreenLock = false;
+          };
+
+          SSHAgent = {
+            Enabled = true;
+          };
+        };
+      };
       neofetch.enable = true;
       neovim.enable = true;
       tmux.enable = true;
