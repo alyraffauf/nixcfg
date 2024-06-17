@@ -12,7 +12,6 @@
     stateVersion = "24.05";
     packages = with pkgs; [
       fractal
-      gnome.file-roller
       libreoffice-fresh
       vlc
       webcord

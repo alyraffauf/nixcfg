@@ -26,8 +26,9 @@
     };
 
     home.packages = with pkgs; [
-      swayosd
+      gnome.file-roller
       networkmanagerapplet
+      swayosd
     ];
 
     xdg.portal = {

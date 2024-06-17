@@ -17,7 +17,6 @@
       fractal
       gh
       git
-      gnome.file-roller
       google-chrome
       obsidian
       plexamp
