@@ -91,6 +91,7 @@
       openssh = {
         enable = true;
         openFirewall = true;
+        settings.PasswordAuthentication = false;
       };
 
       printing.enable = true;
