@@ -11,6 +11,7 @@
       extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
       hashedPassword = config.alyraffauf.users.morgan.password;
       isNormalUser = true;
+      uid = 1002;
     };
   };
 }
