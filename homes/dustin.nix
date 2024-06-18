@@ -23,6 +23,13 @@
 
   programs.home-manager.enable = true;
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
+    };
+  };
+
   alyraffauf = {
     apps = {
       alacritty.enable = true;
