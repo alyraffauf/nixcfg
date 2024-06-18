@@ -31,6 +31,7 @@
   alyraffauf = {
     base = {
       enable = true;
+      sambaAutoMount = true;
       plymouth.enable = true;
       zramSwap = {enable = true;};
     };

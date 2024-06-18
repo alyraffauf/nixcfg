@@ -22,9 +22,6 @@
           lib.mkEnableOption "Virt-manager for virtual machines with TPM and EFI support.";
       };
 
-      base.enable =
-        lib.mkEnableOption "Basic system configuration and sane defaults.";
-
       containers = {
         nixos = {
           audiobookshelf = {
@@ -235,6 +232,9 @@
         tailscale.enable = lib.mkEnableOption "Tailscale WireGuard VPN.";
       };
       base = {
+        enable =
+          lib.mkEnableOption "Basic system configuration and sane defaults.";
+        sambaAutoMount = lib.mkEnableOption "Automounting of mauville Samba Shares.";
         plymouth.enable =
           lib.mkEnableOption "Plymouth boot screen with catppuccin theme.";
         power-profiles-daemon.enable = lib.mkOption {
