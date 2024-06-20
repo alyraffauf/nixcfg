@@ -50,6 +50,7 @@
         };
       };
       hyprland.enable = true;
+      steam.enable = true;
     };
     apps = {
       steam.enable = true;
