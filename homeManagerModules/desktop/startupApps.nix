@@ -9,7 +9,7 @@
     ${
       lib.strings.concatMapStringsSep
       "\n"
-      (app: "exec-once = ${app}")
+      (app: "exec-once = sleep 1 && ${app}")
       config.alyraffauf.desktop.startupApps
     }
   '';
