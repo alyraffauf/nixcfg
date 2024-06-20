@@ -37,14 +37,14 @@
           "mossdeep" = {id = "XRIGHMT-54OGBWP-UAAGAJS-LGTRHA2-EMKOMEB-EJEWKZN-GJFK6FO-3O6KQQ4";}; # Steam Deck OLED
           "petalburg" = {id = "ECTD3LW-YZTJIXX-HLQYXT7-UGZSGST-3DDKF72-DJPMDHE-SUYDWIT-ASTKTAE";}; # Yoga 9i
           "rustboro" = {id = "7CXGPQN-7DYDYJN-DKELOR3-RD4HZUW-SSUDGLZ-WVXYFUT-DPT2MGD-6PO5BQF";}; # Thinkpad t440p
-          "wattson" = {id = "B2EYRQJ-LE2FR2J-D4M35TY-FXVGJ6D-USE7S2T-5V357SV-IQQWEAT-RQBLJQB";}; # Samsung a54 5g
+          "wallace" = {id = "X55NQL2-H3TEJ5U-EXZPBKQ-LI6BMB4-W2ULDIJ-YNIHJHB-4ISCOJB-UHNLYAX";}; # Samsung a35
           "winona" = {id = "IGAW5SS-WY2QN6J-5TF74YZ-6XPNPTC-RCH3HIT-ZZQKCAI-6L54IS2-SNRIMA2";}; # Pixel Tablet
         };
         folders = {
           "sync" = {
             id = "default";
             path = "/home/${config.alyraffauf.services.syncthing.user}/sync";
-            devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wattson" "winona"];
+            devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wallace" "winona"];
             versioning = {
               type = "staggered";
               params = {
@@ -56,7 +56,7 @@
           "camera" = {
             id = "fcsgh-dlxys";
             path = "/home/${config.alyraffauf.services.syncthing.user}/pics/camera";
-            devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wattson" "winona"];
+            devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
             versioning = {
               params.cleanoutDays = "5";
               type = "trashcan";

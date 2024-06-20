@@ -11,7 +11,7 @@
           "music" = {
             id = "6nzmu-z9der";
             path = config.alyraffauf.services.syncthing.musicPath;
-            devices = ["lavaridge" "mauville" "petalburg" "rustboro" "wattson"];
+            devices = ["lavaridge" "mauville" "petalburg" "rustboro" "wallace"];
           };
         };
       };
