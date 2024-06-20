@@ -12,6 +12,9 @@
       steam = {
         enable = true;
         dedicatedServer.openFirewall = true;
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
         gamescopeSession.enable = config.alyraffauf.desktop.steam.enable;
         localNetworkGameTransfers.openFirewall = true;
         remotePlay.openFirewall = true;
