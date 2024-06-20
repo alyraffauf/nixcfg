@@ -224,6 +224,11 @@
             };
           };
         };
+        startupApps = lib.mkOption {
+          description = "Apps to launch at startup";
+          default = [];
+          type = lib.types.listOf (lib.types.str);
+        };
         waylandComp = lib.mkOption {
           description = "Shared defaults for wayland compositors.";
           default =

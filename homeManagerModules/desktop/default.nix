@@ -9,6 +9,7 @@
     ./gnome
     ./hyprland
     ./sway
+    ./startupApps.nix
     ./waylandComp.nix
   ];
 }
