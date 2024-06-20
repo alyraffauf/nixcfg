@@ -13,7 +13,7 @@
     services = {
       blueman.enable = lib.mkDefault true;
       dbus.packages = [pkgs.gcr];
-      geoclue2.enable = lib.mkDefault true;
+      # geoclue2.enable = lib.mkDefault true;
       gnome.gnome-keyring.enable = lib.mkDefault true;
       udev.packages = [pkgs.swayosd];
     };

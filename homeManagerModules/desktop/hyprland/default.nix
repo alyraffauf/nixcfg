@@ -74,8 +74,8 @@
           "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
         ]
         ++ lib.lists.optionals (config.alyraffauf.desktop.hyprland.redShift) [
-          "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/agent"
-          (lib.getExe pkgs.gammastep)
+          # "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/agent"
+          "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
         ];
 
       screenshot = rec {
