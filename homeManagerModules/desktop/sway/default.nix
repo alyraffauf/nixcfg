@@ -46,7 +46,7 @@
 
       # Default apps
       browser = config.alyraffauf.defaultApps.webBrowser.exe;
-      fileManager = lib.getExe pkgs.xfce.thunar;
+      fileManager = lib.getExe pkgs.cinnamon.nemo;
       editor = config.alyraffauf.defaultApps.editor.exe;
       terminal = config.alyraffauf.defaultApps.terminal.exe;
 
@@ -305,7 +305,6 @@
             then "true"
             else "${wallpaperd}";
         }
-        {command = "${fileManager} --daemon";}
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = "${idled}";}
         {command = lib.getExe pkgs.autotiling;}

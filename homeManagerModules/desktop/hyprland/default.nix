@@ -18,7 +18,7 @@
       defaultApps = {
         browser = config.alyraffauf.defaultApps.webBrowser.exe;
         editor = config.alyraffauf.defaultApps.editor.exe;
-        fileManager = lib.getExe pkgs.xfce.thunar;
+        fileManager = lib.getExe pkgs.cinnamon.nemo;
         launcher = lib.getExe pkgs.fuzzel;
         lock = lib.getExe pkgs.swaylock;
         logout = lib.getExe pkgs.wlogout;
@@ -64,7 +64,6 @@
         [
           wallpaperd
           (lib.getExe pkgs.waybar)
-          "${defaultApps.fileManager} --daemon"
           idled
           (lib.getExe' pkgs.blueman "blueman-applet")
           (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
