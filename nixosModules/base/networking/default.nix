@@ -21,6 +21,29 @@
           config.age.secrets.wifi.path
         ];
         profiles = {
+          "Dustin’s iPhone" = {
+            connection = {
+              id = "Dustin’s iPhone";
+              type = "wifi";
+            };
+            wifi.ssid = "Dustin’s iPhone";
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "$DustinsiPhonePSK";
+            };
+          };
+          javapatron = {
+            connection = {
+              id = "javapatron";
+              type = "wifi";
+            };
+            wifi.ssid = "javapatron";
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+            };
+          };
           Stargate-Discovery = {
             connection = {
               id = "Stargate-Discovery";
@@ -45,18 +68,7 @@
               psk = "$wattsonPSK";
             };
           };
-          "Dustin’s iPhone" = {
-            connection = {
-              id = "Dustin’s iPhone";
-              type = "wifi";
-            };
-            wifi.ssid = "Dustin’s iPhone";
-            wifi-security = {
-              auth-alg = "open";
-              key-mgmt = "wpa-psk";
-              psk = "$DustinsiPhonePSK";
-            };
-          };
+          
           WeWorkWiFi = {
             "802-1x" = {
               eap = "peap;";
