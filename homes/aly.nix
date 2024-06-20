@@ -123,7 +123,7 @@
             ColorPasswords = false;
             CompactMode = true;
             MinimizeOnClose = true;
-            MinimizeOnStartup = false;
+            MinimizeOnStartup = true;
             MinimizeToTray = true;
             ShowTrayIcon = true;
             TrayIconAppearance = "colorful";
