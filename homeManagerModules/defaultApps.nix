@@ -10,10 +10,20 @@
       editor.package
       imageViewer.package
       pdfEditor.package
+      terminal.package
       terminalEditor.package
       videoPlayer.package
       webBrowser.package
     ];
+
+    dconf = {
+      enable = true;
+      settings = {
+        "org/cinnamon/desktop/applications/terminal".exec = "${config.alyraffauf.defaultApps.terminal.exe}";
+        "org/cinnamon/desktop/default-applications/terminal".exec = "${config.alyraffauf.defaultApps.terminal.exe}";
+      };
+    };
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
