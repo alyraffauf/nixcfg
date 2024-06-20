@@ -21,7 +21,9 @@
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/nm-applet".disable-connected-notifications = true;
+        "org/gnome/nm-applet".disable-connected-notifications = false;
+        "org/nemo/preferences/menu-config".background-menu-open-as-root = false;
+        "org/nemo/preferences/menu-config".selection-menu-open-as-root = false;
       };
     };
 
