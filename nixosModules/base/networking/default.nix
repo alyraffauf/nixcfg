@@ -33,6 +33,7 @@
               psk = "$DustinsiPhonePSK";
             };
           };
+
           javapatron = {
             connection = {
               id = "javapatron";
@@ -44,6 +45,7 @@
               key-mgmt = "wpa-psk";
             };
           };
+
           Stargate-Discovery = {
             connection = {
               id = "Stargate-Discovery";
@@ -56,6 +58,7 @@
               psk = "$StargateDiscoveryPSK";
             };
           };
+
           wattson = {
             connection = {
               id = "wattson";
@@ -68,7 +71,7 @@
               psk = "$wattsonPSK";
             };
           };
-          
+
           WeWorkWiFi = {
             "802-1x" = {
               eap = "peap;";
