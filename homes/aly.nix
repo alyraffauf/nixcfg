@@ -154,6 +154,7 @@
       };
     };
     desktop = {
+      startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
       hyprland = {
         enable = true;
         randomWallpaper = true;
