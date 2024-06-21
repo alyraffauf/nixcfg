@@ -186,13 +186,6 @@
           lib.mkEnableOption "Steam + Gamescope session.";
         sway.enable =
           lib.mkEnableOption "Sway wayland session.";
-        waylandComp = lib.mkOption {
-          description = "Shared defaults for wayland compositors.";
-          default =
-            config.alyraffauf.desktop.hyprland.enable
-            || config.alyraffauf.desktop.sway.enable;
-          type = lib.types.bool;
-        };
       };
       scripts.hoenn.enable =
         lib.mkEnableOption "Hoenn system configuration script";

@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.waylandComp {
+  config = lib.mkIf (config.alyraffauf.desktop.hyprland.enable || config.alyraffauf.desktop.sway.enable) {
     alyraffauf = {
       apps = {
         fuzzel.enable = lib.mkDefault true;

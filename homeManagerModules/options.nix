@@ -261,12 +261,6 @@
           default = [];
           type = lib.types.listOf (lib.types.str);
         };
-        waylandComp = lib.mkOption {
-          description = "Shared defaults for wayland compositors.";
-          default =
-            config.alyraffauf.desktop.hyprland.enable || config.alyraffauf.desktop.sway.enable;
-          type = lib.types.bool;
-        };
       };
       scripts = {
         pp-adjuster.enable = lib.mkEnableOption "pp-adjuster script.";
