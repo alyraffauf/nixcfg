@@ -30,8 +30,10 @@
     kernelModules = ["kvm-intel"];
   };
 
-  # Otherwise, CPU doesn't automatically clock down.
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement = {
+    cpuFreqGovernor = "ondemand"; # Otherwise, CPU doesn't automatically clock down.
+    powertop.enable = true;
+  };
 
   nixpkgs = {
     config.packageOverrides = pkgs: {
