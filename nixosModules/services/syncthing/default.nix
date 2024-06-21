@@ -62,6 +62,15 @@
               type = "trashcan";
             };
           };
+          "screenshots" = {
+            id = "screenshots";
+            path = "/home/${config.alyraffauf.services.syncthing.user}/pics/screenshots";
+            devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
+            versioning = {
+              params.cleanoutDays = "5";
+              type = "trashcan";
+            };
+          };
         };
       };
     };
