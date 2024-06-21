@@ -39,12 +39,6 @@
       vsCodium.enable = true;
     };
     defaultApps.enable = true;
-    desktop = {
-      hyprland = {
-        enable = true;
-        randomWallpaper = true;
-      };
-    };
     theme = {
       enable = true;
       gtk = {
