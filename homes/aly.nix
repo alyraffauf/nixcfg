@@ -218,7 +218,7 @@
         inactive = "#626880";
         shadow = "#1A1A1A";
       };
-      
+
       wallpaper = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
     };
   };
