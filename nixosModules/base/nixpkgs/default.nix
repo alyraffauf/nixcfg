@@ -39,7 +39,7 @@
           hyprnome = unstable.hyprnome;
           hyprshot = unstable.hyprshot;
           intel-vaapi-driver = prev.intel-vaapi-driver.override {enableHybridCodec = true;};
-          nerdfonts = prev.nerdfonts.override {fonts = ["Noto"];};
+          nerdfonts = prev.nerdfonts.override {fonts = ["DroidSansMono" "Noto"];};
           obsidian = prev.obsidian.overrideAttrs (old: {
             installPhase =
               builtins.replaceStrings ["--ozone-platform=wayland"]

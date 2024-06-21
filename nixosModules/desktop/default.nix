@@ -25,9 +25,7 @@
 
     fonts.packages = with pkgs; [
       liberation_ttf
-      (nerdfonts.override {
-        fonts = ["DroidSansMono" "Noto"];
-      })
+      nerdfonts
     ];
 
     services = {
