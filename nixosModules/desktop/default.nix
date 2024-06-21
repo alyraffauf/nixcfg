@@ -15,11 +15,6 @@
     ./waylandComp.nix
   ];
 
-  options = {
-    alyraffauf.desktop.enable =
-      lib.mkEnableOption "Enable basic GUI X11 and Wayland environment.";
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

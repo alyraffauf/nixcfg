@@ -142,6 +142,8 @@
         };
       };
       desktop = {
+        enable =
+          lib.mkEnableOption "Enable basic GUI X11 and Wayland environment.";
         cinnamon.enable =
           lib.mkEnableOption "Cinnamon desktop session.";
         gnome = {
