@@ -24,11 +24,6 @@
 
   # Intel drivers with accelerated video playback support.
   nixpkgs = {
-    config.packageOverrides = pkgs: {
-      intel-vaapi-driver =
-        pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
-    };
-
     hostPlatform = lib.mkDefault "x86_64-linux";
   };
 

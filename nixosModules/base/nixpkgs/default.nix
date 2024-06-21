@@ -34,12 +34,12 @@
             accent = "mauve";
           };
           catppuccin-plymouth = prev.catppuccin-plymouth.override {variant = "frappe";};
-          nerdfonts = prev.nerdfonts.override {fonts = ["Noto"];};
           google-chrome = prev.google-chrome.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
           hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
           hyprnome = unstable.hyprnome;
           hyprshot = unstable.hyprshot;
-          xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+          intel-vaapi-driver = prev.intel-vaapi-driver.override {enableHybridCodec = true;};
+          nerdfonts = prev.nerdfonts.override {fonts = ["Noto"];};
           obsidian = prev.obsidian.overrideAttrs (old: {
             installPhase =
               builtins.replaceStrings ["--ozone-platform=wayland"]
@@ -55,6 +55,7 @@
               ["--ozone-platform-hint=auto --enable-wayland-ime"]
               old.installPhase;
           });
+          xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
         })
       ];
     };
