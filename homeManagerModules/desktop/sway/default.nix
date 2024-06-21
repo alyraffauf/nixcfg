@@ -6,28 +6,6 @@
 }: {
   imports = [./randomWallpaper.nix ./redShift.nix];
 
-  options = {
-    alyraffauf.desktop.sway = {
-      enable =
-        lib.mkEnableOption "Enables sway with extra apps.";
-      autoSuspend = lib.mkOption {
-        description = "Whether to autosuspend on idle.";
-        default = config.alyraffauf.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-      randomWallpaper = lib.mkOption {
-        description = "Whether to enable random wallpaper script.";
-        default = config.alyraffauf.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-      redShift = lib.mkOption {
-        description = "Whether to redshift display colors at night.";
-        default = config.alyraffauf.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-    };
-  };
-
   config = lib.mkIf config.alyraffauf.desktop.sway.enable {
     wayland.windowManager.sway = {
       enable = true;

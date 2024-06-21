@@ -234,6 +234,28 @@
             };
           };
         };
+        sway = {
+          enable = lib.mkOption {
+            description = "Sway with full desktop session components.";
+            default = osConfig.alyraffauf.desktop.sway.enable;
+            type = lib.types.bool;
+          };
+          autoSuspend = lib.mkOption {
+            description = "Whether to autosuspend on idle.";
+            default = config.alyraffauf.desktop.sway.enable;
+            type = lib.types.bool;
+          };
+          randomWallpaper = lib.mkOption {
+            description = "Whether to enable random wallpaper script.";
+            default = config.alyraffauf.desktop.sway.enable;
+            type = lib.types.bool;
+          };
+          redShift = lib.mkOption {
+            description = "Whether to redshift display colors at night.";
+            default = config.alyraffauf.desktop.sway.enable;
+            type = lib.types.bool;
+          };
+        };
         startupApps = lib.mkOption {
           description = "Apps to launch at startup";
           default = [];

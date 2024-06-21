@@ -36,7 +36,6 @@
         enable = true;
         password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
       };
-      dustin.enable = false;
     };
     desktop = {
       enable = true;
@@ -48,11 +47,7 @@
           user = "aly";
         };
       };
-      sway.enable = false;
       hyprland.enable = true;
-    };
-    apps = {
-      steam.enable = false;
     };
     scripts = {
       hoenn.enable = true;

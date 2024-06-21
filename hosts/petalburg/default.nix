@@ -36,7 +36,6 @@
         enable = true;
         password = "$y$j9T$TitXX3J690cnK41XciNMg/$APKHM/os6FKd9H9aXGxaHaQ8zP5SenO9EO94VYafl43";
       };
-      dustin.enable = false;
     };
     desktop = {
       enable = true;
@@ -49,7 +48,6 @@
         };
       };
       hyprland.enable = true;
-      sway.enable = true;
     };
     apps = {
       steam.enable = true;
