@@ -24,6 +24,9 @@
         "org/gnome/nm-applet".disable-connected-notifications = true;
         "org/nemo/preferences/menu-config".background-menu-open-as-root = false;
         "org/nemo/preferences/menu-config".selection-menu-open-as-root = false;
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "";
+        };
       };
     };
 
