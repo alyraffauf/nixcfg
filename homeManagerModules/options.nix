@@ -184,6 +184,11 @@
         };
       };
       desktop = {
+        enable = lib.mkOption {
+          description = "Graphical desktop.";
+          default = osConfig.alyraffauf.desktop.enable;
+          type = lib.types.bool;
+        };
         cinnamon.enable = lib.mkOption {
           description = "Cinnamon with sane defaults";
           default = osConfig.alyraffauf.desktop.cinnamon.enable;
