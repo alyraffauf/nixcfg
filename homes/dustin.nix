@@ -43,11 +43,6 @@
     defaultApps.enable = true;
     desktop = {
       hyprland = {
-        enable = true;
-        randomWallpaper = false;
-      };
-      sway = {
-        enable = true;
         randomWallpaper = false;
       };
     };

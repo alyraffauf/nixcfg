@@ -146,6 +146,7 @@
       tmux.enable = true;
       vsCodium.enable = true;
     };
+
     defaultApps = {
       enable = true;
       webBrowser = {
@@ -153,19 +154,18 @@
         desktop = "brave-browser.desktop";
       };
     };
+
     desktop = {
       startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
-      hyprland = {
-        enable = true;
-        randomWallpaper = true;
-      };
     };
 
     scripts = {
       pp-adjuster.enable = true;
     };
+
     theme = {
       enable = true;
+
       gtk = {
         name = "Catppuccin-Frappe-Compact-Mauve-Dark";
         package = pkgs.catppuccin-gtk.override {
@@ -175,6 +175,7 @@
           tweaks = ["normal"];
         };
       };
+
       qt = {
         name = "Catppuccin-Frappe-Mauve";
         package = pkgs.catppuccin-kvantum.override {
@@ -182,6 +183,7 @@
           variant = "Frappe";
         };
       };
+
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.catppuccin-papirus-folders.override {
@@ -189,21 +191,25 @@
           accent = "mauve";
         };
       };
+
       cursorTheme = {
         name = "Catppuccin-Frappe-Dark-Cursors";
         size = 24;
         package = pkgs.catppuccin-cursors.frappeDark;
       };
+
       font = {
         name = "NotoSans Nerd Font";
         size = 11;
         package = pkgs.nerdfonts.override {fonts = ["Noto"];};
       };
+
       terminalFont = {
         name = "NotoSansM Nerd Font";
         size = 11;
         package = pkgs.nerdfonts.override {fonts = ["Noto"];};
       };
+
       colors = {
         text = "#FAFAFA";
         background = "#232634";
@@ -212,6 +218,7 @@
         inactive = "#626880";
         shadow = "#1A1A1A";
       };
+      
       wallpaper = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
     };
   };

@@ -1,7 +1,8 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  osConfig,
+  pkgs,
   ...
 }: {
   options = {
@@ -183,13 +184,22 @@
         };
       };
       desktop = {
-        cinnamon.enable =
-          lib.mkEnableOption "Cinnamon with sane defaults.";
-        gnome.enable =
-          lib.mkEnableOption "GNOME with sane defaults.";
+        cinnamon.enable = lib.mkOption {
+          description = "Cinnamon with sane defaults";
+          default = osConfig.alyraffauf.desktop.cinnamon.enable;
+          type = lib.types.bool;
+        };
+        gnome.enable = lib.mkOption {
+          description = "GNOME with sane defaults.";
+          default = osConfig.alyraffauf.desktop.gnome.enable;
+          type = lib.types.bool;
+        };
         hyprland = {
-          enable =
-            lib.mkEnableOption "Hyprland with full desktop session components.";
+          enable = lib.mkOption {
+            description = "Hyprland with full desktop session components.";
+            default = osConfig.alyraffauf.desktop.hyprland.enable;
+            type = lib.types.bool;
+          };
           autoSuspend = lib.mkOption {
             description = "Whether to autosuspend on idle.";
             default = config.alyraffauf.desktop.hyprland.enable;
