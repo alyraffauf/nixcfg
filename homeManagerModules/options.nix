@@ -291,8 +291,11 @@
         };
       };
       theme = {
-        enable =
-          lib.mkEnableOption "GTK and Qt themes.";
+        enable = lib.mkOption {
+          description = "Gtk, Qt, and application colors.";
+          default = config.alyraffauf.desktop.enable;
+          type = lib.types.bool;
+        };
         gtk = {
           name = lib.mkOption {
             description = "GTK theme name.";

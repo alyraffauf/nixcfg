@@ -47,7 +47,6 @@
       };
     };
     theme = {
-      enable = true;
       gtk = {
         name = "Catppuccin-Frappe-Compact-Mauve-Dark";
         package = pkgs.catppuccin-gtk.override {
