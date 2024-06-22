@@ -90,12 +90,32 @@
     };
 
     dconf.settings = {
-      "org/gnome/desktop/interface" = {
+      "org/cinnamon/desktop/background".picture-uri = "file://${config.alyraffauf.theme.wallpaper}";
+
+      "org/cinnamon/desktop/interface" = {
+        cursor-size = config.alyraffauf.theme.cursorTheme.size;
+        cursor-theme = config.alyraffauf.theme.cursorTheme.name;
+        font-name = "${config.alyraffauf.theme.font.name} Regular ${toString config.alyraffauf.theme.font.size}";
         gtk-theme = config.alyraffauf.theme.gtk.name;
-        color-scheme = "prefer-dark";
+        icon-theme = config.alyraffauf.theme.iconTheme.name;
+      };
+
+      "org/cinnamon/theme".name = config.alyraffauf.theme.gtk.name;
+      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.alyraffauf.theme.font.name} ${toString config.alyraffauf.theme.font.size}";
+
+      "org/gnome/desktop/interface" = {
+        color-scheme =
+          if config.alyraffauf.theme.colors.preferDark
+          then "prefer-dark"
+          else "prefer-light";
         cursor-theme = config.alyraffauf.theme.cursorTheme.name;
         cursor-size = config.alyraffauf.theme.cursorTheme.size;
+        gtk-theme = config.alyraffauf.theme.gtk.name;
+        icon-theme = config.alyraffauf.theme.iconTheme.name;
+        monospace-font-name = "${config.alyraffauf.theme.terminalFont.name} Regular ${toString config.alyraffauf.theme.terminalFont.size}";
       };
+
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.alyraffauf.theme.font.name} ${toString config.alyraffauf.theme.font.size}";
     };
   };
 }
