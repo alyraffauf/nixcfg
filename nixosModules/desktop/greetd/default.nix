@@ -5,10 +5,12 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.desktop.greetd.enable {
-    security.pam.services = {
-      greetd.enableKwallet = lib.mkDefault true;
-      greetd.enableGnomeKeyring = lib.mkDefault true;
+    security.pam.services.greetd = {
+      enableGnomeKeyring = true;
+      gnupg.enable = true;
+      kwallet.enable = true;
     };
+    
     services = {
       greetd = {
         enable = true;

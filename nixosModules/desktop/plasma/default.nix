@@ -28,7 +28,13 @@ in {
       ++ [plasmaCsAdjuster];
 
     programs.kdeconnect.enable = true;
-    security.pam.services.sddm.enableGnomeKeyring = true;
+
+    security.pam.services.sddm = {
+      enableGnomeKeyring = true;
+      gnupg.enable = true;
+      kwallet.enable = true;
+    };
+
     services = {
       desktopManager.plasma6.enable = true;
       displayManager.sddm = {

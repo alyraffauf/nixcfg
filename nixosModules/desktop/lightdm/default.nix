@@ -1,13 +1,14 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.alyraffauf.desktop.lightdm.enable {
     security.pam.services.lightdm = {
       enableGnomeKeyring = true;
-      enableKwallet = true;
+      gnupg.enable = true;
+      kwallet.enable = true;
     };
 
     services.xserver.displayManager.lightdm = {
