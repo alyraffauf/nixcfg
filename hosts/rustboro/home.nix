@@ -17,21 +17,9 @@
             preset = "LoudnessEqualizer";
           };
           theme = {
-            cursorTheme = lib.mkForce {
-              name = "Catppuccin-Latte-Dark-Cursors";
-              size = 32;
-              package = pkgs.catppuccin-cursors.latteDark;
-            };
-            font = lib.mkForce {
-              name = "NotoSans Nerd Font";
-              size = 14;
-              package = pkgs.nerdfonts.override {fonts = ["Noto"];};
-            };
-            terminalFont = lib.mkForce {
-              name = "NotoSansM Nerd Font";
-              size = 14;
-              package = pkgs.nerdfonts.override {fonts = ["Noto"];};
-            };
+            cursorTheme.size = lib.mkForce 32;
+            font.size = lib.mkForce 14;
+            terminalFont.size = lib.mkForce 14;
           };
         };
       }
