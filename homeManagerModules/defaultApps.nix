@@ -10,7 +10,7 @@
       editor.package
       fileManager.package
       imageViewer.package
-      pdfEditor.package
+      pdfViewer.package
       terminal.package
       terminalEditor.package
       videoPlayer.package
@@ -28,7 +28,7 @@
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "application/pdf" = config.alyraffauf.defaultApps.pdfEditor.desktop;
+        "application/pdf" = config.alyraffauf.defaultApps.pdfViewer.desktop;
         "application/x-shellscript" = config.alyraffauf.defaultApps.editor.desktop;
         "application/xhtml+xml" = config.alyraffauf.defaultApps.webBrowser.desktop;
         "audio/flac" = config.alyraffauf.defaultApps.audioPlayer.desktop;

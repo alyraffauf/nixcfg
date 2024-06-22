@@ -118,19 +118,19 @@
             type = lib.types.package;
           };
         };
-        pdfEditor = {
+        pdfViewer = {
           exe = lib.mkOption {
-            description = "Default PDF editor executable.";
+            description = "Default PDF viewer executable.";
             default = lib.getExe config.alyraffauf.defaultApps.pdfEditor.package;
             type = lib.types.str;
           };
           desktop = lib.mkOption {
-            description = "Default PDF Editor desktop file.";
+            description = "Default PDF viewer desktop file.";
             default = "org.gnome.Evince.desktop";
             type = lib.types.str;
           };
           package = lib.mkOption {
-            description = "Default PDF Editor package.";
+            description = "Default PDF viewer package.";
             default = pkgs.evince;
             type = lib.types.package;
           };
