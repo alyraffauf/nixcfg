@@ -164,7 +164,7 @@
     };
 
     theme = {
-      wallpaper = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }
