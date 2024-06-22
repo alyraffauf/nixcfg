@@ -9,7 +9,7 @@
     sharedModules = [
       {
         programs.vscode.userSettings = {
-          "editor.fontSize" = "16";
+          "editor.fontSize" = lib.mkForce "16";
         };
         alyraffauf = {
           services.easyeffects = {

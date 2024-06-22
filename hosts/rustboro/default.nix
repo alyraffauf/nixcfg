@@ -40,7 +40,7 @@
         };
       };
 
-      hyprland.enable = true;
+      cinnamon.enable = true;
     };
 
     services = {
