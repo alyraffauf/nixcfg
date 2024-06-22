@@ -213,6 +213,7 @@ in {
       };
 
       hyprland.enable = true;
+      steam.enable = true;
     };
     users = {
       aly = {
