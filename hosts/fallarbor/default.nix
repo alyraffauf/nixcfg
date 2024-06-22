@@ -24,7 +24,10 @@
 
   alyraffauf = {
     apps.steam.enable = true;
-    base.enable = true;
+    base = {
+      enable = true;
+      sambaAutoMount = false;
+    };
 
     desktop = {
       enable = true;
@@ -34,10 +37,12 @@
 
     services = {
       flatpak.enable = true;
+
       syncthing = {
         enable = true;
         syncMusic = false;
       };
+      
       tailscale.enable = true;
     };
 
