@@ -45,7 +45,7 @@
         style-panel = 0;
         unblur-in-overview = true;
       };
-      
+
       "org/gnome/system/location".enabled = true;
     };
   };

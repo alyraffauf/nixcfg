@@ -34,7 +34,7 @@
           terminal = ["<Primary><Alt>" "<Super>t"];
           home = ["<Super>f" "XF86Explorer"];
         };
-        
+
         "org/cinnamon/desktop/keybindings/wm" = {
           # TODO: Declaratively disable conflict with panel applet.
           close = ["<Alt>F4" "<Super>c"];

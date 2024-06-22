@@ -21,16 +21,17 @@
           config.age.secrets.wifi.path
         ];
         profiles = {
-          "Dustin’s iPhone" = {
+          "Dustin's A54" = {
             connection = {
-              id = "Dustin’s iPhone";
+              id = "Dustin's A54";
               type = "wifi";
+              uuid = "fc221cbd-b6fd-44e0-8679-5998933b2fff";
             };
-            wifi.ssid = "Dustin’s iPhone";
+            wifi.ssid = "Dustin's A54";
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
-              psk = "$DustinsiPhonePSK";
+              psk = "$DustinsA54PSK";
             };
           };
 
@@ -38,8 +39,22 @@
             connection = {
               id = "javapatron";
               type = "wifi";
+              uuid = "bb61beaa-ec07-404c-bbce-5a08ae355de7";
             };
             wifi.ssid = "javapatron";
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+            };
+          };
+
+          "Taproom Public WiFi" = {
+            connection = {
+              id = "Taproom Public WiFi";
+              type = "wifi";
+              uuid = "d79280e9-4a22-4125-9583-eb7b80abfeb6";
+            };
+            wifi.ssid = "Taproom Public WiFi";
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
@@ -59,16 +74,17 @@
             };
           };
 
-          wattson = {
+          wallace = {
             connection = {
-              id = "wattson";
+              id = "wallace";
               type = "wifi";
+              uuid = "6896b13d-9717-4a8d-8a08-2a97139bf833";
             };
-            wifi.ssid = "wattson";
+            wifi.ssid = "wallace";
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
-              psk = "$wattsonPSK";
+              psk = "$wallacePSK";
             };
           };
 
