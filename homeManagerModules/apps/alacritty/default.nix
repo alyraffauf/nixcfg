@@ -26,7 +26,7 @@
         selection.save_to_clipboard = true;
         window = {
           blur = true;
-          decorations = "None";
+          decorations = "Full";
           dynamic_padding = true;
           opacity = 0.8;
         };
