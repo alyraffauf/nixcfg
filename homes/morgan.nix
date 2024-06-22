@@ -38,7 +38,6 @@
       fzf.enable = true;
       vsCodium.enable = true;
     };
-    defaultApps.enable = true;
     theme = {
       gtk = {
         name = "Catppuccin-Frappe-Compact-Mauve-Dark";

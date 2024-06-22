@@ -44,8 +44,11 @@
         wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
       };
       defaultApps = {
-        enable =
-          lib.mkEnableOption "Set default apps and file associations.";
+        enable = lib.mkOption {
+          description = "Declaratively set default apps and file associations.";
+          default = config.alyraffauf.desktop.enable;
+          type = lib.types.bool;
+        };
         webBrowser = {
           exe = lib.mkOption {
             description = "Default web browser executable name.";

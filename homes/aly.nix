@@ -148,7 +148,6 @@
     };
 
     defaultApps = {
-      enable = true;
       webBrowser = {
         package = config.programs.chromium.package;
         desktop = "brave-browser.desktop";

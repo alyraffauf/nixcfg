@@ -40,7 +40,6 @@
       fzf.enable = true;
       vsCodium.enable = true;
     };
-    defaultApps.enable = true;
     desktop = {
       hyprland = {
         randomWallpaper = false;
