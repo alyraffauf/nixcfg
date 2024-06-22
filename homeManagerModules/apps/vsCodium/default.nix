@@ -5,8 +5,6 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.apps.vsCodium.enable {
-    alyraffauf.apps.alacritty.enable = lib.mkDefault true;
-
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
