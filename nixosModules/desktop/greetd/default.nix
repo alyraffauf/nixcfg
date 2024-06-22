@@ -10,7 +10,7 @@
       gnupg.enable = true;
       kwallet.enable = true;
     };
-    
+
     services = {
       greetd = {
         enable = true;
