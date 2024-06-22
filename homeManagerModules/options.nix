@@ -34,6 +34,7 @@
         };
         librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
         mako.enable = lib.mkEnableOption "Mako notification daemon.";
+        nemo.enable = lib.mkEnableOption "Cinnamon Nemo file manager.";
         neofetch.enable = lib.mkEnableOption "Neofetch.";
         neovim.enable = lib.mkEnableOption "Neovim text editor.";
         swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";

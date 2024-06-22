@@ -9,24 +9,20 @@
       apps = {
         fuzzel.enable = lib.mkDefault true;
         mako.enable = lib.mkDefault true;
+        nemo.enable = lib.mkDefault true;
         swaylock.enable = lib.mkDefault true;
-        thunar.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
         wlogout.enable = lib.mkDefault true;
       };
-      theme.enable = lib.mkDefault true;
-      defaultApps.enable = lib.mkDefault true;
     };
 
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/nm-applet".disable-connected-notifications = true;
-        "org/nemo/preferences/menu-config".background-menu-open-as-root = false;
-        "org/nemo/preferences/menu-config".selection-menu-open-as-root = false;
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "";
         };
+        "org/gnome/nm-applet".disable-connected-notifications = true;
       };
     };
 
