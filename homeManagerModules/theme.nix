@@ -103,6 +103,8 @@
       "org/cinnamon/theme".name = config.alyraffauf.theme.gtk.name;
       "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.alyraffauf.theme.font.name} ${toString config.alyraffauf.theme.font.size}";
 
+      "org/gnome/desktop/background".picture-uri = "file://${config.alyraffauf.theme.wallpaper}";
+      "org/gnome/desktop/background".picture-uri-dark = "file://${config.alyraffauf.theme.wallpaper}";
       "org/gnome/desktop/interface" = {
         color-scheme =
           if config.alyraffauf.theme.colors.preferDark

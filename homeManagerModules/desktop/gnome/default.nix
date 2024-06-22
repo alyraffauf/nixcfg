@@ -24,6 +24,10 @@
         workspaces-only-on-primary = true;
       };
 
+      "org/gnome/settings-daemon/plugins/color" = {
+        night-light-enabled = true;
+      };
+
       "org/gnome/shell".enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "blur-my-shell@aunetx"
@@ -47,6 +51,14 @@
       };
 
       "org/gnome/system/location".enabled = true;
+    };
+
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "x-scheme-handler/sms" = "org.gnome.Shell.Extensions.GSConnect.desktop";
+        "x-scheme-handler/tel" = "org.gnome.Shell.Extensions.GSConnect.desktop";
+      };
     };
   };
 }
