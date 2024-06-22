@@ -13,59 +13,47 @@
     ./home.nix
   ];
 
-  boot = {
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    # Use latest Linux kernel.
-    kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
 
-  networking.hostName = "lavaridge"; # Define your hostname.
+  networking.hostName = "lavaridge";
 
-  services = {
-    fwupd.enable = true;
-  };
+  system.stateVersion = "24.05";
 
   alyraffauf = {
-    base = {
-      enable = true;
-      sambaAutoMount = true;
-      plymouth.enable = true;
-      zramSwap = {enable = true;};
-    };
-    users = {
-      aly = {
-        enable = true;
-        password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";
-      };
-    };
-    desktop = {
-      enable = true;
-      greetd = {
-        enable = true;
-        session = lib.getExe config.programs.hyprland.package;
-        autologin = {
-          enable = true;
-          user = "aly";
-        };
-      };
-      hyprland.enable = true;
-    };
     apps = {
       steam.enable = true;
       podman.enable = true;
       virt-manager.enable = true;
     };
-    scripts = {
-      hoenn.enable = true;
+
+    base.enable = true;
+
+    desktop = {
+      enable = true;
+
+      greetd = {
+        enable = true;
+
+        autologin = {
+          enable = true;
+          user = "aly";
+        };
+      };
+
+      hyprland.enable = true;
     };
+
     services = {
       syncthing.enable = true;
       tailscale.enable = true;
     };
-  };
 
-  system.stateVersion = "24.05";
+    users.aly = {
+      enable = true;
+      password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";
+    };
+  };
 }

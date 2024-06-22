@@ -1,4 +1,4 @@
-# Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 15GB RAM, 512GB SSD.
+# Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 16GB RAM, 512GB SSD.
 {
   config,
   inputs,
@@ -13,53 +13,43 @@
     ./home.nix
   ];
 
-  boot = {
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    # Use latest Linux kernel.
-    kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
 
-  networking.hostName = "petalburg"; # Define your hostname.
+  networking.hostName = "petalburg";
+
+  system.stateVersion = "24.05";
 
   alyraffauf = {
-    base = {
-      enable = true;
-      sambaAutoMount = true;
-      plymouth.enable = true;
-      zramSwap = {enable = true;};
-    };
-    users = {
-      aly = {
-        enable = true;
-        password = "$y$j9T$TitXX3J690cnK41XciNMg/$APKHM/os6FKd9H9aXGxaHaQ8zP5SenO9EO94VYafl43";
-      };
-    };
+    apps.steam.enable = true;
+
+    base.enable = true;
+
     desktop = {
       enable = true;
+
       greetd = {
         enable = true;
-        session = lib.getExe config.programs.hyprland.package;
+
         autologin = {
           enable = true;
           user = "aly";
         };
       };
+
       hyprland.enable = true;
     };
-    apps = {
-      steam.enable = true;
-    };
-    scripts = {
-      hoenn.enable = true;
-    };
+
     services = {
       syncthing.enable = true;
       tailscale.enable = true;
     };
-  };
 
-  system.stateVersion = "24.05";
+    users.aly = {
+      enable = true;
+      password = "$y$j9T$TitXX3J690cnK41XciNMg/$APKHM/os6FKd9H9aXGxaHaQ8zP5SenO9EO94VYafl43";
+    };
+  };
 }

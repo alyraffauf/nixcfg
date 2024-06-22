@@ -13,22 +13,25 @@
     ./home.nix
   ];
 
-  boot = {
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    # Use latest Linux kernel.
-    kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
 
-  networking.hostName = "fallarbor"; # Define your hostname.
+  networking.hostName = "fallarbor";
 
-  services = {
-    fwupd.enable = true;
-  };
+  system.stateVersion = "24.05";
 
   alyraffauf = {
+    apps.steam.enable = true;
+    base.enable = true;
+
+    desktop = {
+      enable = true;
+      greetd.enable = true;
+      hyprland.enable = true;
+    };
+
     services = {
       flatpak.enable = true;
       syncthing = {
@@ -37,33 +40,17 @@
       };
       tailscale.enable = true;
     };
-    base = {
-      enable = true;
-      plymouth.enable = true;
-      zramSwap = {enable = true;};
-    };
+
     users = {
       aly = {
         enable = true;
         password = "$y$j9T$0p6rc4p5sn0LJ/6XyAGP7.$.wmTafwMMscdW1o8kqqoHJP7U8kF.4WBmzzcPYielR3";
       };
+
       dustin = {
         enable = true;
         password = "$y$j9T$OXQYhj4IWjRJWWYsSwcqf.$lCcdq9S7m0EAdej9KMHWj9flH8K2pUb2gitNhLTlLG/";
       };
     };
-    desktop = {
-      enable = true;
-      greetd.enable = true;
-      hyprland.enable = true;
-    };
-    apps = {
-      steam.enable = true;
-    };
-    scripts = {
-      hoenn.enable = true;
-    };
   };
-
-  system.stateVersion = "24.05";
 }

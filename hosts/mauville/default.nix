@@ -14,92 +14,30 @@
   archiveDirectory = "/mnt/Archive";
 in {
   imports = [
+    ./filesystems.nix
     ./hardware.nix
     ./home.nix
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = hostName; # Define your hostname.
-
-  alyraffauf = {
-    apps = {
-      nicotine-plus.enable = true;
-      podman.enable = true;
-      steam.enable = true;
-      virt-manager.enable = true;
-    };
-    containers = {
-      nixos = {
-        navidrome.enable = true;
-      };
-      oci = {
-        audiobookshelf.enable = true;
-        freshRSS.enable = true;
-        plexMediaServer.enable = true;
-        transmission.enable = true;
-      };
-    };
-    desktop = {
-      enable = true;
-      greetd = {
-        enable = true;
-        session = lib.getExe config.programs.hyprland.package;
-        autologin = {
-          enable = true;
-          user = "aly";
-        };
-      };
-      hyprland.enable = true;
-      sway.enable = true;
-    };
-    users = {
-      aly = {
-        enable = true;
-        password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
-      };
-      dustin = {
-        enable = true;
-        password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
-      };
-    };
-    services = {
-      binaryCache.enable = true;
-      ollama = {
-        enable = true;
-        gpu = "amd";
-        listenAddress = "0.0.0.0:11434";
-      };
-      syncthing = {
-        enable = true;
-        syncMusic = true;
-        musicPath = "${mediaDirectory}/Music";
-      };
-      tailscale.enable = true;
-    };
-    scripts = {
-      hoenn.enable = true;
-    };
-    base = {
-      enable = true;
-      plymouth.enable = true;
-      zramSwap = {
-        enable = true;
-        size = 100;
-      };
-    };
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
 
+  system.stateVersion = "23.11";
+
   networking = {
-    firewall = let
-      transmissionPort = config.alyraffauf.containers.oci.transmission.port;
-      bitTorrentPort = config.alyraffauf.containers.oci.transmission.bitTorrentPort;
-    in {
-      allowedTCPPorts = [80 443 transmissionPort bitTorrentPort];
-      allowedUDPPorts = [bitTorrentPort];
+    firewall = {
+      allowedTCPPorts = [
+        80
+        443
+        config.alyraffauf.containers.oci.transmission.port
+        config.alyraffauf.containers.oci.transmission.bitTorrentPort
+      ];
+
+      allowedUDPPorts = [config.alyraffauf.containers.oci.transmission.bitTorrentPort];
     };
+
     # My router doesn't expose settings for NAT loopback
     # So we have to use this workaround.
     extraHosts = ''
@@ -109,6 +47,8 @@ in {
       127.0.0.1 plex.${domain}
       127.0.0.1 podcasts.${domain}
     '';
+
+    hostName = hostName;
   };
 
   security.acme = {
@@ -118,6 +58,7 @@ in {
 
   services = {
     fail2ban.enable = true;
+
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
@@ -128,9 +69,11 @@ in {
         "music.${domain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/" = {
             proxyPass = "http://127.0.0.1:4533";
             proxyWebsockets = true;
+
             extraConfig = ''
               proxy_buffering off;
             '';
@@ -140,9 +83,11 @@ in {
         "news.${domain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.freshRSS.port}";
             proxyWebsockets = true; # needed if you need to use WebSocket
+
             extraConfig = ''
               proxy_buffering off;
               proxy_redirect off;
@@ -156,6 +101,7 @@ in {
         "nixcache.${domain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${
             toString config.services.nix-serve.port
           }";
@@ -164,9 +110,11 @@ in {
         "plex.${domain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.plexMediaServer.port}";
             proxyWebsockets = true;
+
             extraConfig = ''
               proxy_buffering off;
             '';
@@ -176,9 +124,10 @@ in {
         "podcasts.${domain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.audiobookshelf.port}";
-            # proxyWebsockets = true; # This breaks audiobookshelf.
+
             extraConfig = ''
               client_max_body_size 500M;
               proxy_buffering off;
@@ -195,8 +144,9 @@ in {
     };
     samba = {
       enable = true;
-      securityType = "user";
       openFirewall = true;
+      securityType = "user";
+
       shares = {
         Media = {
           browseable = "yes";
@@ -207,6 +157,7 @@ in {
           "create mask" = "0755";
           "directory mask" = "0755";
         };
+
         Archive = {
           browseable = "yes";
           comment = "Archive @ ${hostName}";
@@ -218,11 +169,79 @@ in {
         };
       };
     };
+
     samba-wsdd = {
       enable = true;
       openFirewall = true;
     };
   };
 
-  system.stateVersion = "23.11";
+  alyraffauf = {
+    apps = {
+      nicotine-plus.enable = true;
+      podman.enable = true;
+      steam.enable = true;
+      virt-manager.enable = true;
+    };
+
+    base = {
+      enable = true;
+      zramSwap.size = 100;
+    };
+
+    containers = {
+      nixos.navidrome.enable = true;
+
+      oci = {
+        audiobookshelf.enable = true;
+        freshRSS.enable = true;
+        plexMediaServer.enable = true;
+        transmission.enable = true;
+      };
+    };
+
+    desktop = {
+      enable = true;
+
+      greetd = {
+        enable = true;
+
+        autologin = {
+          enable = true;
+          user = "aly";
+        };
+      };
+
+      hyprland.enable = true;
+    };
+    users = {
+      aly = {
+        enable = true;
+        password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
+      };
+
+      dustin = {
+        enable = true;
+        password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
+      };
+    };
+
+    services = {
+      binaryCache.enable = true;
+
+      ollama = {
+        enable = true;
+        gpu = "amd";
+        listenAddress = "0.0.0.0:11434";
+      };
+
+      syncthing = {
+        enable = true;
+        syncMusic = true;
+        musicPath = "${mediaDirectory}/Music";
+      };
+
+      tailscale.enable = true;
+    };
+  };
 }

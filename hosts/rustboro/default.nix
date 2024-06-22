@@ -13,49 +13,44 @@
     ./home.nix
   ];
 
-  boot = {
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
 
-  networking.hostName = "rustboro"; # Define your hostname.
+  networking.hostName = "rustboro";
+
+  system.stateVersion = "24.05";
 
   alyraffauf = {
     base = {
       enable = true;
-      sambaAutoMount = true;
-      plymouth.enable = true;
-      zramSwap = {
-        enable = true;
-        size = 100;
-      };
+      zramSwap.size = 100;
     };
-    users = {
-      aly = {
-        enable = true;
-        password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
-      };
-    };
+
     desktop = {
       enable = true;
+
       greetd = {
         enable = true;
-        session = lib.getExe config.programs.hyprland.package;
+
         autologin = {
           enable = true;
           user = "aly";
         };
       };
+
       hyprland.enable = true;
     };
-    scripts = {
-      hoenn.enable = true;
-    };
+
     services = {
       syncthing.enable = true;
       tailscale.enable = true;
     };
+
+    users.aly = {
+      enable = true;
+      password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
+    };
   };
-  system.stateVersion = "24.05";
 }

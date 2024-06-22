@@ -187,8 +187,11 @@
         sway.enable =
           lib.mkEnableOption "Sway wayland session.";
       };
-      scripts.hoenn.enable =
-        lib.mkEnableOption "Hoenn system configuration script";
+      scripts.hoenn.enable = lib.mkOption {
+        description = "Hoenn system configuration script";
+        default = config.alyraffauf.base.enable;
+        type = lib.types.bool;
+      };
       services = {
         binaryCache.enable = lib.mkEnableOption "nixpkgs cache server.";
         flatpak.enable =
@@ -215,7 +218,7 @@
           };
           syncMusic = lib.mkOption {
             description = "Whether to sync music folder.";
-            default = true;
+            default = config.alyraffauf.services.syncthing.enable;
             type = lib.types.bool;
           };
           musicPath = lib.mkOption {
@@ -229,16 +232,28 @@
       base = {
         enable =
           lib.mkEnableOption "Basic system configuration and sane defaults.";
-        sambaAutoMount = lib.mkEnableOption "Automounting of mauville Samba Shares.";
-        plymouth.enable =
-          lib.mkEnableOption "Plymouth boot screen with catppuccin theme.";
+        sambaAutoMount = lib.mkOption {
+          description = "Automounting of mauville Samba Shares.";
+          default =
+            config.alyraffauf.services.tailscale.enable && !(config.networking.hostName == "mauville");
+          type = lib.types.bool;
+        };
+        plymouth.enable = lib.mkOption {
+          description = "Plymouth boot screen with catppuccin theme.";
+          default = config.alyraffauf.base.enable;
+          type = lib.types.bool;
+        };
         power-profiles-daemon.enable = lib.mkOption {
           description = "Power Profiles Daemon for power management.";
-          default = true;
+          default = config.alyraffauf.base.enable;
           type = lib.types.bool;
         };
         zramSwap = {
-          enable = lib.mkEnableOption "Zram swap.";
+          enable = lib.mkOption {
+            description = "zram swap.";
+            default = config.alyraffauf.base.enable;
+            type = lib.types.bool;
+          };
           size = lib.mkOption {
             description = "Percent size of the zram swap relative to RAM.";
             default = 50;

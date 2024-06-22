@@ -2,41 +2,41 @@
   config,
   inputs,
   lib,
-  modulesPath,
   pkgs,
   ...
 }: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-  ];
-
   boot = {
     initrd = {
-      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
+      kernelModules = ["i915"];
     };
 
-    extraModulePackages = [];
     kernelModules = ["kvm-intel"];
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  # Intel drivers with accelerated video playback support.
-  nixpkgs = {
-    hostPlatform = lib.mkDefault "x86_64-linux";
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    VDPAU_DRIVER = "va_gl";
   };
 
   hardware = {
-    cpu.intel.updateMicrocode =
-      lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.intel.updateMicrocode = true;
 
     enableAllFirmware = true;
 
     opengl = {
       enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
 
       extraPackages = with pkgs; [
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        libvdpau-va-gl
+      ];
+
+      extraPackages32 = with pkgs.driversi686Linux; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
         libvdpau-va-gl
@@ -46,13 +46,13 @@
     sensor.iio.enable = true; # Enable auto-rotate and tablet mode.
   };
 
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
-  };
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # Save power/better manage heat & fans.
   powerManagement.powertop.enable = true;
-  services.thermald.enable = true;
 
-  networking.useDHCP = lib.mkDefault true;
+  services = {
+    fstrim.enable = true;
+    thermald.enable = true;
+  };
 }

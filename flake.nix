@@ -23,10 +23,10 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     ## Motion sensor and auto-rotate for Hyprland.
-    iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
-
-    # Pre-baked hardware support for various devices.
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    iio-hyprland = {
+      url = "github:JeanSchoeller/iio-hyprland";
+      inputs.nixpkgs.follows = "nixpkgsUnstable";
+    };
 
     # Latest stable NixOS release.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
