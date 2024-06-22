@@ -13,7 +13,7 @@
 
     initrd = {
       availableKernelModules = ["ahci" "ehci_pci" "i915" "rtsx_pci_sdmmc" "sd_mod" "sr_mod" "usb_storage" "xhci_pci"];
-      kernelModules = ["i915" "tpm-rng"];
+      kernelModules = ["i915"];
     };
 
     kernelModules = ["i915" "kvm-intel"];
