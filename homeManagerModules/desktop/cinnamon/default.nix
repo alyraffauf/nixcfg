@@ -14,15 +14,16 @@
         "org/cinnamon/desktop/interface".font-name = "${config.alyraffauf.theme.font.name} Regular ${toString config.alyraffauf.theme.font.size}";
         "org/cinnamon/desktop/interface".gtk-theme = config.alyraffauf.theme.gtk.name;
         "org/cinnamon/desktop/interface".icon-theme = config.alyraffauf.theme.iconTheme.name;
+        "org/cinnamon/desktop/peripherals/touchpad".click-method = "fingers";
         "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.alyraffauf.theme.font.name} ${toString config.alyraffauf.theme.font.size}";
         "org/cinnamon/gestures".enabled = true;
         "org/cinnamon/muffin".workspace-cycle = true;
         "org/cinnamon/muffin".workspaces-only-on-primary = true;
         "org/cinnamon/settings-daemon/peripherals/touchscreen".orientation-lock = false;
         "org/cinnamon/theme".name = config.alyraffauf.theme.gtk.name;
-        "org/gnome/desktop/interface".gtk-theme = config.alyraffauf.theme.gtk.name;
         "org/gnome/desktop/interface".cursor-size = config.alyraffauf.theme.cursorTheme.size;
         "org/gnome/desktop/interface".cursor-theme = config.alyraffauf.theme.cursorTheme.name;
+        "org/gnome/desktop/interface".gtk-theme = config.alyraffauf.theme.gtk.name;
         "org/gnome/desktop/interface".icon-theme = config.alyraffauf.theme.iconTheme.name;
         "org/gnome/desktop/interface".monospace-font-name = "${config.alyraffauf.theme.terminalFont.name} Regular ${toString config.alyraffauf.theme.terminalFont.size}";
         "org/gnome/desktop/peripherals/touchpad".natural-scroll = true;
@@ -41,6 +42,7 @@
         "org/cinnamon/desktop/keybindings/media-keys" = {
           www = ["XF86WWW" "<Super>b"];
           terminal = ["<Primary><Alt>" "<Super>t"];
+          home = ["<Super>f" "XF86Explorer"];
         };
         "org/cinnamon/desktop/keybindings/wm" = {
           # TODO: Declaratively disable conflict with panel applet.
@@ -54,6 +56,16 @@
           switch-to-workspace-7 = ["<Super>7"];
           switch-to-workspace-8 = ["<Super>8"];
           switch-to-workspace-9 = ["<Super>9"];
+        };
+
+        "org/cinnamon/desktop/keybindings" = {
+          custom-list = ["__dummy__" "custom0"];
+        };
+
+        "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
+          binding = ["<Super>e"];
+          name = "Open Editor";
+          command = "${config.alyraffauf.defaultApps.editor.exe}";
         };
       };
     };
