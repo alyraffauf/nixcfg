@@ -102,45 +102,7 @@
       fastfetch.enable = true;
       firefox.enable = true;
       fzf.enable = true;
-      keepassxc = {
-        enable = true;
-        settings = {
-          Browser = {
-            AlwaysAllowAccess = true;
-            Enabled = true;
-            SearchInAllDatabases = true;
-          };
-
-          General = {
-            ConfigVersion = 2;
-            HideWindowOnCopy = true;
-            MinimizeAfterUnlock = false;
-            MinimizeOnOpenUrl = true;
-          };
-
-          GUI = {
-            ApplicationTheme = "classic";
-            ColorPasswords = false;
-            CompactMode = true;
-            MinimizeOnClose = true;
-            MinimizeOnStartup = true;
-            MinimizeToTray = true;
-            ShowTrayIcon = true;
-            TrayIconAppearance = "colorful";
-          };
-
-          Security = {
-            ClearClipboardTimeout = 15;
-            EnableCopyOnDoubleClick = true;
-            IconDownloadFallback = true;
-            LockDatabaseScreenLock = false;
-          };
-
-          SSHAgent = {
-            Enabled = true;
-          };
-        };
-      };
+      keepassxc.enable = true;
       neofetch.enable = true;
       neovim.enable = true;
       tmux.enable = true;
