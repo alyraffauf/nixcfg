@@ -18,7 +18,7 @@
       defaultApps = {
         browser = config.alyraffauf.defaultApps.webBrowser.exe;
         editor = config.alyraffauf.defaultApps.editor.exe;
-        fileManager = lib.getExe pkgs.cinnamon.nemo;
+        fileManager = config.alyraffauf.defaultApps.fileManager.exe;
         launcher = lib.getExe pkgs.fuzzel;
         lock = lib.getExe pkgs.swaylock;
         logout = lib.getExe pkgs.wlogout;

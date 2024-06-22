@@ -50,31 +50,31 @@
           default = config.alyraffauf.desktop.enable;
           type = lib.types.bool;
         };
-        webBrowser = {
+        audioPlayer = {
           exe = lib.mkOption {
-            description = "Default web browser executable name.";
-            default = lib.getExe config.alyraffauf.defaultApps.webBrowser.package;
+            description = "Default audio player executable.";
+            default = lib.getExe config.alyraffauf.defaultApps.audioPlayer.package;
             type = lib.types.str;
           };
           desktop = lib.mkOption {
-            description = "Default web browser desktop file name.";
-            default = "firefox.desktop";
+            description = "Default audio player desktop file.";
+            default = config.alyraffauf.defaultApps.videoPlayer.desktop;
             type = lib.types.str;
           };
           package = lib.mkOption {
-            description = "Default web browser package.";
-            default = config.programs.firefox.package;
+            description = "Default audio player package.";
+            default = config.alyraffauf.defaultApps.videoPlayer.package;
             type = lib.types.package;
           };
         };
         editor = {
           exe = lib.mkOption {
-            description = "Default editor executable name.";
+            description = "Default editor executable.";
             default = lib.getExe config.alyraffauf.defaultApps.editor.package;
             type = lib.types.str;
           };
           desktop = lib.mkOption {
-            description = "Default editor desktop file name.";
+            description = "Default editor desktop file.";
             default = "codium.desktop";
             type = lib.types.str;
           };
@@ -84,60 +84,26 @@
             type = lib.types.package;
           };
         };
-        terminalEditor = {
+        fileManager = {
           exe = lib.mkOption {
-            description = "Default terminal editor executable name.";
-            default = lib.getExe config.alyraffauf.defaultApps.terminalEditor.package;
+            description = "Default file manager executable.";
+            default = lib.getExe config.alyraffauf.defaultApps.fileManager.package;
             type = lib.types.str;
           };
           desktop = lib.mkOption {
-            description = "Default terminal editor desktop file name.";
-            default = "nvim.desktop";
+            description = "Default file manager desktop file.";
+            default = "nemo.desktop";
             type = lib.types.str;
           };
           package = lib.mkOption {
-            description = "Default terminal editor package.";
-            default = config.programs.neovim.package;
-            type = lib.types.package;
-          };
-        };
-        terminal = {
-          exe = lib.mkOption {
-            description = "Default terminal executable name.";
-            default = lib.getExe config.alyraffauf.defaultApps.terminal.package;
-            type = lib.types.str;
-          };
-          desktop = lib.mkOption {
-            description = "Default terminal desktop file name.";
-            default = "alacritty.desktop";
-            type = lib.types.str;
-          };
-          package = lib.mkOption {
-            description = "Default terminal package.";
-            default = config.programs.alacritty.package;
-            type = lib.types.package;
-          };
-        };
-        pdfEditor = {
-          exe = lib.mkOption {
-            description = "Default PDF editor executable name.";
-            default = lib.getExe config.alyraffauf.defaultApps.pdfEditor.package;
-            type = lib.types.str;
-          };
-          desktop = lib.mkOption {
-            description = "Default PDF Editor desktop file name.";
-            default = "org.gnome.Evince.desktop";
-            type = lib.types.str;
-          };
-          package = lib.mkOption {
-            description = "Default PDF Editor package.";
-            default = pkgs.evince;
+            description = "Default file manager package.";
+            default = pkgs.cinnamon.nemo;
             type = lib.types.package;
           };
         };
         imageViewer = {
           exe = lib.mkOption {
-            description = "Default image viewer executable name.";
+            description = "Default image viewer executable.";
             default = lib.getExe config.alyraffauf.defaultApps.imageViewer.package;
             type = lib.types.str;
           };
@@ -152,14 +118,65 @@
             type = lib.types.package;
           };
         };
+        pdfEditor = {
+          exe = lib.mkOption {
+            description = "Default PDF editor executable.";
+            default = lib.getExe config.alyraffauf.defaultApps.pdfEditor.package;
+            type = lib.types.str;
+          };
+          desktop = lib.mkOption {
+            description = "Default PDF Editor desktop file.";
+            default = "org.gnome.Evince.desktop";
+            type = lib.types.str;
+          };
+          package = lib.mkOption {
+            description = "Default PDF Editor package.";
+            default = pkgs.evince;
+            type = lib.types.package;
+          };
+        };
+        terminal = {
+          exe = lib.mkOption {
+            description = "Default terminal executable.";
+            default = lib.getExe config.alyraffauf.defaultApps.terminal.package;
+            type = lib.types.str;
+          };
+          desktop = lib.mkOption {
+            description = "Default terminal desktop file.";
+            default = "alacritty.desktop";
+            type = lib.types.str;
+          };
+          package = lib.mkOption {
+            description = "Default terminal package.";
+            default = config.programs.alacritty.package;
+            type = lib.types.package;
+          };
+        };
+        terminalEditor = {
+          exe = lib.mkOption {
+            description = "Default terminal editor executable.";
+            default = lib.getExe config.alyraffauf.defaultApps.terminalEditor.package;
+            type = lib.types.str;
+          };
+          desktop = lib.mkOption {
+            description = "Default terminal editor desktop file.";
+            default = "nvim.desktop";
+            type = lib.types.str;
+          };
+          package = lib.mkOption {
+            description = "Default terminal editor package.";
+            default = config.programs.neovim.package;
+            type = lib.types.package;
+          };
+        };
         videoPlayer = {
           exe = lib.mkOption {
-            description = "Default video player executable name.";
+            description = "Default video player executable.";
             default = lib.getExe config.alyraffauf.defaultApps.videoPlayer.package;
             type = lib.types.str;
           };
           desktop = lib.mkOption {
-            description = "Default video player desktop file name.";
+            description = "Default video player desktop file.";
             default = "io.github.celluloid_player.Celluloid.desktop";
             type = lib.types.str;
           };
@@ -169,20 +186,20 @@
             type = lib.types.package;
           };
         };
-        audioPlayer = {
+        webBrowser = {
           exe = lib.mkOption {
-            description = "Default audio player executable name.";
-            default = lib.getExe config.alyraffauf.defaultApps.audioPlayer.package;
+            description = "Default web browser executable.";
+            default = lib.getExe config.alyraffauf.defaultApps.webBrowser.package;
             type = lib.types.str;
           };
           desktop = lib.mkOption {
-            description = "Default audio player desktop file name.";
-            default = config.alyraffauf.defaultApps.videoPlayer.desktop;
+            description = "Default web browser desktop file.";
+            default = "firefox.desktop";
             type = lib.types.str;
           };
           package = lib.mkOption {
-            description = "Default audio player package.";
-            default = config.alyraffauf.defaultApps.videoPlayer.package;
+            description = "Default web browser package.";
+            default = config.programs.firefox.package;
             type = lib.types.package;
           };
         };

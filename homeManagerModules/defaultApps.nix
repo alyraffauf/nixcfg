@@ -8,6 +8,7 @@
     home.packages = with config.alyraffauf.defaultApps; [
       audioPlayer.package
       editor.package
+      fileManager.package
       imageViewer.package
       pdfEditor.package
       terminal.package
@@ -35,6 +36,7 @@
         "audio/opus" = config.alyraffauf.defaultApps.audioPlayer.desktop;
         "image/jpeg" = config.alyraffauf.defaultApps.imageViewer.desktop;
         "image/png" = config.alyraffauf.defaultApps.imageViewer.desktop;
+        "inode/directory" = config.alyraffauf.defaultApps.fileManager.desktop;
         "text/html" = config.alyraffauf.defaultApps.webBrowser.desktop;
         "text/plain" = config.alyraffauf.defaultApps.editor.desktop;
         "text/x-python" = config.alyraffauf.defaultApps.editor.desktop;

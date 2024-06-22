@@ -24,7 +24,7 @@
 
       # Default apps
       browser = config.alyraffauf.defaultApps.webBrowser.exe;
-      fileManager = lib.getExe pkgs.cinnamon.nemo;
+      fileManager = config.alyraffauf.defaultApps.fileManager.exe;
       editor = config.alyraffauf.defaultApps.editor.exe;
       terminal = config.alyraffauf.defaultApps.terminal.exe;
 
