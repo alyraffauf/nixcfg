@@ -30,17 +30,8 @@
 
     desktop = {
       enable = true;
-
-      greetd = {
-        enable = true;
-
-        autologin = {
-          enable = true;
-          user = "aly";
-        };
-      };
-
       cinnamon.enable = true;
+      lightdm.enable = true;
     };
 
     services = {
