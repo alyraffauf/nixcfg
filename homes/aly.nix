@@ -8,7 +8,7 @@
 }: {
   home = {
     homeDirectory = "/home/aly";
-    file.".cache/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
+    file."${config.xdg.cacheHome}/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
       General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
     };
     packages = with pkgs; [
