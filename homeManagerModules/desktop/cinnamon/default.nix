@@ -5,11 +5,6 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.desktop.cinnamon.enable {
-    alyraffauf = {
-      apps = {
-        nemo.enable = lib.mkDefault true;
-      };
-    };
     dconf = {
       enable = true;
       settings = {

@@ -34,11 +34,19 @@
         };
         librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
         mako.enable = lib.mkEnableOption "Mako notification daemon.";
-        nemo.enable = lib.mkEnableOption "Cinnamon Nemo file manager.";
+        nemo.enable = lib.mkOption {
+          description = "Cinnamon Nemo file manager.";
+          default = config.alyraffauf.defaultApps.fileManager.package == pkgs.cinnamon.nemo;
+          type = lib.types.bool;
+        };
         neofetch.enable = lib.mkEnableOption "Neofetch.";
         neovim.enable = lib.mkEnableOption "Neovim text editor.";
         swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
-        thunar.enable = lib.mkEnableOption "Thunar file manager.";
+        thunar.enable = lib.mkOption {
+          description = "Thunar file manager.";
+          default = config.alyraffauf.defaultApps.fileManager.package == pkgs.xfce.thunar;
+          type = lib.types.bool;
+        };
         tmux.enable = lib.mkEnableOption "Tmux shell session manager.";
         vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
         waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
