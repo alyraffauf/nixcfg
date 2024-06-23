@@ -23,6 +23,10 @@
         "terminal.external.linuxExec" = config.alyraffauf.defaultApps.terminal.exe;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
+        "window.titleBarStyle" =
+          if config.alyraffauf.desktop.gnome.enable
+          then "custom"
+          else "native";
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
           if config.alyraffauf.theme.colors.preferDark
