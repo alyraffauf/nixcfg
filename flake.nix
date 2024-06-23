@@ -19,7 +19,7 @@
     ## Motion sensor and auto-rotate for Hyprland.
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
-      inputs.nixpkgs.follows = "nixpkgsUnstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Stable home-manager, synced with latest stable nixpkgs.
@@ -106,6 +106,7 @@
               ./hosts/${host}
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
+              inputs.hyprland.nixosModules.default
               inputs.nixvim.nixosModules.nixvim
               inputs.home-manager.nixosModules.home-manager
               self.nixosModules.default
@@ -115,6 +116,7 @@
 
                   sharedModules = [
                     inputs.agenix.homeManagerModules.default
+                    inputs.hyprland.homeManagerModules.default
                     inputs.nixvim.homeManagerModules.nixvim
                     self.homeManagerModules.default
                   ];
