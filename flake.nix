@@ -2,6 +2,9 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## Motion sensor and auto-rotate for Hyprland.
+    iio-hyprland = {
+      url = "github:JeanSchoeller/iio-hyprland";
+      inputs.nixpkgs.follows = "nixpkgsUnstable";
+    };
+
     # Stable home-manager, synced with latest stable nixpkgs.
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -22,17 +31,10 @@
     # Latest hyprland from git.
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    ## Motion sensor and auto-rotate for Hyprland.
-    iio-hyprland = {
-      url = "github:JeanSchoeller/iio-hyprland";
-      inputs.nixpkgs.follows = "nixpkgsUnstable";
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Latest stable NixOS release.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-
-    # Unstable NixOS.
-    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   nixConfig = {
@@ -104,8 +106,23 @@
               ./hosts/${host}
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
+              inputs.nixvim.nixosModules.nixvim
               inputs.home-manager.nixosModules.home-manager
               self.nixosModules.default
+              {
+                home-manager = {
+                  backupFileExtension = "backup";
+
+                  sharedModules = [
+                    inputs.agenix.homeManagerModules.default
+                    inputs.nixvim.homeManagerModules.nixvim
+                    self.homeManagerModules.default
+                  ];
+
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                };
+              }
             ];
           }
       );
