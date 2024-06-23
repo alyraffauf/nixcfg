@@ -48,7 +48,7 @@
           });
           sway = unstable.sway;
           swayfx = unstable.swayfx;
-          vscodium = prev.vscodium.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+          vscodium = prev.vscodium.override {commandLineArgs = "--enable-wayland-ime";};
           webcord = prev.webcord.overrideAttrs (old: {
             installPhase =
               builtins.replaceStrings ["--ozone-platform-hint=auto"]
