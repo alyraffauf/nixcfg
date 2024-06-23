@@ -548,6 +548,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1719160963,
+        "narHash": "sha256-hm2XunlO5oD0xh9Z0r1kIQj8UEt1vYeyyFlieN8hkHI=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "72137385988d41b40f749b9203f9ba831f4fbe04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -557,7 +572,8 @@
         "iio-hyprland": "iio-hyprland",
         "nixpkgs": "nixpkgs_2",
         "nixpkgsUnstable": "nixpkgsUnstable",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "nur": "nur"
       }
     },
     "systems": {

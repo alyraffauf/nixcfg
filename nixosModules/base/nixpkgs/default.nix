@@ -16,6 +16,7 @@
 
       # Overlays over default packages.
       overlays = [
+        inputs.nur.overlay
         (final: prev: {
           audiobookshelf = unstable.audiobookshelf;
           brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};

@@ -35,6 +35,8 @@
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur.url = github:nix-community/NUR;
   };
 
   nixConfig = {
@@ -108,6 +110,7 @@
               inputs.disko.nixosModules.disko
               inputs.hyprland.nixosModules.default
               inputs.nixvim.nixosModules.nixvim
+              inputs.nur.nixosModules.nur
               inputs.home-manager.nixosModules.home-manager
               self.nixosModules.default
               {
@@ -118,6 +121,7 @@
                     inputs.agenix.homeManagerModules.default
                     inputs.hyprland.homeManagerModules.default
                     inputs.nixvim.homeManagerModules.nixvim
+                    inputs.nur.hmModules.nur
                     self.homeManagerModules.default
                   ];
 
