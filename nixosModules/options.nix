@@ -9,6 +9,11 @@
   options = {
     alyraffauf = {
       apps = {
+        firefox.enable = lib.mkOption {
+          description = "Firefox Web Browser.";
+          default = config.alyraffauf.desktop.enable;
+          type = lib.types.bool;
+        };
         nicotine-plus.enable =
           lib.mkEnableOption "Nicotine+ Soulseek client.";
         podman.enable =

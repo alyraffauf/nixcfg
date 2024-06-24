@@ -38,6 +38,7 @@
     home-manager.enable = true;
 
     firefox = {
+      enable = true;
       profiles.work = {
         id = 1;
 
@@ -63,9 +64,12 @@
       profiles.default = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
+          decentraleyes
+          keepassxc-browser
           omnivore
           sidebery
           sponsorblock
+          ublock-origin
           zoom-redirector
         ];
 
@@ -75,7 +79,7 @@
           default = "DuckDuckGo";
           force = true;
           engines = {
-            "Nix Packages" = {
+            "nixpkgs" = {
               urls = [
                 {
                   template = "https://search.nixos.org/packages";
@@ -122,64 +126,64 @@
           "privacy.trackingprotection.socialtracking.enabled" = true;
           "services.sync.prefs.sync.browser.uiCustomization.state" = true;
 
-          "browser.uiCustomization.state" = ''
-            {
-                "placements": {
-                    "widget-overflow-fixed-list": [],
-                    "unified-extensions-area": [
-                        "ublock0_raymondhill_net-browser-action",
-                        "sponsorblocker_ajay_app-browser-action",
-                        "_019b606a-6f61-4d01-af2a-cea528f606da_-browser-action",
-                        "jid1-bofifl9vbdl2zq_jetpack-browser-action"
-                    ],
-                    "nav-bar": [
-                        "back-button",
-                        "forward-button",
-                        "stop-reload-button",
-                        "customizableui-special-spring1",
-                        "urlbar-container",
-                        "customizableui-special-spring2",
-                        "downloads-button",
-                        "save-extension_omnivore_app-browser-action",
-                        "keepassxc-browser_keepassxc_org-browser-action",
-                        "_3c078156-979c-498b-8990-85f7987dd929_-browser-action",
-                        "unified-extensions-button",
-                        "fxa-toolbar-menu-button"
-                    ],
-                    "toolbar-menubar": [
-                        "menubar-items"
-                    ],
-                    "TabsToolbar": [
-                        "firefox-view-button",
-                        "tabbrowser-tabs",
-                        "new-tab-button",
-                        "alltabs-button"
-                    ],
-                    "PersonalToolbar": [
-                        "personal-bookmarks"
-                    ]
-                },
-                "seen": [
-                    "save-extension_omnivore_app-browser-action",
-                    "_019b606a-6f61-4d01-af2a-cea528f606da_-browser-action",
-                    "sponsorblocker_ajay_app-browser-action",
-                    "developer-button",
-                    "keepassxc-browser_keepassxc_org-browser-action",
-                    "ublock0_raymondhill_net-browser-action",
-                    "jid1-bofifl9vbdl2zq_jetpack-browser-action",
-                    "_3c078156-979c-498b-8990-85f7987dd929_-browser-action"
-                ],
-                "dirtyAreaCache": [
-                    "unified-extensions-area",
-                    "nav-bar",
-                    "toolbar-menubar",
-                    "TabsToolbar",
-                    "PersonalToolbar"
-                ],
-                "currentVersion": 20,
-                "newElementCount": 4
-            }
-          '';
+          # "browser.uiCustomization.state" = ''
+          #   {
+          #       "placements": {
+          #           "widget-overflow-fixed-list": [],
+          #           "unified-extensions-area": [
+          #               "ublock0_raymondhill_net-browser-action",
+          #               "sponsorblocker_ajay_app-browser-action",
+          #               "_019b606a-6f61-4d01-af2a-cea528f606da_-browser-action",
+          #               "jid1-bofifl9vbdl2zq_jetpack-browser-action"
+          #           ],
+          #           "nav-bar": [
+          #               "back-button",
+          #               "forward-button",
+          #               "stop-reload-button",
+          #               "customizableui-special-spring1",
+          #               "urlbar-container",
+          #               "customizableui-special-spring2",
+          #               "downloads-button",
+          #               "save-extension_omnivore_app-browser-action",
+          #               "keepassxc-browser_keepassxc_org-browser-action",
+          #               "_3c078156-979c-498b-8990-85f7987dd929_-browser-action",
+          #               "unified-extensions-button",
+          #               "fxa-toolbar-menu-button"
+          #           ],
+          #           "toolbar-menubar": [
+          #               "menubar-items"
+          #           ],
+          #           "TabsToolbar": [
+          #               "firefox-view-button",
+          #               "tabbrowser-tabs",
+          #               "new-tab-button",
+          #               "alltabs-button"
+          #           ],
+          #           "PersonalToolbar": [
+          #               "personal-bookmarks"
+          #           ]
+          #       },
+          #       "seen": [
+          #           "save-extension_omnivore_app-browser-action",
+          #           "_019b606a-6f61-4d01-af2a-cea528f606da_-browser-action",
+          #           "sponsorblocker_ajay_app-browser-action",
+          #           "developer-button",
+          #           "keepassxc-browser_keepassxc_org-browser-action",
+          #           "ublock0_raymondhill_net-browser-action",
+          #           "jid1-bofifl9vbdl2zq_jetpack-browser-action",
+          #           "_3c078156-979c-498b-8990-85f7987dd929_-browser-action"
+          #       ],
+          #       "dirtyAreaCache": [
+          #           "unified-extensions-area",
+          #           "nav-bar",
+          #           "toolbar-menubar",
+          #           "TabsToolbar",
+          #           "PersonalToolbar"
+          #       ],
+          #       "currentVersion": 20,
+          #       "newElementCount": 4
+          #   }
+          # '';
         };
       };
     };

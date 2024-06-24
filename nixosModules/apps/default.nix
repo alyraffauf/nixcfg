@@ -4,5 +4,5 @@
   config,
   ...
 }: {
-  imports = [./nicotine-plus ./steam ./podman ./virt-manager];
+  imports = [./firefox ./nicotine-plus ./steam ./podman ./virt-manager];
 }

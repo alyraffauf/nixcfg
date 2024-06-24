@@ -42,7 +42,7 @@
     };
     desktop = {
       hyprland = {
-        randomWallpaper = false;
+        randomWallpaper = true;
       };
     };
     theme = {
