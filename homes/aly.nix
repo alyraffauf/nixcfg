@@ -38,6 +38,28 @@
     home-manager.enable = true;
 
     firefox = {
+      profiles.work = {
+        id = 1;
+
+        search = {
+          default = "Google";
+          force = true;
+          engines = {
+            "Bing" = {
+              metaData = {
+                hidden = true;
+                alias = "!bing";
+              };
+            };
+            "DuckDuckGo" = {
+              metaData = {
+                hidden = true;
+                alias = "!ddg";
+              };
+            };
+          };
+        };
+      };
       profiles.default = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
@@ -46,6 +68,8 @@
           sponsorblock
           zoom-redirector
         ];
+
+        id = 0;
 
         search = {
           default = "DuckDuckGo";
@@ -88,8 +112,8 @@
         };
 
         settings = {
-          "permissions.default.desktop-notification" = 2;
           "network.cookie.cookieBehavior" = 1;
+          "permissions.default.desktop-notification" = 2;
           "privacy.donottrackheader.enabled" = true;
           "privacy.fingerprintingProtection" = true;
           "privacy.trackingprotection.emailtracking.enabled" = true;
