@@ -16,7 +16,6 @@
     ./librewolf
     ./mako
     ./nemo
-    ./neofetch
     ./neovim
     ./swaylock
     ./thunar

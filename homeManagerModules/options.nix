@@ -37,7 +37,6 @@
           default = config.alyraffauf.defaultApps.fileManager.package == pkgs.cinnamon.nemo;
           type = lib.types.bool;
         };
-        neofetch.enable = lib.mkEnableOption "Neofetch.";
         neovim.enable = lib.mkEnableOption "Neovim text editor.";
         swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
         thunar.enable = lib.mkOption {
