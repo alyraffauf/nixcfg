@@ -328,7 +328,7 @@
         gtk = {
           name = lib.mkOption {
             description = "GTK theme name.";
-            default = "Catppuccin-Frappe-Compact-Mauve-Dark";
+            default = "catppuccin-frappe-mauve-compact+normal";
             type = lib.types.str;
           };
           package = lib.mkOption {

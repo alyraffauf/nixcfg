@@ -40,7 +40,7 @@
     };
     theme = {
       gtk = {
-        name = "Catppuccin-Frappe-Compact-Mauve-Dark";
+        name = "catppuccin-frappe-mauve-compact+normal";
         package = pkgs.catppuccin-gtk.override {
           accents = ["mauve"];
           size = "compact";

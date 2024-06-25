@@ -22,7 +22,7 @@
           theme = lib.mkForce {
             enable = true;
             gtk = {
-              name = "Catppuccin-Macchiato-Compact-Mauve-Dark";
+              name = "catppuccin-macchiato-mauve-compact+normal";
               package = pkgs.catppuccin-gtk.override {
                 accents = ["mauve"];
                 size = "compact";
