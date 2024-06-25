@@ -30,33 +30,41 @@
       wallpaperd =
         if config.alyraffauf.desktop.hyprland.randomWallpaper
         then
-          pkgs.writeShellScript "hyprland-randomWallpaper" ''
-            OLD_PIDS=()
-            directory=${config.home.homeDirectory}/.local/share/backgrounds
+          pkgs.writers.writeRuby "hyprland-randomWallpaper" {} ''
+            require 'fileutils'
+
+            directory = "${config.xdg.dataHome}/backgrounds"
+            hyprctl = "${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}"
+            old_pids = []
 
             sleep 1
 
-            if [ -d "$directory" ]; then
-                while true; do
-                  NEW_PIDS=()
-                  monitor=`${config.wayland.windowManager.hyprland.package}/bin/hyprctl monitors | grep Monitor | awk '{print $2}'`
-                  for m in ''${monitor[@]}; do
-                    random_background=$(ls $directory/*.{png,jpg} | shuf -n 1)
-                    ${lib.getExe pkgs.swaybg} -o $m -i $random_background -m fill &
-                    NEW_PIDS+=($!)
-                  done
+            if Dir.exist?(directory)
+              loop do
+                new_pids = []
 
-                  if [[ ''${OLD_PIDS[@]} -gt 0 ]]; then
-                    sleep 5
-                    for pid in ''${OLD_PIDS[@]}; do
-                      kill $pid
-                    done
-                  fi
+                outputs = IO.popen([hyprctl, 'monitors']).read
+                monitors = outputs.each_line.map { |line| line.split[1] if line.include?('Monitor') }.compact
 
-                  OLD_PIDS=$NEW_PIDS
+                monitors.each do |monitor|
+                  random_background = Dir.glob(File.join(directory, '*.{png,jpg}')).sample
+                  pid = spawn("${lib.getExe pkgs.swaybg}", '-o', monitor, '-i', random_background, '-m', 'fill')
+                  new_pids << pid
+                end
+
+                if old_pids.empty?
+                  sleep 900
+                else
+                  sleep 5
+                  old_pids.each do |pid|
+                    Process.kill('TERM', pid)
+                  end
                   sleep 895
-                done
-            fi
+                end
+
+                old_pids = new_pids
+              end
+            end
           ''
         else "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.theme.wallpaper}";
 
