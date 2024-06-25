@@ -253,12 +253,9 @@
         package = pkgs.brave;
       };
       emacs.enable = true;
-      eza.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
-      fzf.enable = true;
       keepassxc.enable = true;
-      neofetch.enable = true;
       neovim.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;

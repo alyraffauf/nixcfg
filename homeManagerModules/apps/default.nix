@@ -9,11 +9,9 @@
     ./bash
     ./chromium
     ./emacs
-    ./eza
     ./fastfetch
     ./firefox
     ./fuzzel
-    ./fzf
     ./keepassxc
     ./librewolf
     ./mako

@@ -19,11 +19,9 @@
           };
         };
         emacs.enable = lib.mkEnableOption "Emacs text editor.";
-        eza.enable = lib.mkEnableOption "Eza ls alternative.";
         fastfetch.enable = lib.mkEnableOption "Fastfetch.";
         firefox.enable = lib.mkEnableOption "Firefox web browser.";
         fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
-        fzf.enable = lib.mkEnableOption "Fzf fuzzy file finder.";
         keepassxc = {
           enable = lib.mkEnableOption "KeePassXC password manager.";
           settings = lib.mkOption {

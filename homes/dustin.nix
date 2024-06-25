@@ -35,9 +35,7 @@
       alacritty.enable = true;
       bash.enable = true;
       chromium.enable = true;
-      eza.enable = true;
       firefox.enable = true;
-      fzf.enable = true;
       vsCodium.enable = true;
     };
     desktop = {
