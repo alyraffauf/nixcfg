@@ -36,7 +36,10 @@
         "file://${config.xdg.userDirs.pictures}"
         "file://${config.home.homeDirectory}/src"
       ]
-      ++ lib.optional (osConfig.alyraffauf.services.syncthing.enable) "file://${config.home.homeDirectory}/sync";
+      ++ lib.optional (
+        osConfig.alyraffauf.services.syncthing.enable
+        && (osConfig.alyraffauf.services.syncthing.user == config.home.username)
+      ) "file://${config.home.homeDirectory}/sync";
 
     xdg = {
       dataFile."backgrounds/".source = ../../files/wallpapers;
