@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  osConfig,
   pkgs,
   ...
 }: {
@@ -26,15 +27,16 @@
       };
     };
 
-    gtk.gtk3.bookmarks = [
-      "file://${config.xdg.userDirs.documents}"
-      "file://${config.xdg.userDirs.download}"
-      "file://${config.xdg.userDirs.music}"
-      "file://${config.xdg.userDirs.videos}"
-      "file://${config.xdg.userDirs.pictures}"
-      "file://${config.home.homeDirectory}/src"
-      "file://${config.home.homeDirectory}/sync"
-    ];
+    gtk.gtk3.bookmarks =
+      [
+        "file://${config.xdg.userDirs.documents}"
+        "file://${config.xdg.userDirs.download}"
+        "file://${config.xdg.userDirs.music}"
+        "file://${config.xdg.userDirs.videos}"
+        "file://${config.xdg.userDirs.pictures}"
+        "file://${config.home.homeDirectory}/src"
+      ]
+      ++ lib.optional (osConfig.alyraffauf.services.syncthing.enable) "file://${config.home.homeDirectory}/sync";
 
     xdg = {
       dataFile."backgrounds/".source = ../../files/wallpapers;
