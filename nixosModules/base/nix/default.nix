@@ -6,6 +6,12 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.base.enable {
+    environment.variables = {
+      FLAKE = "github:alyraffauf/nixcfg";
+    };
+
+    programs.nh.enable = true;
+
     nix = {
       gc = {
         automatic = true;
