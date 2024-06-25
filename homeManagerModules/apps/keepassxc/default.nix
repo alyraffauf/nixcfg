@@ -12,6 +12,7 @@
         AlwaysAllowAccess = true;
         Enabled = true;
         SearchInAllDatabases = true;
+        UpdateBinaryPath = false;
       };
 
       General = {
