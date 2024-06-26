@@ -6,18 +6,6 @@
 }: {
   config = lib.mkIf config.alyraffauf.apps.bash.enable {
     programs = {
-      eza = {
-        enable = true;
-        extraOptions = ["--group-directories-first" "--header"];
-        git = true;
-        icons = true;
-      };
-
-      fzf = {
-        enable = true;
-        tmux.enableShellIntegration = true;
-      };
-
       bash = {
         enable = true;
         enableCompletion = true;
@@ -40,6 +28,19 @@
           cat = lib.getExe pkgs.bat;
         };
       };
+      eza = {
+        enable = true;
+        extraOptions = ["--group-directories-first" "--header"];
+        git = true;
+        icons = true;
+      };
+
+      fzf = {
+        enable = true;
+        tmux.enableShellIntegration = true;
+      };
+
+      ripgrep.enable = true;
     };
   };
 }
