@@ -5,6 +5,11 @@
   ...
 }: {
   config = lib.mkIf config.alyraffauf.apps.bash.enable {
+    home.shellAliases = {
+      cat = lib.getExe pkgs.bat;
+      grep = lib.getExe config.programs.ripgrep.package;
+    };
+
     programs = {
       bash = {
         enable = true;
@@ -24,10 +29,8 @@
         initExtra = ''
           export PS1="[\[$(tput setaf 27)\]\u\[$(tput setaf 135)\]@\[$(tput setaf 45)\]\h:\[$(tput setaf 33)\]\w] \[$(tput sgr0)\]$ "
         '';
-        shellAliases = {
-          cat = lib.getExe pkgs.bat;
-        };
       };
+
       eza = {
         enable = true;
         extraOptions = ["--group-directories-first" "--header"];
@@ -40,7 +43,10 @@
         tmux.enableShellIntegration = true;
       };
 
-      ripgrep.enable = true;
+      ripgrep = {
+        enable = true;
+        arguments = ["--pretty"];
+      };
     };
   };
 }
