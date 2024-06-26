@@ -19,6 +19,8 @@ in {
     ./home.nix
   ];
 
+  age.secrets.cloudflare.file = ../../secrets/cloudflare.age;
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -57,6 +59,23 @@ in {
   };
 
   services = {
+    ddclient = {
+      enable = true;
+      domains = [
+        "music.raffauflabs.com"
+        "plex.raffauflabs.com"
+        "podcasts.raffauflabs.com"
+        "raffauflabs.com"
+      ];
+      interval = "10min";
+      passwordFile = config.age.secrets.cloudflare.path;
+      protocol = "cloudflare";
+      ssl = true;
+      use = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
+      username = "token";
+      zone = "raffauflabs.com";
+    };
+
     fail2ban.enable = true;
 
     nginx = {
