@@ -22,8 +22,6 @@
     ];
   };
 
-  powerManagement.cpuFreqGovernor = "ondemand"; # Otherwise, CPU doesn't automatically clock down.
-
   hardware = {
     enableAllFirmware = true;
 
