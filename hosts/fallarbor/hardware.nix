@@ -32,7 +32,6 @@
   hardware = {
     acpilight.enable = true;
     enableAllFirmware = true;
-
     sensor.iio.enable = true;
   };
 
