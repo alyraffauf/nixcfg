@@ -261,13 +261,6 @@
       vsCodium.enable = true;
     };
 
-    defaultApps = {
-      webBrowser = {
-        package = config.programs.chromium.package;
-        desktop = "brave-browser.desktop";
-      };
-    };
-
     desktop = {
       startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
     };
