@@ -89,11 +89,11 @@
     homeManagerModules.default =
       import ./homeManagerModules inputs self;
 
-    nixosModules.default =
-      import ./nixosModules inputs;
-
     nixosModules.hardware =
       import ./hardwareModules inputs;
+
+    nixosModules.nixos =
+      import ./nixosModules inputs;
 
     nixosConfigurations =
       inputs.nixpkgs.lib.genAttrs [
@@ -115,8 +115,8 @@
               inputs.hyprland.nixosModules.default
               inputs.nixvim.nixosModules.nixvim
               inputs.nur.nixosModules.nur
-              self.nixosModules.default
               self.nixosModules.hardware
+              self.nixosModules.nixos
               {
                 home-manager = {
                   backupFileExtension = "backup";
