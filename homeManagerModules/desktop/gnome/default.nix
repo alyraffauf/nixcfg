@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.gnome.enable {
+  config = lib.mkIf config.ar.home.desktop.gnome.enable {
     dconf.enable = true;
     dconf.settings = {
       "org/gnome/desktop/datetime".automatic-timezone = true;

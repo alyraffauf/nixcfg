@@ -8,7 +8,7 @@
   home-manager = {
     sharedModules = [
       {
-        alyraffauf = {
+        ar.home = {
           services.easyeffects = {
             enable = true;
             preset = "framework13";

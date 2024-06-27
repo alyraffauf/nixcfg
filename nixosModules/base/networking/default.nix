@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [./sambaAutoMount.nix];
-  config = lib.mkIf config.alyraffauf.base.enable {
+  config = lib.mkIf config.ar.base.enable {
     age.secrets.wifi.file = ../../../secrets/wifi.age;
 
     hardware = {

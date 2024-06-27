@@ -22,7 +22,7 @@
 
   system.stateVersion = "24.05";
 
-  alyraffauf = {
+  ar = {
     apps = {
       podman.enable = true;
       steam.enable = true;

@@ -4,16 +4,16 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.fuzzel.enable {
+  config = lib.mkIf config.ar.home.apps.fuzzel.enable {
     programs.fuzzel = {
       enable = true;
       settings = {
         main = {
-          font = "${config.alyraffauf.theme.terminalFont.name}:size=${toString config.alyraffauf.theme.terminalFont.size}";
-          icon-theme = "${config.alyraffauf.theme.iconTheme.name}";
+          font = "${config.ar.home.theme.terminalFont.name}:size=${toString config.ar.home.theme.terminalFont.size}";
+          icon-theme = "${config.ar.home.theme.iconTheme.name}";
           layer = "overlay";
           lines = 3;
-          terminal = config.alyraffauf.defaultApps.terminal.exe;
+          terminal = config.ar.home.defaultApps.terminal.exe;
           width = 36;
         };
         border = {
@@ -21,12 +21,12 @@
           width = 2;
         };
         colors = {
-          background = "${config.alyraffauf.theme.colors.background}CC";
-          border = "${config.alyraffauf.theme.colors.primary}EE";
-          selection = "${config.alyraffauf.theme.colors.background}FF";
+          background = "${config.ar.home.theme.colors.background}CC";
+          border = "${config.ar.home.theme.colors.primary}EE";
+          selection = "${config.ar.home.theme.colors.background}FF";
           selection-match = "#e78284FF";
           selection-text = "#f4b8e4FF";
-          text = "${config.alyraffauf.theme.colors.text}FF";
+          text = "${config.ar.home.theme.colors.text}FF";
         };
       };
     };

@@ -8,7 +8,7 @@
   home-manager = {
     sharedModules = [
       {
-        alyraffauf = {
+        ar.home = {
           desktop = {
             hyprland.autoSuspend = false;
             sway.autoSuspend = false;

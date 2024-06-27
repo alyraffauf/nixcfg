@@ -5,7 +5,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf (config.alyraffauf.desktop.hyprland.enable || config.alyraffauf.desktop.sway.enable) {
+  config = lib.mkIf (config.ar.desktop.hyprland.enable || config.ar.desktop.sway.enable) {
     programs = {
       gnupg.agent.pinentryPackage = lib.mkForce pkgs.pinentry-gnome3;
     };

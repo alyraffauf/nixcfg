@@ -5,7 +5,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.sway.enable {
+  config = lib.mkIf config.ar.desktop.sway.enable {
     programs = {
       sway = {
         enable = true;

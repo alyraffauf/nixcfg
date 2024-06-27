@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.waybar.enable {
+  config = lib.mkIf config.ar.home.apps.waybar.enable {
     programs.waybar = {
       enable = true;
       settings = {
@@ -14,11 +14,11 @@
           output = ["*"];
           position = "top";
           modules-left =
-            lib.optionals (config.alyraffauf.desktop.hyprland.enable)
+            lib.optionals (config.ar.home.desktop.hyprland.enable)
             ["hyprland/workspaces" "hyprland/submap"]
-            ++ lib.optionals (config.alyraffauf.desktop.sway.enable)
+            ++ lib.optionals (config.ar.home.desktop.sway.enable)
             ["sway/workspaces" "sway/scratchpad" "sway/mode"]
-            ++ lib.optionals (config.alyraffauf.desktop.hyprland.tabletMode.menuButton)
+            ++ lib.optionals (config.ar.home.desktop.hyprland.tabletMode.menuButton)
             ["custom/menu" "custom/hyprland-close"];
           modules-center = ["clock"];
           modules-right = [
@@ -138,7 +138,7 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${config.alyraffauf.defaultApps.terminalEditor.exe} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = "${config.ar.home.defaultApps.terminalEditor.exe} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
           };
           "tray" = {"spacing" = 15;};
           "custom/logout" = {
@@ -174,25 +174,25 @@
       * {
           border: none;
           border-radius: 0;
-          font-family: "${config.alyraffauf.theme.terminalFont.name}";
+          font-family: "${config.ar.home.theme.terminalFont.name}";
           font-size: 14px;
           font-weight: 600;
       }
 
       window#waybar {
           background: rgba (35, 38, 52, 0.0);
-          color: ${config.alyraffauf.theme.colors.text};
+          color: ${config.ar.home.theme.colors.text};
       }
 
       #workspaces button {
           padding: 0px 5px;
           margin: 0 0px;
-          color: ${config.alyraffauf.theme.colors.text};
+          color: ${config.ar.home.theme.colors.text};
       }
 
       #workspaces button.active,
       #workspaces button.focused {
-          color: ${config.alyraffauf.theme.colors.primary};
+          color: ${config.ar.home.theme.colors.primary};
       }
 
       #submap,
@@ -205,11 +205,11 @@
       #tags button {
           padding: 0px 5px;
           margin: 0 0px;
-          color: ${config.alyraffauf.theme.colors.text};
+          color: ${config.ar.home.theme.colors.text};
       }
 
       #tags button.focused {
-          color: ${config.alyraffauf.theme.colors.primary};
+          color: ${config.ar.home.theme.colors.primary};
       }
 
       #clock,
@@ -229,11 +229,11 @@
       }
 
       #battery {
-          color: ${config.alyraffauf.theme.colors.text};
+          color: ${config.ar.home.theme.colors.text};
       }
 
       #battery.charging {
-          color: ${config.alyraffauf.theme.colors.primary};
+          color: ${config.ar.home.theme.colors.primary};
       }
 
       #battery.critical:not(.charging) {
@@ -252,7 +252,7 @@
       #hardware {
           border-radius: 10;
           background: rgba ${
-        if config.alyraffauf.theme.colors.preferDark
+        if config.ar.home.theme.colors.preferDark
         then "(35, 38, 52, 0.8);"
         else "(220, 224, 232, 0.8);"
       }
@@ -266,7 +266,7 @@
 
       #submap,
       #mode {
-          color: ${config.alyraffauf.theme.colors.text};
+          color: ${config.ar.home.theme.colors.text};
           background: rgba(231, 130, 132, 0.8);
       }
     '';

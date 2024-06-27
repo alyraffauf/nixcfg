@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.neovim.enable {
+  config = lib.mkIf config.ar.home.apps.neovim.enable {
     programs.nixvim = {
       enable = true;
       viAlias = true;

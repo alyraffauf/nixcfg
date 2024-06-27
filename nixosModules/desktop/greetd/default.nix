@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.greetd.enable {
+  config = lib.mkIf config.ar.desktop.greetd.enable {
     security.pam.services.greetd = {
       enableGnomeKeyring = true;
       gnupg.enable = true;
@@ -15,19 +15,19 @@
       greetd = {
         enable = true;
         settings =
-          if config.alyraffauf.desktop.greetd.autologin.enable
+          if config.ar.desktop.greetd.autologin.enable
           then {
             default_session = {
-              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.ar.desktop.greetd.session}";
             };
             initial_session = {
-              command = config.alyraffauf.desktop.greetd.session;
-              user = config.alyraffauf.desktop.greetd.autologin.user;
+              command = config.ar.desktop.greetd.session;
+              user = config.ar.desktop.greetd.autologin.user;
             };
           }
           else {
             default_session = {
-              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.alyraffauf.desktop.greetd.session}";
+              command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.ar.desktop.greetd.session}";
             };
           };
       };

@@ -16,7 +16,7 @@
     fi
   '';
 in {
-  config = lib.mkIf config.alyraffauf.desktop.plasma.enable {
+  config = lib.mkIf config.ar.desktop.plasma.enable {
     environment.systemPackages = with pkgs;
       [
         kdePackages.kate

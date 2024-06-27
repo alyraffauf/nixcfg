@@ -36,7 +36,7 @@
     fi
   '';
 in {
-  config = lib.mkIf config.alyraffauf.desktop.sway.randomWallpaper {
+  config = lib.mkIf config.ar.home.desktop.sway.randomWallpaper {
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [swaybg sway-randomWallpaper];
 

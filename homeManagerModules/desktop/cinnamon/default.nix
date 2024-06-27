@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.cinnamon.enable {
+  config = lib.mkIf config.ar.home.desktop.cinnamon.enable {
     dconf = {
       enable = true;
       settings = {
@@ -56,7 +56,7 @@
         "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
           binding = ["<Super>e"];
           name = "Open Editor";
-          command = "${config.alyraffauf.defaultApps.editor.exe}";
+          command = "${config.ar.home.defaultApps.editor.exe}";
         };
       };
     };

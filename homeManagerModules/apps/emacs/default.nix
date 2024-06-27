@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.emacs.enable {
+  config = lib.mkIf config.ar.home.apps.emacs.enable {
     programs.emacs = {
       enable = true;
       extraPackages = epkgs: (with epkgs; [

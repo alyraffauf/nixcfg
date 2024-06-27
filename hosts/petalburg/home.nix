@@ -8,7 +8,7 @@
   home-manager = {
     sharedModules = [
       {
-        alyraffauf.desktop.hyprland = {
+        ar.home.desktop.hyprland = {
           tabletMode.enable = true;
         };
         wayland.windowManager.hyprland.extraConfig = ''

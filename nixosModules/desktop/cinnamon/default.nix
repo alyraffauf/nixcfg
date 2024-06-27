@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.cinnamon.enable {
+  config = lib.mkIf config.ar.desktop.cinnamon.enable {
     services = {
       xserver = {
         enable = true;

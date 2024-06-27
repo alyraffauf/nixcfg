@@ -14,7 +14,7 @@
         };
 
         xdg.userDirs.music = "/mnt/Media/Music";
-        alyraffauf = {
+        ar.home = {
           desktop = {
             hyprland.autoSuspend = false;
             sway.autoSuspend = false;

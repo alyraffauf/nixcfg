@@ -6,14 +6,14 @@
 }: {
   imports = [./randomWallpaper.nix ./redShift.nix];
 
-  config = lib.mkIf config.alyraffauf.desktop.sway.enable {
+  config = lib.mkIf config.ar.home.desktop.sway.enable {
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
       checkConfig = false;
     };
 
-    alyraffauf.theme.gtk.hideTitleBar =
+    ar.home.theme.gtk.hideTitleBar =
       if config.wayland.windowManager.sway.package == pkgs.sway
       then true
       else false;
@@ -23,10 +23,10 @@
       swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
 
       # Default apps
-      browser = config.alyraffauf.defaultApps.webBrowser.exe;
-      fileManager = config.alyraffauf.defaultApps.fileManager.exe;
-      editor = config.alyraffauf.defaultApps.editor.exe;
-      terminal = config.alyraffauf.defaultApps.terminal.exe;
+      browser = config.ar.home.defaultApps.webBrowser.exe;
+      fileManager = config.ar.home.defaultApps.fileManager.exe;
+      editor = config.ar.home.defaultApps.editor.exe;
+      terminal = config.ar.home.defaultApps.terminal.exe;
 
       brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";
@@ -45,7 +45,7 @@
       bar = lib.getExe pkgs.waybar;
       launcher = lib.getExe pkgs.fuzzel;
       notifyd = lib.getExe pkgs.mako;
-      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.theme.wallpaper}";
+      wallpaperd = "${lib.getExe pkgs.swaybg} -i ${config.ar.home.theme.wallpaper}";
       logout = lib.getExe pkgs.wlogout;
       lock = lib.getExe pkgs.swaylock;
       idled = pkgs.writeShellScript "sway-idled" ''
@@ -58,7 +58,7 @@
           timeout 330 '${swaymsg} "output * dpms off"' \
             resume '${swaymsg} "output * dpms on"' \
           ${
-          if config.alyraffauf.desktop.sway.autoSuspend
+          if config.ar.home.desktop.sway.autoSuspend
           then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
           else ''\''
         }
@@ -86,27 +86,27 @@
     in {
       bars = [{command = "${bar}";}];
       modifier = "${modifier}";
-      colors.background = "${config.alyraffauf.theme.colors.primary}EE";
+      colors.background = "${config.ar.home.theme.colors.primary}EE";
       colors.focused = {
-        background = "${config.alyraffauf.theme.colors.primary}EE";
-        border = "${config.alyraffauf.theme.colors.primary}EE";
-        childBorder = "${config.alyraffauf.theme.colors.primary}EE";
-        indicator = "${config.alyraffauf.theme.colors.primary}EE";
-        text = "${config.alyraffauf.theme.colors.text}";
+        background = "${config.ar.home.theme.colors.primary}EE";
+        border = "${config.ar.home.theme.colors.primary}EE";
+        childBorder = "${config.ar.home.theme.colors.primary}EE";
+        indicator = "${config.ar.home.theme.colors.primary}EE";
+        text = "${config.ar.home.theme.colors.text}";
       };
       colors.focusedInactive = {
-        background = "${config.alyraffauf.theme.colors.inactive}AA";
-        border = "${config.alyraffauf.theme.colors.inactive}AA";
-        childBorder = "${config.alyraffauf.theme.colors.inactive}AA";
-        indicator = "${config.alyraffauf.theme.colors.inactive}AA";
-        text = "${config.alyraffauf.theme.colors.text}";
+        background = "${config.ar.home.theme.colors.inactive}AA";
+        border = "${config.ar.home.theme.colors.inactive}AA";
+        childBorder = "${config.ar.home.theme.colors.inactive}AA";
+        indicator = "${config.ar.home.theme.colors.inactive}AA";
+        text = "${config.ar.home.theme.colors.text}";
       };
       colors.unfocused = {
-        background = "${config.alyraffauf.theme.colors.inactive}AA";
-        border = "${config.alyraffauf.theme.colors.inactive}AA";
-        childBorder = "${config.alyraffauf.theme.colors.inactive}AA";
-        indicator = "${config.alyraffauf.theme.colors.inactive}AA";
-        text = "${config.alyraffauf.theme.colors.text}";
+        background = "${config.ar.home.theme.colors.inactive}AA";
+        border = "${config.ar.home.theme.colors.inactive}AA";
+        childBorder = "${config.ar.home.theme.colors.inactive}AA";
+        indicator = "${config.ar.home.theme.colors.inactive}AA";
+        text = "${config.ar.home.theme.colors.text}";
       };
       defaultWorkspace = "workspace number 1";
       focus = {
@@ -115,9 +115,9 @@
         # mouseWarping = "container";
       };
       fonts = {
-        names = ["${config.alyraffauf.theme.font.name}"];
+        names = ["${config.ar.home.theme.font.name}"];
         style = "Bold";
-        size = config.alyraffauf.theme.font.size + 0.0;
+        size = config.ar.home.theme.font.size + 0.0;
       };
       gaps.inner = 5;
       gaps.outer = 5;
@@ -279,7 +279,7 @@
       startup = [
         {
           command =
-            if config.alyraffauf.desktop.sway.randomWallpaper
+            if config.ar.home.desktop.sway.randomWallpaper
             then "true"
             else "${wallpaperd}";
         }
@@ -423,7 +423,7 @@
         corner_radius 10
         shadows enable
         shadows_on_csd enable
-        shadow_color ${config.alyraffauf.theme.colors.shadow}
+        shadow_color ${config.ar.home.theme.colors.shadow}
 
         default_dim_inactive 0.05
 

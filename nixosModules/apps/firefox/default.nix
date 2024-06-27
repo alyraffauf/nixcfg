@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.firefox.enable {
+  config = lib.mkIf config.ar.apps.firefox.enable {
     programs.firefox = {
       enable = true;
       policies = {

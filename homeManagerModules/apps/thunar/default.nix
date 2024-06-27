@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.thunar.enable {
+  config = lib.mkIf config.ar.home.apps.thunar.enable {
     home.packages = with pkgs; [
       xfce.thunar
       xfce.thunar-archive-plugin

@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.services.easyeffects.enable {
+  config = lib.mkIf config.ar.home.services.easyeffects.enable {
     xdg.configFile = {
       "easyeffects/output/framework13.json".source =
         ./framework13.json;
@@ -15,7 +15,7 @@
 
     services.easyeffects = {
       enable = true;
-      preset = config.alyraffauf.services.easyeffects.preset;
+      preset = config.ar.home.services.easyeffects.preset;
     };
   };
 }

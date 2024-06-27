@@ -5,11 +5,11 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.users.aly.enable {
+  config = lib.mkIf config.ar.users.aly.enable {
     users.users.aly = {
       description = "Aly Raffauf";
       extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
-      hashedPassword = config.alyraffauf.users.aly.password;
+      hashedPassword = config.ar.users.aly.password;
       isNormalUser = true;
       linger = true;
       uid = 1000;

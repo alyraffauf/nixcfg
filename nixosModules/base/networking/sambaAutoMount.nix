@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.base.sambaAutoMount {
+  config = lib.mkIf config.ar.base.sambaAutoMount {
     fileSystems = {
       "/mnt/Archive" = {
         device = "//mauville/Archive";

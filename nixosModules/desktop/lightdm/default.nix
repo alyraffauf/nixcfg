@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.lightdm.enable {
+  config = lib.mkIf config.ar.desktop.lightdm.enable {
     security.pam.services.lightdm = {
       enableGnomeKeyring = true;
       gnupg.enable = true;

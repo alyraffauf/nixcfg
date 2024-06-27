@@ -22,7 +22,7 @@
 
   system.stateVersion = "24.05";
 
-  alyraffauf = {
+  ar = {
     apps.steam.enable = true;
 
     base.enable = true;

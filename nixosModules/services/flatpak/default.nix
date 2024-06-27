@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.services.flatpak.enable {
+  config = lib.mkIf config.ar.services.flatpak.enable {
     environment.systemPackages = with pkgs; [gnome.gnome-software];
 
     fileSystems = let

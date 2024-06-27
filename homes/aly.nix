@@ -212,12 +212,12 @@
 
     hyprland.extraConfig = ''
       # Workspace - Browser
-      workspace = 1, defaultName:web, on-created-empty:${config.alyraffauf.defaultApps.webBrowser.exe}
+      workspace = 1, defaultName:web, on-created-empty:${config.ar.home.defaultApps.webBrowser.exe}
       windowrulev2 = workspace 1,class:(firefox)
       windowrulev2 = workspace 1,class:(brave-browser)
 
       # Workspace - Coding
-      workspace = 2, defaultName:code, on-created-empty:${config.alyraffauf.defaultApps.editor.exe}
+      workspace = 2, defaultName:code, on-created-empty:${config.ar.home.defaultApps.editor.exe}
       windowrulev2 = workspace 2,class:(codium-url-handler)
 
       # Workspace - Chrome
@@ -244,7 +244,7 @@
     '';
   };
 
-  alyraffauf = {
+  ar.home = {
     apps = {
       alacritty.enable = true;
       bash.enable = true;

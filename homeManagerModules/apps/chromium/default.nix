@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.chromium.enable {
+  config = lib.mkIf config.ar.home.apps.chromium.enable {
     programs.chromium = {
       enable = true;
-      package = config.alyraffauf.apps.chromium.package;
+      package = config.ar.home.apps.chromium.package;
       extensions = [
         {id = "enamippconapkdmgfgjchkhakpfinmaj";} # dearrow
         {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist

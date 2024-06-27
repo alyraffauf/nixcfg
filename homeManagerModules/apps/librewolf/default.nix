@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.librewolf.enable {
+  config = lib.mkIf config.ar.home.apps.librewolf.enable {
     programs.librewolf = {
       enable = true;
       settings = {

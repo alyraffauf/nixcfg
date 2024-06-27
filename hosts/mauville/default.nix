@@ -33,11 +33,11 @@ in {
       allowedTCPPorts = [
         80
         443
-        config.alyraffauf.containers.oci.transmission.port
-        config.alyraffauf.containers.oci.transmission.bitTorrentPort
+        config.ar.containers.oci.transmission.port
+        config.ar.containers.oci.transmission.bitTorrentPort
       ];
 
-      allowedUDPPorts = [config.alyraffauf.containers.oci.transmission.bitTorrentPort];
+      allowedUDPPorts = [config.ar.containers.oci.transmission.bitTorrentPort];
     };
 
     # My router doesn't expose settings for NAT loopback
@@ -104,7 +104,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.freshRSS.port}";
+            proxyPass = "http://127.0.0.1:${toString config.ar.containers.oci.freshRSS.port}";
             proxyWebsockets = true; # needed if you need to use WebSocket
 
             extraConfig = ''
@@ -131,7 +131,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.plexMediaServer.port}";
+            proxyPass = "http://127.0.0.1:${toString config.ar.containers.oci.plexMediaServer.port}";
             proxyWebsockets = true;
 
             extraConfig = ''
@@ -145,7 +145,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.alyraffauf.containers.oci.audiobookshelf.port}";
+            proxyPass = "http://127.0.0.1:${toString config.ar.containers.oci.audiobookshelf.port}";
 
             extraConfig = ''
               client_max_body_size 500M;
@@ -195,7 +195,7 @@ in {
     };
   };
 
-  alyraffauf = {
+  ar = {
     apps = {
       nicotine-plus.enable = true;
       podman.enable = true;
@@ -234,6 +234,7 @@ in {
       hyprland.enable = true;
       steam.enable = true;
     };
+
     users = {
       aly = {
         enable = true;

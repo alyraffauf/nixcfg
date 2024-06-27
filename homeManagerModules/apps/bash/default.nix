@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.bash.enable {
+  config = lib.mkIf config.ar.home.apps.bash.enable {
     home.shellAliases = {
       cat = lib.getExe pkgs.bat;
       grep = lib.getExe config.programs.ripgrep.package;

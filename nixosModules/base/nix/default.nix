@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.base.enable {
+  config = lib.mkIf config.ar.base.enable {
     environment.variables = {
       FLAKE = "github:alyraffauf/nixcfg";
     };

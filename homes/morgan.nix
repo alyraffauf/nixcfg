@@ -28,7 +28,7 @@
     };
   };
 
-  alyraffauf = {
+  ar.home = {
     apps = {
       alacritty.enable = true;
       bash.enable = true;

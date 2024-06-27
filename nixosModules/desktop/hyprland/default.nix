@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
+  config = lib.mkIf config.ar.desktop.hyprland.enable {
     programs = {
       hyprland = {
         enable = true;

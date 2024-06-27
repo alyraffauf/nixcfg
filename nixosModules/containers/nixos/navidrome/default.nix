@@ -6,7 +6,7 @@
   self,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.containers.nixos.navidrome.enable {
+  config = lib.mkIf config.ar.containers.nixos.navidrome.enable {
     age.secrets.lastFMApiKey.file = ../../../../secrets/lastFM/apiKey.age;
     age.secrets.lastFMSecret.file = ../../../../secrets/lastFM/secret.age;
     age.secrets.spotifyClientId.file = ../../../../secrets/spotify/clientId.age;
@@ -17,7 +17,7 @@
         Address = "0.0.0.0";
         DefaultTheme = "Auto";
         MusicFolder = "/Music";
-        Port = config.alyraffauf.containers.nixos.navidrome.port;
+        Port = config.ar.containers.nixos.navidrome.port;
         SubsonicArtistParticipations = true;
         UIWelcomeMessage = "Welcome to Navidrome @ RaffaufLabs.com";
         "Spotify.ID" = "@spotifyClientId@";
@@ -30,7 +30,7 @@
     in {
       autoStart = true;
       bindMounts = {
-        "/Music".hostPath = config.alyraffauf.containers.nixos.navidrome.musicDirectory;
+        "/Music".hostPath = config.ar.containers.nixos.navidrome.musicDirectory;
         "/var/lib/navidrome/rawNavidrome.json".hostPath = navidromeConfig;
         "${config.age.secrets.lastFMApiKey.path}".isReadOnly = true;
         "${config.age.secrets.lastFMSecret.path}".isReadOnly = true;

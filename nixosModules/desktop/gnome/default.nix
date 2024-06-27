@@ -23,7 +23,7 @@ in {
     ./fprintdFix.nix
   ];
 
-  config = lib.mkIf config.alyraffauf.desktop.gnome.enable {
+  config = lib.mkIf config.ar.desktop.gnome.enable {
     environment.systemPackages = with pkgs;
       [
         gnomeExtensions.appindicator

@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.hyprland.enable {
+  config = lib.mkIf config.ar.home.desktop.hyprland.enable {
     wayland.windowManager.hyprland.enable = true;
 
     wayland.windowManager.hyprland.extraConfig = let
@@ -16,19 +16,19 @@
 
       # Default apps
       defaultApps = {
-        browser = config.alyraffauf.defaultApps.webBrowser.exe;
-        editor = config.alyraffauf.defaultApps.editor.exe;
-        fileManager = config.alyraffauf.defaultApps.fileManager.exe;
+        browser = config.ar.home.defaultApps.webBrowser.exe;
+        editor = config.ar.home.defaultApps.editor.exe;
+        fileManager = config.ar.home.defaultApps.fileManager.exe;
         launcher = lib.getExe pkgs.fuzzel;
         lock = lib.getExe pkgs.swaylock;
         logout = lib.getExe pkgs.wlogout;
         passwordManager = lib.getExe' pkgs.keepassxc "keepassxc";
-        terminal = config.alyraffauf.defaultApps.terminal.exe;
+        terminal = config.ar.home.defaultApps.terminal.exe;
         virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
       };
 
       wallpaperd =
-        if config.alyraffauf.desktop.hyprland.randomWallpaper
+        if config.ar.home.desktop.hyprland.randomWallpaper
         then
           pkgs.writers.writeRuby "hyprland-randomWallpaper" {} ''
             require 'fileutils'
@@ -66,7 +66,7 @@
               end
             end
           ''
-        else "${lib.getExe pkgs.swaybg} -i ${config.alyraffauf.theme.wallpaper}";
+        else "${lib.getExe pkgs.swaybg} -i ${config.ar.home.theme.wallpaper}";
 
       startupApps =
         [
@@ -80,7 +80,7 @@
           (lib.getExe pkgs.mako)
           "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
         ]
-        ++ lib.lists.optionals (config.alyraffauf.desktop.hyprland.redShift) [
+        ++ lib.lists.optionals (config.ar.home.desktop.hyprland.redShift) [
           # "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/agent"
           "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
         ];
@@ -185,7 +185,7 @@
           timeout 330 '${hyprctl} dispatch dpms off' \
             resume '${hyprctl} dispatch dpms on' \
           ${
-          if config.alyraffauf.desktop.hyprland.autoSuspend
+          if config.ar.home.desktop.hyprland.autoSuspend
           then ''timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
           else ''\''
         }
@@ -216,7 +216,7 @@
         env = GDK_SCALE,${gdk_scale}
 
         # Some default env vars.
-        env = XCURSOR_SIZE,${toString config.alyraffauf.theme.cursorTheme.size}
+        env = XCURSOR_SIZE,${toString config.ar.home.theme.cursorTheme.size}
         env = QT_QPA_PLATFORMTHEME,qt6ct
 
         # Execute necessary apps
@@ -257,8 +257,8 @@
           gaps_in = 5
           gaps_out = 6
           border_size = 2
-          col.active_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.primary}EE) 45deg
-          col.inactive_border = rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.inactive}AA)
+          col.active_border = rgba(${lib.strings.removePrefix "#" config.ar.home.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" config.ar.home.theme.colors.primary}EE) 45deg
+          col.inactive_border = rgba(${lib.strings.removePrefix "#" config.ar.home.theme.colors.inactive}AA)
 
           layout = dwindle
 
@@ -275,7 +275,7 @@
           drop_shadow = yes
           shadow_range = 4
           shadow_render_power = 3
-          col.shadow = rgba(${lib.strings.removePrefix "#" config.alyraffauf.theme.colors.shadow}EE)
+          col.shadow = rgba(${lib.strings.removePrefix "#" config.ar.home.theme.colors.shadow}EE)
 
           dim_special = 0.5
 

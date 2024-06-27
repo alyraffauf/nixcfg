@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.base.zramSwap.enable {
+  config = lib.mkIf config.ar.base.zramSwap.enable {
     zramSwap = {
       enable = true;
-      memoryPercent = config.alyraffauf.base.zramSwap.size;
+      memoryPercent = config.ar.base.zramSwap.size;
     };
   };
 }

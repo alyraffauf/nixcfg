@@ -14,7 +14,7 @@
     ./waylandComp.nix
   ];
 
-  config = lib.mkIf config.alyraffauf.desktop.enable {
+  config = lib.mkIf config.ar.home.desktop.enable {
     dconf = {
       enable = true;
       settings = {
@@ -37,8 +37,8 @@
         "file://${config.home.homeDirectory}/src"
       ]
       ++ lib.optional (
-        osConfig.alyraffauf.services.syncthing.enable
-        && (osConfig.alyraffauf.services.syncthing.user == config.home.username)
+        osConfig.ar.services.syncthing.enable
+        && (osConfig.ar.services.syncthing.user == config.home.username)
       ) "file://${config.home.homeDirectory}/sync";
 
     xdg = {

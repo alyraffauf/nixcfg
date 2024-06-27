@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.vsCodium.enable {
+  config = lib.mkIf config.ar.home.apps.vsCodium.enable {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -12,7 +12,7 @@
       enableExtensionUpdateCheck = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'NotoSansM Nerd Font','${config.alyraffauf.theme.terminalFont.name}', 'monospace', monospace";
+        "editor.fontFamily" = "'NotoSansM Nerd Font','${config.ar.home.theme.terminalFont.name}', 'monospace', monospace";
         "editor.fontSize" = lib.mkDefault 14;
         "terminal.integrated.fontSize" = lib.mkDefault 14;
         "explorer.confirmDelete" = false;
@@ -20,20 +20,20 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "nix.formatterPath" = lib.getExe pkgs.alejandra;
-        "terminal.external.linuxExec" = config.alyraffauf.defaultApps.terminal.exe;
+        "terminal.external.linuxExec" = config.ar.home.defaultApps.terminal.exe;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" =
-          if config.alyraffauf.desktop.gnome.enable
+          if config.ar.home.desktop.gnome.enable
           then "custom"
           else "native";
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
-          if config.alyraffauf.theme.colors.preferDark
+          if config.ar.home.theme.colors.preferDark
           then "Catppuccin Frappé"
           else "Catppuccin Latte";
         "workbench.iconTheme" =
-          if config.alyraffauf.theme.colors.preferDark
+          if config.ar.home.theme.colors.preferDark
           then "catppuccin-frappe"
           else "catppuccin-latte";
         "workbench.preferredDarkColorTheme" = "Catppuccin Frappé";

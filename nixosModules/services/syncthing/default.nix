@@ -6,7 +6,7 @@
 }: {
   imports = [./syncMusic.nix];
 
-  config = lib.mkIf config.alyraffauf.services.syncthing.enable {
+  config = lib.mkIf config.ar.services.syncthing.enable {
     age.secrets = {
       syncthingCert.file = ../../../secrets/syncthing + "/${config.networking.hostName}/cert.age";
       syncthingKey.file = ../../../secrets/syncthing + "/${config.networking.hostName}/key.age";
@@ -17,10 +17,10 @@
     services.syncthing = {
       enable = true;
       cert = config.age.secrets.syncthingCert.path;
-      dataDir = "/home/${config.alyraffauf.services.syncthing.user}";
+      dataDir = "/home/${config.ar.services.syncthing.user}";
       key = config.age.secrets.syncthingKey.path;
       openDefaultPorts = true;
-      user = config.alyraffauf.services.syncthing.user;
+      user = config.ar.services.syncthing.user;
       settings = {
         options = {
           localAnnounceEnabled = true;
@@ -43,7 +43,7 @@
         folders = {
           "sync" = {
             id = "default";
-            path = "/home/${config.alyraffauf.services.syncthing.user}/sync";
+            path = "/home/${config.ar.services.syncthing.user}/sync";
             devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wallace" "winona"];
             versioning = {
               type = "staggered";
@@ -55,7 +55,7 @@
           };
           "camera" = {
             id = "fcsgh-dlxys";
-            path = "/home/${config.alyraffauf.services.syncthing.user}/pics/camera";
+            path = "/home/${config.ar.services.syncthing.user}/pics/camera";
             devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
             versioning = {
               params.cleanoutDays = "5";
@@ -64,7 +64,7 @@
           };
           "screenshots" = {
             id = "screenshots";
-            path = "/home/${config.alyraffauf.services.syncthing.user}/pics/screenshots";
+            path = "/home/${config.ar.services.syncthing.user}/pics/screenshots";
             devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
             versioning = {
               params.cleanoutDays = "5";

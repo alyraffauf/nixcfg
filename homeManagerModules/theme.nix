@@ -4,16 +4,16 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.theme.enable {
+  config = lib.mkIf config.ar.home.theme.enable {
     home.pointerCursor = {
       gtk.enable = true;
       x11 = {
         enable = true;
-        defaultCursor = config.alyraffauf.theme.cursorTheme.name;
+        defaultCursor = config.ar.home.theme.cursorTheme.name;
       };
-      name = config.alyraffauf.theme.cursorTheme.name;
-      package = config.alyraffauf.theme.cursorTheme.package;
-      size = config.alyraffauf.theme.cursorTheme.size;
+      name = config.ar.home.theme.cursorTheme.name;
+      package = config.ar.home.theme.cursorTheme.package;
+      size = config.ar.home.theme.cursorTheme.size;
     };
 
     qt = {
@@ -23,18 +23,18 @@
     };
 
     xdg.configFile = {
-      "Kvantum/${config.alyraffauf.theme.qt.name}".source = "${config.alyraffauf.theme.qt.package}/share/Kvantum/${config.alyraffauf.theme.qt.name}";
+      "Kvantum/${config.ar.home.theme.qt.name}".source = "${config.ar.home.theme.qt.package}/share/Kvantum/${config.ar.home.theme.qt.name}";
       "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-        General.theme = config.alyraffauf.theme.qt.name;
+        General.theme = config.ar.home.theme.qt.name;
       };
     };
 
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [config.alyraffauf.theme.terminalFont.name];
+        monospace = [config.ar.home.theme.terminalFont.name];
         serif = ["NotoSerif Nerd Font"];
-        sansSerif = [config.alyraffauf.theme.font.name];
+        sansSerif = [config.ar.home.theme.font.name];
       };
     };
 
@@ -42,27 +42,27 @@
       enable = true;
 
       theme = {
-        package = config.alyraffauf.theme.gtk.package;
-        name = config.alyraffauf.theme.gtk.name;
+        package = config.ar.home.theme.gtk.package;
+        name = config.ar.home.theme.gtk.name;
       };
 
       iconTheme = {
-        package = config.alyraffauf.theme.iconTheme.package;
-        name = config.alyraffauf.theme.iconTheme.name;
+        package = config.ar.home.theme.iconTheme.package;
+        name = config.ar.home.theme.iconTheme.name;
       };
 
       font = {
-        name = "${config.alyraffauf.theme.font.name} Regular";
-        package = config.alyraffauf.theme.font.package;
-        size = config.alyraffauf.theme.font.size;
+        name = "${config.ar.home.theme.font.name} Regular";
+        package = config.ar.home.theme.font.package;
+        size = config.ar.home.theme.font.size;
       };
 
-      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.alyraffauf.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
 
-      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.alyraffauf.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
 
       gtk3.extraCss =
-        if config.alyraffauf.theme.gtk.hideTitleBar
+        if config.ar.home.theme.gtk.hideTitleBar
         then ''
           /* No (default) title bar on wayland */
           headerbar.default-decoration {
@@ -90,34 +90,34 @@
     };
 
     dconf.settings = {
-      "org/cinnamon/desktop/background".picture-uri = "file://${config.alyraffauf.theme.wallpaper}";
+      "org/cinnamon/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
 
       "org/cinnamon/desktop/interface" = {
-        cursor-size = config.alyraffauf.theme.cursorTheme.size;
-        cursor-theme = config.alyraffauf.theme.cursorTheme.name;
-        font-name = "${config.alyraffauf.theme.font.name} Regular ${toString config.alyraffauf.theme.font.size}";
-        gtk-theme = config.alyraffauf.theme.gtk.name;
-        icon-theme = config.alyraffauf.theme.iconTheme.name;
+        cursor-size = config.ar.home.theme.cursorTheme.size;
+        cursor-theme = config.ar.home.theme.cursorTheme.name;
+        font-name = "${config.ar.home.theme.font.name} Regular ${toString config.ar.home.theme.font.size}";
+        gtk-theme = config.ar.home.theme.gtk.name;
+        icon-theme = config.ar.home.theme.iconTheme.name;
       };
 
-      "org/cinnamon/theme".name = config.alyraffauf.theme.gtk.name;
-      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.alyraffauf.theme.font.name} ${toString config.alyraffauf.theme.font.size}";
+      "org/cinnamon/theme".name = config.ar.home.theme.gtk.name;
+      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
 
-      "org/gnome/desktop/background".picture-uri = "file://${config.alyraffauf.theme.wallpaper}";
-      "org/gnome/desktop/background".picture-uri-dark = "file://${config.alyraffauf.theme.wallpaper}";
+      "org/gnome/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
+      "org/gnome/desktop/background".picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
       "org/gnome/desktop/interface" = {
         color-scheme =
-          if config.alyraffauf.theme.colors.preferDark
+          if config.ar.home.theme.colors.preferDark
           then "prefer-dark"
           else "prefer-light";
-        cursor-theme = config.alyraffauf.theme.cursorTheme.name;
-        cursor-size = config.alyraffauf.theme.cursorTheme.size;
-        gtk-theme = config.alyraffauf.theme.gtk.name;
-        icon-theme = config.alyraffauf.theme.iconTheme.name;
-        monospace-font-name = "${config.alyraffauf.theme.terminalFont.name} Regular ${toString config.alyraffauf.theme.terminalFont.size}";
+        cursor-theme = config.ar.home.theme.cursorTheme.name;
+        cursor-size = config.ar.home.theme.cursorTheme.size;
+        gtk-theme = config.ar.home.theme.gtk.name;
+        icon-theme = config.ar.home.theme.iconTheme.name;
+        monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
       };
 
-      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.alyraffauf.theme.font.name} ${toString config.alyraffauf.theme.font.size}";
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
     };
   };
 }

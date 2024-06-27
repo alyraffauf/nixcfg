@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.podman.enable {
+  config = lib.mkIf config.ar.apps.podman.enable {
     virtualisation = {
       oci-containers = {backend = "podman";};
       podman = {

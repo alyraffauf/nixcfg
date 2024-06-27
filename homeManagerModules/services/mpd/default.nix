@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.services.mpd.enable {
+  config = lib.mkIf config.ar.home.services.mpd.enable {
     services.mpd = {
       enable = true;
-      musicDirectory = config.alyraffauf.services.mpd.musicDirectory;
+      musicDirectory = config.ar.home.services.mpd.musicDirectory;
     };
     services.mpd-mpris = {
       enable = true;

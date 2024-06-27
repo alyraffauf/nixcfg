@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.gnome.fprintdFix.enable {
+  config = lib.mkIf config.ar.desktop.gnome.fprintdFix.enable {
     # Need to change the order pam loads its modules
     # to get proper fingerprint behavior on GDM and the lockscreen.
     security.pam.services = {

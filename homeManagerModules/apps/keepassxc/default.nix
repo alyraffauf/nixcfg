@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.keepassxc.enable {
+  config = lib.mkIf config.ar.home.apps.keepassxc.enable {
     home.packages = [pkgs.keepassxc];
 
-    alyraffauf.apps.keepassxc.settings = lib.mkDefault {
+    ar.home.apps.keepassxc.settings = lib.mkDefault {
       Browser = {
         AlwaysAllowAccess = true;
         Enabled = true;
@@ -47,6 +47,6 @@
 
     xdg.configFile."keepassxc/keepassxc.ini".text =
       lib.generators.toINI {}
-      config.alyraffauf.apps.keepassxc.settings;
+      config.ar.home.apps.keepassxc.settings;
   };
 }

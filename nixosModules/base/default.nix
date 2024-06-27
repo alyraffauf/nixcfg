@@ -15,7 +15,7 @@
     ./zramSwap
   ];
 
-  config = lib.mkIf config.alyraffauf.base.enable {
+  config = lib.mkIf config.ar.base.enable {
     console = {
       colors = [
         "303446"

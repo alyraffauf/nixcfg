@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.steam.enable {
+  config = lib.mkIf config.ar.apps.steam.enable {
     hardware.steam-hardware.enable = true;
     programs = {
-      gamescope.enable = config.alyraffauf.desktop.steam.enable;
+      gamescope.enable = config.ar.desktop.steam.enable;
 
       steam = {
         enable = true;
@@ -15,7 +15,7 @@
         extraCompatPackages = with pkgs; [
           proton-ge-bin
         ];
-        gamescopeSession.enable = config.alyraffauf.desktop.steam.enable;
+        gamescopeSession.enable = config.ar.desktop.steam.enable;
         localNetworkGameTransfers.openFirewall = true;
         remotePlay.openFirewall = true;
       };

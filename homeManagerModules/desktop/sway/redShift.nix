@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.desktop.sway.redShift {
+  config = lib.mkIf config.ar.home.desktop.sway.redShift {
     home.packages = with pkgs; [gammastep];
     wayland.windowManager.sway.config.startup = [
       # {command = "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/agent";}

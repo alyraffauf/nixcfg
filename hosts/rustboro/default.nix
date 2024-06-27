@@ -22,7 +22,7 @@
 
   system.stateVersion = "24.05";
 
-  alyraffauf = {
+  ar = {
     base = {
       enable = true;
       zramSwap.size = 100;

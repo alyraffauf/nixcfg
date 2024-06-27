@@ -19,7 +19,7 @@
     ${lib.getExe pkgs.libnotify} "Power profile set to $new_profile."
   '';
 in {
-  config = lib.mkIf config.alyraffauf.scripts.pp-adjuster.enable {
+  config = lib.mkIf config.ar.home.scripts.pp-adjuster.enable {
     home.packages = [pp-adjuster];
   };
 }

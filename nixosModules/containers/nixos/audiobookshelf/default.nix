@@ -4,15 +4,15 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.containers.nixos.audiobookshelf.enable {
+  config = lib.mkIf config.ar.containers.nixos.audiobookshelf.enable {
     containers.audiobookshelf = {
       autoStart = true;
       bindMounts."/Media" = {
-        hostPath = config.alyraffauf.containers.nixos.audiobookshelf.mediaDirectory;
+        hostPath = config.ar.containers.nixos.audiobookshelf.mediaDirectory;
         isReadOnly = false;
       };
       config = let
-        port = config.alyraffauf.containers.nixos.audiobookshelf.port;
+        port = config.ar.containers.nixos.audiobookshelf.port;
       in
         {
           config,

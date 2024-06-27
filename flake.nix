@@ -92,6 +92,9 @@
     nixosModules.default =
       import ./nixosModules inputs;
 
+    nixosModules.hardware =
+      import ./hardwareModules inputs;
+
     nixosConfigurations =
       inputs.nixpkgs.lib.genAttrs [
         "fallarbor"
@@ -108,11 +111,12 @@
               ./hosts/${host}
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
+              inputs.home-manager.nixosModules.home-manager
               inputs.hyprland.nixosModules.default
               inputs.nixvim.nixosModules.nixvim
               inputs.nur.nixosModules.nur
-              inputs.home-manager.nixosModules.home-manager
               self.nixosModules.default
+              self.nixosModules.hardware
               {
                 home-manager = {
                   backupFileExtension = "backup";

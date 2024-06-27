@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.apps.tmux.enable {
+  config = lib.mkIf config.ar.home.apps.tmux.enable {
     programs.tmux = {
       enable = true;
       mouse = true;

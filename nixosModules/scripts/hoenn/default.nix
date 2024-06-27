@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.scripts.hoenn.enable {
+  config = lib.mkIf config.ar.scripts.hoenn.enable {
     environment.systemPackages = [
       (pkgs.writeShellScriptBin "hoenn" ''
         FLAKE=''${2:-"github:alyraffauf/nixcfg"}

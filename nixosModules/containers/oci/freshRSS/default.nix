@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.alyraffauf.containers.oci.freshRSS.enable {
+  config = lib.mkIf config.ar.containers.oci.freshRSS.enable {
     virtualisation.oci-containers.containers = {
       freshrss = {
-        ports = ["0.0.0.0:${toString config.alyraffauf.containers.oci.freshRSS.port}:80"];
+        ports = ["0.0.0.0:${toString config.ar.containers.oci.freshRSS.port}:80"];
         image = "freshrss/freshrss:latest";
         environment = {
           TZ = "America/New_York";

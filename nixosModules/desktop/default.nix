@@ -15,7 +15,7 @@
     ./waylandComp.nix
   ];
 
-  config = lib.mkIf config.alyraffauf.desktop.enable {
+  config = lib.mkIf config.ar.desktop.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     fonts.packages = with pkgs; [
