@@ -10,7 +10,6 @@
     ./nix
     ./nixpkgs
     ./plymouth
-    ./power-profiles-daemon
     ./sound
     ./zramSwap
   ];

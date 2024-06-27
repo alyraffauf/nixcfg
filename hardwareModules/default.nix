@@ -7,6 +7,7 @@ inputs: {
   imports = [
     ./cpu
     ./gpu
+    ./laptop
     ./options.nix
     ./ssd
   ];

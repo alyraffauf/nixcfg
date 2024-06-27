@@ -247,11 +247,6 @@
         default = config.ar.base.enable;
         type = lib.types.bool;
       };
-      power-profiles-daemon.enable = lib.mkOption {
-        description = "Power Profiles Daemon for power management.";
-        default = config.ar.base.enable;
-        type = lib.types.bool;
-      };
       zramSwap = {
         enable = lib.mkOption {
           description = "zram swap.";

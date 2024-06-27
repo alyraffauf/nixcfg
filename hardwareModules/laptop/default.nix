@@ -1,11 +1,10 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.base.power-profiles-daemon.enable {
+  config = lib.mkIf config.ar.hardware.laptop {
     services = {
       power-profiles-daemon.enable = true;
       upower.enable = true;
