@@ -17,6 +17,14 @@
           workspaces-only-on-primary = true;
         };
 
+        "org/cinnamon/desktop/interface" = {
+          clock-use-24h = false;
+        };
+
+        "org/gnome/desktop/interface" = {
+          clock-format = "12h";
+        };
+
         "org/cinnamon/settings-daemon/peripherals/touchscreen".orientation-lock = false;
 
         "org/gnome/desktop/peripherals/touchpad" = {
