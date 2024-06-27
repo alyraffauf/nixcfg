@@ -34,9 +34,11 @@
   };
 
   ar.hardware = {
+    enable = true;
     cpu.amd = true;
     gpu.amd = true;
     laptop = true;
     ssd = true;
+    sound = true;
   };
 }

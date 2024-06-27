@@ -10,7 +10,6 @@
     ./nix
     ./nixpkgs
     ./plymouth
-    ./sound
     ./zramSwap
   ];
 
@@ -61,23 +60,6 @@
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-    };
-
-    hardware = {
-      # Add support for logitech unifying receivers.
-      logitech.wireless = {
-        enable = true;
-        enableGraphical = true;
-      };
-      keyboard.qmk.enable = true;
-    };
-
-    services = {
-      logind.extraConfig = ''
-        # Don't shutdown when power button is short-pressed
-        HandlePowerKey=suspend
-        HandlePowerKeyLongPress=poweroff
-      '';
     };
 
     security = {

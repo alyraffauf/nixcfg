@@ -14,9 +14,11 @@
   hardware.enableAllFirmware = true;
 
   ar.hardware = {
+    enable = true;
     cpu.amd = true;
     gpu.amd = true;
     laptop = false;
     ssd = true;
+    sound = true;
   };
 }

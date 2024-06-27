@@ -36,9 +36,11 @@
   services.fwupd.enable = true;
 
   ar.hardware = {
+    enable = true;
     cpu.intel = true;
     gpu.intel = true;
     laptop = true;
     ssd = true;
+    sound = true;
   };
 }
