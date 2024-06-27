@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.hardware.ssd {
+  config = lib.mkIf config.ar.hardware.sound {
     sound.enable = true;
 
     hardware.pulseaudio = {
