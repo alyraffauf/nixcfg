@@ -9,8 +9,8 @@
     sharedModules = [
       {
         programs.vscode.userSettings = {
-          "workbench.colorTheme" = lib.mkForce "Catppuccin Macchiato";
-          "workbench.iconTheme" = lib.mkForce "catppuccin-macchiato";
+          "workbench.colorTheme" = lib.mkForce "Catppuccin Mocha";
+          "workbench.iconTheme" = lib.mkForce "catppuccin-mocha";
         };
 
         xdg.userDirs.music = "/mnt/Media/Music";
@@ -22,32 +22,32 @@
           theme = lib.mkForce {
             enable = true;
             gtk = {
-              name = "catppuccin-macchiato-mauve-compact+normal";
+              name = "catppuccin-mocha-mauve-compact+normal";
               package = pkgs.catppuccin-gtk.override {
                 accents = ["mauve"];
                 size = "compact";
-                variant = "macchiato";
+                variant = "mocha";
                 tweaks = ["normal"];
               };
             };
             qt = {
-              name = "Catppuccin-Macchiato-Mauve";
+              name = "Catppuccin-Mocha-Mauve";
               package = pkgs.catppuccin-kvantum.override {
                 accent = "Mauve";
-                variant = "Macchiato";
+                variant = "Mocha";
               };
             };
             iconTheme = {
               name = "Papirus-Light";
               package = pkgs.catppuccin-papirus-folders.override {
-                flavor = "macchiato";
+                flavor = "mocha";
                 accent = "mauve";
               };
             };
             cursorTheme = {
-              name = "Catppuccin-Macchiato-Dark-Cursors";
+              name = "Catppuccin-Mocha-Dark-Cursors";
               size = 32;
-              package = pkgs.catppuccin-cursors.macchiatoDark;
+              package = pkgs.catppuccin-cursors.mochaDark;
             };
             colors = {
               preferDark = true;
