@@ -10,7 +10,6 @@ inputs: {
     ./containers
     ./desktop
     ./options.nix
-    ./scripts
     ./services
     ./users
   ];

@@ -191,11 +191,7 @@
       sway.enable =
         lib.mkEnableOption "Sway wayland session.";
     };
-    scripts.hoenn.enable = lib.mkOption {
-      description = "Hoenn system configuration script";
-      default = config.ar.base.enable;
-      type = lib.types.bool;
-    };
+
     services = {
       binaryCache.enable = lib.mkEnableOption "nixpkgs cache server.";
       flatpak.enable =
