@@ -54,7 +54,7 @@
         "workspace 1: web" = [{app_id = "firefox";} {app_id = "brave-browser";}];
         "workspace 2: code" = [{app_id = "codium-url-handler";}];
         "workspace 3: chat" = [{app_id = "org.gnome.Fractal";} {app_id = "WebCord";}];
-        "workspace 4: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";}];
+        "workspace 4: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";} {app_id = "firework";}];
         "workspace 10: zoom" = [{class = "zoom";} {app_id = "Zoom";}];
       };
 
@@ -73,8 +73,9 @@
       workspace = 2, defaultName:code, on-created-empty:${config.ar.home.defaultApps.editor.exe}
       windowrulev2 = workspace 2,class:(codium-url-handler)
 
-      # Workspace - Chrome
+      # Workspace - Work
       windowrulev2 = workspace 3,class:(google-chrome)
+      windowrulev2 = workspace 3,class:(firework)
 
       # Scratchpad Chat
       # bind = SUPER, S, togglespecialworkspace, magic
