@@ -16,6 +16,5 @@
         '';
       }
     ];
-    users.aly = import ../../homes/aly;
   };
 }

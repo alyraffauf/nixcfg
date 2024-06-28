@@ -63,7 +63,7 @@
       }
     ];
 
-    users.aly = {
+    users.aly = lib.mkForce {
       imports = [../../homes/aly];
       systemd.user = {
         services = {
@@ -141,6 +141,5 @@
         };
       };
     };
-    users.dustin = import ../../homes/dustin;
   };
 }

@@ -254,29 +254,53 @@
           type = lib.types.bool;
         };
         size = lib.mkOption {
-          description = "Percent size of the zram swap relative to RAM.";
+          description = "zram swap size relative to RAM.";
           default = 50;
           type = lib.types.int;
         };
       };
     };
+
     users = {
       aly = {
         enable = lib.mkEnableOption "Aly's user.";
+
+        manageHome = lib.mkOption {
+          description = "Whether to enable aly's home directory.";
+          type = lib.types.bool;
+          default = config.ar.users.aly.enable;
+        };
+
         password = lib.mkOption {
           description = "Hashed password for aly.";
           type = lib.types.str;
         };
       };
+
       dustin = {
         enable = lib.mkEnableOption "Dustin's user.";
+
+        manageHome = lib.mkOption {
+          description = "Whether to manage dustin's home directory.";
+          type = lib.types.bool;
+          default = config.ar.users.dustin.enable;
+        };
+
         password = lib.mkOption {
           description = "Hashed password for dustin.";
           type = lib.types.str;
         };
       };
+
       morgan = {
         enable = lib.mkEnableOption "Morgan's user.";
+
+        manageHome = lib.mkOption {
+          description = "Whether to manage morgan's home directory.";
+          type = lib.types.bool;
+          default = config.ar.users.morgan.enable;
+        };
+
         password = lib.mkOption {
           description = "Hashed password for morgan.";
           type = lib.types.str;

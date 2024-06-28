@@ -1,11 +1,15 @@
 {
-  inputs,
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.users.aly.enable {
+    home-manager.users.aly =
+      if config.ar.users.aly.manageHome
+      then import ../../../homes/aly
+      else {};
+
     users.users.aly = {
       description = "Aly Raffauf";
       extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
