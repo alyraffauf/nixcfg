@@ -16,6 +16,6 @@
         '';
       }
     ];
-    users.aly = import ../../homes/aly.nix;
+    users.aly = import ../../homes/aly;
   };
 }

@@ -75,7 +75,7 @@
         };
 
         NewTabPage = false;
-        NoDefaultBookmarks = true;
+        NoDefaultBookmarks = false; # Enabling this prevents declaratively setting bookmarks.
         OfferToSaveLoginsDefault = false;
         OverrideFirstRunPage = "";
         OverridePostUpdatePage = "";

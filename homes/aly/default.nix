@@ -39,7 +39,31 @@
 
     firefox = {
       enable = true;
+
       profiles.work = {
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          decentraleyes
+          keepassxc-browser
+          ublock-origin
+          consent-o-matic
+          zoom-redirector
+        ];
+
+        settings = {
+          "browser.bookmarks.file" = "${./bookmarks-work.html}";
+          "browser.places.importBookmarksHTML" = true;
+          "browser.toolbars.bookmarks.visibility" = "newtab";
+          "identity.fxaccounts.enabled" = false;
+          "network.cookie.cookieBehavior" = 1;
+          "privacy.donottrackheader.enabled" = true;
+          "privacy.fingerprintingProtection" = true;
+          "privacy.trackingprotection.emailtracking.enabled" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.global-checkbox.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+          "signon.rememberSignons" = false;
+        };
+
         id = 1;
 
         search = {
@@ -61,6 +85,7 @@
           };
         };
       };
+
       profiles.default = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
@@ -116,6 +141,7 @@
         };
 
         settings = {
+          "browser.toolbars.bookmarks.visibility" = "newtab";
           "network.cookie.cookieBehavior" = 1;
           "permissions.default.desktop-notification" = 2;
           "privacy.donottrackheader.enabled" = true;

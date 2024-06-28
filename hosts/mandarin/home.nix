@@ -16,7 +16,7 @@
         };
       }
     ];
-    users.aly = import ../../homes/aly.nix;
-    users.morgan = import ../../homes/morgan.nix;
+    users.aly = import ../../homes/aly;
+    users.morgan = import ../../homes/morgan;
   };
 }

@@ -64,7 +64,7 @@
     ];
 
     users.aly = {
-      imports = [../../homes/aly.nix];
+      imports = [../../homes/aly];
       systemd.user = {
         services = {
           backblaze-sync = {
@@ -141,6 +141,6 @@
         };
       };
     };
-    users.dustin = import ../../homes/dustin.nix;
+    users.dustin = import ../../homes/dustin;
   };
 }
