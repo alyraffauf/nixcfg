@@ -14,13 +14,14 @@
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.fontFamily" = "'NotoSansM Nerd Font','${config.ar.home.theme.terminalFont.name}', 'monospace', monospace";
         "editor.fontSize" = lib.mkDefault 14;
-        "terminal.integrated.fontSize" = lib.mkDefault 14;
+        "editor.rulers" = [80];
         "explorer.confirmDelete" = false;
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "nix.formatterPath" = lib.getExe pkgs.alejandra;
         "terminal.external.linuxExec" = config.ar.home.defaultApps.terminal.exe;
+        "terminal.integrated.fontSize" = lib.mkDefault 14;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" =
