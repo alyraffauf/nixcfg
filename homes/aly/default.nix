@@ -8,6 +8,7 @@
 }: {
   imports = [
     ./firefox
+    ./mail
   ];
 
   home = {

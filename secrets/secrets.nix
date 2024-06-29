@@ -20,6 +20,8 @@ in {
   "cloudflare.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
   "lastFM/secret.age".publicKeys = keys;
+  "mail/achacega_gmail.age".publicKeys = keys;
+  "mail/alyraffauf_fastmail.age".publicKeys = keys;
   "spotify/clientId.age".publicKeys = keys;
   "spotify/clientSecret.age".publicKeys = keys;
   "syncthing/fallarbor/cert.age".publicKeys = keys;

@@ -5,6 +5,13 @@
   ...
 }: {
   config = lib.mkIf config.ar.users.aly.enable {
+    age.secrets = {
+      alyraffaufFastmail = {
+        file = ../../../secrets/mail/alyraffauf_fastmail.age;
+        owner = "aly";
+      };
+    };
+
     home-manager.users.aly =
       if config.ar.users.aly.manageHome
       then import ../../../homes/aly
