@@ -19,18 +19,20 @@
   };
 
   networking.hostName = "fallarbor";
-
   system.stateVersion = "24.05";
 
   ar = {
-    apps.steam.enable = true;
+    apps = {
+      firefox.enable = true;
+      steam.enable = true;
+    };
+
     base = {
       enable = true;
       sambaAutoMount = false;
     };
 
     desktop = {
-      enable = true;
       greetd.enable = true;
       hyprland.enable = true;
     };

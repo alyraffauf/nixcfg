@@ -23,13 +23,14 @@
   system.stateVersion = "24.05";
 
   ar = {
+    apps.firefox.enable = true;
+
     base = {
       enable = true;
       zramSwap.size = 100;
     };
 
     desktop = {
-      enable = true;
       cinnamon.enable = true;
       lightdm.enable = true;
     };

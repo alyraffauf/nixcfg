@@ -24,6 +24,7 @@
 
   ar = {
     apps = {
+      firefox.enable = true;
       podman.enable = true;
       steam.enable = true;
       virt-manager.enable = true;
@@ -32,8 +33,6 @@
     base.enable = true;
 
     desktop = {
-      enable = true;
-
       greetd = {
         enable = true;
 

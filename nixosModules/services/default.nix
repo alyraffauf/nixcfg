@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./binaryCache
     ./flatpak
     ./ollama
     ./syncthing

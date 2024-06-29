@@ -161,6 +161,12 @@ in {
         };
       };
     };
+
+    nix-serve = {
+      enable = true;
+      secretKeyFile = "/var/cache-priv-key.pem";
+    };
+
     samba = {
       enable = true;
       openFirewall = true;
@@ -197,6 +203,7 @@ in {
 
   ar = {
     apps = {
+      firefox.enable = true;
       nicotine-plus.enable = true;
       podman.enable = true;
       steam.enable = true;
@@ -220,8 +227,6 @@ in {
     };
 
     desktop = {
-      enable = true;
-
       greetd = {
         enable = true;
 
@@ -248,8 +253,6 @@ in {
     };
 
     services = {
-      binaryCache.enable = true;
-
       ollama = {
         enable = true;
         gpu = "amd";

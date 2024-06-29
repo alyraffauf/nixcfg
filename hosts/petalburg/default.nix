@@ -23,13 +23,15 @@
   system.stateVersion = "24.05";
 
   ar = {
-    apps.steam.enable = true;
+    apps = {
+      firefox.enable = true;
+      podman.enable = true;
+      steam.enable = true;
+    };
 
     base.enable = true;
 
     desktop = {
-      enable = true;
-
       greetd = {
         enable = true;
 

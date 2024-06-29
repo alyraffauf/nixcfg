@@ -49,11 +49,8 @@
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
     };
     defaultApps = {
-      enable = lib.mkOption {
-        description = "Declaratively set default apps and file associations.";
-        default = config.ar.home.desktop.enable;
-        type = lib.types.bool;
-      };
+      enable = lib.mkEnableOption "Declaratively set default apps and file associations.";
+
       audioPlayer = {
         exe = lib.mkOption {
           description = "Default audio player executable.";
@@ -209,11 +206,6 @@
       };
     };
     desktop = {
-      enable = lib.mkOption {
-        description = "Graphical desktop.";
-        default = osConfig.ar.desktop.enable;
-        type = lib.types.bool;
-      };
       cinnamon.enable = lib.mkOption {
         description = "Cinnamon with sane defaults";
         default = osConfig.ar.desktop.cinnamon.enable;
@@ -315,12 +307,10 @@
         };
       };
     };
+
     theme = {
-      enable = lib.mkOption {
-        description = "Gtk, Qt, and application colors.";
-        default = config.ar.home.desktop.enable;
-        type = lib.types.bool;
-      };
+      enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
+
       gtk = {
         name = lib.mkOption {
           description = "GTK theme name.";

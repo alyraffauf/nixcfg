@@ -115,6 +115,8 @@
       vsCodium.enable = true;
     };
 
+    defaultApps.enable = true;
+
     desktop = {
       startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
     };
@@ -124,6 +126,7 @@
     };
 
     theme = {
+      enable = true;
       wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
     };
   };
