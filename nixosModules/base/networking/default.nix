@@ -22,9 +22,7 @@
               type = "wifi";
             };
 
-            ipv4 = {
-              method = "auto";
-            };
+            ipv4.method = "auto";
 
             ipv6 = {
               addr-gen-mode = "default";
@@ -43,9 +41,7 @@
               type = "wifi";
             };
 
-            ipv4 = {
-              method = "auto";
-            };
+            ipv4.method = "auto";
 
             ipv6 = {
               addr-gen-mode = "default";
@@ -63,29 +59,41 @@
               psk = "${psk}";
             };
           };
+
+          mkEAPWiFi = ssid: identity: pass: auth: {
+            "802-1x" = {
+              eap = "PEAP";
+              identity = "${identity}";
+              password = "${pass}";
+              phase2-auth = "${auth}";
+            };
+
+            connection = {
+              id = "${ssid}";
+              type = "wifi";
+            };
+
+            ipv4.method = "auto";
+
+            ipv6 = {
+              addr-gen-mode = "default";
+              method = "auto";
+            };
+
+            wifi = {
+              mode = "infrastructure";
+              ssid = "${ssid}";
+            };
+
+            wifi-security.key-mgmt = "wpa-eap";
+          };
         in {
           "Dustin's A54" = mkWPAWiFi "Dustin's A54" "$DustinsA54PSK";
           "javapatron" = mkOpenWiFi "javapatron";
           "Stargate-Discovery" = mkWPAWiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
           "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
           "wallace" = mkWPAWiFi "wallace" "$wallacePSK";
-
-          WeWorkWiFi = {
-            "802-1x" = {
-              eap = "peap;";
-              identity = "$WeWorkWiFiIdentity";
-              password = "$WeWorkWiFiPassword";
-              phase2-auth = "mschapv2";
-            };
-
-            connection = {
-              id = "WeWorkWiFi";
-              type = "wifi";
-            };
-
-            wifi-security.key-mgmt = "wpa-eap";
-            wifi.ssid = "WeWorkWiFi";
-          };
+          "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
         };
       };
     };
