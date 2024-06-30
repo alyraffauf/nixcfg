@@ -16,6 +16,18 @@ in {
       passwordCommand = mkPassword osConfig.age.secrets.alyraffaufFastmail.path;
       primary = true;
       realName = "Aly Raffauf";
+
+      signature = {
+        text = ''
+          Thank you,
+          Aly Raffauf
+          https://aly.RaffaufLabs.com
+          https://alyraffauf.github.com
+        '';
+
+        showSignature = "append";
+      };
+
       thunderbird = {
         enable = true;
         profiles = ["default"];
@@ -32,6 +44,13 @@ in {
       passwordCommand = mkPassword osConfig.age.secrets.achacegaGmail.path;
       realName = "Aly Raffauf";
 
+      signature = {
+        text = ''
+          --
+          Aly Raffauf (née Chace)
+        '';
+      };
+
       thunderbird = {
         enable = true;
         profiles = ["default"];
@@ -44,6 +63,16 @@ in {
       address = "aly.chace@joingsg.com";
       flavor = "gmail.com";
       realName = "Aly Raffauf";
+
+      signature = {
+        text = ''
+          Aly Raffauf (née Chace)
+          Content Operations Specialist 1
+          Global Savings Group
+        '';
+
+        showSignature = "append";
+      };
 
       thunderbird = {
         enable = true;
