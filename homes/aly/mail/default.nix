@@ -5,22 +5,52 @@
   pkgs,
   ...
 }: let
-  genPassword = secret: "${lib.getExe' pkgs.coreutils "cat"} ${secret}";
+  mkPassword = secret: "${lib.getExe' pkgs.coreutils "cat"} ${secret}";
 in {
   accounts.email.accounts = {
-    fastmail = {
+    "alyraffauf@fastmail.com" = {
       address = "alyraffauf@fastmail.com";
       aliases = ["aly@raffauflabs.com"];
       flavor = "fastmail.com";
-      passwordCommand = genPassword osConfig.age.secrets.alyraffaufFastmail.path;
+      passwordCommand = mkPassword osConfig.age.secrets.alyraffaufFastmail.path;
       primary = true;
       realName = "Aly Raffauf";
+
       thunderbird = {
         enable = true;
         profiles = ["default"];
       };
+
       userName = "alyraffauf@fastmail.com";
+    };
+
+    "achacega@gmail.com" = {
+      address = "achacega@gmail.com";
+      aliases = ["alyraffauf@gmail.com"];
+      flavor = "gmail.com";
       himalaya.enable = true;
+      passwordCommand = mkPassword osConfig.age.secrets.achacegaGmail.path;
+      realName = "Aly Raffauf";
+
+      thunderbird = {
+        enable = true;
+        profiles = ["default"];
+      };
+
+      userName = "achacega@gmail.com";
+    };
+
+    "aly.chace@joingsg.com" = {
+      address = "aly.chace@joingsg.com";
+      flavor = "gmail.com";
+      realName = "Aly Raffauf";
+
+      thunderbird = {
+        enable = true;
+        profiles = ["work"];
+      };
+
+      userName = "aly.chace@joingsg.com";
     };
   };
 

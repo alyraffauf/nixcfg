@@ -10,6 +10,10 @@
         file = ../../../secrets/mail/alyraffauf_fastmail.age;
         owner = "aly";
       };
+      achacegaGmail = {
+        file = ../../../secrets/mail/achacega_gmail.age;
+        owner = "aly";
+      };
     };
 
     home-manager.users.aly =
