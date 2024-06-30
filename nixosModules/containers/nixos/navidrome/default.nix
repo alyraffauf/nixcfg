@@ -1,9 +1,7 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
-  self,
   ...
 }: {
   config = lib.mkIf config.ar.containers.nixos.navidrome.enable {
@@ -29,6 +27,7 @@
       });
     in {
       autoStart = true;
+
       bindMounts = {
         "/Music".hostPath = config.ar.containers.nixos.navidrome.musicDirectory;
         "/var/lib/navidrome/rawNavidrome.json".hostPath = navidromeConfig;
@@ -37,6 +36,7 @@
         "${config.age.secrets.spotifyClientId.path}".isReadOnly = true;
         "${config.age.secrets.spotifyClientSecret.path}".isReadOnly = true;
       };
+
       config = let
         lastFMApiKey = config.age.secrets.lastFMApiKey.path;
         lastFMSecret = config.age.secrets.lastFMSecret.path;
@@ -49,24 +49,29 @@
           lib,
           ...
         }: {
-          system.stateVersion = "24.05";
-          system.activationScripts."navidrome-secrets" = ''
-            lastFMApiKey=$(cat "${lastFMApiKey}")
-            lastFMSecret=$(cat "${lastFMSecret}")
-            spotifyClientId=$(cat "${spotifyClientId}")
-            spotifyClientSecret=$(cat "${spotifyClientSecret}")
-            ${pkgs.gnused}/bin/sed -e "s/@lastFMApiKey@/$lastFMApiKey/" -e "s/@lastFMSecret@/$lastFMSecret/" \
-              -e "s/@spotifyClientId@/$spotifyClientId/" -e "s/@spotifyClientSecret@/$spotifyClientSecret/" \
-              /var/lib/navidrome/rawNavidrome.json > /var/lib/navidrome/navidrome.json
-          '';
+          system = {
+            activationScripts."navidrome-secrets" = ''
+              lastFMApiKey=$(cat "${lastFMApiKey}")
+              lastFMSecret=$(cat "${lastFMSecret}")
+              spotifyClientId=$(cat "${spotifyClientId}")
+              spotifyClientSecret=$(cat "${spotifyClientSecret}")
+              ${pkgs.gnused}/bin/sed -e "s/@lastFMApiKey@/$lastFMApiKey/" -e "s/@lastFMSecret@/$lastFMSecret/" \
+                -e "s/@spotifyClientId@/$spotifyClientId/" -e "s/@spotifyClientSecret@/$spotifyClientSecret/" \
+                /var/lib/navidrome/rawNavidrome.json > /var/lib/navidrome/navidrome.json
+            '';
+
+            stateVersion = "24.05";
+          };
 
           systemd.services.navidrome.serviceConfig = {
+            BindReadOnlyPaths = "/Music";
+
             ExecStart = lib.mkForce ''
               ${config.services.navidrome.package}/bin/navidrome --configfile /var/lib/navidrome/navidrome.json \
                 --datafolder /var/lib/navidrome/
             '';
-            BindReadOnlyPaths = "/Music";
           };
+
           services.navidrome = {
             enable = true;
             openFirewall = true;
