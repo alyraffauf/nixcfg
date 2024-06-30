@@ -92,6 +92,9 @@
           "datareporting.policy.dataSubmissionPolicyAccepted" = true;
           "dom.security.https_only_mode" = true;
           "extensions.autoDisableScopes" = 0;
+          "media.ffmpeg.vaapi.enabled" = true;
+          "media.navigator.mediadatadecoder_vpx_enabled" = true;
+          "media.rdd-ffmpeg.enabled" = true;
         };
 
         UserMessaging = {
