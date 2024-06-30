@@ -23,10 +23,10 @@
       swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
 
       # Default apps
-      browser = config.ar.home.defaultApps.webBrowser.exe;
-      fileManager = config.ar.home.defaultApps.fileManager.exe;
-      editor = config.ar.home.defaultApps.editor.exe;
-      terminal = config.ar.home.defaultApps.terminal.exe;
+      browser = lib.getExe config.ar.home.defaultApps.webBrowser;
+      fileManager = lib.getExe config.ar.home.defaultApps.fileManager;
+      editor = lib.getExe config.ar.home.defaultApps.editor;
+      terminal = lib.getExe config.ar.home.defaultApps.terminal;
 
       brightness = lib.getExe' pkgs.swayosd "swayosd-client";
       brightness_up = "${brightness} --brightness=raise";

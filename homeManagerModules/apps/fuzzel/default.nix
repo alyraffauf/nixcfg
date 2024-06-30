@@ -13,7 +13,7 @@
           icon-theme = "${config.ar.home.theme.iconTheme.name}";
           layer = "overlay";
           lines = 3;
-          terminal = config.ar.home.defaultApps.terminal.exe;
+          terminal = lib.getExe config.ar.home.defaultApps.terminal;
           width = 36;
         };
         border = {

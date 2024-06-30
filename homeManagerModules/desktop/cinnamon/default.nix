@@ -64,7 +64,7 @@
         "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
           binding = ["<Super>e"];
           name = "Open Editor";
-          command = "${config.ar.home.defaultApps.editor.exe}";
+          command = "${lib.getExe config.ar.home.defaultApps.editor}";
         };
       };
     };

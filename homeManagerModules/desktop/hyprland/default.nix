@@ -16,14 +16,14 @@
 
       # Default apps
       defaultApps = {
-        browser = config.ar.home.defaultApps.webBrowser.exe;
-        editor = config.ar.home.defaultApps.editor.exe;
-        fileManager = config.ar.home.defaultApps.fileManager.exe;
+        browser = lib.getExe config.ar.home.defaultApps.webBrowser;
+        editor = lib.getExe config.ar.home.defaultApps.editor;
+        fileManager = lib.getExe config.ar.home.defaultApps.fileManager;
         launcher = lib.getExe pkgs.fuzzel;
         lock = lib.getExe pkgs.swaylock;
         logout = lib.getExe pkgs.wlogout;
         passwordManager = lib.getExe' pkgs.keepassxc "keepassxc";
-        terminal = config.ar.home.defaultApps.terminal.exe;
+        terminal = lib.getExe config.ar.home.defaultApps.terminal;
         virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
       };
 

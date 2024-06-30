@@ -20,7 +20,7 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "nix.formatterPath" = lib.getExe pkgs.alejandra;
-        "terminal.external.linuxExec" = config.ar.home.defaultApps.terminal.exe;
+        "terminal.external.linuxExec" = lib.getExe config.ar.home.defaultApps.terminal;
         "terminal.integrated.fontSize" = lib.mkDefault 14;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";

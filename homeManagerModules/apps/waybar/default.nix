@@ -138,7 +138,7 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${config.ar.home.defaultApps.terminalEditor.exe} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = "${lib.getExe config.ar.home.defaultApps.terminalEditor} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
           };
           "tray" = {"spacing" = 15;};
           "custom/logout" = {

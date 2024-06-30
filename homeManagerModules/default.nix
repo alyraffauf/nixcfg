@@ -9,7 +9,6 @@ inputs: self: {
     ./defaultApps.nix
     ./desktop
     ./options.nix
-    ./scripts
     ./services
     ./theme.nix
   ];

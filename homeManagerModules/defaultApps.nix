@@ -6,56 +6,91 @@
 }: {
   config = lib.mkIf config.ar.home.defaultApps.enable {
     home.packages = with config.ar.home.defaultApps; [
-      audioPlayer.package
-      editor.package
-      fileManager.package
-      imageViewer.package
-      pdfViewer.package
-      terminal.package
-      terminalEditor.package
-      videoPlayer.package
-      webBrowser.package
+      audioPlayer
+      editor
+      fileManager
+      imageViewer
+      pdfViewer
+      terminal
+      terminalEditor
+      videoPlayer
+      webBrowser
     ];
 
     dconf = {
       enable = true;
       settings = {
-        "org/cinnamon/desktop/applications/terminal".exec = "${config.ar.home.defaultApps.terminal.exe}";
-        "org/cinnamon/desktop/default-applications/terminal".exec = "${config.ar.home.defaultApps.terminal.exe}";
+        "org/cinnamon/desktop/applications/terminal".exec = "${lib.getExe config.ar.home.defaultApps.terminal}";
+        "org/cinnamon/desktop/default-applications/terminal".exec = "${lib.getExe config.ar.home.defaultApps.terminal}";
       };
+    };
+
+    xdg.desktopEntries = let
+      mkDefaultEntry = name: package: {
+        name = "Default ${name}";
+        exec = "${lib.getExe package} %U";
+        terminal = false;
+        settings = {
+          NoDisplay = "true";
+        };
+      };
+    in {
+      defaultAudioPlayer = mkDefaultEntry "Audio Player" config.ar.home.defaultApps.audioPlayer;
+      defaultEditor = mkDefaultEntry "Editor" config.ar.home.defaultApps.editor;
+      defaultFileManager = mkDefaultEntry "File Manager" config.ar.home.defaultApps.fileManager;
+      defaultImageViewer = mkDefaultEntry "Image Viewer" config.ar.home.defaultApps.imageViewer;
+      defaultPdfViewer = mkDefaultEntry "PDF Viewer" config.ar.home.defaultApps.pdfViewer;
+      defaultVideoPlayer = mkDefaultEntry "Video Player" config.ar.home.defaultApps.videoPlayer;
+      defaultWebBrowser = mkDefaultEntry "Web Browser" config.ar.home.defaultApps.webBrowser;
     };
 
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "application/json" = config.ar.home.defaultApps.editor.desktop;
-        "application/pdf" = config.ar.home.defaultApps.pdfViewer.desktop;
-        "application/x-extension-htm" = config.ar.home.defaultApps.webBrowser.desktop;
-        "application/x-extension-html" = config.ar.home.defaultApps.webBrowser.desktop;
-        "application/x-extension-shtml" = config.ar.home.defaultApps.webBrowser.desktop;
-        "application/x-extension-xht" = config.ar.home.defaultApps.webBrowser.desktop;
-        "application/x-extension-xhtml" = config.ar.home.defaultApps.webBrowser.desktop;
-        "application/x-shellscript" = config.ar.home.defaultApps.editor.desktop;
-        "application/xhtml+xml" = config.ar.home.defaultApps.webBrowser.desktop;
-        "audio/*" = config.ar.home.defaultApps.audioPlayer.desktop;
-        "image/*" = config.ar.home.defaultApps.imageViewer.desktop;
-        "inode/directory" = config.ar.home.defaultApps.fileManager.desktop;
-        "text/html" = config.ar.home.defaultApps.webBrowser.desktop;
-        "text/markdown" = config.ar.home.defaultApps.editor.desktop;
-        "text/plain" = config.ar.home.defaultApps.editor.desktop;
-        "text/x-python" = config.ar.home.defaultApps.editor.desktop;
-        "text/xml" = config.ar.home.defaultApps.webBrowser.desktop;
-        "video/*" = config.ar.home.defaultApps.videoPlayer.desktop;
-        "x-scheme-handler/chrome" = config.ar.home.defaultApps.webBrowser.desktop;
-        "x-scheme-handler/ftp" = config.ar.home.defaultApps.webBrowser.desktop;
-        "x-scheme-handler/http" = config.ar.home.defaultApps.webBrowser.desktop;
-        "x-scheme-handler/https" = config.ar.home.defaultApps.webBrowser.desktop;
+        "application/json" = "defaultEditor.desktop";
+        "application/pdf" = "defaultPdfViewer.desktop";
+        "application/x-extension-htm" = "defaultWebBrowser.desktop";
+        "application/x-extension-html" = "defaultWebBrowser.desktop";
+        "application/x-extension-shtml" = "defaultWebBrowser.desktop";
+        "application/x-extension-xht" = "defaultWebBrowser.desktop";
+        "application/x-extension-xhtml" = "defaultWebBrowser.desktop";
+        "application/x-shellscript" = "defaultEditor.desktop";
+        "application/xhtml+xml" = "defaultWebBrowser.desktop";
+        "audio/aac" = "defaultAudioPlayer.desktop";
+        "audio/flac" = "defaultAudioPlayer.desktop";
+        "audio/mpeg" = "defaultAudioPlayer.desktop";
+        "audio/ogg" = "defaultAudioPlayer.desktop";
+        "audio/opus" = "defaultAudioPlayer.desktop";
+        "audio/wav" = "defaultAudioPlayer.desktop";
+        "audio/webm" = "defaultAudioPlayer.desktop";
+        "image/gif" = "defaultImageViewer.desktop";
+        "image/jpeg" = "defaultImageViewer.desktop";
+        "image/png" = "defaultImageViewer.desktop";
+        "image/svg+xml" = "defaultImageViewer.desktop";
+        "image/tiff" = "defaultImageViewer.desktop";
+        "image/webp" = "defaultImageViewer.desktop";
+        "inode/directory" = "defaultFileManager.desktop";
+        "text/html" = "defaultWebBrowser.desktop";
+        "text/markdown" = "defaultEditor.desktop";
+        "text/plain" = "defaultEditor.desktop";
+        "text/x-python" = "defaultEditor.desktop";
+        "text/xml" = "defaultWebBrowser.desktop";
+        "video/mp2t" = "defaultVideoPlayer.desktop";
+        "video/mp4" = "defaultVideoPlayer.desktop";
+        "video/mpeg" = "defaultVideoPlayer.desktop";
+        "video/ogg" = "defaultVideoPlayer.desktop";
+        "video/webm" = "defaultVideoPlayer.desktop";
+        "video/x-msvideo" = "defaultVideoPlayer.desktop";
+        "x-scheme-handler/chrome" = "defaultWebBrowser.desktop";
+        "x-scheme-handler/ftp" = "defaultWebBrowser.desktop";
+        "x-scheme-handler/http" = "defaultWebBrowser.desktop";
+        "x-scheme-handler/https" = "defaultWebBrowser.desktop";
       };
     };
     home.sessionVariables = {
-      BROWSER = "${config.ar.home.defaultApps.webBrowser.exe}";
-      EDITOR = "${config.ar.home.defaultApps.terminalEditor.exe}";
-      TERMINAL = "${config.ar.home.defaultApps.terminal.exe}";
+      BROWSER = "${lib.getExe config.ar.home.defaultApps.webBrowser}";
+      EDITOR = "${lib.getExe config.ar.home.defaultApps.terminalEditor}";
+      TERMINAL = "${lib.getExe config.ar.home.defaultApps.terminal}";
     };
   };
 }
