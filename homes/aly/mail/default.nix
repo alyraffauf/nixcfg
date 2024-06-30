@@ -12,10 +12,10 @@ in {
       address = "alyraffauf@fastmail.com";
       aliases = ["aly@raffauflabs.com"];
       flavor = "fastmail.com";
+      himalaya.enable = true;
       passwordCommand = mkPassword osConfig.age.secrets.alyraffaufFastmail.path;
       primary = true;
       realName = "Aly Raffauf";
-
       thunderbird = {
         enable = true;
         profiles = ["default"];
