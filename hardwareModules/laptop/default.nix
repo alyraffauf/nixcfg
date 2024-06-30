@@ -19,6 +19,8 @@
           CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
           CPU_HWP_DYN_BOOST_ON_AC = 1;
           CPU_HWP_DYN_BOOST_ON_BAT = 0;
+          PCIE_ASPM_ON_AC = "default";
+          PCIE_ASPM_ON_BAT = "powersupersave";
           PLATFORM_PROFILE_ON_AC = "balanced";
           PLATFORM_PROFILE_ON_BAT = "low-power";
           RESTORE_DEVICE_STATE_ON_STARTUP = 1;
