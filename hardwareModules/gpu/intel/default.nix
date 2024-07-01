@@ -14,6 +14,7 @@
 
     hardware = {
       enableAllFirmware = true;
+      intel-gpu-tools.enable = true;
 
       opengl = {
         enable = true;
