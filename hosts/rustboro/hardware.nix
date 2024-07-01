@@ -31,6 +31,8 @@
     };
   };
 
+  powerManagement.cpuFreqGovernor = "ondemand";
+
   services.fwupd.enable = true;
 
   ar.hardware = {
