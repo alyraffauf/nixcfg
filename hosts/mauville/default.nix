@@ -167,6 +167,11 @@ in {
       secretKeyFile = "/var/cache-priv-key.pem";
     };
 
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+    };
+
     samba = {
       enable = true;
       openFirewall = true;
@@ -253,12 +258,6 @@ in {
     };
 
     services = {
-      ollama = {
-        enable = true;
-        gpu = "amd";
-        listenAddress = "0.0.0.0:11434";
-      };
-
       syncthing = {
         enable = true;
         syncMusic = true;

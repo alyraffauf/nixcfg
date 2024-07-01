@@ -20,6 +20,11 @@
 
   networking.hostName = "mandarin";
 
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+
   system.stateVersion = "24.05";
 
   ar = {
@@ -48,12 +53,6 @@
 
     services = {
       flatpak.enable = true;
-
-      ollama = {
-        enable = true;
-        gpu = "amd";
-      };
-
       tailscale.enable = true;
     };
 

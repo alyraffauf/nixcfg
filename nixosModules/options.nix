@@ -189,22 +189,6 @@
     services = {
       flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
 
-      ollama = {
-        enable = lib.mkEnableOption "Ollama interface for LLMs.";
-
-        listenAddress = lib.mkOption {
-          description = "Listen Address for Ollama.";
-          default = "127.0.0.1:11434";
-          type = lib.types.str;
-        };
-
-        gpu = lib.mkOption {
-          description = "Type of GPU for enabling GPU acceleration.";
-          default = null;
-          type = lib.types.str;
-        };
-      };
-
       syncthing = {
         enable = lib.mkEnableOption "Syncthing sync service.";
 

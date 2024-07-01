@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./flatpak
-    ./ollama
     ./syncthing
     ./tailscale
   ];
