@@ -19,7 +19,10 @@ in {
     ./home.nix
   ];
 
-  age.secrets.cloudflare.file = ../../secrets/cloudflare.age;
+  age.secrets = {
+    cloudflare.file = ../../secrets/cloudflare.age;
+    nixCache.file = ../../secrets/nixCache/privKey.age;
+  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -164,7 +167,7 @@ in {
 
     nix-serve = {
       enable = true;
-      secretKeyFile = "/var/cache-priv-key.pem";
+      secretKeyFile = config.age.secrets.nixCache.path;
     };
 
     ollama = {
