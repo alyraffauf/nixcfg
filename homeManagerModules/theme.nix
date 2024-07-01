@@ -24,13 +24,9 @@
     qt = {
       enable = true;
       platformTheme.name = "qtct";
-      style.name = "kvantum";
-    };
-
-    xdg.configFile = {
-      "Kvantum/${config.ar.home.theme.qt.name}".source = "${config.ar.home.theme.qt.package}/share/Kvantum/${config.ar.home.theme.qt.name}";
-      "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-        General.theme = config.ar.home.theme.qt.name;
+      style = {
+        package = config.ar.home.theme.qt.package;
+        name = config.ar.home.theme.qt.name;
       };
     };
 

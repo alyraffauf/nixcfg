@@ -257,14 +257,14 @@
 
       qt = {
         name = lib.mkOption {
-          description = "Qt Kvantum theme name.";
-          default = "Catppuccin-Frappe-Mauve";
+          description = "Qt theme name.";
+          default = "Adwaita-Dark";
           type = lib.types.str;
         };
 
         package = lib.mkOption {
-          description = "Qt Kvantum theme package.";
-          default = pkgs.catppuccin-kvantum;
+          description = "Qt theme package.";
+          default = pkgs.adwaita-qt;
           type = lib.types.package;
         };
       };
