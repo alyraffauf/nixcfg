@@ -33,8 +33,6 @@
           libvdpau-va-gl
         ];
       };
-
-      sensor.iio.enable = true; # Enable auto-rotate and tablet mode.
     };
 
     services.xserver.videoDrivers = ["modesetting"];
