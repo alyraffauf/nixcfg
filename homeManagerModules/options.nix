@@ -285,7 +285,7 @@
       cursorTheme = {
         name = lib.mkOption {
           description = "Cursor theme name.";
-          default = "Catppuccin-Frappe-Dark-Cursors";
+          default = "catppuccin-frappe-dark-cursors";
           type = lib.types.str;
         };
 

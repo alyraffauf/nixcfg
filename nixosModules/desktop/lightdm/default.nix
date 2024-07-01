@@ -16,7 +16,7 @@
       greeters.slick = {
         enable = true;
         theme = {
-          name = "Catppuccin-Frappe-Compact-Mauve-Dark";
+          name = "catppuccin-frappe-mauve-compact+normal";
           package = pkgs.catppuccin-gtk;
         };
 
@@ -31,7 +31,7 @@
         };
 
         cursorTheme = {
-          name = "Catppuccin-Frappe-Dark-Cursors";
+          name = "catppuccin-frappe-dark-cursors";
           package = pkgs.catppuccin-cursors.frappeDark;
           size = 24;
         };
