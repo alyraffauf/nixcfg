@@ -238,13 +238,13 @@
       gtk = {
         name = lib.mkOption {
           description = "GTK theme name.";
-          default = "catppuccin-frappe-mauve-compact+normal";
+          default = "adw-gtk3-dark";
           type = lib.types.str;
         };
 
         package = lib.mkOption {
           description = "GTK theme package.";
-          default = pkgs.catppuccin-gtk;
+          default = pkgs.adw-gtk3;
           type = lib.types.package;
         };
 
@@ -268,6 +268,7 @@
           type = lib.types.package;
         };
       };
+
       iconTheme = {
         name = lib.mkOption {
           description = "Icon theme name.";
@@ -277,7 +278,7 @@
 
         package = lib.mkOption {
           description = "Icon theme package.";
-          default = pkgs.catppuccin-papirus-folders;
+          default = pkgs.papirus-icon-theme;
           type = lib.types.package;
         };
       };
@@ -351,31 +352,31 @@
 
         text = lib.mkOption {
           description = "Text color.";
-          default = "#FAFAFA";
+          default = "#FFFFFF";
           type = lib.types.str;
         };
 
         background = lib.mkOption {
           description = "Background color.";
-          default = "#232634";
+          default = "#242424";
           type = lib.types.str;
         };
 
         primary = lib.mkOption {
           description = "Primary color.";
-          default = "#CA9EE6";
+          default = "#78AEED";#"#CA9EE6";
           type = lib.types.str;
         };
 
         secondary = lib.mkOption {
           description = "Secondary color.";
-          default = "#99D1DB";
+          default = "#CA9EE6";#"#99D1DB";
           type = lib.types.str;
         };
 
         inactive = lib.mkOption {
           description = "Inactive color.";
-          default = "#626880";
+          default = "#242424";
           type = lib.types.str;
         };
 

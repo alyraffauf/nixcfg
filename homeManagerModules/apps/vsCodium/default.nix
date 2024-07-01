@@ -52,6 +52,7 @@
         ms-python.python
         ms-vscode.cpptools-extension-pack
         oderwat.indent-rainbow
+        piousdeer.adwaita-theme
         rubymaniac.vscode-paste-and-indent
         rust-lang.rust-analyzer
         tomoki1207.pdf
