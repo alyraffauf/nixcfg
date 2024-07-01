@@ -45,7 +45,7 @@
               };
             };
             cursorTheme = {
-              name = "Catppuccin-Mocha-Dark-Cursors";
+              name = "catppuccin-mocha-dark-cursors";
               size = 32;
               package = pkgs.catppuccin-cursors.mochaDark;
             };
