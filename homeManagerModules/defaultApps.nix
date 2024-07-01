@@ -191,7 +191,7 @@
             ]
             (_: ["defaultEditor.desktop"]);
 
-          folderTypes = {"inode/directory" = "defaultFIleManager.desktop";};
+          folderTypes = {"inode/directory" = "defaultFileManager.desktop";};
 
           imageTypes =
             lib.genAttrs [
