@@ -6,6 +6,18 @@
   self,
   ...
 }: {
+  home.file = let
+    recursive = false;
+    source = builtins.fetchGit {
+      url = "https://github.com/rafaelmardojai/firefox-gnome-theme.git";
+      rev = "8fb5267c5b3434f76983e29749aba7cd636e03ca";
+      ref = "master";
+    };
+  in {
+    ".mozilla/firefox/default/chrome" = {inherit recursive source;};
+    ".mozilla/firefox/work/chrome" = {inherit recursive source;};
+  };
+
   programs.firefox = {
     enable = true;
 
@@ -72,6 +84,7 @@
                 alias = "!bing";
               };
             };
+
             "Google" = {
               metaData = {
                 hidden = true;
@@ -92,6 +105,8 @@
           "privacy.trackingprotection.global-checkbox.enabled" = true;
           "privacy.trackingprotection.socialtracking.enabled" = true;
           "services.sync.prefs.sync.browser.uiCustomization.state" = true;
+          "svg.context-properties.content.enabled" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
       };
 
@@ -117,6 +132,8 @@
           "privacy.trackingprotection.global-checkbox.enabled" = true;
           "privacy.trackingprotection.socialtracking.enabled" = true;
           "signon.rememberSignons" = false;
+          "svg.context-properties.content.enabled" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
 
         id = 1;
@@ -131,6 +148,7 @@
                 alias = "!bing";
               };
             };
+
             "DuckDuckGo" = {
               metaData = {
                 hidden = true;
@@ -150,10 +168,8 @@
     icon = "firefox";
     mimeType = ["text/html" "text/xml"];
     name = "Firefox (work)";
+    settings = {StartupWMClass = "firework";};
     startupNotify = true;
     terminal = false;
-    settings = {
-      StartupWMClass = "firework";
-    };
   };
 }

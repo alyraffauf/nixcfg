@@ -1,8 +1,3 @@
-; Load catppuccin theme.
-;(load-theme 'catppuccin :no-confirm)
-;(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
-;(catppuccin-reload)
-
 ;(defun on-after-init ()
 ;  (unless (display-graphic-p (selected-frame))
 ;    (set-face-background 'default "unspecified-bg" (selected-frame))))

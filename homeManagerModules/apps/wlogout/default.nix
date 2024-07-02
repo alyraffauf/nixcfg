@@ -7,6 +7,7 @@
   config = lib.mkIf config.ar.home.apps.wlogout.enable {
     programs.wlogout = {
       enable = true;
+
       layout = [
         {
           label = "logout";
@@ -27,35 +28,36 @@
           keybind = "r";
         }
       ];
+
       style = ''
         * {
+          background-image: none;
+          box-shadow: none;
           font-family: "${config.ar.home.theme.font.name}", sans-serif;
-        	background-image: none;
-        	box-shadow: none;
           transition: 20ms;
         }
 
         window {
-        	background-color: rgba(35, 38, 52, 0.8);
+          background-color: rgba(35, 38, 52, 0.8);
         }
 
         button {
-        	text-decoration-color: #FAFAFA;
-          color: #FAFAFA;
-        	background-color: ${config.ar.home.theme.colors.background};
-          background-color: rgba(12, 12, 12, 0.0);
-        	background-repeat: no-repeat;
-        	background-size: 10%;
+          background-color: ${config.ar.home.theme.colors.background};
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 25%;
+          border-color: ${config.ar.home.theme.colors.primary};
           border-radius: 10;
+          border-style: solid;
+          border-width: 2;
+          color: ${config.ar.home.theme.colors.text};
+          margin: 5px;
+          text-decoration-color: ${config.ar.home.theme.colors.text};
         }
 
         button:active, button:hover {
-        	background-color: ${config.ar.home.theme.colors.primary};
-        	outline-style: none;
-        }
-
-        #lock, #logout, #suspend, #hibernate, #shutdown, #reboot {
-          padding: 0;
+          background-color: ${config.ar.home.theme.colors.primary};
+          outline-style: none;
         }
 
         #lock {

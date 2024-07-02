@@ -7,9 +7,10 @@
   config = lib.mkIf config.ar.home.apps.emacs.enable {
     programs.emacs = {
       enable = true;
+      extraConfig = builtins.readFile ./emacs.el;
+
       extraPackages = epkgs: (with epkgs; [
         better-defaults
-        catppuccin-theme
         markdown-mode
         nix-mode
         org
@@ -26,8 +27,8 @@
         yaml
         yaml-mode
       ]);
+
       package = pkgs.emacs-nox;
-      extraConfig = builtins.readFile ./emacs.el;
     };
   };
 }

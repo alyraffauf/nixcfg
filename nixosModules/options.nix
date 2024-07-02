@@ -180,7 +180,7 @@
       };
 
       hyprland.enable = lib.mkEnableOption "Hyprland wayland session.";
-      lightdm.enable = lib.mkEnableOption "Lightdm with Catppuccin theme.";
+      lightdm.enable = lib.mkEnableOption "Lightdm display manager.";
       plasma.enable = lib.mkEnableOption "Plasma desktop session.";
       steam.enable = lib.mkEnableOption "Steam + Gamescope session.";
       sway.enable = lib.mkEnableOption "Sway wayland session.";
@@ -227,7 +227,7 @@
       };
 
       plymouth.enable = lib.mkOption {
-        description = "Plymouth boot screen with catppuccin theme.";
+        description = "Plymouth boot screen.";
         default = config.ar.base.enable;
         type = lib.types.bool;
       };

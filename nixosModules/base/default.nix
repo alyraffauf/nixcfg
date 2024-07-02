@@ -14,28 +14,7 @@
   ];
 
   config = lib.mkIf config.ar.base.enable {
-    console = {
-      colors = [
-        "303446"
-        "e78284"
-        "a6d189"
-        "e5c890"
-        "8caaee"
-        "f4b8e4"
-        "81c8be"
-        "b5bfe2"
-        "626880"
-        "303446"
-        "e78284"
-        "a6d189"
-        "e5c890"
-        "8caaee"
-        "f4b8e4"
-        "81c8be"
-        "a5adce"
-      ];
-      useXkbConfig = true;
-    };
+    console.useXkbConfig = true;
 
     environment.systemPackages = with pkgs; [
       inputs.agenix.packages.${pkgs.system}.default

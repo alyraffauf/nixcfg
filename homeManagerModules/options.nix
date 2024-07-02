@@ -238,13 +238,13 @@
       gtk = {
         name = lib.mkOption {
           description = "GTK theme name.";
-          default = "catppuccin-frappe-mauve-compact+normal";
+          default = "adw-gtk3-dark";
           type = lib.types.str;
         };
 
         package = lib.mkOption {
           description = "GTK theme package.";
-          default = pkgs.catppuccin-gtk;
+          default = pkgs.adw-gtk3;
           type = lib.types.package;
         };
 
@@ -257,17 +257,18 @@
 
       qt = {
         name = lib.mkOption {
-          description = "Qt Kvantum theme name.";
-          default = "Catppuccin-Frappe-Mauve";
+          description = "Qt theme name.";
+          default = "Adwaita-Dark";
           type = lib.types.str;
         };
 
         package = lib.mkOption {
-          description = "Qt Kvantum theme package.";
-          default = pkgs.catppuccin-kvantum;
+          description = "Qt theme package.";
+          default = pkgs.adwaita-qt;
           type = lib.types.package;
         };
       };
+
       iconTheme = {
         name = lib.mkOption {
           description = "Icon theme name.";
@@ -277,7 +278,7 @@
 
         package = lib.mkOption {
           description = "Icon theme package.";
-          default = pkgs.catppuccin-papirus-folders;
+          default = pkgs.papirus-icon-theme;
           type = lib.types.package;
         };
       };
@@ -285,19 +286,19 @@
       cursorTheme = {
         name = lib.mkOption {
           description = "Cursor theme name.";
-          default = "catppuccin-frappe-dark-cursors";
+          default = "Bibata-Modern-Classic";
           type = lib.types.str;
         };
 
         size = lib.mkOption {
           description = "Cursor size.";
-          default = 24;
+          default = 20;
           type = lib.types.int;
         };
 
         package = lib.mkOption {
           description = "Cursor theme package.";
-          default = pkgs.catppuccin-cursors.frappeDark;
+          default = pkgs.bibata-cursors;
           type = lib.types.package;
         };
       };
@@ -351,31 +352,31 @@
 
         text = lib.mkOption {
           description = "Text color.";
-          default = "#FAFAFA";
+          default = "#FFFFFF";
           type = lib.types.str;
         };
 
         background = lib.mkOption {
           description = "Background color.";
-          default = "#232634";
+          default = "#242424";
           type = lib.types.str;
         };
 
         primary = lib.mkOption {
           description = "Primary color.";
-          default = "#CA9EE6";
+          default = "#78AEED"; #"#CA9EE6";
           type = lib.types.str;
         };
 
         secondary = lib.mkOption {
           description = "Secondary color.";
-          default = "#99D1DB";
+          default = "#CA9EE6"; #"#99D1DB";
           type = lib.types.str;
         };
 
         inactive = lib.mkOption {
           description = "Inactive color.";
-          default = "#626880";
+          default = "#242424";
           type = lib.types.str;
         };
 

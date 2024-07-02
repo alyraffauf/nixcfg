@@ -16,13 +16,13 @@
       greeters.slick = {
         enable = true;
         theme = {
-          name = "catppuccin-frappe-mauve-compact+normal";
-          package = pkgs.catppuccin-gtk;
+          name = "adw-gtk3-dark";
+          package = pkgs.adw-gtk3;
         };
 
         iconTheme = {
           name = "Papirus-Dark";
-          package = pkgs.catppuccin-papirus-folders;
+          package = pkgs.papirus-icon-theme;
         };
 
         font = {
@@ -31,13 +31,13 @@
         };
 
         cursorTheme = {
-          name = "catppuccin-frappe-dark-cursors";
-          package = pkgs.catppuccin-cursors.frappeDark;
-          size = 24;
+          name = "Bibata-Modern-Classic";
+          package = pkgs.bibata-cursors;
+          size = 20;
         };
 
         extraConfig = ''
-          background=#303446
+          background=#242424
           enable-hidpi=on
         '';
       };

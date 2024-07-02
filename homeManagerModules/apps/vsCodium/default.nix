@@ -31,19 +31,14 @@
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
           if config.ar.home.theme.colors.preferDark
-          then "Catppuccin Frappé"
-          else "Catppuccin Latte";
-        "workbench.iconTheme" =
-          if config.ar.home.theme.colors.preferDark
-          then "catppuccin-frappe"
-          else "catppuccin-latte";
-        "workbench.preferredDarkColorTheme" = "Catppuccin Frappé";
-        "workbench.preferredLightColorTheme" = "Catppuccin Latte";
+          then "Adwaita Dark"
+          else "Adwaita";
+        "workbench.iconTheme" = "null";
+        "workbench.preferredDarkColorTheme" = "Adwaita Dark";
+        "workbench.preferredLightColorTheme" = "Adwaita";
       };
 
       extensions = with pkgs.vscode-extensions; [
-        catppuccin.catppuccin-vsc
-        catppuccin.catppuccin-vsc-icons
         coolbear.systemd-unit-file
         github.vscode-github-actions
         github.vscode-pull-request-github
@@ -52,6 +47,7 @@
         ms-python.python
         ms-vscode.cpptools-extension-pack
         oderwat.indent-rainbow
+        piousdeer.adwaita-theme
         rubymaniac.vscode-paste-and-indent
         rust-lang.rust-analyzer
         tomoki1207.pdf

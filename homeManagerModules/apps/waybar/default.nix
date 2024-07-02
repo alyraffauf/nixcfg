@@ -199,7 +199,7 @@
       #mode {
           padding: 0 15px;
           margin: 0 5px;
-          color: #e78284;
+          color: #FFFFFF;
       }
 
       #tags button {
@@ -253,8 +253,8 @@
           border-radius: 10;
           background: rgba ${
         if config.ar.home.theme.colors.preferDark
-        then "(35, 38, 52, 0.8);"
-        else "(220, 224, 232, 0.8);"
+        then "(36, 36, 36, 0.8);"
+        else "(250, 250, 250, 0.8);"
       }
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
@@ -267,7 +267,7 @@
       #submap,
       #mode {
           color: ${config.ar.home.theme.colors.text};
-          background: rgba(231, 130, 132, 0.8);
+          background: rgba(255, 123, 99, 0.8);
       }
     '';
   };
