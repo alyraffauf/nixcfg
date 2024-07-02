@@ -25,17 +25,17 @@
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" =
-          if config.ar.home.desktop.gnome.enable
+          if config.ar.home.desktop.gnome.enable || config.ar.home.desktop.cinnamon.enable
           then "custom"
           else "native";
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
           if config.ar.home.theme.colors.preferDark
           then "Adwaita Dark"
-          else "Adwaita";
+          else "Adwaita Light";
         "workbench.iconTheme" = "null";
         "workbench.preferredDarkColorTheme" = "Adwaita Dark";
-        "workbench.preferredLightColorTheme" = "Adwaita";
+        "workbench.preferredLightColorTheme" = "Adwaita Light";
       };
 
       extensions = with pkgs.vscode-extensions; [
