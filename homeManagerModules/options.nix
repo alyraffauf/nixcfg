@@ -364,13 +364,13 @@
 
         primary = lib.mkOption {
           description = "Primary color.";
-          default = "#78AEED";#"#CA9EE6";
+          default = "#78AEED"; #"#CA9EE6";
           type = lib.types.str;
         };
 
         secondary = lib.mkOption {
           description = "Secondary color.";
-          default = "#CA9EE6";#"#99D1DB";
+          default = "#CA9EE6"; #"#99D1DB";
           type = lib.types.str;
         };
 

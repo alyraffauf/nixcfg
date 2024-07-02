@@ -14,7 +14,7 @@
         };
 
         xdg.userDirs.music = "/mnt/Media/Music";
-        
+
         ar.home.desktop.hyprland.autoSuspend = false;
       }
     ];
