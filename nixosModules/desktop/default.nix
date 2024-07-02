@@ -31,6 +31,8 @@
         nerdfonts
       ];
 
+      programs.system-config-printer.enable = true;
+
       services = {
         gnome.gnome-keyring.enable = true;
         gvfs.enable = true; # Mount, trash, etc.
