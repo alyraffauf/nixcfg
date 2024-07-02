@@ -17,7 +17,7 @@
             preset = "LoudnessEqualizer";
           };
           theme = {
-            cursorTheme.size = lib.mkForce 32;
+            cursorTheme.size = lib.mkForce 24;
             font.size = lib.mkForce 14;
             terminalFont.size = lib.mkForce 14;
           };
