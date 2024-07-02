@@ -7,13 +7,7 @@
   config = lib.mkIf config.ar.home.apps.neovim.enable {
     programs.nixvim = {
       enable = true;
-      viAlias = true;
-      vimAlias = true;
-
-      colorschemes.catppuccin = {
-        enable = true;
-        settings.flavor = "frappe";
-      };
+      colorschemes.ayu.enable = true;
 
       plugins = {
         lightline.enable = true;
@@ -22,6 +16,9 @@
         neogit.enable = true;
         nix.enable = true;
       };
+
+      viAlias = true;
+      vimAlias = true;
     };
   };
 }
