@@ -8,13 +8,7 @@
   home-manager = {
     sharedModules = [
       {
-        programs.vscode.userSettings = {
-          "workbench.colorTheme" = lib.mkForce "Catppuccin Mocha";
-          "workbench.iconTheme" = lib.mkForce "catppuccin-mocha";
-        };
-
         xdg.userDirs.music = "/mnt/Media/Music";
-
         ar.home.desktop.hyprland.autoSuspend = false;
       }
     ];
