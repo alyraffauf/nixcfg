@@ -88,9 +88,14 @@ in {
 
     thunderbird = {
       enable = true;
-      profiles = {
-        default.isDefault = true;
-        work = {};
+      profiles = let
+        settings = {"mailnews.message_display.disable_remote_image" = false;};
+      in {
+        default = {
+          inherit settings;
+          isDefault = true;
+        };
+        work = {inherit settings;};
       };
     };
   };
