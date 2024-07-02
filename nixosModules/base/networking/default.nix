@@ -35,7 +35,7 @@
             };
           };
 
-          mkWPAWiFi = ssid: psk: (
+          mkWPA2WiFi = ssid: psk: (
             (mkOpenWiFi ssid)
             // {
               wifi-security = {
@@ -63,12 +63,12 @@
             }
           );
         in {
-          "Dustin's A54" = mkWPAWiFi "Dustin's A54" "$DustinsA54PSK";
+          "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
           "FCS-WiFi2" = mkEAPWiFi "FCS-WiFi2" "$FCSIdentity" "$FCSPassword" "mschapv2";
           "javapatron" = mkOpenWiFi "javapatron";
-          "Stargate-Discovery" = mkWPAWiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
+          "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
           "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
-          "wallace" = mkWPAWiFi "wallace" "$wallacePSK";
+          "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
           "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
         };
       };
