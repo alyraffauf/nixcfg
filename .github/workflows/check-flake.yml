@@ -1,9 +1,6 @@
 name: "flake: evaluation check"
 
-on:
-  push:
-    branches:
-    - master
+on: [push, pull_request]
 
 jobs:
   build:
