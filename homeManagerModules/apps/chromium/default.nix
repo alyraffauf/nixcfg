@@ -14,7 +14,6 @@
         {id = "mnjggcdmjocbbbhaepdhchncahnbgone";} # sponsorblock
         {id = "oboonakemofpalcgghocfoadofidjkkk";} # keepassxc
         {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
-        {id = "olhelnoplefjdmncknfphenjclimckaf";} # catppuccin frappe
       ];
     };
   };
