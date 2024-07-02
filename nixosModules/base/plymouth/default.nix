@@ -11,8 +11,6 @@
       initrd.verbose = false;
       plymouth = {
         enable = true;
-        themePackages = [pkgs.catppuccin-plymouth];
-        theme = "catppuccin-frappe";
         font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/NotoSansNerdFont-Regular.ttf";
       };
     };
