@@ -286,19 +286,19 @@
       cursorTheme = {
         name = lib.mkOption {
           description = "Cursor theme name.";
-          default = "catppuccin-frappe-dark-cursors";
+          default = "Bibata-Modern-Classic";
           type = lib.types.str;
         };
 
         size = lib.mkOption {
           description = "Cursor size.";
-          default = 24;
+          default = 20;
           type = lib.types.int;
         };
 
         package = lib.mkOption {
           description = "Cursor theme package.";
-          default = pkgs.catppuccin-cursors.frappeDark;
+          default = pkgs.bibata-cursors;
           type = lib.types.package;
         };
       };
