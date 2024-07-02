@@ -1,21 +1,18 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
-  self,
   ...
 }: {
   home.file = let
-    recursive = false;
     source = builtins.fetchGit {
       url = "https://github.com/rafaelmardojai/firefox-gnome-theme.git";
       rev = "8fb5267c5b3434f76983e29749aba7cd636e03ca";
       ref = "master";
     };
   in {
-    ".mozilla/firefox/default/chrome" = {inherit recursive source;};
-    ".mozilla/firefox/work/chrome" = {inherit recursive source;};
+    ".mozilla/firefox/default/chrome" = {inherit source;};
+    ".mozilla/firefox/work/chrome" = {inherit source;};
   };
 
   programs.firefox = {
