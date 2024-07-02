@@ -62,35 +62,36 @@
 
       gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
 
-      # gtk3.extraCss =
-      #   if config.ar.home.theme.gtk.hideTitleBar
-      #   then ''
-      #     /* No (default) title bar on wayland */
-      #     headerbar.default-decoration {
-      #       /* You may need to tweak these values depending on your GTK theme */
-      #       margin-bottom: 50px;
-      #       margin-top: -100px;
-
-      #       background: transparent;
-      #       padding: 0;
-      #       border: 0;
-      #       min-height: 0;
-      #       font-size: 0;
-      #       box-shadow: none;
-      #     }
-
-      #     /* rm -rf window shadows */
-      #     window.csd,             /* gtk4? */
-      #     window.csd decoration { /* gtk3 */
-      #       box-shadow: none;
-      #     }
-      #   ''
-      #   else "/* */";
-
       gtk3.extraCss = ''
         @define-color accent_bg_color ${config.ar.home.theme.colors.primary};
+        @define-color accent_color @accent_bg_color;
 
-        @define-color accent_color @accent_bg_color; '';
+        ${
+          if config.ar.home.theme.gtk.hideTitleBar
+          then ''
+            /* No (default) title bar on wayland */
+            headerbar.default-decoration {
+              /* You may need to tweak these values depending on your GTK theme */
+              margin-bottom: 50px;
+              margin-top: -100px;
+
+              background: transparent;
+              padding: 0;
+              border: 0;
+              min-height: 0;
+              font-size: 0;
+              box-shadow: none;
+            }
+
+            /* rm -rf window shadows */
+            window.csd,             /* gtk4? */
+            window.csd decoration { /* gtk3 */
+              box-shadow: none;
+            }
+          ''
+          else "/* */"
+        }
+      '';
 
       gtk4.extraCss = config.gtk.gtk3.extraCss;
     };
