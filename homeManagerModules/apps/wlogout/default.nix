@@ -31,9 +31,9 @@
 
       style = ''
         * {
-          font-family: "${config.ar.home.theme.font.name}", sans-serif;
           background-image: none;
           box-shadow: none;
+          font-family: "${config.ar.home.theme.font.name}", sans-serif;
           transition: 20ms;
         }
 
@@ -42,20 +42,20 @@
         }
 
         button {
-          margin: 5px;
-          border-radius: 10;
-          border-color: ${config.ar.home.theme.colors.primary};
-          text-decoration-color: ${config.ar.home.theme.colors.text};
-          color: ${config.ar.home.theme.colors.text};
           background-color: ${config.ar.home.theme.colors.background};
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 25%;
+          border-color: ${config.ar.home.theme.colors.primary};
+          border-radius: 10;
           border-style: solid;
           border-width: 2;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 25%;
+          color: ${config.ar.home.theme.colors.text};
+          margin: 5px;
+          text-decoration-color: ${config.ar.home.theme.colors.text};
         }
 
-        button:focus, button:active, button:hover {
+        button:active, button:hover {
           background-color: ${config.ar.home.theme.colors.primary};
           outline-style: none;
         }
