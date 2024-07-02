@@ -14,52 +14,8 @@
         };
 
         xdg.userDirs.music = "/mnt/Media/Music";
-        ar.home = {
-          desktop = {
-            hyprland.autoSuspend = false;
-            sway.autoSuspend = false;
-          };
-          theme = lib.mkForce {
-            enable = true;
-            gtk = {
-              name = "catppuccin-mocha-mauve-compact+normal";
-              package = pkgs.catppuccin-gtk.override {
-                accents = ["mauve"];
-                size = "compact";
-                variant = "mocha";
-                tweaks = ["normal"];
-              };
-            };
-            qt = {
-              name = "Catppuccin-Mocha-Mauve";
-              package = pkgs.catppuccin-kvantum.override {
-                accent = "Mauve";
-                variant = "Mocha";
-              };
-            };
-            iconTheme = {
-              name = "Papirus-Light";
-              package = pkgs.catppuccin-papirus-folders.override {
-                flavor = "mocha";
-                accent = "mauve";
-              };
-            };
-            cursorTheme = {
-              name = "catppuccin-mocha-dark-cursors";
-              size = 32;
-              package = pkgs.catppuccin-cursors.mochaDark;
-            };
-            colors = {
-              preferDark = true;
-              text = "#FAFAFA";
-              background = "#232634";
-              primary = "#CA9EE6";
-              secondary = "#99D1DB";
-              inactive = "#626880";
-              shadow = "#1A1A1A";
-            };
-          };
-        };
+        
+        ar.home.desktop.hyprland.autoSuspend = false;
       }
     ];
 

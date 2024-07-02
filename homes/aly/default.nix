@@ -51,10 +51,7 @@
     apps = {
       alacritty.enable = true;
       bash.enable = true;
-      chromium = {
-        enable = true;
-        package = pkgs.brave;
-      };
+      chromium.enable = true;
       emacs.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
@@ -65,10 +62,7 @@
     };
 
     defaultApps.enable = true;
-
-    desktop = {
-      startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
-    };
+    desktop.startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
 
     theme = {
       enable = true;
