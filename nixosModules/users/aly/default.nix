@@ -17,17 +17,16 @@
     };
 
     home-manager.users.aly =
-      if config.ar.users.aly.manageHome
-      then import ../../../homes/aly
-      else {};
+      lib.attrsets.optionalAttrs
+      config.ar.users.aly.manageHome
+      (import ../../../homes/aly);
 
     users.users.aly = {
       description = "Aly Raffauf";
-      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
+      extraGroups = config.ar.users.defaultGroups;
       hashedPassword = config.ar.users.aly.password;
       isNormalUser = true;
       linger = true;
-      uid = 1000;
 
       openssh.authorizedKeys = {
         keys = [
@@ -42,6 +41,8 @@
           ../../../secrets/publicKeys/aly_rustboro.pub
         ];
       };
+
+      uid = 1000;
     };
   };
 }

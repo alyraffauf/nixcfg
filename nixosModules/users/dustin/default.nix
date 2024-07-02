@@ -6,15 +6,14 @@
 }: {
   config = lib.mkIf config.ar.users.dustin.enable {
     home-manager.users.dustin =
-      if config.ar.users.dustin.manageHome
-      then import ../../../homes/dustin
-      else {};
+      lib.attrsets.optionalAttrs
+      config.ar.users.dustin.manageHome
+      (import ../../../homes/dustin);
 
     users.users.dustin = {
       description = "Dustin Raffauf";
-      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
+      extraGroups = config.ar.users.defaultGroups;
       hashedPassword = config.ar.users.dustin.password;
-
       isNormalUser = true;
       uid = 1001;
     };

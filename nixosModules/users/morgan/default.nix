@@ -6,15 +6,14 @@
 }: {
   config = lib.mkIf config.ar.users.morgan.enable {
     home-manager.users.morgan =
-      if config.ar.users.morgan.manageHome
-      then import ../../../homes/morgan
-      else {};
+      lib.attrsets.optionalAttrs
+      config.ar.users.morgan.manageHome
+      (import ../../../homes/morgan);
 
     users.users.morgan = {
       description = "Morgan Tamayo";
-      extraGroups = ["networkmanager" "wheel" "docker" "libvirtd" "video"];
+      extraGroups = config.ar.users.defaultGroups;
       hashedPassword = config.ar.users.morgan.password;
-
       isNormalUser = true;
       uid = 1002;
     };

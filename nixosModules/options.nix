@@ -248,6 +248,21 @@
     };
 
     users = {
+      defaultGroups = lib.mkOption {
+        description = "Default groups for desktop users.";
+        default = [
+          "dialout"
+          "docker"
+          "libvirtd"
+          "lp"
+          "networkmanager"
+          "scanner"
+          "transmission"
+          "video"
+          "wheel"
+        ];
+      };
+
       aly = {
         enable = lib.mkEnableOption "Aly's user.";
 
