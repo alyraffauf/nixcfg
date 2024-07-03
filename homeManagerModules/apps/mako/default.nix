@@ -13,7 +13,7 @@
       borderSize = 2;
       borderRadius = 10;
       defaultTimeout = 10000;
-      font = "${config.ar.home.theme.font.name} Regular ${toString config.ar.home.theme.font.size}";
+      font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
       height = 300;
       layer = "top";
       padding = "15";

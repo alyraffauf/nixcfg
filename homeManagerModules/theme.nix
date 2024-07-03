@@ -10,32 +10,23 @@
 
       pointerCursor = {
         gtk.enable = true;
-        name = config.ar.home.theme.cursorTheme.name;
-        package = config.ar.home.theme.cursorTheme.package;
-        size = config.ar.home.theme.cursorTheme.size;
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+        size = lib.mkDefault 20;
 
         x11 = {
           enable = true;
-          defaultCursor = config.ar.home.theme.cursorTheme.name;
+          defaultCursor = config.home.pointerCursor.name;
         };
-      };
-    };
-
-    qt = {
-      enable = true;
-      platformTheme.name = "qtct";
-      style = {
-        package = config.ar.home.theme.qt.package;
-        name = config.ar.home.theme.qt.name;
       };
     };
 
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [config.ar.home.theme.terminalFont.name];
+        monospace = ["NotoSansM Nerd Font"];
         serif = ["NotoSerif Nerd Font"];
-        sansSerif = [config.ar.home.theme.font.name];
+        sansSerif = [config.gtk.font.name];
       };
     };
 
@@ -43,24 +34,30 @@
       enable = true;
 
       theme = {
-        package = config.ar.home.theme.gtk.package;
-        name = config.ar.home.theme.gtk.name;
+        package = pkgs.adw-gtk3;
+        name =
+          if config.ar.home.theme.darkMode
+          then "adw-gtk3-dark"
+          else "adw-gtk3";
       };
 
       iconTheme = {
-        package = config.ar.home.theme.iconTheme.package;
-        name = config.ar.home.theme.iconTheme.name;
+        package = pkgs.papirus-icon-theme;
+        name =
+          if config.ar.home.theme.darkMode
+          then "Papirus-Dark"
+          else "Papirus";
       };
 
       font = {
-        name = "${config.ar.home.theme.font.name} Regular";
-        package = config.ar.home.theme.font.package;
-        size = config.ar.home.theme.font.size;
+        name = "NotoSans Nerd Font";
+        package = pkgs.nerdfonts;
+        size = lib.mkDefault 11;
       };
 
-      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.darkMode) {gtk-application-prefer-dark-theme = 1;};
 
-      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.darkMode) {gtk-application-prefer-dark-theme = 1;};
 
       gtk3.extraCss = ''
         @define-color accent_bg_color ${config.ar.home.theme.colors.primary};
@@ -96,35 +93,74 @@
       gtk4.extraCss = config.gtk.gtk3.extraCss;
     };
 
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+      style = {
+        package = pkgs.adwaita-qt;
+        name =
+          if config.ar.home.theme.darkMode
+          then "Adwaita Dark"
+          else "Adwaita";
+      };
+    };
+
     dconf.settings = {
       "org/cinnamon/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
 
       "org/cinnamon/desktop/interface" = {
-        cursor-size = config.ar.home.theme.cursorTheme.size;
-        cursor-theme = config.ar.home.theme.cursorTheme.name;
-        font-name = "${config.ar.home.theme.font.name} Regular ${toString config.ar.home.theme.font.size}";
-        gtk-theme = config.ar.home.theme.gtk.name;
-        icon-theme = config.ar.home.theme.iconTheme.name;
+        cursor-size = config.home.pointerCursor.size;
+        cursor-theme = config.home.pointerCursor.name;
+        font-name = "${config.gtk.font.name} ${toString config.gtk.font.size}";
+
+        gtk-theme =
+          if config.ar.home.theme.darkMode
+          then "adw-gtk3-dark"
+          else "adw-gtk3";
+
+        icon-theme =
+          if config.ar.home.theme.darkMode
+          then "Papirus-Dark"
+          else "Papirus";
       };
 
-      "org/cinnamon/theme".name = config.ar.home.theme.gtk.name;
-      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
+      "org/cinnamon/theme".name =
+        if config.ar.home.theme.darkMode
+        then "adw-gtk3-dark"
+        else "adw-gtk3";
 
-      "org/gnome/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
-      "org/gnome/desktop/background".picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
+      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} ${toString config.gtk.font.size}";
+
+      "org/gnome/desktop/background" = {
+        picture-uri = "file://${config.ar.home.theme.wallpaper}";
+        picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
+      };
+
       "org/gnome/desktop/interface" = {
         color-scheme =
-          if config.ar.home.theme.colors.preferDark
+          if config.ar.home.theme.darkMode
           then "prefer-dark"
           else "prefer-light";
-        cursor-theme = config.ar.home.theme.cursorTheme.name;
-        cursor-size = config.ar.home.theme.cursorTheme.size;
-        gtk-theme = config.ar.home.theme.gtk.name;
-        icon-theme = config.ar.home.theme.iconTheme.name;
-        monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
+
+        cursor-theme = config.home.pointerCursor.name;
+        cursor-size = config.home.pointerCursor.size;
+
+        document-font-name = "NotoSerif Nerd Font ${toString config.gtk.font.size}";
+
+        gtk-theme =
+          if config.ar.home.theme.darkMode
+          then "adw-gtk3-dark"
+          else "adw-gtk3";
+
+        icon-theme =
+          if config.ar.home.theme.darkMode
+          then "Papirus-Dark"
+          else "Papirus";
+
+        monospace-font-name = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
       };
 
-      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} ${toString config.gtk.font.size}";
     };
   };
 }

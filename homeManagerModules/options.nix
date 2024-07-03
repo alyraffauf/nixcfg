@@ -235,121 +235,13 @@
     theme = {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
 
-      gtk = {
-        name = lib.mkOption {
-          description = "GTK theme name.";
-          default = "adw-gtk3-dark";
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "GTK theme package.";
-          default = pkgs.adw-gtk3;
-          type = lib.types.package;
-        };
-
-        hideTitleBar = lib.mkOption {
-          description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
-          default = false;
-          type = lib.types.bool;
-        };
-      };
-
-      qt = {
-        name = lib.mkOption {
-          description = "Qt theme name.";
-          default = "Adwaita-Dark";
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "Qt theme package.";
-          default = pkgs.adwaita-qt;
-          type = lib.types.package;
-        };
-      };
-
-      iconTheme = {
-        name = lib.mkOption {
-          description = "Icon theme name.";
-          default = "Papirus-Dark";
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "Icon theme package.";
-          default = pkgs.papirus-icon-theme;
-          type = lib.types.package;
-        };
-      };
-
-      cursorTheme = {
-        name = lib.mkOption {
-          description = "Cursor theme name.";
-          default = "Bibata-Modern-Classic";
-          type = lib.types.str;
-        };
-
-        size = lib.mkOption {
-          description = "Cursor size.";
-          default = 20;
-          type = lib.types.int;
-        };
-
-        package = lib.mkOption {
-          description = "Cursor theme package.";
-          default = pkgs.bibata-cursors;
-          type = lib.types.package;
-        };
-      };
-
-      font = {
-        name = lib.mkOption {
-          description = "Font name.";
-          default = "NotoSans Nerd Font";
-          type = lib.types.str;
-        };
-
-        size = lib.mkOption {
-          description = "Font size.";
-          default = 11;
-          type = lib.types.int;
-        };
-
-        package = lib.mkOption {
-          description = "Font package.";
-          default = pkgs.nerdfonts;
-          type = lib.types.package;
-        };
-      };
-
-      terminalFont = {
-        name = lib.mkOption {
-          description = "Font name.";
-          default = "NotoSansM Nerd Font";
-          type = lib.types.str;
-        };
-
-        size = lib.mkOption {
-          description = "Font size.";
-          default = 11;
-          type = lib.types.int;
-        };
-
-        package = lib.mkOption {
-          description = "Font package.";
-          default = pkgs.nerdfonts;
-          type = lib.types.package;
-        };
+      darkMode = lib.mkOption {
+        description = "Whether to prefer dark mode apps or not.";
+        default = config.ar.home.theme.enable;
+        type = lib.types.bool;
       };
 
       colors = {
-        preferDark = lib.mkOption {
-          description = "Whether to prefer dark mode apps or not.";
-          default = config.ar.home.theme.enable;
-          type = lib.types.bool;
-        };
-
         text = lib.mkOption {
           description = "Text color.";
           default = "#FFFFFF";
@@ -385,6 +277,12 @@
           default = "#1A1A1A";
           type = lib.types.str;
         };
+      };
+
+      gtk.hideTitleBar = lib.mkOption {
+        description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
+        default = false;
+        type = lib.types.bool;
       };
 
       wallpaper = lib.mkOption {

@@ -172,44 +172,44 @@
 
     xdg.configFile."waybar/style.css".text = ''
       * {
-          border: none;
-          border-radius: 0;
-          font-family: "${config.ar.home.theme.terminalFont.name}";
-          font-size: 14px;
-          font-weight: 600;
+        border: none;
+        border-radius: 0;
+        font-family: "NotoSansM Nerd Font";
+        font-size: 14px;
+        font-weight: 600;
       }
 
       window#waybar {
-          background: rgba (35, 38, 52, 0.0);
-          color: ${config.ar.home.theme.colors.text};
+        background: rgba (35, 38, 52, 0.0);
+        color: ${config.ar.home.theme.colors.text};
       }
 
       #workspaces button {
-          padding: 0px 5px;
-          margin: 0 0px;
-          color: ${config.ar.home.theme.colors.text};
+        padding: 0px 5px;
+        margin: 0 0px;
+        color: ${config.ar.home.theme.colors.text};
       }
 
       #workspaces button.active,
       #workspaces button.focused {
-          color: ${config.ar.home.theme.colors.primary};
+        color: ${config.ar.home.theme.colors.primary};
       }
 
       #submap,
       #mode {
-          padding: 0 15px;
-          margin: 0 5px;
-          color: #FFFFFF;
+        padding: 0 15px;
+        margin: 0 5px;
+        color: #FFFFFF;
       }
 
       #tags button {
-          padding: 0px 5px;
-          margin: 0 0px;
-          color: ${config.ar.home.theme.colors.text};
+        padding: 0px 5px;
+        margin: 0 0px;
+        color: ${config.ar.home.theme.colors.text};
       }
 
       #tags button.focused {
-          color: ${config.ar.home.theme.colors.primary};
+        color: ${config.ar.home.theme.colors.primary};
       }
 
       #clock,
@@ -224,8 +224,8 @@
       #custom-menu,
       #custom-sway-close,
       #tray {
-          padding: 0 7.5px;
-          margin: 0 5px;
+        padding: 0 7.5px;
+        margin: 0 5px;
       }
 
       #battery {
@@ -251,11 +251,7 @@
       #custom-hyprland-close,
       #hardware {
           border-radius: 10;
-          background: rgba ${
-        if config.ar.home.theme.colors.preferDark
-        then "(36, 36, 36, 0.8);"
-        else "(250, 250, 250, 0.8);"
-      }
+          background: rgba (36, 36, 36, 0.8);
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
       }

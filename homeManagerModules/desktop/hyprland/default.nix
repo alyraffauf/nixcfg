@@ -214,7 +214,7 @@
         env = GDK_SCALE,${gdk_scale}
 
         # Some default env vars.
-        env = XCURSOR_SIZE,${toString config.ar.home.theme.cursorTheme.size}
+        env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
         env = QT_QPA_PLATFORMTHEME,qt6ct
 
         # Execute necessary apps

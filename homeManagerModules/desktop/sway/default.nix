@@ -115,9 +115,9 @@
         # mouseWarping = "container";
       };
       fonts = {
-        names = ["${config.ar.home.theme.font.name}"];
+        names = ["${config.gtk.font.name}"];
         style = "Bold";
-        size = config.ar.home.theme.font.size + 0.0;
+        size = config.gtk.font.size + 0.0;
       };
       gaps.inner = 5;
       gaps.outer = 5;
