@@ -241,26 +241,6 @@
         type = lib.types.bool;
       };
 
-      cursorTheme = {
-        name = lib.mkOption {
-          description = "Cursor theme name.";
-          default = "Bibata-Modern-Classic";
-          type = lib.types.str;
-        };
-
-        size = lib.mkOption {
-          description = "Cursor size.";
-          default = 20;
-          type = lib.types.int;
-        };
-
-        package = lib.mkOption {
-          description = "Cursor theme package.";
-          default = pkgs.bibata-cursors;
-          type = lib.types.package;
-        };
-      };
-
       font = {
         name = lib.mkOption {
           description = "Font name.";

@@ -10,13 +10,13 @@
 
       pointerCursor = {
         gtk.enable = true;
-        name = config.ar.home.theme.cursorTheme.name;
-        package = config.ar.home.theme.cursorTheme.package;
-        size = config.ar.home.theme.cursorTheme.size;
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+        size = lib.mkDefault 20;
 
         x11 = {
           enable = true;
-          defaultCursor = config.ar.home.theme.cursorTheme.name;
+          defaultCursor = config.home.pointerCursor.name;
         };
       };
     };
@@ -26,7 +26,10 @@
       platformTheme.name = "qtct";
       style = {
         package = pkgs.adwaita-qt;
-        name = "Adwaita-Dark";
+        name =
+          if config.ar.home.theme.colors.darkMode
+          then "Adwaita Dark"
+          else "Adwaita";
       };
     };
 
@@ -44,7 +47,10 @@
 
       theme = {
         package = pkgs.adw-gtk3;
-        name = "adw-gtk3-dark";
+        name =
+          if config.ar.home.theme.colors.darkMode
+          then "adw-gtk3-dark"
+          else "adw-gtk3";
       };
 
       iconTheme = {
@@ -100,14 +106,20 @@
       "org/cinnamon/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
 
       "org/cinnamon/desktop/interface" = {
-        cursor-size = config.ar.home.theme.cursorTheme.size;
-        cursor-theme = config.ar.home.theme.cursorTheme.name;
+        cursor-size = config.home.pointerCursor.size;
+        cursor-theme = config.home.pointerCursor.name;
         font-name = "${config.ar.home.theme.font.name} Regular ${toString config.ar.home.theme.font.size}";
-        gtk-theme = "adw-gtk3-dark";
+        gtk-theme =
+          if config.ar.home.theme.colors.darkMode
+          then "adw-gtk3-dark"
+          else "adw-gtk3";
         icon-theme = "Papirus-Dark";
       };
 
-      "org/cinnamon/theme".name = "adw-gtk3-dark";
+      "org/cinnamon/theme".name =
+        if config.ar.home.theme.colors.darkMode
+        then "adw-gtk3-dark"
+        else "adw-gtk3";
       "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
 
       "org/gnome/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
@@ -117,9 +129,12 @@
           if config.ar.home.theme.colors.darkMode
           then "prefer-dark"
           else "prefer-light";
-        cursor-theme = config.ar.home.theme.cursorTheme.name;
-        cursor-size = config.ar.home.theme.cursorTheme.size;
-        gtk-theme = "adw-gtk3-dark";
+        cursor-theme = config.home.pointerCursor.name;
+        cursor-size = config.home.pointerCursor.size;
+        gtk-theme =
+          if config.ar.home.theme.colors.darkMode
+          then "adw-gtk3-dark"
+          else "adw-gtk3";
         icon-theme = "Papirus-Dark";
         monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
       };
