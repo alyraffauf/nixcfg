@@ -100,7 +100,7 @@
         package = pkgs.adwaita-qt;
         name =
           if config.ar.home.theme.darkMode
-          then "Adwaita Dark"
+          then "Adwaita-Dark"
           else "Adwaita";
       };
     };
