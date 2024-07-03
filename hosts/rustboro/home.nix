@@ -14,6 +14,8 @@
 
         home.pointerCursor.size = lib.mkForce 24;
 
+        gtk.font.size = lib.mkForce 14;
+
         ar.home = {
           services.easyeffects = {
             enable = true;
@@ -21,7 +23,6 @@
           };
 
           theme = {
-            font.size = lib.mkForce 14;
             terminalFont.size = lib.mkForce 14;
           };
         };

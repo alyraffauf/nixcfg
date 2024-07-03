@@ -33,7 +33,7 @@
         * {
           background-image: none;
           box-shadow: none;
-          font-family: "${config.ar.home.theme.font.name}", sans-serif;
+          font-family: "${config.gtk.font.name}", sans-serif;
           transition: 20ms;
         }
 

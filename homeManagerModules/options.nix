@@ -241,26 +241,6 @@
         type = lib.types.bool;
       };
 
-      font = {
-        name = lib.mkOption {
-          description = "Font name.";
-          default = "NotoSans Nerd Font";
-          type = lib.types.str;
-        };
-
-        size = lib.mkOption {
-          description = "Font size.";
-          default = 11;
-          type = lib.types.int;
-        };
-
-        package = lib.mkOption {
-          description = "Font package.";
-          default = pkgs.nerdfonts;
-          type = lib.types.package;
-        };
-      };
-
       terminalFont = {
         name = lib.mkOption {
           description = "Font name.";

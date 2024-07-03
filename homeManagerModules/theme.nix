@@ -21,24 +21,12 @@
       };
     };
 
-    qt = {
-      enable = true;
-      platformTheme.name = "qtct";
-      style = {
-        package = pkgs.adwaita-qt;
-        name =
-          if config.ar.home.theme.colors.darkMode
-          then "Adwaita Dark"
-          else "Adwaita";
-      };
-    };
-
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
         monospace = [config.ar.home.theme.terminalFont.name];
         serif = ["NotoSerif Nerd Font"];
-        sansSerif = [config.ar.home.theme.font.name];
+        sansSerif = [config.gtk.font.name];
       };
     };
 
@@ -59,9 +47,9 @@
       };
 
       font = {
-        name = "${config.ar.home.theme.font.name} Regular";
-        package = config.ar.home.theme.font.package;
-        size = config.ar.home.theme.font.size;
+        name = "NotoSans Nerd Font";
+        package = pkgs.nerdfonts;
+        size = lib.mkDefault 11;
       };
 
       gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.darkMode) {gtk-application-prefer-dark-theme = 1;};
@@ -102,13 +90,25 @@
       gtk4.extraCss = config.gtk.gtk3.extraCss;
     };
 
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+      style = {
+        package = pkgs.adwaita-qt;
+        name =
+          if config.ar.home.theme.colors.darkMode
+          then "Adwaita Dark"
+          else "Adwaita";
+      };
+    };
+
     dconf.settings = {
       "org/cinnamon/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
 
       "org/cinnamon/desktop/interface" = {
         cursor-size = config.home.pointerCursor.size;
         cursor-theme = config.home.pointerCursor.name;
-        font-name = "${config.ar.home.theme.font.name} Regular ${toString config.ar.home.theme.font.size}";
+        font-name = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
         gtk-theme =
           if config.ar.home.theme.colors.darkMode
           then "adw-gtk3-dark"
@@ -120,26 +120,31 @@
         if config.ar.home.theme.colors.darkMode
         then "adw-gtk3-dark"
         else "adw-gtk3";
-      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
+
+      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
 
       "org/gnome/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
       "org/gnome/desktop/background".picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
+
       "org/gnome/desktop/interface" = {
         color-scheme =
           if config.ar.home.theme.colors.darkMode
           then "prefer-dark"
           else "prefer-light";
+
         cursor-theme = config.home.pointerCursor.name;
         cursor-size = config.home.pointerCursor.size;
+
         gtk-theme =
           if config.ar.home.theme.colors.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
+
         icon-theme = "Papirus-Dark";
         monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
       };
 
-      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
     };
   };
 }
