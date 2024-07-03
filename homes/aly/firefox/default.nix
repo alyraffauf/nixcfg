@@ -25,6 +25,7 @@
           decentraleyes
           keepassxc-browser
           omnivore
+          raindropio
           sidebery
           sponsorblock
           ublock-origin
