@@ -25,8 +25,8 @@
       enable = true;
       platformTheme.name = "qtct";
       style = {
-        package = config.ar.home.theme.qt.package;
-        name = config.ar.home.theme.qt.name;
+        package = pkgs.adwaita-qt;
+        name = "Adwaita-Dark";
       };
     };
 
@@ -43,13 +43,13 @@
       enable = true;
 
       theme = {
-        package = config.ar.home.theme.gtk.package;
-        name = config.ar.home.theme.gtk.name;
+        package = pkgs.adw-gtk3;
+        name = "adw-gtk3-dark";
       };
 
       iconTheme = {
-        package = config.ar.home.theme.iconTheme.package;
-        name = config.ar.home.theme.iconTheme.name;
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus-Dark";
       };
 
       font = {
@@ -58,9 +58,9 @@
         size = config.ar.home.theme.font.size;
       };
 
-      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.darkMode) {gtk-application-prefer-dark-theme = 1;};
 
-      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.preferDark) {gtk-application-prefer-dark-theme = 1;};
+      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.darkMode) {gtk-application-prefer-dark-theme = 1;};
 
       gtk3.extraCss = ''
         @define-color accent_bg_color ${config.ar.home.theme.colors.primary};
@@ -103,24 +103,24 @@
         cursor-size = config.ar.home.theme.cursorTheme.size;
         cursor-theme = config.ar.home.theme.cursorTheme.name;
         font-name = "${config.ar.home.theme.font.name} Regular ${toString config.ar.home.theme.font.size}";
-        gtk-theme = config.ar.home.theme.gtk.name;
-        icon-theme = config.ar.home.theme.iconTheme.name;
+        gtk-theme = "adw-gtk3-dark";
+        icon-theme = "Papirus-Dark";
       };
 
-      "org/cinnamon/theme".name = config.ar.home.theme.gtk.name;
+      "org/cinnamon/theme".name = "adw-gtk3-dark";
       "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.ar.home.theme.font.name} ${toString config.ar.home.theme.font.size}";
 
       "org/gnome/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
       "org/gnome/desktop/background".picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
       "org/gnome/desktop/interface" = {
         color-scheme =
-          if config.ar.home.theme.colors.preferDark
+          if config.ar.home.theme.colors.darkMode
           then "prefer-dark"
           else "prefer-light";
         cursor-theme = config.ar.home.theme.cursorTheme.name;
         cursor-size = config.ar.home.theme.cursorTheme.size;
-        gtk-theme = config.ar.home.theme.gtk.name;
-        icon-theme = config.ar.home.theme.iconTheme.name;
+        gtk-theme = "adw-gtk3-dark";
+        icon-theme = "Papirus-Dark";
         monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
       };
 

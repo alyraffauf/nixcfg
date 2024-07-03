@@ -235,52 +235,10 @@
     theme = {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
 
-      gtk = {
-        name = lib.mkOption {
-          description = "GTK theme name.";
-          default = "adw-gtk3-dark";
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "GTK theme package.";
-          default = pkgs.adw-gtk3;
-          type = lib.types.package;
-        };
-
-        hideTitleBar = lib.mkOption {
-          description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
-          default = false;
-          type = lib.types.bool;
-        };
-      };
-
-      qt = {
-        name = lib.mkOption {
-          description = "Qt theme name.";
-          default = "Adwaita-Dark";
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "Qt theme package.";
-          default = pkgs.adwaita-qt;
-          type = lib.types.package;
-        };
-      };
-
-      iconTheme = {
-        name = lib.mkOption {
-          description = "Icon theme name.";
-          default = "Papirus-Dark";
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "Icon theme package.";
-          default = pkgs.papirus-icon-theme;
-          type = lib.types.package;
-        };
+      gtk.hideTitleBar = lib.mkOption {
+        description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
+        default = false;
+        type = lib.types.bool;
       };
 
       cursorTheme = {
@@ -344,7 +302,7 @@
       };
 
       colors = {
-        preferDark = lib.mkOption {
+        darkMode = lib.mkOption {
           description = "Whether to prefer dark mode apps or not.";
           default = config.ar.home.theme.enable;
           type = lib.types.bool;

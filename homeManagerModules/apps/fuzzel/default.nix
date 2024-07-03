@@ -15,7 +15,7 @@
 
         main = {
           font = "${config.ar.home.theme.terminalFont.name}:size=${toString config.ar.home.theme.terminalFont.size}";
-          icon-theme = "${config.ar.home.theme.iconTheme.name}";
+          icon-theme = "${config.gtk.iconTheme.name}";
           layer = "overlay";
           lines = 3;
           terminal = lib.getExe config.ar.home.defaultApps.terminal;

@@ -252,7 +252,7 @@
       #hardware {
           border-radius: 10;
           background: rgba ${
-        if config.ar.home.theme.colors.preferDark
+        if config.ar.home.theme.colors.darkMode
         then "(36, 36, 36, 0.8);"
         else "(250, 250, 250, 0.8);"
       }
