@@ -30,7 +30,7 @@
           else "native";
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "Adwaita Dark"
           else "Adwaita Light";
         "workbench.iconTheme" = "null";

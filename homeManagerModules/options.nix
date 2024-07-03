@@ -235,19 +235,13 @@
     theme = {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
 
-      gtk.hideTitleBar = lib.mkOption {
-        description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
-        default = false;
+      darkMode = lib.mkOption {
+        description = "Whether to prefer dark mode apps or not.";
+        default = config.ar.home.theme.enable;
         type = lib.types.bool;
       };
 
       colors = {
-        darkMode = lib.mkOption {
-          description = "Whether to prefer dark mode apps or not.";
-          default = config.ar.home.theme.enable;
-          type = lib.types.bool;
-        };
-
         text = lib.mkOption {
           description = "Text color.";
           default = "#FFFFFF";
@@ -283,6 +277,12 @@
           default = "#1A1A1A";
           type = lib.types.str;
         };
+      };
+
+      gtk.hideTitleBar = lib.mkOption {
+        description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
+        default = false;
+        type = lib.types.bool;
       };
 
       wallpaper = lib.mkOption {

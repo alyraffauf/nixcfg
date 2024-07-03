@@ -36,7 +36,7 @@
       theme = {
         package = pkgs.adw-gtk3;
         name =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
       };
@@ -44,7 +44,7 @@
       iconTheme = {
         package = pkgs.papirus-icon-theme;
         name =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "Papirus-Dark"
           else "Papirus";
       };
@@ -55,9 +55,9 @@
         size = lib.mkDefault 11;
       };
 
-      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.darkMode) {gtk-application-prefer-dark-theme = 1;};
+      gtk3.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.darkMode) {gtk-application-prefer-dark-theme = 1;};
 
-      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.colors.darkMode) {gtk-application-prefer-dark-theme = 1;};
+      gtk4.extraConfig = lib.attrsets.optionalAttrs (config.ar.home.theme.darkMode) {gtk-application-prefer-dark-theme = 1;};
 
       gtk3.extraCss = ''
         @define-color accent_bg_color ${config.ar.home.theme.colors.primary};
@@ -99,7 +99,7 @@
       style = {
         package = pkgs.adwaita-qt;
         name =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "Adwaita Dark"
           else "Adwaita";
       };
@@ -113,17 +113,17 @@
         cursor-theme = config.home.pointerCursor.name;
         font-name = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
         gtk-theme =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
         icon-theme =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "Papirus-Dark"
           else "Papirus";
       };
 
       "org/cinnamon/theme".name =
-        if config.ar.home.theme.colors.darkMode
+        if config.ar.home.theme.darkMode
         then "adw-gtk3-dark"
         else "adw-gtk3";
 
@@ -134,7 +134,7 @@
 
       "org/gnome/desktop/interface" = {
         color-scheme =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "prefer-dark"
           else "prefer-light";
 
@@ -142,12 +142,12 @@
         cursor-size = config.home.pointerCursor.size;
 
         gtk-theme =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
 
         icon-theme =
-          if config.ar.home.theme.colors.darkMode
+          if config.ar.home.theme.darkMode
           then "Papirus-Dark"
           else "Papirus";
         monospace-font-name = "NotoSansM Nerd Font Regular ${toString config.gtk.font.size}";
