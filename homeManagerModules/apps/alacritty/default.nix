@@ -18,10 +18,10 @@
         };
         font = {
           normal = {
-            family = "${config.ar.home.theme.terminalFont.name}";
+            family = "NotoSansM Nerd Font";
             style = "Regular";
           };
-          size = config.ar.home.theme.terminalFont.size;
+          size = config.gtk.font.size;
         };
         selection.save_to_clipboard = true;
         window = {

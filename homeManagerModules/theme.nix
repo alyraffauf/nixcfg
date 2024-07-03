@@ -24,7 +24,7 @@
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [config.ar.home.theme.terminalFont.name];
+        monospace = ["NotoSansM Nerd Font"];
         serif = ["NotoSerif Nerd Font"];
         sansSerif = [config.gtk.font.name];
       };
@@ -150,7 +150,7 @@
           if config.ar.home.theme.colors.darkMode
           then "Papirus-Dark"
           else "Papirus";
-        monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
+        monospace-font-name = "NotoSansM Nerd Font Regular ${toString config.gtk.font.size}";
       };
 
       "org/gnome/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";

@@ -241,20 +241,6 @@
         type = lib.types.bool;
       };
 
-      terminalFont = {
-        name = lib.mkOption {
-          description = "Font name.";
-          default = "NotoSansM Nerd Font";
-          type = lib.types.str;
-        };
-
-        size = lib.mkOption {
-          description = "Font size.";
-          default = 11;
-          type = lib.types.int;
-        };
-      };
-
       colors = {
         darkMode = lib.mkOption {
           description = "Whether to prefer dark mode apps or not.";

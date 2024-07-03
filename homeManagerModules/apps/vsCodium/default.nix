@@ -12,7 +12,7 @@
       enableExtensionUpdateCheck = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'NotoSansM Nerd Font','${config.ar.home.theme.terminalFont.name}', 'monospace', monospace";
+        "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
         "editor.fontSize" = lib.mkDefault 14;
         "editor.rulers" = [80];
         "explorer.confirmDelete" = false;

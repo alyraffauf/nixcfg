@@ -21,10 +21,6 @@
             enable = true;
             preset = "LoudnessEqualizer";
           };
-
-          theme = {
-            terminalFont.size = lib.mkForce 14;
-          };
         };
       }
     ];

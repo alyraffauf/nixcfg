@@ -14,7 +14,7 @@
         };
 
         main = {
-          font = "${config.ar.home.theme.terminalFont.name}:size=${toString config.ar.home.theme.terminalFont.size}";
+          font = "NotoSansM Nerd Font:size=${toString config.gtk.font.size}";
           icon-theme = "${config.gtk.iconTheme.name}";
           layer = "overlay";
           lines = 3;

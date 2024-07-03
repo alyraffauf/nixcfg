@@ -174,7 +174,7 @@
       * {
           border: none;
           border-radius: 0;
-          font-family: "${config.ar.home.theme.terminalFont.name}";
+          font-family: "NotoSansM Nerd Font";
           font-size: 14px;
           font-weight: 600;
       }
