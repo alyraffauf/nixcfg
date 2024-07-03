@@ -111,11 +111,13 @@
       "org/cinnamon/desktop/interface" = {
         cursor-size = config.home.pointerCursor.size;
         cursor-theme = config.home.pointerCursor.name;
-        font-name = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
+        font-name = "${config.gtk.font.name} ${toString config.gtk.font.size}";
+
         gtk-theme =
           if config.ar.home.theme.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
+
         icon-theme =
           if config.ar.home.theme.darkMode
           then "Papirus-Dark"
@@ -127,10 +129,12 @@
         then "adw-gtk3-dark"
         else "adw-gtk3";
 
-      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
+      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} ${toString config.gtk.font.size}";
 
-      "org/gnome/desktop/background".picture-uri = "file://${config.ar.home.theme.wallpaper}";
-      "org/gnome/desktop/background".picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
+      "org/gnome/desktop/background" = {
+        picture-uri = "file://${config.ar.home.theme.wallpaper}";
+        picture-uri-dark = "file://${config.ar.home.theme.wallpaper}";
+      };
 
       "org/gnome/desktop/interface" = {
         color-scheme =
@@ -141,6 +145,8 @@
         cursor-theme = config.home.pointerCursor.name;
         cursor-size = config.home.pointerCursor.size;
 
+        document-font-name = "NotoSerif Nerd Font ${toString config.gtk.font.size}";
+
         gtk-theme =
           if config.ar.home.theme.darkMode
           then "adw-gtk3-dark"
@@ -150,10 +156,11 @@
           if config.ar.home.theme.darkMode
           then "Papirus-Dark"
           else "Papirus";
-        monospace-font-name = "NotoSansM Nerd Font Regular ${toString config.gtk.font.size}";
+
+        monospace-font-name = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
       };
 
-      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} ${toString config.gtk.font.size}";
     };
   };
 }
