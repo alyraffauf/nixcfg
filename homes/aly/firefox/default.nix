@@ -55,6 +55,23 @@
               ];
             };
 
+            "Kagi" = {
+              definedAliases = ["!kagi"];
+              icon = ./kagi.png;
+
+              urls = [
+                {
+                  template = "https://kagi.com/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+            };
+
             "nixpkgs" = {
               definedAliases = ["!nix"];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
