@@ -38,7 +38,7 @@ in {
       ++ [gnomeCsAdjuster];
 
     # Enable keyring support for KDE apps in GNOME.
-    security.pam.services.gfm = {
+    security.pam.services.gdm = {
       enableGnomeKeyring = true;
       gnupg.enable = true;
       kwallet.enable = true;
