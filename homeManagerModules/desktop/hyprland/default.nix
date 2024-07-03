@@ -80,10 +80,8 @@
           (lib.getExe pkgs.mako)
           "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
         ]
-        ++ lib.lists.optionals (config.ar.home.desktop.hyprland.redShift) [
-          # "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/agent"
-          "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
-        ];
+        ++ lib.lists.optional (config.ar.home.desktop.hyprland.redShift)
+        "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";
 
       screenshot = rec {
         bin = lib.getExe pkgs.hyprshot;
@@ -130,7 +128,7 @@
           fi
         elif [ "$1" == "off" ]; then
           ${
-          lib.strings.concatStringsSep "\n"
+          lib.strings.concatLines
           (
             lib.attrsets.mapAttrsToList (name: monitor: ''${hyprctl} keyword monitor "${monitor}"'')
             laptopMonitors
@@ -192,7 +190,7 @@
       '';
     in ''
         ${
-        lib.strings.concatStringsSep "\n"
+        lib.strings.concatLines
         (
           lib.attrsets.mapAttrsToList (name: value: "monitor = ${value}")
           (laptopMonitors // externalMonitors)
@@ -368,7 +366,7 @@
         # Move window with mainMod SHIFT + keys ++
         # Move workspace to another output with mainMod CONTROL SHIFT + keys.
         ${
-        lib.strings.concatStringsSep "\n"
+        lib.strings.concatLines
         (
           lib.attrsets.mapAttrsToList (key: direction: ''
             bind = ${modifier}, ${key}, movefocus, ${direction}
@@ -450,7 +448,7 @@
           # Move window with keys ++
           # Move workspaces across monitors with CONTROL + keys.
         ${
-        lib.strings.concatStringsSep "\n"
+        lib.strings.concatLines
         (
           lib.attrsets.mapAttrsToList (key: direction: ''
             bind = , ${key}, movewindow, ${direction}

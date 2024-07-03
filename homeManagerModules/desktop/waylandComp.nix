@@ -16,9 +16,7 @@
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/desktop/wm/preferences" = {
-          button-layout = "";
-        };
+        "org/gnome/desktop/wm/preferences" = {button-layout = "";};
         "org/gnome/nm-applet".disable-connected-notifications = true;
       };
     };
@@ -32,9 +30,9 @@
     xdg.portal = {
       enable = true;
       configPackages =
-        lib.optionals (config.ar.home.desktop.hyprland.enable) [pkgs.xdg-desktop-portal-hyprland];
+        lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
       extraPortals =
-        lib.optionals (config.ar.home.desktop.hyprland.enable) [pkgs.xdg-desktop-portal-hyprland];
+        lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
     };
   };
 }

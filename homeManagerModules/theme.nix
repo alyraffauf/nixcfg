@@ -67,8 +67,9 @@
         @define-color accent_color @accent_bg_color;
 
         ${
-          if config.ar.home.theme.gtk.hideTitleBar
-          then ''
+          lib.strings.optionalString
+          config.ar.home.theme.gtk.hideTitleBar
+          ''
             /* No (default) title bar on wayland */
             headerbar.default-decoration {
               /* You may need to tweak these values depending on your GTK theme */
@@ -89,7 +90,6 @@
               box-shadow: none;
             }
           ''
-          else "/* */"
         }
       '';
 

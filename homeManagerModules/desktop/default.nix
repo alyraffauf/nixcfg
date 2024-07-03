@@ -26,6 +26,7 @@
         settings = {
           "org/gtk/gtk4/settings/file-chooser".sort-directories-first = true;
           "org/gtk/settings/file-chooser".sort-directories-first = true;
+
           "org/virt-manager/virt-manager/connections" = {
             autoconnect = ["qemu:///system"];
             uris = ["qemu:///system"];
