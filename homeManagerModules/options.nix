@@ -253,12 +253,6 @@
           default = 11;
           type = lib.types.int;
         };
-
-        package = lib.mkOption {
-          description = "Font package.";
-          default = pkgs.nerdfonts;
-          type = lib.types.package;
-        };
       };
 
       colors = {

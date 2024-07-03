@@ -43,7 +43,10 @@
 
       iconTheme = {
         package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
+        name =
+          if config.ar.home.theme.colors.darkMode
+          then "Papirus-Dark"
+          else "Papirus";
       };
 
       font = {
@@ -113,7 +116,10 @@
           if config.ar.home.theme.colors.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
-        icon-theme = "Papirus-Dark";
+        icon-theme =
+          if config.ar.home.theme.colors.darkMode
+          then "Papirus-Dark"
+          else "Papirus";
       };
 
       "org/cinnamon/theme".name =
@@ -140,7 +146,10 @@
           then "adw-gtk3-dark"
           else "adw-gtk3";
 
-        icon-theme = "Papirus-Dark";
+        icon-theme =
+          if config.ar.home.theme.colors.darkMode
+          then "Papirus-Dark"
+          else "Papirus";
         monospace-font-name = "${config.ar.home.theme.terminalFont.name} Regular ${toString config.ar.home.theme.terminalFont.size}";
       };
 
