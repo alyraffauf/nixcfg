@@ -109,6 +109,7 @@
 
       work = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          clearurls
           consent-o-matic
           decentraleyes
           keepassxc-browser
