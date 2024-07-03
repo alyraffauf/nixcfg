@@ -1,0 +1,29 @@
+name: "git"
+on: [push]
+jobs:
+  sync-codeberg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: "sync codeberg mirror"
+        uses: yesolutions/mirror-action@v0.7.0
+        with:
+          REMOTE: 'https://codeberg.org/alyraffauf/nixcfg.git'
+          GIT_USERNAME: alyraffauf
+          GIT_PASSWORD: ${{ secrets.CODEBERG_PASSWORD }}
+  sync-gitlab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: "sync gitlab mirror"
+        uses: yesolutions/mirror-action@v0.7.0
+        with:
+          REMOTE: 'https://gitlab.com/alyraffauf/nixcfg.git'
+          GIT_USERNAME: alyraffauf
+          GIT_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
