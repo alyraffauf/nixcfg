@@ -1,4 +1,4 @@
-name: "nix"
+name: "flake: update inputs"
 on:
   schedule:
     - cron: "0 6 * * *"
