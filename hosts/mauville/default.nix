@@ -108,7 +108,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://127.0.0.1:4533";
+            proxyPass = "http://127.0.0.1:${toString config.ar.containers.nixos.navidrome.port}";
             proxyWebsockets = true;
 
             extraConfig = ''
