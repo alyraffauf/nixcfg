@@ -9,20 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 1
+      - name: "git: setup"
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
       - uses: cachix/install-nix-action@v20
-      - name: update inputs in flake.lock
-        run: nix flake update
-      - name: check if flake evaluates
+      - name: "flake: update inputs"
+        run: nix flake update --commit-lock-file
+      - name: "flake: check eval"
         run: nix flake check
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: "git: push changes"
+        uses: ad-m/github-push-action@master
         with:
-          commit_message: "flake: update inputs"
-          branch: master
-          commit_options: '--no-verify --signoff'
-          file_pattern: flake.lock
-          commit_user_name: Flake Bot # defaults to "GitHub Actions"
-          #commit_user_email: my-github-actions-bot@example.org # defaults to "actions@github.com"
-          commit_author: Flake Bot <actions@github.com> # defaults to author of the commit that triggered the run
-          skip_dirty_check: false
-          skip_fetch: true
+          branch: ${{ github.head_ref }}
+
