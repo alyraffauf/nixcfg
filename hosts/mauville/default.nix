@@ -46,6 +46,7 @@ in {
     # My router doesn't expose settings for NAT loopback
     # So we have to use this workaround.
     extraHosts = ''
+      127.0.0.1 git.${domain}
       127.0.0.1 music.${domain}
       127.0.0.1 news.${domain}
       127.0.0.1 nixcache.${domain}
@@ -65,6 +66,7 @@ in {
     ddclient = {
       enable = true;
       domains = [
+        "git.raffauflabs.com"
         "music.raffauflabs.com"
         "plex.raffauflabs.com"
         "podcasts.raffauflabs.com"
@@ -88,6 +90,19 @@ in {
       recommendedTlsSettings = true;
 
       virtualHosts = {
+        # "git.${domain}" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+
+        #   locations."/" = {
+        #     proxyPass = "http://127.0.0.1:4533";
+        #     proxyWebsockets = true;
+
+        #     extraConfig = ''
+        #       proxy_buffering off;
+        #     '';
+        #   };
+        # };
         "music.${domain}" = {
           enableACME = true;
           forceSSL = true;
