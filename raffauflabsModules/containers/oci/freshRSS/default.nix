@@ -5,6 +5,10 @@
   ...
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.freshRSS.enable {
+    networking.extraHosts = ''
+      127.0.0.1 news.${domain}
+    '';
+
     services = {
       ddclient.domains = ["news.${config.raffauflabs.domain}"];
 

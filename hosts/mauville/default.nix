@@ -22,22 +22,9 @@ in {
     systemd-boot.enable = true;
   };
 
+  networking.hostName = "mauville";
+
   system.stateVersion = "23.11";
-
-  networking = {
-    # My router doesn't expose settings for NAT loopback
-    # So we have to use this workaround.
-    extraHosts = ''
-      127.0.0.1 git.${domain}
-      127.0.0.1 music.${domain}
-      127.0.0.1 news.${domain}
-      127.0.0.1 nixcache.${domain}
-      127.0.0.1 plex.${domain}
-      127.0.0.1 podcasts.${domain}
-    '';
-
-    hostName = "mauville";
-  };
 
   services = {
     samba = {
@@ -75,6 +62,8 @@ in {
   };
 
   raffauflabs = {
+    inherit domain;
+    
     enable = true;
 
     containers = {

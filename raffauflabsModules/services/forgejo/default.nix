@@ -5,6 +5,10 @@
   ...
 }: {
   config = lib.mkIf config.raffauflabs.services.forgejo.enable {
+    networking.extraHosts = ''
+      127.0.0.1 git.${domain}
+    '';
+
     services = {
       ddclient.domains = ["git.${config.raffauflabs.domain}"];
 

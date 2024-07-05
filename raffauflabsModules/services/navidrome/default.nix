@@ -29,6 +29,10 @@
       };
     };
 
+    networking.extraHosts = ''
+      127.0.0.1 music.${domain}
+    '';
+
     services = {
       ddclient.domains = ["music.${config.raffauflabs.domain}"];
       navidrome.enable = true;

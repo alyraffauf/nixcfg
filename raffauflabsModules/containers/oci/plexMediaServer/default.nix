@@ -5,6 +5,10 @@
   ...
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.plexMediaServer.enable {
+    networking.extraHosts = ''
+      127.0.0.1 plex.${domain}
+    '';
+
     services = {
       ddclient.domains = ["plex.${config.raffauflabs.domain}"];
 

@@ -5,6 +5,10 @@
   ...
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.audiobookshelf.enable {
+    networking.extraHosts = ''
+      127.0.0.1 podcasts.${domain}
+    '';
+
     services = {
       ddclient.domains = ["podcasts.${config.raffauflabs.domain}"];
 
