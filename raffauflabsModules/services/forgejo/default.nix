@@ -3,14 +3,16 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.raffauflabs.services.forgejo.enable {
+}: let
+  cfg = config.raffauflabs.services.forgejo;
+in {
+  config = lib.mkIf cfg.enable {
     networking.extraHosts = ''
-      127.0.0.1 ${config.raffauflabs.services.forgejo.subDomain}.${config.raffauflabs.domain}
+      127.0.0.1 ${cfg.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["${config.raffauflabs.services.forgejo.subDomain}.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${cfg.subDomain}.${config.raffauflabs.domain}"];
 
       forgejo = {
         enable = true;
@@ -42,7 +44,7 @@
 
           server = {
             LANDING_PAGE = "explore";
-            ROOT_URL = "https://${config.raffauflabs.services.forgejo.subDomain}.${config.raffauflabs.domain}/";
+            ROOT_URL = "https://${cfg.subDomain}.${config.raffauflabs.domain}/";
           };
 
           service = {

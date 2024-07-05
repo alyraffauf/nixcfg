@@ -1,22 +1,24 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
-}: {
-  config = lib.mkIf config.raffauflabs.containers.oci.transmission.enable {
+}: let
+  cfg = config.raffauflabs.containers.oci.transmission;
+in {
+  config = lib.mkIf cfg.enable {
     networking.firewall = {
       allowedTCPPorts = [
-        config.raffauflabs.containers.oci.transmission.port
-        config.raffauflabs.containers.oci.transmission.bitTorrentPort
+        cfg.port
+        cfg.bitTorrentPort
       ];
 
-      allowedUDPPorts = [config.raffauflabs.containers.oci.transmission.bitTorrentPort];
+      allowedUDPPorts = [cfg.bitTorrentPort];
     };
 
     virtualisation.oci-containers.containers = {
       transmission = {
-        ports = ["0.0.0.0:${toString config.raffauflabs.containers.oci.transmission.port}:9091" "0.0.0.0:${toString config.raffauflabs.containers.oci.transmission.bitTorrentPort}:51413"];
+        ports = ["0.0.0.0:${toString cfg.port}:9091" "0.0.0.0:${toString cfg.bitTorrentPort}:51413"];
         image = "linuxserver/transmission:latest";
         environment = {
           PGID = "1000";
@@ -25,8 +27,8 @@
         };
         volumes = [
           "transmission_config:/config"
-          "${config.raffauflabs.containers.oci.transmission.mediaDirectory}:/Media"
-          "${config.raffauflabs.containers.oci.transmission.archiveDirectory}:/Archive"
+          "${cfg.mediaDirectory}:/Media"
+          "${cfg.archiveDirectory}:/Archive"
         ];
       };
     };

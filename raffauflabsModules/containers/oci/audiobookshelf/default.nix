@@ -1,23 +1,25 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
-}: {
-  config = lib.mkIf config.raffauflabs.containers.oci.audiobookshelf.enable {
+}: let
+  cfg = config.raffauflabs.containers.oci.audiobookshelf;
+in {
+  config = lib.mkIf cfg.enable {
     networking.extraHosts = ''
-      127.0.0.1 ${config.raffauflabs.containers.oci.audiobookshelf.subDomain}.${config.raffauflabs.domain}
+      127.0.0.1 ${cfg.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["${config.raffauflabs.containers.oci.audiobookshelf.subDomain}.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${cfg.subDomain}.${config.raffauflabs.domain}"];
 
-      nginx.virtualHosts."${config.raffauflabs.containers.oci.audiobookshelf.subDomain}.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${cfg.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.raffauflabs.containers.oci.audiobookshelf.port}";
+          proxyPass = "http://127.0.0.1:${toString cfg.port}";
 
           extraConfig = ''
             client_max_body_size 500M;
@@ -35,10 +37,10 @@
 
     virtualisation.oci-containers.containers = {
       audiobookshelf = {
-        ports = ["0.0.0.0:${toString config.raffauflabs.containers.oci.audiobookshelf.port}:80"];
+        ports = ["0.0.0.0:${toString cfg.port}:80"];
         image = "ghcr.io/advplyr/audiobookshelf:latest";
         environment = {TZ = "America/New_York";};
-        volumes = ["abs_config:/config" "abs_metadata:/metadata" "${config.raffauflabs.containers.oci.audiobookshelf.mediaDirectory}:/Media"];
+        volumes = ["abs_config:/config" "abs_metadata:/metadata" "${cfg.mediaDirectory}:/Media"];
       };
     };
   };

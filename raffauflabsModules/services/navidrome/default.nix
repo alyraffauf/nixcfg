@@ -3,8 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.raffauflabs.services.navidrome.enable {
+}: let
+  cfg = config.raffauflabs.services.navidrome;
+in {
+  config = lib.mkIf cfg.enable {
     age.secrets = let
       owner = "navidrome";
     in {
@@ -30,19 +32,19 @@
     };
 
     networking.extraHosts = ''
-      127.0.0.1 ${config.raffauflabs.services.navidrome.subDomain}.${config.raffauflabs.domain}
+      127.0.0.1 ${cfg.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["${config.raffauflabs.services.navidrome.subDomain}.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${cfg.subDomain}.${config.raffauflabs.domain}"];
       navidrome.enable = true;
 
-      nginx.virtualHosts."${config.raffauflabs.services.navidrome.subDomain}.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${cfg.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.raffauflabs.services.navidrome.port}";
+          proxyPass = "http://127.0.0.1:${toString cfg.port}";
           proxyWebsockets = true;
 
           extraConfig = ''
@@ -56,8 +58,8 @@
       navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
         Address = "0.0.0.0";
         DefaultTheme = "Auto";
-        MusicFolder = config.raffauflabs.services.navidrome.musicDirectory;
-        Port = config.raffauflabs.services.navidrome.port;
+        MusicFolder = cfg.musicDirectory;
+        Port = cfg.port;
         SubsonicArtistParticipations = true;
         UIWelcomeMessage = "Welcome to Navidrome @ RaffaufLabs.com";
         "Spotify.ID" = "@spotifyClientId@";
@@ -83,7 +85,7 @@
         config.age.secrets.lastFMSecret.path
         config.age.secrets.spotifyClientId.path
         config.age.secrets.spotifyClientSecret.path
-        config.raffauflabs.services.navidrome.musicDirectory
+        cfg.musicDirectory
       ];
 
       ExecStartPre = navidrome-secrets;

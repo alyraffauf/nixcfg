@@ -3,21 +3,23 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.raffauflabs.containers.oci.freshRSS.enable {
+}: let
+  cfg = config.raffauflabs.containers.oci.freshRSS;
+in {
+  config = lib.mkIf cfg.enable {
     networking.extraHosts = ''
-      127.0.0.1 ${config.raffauflabs.containers.oci.freshRSS.subDomain}.${config.raffauflabs.domain}
+      127.0.0.1 ${cfg.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["${config.raffauflabs.containers.oci.freshRSS.subDomain}.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${cfg.subDomain}.${config.raffauflabs.domain}"];
 
-      nginx.virtualHosts."${config.raffauflabs.containers.oci.freshRSS.subDomain}.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${cfg.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.raffauflabs.containers.oci.freshRSS.port}";
+          proxyPass = "http://127.0.0.1:${toString cfg.port}";
           proxyWebsockets = true; # needed if you need to use WebSocket
 
           extraConfig = ''
@@ -33,7 +35,7 @@
 
     virtualisation.oci-containers.containers = {
       freshrss = {
-        ports = ["0.0.0.0:${toString config.raffauflabs.containers.oci.freshRSS.port}:80"];
+        ports = ["0.0.0.0:${toString cfg.port}:80"];
         image = "freshrss/freshrss:latest";
         environment = {
           TZ = "America/New_York";
