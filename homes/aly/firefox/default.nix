@@ -38,6 +38,13 @@
           default = "Brave";
           force = true;
           engines = {
+            "Bing" = {
+              metaData = {
+                hidden = true;
+                alias = "!bing";
+              };
+            };
+
             "Brave" = {
               definedAliases = ["!brave"];
               icon = "${pkgs.brave}/share/icons/hicolor/24x24/apps/brave-browser.png";
@@ -55,9 +62,17 @@
               ];
             };
 
+            "Google" = {
+              metaData = {
+                hidden = true;
+                alias = "!google";
+              };
+            };
+
             "Kagi" = {
               definedAliases = ["!kagi"];
-              icon = ./kagi.png;
+              iconUpdateURL = "https://kagi.com/favicon.ico";
+              updateInterval = 24 * 60 * 60 * 1000; # every day
 
               urls = [
                 {
@@ -93,18 +108,15 @@
               ];
             };
 
-            "Bing" = {
-              metaData = {
-                hidden = true;
-                alias = "!bing";
-              };
-            };
-
-            "Google" = {
-              metaData = {
-                hidden = true;
-                alias = "!google";
-              };
+            "Wiktionary" = {
+              urls = [
+                {
+                  template = "https://en.wiktionary.org/wiki/{searchTerms}";
+                }
+              ];
+              iconUpdateURL = "https://en.wiktionary.org/favicon.ico";
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+              definedAliases = ["!wikt"];
             };
           };
         };
