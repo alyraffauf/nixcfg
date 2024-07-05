@@ -29,7 +29,7 @@ in {
             RUN_AT_START = false;
           };
 
-          DEFAULT.APP_NAME = "Git @ RaffaufLabs.com";
+          DEFAULT.APP_NAME = "Forĝejo";
 
           repository = {
             DEFAULT_BRANCH = "master";
@@ -57,9 +57,9 @@ in {
 
           ui.DEFAULT_THEME = "forgejo-auto";
           "ui.meta" = {
-            AUTHOR = "Git @ RaffaufLabs.com";
-            DESCRIPTION = "Self-hosted git projects + toys.";
-            KEYWORDS = "git,forge,forgejo,aly raffauf";
+            AUTHOR = "Forĝejo @ ${config.raffauflabs.domain}";
+            DESCRIPTION = "Self-hosted git forge for projects + toys.";
+            KEYWORDS = "git,source code,forge,forĝejo,aly raffauf";
           };
         };
       };
