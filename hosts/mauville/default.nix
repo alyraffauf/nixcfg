@@ -75,6 +75,8 @@ in {
   };
 
   raffauflabs = {
+    enable = true;
+
     containers = {
       oci = {
         audiobookshelf.enable = true;
@@ -84,7 +86,10 @@ in {
       };
     };
 
-    services.navidrome.enable = true;
+    services = {
+      forgejo.enable = true;
+      navidrome.enable = true;
+    };
   };
 
   ar = {

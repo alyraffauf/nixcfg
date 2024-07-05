@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./navidrome
     ./forgejo
+    ./navidrome
   ];
 }
