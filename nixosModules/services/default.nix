@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./flatpak
+    ./navidrome
     ./syncthing
     ./tailscale
   ];

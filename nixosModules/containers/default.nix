@@ -4,5 +4,5 @@
   config,
   ...
 }: {
-  imports = [./nixos ./oci];
+  imports = [./oci];
 }

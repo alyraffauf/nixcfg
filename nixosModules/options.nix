@@ -16,40 +16,6 @@
     };
 
     containers = {
-      nixos = {
-        audiobookshelf = {
-          enable = lib.mkEnableOption "audiobookshelf server in NixOS container.";
-
-          mediaDirectory = lib.mkOption {
-            description = "Media directory for audiobookshelf.";
-            default = "/mnt/Media";
-            type = lib.types.str;
-          };
-
-          port = lib.mkOption {
-            description = "Port for audiobookshelf.";
-            default = 13378;
-            type = lib.types.int;
-          };
-        };
-
-        navidrome = {
-          enable = lib.mkEnableOption "Navidrome music server in NixOS container.";
-
-          musicDirectory = lib.mkOption {
-            description = "Music directory for Navidrome.";
-            default = "/mnt/Media/Music";
-            type = lib.types.str;
-          };
-
-          port = lib.mkOption {
-            description = "Port for Navidrome.";
-            default = 4533;
-            type = lib.types.int;
-          };
-        };
-      };
-
       oci = {
         audiobookshelf = {
           enable = lib.mkEnableOption "audiobookshelf server in OCI container.";
@@ -188,6 +154,22 @@
 
     services = {
       flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
+
+      navidrome = {
+        enable = lib.mkEnableOption "Navidrome music server with secrets.";
+
+        musicDirectory = lib.mkOption {
+          description = "Music directory for Navidrome.";
+          default = "/mnt/Media/Music";
+          type = lib.types.str;
+        };
+
+        port = lib.mkOption {
+          description = "Port for Navidrome.";
+          default = 4533;
+          type = lib.types.int;
+        };
+      };
 
       syncthing = {
         enable = lib.mkEnableOption "Syncthing sync service.";

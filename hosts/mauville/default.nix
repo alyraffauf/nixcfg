@@ -158,7 +158,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.ar.containers.nixos.navidrome.port}";
+            proxyPass = "http://127.0.0.1:${toString config.ar.services.navidrome.port}";
             proxyWebsockets = true;
 
             extraConfig = ''
@@ -289,8 +289,6 @@ in {
     };
 
     containers = {
-      nixos.navidrome.enable = true;
-
       oci = {
         audiobookshelf.enable = true;
         freshRSS.enable = true;
@@ -332,6 +330,7 @@ in {
         musicPath = "${mediaDirectory}/Music";
       };
 
+      navidrome.enable = true;
       tailscale.enable = true;
     };
   };
