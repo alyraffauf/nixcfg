@@ -14,10 +14,7 @@ in {
   ];
 
   config = lib.mkIf config.raffauflabs.enable {
-    age.secrets = {
-      cloudflare.file = ../secrets/cloudflare.age;
-      nixCache.file = ../secrets/nixCache/privKey.age;
-    };
+    age.secrets.cloudflare.file = ../secrets/cloudflare.age;
 
     networking.firewall.allowedTCPPorts = [80 443];
 
@@ -46,22 +43,6 @@ in {
         recommendedGzipSettings = true;
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
-
-        virtualHosts = {
-          "nixcache.${config.raffauflabs.domain}" = {
-            enableACME = true;
-            forceSSL = true;
-
-            locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${
-              toString config.services.nix-serve.port
-            }";
-          };
-        };
-      };
-
-      nix-serve = {
-        enable = true;
-        secretKeyFile = config.age.secrets.nixCache.path;
       };
     };
   };
