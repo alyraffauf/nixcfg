@@ -22,6 +22,8 @@ in {
   age.secrets = {
     cloudflare.file = ../../secrets/cloudflare.age;
     nixCache.file = ../../secrets/nixCache/privKey.age;
+    codebergToken.file = ../../secrets/runners/codeberg.age;
+    raffauflabsToken.file = ../../secrets/runners/raffauflabs.age;
   };
 
   boot.loader = {
@@ -129,6 +131,47 @@ in {
           AUTHOR = "Git @ RaffaufLabs.com";
           DESCRIPTION = "Self-hosted git projects + toys.";
           KEYWORDS = "git,forge,forgejo,aly raffauf";
+        };
+      };
+    };
+
+    gitea-actions-runner = {
+      package = pkgs.forgejo-runner;
+      instances = {
+        "codeberg" = {
+          enable = true;
+          labels = [
+            "ubuntu-latest:docker://node:16-bullseye"
+            "ubuntu-22.04:docker://node:16-bullseye"
+            "ubuntu-20.04:docker://node:16-bullseye"
+            "ubuntu-18.04:docker://node:16-buster"
+            "native:host"
+          ];
+          name = "mauville";
+
+          tokenFile = config.age.secrets.codebergToken.path;
+          url = "https://codeberg.org";
+        };
+
+        "raffauflabs" = {
+          enable = true;
+          labels = [
+            "ubuntu-latest:docker://node:16-bullseye"
+            "ubuntu-22.04:docker://node:16-bullseye"
+            "ubuntu-20.04:docker://node:16-bullseye"
+            "ubuntu-18.04:docker://node:16-buster"
+            "native:host"
+          ];
+          name = "mauville";
+
+          settings = {
+            container.network = "host";
+            options = "--add-host=git.raffauflabs.com:127.0.0.1";
+            runner.insecure = true;
+          };
+
+          tokenFile = config.age.secrets.raffauflabsToken.path;
+          url = config.services.forgejo.settings.server.ROOT_URL;
         };
       };
     };

@@ -23,6 +23,8 @@ in {
   "mail/achacega_gmail.age".publicKeys = keys;
   "mail/alyraffauf_fastmail.age".publicKeys = keys;
   "nixCache/privKey.age".publicKeys = keys;
+  "runners/codeberg.age".publicKeys = keys;
+  "runners/raffauflabs.age".publicKeys = keys;
   "spotify/clientId.age".publicKeys = keys;
   "spotify/clientSecret.age".publicKeys = keys;
   "syncthing/fallarbor/cert.age".publicKeys = keys;
