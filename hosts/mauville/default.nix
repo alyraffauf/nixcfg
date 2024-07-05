@@ -15,6 +15,30 @@ in {
     ./home.nix
   ];
 
+  age.secrets = {
+    cloudflare.file = ../../secrets/cloudflare.age;
+
+    lastfmId = {
+      owner = "navidrome";
+      file = ../../secrets/lastFM/apiKey.age;
+    };
+
+    lastfmSecret = {
+      owner = "navidrome";
+      file = ../../secrets/lastFM/secret.age;
+    };
+
+    spotifyId = {
+      owner = "navidrome";
+      file = ../../secrets/spotify/clientId.age;
+    };
+
+    spotifySecret = {
+      owner = "navidrome";
+      file = ../../secrets/spotify/clientSecret.age;
+    };
+  };
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -124,8 +148,24 @@ in {
     };
 
     services = {
+      ddclient = {
+        enable = true;
+        passwordFile = config.age.secrets.cloudflare.path;
+        protocol = "cloudflare";
+      };
+
       forgejo.enable = true;
-      navidrome.enable = true;
+      navidrome = {
+        enable = true;
+        lastfm = {
+          idFile = config.age.secrets.lastfmId.path;
+          secretFile = config.age.secrets.lastfmSecret.path;
+        };
+        spotify = {
+          idFile = config.age.secrets.spotifyId.path;
+          secretFile = config.age.secrets.spotifySecret.path;
+        };
+      };
     };
   };
 }

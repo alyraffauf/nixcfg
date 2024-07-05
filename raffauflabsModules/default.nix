@@ -14,7 +14,7 @@ in {
   ];
 
   config = lib.mkIf config.raffauflabs.enable {
-    age.secrets.cloudflare.file = ../secrets/cloudflare.age;
+    raffauflabs.services.ddclient.enable = lib.mkDefault true;
 
     networking.firewall.allowedTCPPorts = [80 443];
 
@@ -24,12 +24,14 @@ in {
     };
 
     services = {
-      ddclient = {
-        enable = true;
+      ddclient = let
+        cfg = config.raffauflabs.services.ddclient;
+      in {
+        enable = cfg.enable;
         domains = [config.raffauflabs.domain];
         interval = "10min";
-        passwordFile = config.age.secrets.cloudflare.path;
-        protocol = "cloudflare";
+        passwordFile = cfg.passwordFile;
+        protocol = cfg.protocol;
         ssl = true;
         use = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
         username = "token";

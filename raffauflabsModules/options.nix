@@ -5,7 +5,7 @@
   ...
 }: {
   options.raffauflabs = {
-    enable = lib.mkEnableOption "Enable base hardware configuration.";
+    enable = lib.mkEnableOption "Enable basic server configuration.";
 
     domain = lib.mkOption {
       description = "Domain name to bind to.";
@@ -118,6 +118,21 @@
     };
 
     services = {
+      ddclient = {
+        enable = lib.mkEnableOption "Enable ddclient for IP address updating.";
+
+        protocol = lib.mkOption {
+          description = "Protocol for ddclient authentication.";
+          default = "cloudflare";
+          type = lib.types.str;
+        };
+
+        passwordFile = lib.mkOption {
+          description = "Secrets token for ddclient authentication.";
+          type = lib.types.nonEmptyStr;
+        };
+      };
+
       forgejo = {
         enable = lib.mkEnableOption "Git Forge + DevOps platform.";
 
@@ -131,6 +146,16 @@
       navidrome = {
         enable = lib.mkEnableOption "Navidrome music server with secrets.";
 
+        lastfm.idFile = lib.mkOption {
+          description = "Last.fm API key file.";
+          type = lib.types.nonEmptyStr;
+        };
+
+        lastfm.secretFile = lib.mkOption {
+          description = "Last.fm secret key file.";
+          type = lib.types.nonEmptyStr;
+        };
+
         musicDirectory = lib.mkOption {
           description = "Music directory for Navidrome.";
           default = "/mnt/Media/Music";
@@ -141,6 +166,16 @@
           description = "Port for Navidrome.";
           default = 4533;
           type = lib.types.int;
+        };
+
+        spotify.idFile = lib.mkOption {
+          description = "Spotify ID file.";
+          type = lib.types.nonEmptyStr;
+        };
+
+        spotify.secretFile = lib.mkOption {
+          description = "Spotify secret key file.";
+          type = lib.types.nonEmptyStr;
         };
 
         subDomain = lib.mkOption {
