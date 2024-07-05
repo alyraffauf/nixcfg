@@ -6,13 +6,13 @@
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.freshRSS.enable {
     networking.extraHosts = ''
-      127.0.0.1 news.${config.raffauflabs.domain}
+      127.0.0.1 ${config.raffauflabs.containers.oci.freshRSS.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["news.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${config.raffauflabs.containers.oci.freshRSS.subDomain}.${config.raffauflabs.domain}"];
 
-      nginx.virtualHosts."news.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${config.raffauflabs.containers.oci.freshRSS.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 

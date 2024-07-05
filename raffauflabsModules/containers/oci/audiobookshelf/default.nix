@@ -6,13 +6,13 @@
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.audiobookshelf.enable {
     networking.extraHosts = ''
-      127.0.0.1 podcasts.${config.raffauflabs.domain}
+      127.0.0.1 ${config.raffauflabs.containers.oci.audiobookshelf.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["podcasts.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${config.raffauflabs.containers.oci.audiobookshelf.subDomain}.${config.raffauflabs.domain}"];
 
-      nginx.virtualHosts."podcasts.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${config.raffauflabs.containers.oci.audiobookshelf.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 

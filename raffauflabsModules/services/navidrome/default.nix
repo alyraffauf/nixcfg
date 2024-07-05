@@ -30,14 +30,14 @@
     };
 
     networking.extraHosts = ''
-      127.0.0.1 music.${config.raffauflabs.domain}
+      127.0.0.1 ${config.raffauflabs.services.navidrome.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["music.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${config.raffauflabs.services.navidrome.subDomain}.${config.raffauflabs.domain}"];
       navidrome.enable = true;
 
-      nginx.virtualHosts."music.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${config.raffauflabs.services.navidrome.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 

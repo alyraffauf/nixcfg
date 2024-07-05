@@ -35,6 +35,12 @@
             default = 13378;
             type = lib.types.int;
           };
+
+          subDomain = lib.mkOption {
+            description = "Subdomain for audiobookshelf.";
+            default = "podcasts";
+            type = lib.types.str;
+          };
         };
 
         freshRSS = {
@@ -44,6 +50,12 @@
             description = "Port for FreshRSS.";
             default = 8080;
             type = lib.types.int;
+          };
+
+          subDomain = lib.mkOption {
+            description = "Subdomain for FreshRSS.";
+            default = "news";
+            type = lib.types.str;
           };
         };
 
@@ -66,6 +78,12 @@
             description = "Port for Plex Media Server.";
             default = 32400;
             type = lib.types.int;
+          };
+
+          subDomain = lib.mkOption {
+            description = "Subdomain for Plex.";
+            default = "plex";
+            type = lib.types.str;
           };
         };
 
@@ -100,7 +118,15 @@
     };
 
     services = {
-      forgejo.enable = lib.mkEnableOption "Git Forge + DevOps platform.";
+      forgejo = {
+        enable = lib.mkEnableOption "Git Forge + DevOps platform.";
+
+        subDomain = lib.mkOption {
+          description = "Subdomain for Forgejo.";
+          default = "git";
+          type = lib.types.str;
+        };
+      };
 
       navidrome = {
         enable = lib.mkEnableOption "Navidrome music server with secrets.";
@@ -115,6 +141,12 @@
           description = "Port for Navidrome.";
           default = 4533;
           type = lib.types.int;
+        };
+
+        subDomain = lib.mkOption {
+          description = "Subdomain for navidrome.";
+          default = "music";
+          type = lib.types.str;
         };
       };
     };

@@ -6,11 +6,11 @@
 }: {
   config = lib.mkIf config.raffauflabs.services.forgejo.enable {
     networking.extraHosts = ''
-      127.0.0.1 git.${config.raffauflabs.domain}
+      127.0.0.1 ${config.raffauflabs.services.forgejo.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["git.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${config.raffauflabs.services.forgejo.subDomain}.${config.raffauflabs.domain}"];
 
       forgejo = {
         enable = true;
@@ -42,7 +42,7 @@
 
           server = {
             LANDING_PAGE = "explore";
-            ROOT_URL = "https://git.${config.raffauflabs.domain}/";
+            ROOT_URL = "https://${config.raffauflabs.services.forgejo.subDomain}.${config.raffauflabs.domain}/";
           };
 
           service = {

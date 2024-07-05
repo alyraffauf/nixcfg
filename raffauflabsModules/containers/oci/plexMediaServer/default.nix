@@ -6,13 +6,13 @@
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.plexMediaServer.enable {
     networking.extraHosts = ''
-      127.0.0.1 plex.${config.raffauflabs.domain}
+      127.0.0.1 ${config.raffauflabs.containers.oci.plexMediaServer.subDomain}.${config.raffauflabs.domain}
     '';
 
     services = {
-      ddclient.domains = ["plex.${config.raffauflabs.domain}"];
+      ddclient.domains = ["${config.raffauflabs.containers.oci.plexMediaServer.subDomain}.${config.raffauflabs.domain}"];
 
-      nginx.virtualHosts."plex.${config.raffauflabs.domain}" = {
+      nginx.virtualHosts."${config.raffauflabs.containers.oci.plexMediaServer.subDomain}.${config.raffauflabs.domain}" = {
         enableACME = true;
         forceSSL = true;
 
