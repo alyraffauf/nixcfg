@@ -5,8 +5,7 @@
   ...
 }: {
   imports = [
-    ./flatpak
-    ./syncthing
-    ./tailscale
+    ./navidrome
+    ./forgejo
   ];
 }

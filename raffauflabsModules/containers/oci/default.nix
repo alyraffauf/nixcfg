@@ -7,7 +7,6 @@
   imports = [
     ./audiobookshelf
     ./freshRSS
-    ./jellyfin
     ./plexMediaServer
     ./transmission
   ];

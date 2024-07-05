@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.services.navidrome.enable {
+  config = lib.mkIf config.raffauflabs.services.navidrome.enable {
     age.secrets = let
       owner = "navidrome";
     in {
@@ -29,14 +29,31 @@
       };
     };
 
-    services.navidrome.enable = true;
+    services = {
+      ddclient.domains = ["music.${config.raffauflabs.domain}"];
+      navidrome.enable = true;
+
+      nginx.virtualHosts."music.${config.raffauflabs.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString config.raffauflabs.services.navidrome.port}";
+          proxyWebsockets = true;
+
+          extraConfig = ''
+            proxy_buffering off;
+          '';
+        };
+      };
+    };
 
     systemd.services.navidrome.serviceConfig = let
       navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
         Address = "0.0.0.0";
         DefaultTheme = "Auto";
-        MusicFolder = config.ar.services.navidrome.musicDirectory;
-        Port = config.ar.services.navidrome.port;
+        MusicFolder = config.raffauflabs.services.navidrome.musicDirectory;
+        Port = config.raffauflabs.services.navidrome.port;
         SubsonicArtistParticipations = true;
         UIWelcomeMessage = "Welcome to Navidrome @ RaffaufLabs.com";
         "Spotify.ID" = "@spotifyClientId@";
@@ -62,7 +79,7 @@
         config.age.secrets.lastFMSecret.path
         config.age.secrets.spotifyClientId.path
         config.age.secrets.spotifyClientSecret.path
-        config.ar.services.navidrome.musicDirectory
+        config.raffauflabs.services.navidrome.musicDirectory
       ];
 
       ExecStartPre = navidrome-secrets;
