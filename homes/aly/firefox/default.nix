@@ -37,6 +37,7 @@
         search = {
           default = "Brave";
           force = true;
+
           engines = {
             "Bing" = {
               metaData = {
@@ -87,6 +88,18 @@
               ];
             };
 
+            "NixOS Wiki" = {
+              definedAliases = ["!nw" "!nixwiki"];
+              iconUpdateURL = "https://wiki.nixos.org/favicon.ico";
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+
+              urls = [
+                {
+                  template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+                }
+              ];
+            };
+
             "nixpkgs" = {
               definedAliases = ["!nix"];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -109,16 +122,26 @@
             };
 
             "Wiktionary" = {
+              definedAliases = ["!wikt"];
+              iconUpdateURL = "https://en.wiktionary.org/favicon.ico";
+              updateInterval = 24 * 60 * 60 * 1000; # every day
+
               urls = [
                 {
                   template = "https://en.wiktionary.org/wiki/{searchTerms}";
                 }
               ];
-              iconUpdateURL = "https://en.wiktionary.org/favicon.ico";
-              updateInterval = 24 * 60 * 60 * 1000; # every day
-              definedAliases = ["!wikt"];
             };
           };
+          order = [
+            "Brave"
+            "Kagi"
+            "nixpkgs"
+            "NixOS Wiki"
+            "DuckDuckGo"
+            "Wikipedia"
+            "Wiktionary"
+          ];
         };
 
         settings = {
