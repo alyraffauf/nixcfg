@@ -39,6 +39,41 @@ in {
     hostName = "mauville";
   };
 
+  services = {
+    samba = {
+      enable = true;
+      openFirewall = true;
+      securityType = "user";
+
+      shares = {
+        Media = {
+          browseable = "yes";
+          comment = "Media @ ${config.networking.hostName}";
+          path = mediaDirectory;
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0755";
+          "directory mask" = "0755";
+        };
+
+        Archive = {
+          browseable = "yes";
+          comment = "Archive @ ${config.networking.hostName}";
+          path = archiveDirectory;
+          "create mask" = "0755";
+          "directory mask" = "0755";
+          "guest ok" = "yes";
+          "read only" = "no";
+        };
+      };
+    };
+
+    samba-wsdd = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
+
   raffauflabs = {
     containers = {
       oci = {
