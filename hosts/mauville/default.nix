@@ -1,10 +1,8 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
-  input,
   lib,
   pkgs,
-  self,
   ...
 }: let
   archiveDirectory = "/mnt/Archive";
@@ -23,8 +21,6 @@ in {
   };
 
   networking.hostName = "mauville";
-
-  system.stateVersion = "23.11";
 
   services = {
     samba = {
@@ -61,25 +57,7 @@ in {
     };
   };
 
-  raffauflabs = {
-    inherit domain;
-
-    enable = true;
-
-    containers = {
-      oci = {
-        audiobookshelf.enable = true;
-        freshRSS.enable = true;
-        plexMediaServer.enable = true;
-        transmission.enable = true;
-      };
-    };
-
-    services = {
-      forgejo.enable = true;
-      navidrome.enable = true;
-    };
-  };
+  system.stateVersion = "23.11";
 
   ar = {
     apps = {
@@ -129,6 +107,25 @@ in {
       };
 
       tailscale.enable = true;
+    };
+  };
+
+  raffauflabs = {
+    inherit domain;
+    enable = true;
+
+    containers = {
+      oci = {
+        audiobookshelf.enable = true;
+        freshRSS.enable = true;
+        plexMediaServer.enable = true;
+        transmission.enable = true;
+      };
+    };
+
+    services = {
+      forgejo.enable = true;
+      navidrome.enable = true;
     };
   };
 }
