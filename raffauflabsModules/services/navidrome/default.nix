@@ -37,7 +37,7 @@ in {
         MusicFolder = cfg.musicDirectory;
         Port = cfg.port;
         SubsonicArtistParticipations = true;
-        UIWelcomeMessage = "Welcome to Navidrome @ RaffaufLabs.com";
+        UIWelcomeMessage = "Welcome to Navidrome @ ${config.raffauflabs.domain}";
         "Spotify.ID" = "@spotifyClientId@";
         "Spotify.Secret" = "@spotifyClientSecret@";
         "LastFM.Enabled" = true;
