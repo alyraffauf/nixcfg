@@ -6,7 +6,7 @@
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.freshRSS.enable {
     networking.extraHosts = ''
-      127.0.0.1 news.${domain}
+      127.0.0.1 news.${config.raffauflabs.domain}
     '';
 
     services = {

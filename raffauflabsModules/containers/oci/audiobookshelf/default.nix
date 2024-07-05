@@ -6,7 +6,7 @@
 }: {
   config = lib.mkIf config.raffauflabs.containers.oci.audiobookshelf.enable {
     networking.extraHosts = ''
-      127.0.0.1 podcasts.${domain}
+      127.0.0.1 podcasts.${config.raffauflabs.domain}
     '';
 
     services = {
