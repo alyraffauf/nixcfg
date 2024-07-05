@@ -63,7 +63,7 @@ in {
 
   raffauflabs = {
     inherit domain;
-    
+
     enable = true;
 
     containers = {
