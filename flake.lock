@@ -472,6 +472,26 @@
         "type": "github"
       }
     },
+    "nixhw": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720299715,
+        "narHash": "sha256-VezUOQZnluy6lahyxOo2W55kGsyh7AhfiF1/NAwdYgM=",
+        "owner": "alyraffauf",
+        "repo": "nixhw",
+        "rev": "03c553f3acd2339f034dc67e8d37505b2e32925e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "nixhw",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1719075281,
@@ -590,6 +610,7 @@
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "iio-hyprland": "iio-hyprland",
+        "nixhw": "nixhw",
         "nixpkgs": "nixpkgs_2",
         "nixpkgsUnstable": "nixpkgsUnstable",
         "nixvim": "nixvim",

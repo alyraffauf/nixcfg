@@ -10,6 +10,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
+    nixhw.url = "github:alyraffauf/nixhw";
     nixvim.url = "github:nix-community/nixvim/nixos-24.05";
     nur.url = github:nix-community/NUR;
     raffauflabs.url = "github:alyraffauf/raffauflabs";
@@ -19,6 +20,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     iio-hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    nixhw.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     raffauflabs.inputs.nixpkgs.follows = "nixpkgs";
     wallpapers.inputs.nixpkgs.follows = "nixpkgs";

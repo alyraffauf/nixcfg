@@ -9,9 +9,14 @@
 }: {
   imports = [
     ./disko.nix
-    ./hardware.nix
     ./home.nix
+    inputs.nixhw.nixosModules.framework-13-amd-7000
   ];
+
+  ar.hardware = {
+    enable = true;
+    sound = true;
+  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
