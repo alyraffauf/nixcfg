@@ -7,7 +7,6 @@ inputs: {
   imports = [
     ./apps
     ./base
-    ./containers
     ./desktop
     ./options.nix
     ./services

@@ -563,6 +563,26 @@
         "type": "github"
       }
     },
+    "raffauflabs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720224769,
+        "narHash": "sha256-n2wxe8CDZCMRmA7PXN/+OAoqvoDu+hbqmVNKNMyDX8Q=",
+        "owner": "alyraffauf",
+        "repo": "raffauflabs",
+        "rev": "912f73b0d0891ac272721c60ae2da43dbf06778b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "raffauflabs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -573,7 +593,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgsUnstable": "nixpkgsUnstable",
         "nixvim": "nixvim",
-        "nur": "nur"
+        "nur": "nur",
+        "raffauflabs": "raffauflabs"
       }
     },
     "systems": {

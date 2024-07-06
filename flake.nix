@@ -16,6 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Automated disk partitioning.
+    raffauflabs = {
+      url = "github:alyraffauf/raffauflabs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ## Motion sensor and auto-rotate for Hyprland.
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
@@ -114,8 +120,10 @@
               inputs.hyprland.nixosModules.default
               inputs.nixvim.nixosModules.nixvim
               inputs.nur.nixosModules.nur
+              inputs.raffauflabs.nixosModules.raffauflabs
               self.nixosModules.hardware
               self.nixosModules.nixos
+
               {
                 home-manager = {
                   backupFileExtension = "backup";
