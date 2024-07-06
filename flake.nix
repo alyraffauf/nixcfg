@@ -75,9 +75,6 @@
     homeManagerModules.default =
       import ./homeManagerModules inputs self;
 
-    nixosModules.hardware =
-      import ./hardwareModules inputs;
-
     nixosModules.nixos =
       import ./nixosModules inputs;
 
@@ -102,7 +99,6 @@
               inputs.nixvim.nixosModules.nixvim
               inputs.nur.nixosModules.nur
               inputs.raffauflabs.nixosModules.raffauflabs
-              self.nixosModules.hardware
               self.nixosModules.nixos
 
               {
