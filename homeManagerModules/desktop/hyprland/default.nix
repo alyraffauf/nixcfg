@@ -33,7 +33,7 @@
           pkgs.writers.writeRuby "hyprland-randomWallpaper" {} ''
             require 'fileutils'
 
-            directory = "${config.xdg.dataHome}/backgrounds"
+            directory = "${pkgs.alyraffauf-wallpapers}/share/backgrounds"
             hyprctl = "${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}"
             old_pids = []
 

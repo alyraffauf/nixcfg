@@ -46,6 +46,7 @@
           });
 
           xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+          alyraffauf-wallpapers = inputs.wallpapers.packages.${pkgs.system}.default;
         })
       ];
     };

@@ -20,7 +20,6 @@
     };
 
     packages = with pkgs; [
-      inputs.wallpapers.packages.${pkgs.system}.default
       browsh
       curl
       fractal
@@ -68,7 +67,7 @@
 
     theme = {
       enable = true;
-      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }

@@ -287,7 +287,7 @@
 
       wallpaper = lib.mkOption {
         description = "Default wallpaper.";
-        default = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+        default = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
         type = lib.types.str;
       };
     };
