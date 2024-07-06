@@ -1,5 +1,5 @@
 # nixcfg
-NixOS flake for all mine + my husband's hosts, including modules for Hyprland, Sway, GNOME, and a variety of Home lab services running on a mix of nix-native and OCI containers. Built with [agenix](https://github.com/ryantm/agenix) for managing secrets, [disko](https://github.com/nix-community/disko) for automatically partioning drives, and [home-manager](https://github.com/nix-community/home-manager) for managing dotfiles and home configuration.
+NixOS flake for all mine + my husband's hosts, including modules for Hyprland, Sway, GNOME, and a variety of [Home lab](https://github.com/alyraffauf/raffauflabs) services running on a mix of nix-native and OCI containers. Built with [agenix](https://github.com/ryantm/agenix) for managing secrets, [disko](https://github.com/nix-community/disko) for automatically partioning drives, and [home-manager](https://github.com/nix-community/home-manager) for managing dotfiles and home configuration.
 
 ## Rice
 ![](./_img/hyprland.png)
