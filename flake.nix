@@ -12,7 +12,7 @@
     iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
     nixhw.url = "github:alyraffauf/nixhw";
     nixvim.url = "github:nix-community/nixvim/nixos-24.05";
-    nur.url = github:nix-community/NUR;
+    nur.url = "github:nix-community/NUR";
     raffauflabs.url = "github:alyraffauf/raffauflabs";
     wallpapers.url = "github:alyraffauf/wallpapers";
 
