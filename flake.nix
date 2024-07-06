@@ -100,6 +100,9 @@
     nixosModules.nixos =
       import ./nixosModules inputs;
 
+    nixosModules.raffauflabs =
+      import ./raffauflabsModules inputs;
+
     nixosConfigurations =
       inputs.nixpkgs.lib.genAttrs [
         "fallarbor"
