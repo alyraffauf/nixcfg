@@ -686,11 +686,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720239648,
-        "narHash": "sha256-U7GSvui1xadnV8EIdY1V+LOPbOZtDrn1AZyH5yUnENE=",
+        "lastModified": 1720239911,
+        "narHash": "sha256-5jo6v4d4y0dcxdBHqlSOKhvQszvLomANgE1rRYN9/D0=",
         "owner": "alyraffauf",
         "repo": "wallpapers",
-        "rev": "5be125a22f6a71804a67ff67749aa564f19afd34",
+        "rev": "91b46bd86441e3c1c07c48b641a15b3203d6d971",
         "type": "github"
       },
       "original": {
