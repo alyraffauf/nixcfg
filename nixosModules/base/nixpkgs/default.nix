@@ -22,7 +22,6 @@
           brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
           google-chrome = prev.google-chrome.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
           hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-          intel-vaapi-driver = prev.intel-vaapi-driver.override {enableHybridCodec = true;};
           nerdfonts = prev.nerdfonts.override {fonts = ["Noto"];};
 
           obsidian = prev.obsidian.overrideAttrs (old: {
