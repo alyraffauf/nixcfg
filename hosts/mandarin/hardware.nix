@@ -5,6 +5,13 @@
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.nixhw.nixosModules.common-amd-cpu
+    inputs.nixhw.nixosModules.common-amd-gpu
+    inputs.nixhw.nixosModules.common-bluetooth
+    inputs.nixhw.nixosModules.common-ssd
+  ];
+
   boot = {
     initrd.availableKernelModules = ["nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
 
@@ -12,13 +19,4 @@
   };
 
   hardware.enableAllFirmware = true;
-
-  ar.hardware = {
-    enable = true;
-    cpu.amd = true;
-    gpu.amd = true;
-    laptop = false;
-    ssd = true;
-    sound = true;
-  };
 }

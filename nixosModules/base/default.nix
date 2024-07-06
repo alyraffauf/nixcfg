@@ -36,6 +36,8 @@
       };
     };
 
+    hardware.keyboard.qmk.enable = true;
+
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -46,13 +48,13 @@
       rtkit.enable = true;
     };
 
-    hardware.keyboard.qmk.enable = true;
-
     services.logind.extraConfig = ''
       # Don't shutdown when power button is short-pressed
       HandlePowerKey=suspend
       HandlePowerKeyLongPress=poweroff
     '';
+
+    sound.enable = true;
 
     system.autoUpgrade = {
       allowReboot = true;
