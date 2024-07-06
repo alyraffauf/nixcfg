@@ -18,14 +18,12 @@
       overlays = [
         inputs.nur.overlay
         (final: prev: {
-          audiobookshelf = unstable.audiobookshelf;
+          alyraffauf-wallpapers = inputs.wallpapers.packages.${pkgs.system}.default;
           brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
           google-chrome = prev.google-chrome.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
           hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-          hyprnome = unstable.hyprnome;
-          hyprshot = unstable.hyprshot;
           intel-vaapi-driver = prev.intel-vaapi-driver.override {enableHybridCodec = true;};
-          nerdfonts = prev.nerdfonts.override {fonts = ["DroidSansMono" "Noto"];};
+          nerdfonts = prev.nerdfonts.override {fonts = ["Noto"];};
 
           obsidian = prev.obsidian.overrideAttrs (old: {
             installPhase =
@@ -34,8 +32,6 @@
               old.installPhase;
           });
 
-          sway = unstable.sway;
-          swayfx = unstable.swayfx;
           vscodium = prev.vscodium.override {commandLineArgs = "--enable-wayland-ime";};
 
           webcord = prev.webcord.overrideAttrs (old: {
@@ -46,7 +42,6 @@
           });
 
           xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-          alyraffauf-wallpapers = inputs.wallpapers.packages.${pkgs.system}.default;
         })
       ];
     };
