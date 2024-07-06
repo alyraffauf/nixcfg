@@ -5,50 +5,23 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Automated disk partitioning.
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Automated disk partitioning.
-    raffauflabs = {
-      url = "github:alyraffauf/raffauflabs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ## Motion sensor and auto-rotate for Hyprland.
-    iio-hyprland = {
-      url = "github:JeanSchoeller/iio-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Stable home-manager, synced with latest stable nixpkgs.
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Latest hyprland from git.
+    agenix.url = "github:ryantm/agenix";
+    disko.url = "github:nix-community/disko";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    iio-hyprland.url = "github:JeanSchoeller/iio-hyprland";
+    nixvim.url = "github:nix-community/nixvim/nixos-24.05";
     nur.url = github:nix-community/NUR;
+    raffauflabs.url = "github:alyraffauf/raffauflabs";
+    wallpapers.url = "github:alyraffauf/wallpapers";
 
-    # My wallpapers
-    wallpapers = {
-      url = "github:alyraffauf/wallpapers";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    iio-hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    raffauflabs.inputs.nixpkgs.follows = "nixpkgs";
+    wallpapers.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
