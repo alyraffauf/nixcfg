@@ -34,11 +34,28 @@
         nerdfonts
       ];
 
+      hardware.logitech.wireless = {
+        enable = true;
+        enableGraphical = true;
+      };
+
       programs.system-config-printer.enable = true;
 
       services = {
         gnome.gnome-keyring.enable = true;
         gvfs.enable = true; # Mount, trash, etc.
+
+        pipewire = {
+          enable = true;
+
+          alsa = {
+            enable = true;
+            support32Bit = true;
+          };
+
+          pulse.enable = true;
+        };
+
         xserver = {
           enable = true;
           xkb = {

@@ -9,8 +9,8 @@
 }: {
   imports = [
     ./disko.nix
-    ./hardware.nix
     ./home.nix
+    inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
   ];
 
   boot.loader = {

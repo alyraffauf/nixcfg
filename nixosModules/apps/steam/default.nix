@@ -9,6 +9,8 @@
       config.ar.apps.steam.enable
       || config.ar.desktop.steam.enable
     ) {
+      hardware.steam-hardware.enable = true;
+
       programs = {
         gamescope.enable = config.ar.desktop.steam.enable;
 

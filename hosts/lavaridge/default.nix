@@ -13,11 +13,6 @@
     inputs.nixhw.nixosModules.framework-13-amd-7000
   ];
 
-  ar.hardware = {
-    enable = true;
-    sound = true;
-  };
-
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;

@@ -9,8 +9,8 @@
 }: {
   imports = [
     ./disko.nix
-    ./hardware.nix
     ./home.nix
+    inputs.nixhw.nixosModules.thinkpad-t440p
   ];
 
   boot.loader = {

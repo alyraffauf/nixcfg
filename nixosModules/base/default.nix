@@ -46,6 +46,14 @@
       rtkit.enable = true;
     };
 
+    hardware.keyboard.qmk.enable = true;
+
+    services.logind.extraConfig = ''
+      # Don't shutdown when power button is short-pressed
+      HandlePowerKey=suspend
+      HandlePowerKeyLongPress=poweroff
+    '';
+
     system.autoUpgrade = {
       allowReboot = true;
       dates = "04:00";

@@ -13,11 +13,6 @@
     inputs.nixhw.nixosModules.framework-13-intel-11th
   ];
 
-  ar.hardware = {
-    enable = true;
-    sound = true;
-  };
-
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
