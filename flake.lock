@@ -309,11 +309,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1720092067,
-        "narHash": "sha256-ebMlTz4wm+Md5BkCk6uGcRUvOvyjtc4bENvVSO5jrBI=",
+        "lastModified": 1720213509,
+        "narHash": "sha256-aPYf8Jnu1fMgMYMgQnH433/Fcqfky1Z5ZuzCkNKcR1U=",
         "ref": "refs/heads/main",
-        "rev": "0a6e83005f1910b5c1ec78476fcffc05af47833a",
-        "revCount": 4906,
+        "rev": "cc98594c3aed0b542e03818371a4636f549f80e1",
+        "revCount": 4908,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -506,11 +506,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1719956923,
-        "narHash": "sha256-nNJHJ9kfPdzYsCOlHOnbiiyKjZUW5sWbwx3cakg3/C4=",
+        "lastModified": 1720110830,
+        "narHash": "sha256-E5dN9GDV4LwMEduhBLSkyEz51zM17XkWZ3/9luvNOPs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "706eef542dec88cc0ed25b9075d3037564b2d164",
+        "rev": "c0d0be00d4ecc4b51d2d6948e37466194c1e6c51",
         "type": "github"
       },
       "original": {
@@ -550,11 +550,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1720159001,
-        "narHash": "sha256-odlNfxYg1cQXYqGdJMNb6NFJp0wGwxbRl/rXqwWyatE=",
+        "lastModified": 1720238698,
+        "narHash": "sha256-9RhDCWVmR85eUWUWEJXUxGD/lVow9kQAghNkWEedbmk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "df5671c64b8c0978f6083e11f36b0d802d0c9aea",
+        "rev": "f0636c1832d48659b0afff89a168cc1a76b871f4",
         "type": "github"
       },
       "original": {
@@ -570,11 +570,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720224769,
-        "narHash": "sha256-n2wxe8CDZCMRmA7PXN/+OAoqvoDu+hbqmVNKNMyDX8Q=",
+        "lastModified": 1720232163,
+        "narHash": "sha256-zcIC0qsSnr8xZIgdUm2bzfQOZaFYmaYU0vOFqpGhzXg=",
         "owner": "alyraffauf",
         "repo": "raffauflabs",
-        "rev": "912f73b0d0891ac272721c60ae2da43dbf06778b",
+        "rev": "60074d939e3ad23ccca4082c052a2ece5cc60c8e",
         "type": "github"
       },
       "original": {
@@ -594,7 +594,8 @@
         "nixpkgsUnstable": "nixpkgsUnstable",
         "nixvim": "nixvim",
         "nur": "nur",
-        "raffauflabs": "raffauflabs"
+        "raffauflabs": "raffauflabs",
+        "wallpapers": "wallpapers"
       }
     },
     "systems": {
@@ -675,6 +676,26 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720239911,
+        "narHash": "sha256-5jo6v4d4y0dcxdBHqlSOKhvQszvLomANgE1rRYN9/D0=",
+        "owner": "alyraffauf",
+        "repo": "wallpapers",
+        "rev": "91b46bd86441e3c1c07c48b641a15b3203d6d971",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

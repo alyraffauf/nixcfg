@@ -67,7 +67,7 @@
 
     theme = {
       enable = true;
-      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }

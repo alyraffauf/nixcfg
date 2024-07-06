@@ -43,7 +43,7 @@
 
     theme = {
       enable = true;
-      wallpaper = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaper = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
     };
   };
 }

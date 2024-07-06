@@ -8,7 +8,7 @@
     kill `pidof swaybg`
 
     OLD_PIDS=()
-    directory=${config.home.homeDirectory}/.local/share/backgrounds
+    directory=${pkgs.alyraffauf-wallpapers}/share/backgrounds
 
     if [ -d "$directory" ]; then
         while true; do
