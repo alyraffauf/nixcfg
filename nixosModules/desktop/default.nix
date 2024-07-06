@@ -24,7 +24,10 @@
       || config.ar.desktop.steam.enable
       || config.ar.desktop.sway.enable
     ) {
-      environment.sessionVariables.NIXOS_OZONE_WL = "1";
+      environment = {
+        sessionVariables.NIXOS_OZONE_WL = "1";
+        systemPackages = [pkgs.alyraffauf-wallpapers];
+      };
 
       fonts.packages = with pkgs; [
         liberation_ttf
