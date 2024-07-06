@@ -4,7 +4,9 @@
   osConfig,
   pkgs,
   ...
-}: {
+}: let
+  cfg = config.ar.home;
+in {
   options.ar.home = {
     apps = {
       alacritty.enable = lib.mkEnableOption "Alacritty terminal.";
@@ -40,7 +42,7 @@
 
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
-        default = config.ar.home.defaultApps.fileManager == pkgs.cinnamon.nemo;
+        default = cfg.defaultApps.fileManager == pkgs.cinnamon.nemo;
         type = lib.types.bool;
       };
 
@@ -48,7 +50,7 @@
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
       thunar.enable = lib.mkOption {
         description = "Thunar file manager.";
-        default = config.ar.home.defaultApps.fileManager == pkgs.xfce.thunar;
+        default = cfg.defaultApps.fileManager == pkgs.xfce.thunar;
         type = lib.types.bool;
       };
 
@@ -63,7 +65,7 @@
 
       audioPlayer = lib.mkOption {
         description = "Default audio player package.";
-        default = config.ar.home.defaultApps.videoPlayer;
+        default = cfg.defaultApps.videoPlayer;
         type = lib.types.package;
       };
 
@@ -138,19 +140,19 @@
 
         autoSuspend = lib.mkOption {
           description = "Whether to autosuspend on idle.";
-          default = config.ar.home.desktop.hyprland.enable;
+          default = cfg.desktop.hyprland.enable;
           type = lib.types.bool;
         };
 
         randomWallpaper = lib.mkOption {
           description = "Whether to enable random wallpaper script.";
-          default = config.ar.home.desktop.hyprland.enable;
+          default = cfg.desktop.hyprland.enable;
           type = lib.types.bool;
         };
 
         redShift = lib.mkOption {
           description = "Whether to redshift display colors at night.";
-          default = config.ar.home.desktop.hyprland.enable;
+          default = cfg.desktop.hyprland.enable;
           type = lib.types.bool;
         };
 
@@ -159,19 +161,19 @@
 
           autoRotate = lib.mkOption {
             description = "Whether to autorotate screen.";
-            default = config.ar.home.desktop.hyprland.tabletMode.enable;
+            default = cfg.desktop.hyprland.tabletMode.enable;
             type = lib.types.bool;
           };
 
           menuButton = lib.mkOption {
             description = "Whether to add menu button for waybar.";
-            default = config.ar.home.desktop.hyprland.tabletMode.enable;
+            default = cfg.desktop.hyprland.tabletMode.enable;
             type = lib.types.bool;
           };
 
           virtKeyboard = lib.mkOption {
             description = "Whether to enable dynamic virtual keyboard.";
-            default = config.ar.home.desktop.hyprland.tabletMode.enable;
+            default = cfg.desktop.hyprland.tabletMode.enable;
             type = lib.types.bool;
           };
         };
@@ -186,19 +188,19 @@
 
         autoSuspend = lib.mkOption {
           description = "Whether to autosuspend on idle.";
-          default = config.ar.home.desktop.sway.enable;
+          default = cfg.desktop.sway.enable;
           type = lib.types.bool;
         };
 
         randomWallpaper = lib.mkOption {
           description = "Whether to enable random wallpaper script.";
-          default = config.ar.home.desktop.sway.enable;
+          default = cfg.desktop.sway.enable;
           type = lib.types.bool;
         };
 
         redShift = lib.mkOption {
           description = "Whether to redshift display colors at night.";
-          default = config.ar.home.desktop.sway.enable;
+          default = cfg.desktop.sway.enable;
           type = lib.types.bool;
         };
       };
@@ -237,7 +239,7 @@
 
       darkMode = lib.mkOption {
         description = "Whether to prefer dark mode apps or not.";
-        default = config.ar.home.theme.enable;
+        default = cfg.theme.enable;
         type = lib.types.bool;
       };
 
