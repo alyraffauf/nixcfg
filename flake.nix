@@ -43,6 +43,12 @@
     };
 
     nur.url = github:nix-community/NUR;
+
+    # My wallpapers
+    wallpapers = {
+      url = "github:alyraffauf/wallpapers";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -127,6 +133,7 @@
               {
                 home-manager = {
                   backupFileExtension = "backup";
+                  extraSpecialArgs = {inherit inputs self;};
 
                   sharedModules = [
                     inputs.agenix.homeManagerModules.default

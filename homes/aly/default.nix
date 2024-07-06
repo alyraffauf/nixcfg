@@ -20,6 +20,7 @@
     };
 
     packages = with pkgs; [
+      inputs.wallpapers.packages.${pkgs.system}.default
       browsh
       curl
       fractal
