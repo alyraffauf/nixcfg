@@ -15,11 +15,7 @@
 
     desktop = {
       cinnamon.enable = lib.mkEnableOption "Cinnamon desktop session.";
-
-      gnome = {
-        enable = lib.mkEnableOption "GNOME desktop session.";
-        fprintdFix = lib.mkEnableOption "Fingerprint login fix for GDM";
-      };
+      gnome.enable = lib.mkEnableOption "GNOME desktop session.";
 
       greetd = {
         enable = lib.mkEnableOption "Greetd display manager.";
