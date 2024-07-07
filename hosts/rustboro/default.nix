@@ -31,8 +31,16 @@
     };
 
     desktop = {
-      cinnamon.enable = true;
-      lightdm.enable = true;
+      greetd = {
+        enable = true;
+
+        autologin = {
+          enable = true;
+          user = "aly";
+        };
+      };
+
+      hyprland.enable = true;
     };
 
     services = {
