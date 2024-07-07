@@ -5,17 +5,6 @@
   ...
 }: {
   config = lib.mkIf config.ar.users.aly.enable {
-    age.secrets = {
-      alyraffaufFastmail = {
-        file = ../../../secrets/mail/alyraffauf_fastmail.age;
-        owner = "aly";
-      };
-      achacegaGmail = {
-        file = ../../../secrets/mail/achacega_gmail.age;
-        owner = "aly";
-      };
-    };
-
     home-manager.users.aly =
       lib.attrsets.optionalAttrs
       config.ar.users.aly.manageHome

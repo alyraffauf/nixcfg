@@ -1,19 +1,23 @@
 {
   config,
   lib,
-  osConfig,
   pkgs,
   ...
 }: let
   mkPassword = secret: "${lib.getExe' pkgs.coreutils "cat"} ${secret}";
 in {
+  age.secrets = {
+    achacegaGmail.file = ../../../secrets/mail/achacega_gmail.age;
+    alyraffaufFastmail.file = ../../../secrets/mail/alyraffauf_fastmail.age;
+  };
+
   accounts.email.accounts = {
     "alyraffauf@fastmail.com" = {
       address = "alyraffauf@fastmail.com";
       aliases = ["aly@raffauflabs.com"];
       flavor = "fastmail.com";
       himalaya.enable = true;
-      passwordCommand = mkPassword osConfig.age.secrets.alyraffaufFastmail.path;
+      passwordCommand = mkPassword config.age.secrets.alyraffaufFastmail.path;
       primary = true;
       realName = "Aly Raffauf";
 
@@ -41,7 +45,7 @@ in {
       aliases = ["alyraffauf@gmail.com"];
       flavor = "gmail.com";
       himalaya.enable = true;
-      passwordCommand = mkPassword osConfig.age.secrets.achacegaGmail.path;
+      passwordCommand = mkPassword config.age.secrets.achacegaGmail.path;
       realName = "Aly Raffauf";
 
       signature = {
