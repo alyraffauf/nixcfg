@@ -48,6 +48,13 @@
     };
   };
 
+  wayland.windowManager.hyprland.extraConfig = ''
+    bind = SUPER, P, exec, ${lib.getExe' pkgs.keepassxc "keepassxc"}
+    windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
+    windowrulev2 = float,class:(org.keepassxc.KeePassXC)
+    windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
+  '';
+
   ar.home = {
     apps = {
       alacritty.enable = true;
