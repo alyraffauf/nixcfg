@@ -417,10 +417,6 @@
         bindl = , xf86audioprev, exec, ${media.prev}
         bindl = , xf86audionext, exec, ${media.next}
 
-        # Extra bindings for petalburg.
-        bind = , xf86launch4, exec, pp-adjuster
-        bind = , xf86launch2, exec, ${media.play}
-
         # Screenshot with hyprshot.
         bind = , PRINT, exec, ${screenshot.screen}
         bind = ${modifier}, PRINT, exec, ${screenshot.region}
