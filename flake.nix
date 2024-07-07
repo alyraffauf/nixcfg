@@ -78,6 +78,9 @@
     nixosModules.nixos =
       import ./nixosModules inputs;
 
+    nixosModules.users =
+      import ./userModules inputs;
+
     nixosConfigurations =
       inputs.nixpkgs.lib.genAttrs [
         "fallarbor"
@@ -100,6 +103,7 @@
               inputs.nur.nixosModules.nur
               inputs.raffauflabs.nixosModules.raffauflabs
               self.nixosModules.nixos
+              self.nixosModules.users
 
               {
                 home-manager = {

@@ -10,6 +10,5 @@ inputs: {
     ./desktop
     ./options.nix
     ./services
-    ./users
   ];
 }

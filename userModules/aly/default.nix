@@ -8,7 +8,7 @@
     home-manager.users.aly =
       lib.attrsets.optionalAttrs
       config.ar.users.aly.manageHome
-      (import ../../../homes/aly);
+      (import ../../homes/aly);
 
     users.users.aly = {
       description = "Aly Raffauf";
@@ -24,10 +24,10 @@
         ];
 
         keyFiles = [
-          ../../../secrets/publicKeys/aly_lavaridge.pub
-          ../../../secrets/publicKeys/aly_mauville.pub
-          ../../../secrets/publicKeys/aly_petalburg.pub
-          ../../../secrets/publicKeys/aly_rustboro.pub
+          ../../secrets/publicKeys/aly_lavaridge.pub
+          ../../secrets/publicKeys/aly_mauville.pub
+          ../../secrets/publicKeys/aly_petalburg.pub
+          ../../secrets/publicKeys/aly_rustboro.pub
         ];
       };
 
