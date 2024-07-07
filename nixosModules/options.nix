@@ -87,12 +87,6 @@
           && !(config.networking.hostName == "mauville");
         type = lib.types.bool;
       };
-
-      plymouth.enable = lib.mkOption {
-        description = "Plymouth boot screen.";
-        default = config.ar.base.enable;
-        type = lib.types.bool;
-      };
     };
   };
 }

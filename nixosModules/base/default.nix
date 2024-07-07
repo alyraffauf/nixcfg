@@ -9,10 +9,10 @@
     ./networking
     ./nix
     ./nixpkgs
-    ./plymouth
   ];
 
   config = lib.mkIf config.ar.base.enable {
+    
     console.useXkbConfig = true;
 
     environment.systemPackages = with pkgs; [
