@@ -4,20 +4,29 @@
   inputs,
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [
+    ../common.nix
     ./disko.nix
-    ./hardware.nix
     ./home.nix
+    inputs.nixhw.nixosModules.common-amd-cpu
+    inputs.nixhw.nixosModules.common-amd-gpu
+    inputs.nixhw.nixosModules.common-bluetooth
+    inputs.nixhw.nixosModules.common-ssd
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    initrd.availableKernelModules = ["nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
+  hardware.enableAllFirmware = true;
   networking.hostName = "mandarin";
 
   services.ollama = {
@@ -34,8 +43,6 @@
       steam.enable = true;
       virt-manager.enable = true;
     };
-
-    base.enable = true;
 
     desktop = {
       greetd = {

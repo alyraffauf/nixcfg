@@ -8,6 +8,7 @@
   ...
 }: {
   imports = [
+    ../common.nix
     ./disko.nix
     ./home.nix
     inputs.nixhw.nixosModules.framework-13-amd-7000
@@ -29,8 +30,6 @@
       steam.enable = true;
       virt-manager.enable = true;
     };
-
-    base.enable = true;
 
     desktop = {
       greetd = {

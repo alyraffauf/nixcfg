@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ../common.nix
     ./disko.nix
     ./home.nix
     inputs.nixhw.nixosModules.framework-13-intel-11th
@@ -24,11 +25,6 @@
     apps = {
       firefox.enable = true;
       steam.enable = true;
-    };
-
-    base = {
-      enable = true;
-      sambaAutoMount = false;
     };
 
     desktop = {

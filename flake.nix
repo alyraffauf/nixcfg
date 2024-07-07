@@ -75,11 +75,11 @@
     homeManagerModules.default =
       import ./homeManagerModules inputs self;
 
-    nixosModules.nixos =
-      import ./nixosModules inputs;
-
-    nixosModules.users =
-      import ./userModules inputs;
+    nixosModules = {
+      base = import ./baseModules inputs;
+      nixos = import ./nixosModules inputs;
+      users = import ./userModules inputs;
+    };
 
     nixosConfigurations =
       inputs.nixpkgs.lib.genAttrs [
@@ -102,6 +102,7 @@
               inputs.nixvim.nixosModules.nixvim
               inputs.nur.nixosModules.nur
               inputs.raffauflabs.nixosModules.raffauflabs
+              self.nixosModules.base
               self.nixosModules.nixos
               self.nixosModules.users
 

@@ -75,18 +75,5 @@
 
       tailscale.enable = lib.mkEnableOption "Tailscale WireGuard VPN.";
     };
-
-    base = {
-      enable =
-        lib.mkEnableOption "Basic system configuration and sane defaults.";
-
-      sambaAutoMount = lib.mkOption {
-        description = "Automounting of mauville Samba Shares.";
-        default =
-          config.ar.services.tailscale.enable
-          && !(config.networking.hostName == "mauville");
-        type = lib.types.bool;
-      };
-    };
   };
 }

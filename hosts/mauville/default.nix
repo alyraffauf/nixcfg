@@ -1,6 +1,7 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -10,9 +11,13 @@
   mediaDirectory = "/mnt/Media";
 in {
   imports = [
+    ../common.nix
     ./filesystems.nix
-    ./hardware.nix
     ./home.nix
+    inputs.nixhw.nixosModules.common-amd-cpu
+    inputs.nixhw.nixosModules.common-amd-gpu
+    inputs.nixhw.nixosModules.common-bluetooth
+    inputs.nixhw.nixosModules.common-ssd
   ];
 
   age.secrets = {
@@ -39,11 +44,16 @@ in {
     };
   };
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
+  hardware.enableAllFirmware = true;
   networking.hostName = "mauville";
 
   services = {
@@ -93,8 +103,6 @@ in {
       steam.enable = true;
       virt-manager.enable = true;
     };
-
-    base.enable = true;
 
     desktop = {
       greetd = {

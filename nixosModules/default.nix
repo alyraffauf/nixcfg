@@ -6,7 +6,6 @@ inputs: {
 }: {
   imports = [
     ./apps
-    ./base
     ./desktop
     ./options.nix
     ./services

@@ -4,10 +4,10 @@
   inputs,
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [
+    ../common.nix
     ./disko.nix
     ./home.nix
     inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
@@ -28,8 +28,6 @@
       podman.enable = true;
       steam.enable = true;
     };
-
-    base.enable = true;
 
     desktop = {
       greetd = {

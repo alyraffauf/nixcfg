@@ -8,6 +8,7 @@
   ...
 }: {
   imports = [
+    ../common.nix
     ./disko.nix
     ./home.nix
     inputs.nixhw.nixosModules.thinkpad-t440p
@@ -26,7 +27,6 @@
 
   ar = {
     apps.firefox.enable = true;
-    base.enable = true;
 
     desktop = {
       greetd = {
