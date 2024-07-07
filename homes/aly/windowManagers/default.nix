@@ -20,6 +20,12 @@
     };
 
     hyprland.extraConfig = ''
+      exec-once = sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}
+      bind = SUPER, P, exec, ${lib.getExe' pkgs.keepassxc "keepassxc"}
+      windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
+      windowrulev2 = float,class:(org.keepassxc.KeePassXC)
+      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
+
       # Workspace - Browser
       workspace = 1, defaultName:web, on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}
       windowrulev2 = workspace 1,class:(firefox)
