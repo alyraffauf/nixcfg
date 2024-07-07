@@ -49,6 +49,7 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
+    exec-once = sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}
     bind = SUPER, P, exec, ${lib.getExe' pkgs.keepassxc "keepassxc"}
     windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
     windowrulev2 = float,class:(org.keepassxc.KeePassXC)
@@ -70,7 +71,6 @@
     };
 
     defaultApps.enable = true;
-    desktop.startupApps = [(lib.getExe' pkgs.keepassxc "keepassxc")];
 
     theme = {
       enable = true;

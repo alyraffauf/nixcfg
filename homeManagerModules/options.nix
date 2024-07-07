@@ -204,12 +204,6 @@ in {
           type = lib.types.bool;
         };
       };
-
-      startupApps = lib.mkOption {
-        description = "Apps to launch at startup";
-        default = [];
-        type = lib.types.listOf (lib.types.str);
-      };
     };
 
     services = {
