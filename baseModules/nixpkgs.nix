@@ -20,7 +20,6 @@
         alyraffauf-wallpapers = inputs.wallpapers.packages.${pkgs.system}.default;
         brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
         google-chrome = prev.google-chrome.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
-        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
         nerdfonts = prev.nerdfonts.override {fonts = ["Noto"];};
 
         obsidian = prev.obsidian.overrideAttrs (old: {
@@ -38,8 +37,6 @@
             ["--ozone-platform-hint=auto --enable-wayland-ime"]
             old.installPhase;
         });
-
-        xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
       })
     ];
   };

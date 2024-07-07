@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -17,6 +18,13 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
+
+    nixpkgs.overlays = [
+      (final: prev: {
+        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      })
+    ];
 
     programs = {
       hyprland = {
