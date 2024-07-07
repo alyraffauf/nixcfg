@@ -83,6 +83,8 @@ in {
 
   system.stateVersion = "23.11";
 
+  zramSwap.memoryPercent = 100;
+
   ar = {
     apps = {
       firefox.enable = true;
@@ -92,10 +94,7 @@ in {
       virt-manager.enable = true;
     };
 
-    base = {
-      enable = true;
-      zramSwap.size = 100;
-    };
+    base.enable = true;
 
     desktop = {
       greetd = {

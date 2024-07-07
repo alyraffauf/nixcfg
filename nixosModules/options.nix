@@ -93,20 +93,6 @@
         default = config.ar.base.enable;
         type = lib.types.bool;
       };
-
-      zramSwap = {
-        enable = lib.mkOption {
-          description = "zram swap.";
-          default = config.ar.base.enable;
-          type = lib.types.bool;
-        };
-
-        size = lib.mkOption {
-          description = "zram swap size relative to RAM.";
-          default = 50;
-          type = lib.types.int;
-        };
-      };
     };
   };
 }

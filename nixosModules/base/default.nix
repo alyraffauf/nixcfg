@@ -10,7 +10,6 @@
     ./nix
     ./nixpkgs
     ./plymouth
-    ./zramSwap
   ];
 
   config = lib.mkIf config.ar.base.enable {
@@ -70,5 +69,10 @@
     };
 
     time.timeZone = "America/New_York";
+
+    zramSwap = {
+      enable = lib.mkDefault true;
+      memoryPercent = lib.mkDefault 50;
+    };
   };
 }

@@ -22,13 +22,11 @@
 
   system.stateVersion = "24.05";
 
+  zramSwap.memoryPercent = 100;
+
   ar = {
     apps.firefox.enable = true;
-
-    base = {
-      enable = true;
-      zramSwap.size = 100;
-    };
+    base.enable = true;
 
     desktop = {
       greetd = {
