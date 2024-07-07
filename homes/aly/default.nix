@@ -48,6 +48,8 @@
     };
   };
 
+  systemd.user.startServices = "legacy"; # Needed for auto-mounting agenix secrets.
+
   ar.home = {
     apps = {
       alacritty.enable = true;
