@@ -9,7 +9,6 @@
     ./gnome
     ./greetd
     ./hyprland
-    ./lightdm
     ./sway
     ./waylandComp.nix
   ];
