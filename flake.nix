@@ -72,8 +72,12 @@
         '';
       });
 
-    homeManagerModules.default =
-      import ./homeManagerModules inputs self;
+    homeManagerModules = {
+      default = import ./homeManagerModules inputs self;
+      aly = import ./homes/aly inputs self;
+      dustin = import ./homes/dustin inputs self;
+      morgan = import ./homes/morgan inputs self;
+    };
 
     nixosModules = {
       base = import ./baseModules inputs;

@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   home-manager = {
@@ -14,7 +15,7 @@
     ];
 
     users.aly = lib.mkForce {
-      imports = [../../homes/aly];
+      imports = [self.homeManagerModules.aly];
       systemd.user = {
         services = {
           backblaze-sync = {

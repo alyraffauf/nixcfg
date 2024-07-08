@@ -1,14 +1,16 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   config = lib.mkIf config.ar.users.aly.enable {
     home-manager.users.aly =
       lib.attrsets.optionalAttrs
       config.ar.users.aly.manageHome
-      (import ../../homes/aly);
+      (import ../../homes/aly inputs self);
 
     users.users.aly = {
       description = "Aly Raffauf";
