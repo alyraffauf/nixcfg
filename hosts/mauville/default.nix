@@ -136,8 +136,6 @@ in {
         syncMusic = true;
         musicPath = "${mediaDirectory}/Music";
       };
-
-      tailscale.enable = true;
     };
   };
 

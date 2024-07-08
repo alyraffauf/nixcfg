@@ -7,6 +7,5 @@
   imports = [
     ./flatpak
     ./syncthing
-    ./tailscale
   ];
 }

@@ -39,8 +39,6 @@
         enable = true;
         syncMusic = false;
       };
-
-      tailscale.enable = true;
     };
 
     users = {

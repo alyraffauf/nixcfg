@@ -4,7 +4,11 @@
   pkgs,
   ...
 }: {
-  age.secrets.wifi.file = ../secrets/wifi.age;
+  age.secrets = {
+    tailscaleAuthKey.file = ../secrets/tailscale/authKeyFile.age;
+    wifi.file = ../secrets/wifi.age;
+  };
+
   environment.variables.FLAKE = "github:alyraffauf/nixcfg";
 
   fileSystems = lib.attrsets.optionalAttrs (config.networking.hostName != "mauville") {
@@ -117,5 +121,11 @@
         "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
       };
     };
+  };
+
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    authKeyFile = config.age.secrets.tailscaleAuthKey.path;
   };
 }

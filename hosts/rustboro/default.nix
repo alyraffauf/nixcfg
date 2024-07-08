@@ -20,9 +20,7 @@
   };
 
   networking.hostName = "rustboro";
-
   system.stateVersion = "24.05";
-
   zramSwap.memoryPercent = 100;
 
   ar = {
@@ -41,10 +39,7 @@
       hyprland.enable = true;
     };
 
-    services = {
-      syncthing.enable = true;
-      tailscale.enable = true;
-    };
+    services.syncthing.enable = true;
 
     users.aly = {
       enable = true;

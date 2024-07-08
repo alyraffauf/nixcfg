@@ -58,10 +58,7 @@
       steam.enable = true;
     };
 
-    services = {
-      flatpak.enable = true;
-      tailscale.enable = true;
-    };
+    services.flatpak.enable = true;
 
     users = {
       aly = {

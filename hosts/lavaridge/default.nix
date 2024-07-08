@@ -44,10 +44,7 @@
       hyprland.enable = true;
     };
 
-    services = {
-      syncthing.enable = true;
-      tailscale.enable = true;
-    };
+    services.syncthing.enable = true;
 
     users.aly = {
       enable = true;

@@ -67,8 +67,6 @@
           type = lib.types.str;
         };
       };
-
-      tailscale.enable = lib.mkEnableOption "Tailscale WireGuard VPN.";
     };
   };
 }
