@@ -20,7 +20,7 @@
 
     profiles = {
       default = {
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions = with config.nur.repos.rycee.firefox-addons; [
           augmented-steam
           decentraleyes
           keepassxc-browser
@@ -161,7 +161,7 @@
       };
 
       work = {
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions = with config.nur.repos.rycee.firefox-addons; [
           clearurls
           consent-o-matic
           decentraleyes

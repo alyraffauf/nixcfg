@@ -20,6 +20,29 @@
 
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "petalburg";
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
+
+      obsidian = prev.obsidian.overrideAttrs (old: {
+        installPhase =
+          builtins.replaceStrings ["--ozone-platform=wayland"]
+          ["--ozone-platform=wayland --enable-wayland-ime"]
+          old.installPhase;
+      });
+
+      vscodium = prev.vscodium.override {commandLineArgs = "--enable-wayland-ime";};
+
+      webcord = prev.webcord.overrideAttrs (old: {
+        installPhase =
+          builtins.replaceStrings ["--ozone-platform-hint=auto"]
+          ["--ozone-platform-hint=auto --enable-wayland-ime"]
+          old.installPhase;
+      });
+    })
+  ];
+
   system.stateVersion = "24.05";
 
   ar = {

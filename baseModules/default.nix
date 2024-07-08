@@ -4,8 +4,6 @@ inputs: {
   pkgs,
   ...
 }: {
-  imports = [./nixpkgs.nix];
-
   console.useXkbConfig = true;
 
   environment.systemPackages = with pkgs; [

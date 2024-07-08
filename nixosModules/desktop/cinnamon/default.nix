@@ -28,8 +28,8 @@
             };
 
             font = {
-              name = "NotoSans Nerd Font Regular";
-              package = pkgs.nerdfonts;
+              name = "NotoSans Nerd Font";
+              package = pkgs.nerdfonts.override {fonts = ["Noto"];};
             };
 
             iconTheme = {

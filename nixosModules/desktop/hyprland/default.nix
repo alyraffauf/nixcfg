@@ -19,13 +19,6 @@
       ];
     };
 
-    nixpkgs.overlays = [
-      (final: prev: {
-        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-        xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-      })
-    ];
-
     programs = {
       hyprland = {
         enable = true;

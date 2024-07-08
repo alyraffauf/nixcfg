@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   osConfig,
   pkgs,
@@ -283,7 +284,7 @@ in {
 
       wallpaper = lib.mkOption {
         description = "Default wallpaper.";
-        default = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+        default = "${inputs.wallpapers.packages.${pkgs.system}.defaults}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
         type = lib.types.str;
       };
     };

@@ -1,7 +1,8 @@
 {
-  pkgs,
-  lib,
   config,
+  inputs,
+  lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -23,12 +24,10 @@
     ) {
       environment = {
         sessionVariables.NIXOS_OZONE_WL = "1";
-        systemPackages = [pkgs.alyraffauf-wallpapers];
       };
 
       fonts.packages = with pkgs; [
         liberation_ttf
-        nerdfonts
       ];
 
       hardware.logitech.wireless = {
@@ -55,10 +54,12 @@
 
         xserver = {
           enable = true;
+
           xkb = {
             layout = "us";
             variant = "altgr-intl";
           };
+
           excludePackages = with pkgs; [xterm];
         };
       };

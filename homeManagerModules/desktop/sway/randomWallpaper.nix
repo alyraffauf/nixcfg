@@ -1,14 +1,15 @@
 {
-  pkgs,
-  lib,
   config,
+  inputs,
+  lib,
+  pkgs,
   ...
 }: let
   sway-randomWallpaper = pkgs.writeShellScriptBin "sway-randomWallpaper" ''
     kill `pidof swaybg`
 
     OLD_PIDS=()
-    directory=${pkgs.alyraffauf-wallpapers}/share/backgrounds
+    directory=${inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds
 
     if [ -d "$directory" ]; then
         while true; do

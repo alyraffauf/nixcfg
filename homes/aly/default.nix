@@ -66,7 +66,7 @@ inputs: self: {
 
     theme = {
       enable = true;
-      wallpaper = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }

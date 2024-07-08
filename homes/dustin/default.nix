@@ -41,7 +41,7 @@ inputs: self: {
 
     theme = {
       enable = true;
-      wallpaper = "${pkgs.alyraffauf-wallpapers}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaper = "${inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
     };
   };
 }

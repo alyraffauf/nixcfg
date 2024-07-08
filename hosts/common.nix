@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -57,6 +58,17 @@
   ];
 
   nix.settings.trusted-users = ["aly"];
+
+  nixpkgs = {
+    config.allowUnfree = true; # Allow unfree packages
+
+    overlays = [
+      (final: prev: {
+        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      })
+    ];
+  };
 
   networking.networkmanager = {
     enable = true;

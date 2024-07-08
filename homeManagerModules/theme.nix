@@ -54,7 +54,7 @@
 
         font = {
           name = "NotoSans Nerd Font";
-          package = pkgs.nerdfonts;
+          package = pkgs.nerdfonts.override {fonts = ["Noto"];};
           size = lib.mkDefault 11;
         };
 
