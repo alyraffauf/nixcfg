@@ -43,8 +43,8 @@
           "file://${config.home.homeDirectory}/src"
         ]
         ++ lib.optional (
-          osConfig.ar.services.syncthing.enable
-          && (osConfig.ar.services.syncthing.user == config.home.username)
+          osConfig.ar.users.aly.syncthing.enable
+          && (config.home.username == "aly")
         ) "file://${config.home.homeDirectory}/sync";
 
       xdg = {

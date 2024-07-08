@@ -44,28 +44,6 @@
 
     services = {
       flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
-
-      syncthing = {
-        enable = lib.mkEnableOption "Syncthing sync service.";
-
-        user = lib.mkOption {
-          description = "Specify user Syncthing runs as.";
-          default = "aly";
-          type = lib.types.str;
-        };
-
-        syncMusic = lib.mkOption {
-          description = "Whether to sync music folder.";
-          default = config.ar.services.syncthing.enable;
-          type = lib.types.bool;
-        };
-
-        musicPath = lib.mkOption {
-          description = "Whether to sync music folder.";
-          default = "/home/${config.ar.services.syncthing.user}/music";
-          type = lib.types.str;
-        };
-      };
     };
   };
 }

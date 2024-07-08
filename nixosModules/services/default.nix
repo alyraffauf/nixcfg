@@ -6,6 +6,5 @@
 }: {
   imports = [
     ./flatpak
-    ./syncthing
   ];
 }

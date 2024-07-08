@@ -35,7 +35,26 @@
       ];
     };
 
-    aly = mkUser "aly";
+    aly =
+      mkUser "aly"
+      // {
+        syncthing = {
+          enable = lib.mkEnableOption "Syncthing sync service.";
+
+          syncMusic = lib.mkOption {
+            description = "Whether to sync music folder.";
+            default = config.ar.users.aly.syncthing.enable;
+            type = lib.types.bool;
+          };
+
+          musicPath = lib.mkOption {
+            description = "Whether to sync music folder.";
+            default = "/home/aly/music";
+            type = lib.types.str;
+          };
+        };
+      };
+
     dustin = mkUser "dustin";
     morgan = mkUser "morgan";
   };

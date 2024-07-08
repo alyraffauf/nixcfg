@@ -33,19 +33,17 @@
       hyprland.enable = true;
     };
 
-    services = {
-      flatpak.enable = true;
-
-      syncthing = {
-        enable = true;
-        syncMusic = false;
-      };
-    };
+    services.flatpak.enable = true;
 
     users = {
       aly = {
         enable = true;
         password = "$y$j9T$0p6rc4p5sn0LJ/6XyAGP7.$.wmTafwMMscdW1o8kqqoHJP7U8kF.4WBmzzcPYielR3";
+
+        syncthing = {
+          enable = true;
+          syncMusic = false;
+        };
       };
 
       dustin = {

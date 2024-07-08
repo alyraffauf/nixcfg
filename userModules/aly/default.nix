@@ -6,6 +6,8 @@
   self,
   ...
 }: {
+  imports = [./syncthing.nix];
+
   config = lib.mkIf config.ar.users.aly.enable {
     home-manager.users.aly =
       lib.attrsets.optionalAttrs
