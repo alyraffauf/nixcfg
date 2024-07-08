@@ -102,8 +102,6 @@
           region = "${bin} -m region -o ${folder}";
         };
 
-        gdk_scale = "1.5";
-
         clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
           NUM_MONITORS=$(${hyprctl} monitors all | grep Monitor | wc --lines)
           if [ "$1" == "on" ]; then
@@ -193,9 +191,6 @@
           xwayland {
             force_zero_scaling = true
           }
-
-          # toolkit-specific scale
-          env = GDK_SCALE,${gdk_scale}
 
           # Some default env vars.
           env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}

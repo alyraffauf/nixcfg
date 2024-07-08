@@ -18,8 +18,8 @@
     systemd-boot.enable = true;
   };
 
+  environment.variables.GDK_SCALE = "2";
   networking.hostName = "petalburg";
-
   system.stateVersion = "24.05";
 
   ar = {

@@ -26,6 +26,7 @@
     };
   };
 
+  environment.variables.GDK_SCALE = "1.25";
   hardware.enableAllFirmware = true;
   networking.hostName = "mandarin";
 

@@ -91,8 +91,8 @@ in {
     };
   };
 
+  environment.variables.GDK_SCALE = "1.25";
   system.stateVersion = "23.11";
-
   zramSwap.memoryPercent = 100;
 
   ar = {
