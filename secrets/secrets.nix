@@ -8,6 +8,7 @@ let
     "rustboro"
   ];
   users = [
+    "aly_fallarbor"
     "aly_lavaridge"
     "aly_mauville"
     "aly_petalburg"
