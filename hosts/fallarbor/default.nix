@@ -13,6 +13,11 @@
     inputs.nixhw.nixosModules.framework-13-intel-11th
   ];
 
+  age.secrets = {
+    syncthingCert.file = ../../secrets/syncthing/fallarbor/cert.age;
+    syncthingKey.file = ../../secrets/syncthing/fallarbor/key.age;
+  };
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -42,6 +47,8 @@
 
         syncthing = {
           enable = true;
+          certFile = config.age.secrets.syncthingCert.path;
+          keyFile = config.age.secrets.syncthingKey.path;
           syncMusic = false;
         };
       };

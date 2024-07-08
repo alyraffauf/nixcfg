@@ -14,6 +14,11 @@
     inputs.nixhw.nixosModules.thinkpad-t440p
   ];
 
+  age.secrets = {
+    syncthingCert.file = ../../secrets/syncthing/rustboro/cert.age;
+    syncthingKey.file = ../../secrets/syncthing/rustboro/key.age;
+  };
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -43,7 +48,11 @@
     users.aly = {
       enable = true;
       password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
-      syncthing.enable = true;
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+      };
     };
   };
 }

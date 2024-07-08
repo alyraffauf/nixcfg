@@ -13,6 +13,11 @@
     inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
   ];
 
+  age.secrets = {
+    syncthingCert.file = ../../secrets/syncthing/petalburg/cert.age;
+    syncthingKey.file = ../../secrets/syncthing/petalburg/key.age;
+  };
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -68,7 +73,11 @@
     users.aly = {
       enable = true;
       password = "$y$j9T$TitXX3J690cnK41XciNMg/$APKHM/os6FKd9H9aXGxaHaQ8zP5SenO9EO94VYafl43";
-      syncthing.enable = true;
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+      };
     };
   };
 }

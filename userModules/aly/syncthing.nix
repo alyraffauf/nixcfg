@@ -7,18 +7,13 @@
   cfg = config.ar.users.aly.syncthing;
 in {
   config = lib.mkIf cfg.enable {
-    age.secrets = {
-      syncthingCert.file = ../../secrets/syncthing + "/${config.networking.hostName}/cert.age";
-      syncthingKey.file = ../../secrets/syncthing + "/${config.networking.hostName}/key.age";
-    };
-
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
 
     services.syncthing = {
       enable = true;
-      cert = config.age.secrets.syncthingCert.path;
+      cert = cfg.certFile;
       dataDir = "/home/aly";
-      key = config.age.secrets.syncthingKey.path;
+      key = cfg.keyFile;
       openDefaultPorts = true;
       user = "aly";
       settings = {

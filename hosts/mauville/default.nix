@@ -42,6 +42,9 @@ in {
       owner = "navidrome";
       file = ../../secrets/spotify/clientSecret.age;
     };
+
+    syncthingCert.file = ../../secrets/syncthing/mauville/cert.age;
+    syncthingKey.file = ../../secrets/syncthing/mauville/key.age;
   };
 
   boot = {
@@ -125,6 +128,8 @@ in {
 
         syncthing = {
           enable = true;
+          certFile = config.age.secrets.syncthingCert.path;
+          keyFile = config.age.secrets.syncthingKey.path;
           musicPath = "${mediaDirectory}/Music";
         };
       };
