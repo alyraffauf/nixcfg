@@ -54,12 +54,6 @@
 
         xserver = {
           enable = true;
-
-          xkb = {
-            layout = "us";
-            variant = "altgr-intl";
-          };
-
           excludePackages = with pkgs; [xterm];
         };
       };

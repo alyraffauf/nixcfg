@@ -157,10 +157,17 @@
     };
   };
 
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    authKeyFile = config.age.secrets.tailscaleAuthKey.path;
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      authKeyFile = config.age.secrets.tailscaleAuthKey.path;
+    };
+
+    xserver.xkb = {
+      layout = "us";
+      variant = "altgr-intl";
+    };
   };
 
   system.autoUpgrade = {
