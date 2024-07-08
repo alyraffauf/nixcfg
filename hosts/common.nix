@@ -79,7 +79,24 @@
     }
   ];
 
-  nix.settings.trusted-users = ["aly"];
+  nix = {
+    settings = {
+      substituters = [
+        "https://alyraffauf.cachix.org"
+        "https://cache.nixos.org/"
+        "https://hyprland.cachix.org"
+        "https://nix-community.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+
+      trusted-users = ["aly"];
+    };
+  };
 
   nixpkgs = {
     config.allowUnfree = true; # Allow unfree packages
