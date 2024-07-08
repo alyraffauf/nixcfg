@@ -1,5 +1,29 @@
 # nixcfg
-NixOS flake for all mine + my husband's hosts, including modules for Hyprland, Sway, GNOME, and a variety of [home lab](https://github.com/alyraffauf/raffauflabs) services running on a mix of nix-native and OCI containers. Built with [agenix](https://github.com/ryantm/agenix) for managing secrets, [disko](https://github.com/nix-community/disko) for automatically partioning drives, and [home-manager](https://github.com/nix-community/home-manager) for managing dotfiles and home configuration.
+NixOS flake for all mine + my family's hosts, including modules for Hyprland, Sway, GNOME, and more. 
+
+## Inputs
+This flake takes a variety of inputs, first and foremost my other flakes:
+- [nixhw](https://github.com/alyraffauf/nixhw): optionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
+- [raffauflabs](https://github.com/alyraffauf/raffauflabs): everything (containers, services, nginx, etc) that makes my [home lab](https://raffauflabs.com) a home lab.
+- [wallpapers](https://github.com/alyraffauf/wallpapers): my wallpaper collection, packaged as a nix flake.
+
+As well as upstream third-party projects that I use for various tasks:
+- [agenix](https://github.com/ryantm/agenix): secrets storage and orchestration.
+- [disko](https://github.com/nix-community/disko): declarative partitions and disk configuration.
+- [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
+- [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
+- [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
+- [nixvim](https://github.com/nix-community/nixvim): helpful neovim modules.
+- [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
+
+## Outputs
+
+- homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
+- nixosModules.base: opinionated basic system configuration.
+- nixosModules.nixos: opinionated desktop, app, and service modules.
+- nixosModules.users: basic user configuration ofr three users.
+
+In addition, this flake outputs NixOS configuration and home-manager configurations for all of my hosts and users, respectively. 
 
 ## Rice
 ![](./_img/hyprland.png)
