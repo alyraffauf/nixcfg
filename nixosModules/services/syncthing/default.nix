@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [./syncMusic.nix];
-
   config = let
     cfg = config.ar.services.syncthing;
   in
@@ -30,6 +28,7 @@
             relaysEnabled = true;
             urAccepted = -1;
           };
+
           devices = {
             "brawly" = {id = "BBIBWMR-CN4CFC4-2XMPLII-XFWXBT5-EPCZCAF-JOWAX5J-DHIGNM4-O3XQ4Q3";}; # Pixel 6a
             "fallarbor" = {id = "P4URLH4-YWLMO6J-W62ET7H-TQAO3Y6-T2FAYOY-C2VTI65-VQXHVGG-NQ76PAZ";}; # Framework 13 Intel 11th gen
@@ -43,38 +42,49 @@
             "wallace" = {id = "X55NQL2-H3TEJ5U-EXZPBKQ-LI6BMB4-W2ULDIJ-YNIHJHB-4ISCOJB-UHNLYAX";}; # Samsung a35
             "winona" = {id = "IGAW5SS-WY2QN6J-5TF74YZ-6XPNPTC-RCH3HIT-ZZQKCAI-6L54IS2-SNRIMA2";}; # Pixel Tablet
           };
-          folders = {
-            "sync" = {
-              id = "default";
-              path = "/home/${cfg.user}/sync";
-              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wallace" "winona"];
-              versioning = {
-                type = "staggered";
-                params = {
-                  cleanInterval = "3600";
-                  maxAge = "1";
+
+          folders =
+            {
+              "sync" = {
+                id = "default";
+                path = "/home/${cfg.user}/sync";
+                devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wallace" "winona"];
+                versioning = {
+                  type = "staggered";
+                  params = {
+                    cleanInterval = "3600";
+                    maxAge = "1";
+                  };
                 };
               };
-            };
-            "camera" = {
-              id = "fcsgh-dlxys";
-              path = "/home/${cfg.user}/pics/camera";
-              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
-              versioning = {
-                params.cleanoutDays = "5";
-                type = "trashcan";
+
+              "camera" = {
+                id = "fcsgh-dlxys";
+                path = "/home/${cfg.user}/pics/camera";
+                devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
+                versioning = {
+                  params.cleanoutDays = "5";
+                  type = "trashcan";
+                };
+              };
+
+              "screenshots" = {
+                id = "screenshots";
+                path = "/home/${cfg.user}/pics/screenshots";
+                devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
+                versioning = {
+                  params.cleanoutDays = "5";
+                  type = "trashcan";
+                };
+              };
+            }
+            // lib.attrsets.optionalAttrs (config.ar.services.syncthing.syncMusic) {
+              "music" = {
+                id = "6nzmu-z9der";
+                path = config.ar.services.syncthing.musicPath;
+                devices = ["lavaridge" "mauville" "petalburg" "rustboro" "wallace"];
               };
             };
-            "screenshots" = {
-              id = "screenshots";
-              path = "/home/${cfg.user}/pics/screenshots";
-              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
-              versioning = {
-                params.cleanoutDays = "5";
-                type = "trashcan";
-              };
-            };
-          };
         };
       };
     };
