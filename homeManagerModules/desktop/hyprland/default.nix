@@ -85,6 +85,7 @@
             wallpaperd
             (lib.getExe pkgs.waybar)
             idled
+            (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
             (lib.getExe' pkgs.blueman "blueman-applet")
             (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
             (lib.getExe' pkgs.playerctl "playerctld")
