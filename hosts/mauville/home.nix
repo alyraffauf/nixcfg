@@ -54,7 +54,7 @@
               )
 
               for h in "''${hosts[@]}"; do
-                nix build github:alyraffauf/nixcfg#nixosConfigurations.$h.config.system.build.toplevel
+                nix build github:alyraffauf/nixcfg#nixosConfigurations.$h.config.system.build.toplevel --json | ${lib.getExe pkgs.jq} -r '.[].outputs | to_entries[].value' | ${lib.getExe pkgs.cachix} push alyraffauf
               done
             ''}";
           };
