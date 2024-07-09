@@ -1,7 +1,6 @@
 # Lenovo Thinkpad T440p with a Core i5 4210M, 16GB RAM, 512GB SSD.
 {
   config,
-  inputs,
   lib,
   pkgs,
   self,
@@ -11,7 +10,7 @@
     ../common.nix
     ./disko.nix
     ./home.nix
-    inputs.nixhw.nixosModules.thinkpad-t440p
+    self.inputs.nixhw.nixosModules.thinkpad-t440p
   ];
 
   age.secrets = {

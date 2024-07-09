@@ -1,4 +1,4 @@
-inputs: self: {
+self: {
   config,
   lib,
   pkgs,
@@ -8,6 +8,9 @@ inputs: self: {
     ./firefox
     ./mail
     ./windowManagers
+    self.homeManagerModules.default
+    self.inputs.agenix.homeManagerModules.default
+    self.inputs.nur.hmModules.nur
   ];
 
   home = {
@@ -66,7 +69,7 @@ inputs: self: {
 
     theme = {
       enable = true;
-      wallpaper = "${inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${self.inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }

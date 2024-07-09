@@ -1,4 +1,4 @@
-inputs: self: {
+self: {
   config,
   pkgs,
   lib,

@@ -1,9 +1,9 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: let
   archiveDirectory = "/mnt/Archive";
@@ -14,10 +14,11 @@ in {
     ../common.nix
     ./filesystems.nix
     ./home.nix
-    inputs.nixhw.nixosModules.common-amd-cpu
-    inputs.nixhw.nixosModules.common-amd-gpu
-    inputs.nixhw.nixosModules.common-bluetooth
-    inputs.nixhw.nixosModules.common-ssd
+    self.inputs.nixhw.nixosModules.common-amd-cpu
+    self.inputs.nixhw.nixosModules.common-amd-gpu
+    self.inputs.nixhw.nixosModules.common-bluetooth
+    self.inputs.nixhw.nixosModules.common-ssd
+    self.inputs.raffauflabs.nixosModules.raffauflabs
   ];
 
   age.secrets = {

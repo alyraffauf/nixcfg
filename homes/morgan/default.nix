@@ -1,9 +1,11 @@
-inputs: self: {
+self: {
   config,
   lib,
   pkgs,
   ...
 }: {
+  imports = [self.homeManagerModules.default];
+
   home = {
     username = "morgan";
     homeDirectory = "/home/morgan";
@@ -38,7 +40,7 @@ inputs: self: {
 
     theme = {
       enable = true;
-      wallpaper = "${inputs.wallpapers.packages.${pkgs.system}.default}/share//backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaper = "${self.inputs.wallpapers.packages.${pkgs.system}.default}/share//backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
     };
   };
 }

@@ -1,19 +1,19 @@
 # Custom desktop with AMD Ryzen 5 5600x, 32GB RAM, AMD Rx 7800 XT, and 1TB SSD + 2TB SSD.
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
     ../common.nix
     ./disko.nix
     ./home.nix
-    inputs.nixhw.nixosModules.common-amd-cpu
-    inputs.nixhw.nixosModules.common-amd-gpu
-    inputs.nixhw.nixosModules.common-bluetooth
-    inputs.nixhw.nixosModules.common-ssd
+    self.inputs.nixhw.nixosModules.common-amd-cpu
+    self.inputs.nixhw.nixosModules.common-amd-gpu
+    self.inputs.nixhw.nixosModules.common-bluetooth
+    self.inputs.nixhw.nixosModules.common-ssd
   ];
 
   boot = {

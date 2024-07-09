@@ -1,8 +1,8 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   config = let
@@ -45,7 +45,7 @@
             pkgs.writers.writeRuby "hyprland-randomWallpaper" {} ''
               require 'fileutils'
 
-              directory = "${inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds"
+              directory = "${self.inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds"
               hyprctl = "${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}"
               old_pids = []
 

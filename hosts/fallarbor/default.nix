@@ -1,16 +1,16 @@
 # Framework 13 with 11th gen Intel Core i5, 16GB RAM, 512GB SSD.
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
     ../common.nix
     ./disko.nix
     ./home.nix
-    inputs.nixhw.nixosModules.framework-13-intel-11th
+    self.inputs.nixhw.nixosModules.framework-13-intel-11th
   ];
 
   age.secrets = {
