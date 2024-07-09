@@ -16,9 +16,6 @@
         neogit.enable = true;
         nix.enable = true;
       };
-
-      viAlias = true;
-      vimAlias = true;
     };
   };
 }
