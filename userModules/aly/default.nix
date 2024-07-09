@@ -12,7 +12,7 @@
     home-manager.users.aly =
       lib.attrsets.optionalAttrs
       config.ar.users.aly.manageHome
-      (import ../../homes/aly inputs self);
+      {imports = [self.homeManagerModules.aly];};
 
     users.users.aly = {
       description = "Aly Raffauf";

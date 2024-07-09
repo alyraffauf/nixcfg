@@ -10,7 +10,7 @@
     home-manager.users.dustin =
       lib.attrsets.optionalAttrs
       config.ar.users.dustin.manageHome
-      (import ../../homes/dustin inputs self);
+      {imports = [self.homeManagerModules.dustin];};
 
     users.users.dustin = {
       description = "Dustin Raffauf";

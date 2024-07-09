@@ -10,7 +10,7 @@
     home-manager.users.morgan =
       lib.attrsets.optionalAttrs
       config.ar.users.morgan.manageHome
-      (import ../../homes/morgan inputs self);
+      {imports = [self.homeManagerModules.morgan];};
 
     users.users.morgan = {
       description = "Morgan Tamayo";
