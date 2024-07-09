@@ -66,7 +66,7 @@
     ];
   };
 
-  outputs = inputs @ {self, ...}: let
+  outputs = {self, ...}: let
     forDefaultSystems = self.inputs.nixpkgs.lib.genAttrs [
       "aarch64-linux"
       "x86_64-linux"
@@ -113,7 +113,7 @@
     nixosConfigurations = forAllHosts (
       host:
         self.inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs self;};
+          specialArgs = {inherit self;};
           modules = [
             ./hosts/${host}
             self.inputs.agenix.nixosModules.default
