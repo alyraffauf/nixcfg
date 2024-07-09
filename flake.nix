@@ -112,9 +112,6 @@
             inputs.agenix.nixosModules.default
             inputs.disko.nixosModules.disko
             inputs.home-manager.nixosModules.home-manager
-            inputs.hyprland.nixosModules.default
-            inputs.nixvim.nixosModules.nixvim
-            inputs.nur.nixosModules.nur
             inputs.raffauflabs.nixosModules.raffauflabs
             self.nixosModules.base
             self.nixosModules.nixos
@@ -127,7 +124,6 @@
 
                 sharedModules = [
                   inputs.agenix.homeManagerModules.default
-                  inputs.hyprland.homeManagerModules.default
                   inputs.nixvim.homeManagerModules.nixvim
                   inputs.nur.hmModules.nur
                   self.homeManagerModules.default
