@@ -7,10 +7,7 @@
   ...
 }: {
   config = lib.mkIf config.ar.users.dustin.enable {
-    home-manager.users.dustin =
-      lib.attrsets.optionalAttrs
-      config.ar.users.dustin.manageHome
-      {imports = [self.homeManagerModules.dustin];};
+    home-manager.users.dustin = self.homeManagerModules.dustin;
 
     users.users.dustin = {
       description = "Dustin Raffauf";

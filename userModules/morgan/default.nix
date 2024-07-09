@@ -7,10 +7,7 @@
   ...
 }: {
   config = lib.mkIf config.ar.users.morgan.enable {
-    home-manager.users.morgan =
-      lib.attrsets.optionalAttrs
-      config.ar.users.morgan.manageHome
-      {imports = [self.homeManagerModules.morgan];};
+    home-manager.users.morgan = self.homeManagerModules.morgan;
 
     users.users.morgan = {
       description = "Morgan Tamayo";

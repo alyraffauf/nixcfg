@@ -9,10 +9,7 @@
   imports = [./syncthing.nix];
 
   config = lib.mkIf config.ar.users.aly.enable {
-    home-manager.users.aly =
-      lib.attrsets.optionalAttrs
-      config.ar.users.aly.manageHome
-      {imports = [self.homeManagerModules.aly];};
+    home-manager.users.aly = self.homeManagerModules.aly;
 
     users.users.aly = {
       description = "Aly Raffauf";

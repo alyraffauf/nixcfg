@@ -8,12 +8,6 @@
     mkUser = user: {
       enable = lib.mkEnableOption "${user}.";
 
-      manageHome = lib.mkOption {
-        description = "Whether to manage ${user}'s home directory.";
-        type = lib.types.bool;
-        default = true;
-      };
-
       password = lib.mkOption {
         description = "Hashed password for ${user}.";
         type = lib.types.str;
