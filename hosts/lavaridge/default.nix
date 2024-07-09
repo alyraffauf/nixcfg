@@ -1,7 +1,6 @@
 # Framework Laptop 13 with AMD Ryzen 7640U, 32GB RAM, 1TB SSD.
 {
   config,
-  inputs,
   lib,
   pkgs,
   self,
@@ -11,7 +10,7 @@
     ../common.nix
     ./disko.nix
     ./home.nix
-    inputs.nixhw.nixosModules.framework-13-amd-7000
+    self.inputs.nixhw.nixosModules.framework-13-amd-7000
   ];
 
   age.secrets = {

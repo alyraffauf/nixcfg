@@ -1,8 +1,8 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   age.secrets = {
@@ -12,7 +12,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      inputs.agenix.packages.${pkgs.system}.default
+      self.inputs.agenix.packages.${pkgs.system}.default
       inxi
     ];
 
@@ -103,8 +103,8 @@
 
     overlays = [
       (final: prev: {
-        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-        xdg-desktop-portal-hyprland = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+        hyprland = self.inputs.hyprland.packages.${pkgs.system}.hyprland;
+        xdg-desktop-portal-hyprland = self.inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
       })
     ];
   };

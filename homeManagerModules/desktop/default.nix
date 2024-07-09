@@ -48,6 +48,12 @@
         ) "file://${config.home.homeDirectory}/sync";
 
       xdg = {
+        dataFile."backgrounds".source = builtins.fetchGit {
+          url = "https://github.com/alyraffauf/wallpapers.git";
+          rev = "7603a8aa36b0d8d76bd9fd80d19e8b601e4839aa";
+          ref = "master";
+        };
+
         userDirs = {
           enable = true;
           createDirectories = true;

@@ -1,4 +1,4 @@
-inputs: self: {
+self: {
   config,
   lib,
   pkgs,
@@ -8,6 +8,10 @@ inputs: self: {
     ./firefox
     ./mail
     ./windowManagers
+    self.homeManagerModules.default
+    self.inputs.agenix.homeManagerModules.default
+    self.inputs.nixvim.homeManagerModules.nixvim
+    self.inputs.nur.hmModules.nur
   ];
 
   home = {
@@ -36,13 +40,26 @@ inputs: self: {
   };
 
   programs = {
-    home-manager.enable = true;
-
     git = {
       enable = true;
       lfs.enable = true;
       userName = "Aly Raffauf";
       userEmail = "aly@raffauflabs.com";
+    };
+
+    home-manager.enable = true;
+
+    nixvim = {
+      enable = true;
+      colorschemes.ayu.enable = true;
+
+      plugins = {
+        lightline.enable = true;
+        markdown-preview.enable = true;
+        neo-tree.enable = true;
+        neogit.enable = true;
+        nix.enable = true;
+      };
     };
   };
 
@@ -66,7 +83,7 @@ inputs: self: {
 
     theme = {
       enable = true;
-      wallpaper = "${inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }
