@@ -615,8 +615,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "nur": "nur",
-        "raffauflabs": "raffauflabs",
-        "wallpapers": "wallpapers"
+        "raffauflabs": "raffauflabs"
       }
     },
     "systems": {
@@ -697,26 +696,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1720441472,
-        "narHash": "sha256-DmNtKWSUUZMMx/iVG+uBaDVZVYtTuqBDLlXuszkyU98=",
-        "owner": "alyraffauf",
-        "repo": "wallpapers",
-        "rev": "450b10fe4c206fe28a5e9dcc9e00d4f6e518815b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alyraffauf",
-        "repo": "wallpapers",
         "type": "github"
       }
     },

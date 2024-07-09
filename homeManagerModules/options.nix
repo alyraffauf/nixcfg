@@ -102,7 +102,7 @@ in {
 
       terminalEditor = lib.mkOption {
         description = "Default terminal editor package.";
-        default = config.programs.nixvim.package;
+        default = config.programs.neovim.package;
         type = lib.types.package;
       };
 
