@@ -69,7 +69,7 @@ self: {
 
     theme = {
       enable = true;
-      wallpaper = "${self.inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
     };
   };
 }

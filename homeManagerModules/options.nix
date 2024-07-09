@@ -1,9 +1,9 @@
 {
   config,
-  inputs,
   lib,
   osConfig,
   pkgs,
+  self,
   ...
 }: let
   cfg = config.ar.home;
@@ -284,7 +284,7 @@ in {
 
       wallpaper = lib.mkOption {
         description = "Default wallpaper.";
-        default = "${inputs.wallpapers.packages.${pkgs.system}.defaults}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+        default = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
         type = lib.types.str;
       };
     };

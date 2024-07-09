@@ -43,11 +43,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/raffauflabs";
     };
-
-    wallpapers = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:alyraffauf/wallpapers";
-    };
   };
 
   nixConfig = {

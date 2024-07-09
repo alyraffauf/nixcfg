@@ -43,7 +43,7 @@ self: {
 
     theme = {
       enable = true;
-      wallpaper = "${self.inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaper = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
     };
   };
 }

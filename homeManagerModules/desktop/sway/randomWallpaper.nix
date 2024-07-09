@@ -9,7 +9,7 @@
     kill `pidof swaybg`
 
     OLD_PIDS=()
-    directory=${self.inputs.wallpapers.packages.${pkgs.system}.default}/share/backgrounds
+    directory=${config.xdg.dataHome}/backgrounds
 
     if [ -d "$directory" ]; then
         while true; do
