@@ -11,7 +11,7 @@
   };
 
   laptopMonitors = {
-    framework = "desc:BOE 0x095F,preferred,auto,1.6";
+    framework = "desc:BOE 0x095F,preferred,auto,1.566667";
     t440p = "desc:LG Display 0x0569,preferred,auto,1.0";
     yoga9i = "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0";
   };
