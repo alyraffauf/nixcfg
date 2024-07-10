@@ -20,8 +20,6 @@
       url = "github:nix-community/home-manager/release-24.05";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
     iio-hyprland = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:JeanSchoeller/iio-hyprland";
@@ -55,13 +53,11 @@
 
     extra-substituters = [
       "https://alyraffauf.cachix.org"
-      "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
