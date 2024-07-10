@@ -4,14 +4,14 @@
   pkgs,
   self,
   ...
-}: {
-  config = let
-    cfg = config.ar.home;
-  in
-    lib.mkIf cfg.desktop.hyprland.enable {
-      wayland.windowManager.hyprland.enable = true;
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.desktop.hyprland.enable {
+    wayland.windowManager = {
+      hyprland.enable = true;
 
-      wayland.windowManager.hyprland.extraConfig = let
+      hyprland.extraConfig = let
         inherit
           (import ./vars.nix)
           defaultWorkspaces
@@ -417,4 +417,5 @@
           submap=reset
       '';
     };
+  };
 }
