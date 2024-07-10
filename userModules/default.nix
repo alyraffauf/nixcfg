@@ -7,7 +7,6 @@ self: {
   imports = [
     ./aly
     ./dustin
-    ./morgan
     ./options.nix
   ];
 

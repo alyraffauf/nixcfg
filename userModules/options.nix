@@ -60,6 +60,5 @@
       };
 
     dustin = mkUser "dustin";
-    morgan = mkUser "morgan";
   };
 }
