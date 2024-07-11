@@ -3,9 +3,8 @@ NixOS flake for all mine + my family's hosts, including modules for Hyprland, Sw
 
 ## Inputs
 This flake takes a variety of inputs, first and foremost my other flakes:
-- [nixhw](https://github.com/alyraffauf/nixhw): optionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
+- [nixhw](https://github.com/alyraffauf/nixhw): opinionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
 - [raffauflabs](https://github.com/alyraffauf/raffauflabs): everything (containers, services, nginx, etc) that makes my [home lab](https://raffauflabs.com) a home lab.
-- [wallpapers](https://github.com/alyraffauf/wallpapers): my wallpaper collection, packaged as a nix flake.
 
 As well as upstream third-party projects that I use for various tasks:
 - [agenix](https://github.com/ryantm/agenix): secrets storage and orchestration.
@@ -21,7 +20,7 @@ As well as upstream third-party projects that I use for various tasks:
 - homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
 - nixosModules.base: opinionated basic system configuration.
 - nixosModules.nixos: opinionated desktop, app, and service modules.
-- nixosModules.users: basic user configuration ofr three users.
+- nixosModules.users: basic user configuration for three users.
 
 In addition, this flake outputs NixOS configuration and home-manager configurations for all of my hosts and users, respectively. 
 
