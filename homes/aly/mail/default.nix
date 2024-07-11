@@ -95,7 +95,25 @@ in {
     thunderbird = {
       enable = true;
       profiles = let
-        settings = {"mailnews.message_display.disable_remote_image" = false;};
+        settings = {
+          "calendar.timezone.useSystemTimezone" = true;
+          "datareporting.healthreport.uploadEnabled" = false;
+          "mailnews.default_sort_order" = 2; # descending, 1 for ascending
+          "mailnews.default_sort_type" = 18; # sort by date
+          "mailnews.message_display.disable_remote_image" = false;
+          "network.cookie.cookieBehavior" = 2; # no cookies
+          "pdfjs.enabledCache.state" = true;
+          "privacy.donottrackheader.enabled" = true;
+          "privacy.fingerprintingProtection" = true;
+          "privacy.firstparty.isolate" = true;
+          "privacy.purge_trackers.date_in_cookie_database" = "0";
+          "privacy.resistFingerprinting" = true;
+          "privacy.trackingprotection.emailtracking.enabled" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.fingerprinting.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+          "toolkit.telemetry.enabled" = false;
+        };
       in {
         default = {
           inherit settings;
