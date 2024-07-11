@@ -10,6 +10,7 @@ self: {
     username = "dustin";
     homeDirectory = "/home/dustin";
     stateVersion = "24.05";
+
     packages = with pkgs; [
       fractal
       libreoffice-fresh
@@ -24,9 +25,7 @@ self: {
 
   xdg.mimeApps = {
     enable = true;
-    defaultApplications = {
-      "application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
-    };
+    defaultApplications."application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
   };
 
   ar.home = {

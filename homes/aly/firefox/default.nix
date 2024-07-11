@@ -11,8 +11,8 @@
       ref = "master";
     };
   in {
-    ".mozilla/firefox/default/chrome" = {inherit source;};
-    ".mozilla/firefox/work/chrome" = {inherit source;};
+    ".mozilla/firefox/default/chrome".source = source;
+    ".mozilla/firefox/work/chrome".source = source;
   };
 
   programs.firefox = {
@@ -39,11 +39,9 @@
           force = true;
 
           engines = {
-            "Bing" = {
-              metaData = {
-                hidden = true;
-                alias = "!bing";
-              };
+            "Bing".metaData = {
+              hidden = true;
+              alias = "!bing";
             };
 
             "Brave" = {
@@ -63,11 +61,9 @@
               ];
             };
 
-            "Google" = {
-              metaData = {
-                hidden = true;
-                alias = "!google";
-              };
+            "Google".metaData = {
+              hidden = true;
+              alias = "!google";
             };
 
             "Kagi" = {
@@ -133,6 +129,7 @@
               ];
             };
           };
+
           order = [
             "Brave"
             "Kagi"
@@ -193,18 +190,14 @@
           default = "Google";
           force = true;
           engines = {
-            "Bing" = {
-              metaData = {
-                hidden = true;
-                alias = "!bing";
-              };
+            "Bing".metaData = {
+              hidden = true;
+              alias = "!bing";
             };
 
-            "DuckDuckGo" = {
-              metaData = {
-                hidden = true;
-                alias = "!ddg";
-              };
+            "DuckDuckGo".metaData = {
+              hidden = true;
+              alias = "!ddg";
             };
           };
         };

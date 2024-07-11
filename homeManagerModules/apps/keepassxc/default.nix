@@ -40,9 +40,7 @@
         LockDatabaseScreenLock = false;
       };
 
-      SSHAgent = {
-        Enabled = true;
-      };
+      SSHAgent.Enabled = true;
     };
 
     xdg.configFile."keepassxc/keepassxc.ini".text =

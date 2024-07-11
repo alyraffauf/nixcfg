@@ -20,11 +20,13 @@
             ["sway/workspaces" "sway/scratchpad" "sway/mode"]
             ++ lib.optionals (config.ar.home.desktop.hyprland.tabletMode.menuButton)
             ["custom/menu" "custom/hyprland-close"];
+
           modules-center = ["clock"];
           modules-right = [
             "tray"
             "group/hardware"
           ];
+
           "hyprland/workspaces" = {
             "all-outputs" = true;
             "format" = "{icon} {name}";
@@ -32,18 +34,22 @@
               "default" = "󰝥";
               "active" = "󰪥";
             };
+
             "sort-by" = "id";
           };
+
           "hyprland/submap" = {
             "on-click" = ''${lib.getExe'
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch submap reset'';
           };
+
           "hyprland/window" = {
             "format" = "";
             "max-length" = 100;
             "separate-outputs" = true;
             "icon" = true;
           };
+
           "sway/workspaces" = {
             "all-outputs" = true;
             "format" = "{icon} {name}";
@@ -53,12 +59,15 @@
             };
             "sort-by" = "id";
           };
+
           "sway/mode" = {
             "on-click" = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} mode default'';
           };
+
           "sway/window" = {
             "max-length" = 100;
           };
+
           "sway/scratchpad" = {
             "format" = "{icon}　{count}";
             "show-empty" = false;
@@ -66,27 +75,33 @@
             "tooltip" = true;
             "tooltip-format" = "{app}: {title}";
           };
+
           "custom/sway-close" = {
             "on-click" = ''${lib.getExe'
                 config.wayland.windowManager.sway.package "swaymsg"} kill'';
             "format" = "󰅗";
           };
+
           "custom/hyprland-close" = {
             "on-click" = ''${lib.getExe'
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive'';
             "format" = "󰅗";
           };
+
           "river/window" = {
             "max-length" = 100;
           };
+
           "river/tags" = {
             "num-tags" = 4;
           };
+
           "clock" = {
             "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
             "interval" = 60;
             "format" = "{:%I:%M%p}";
           };
+
           "battery" = {
             "states" = {"critical" = 20;};
             "format" = "{icon}";
@@ -95,6 +110,7 @@
               {capacity}%: {timeTo}.
               Draw: {power} watts.'';
           };
+
           "inhibitor" = {
             "what" = "sleep";
             "format" = "{icon}";
@@ -103,6 +119,7 @@
               "deactivated" = "";
             };
           };
+
           "bluetooth" = {
             "format" = "󰂯";
             "format-disabled" = ""; # an empty format will hide the module
@@ -115,20 +132,24 @@
             "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
             "on-click" = lib.getExe' pkgs.blueberry "blueberry";
           };
+
           "pulseaudio" = {
             "format" = "{icon}";
             "format-bluetooth" = "{volume}% {icon}󰂯";
             "format-muted" = "";
+
             "format-icons" = {
               "headphones" = "󰋋";
               "handsfree" = "󰋎";
               "headset" = "󰋎";
               "default" = ["" "" ""];
             };
+
             "scroll-step" = 5;
             "ignored-sinks" = ["Easy Effects Sink"];
             "on-click" = "${lib.getExe pkgs.pavucontrol} -t 3";
           };
+
           "network" = {
             "format-wifi" = "{icon}";
             "format-ethernet" = "󰈀";
@@ -140,21 +161,28 @@
             "tooltip-format-disconnected" = "Disconnected";
             "on-click" = "${lib.getExe config.ar.home.defaultApps.terminalEditor} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
           };
+
           "tray" = {"spacing" = 15;};
+
           "custom/logout" = {
             "on-click" = "${lib.getExe pkgs.wlogout}";
             "format" = "󰗽";
           };
+
           "custom/menu" = {
             "on-click" = "${lib.getExe pkgs.nwg-drawer} -mt 5";
             "format" = "󰀻";
           };
+
           "power-profiles-daemon" = {
             "format" = "{icon}";
+
             "tooltip-format" = ''
               Profile: {profile}
               Driver: {driver}'';
+
             "tooltip" = true;
+
             "format-icons" = {
               "default" = "󱐌";
               "performance" = "󱐌";
@@ -162,6 +190,7 @@
               "power-saver" = "󰌪";
             };
           };
+
           "group/hardware" = {
             "orientation" = "horizontal";
             modules = ["pulseaudio" "power-profiles-daemon" "battery" "custom/logout"];

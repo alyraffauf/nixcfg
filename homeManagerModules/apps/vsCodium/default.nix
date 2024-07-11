@@ -10,6 +10,7 @@
       package = pkgs.vscodium;
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
+
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
@@ -42,6 +43,7 @@
         "[shellscript]" = {
           "editor.defaultFormatter" = "foxundermoon.shell-format";
         };
+
         "shellformat.flag" = "-i 4";
 
         "terminal.external.linuxExec" = lib.getExe config.ar.home.defaultApps.terminal;

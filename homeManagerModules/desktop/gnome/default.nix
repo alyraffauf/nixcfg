@@ -6,6 +6,7 @@
 }: {
   config = lib.mkIf config.ar.home.desktop.gnome.enable {
     dconf.enable = true;
+
     dconf.settings = {
       "org/gnome/desktop/datetime".automatic-timezone = true;
 
@@ -55,6 +56,7 @@
 
     xdg.mimeApps = {
       enable = true;
+
       defaultApplications = {
         "x-scheme-handler/sms" = "org.gnome.Shell.Extensions.GSConnect.desktop";
         "x-scheme-handler/tel" = "org.gnome.Shell.Extensions.GSConnect.desktop";

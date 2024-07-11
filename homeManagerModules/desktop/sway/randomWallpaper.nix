@@ -38,7 +38,6 @@
   '';
 in {
   config = lib.mkIf config.ar.home.desktop.sway.randomWallpaper {
-    # Packages that should be installed to the user profile.
     home.packages = with pkgs; [swaybg sway-randomWallpaper];
 
     wayland.windowManager.sway.config.startup = [

@@ -57,42 +57,44 @@ in {
         size = lib.mkDefault 11;
       };
 
-      gtk3.extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
+      gtk3 = {
+        extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
+        extraCss = ''
+          @define-color accent_bg_color ${cfg.colors.primary};
+          @define-color accent_color @accent_bg_color;
 
-      gtk4.extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
+          ${
+            lib.strings.optionalString
+            cfg.gtk.hideTitleBar
+            ''
+              /* No (default) title bar on wayland */
+              headerbar.default-decoration {
+                /* You may need to tweak these values depending on your GTK theme */
+                margin-bottom: 50px;
+                margin-top: -100px;
 
-      gtk3.extraCss = ''
-        @define-color accent_bg_color ${cfg.colors.primary};
-        @define-color accent_color @accent_bg_color;
+                background: transparent;
+                padding: 0;
+                border: 0;
+                min-height: 0;
+                font-size: 0;
+                box-shadow: none;
+              }
 
-        ${
-          lib.strings.optionalString
-          cfg.gtk.hideTitleBar
-          ''
-            /* No (default) title bar on wayland */
-            headerbar.default-decoration {
-              /* You may need to tweak these values depending on your GTK theme */
-              margin-bottom: 50px;
-              margin-top: -100px;
+              /* rm -rf window shadows */
+              window.csd,             /* gtk4? */
+              window.csd decoration { /* gtk3 */
+                box-shadow: none;
+              }
+            ''
+          }
+        '';
+      };
 
-              background: transparent;
-              padding: 0;
-              border: 0;
-              min-height: 0;
-              font-size: 0;
-              box-shadow: none;
-            }
-
-            /* rm -rf window shadows */
-            window.csd,             /* gtk4? */
-            window.csd decoration { /* gtk3 */
-              box-shadow: none;
-            }
-          ''
-        }
-      '';
-
-      gtk4.extraCss = config.gtk.gtk3.extraCss;
+      gtk4 = {
+        extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
+        extraCss = config.gtk.gtk3.extraCss;
+      };
     };
 
     qt = {

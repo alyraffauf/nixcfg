@@ -9,6 +9,7 @@
       enable = true;
       mouse = true;
       newSession = true;
+
       plugins = with pkgs; [
         tmuxPlugins.battery
         tmuxPlugins.better-mouse-mode
@@ -16,7 +17,9 @@
         tmuxPlugins.resurrect
         tmuxPlugins.weather
       ];
+
       terminal = "tmux-256color";
+
       extraConfig = ''
         run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
         run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux

@@ -53,6 +53,8 @@ in {
           --
           Aly Raffauf (née Chace)
         '';
+
+        showSignature = "append";
       };
 
       thunderbird = {
@@ -99,23 +101,21 @@ in {
           inherit settings;
           isDefault = true;
         };
-        work = {inherit settings;};
+        work.settings = settings;
       };
     };
   };
 
   xdg.desktopEntries.thunderwork = {
     categories = ["Application" "Network" "Chat" "Email" "Feed" "GTK" "News"];
-    exec = "thunderbird -P work --name thunderwork %U";
     comment = "Read and write e-mails or RSS feeds, or manage tasks on calendars.";
+    exec = "thunderbird -P work --name thunderwork %U";
     genericName = "Email Client";
     icon = "thunderbird";
     mimeType = ["message/rfc822" "x-scheme-handler/mailto" "text/calendar" "text/x-vcard"];
     name = "Thunderbird (work)";
+    settings.StartupWMClass = "thunderwork";
     startupNotify = true;
     terminal = false;
-    settings = {
-      StartupWMClass = "thunderwork";
-    };
   };
 }

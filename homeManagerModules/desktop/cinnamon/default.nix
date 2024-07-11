@@ -17,13 +17,9 @@
           workspaces-only-on-primary = true;
         };
 
-        "org/cinnamon/desktop/interface" = {
-          clock-use-24h = false;
-        };
+        "org/cinnamon/desktop/interface".clock-use-24h = false;
 
-        "org/gnome/desktop/interface" = {
-          clock-format = "12h";
-        };
+        "org/gnome/desktop/interface".clock-format = "12h";
 
         "org/cinnamon/settings-daemon/peripherals/touchscreen".orientation-lock = false;
 
@@ -57,9 +53,7 @@
           switch-to-workspace-9 = ["<Super>9"];
         };
 
-        "org/cinnamon/desktop/keybindings" = {
-          custom-list = ["__dummy__" "custom0"];
-        };
+        "org/cinnamon/desktop/keybindings".custom-list = ["__dummy__" "custom0"];
 
         "org/cinnamon/desktop/keybindings/custom-keybindings/custom0" = {
           binding = ["<Super>e"];

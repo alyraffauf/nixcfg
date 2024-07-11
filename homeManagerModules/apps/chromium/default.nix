@@ -8,6 +8,7 @@
     programs.chromium = {
       enable = true;
       package = config.ar.home.apps.chromium.package;
+
       extensions = [
         {id = "enamippconapkdmgfgjchkhakpfinmaj";} # dearrow
         {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist
