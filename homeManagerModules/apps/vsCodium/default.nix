@@ -57,7 +57,7 @@
           if config.ar.home.theme.darkMode
           then "Adwaita Dark"
           else "Adwaita Light";
-        "workbench.iconTheme" = null;
+        "workbench.iconTheme" = "vs-seti";
         "workbench.preferredDarkColorTheme" = "Adwaita Dark";
         "workbench.preferredLightColorTheme" = "Adwaita Light";
       };
