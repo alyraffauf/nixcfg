@@ -15,14 +15,14 @@
       greetd = {
         enable = true;
         settings =
-          if config.ar.desktop.greetd.autologin.enable
+          if config.ar.desktop.greetd.autologin != null
           then {
             default_session = {
               command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.ar.desktop.greetd.session}";
             };
             initial_session = {
               command = config.ar.desktop.greetd.session;
-              user = config.ar.desktop.greetd.autologin.user;
+              user = config.ar.desktop.greetd.autologin;
             };
           }
           else {

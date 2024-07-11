@@ -20,14 +20,10 @@
       greetd = {
         enable = lib.mkEnableOption "Greetd display manager.";
 
-        autologin = {
-          enable = lib.mkEnableOption "Whether to enable autologin.";
-
-          user = lib.mkOption {
-            description = "User to autologin.";
-            default = "aly";
-            type = lib.types.str;
-          };
+        autologin = lib.mkOption {
+          description = "User to autologin.";
+          default = null;
+          type = lib.types.nullOr lib.types.str;
         };
 
         session = lib.mkOption {
