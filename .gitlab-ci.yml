@@ -16,7 +16,7 @@ stages:
   - if: $CI_PIPELINE_SOURCE == "schedule"
   script:
     - git clone https://${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
-    - cd wallpapers
+    - cd nixcfg
     - git config --global user.email "${GIT_USER_EMAIL:-$GITLAB_USER_EMAIL}"
     - git config --global user.name "${GIT_USER_NAME:-$GITLAB_USER_NAME}"
     - nix --extra-experimental-features "nix-command flakes" flake update --commit-lock-file
