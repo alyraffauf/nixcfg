@@ -142,13 +142,11 @@ in {
     inherit domain;
     enable = true;
 
-    containers = {
-      oci = {
-        audiobookshelf.enable = true;
-        freshRSS.enable = true;
-        plexMediaServer.enable = true;
-        transmission.enable = true;
-      };
+    containers.oci = {
+      audiobookshelf.enable = true;
+      freshRSS.enable = true;
+      plexMediaServer.enable = true;
+      transmission.enable = true;
     };
 
     services = {
@@ -161,10 +159,12 @@ in {
       forgejo.enable = true;
       navidrome = {
         enable = true;
+
         lastfm = {
           idFile = config.age.secrets.lastfmId.path;
           secretFile = config.age.secrets.lastfmSecret.path;
         };
+
         spotify = {
           idFile = config.age.secrets.spotifyId.path;
           secretFile = config.age.secrets.spotifySecret.path;

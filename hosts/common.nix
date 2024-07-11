@@ -79,21 +79,19 @@
     }
   ];
 
-  nix = {
-    settings = {
-      substituters = [
-        "https://alyraffauf.cachix.org"
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
-      ];
+  nix.settings = {
+    substituters = [
+      "https://alyraffauf.cachix.org"
+      "https://cache.nixos.org/"
+      "https://nix-community.cachix.org"
+    ];
 
-      trusted-public-keys = [
-        "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+    trusted-public-keys = [
+      "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
 
-      trusted-users = ["aly"];
-    };
+    trusted-users = ["aly"];
   };
 
   nixpkgs.config.allowUnfree = true; # Allow unfree packages
@@ -106,49 +104,33 @@
 
       profiles = let
         mkOpenWiFi = ssid: {
-          connection = {
-            id = "${ssid}";
-            type = "wifi";
-          };
-
+          connection.id = "${ssid}";
+          connection.type = "wifi";
           ipv4.method = "auto";
-
-          ipv6 = {
-            addr-gen-mode = "default";
-            method = "auto";
-          };
-
-          wifi = {
-            mode = "infrastructure";
-            ssid = "${ssid}";
-          };
+          ipv6.addr-gen-mode = "default";
+          ipv6.method = "auto";
+          wifi.mode = "infrastructure";
+          wifi.ssid = "${ssid}";
         };
 
         mkWPA2WiFi = ssid: psk: (
           (mkOpenWiFi ssid)
           // {
-            wifi-security = {
-              auth-alg = "open";
-              key-mgmt = "wpa-psk";
-              psk = "${psk}";
-            };
+            wifi-security.auth-alg = "open";
+            wifi-security.key-mgmt = "wpa-psk";
+            wifi-security.psk = "${psk}";
           }
         );
 
         mkEAPWiFi = ssid: identity: pass: auth: (
           (mkOpenWiFi ssid)
           // {
-            "802-1x" = {
-              eap = "peap;";
-              identity = "${identity}";
-              password = "${pass}";
-              phase2-auth = "${auth}";
-            };
-
-            wifi-security = {
-              auth-alg = "open";
-              key-mgmt = "wpa-eap";
-            };
+            "802-1x".eap = "peap;";
+            "802-1x".identity = "${identity}";
+            "802-1x".password = "${pass}";
+            "802-1x".phase2-auth = "${auth}";
+            wifi-security.auth-alg = "open";
+            wifi-security.key-mgmt = "wpa-eap";
           }
         );
       in {
