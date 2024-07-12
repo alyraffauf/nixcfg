@@ -46,7 +46,8 @@
 
             "Brave" = {
               definedAliases = ["!brave"];
-              icon = "${pkgs.brave}/share/icons/hicolor/24x24/apps/brave-browser.png";
+              iconUpdateURL = "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/brave-search-icon.CsIFM2aN.svg";
+              updateInterval = 24 * 60 * 60 * 1000; # every day
 
               urls = [
                 {
