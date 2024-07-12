@@ -61,6 +61,8 @@ in {
   networking.hostName = "mauville";
 
   services = {
+    forgejo.settings.service.DISABLE_REGISTRATION = lib.mkForce true;
+
     samba = {
       enable = true;
       openFirewall = true;
