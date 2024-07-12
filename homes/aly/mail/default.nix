@@ -89,6 +89,17 @@ in {
     };
   };
 
+  home.file = let
+    source = builtins.fetchGit {
+      url = "https://github.com/rafaelmardojai/thunderbird-gnome-theme.git";
+      rev = "65d5c03fc9172d549a3ea72fd366d544981a002b";
+      ref = "main";
+    };
+  in {
+    ".thunderbird/default/chrome".source = source;
+    ".thunderbird/work/chrome".source = source;
+  };
+
   programs = {
     himalaya.enable = true;
 
@@ -112,6 +123,8 @@ in {
           "privacy.trackingprotection.enabled" = true;
           "privacy.trackingprotection.fingerprinting.enabled" = true;
           "privacy.trackingprotection.socialtracking.enabled" = true;
+          "svg.context-properties.content.enabled" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "toolkit.telemetry.enabled" = false;
         };
       in {
