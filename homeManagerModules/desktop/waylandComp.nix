@@ -32,7 +32,8 @@
       configPackages =
         lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
       extraPortals =
-        lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
+        [pkgs.xdg-desktop-portal-gtk]
+        ++ lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
     };
   };
 }
