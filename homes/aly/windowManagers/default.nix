@@ -34,6 +34,7 @@
       # Workspace - Coding
       workspace = 2, defaultName:code, on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}
       windowrulev2 = workspace 2,class:(codium-url-handler)
+      windowrulev2 = workspace 2,class:(dev.zed.Zed)
 
       # Workspace - Work
       windowrulev2 = workspace 3,class:(google-chrome)
