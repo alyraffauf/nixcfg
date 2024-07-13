@@ -25,21 +25,19 @@ self: {
       unstable = import self.inputs.nixpkgs-unstable {
         system = pkgs.system;
       };
-    in
-      with pkgs; [
-        browsh
-        curl
-        fractal
-        gh
-        git
-        obsidian
-        python3
-        ruby
-        tauon
-        webcord
-        wget
-        unstable.zed-editor
-      ];
+    in [
+      pkgs.browsh
+      pkgs.curl
+      pkgs.fractal
+      pkgs.git
+      pkgs.nixd
+      pkgs.obsidian
+      pkgs.python3
+      pkgs.ruby
+      pkgs.tauon
+      pkgs.webcord
+      unstable.zed-editor
+    ];
 
     stateVersion = "24.05";
     username = "aly";
