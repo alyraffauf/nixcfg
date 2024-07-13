@@ -34,7 +34,7 @@ In addition, this flake outputs NixOS configuration and home-manager configurati
 > Secrets are encrypted with [agenix](https://github.com/ryantm/agenix) and will not be available without the private decryption keys.
 
 ### Enabling Flakes
-While widely used and considered stable, [flakes](https://nixos.wiki/wiki/Flakes) are still considered experimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
+While widely used and considered stable, [flakes](https://wiki.nixos.org/wiki/Flakes) are still considered experimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
 ```nix
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
