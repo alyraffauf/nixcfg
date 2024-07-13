@@ -21,19 +21,25 @@ self: {
       General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
     };
 
-    packages = with pkgs; [
-      browsh
-      curl
-      fractal
-      gh
-      git
-      obsidian
-      python3
-      ruby
-      tauon
-      webcord
-      wget
-    ];
+    packages = let
+      unstable = import self.inputs.nixpkgs-unstable {
+        system = pkgs.system;
+      };
+    in
+      with pkgs; [
+        browsh
+        curl
+        fractal
+        gh
+        git
+        obsidian
+        python3
+        ruby
+        tauon
+        webcord
+        wget
+        unstable.zed-editor
+      ];
 
     stateVersion = "24.05";
     username = "aly";
