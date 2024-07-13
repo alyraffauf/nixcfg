@@ -74,7 +74,6 @@ self: {
       fastfetch.enable = true;
       firefox.enable = true;
       keepassxc.enable = true;
-      neovim.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
     };

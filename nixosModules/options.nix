@@ -38,8 +38,6 @@
       sway.enable = lib.mkEnableOption "Sway wayland session.";
     };
 
-    services = {
-      flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
-    };
+    services.flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
   };
 }

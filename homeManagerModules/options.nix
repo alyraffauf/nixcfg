@@ -15,12 +15,7 @@ in {
 
       chromium = {
         enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
-
-        package = lib.mkOption {
-          description = "Package for Chromium.";
-          default = pkgs.brave;
-          type = lib.types.package;
-        };
+        package = lib.mkPackageOption pkgs "brave" {};
       };
 
       emacs.enable = lib.mkEnableOption "Emacs text editor.";
@@ -47,7 +42,6 @@ in {
         type = lib.types.bool;
       };
 
-      neovim.enable = lib.mkEnableOption "Neovim text editor.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
       thunar.enable = lib.mkOption {
         description = "Thunar file manager.";
@@ -63,60 +57,15 @@ in {
 
     defaultApps = {
       enable = lib.mkEnableOption "Declaratively set default apps and file associations.";
-
-      audioPlayer = lib.mkOption {
-        description = "Default audio player package.";
-        default = cfg.defaultApps.videoPlayer;
-        type = lib.types.package;
-      };
-
-      editor = lib.mkOption {
-        description = "Default editor package.";
-        default = config.programs.vscode.package;
-        type = lib.types.package;
-      };
-
-      fileManager = lib.mkOption {
-        description = "Default file manager package.";
-        default = pkgs.cinnamon.nemo;
-        type = lib.types.package;
-      };
-
-      imageViewer = lib.mkOption {
-        description = "Default image viewer package.";
-        default = pkgs.gnome.eog;
-        type = lib.types.package;
-      };
-
-      pdfViewer = lib.mkOption {
-        description = "Default PDF viewer package.";
-        default = pkgs.evince;
-        type = lib.types.package;
-      };
-
-      terminal = lib.mkOption {
-        description = "Default terminal package.";
-        default = config.programs.alacritty.package;
-        type = lib.types.package;
-      };
-
-      terminalEditor = lib.mkOption {
-        description = "Default terminal editor package.";
-        default = config.programs.neovim.package;
-        type = lib.types.package;
-      };
-
-      videoPlayer = lib.mkOption {
-        description = "Default video player package.";
-        default = pkgs.celluloid;
-        type = lib.types.package;
-      };
-
-      webBrowser = lib.mkOption {
-        description = "Default web browser package.";
-        default = config.programs.firefox.package;
-        type = lib.types.package;
-      };
+      audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
+      editor = lib.mkPackageOption pkgs "text editor" {default = ["vscodium"];};
+      fileManager = lib.mkPackageOption pkgs "file manager" {default = ["cinnamon" "nemo"];};
+      imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["gnome" "eog"];};
+      pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
+      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["alacritty"];};
+      terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
+      videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
+      webBrowser = lib.mkPackageOption pkgs "web browser" {default = ["firefox"];};
     };
 
     desktop = {
