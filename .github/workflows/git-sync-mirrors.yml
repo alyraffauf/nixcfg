@@ -8,12 +8,10 @@ jobs:
   gitlab-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: check out repository
-        uses: actions/checkout@main
+      - uses: actions/checkout@main
         with:
           fetch-depth: 0
-      - name: "sync gitlab mirror"
-        uses: yesolutions/mirror-action@master
+      - uses: yesolutions/mirror-action@master
         with:
           REMOTE: 'https://gitlab.com/alyraffauf/nixcfg.git'
           GIT_USERNAME: alyraffauf

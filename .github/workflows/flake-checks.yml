@@ -12,9 +12,8 @@ jobs:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - name: check if flake complies with default style
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Check formatting
         run: nix fmt -- -c .
   eval-check:
     runs-on: ubuntu-latest
@@ -22,7 +21,6 @@ jobs:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - name: check if flake evaluates
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Check flake evaluation
         run: nix flake check
