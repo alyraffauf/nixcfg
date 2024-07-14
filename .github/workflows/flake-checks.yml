@@ -1,5 +1,10 @@
 name: "nix"
-on: [push, workflow_dispatch]
+on: 
+  push:
+    paths:
+      - '**.nix'
+      - '**.lock'
+  workflow_dispatch:
 jobs:
   check-format:
     runs-on: ubuntu-latest
