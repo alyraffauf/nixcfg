@@ -159,15 +159,16 @@
   };
 
   system.autoUpgrade = {
-    allowReboot = true;
-    dates = "04:00";
-    randomizedDelaySec = "20min";
     enable = true;
+    allowReboot = true;
+    dates = "01:00";
     flake = "github:alyraffauf/nixcfg";
     operation = "switch";
+    randomizedDelaySec = "20min";
+    
     rebootWindow = {
       lower = "02:00";
-      upper = "05:00";
+      upper = "06:00";
     };
   };
 
