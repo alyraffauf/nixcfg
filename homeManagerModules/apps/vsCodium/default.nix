@@ -27,7 +27,7 @@
         "nix" = {
           "enableLanguageServer" = true;
           "formatterPath" = lib.getExe pkgs.alejandra;
-          "serverPath" = lib.getExe pkgs.nixd;
+          "serverPath" = lib.getExe pkgs.nil;
 
           "serverSettings"."nil" = {
             "diagnostics" = {
