@@ -31,9 +31,9 @@ in {
       pkgs.fractal
       pkgs.git
       pkgs.gitui
+      pkgs.nicotine-plus
       pkgs.obsidian
-      pkgs.python3
-      pkgs.ruby
+      pkgs.picard
       pkgs.tauon
       pkgs.webcord
     ];
