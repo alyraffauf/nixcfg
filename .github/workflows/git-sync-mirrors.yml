@@ -1,11 +1,5 @@
 name: "git"
-on: 
-  push:
-  workflow_run:
-    workflows: ["flake: update inputs"]
-    types:
-      - completed
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 jobs:
   sync-codeberg:
     runs-on: ubuntu-latest
