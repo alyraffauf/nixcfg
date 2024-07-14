@@ -1,5 +1,9 @@
 name: "git"
-on: [push, workflow_dispatch]
+on: 
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 jobs:
   sync-codeberg:
     runs-on: ubuntu-latest
