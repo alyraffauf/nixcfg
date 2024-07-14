@@ -30,6 +30,7 @@ in {
       pkgs.curl
       pkgs.fractal
       pkgs.git
+      pkgs.gitui
       pkgs.obsidian
       pkgs.python3
       pkgs.ruby
