@@ -8,7 +8,10 @@
 in {
   config = lib.mkIf cfg.enable {
     home = {
-      packages = with pkgs; [gnome.adwaita-icon-theme];
+      packages = with pkgs; [
+        adwaita-qt
+        gnome.adwaita-icon-theme
+      ];
 
       pointerCursor = {
         gtk.enable = true;
@@ -101,7 +104,7 @@ in {
       enable = true;
       platformTheme.name = "qtct";
       style = {
-        package = pkgs.adwaita-qt;
+        package = pkgs.adwaita-qt6;
         name =
           if cfg.darkMode
           then "Adwaita-Dark"
