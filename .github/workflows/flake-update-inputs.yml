@@ -1,4 +1,4 @@
-name: "update-flake-inputs"
+name: "inputs"
 on:
   schedule:
     - cron: "0 0 * * 0"
