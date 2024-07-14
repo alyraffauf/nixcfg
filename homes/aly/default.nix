@@ -3,7 +3,11 @@ self: {
   lib,
   pkgs,
   ...
-}: {
+}: let
+  unstable = import self.inputs.nixpkgs-unstable {
+    system = pkgs.system;
+  };
+in {
   imports = [
     ./firefox
     ./mail
@@ -21,22 +25,16 @@ self: {
       General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
     };
 
-    packages = let
-      unstable = import self.inputs.nixpkgs-unstable {
-        system = pkgs.system;
-      };
-    in [
+    packages = [
       pkgs.browsh
       pkgs.curl
       pkgs.fractal
       pkgs.git
-      pkgs.nixd
       pkgs.obsidian
       pkgs.python3
       pkgs.ruby
       pkgs.tauon
       pkgs.webcord
-      unstable.zed-editor
     ];
 
     stateVersion = "24.05";
@@ -80,6 +78,8 @@ self: {
       keepassxc.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
+      zed.enable = true;
+      zed.package = unstable.zed-editor;
     };
 
     defaultApps.enable = true;
