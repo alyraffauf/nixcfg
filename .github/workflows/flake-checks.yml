@@ -1,5 +1,10 @@
 name: "nix"
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - '.github/**'
+      - '_img/**'
+  workflow_dispatch:
 jobs:
   check-format:
     runs-on: ubuntu-latest
@@ -7,7 +12,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: cachix/install-nix-action@v27
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
       - name: check if flake complies with default style
         run: nix fmt -- -c .
   check-eval:
@@ -16,6 +22,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: cachix/install-nix-action@v27
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
       - name: check if flake evaluates
         run: nix flake check
