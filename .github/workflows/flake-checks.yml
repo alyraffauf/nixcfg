@@ -1,5 +1,5 @@
 name: "nix"
-on: [push]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   check-format:
     runs-on: ubuntu-latest
