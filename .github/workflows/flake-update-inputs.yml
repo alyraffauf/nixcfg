@@ -1,12 +1,15 @@
-name: "flake: update inputs"
+name: "update-flake-inputs"
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 jobs:
   update-inputs:
     runs-on: ubuntu-latest
     steps:
+      - name: Set date
+        run: |
+          echo "DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
@@ -15,13 +18,11 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-      - uses: cachix/install-nix-action@v27
-      - name: "flake: update inputs"
-        run: nix flake update --commit-lock-file
-      - name: "flake: check eval"
-        run: nix flake check
-      - name: "git: push changes"
-        uses: ad-m/github-push-action@master
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@main
         with:
-          branch: ${{ github.head_ref }}
-
+          pr-title: "Update flake.lock ${DATE}"
+          pr-assignees: alyraffauf
+          pr-reviewers: alyraffauf
