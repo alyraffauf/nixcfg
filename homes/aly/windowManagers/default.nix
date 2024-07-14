@@ -52,12 +52,6 @@
       bind = SUPER SHIFT, N, movetoworkspace, special:notes
       workspace = special:notes, on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}
       # windowrulev2 = workspace special:notes,class:(obsidian)
-
-      # # Scratchpad Music
-      # bind = SUPER, P, togglespecialworkspace, music
-      # bind = SUPER SHIFT, P, movetoworkspace, special:music
-      # workspace = special:music, on-created-empty:${lib.getExe' pkgs.plexamp "plexamp"}
-      # windowrulev2 = workspace special:music,class:(Plexamp)
     '';
   };
 }

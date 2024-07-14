@@ -22,5 +22,6 @@
     ./vsCodium
     ./waybar
     ./wlogout
+    ./zed
   ];
 }

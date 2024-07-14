@@ -53,6 +53,17 @@ in {
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
+
+      zed = {
+        enable = lib.mkEnableOption "Zed text editor.";
+        package = lib.mkPackageOption pkgs "zed-editor" {};
+
+        settings = lib.mkOption {
+          description = "Zed settings.";
+          default = {};
+          type = lib.types.attrs;
+        };
+      };
     };
 
     defaultApps = {
