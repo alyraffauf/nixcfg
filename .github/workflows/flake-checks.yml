@@ -6,20 +6,20 @@ on:
       - '_img/**'
   workflow_dispatch:
 jobs:
-  check-format:
+  fmt-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
         with:
           fetch-depth: 1
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: check if flake complies with default style
         run: nix fmt -- -c .
-  check-eval:
+  eval-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
         with:
           fetch-depth: 1
       - name: Install Nix

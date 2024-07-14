@@ -5,15 +5,15 @@ on:
       - master
   workflow_dispatch:
 jobs:
-  sync-gitlab:
+  gitlab-sync:
     runs-on: ubuntu-latest
     steps:
       - name: check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
         with:
           fetch-depth: 0
       - name: "sync gitlab mirror"
-        uses: yesolutions/mirror-action@v0.7.0
+        uses: yesolutions/mirror-action@master
         with:
           REMOTE: 'https://gitlab.com/alyraffauf/nixcfg.git'
           GIT_USERNAME: alyraffauf
