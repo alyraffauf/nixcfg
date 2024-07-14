@@ -164,7 +164,7 @@
     randomizedDelaySec = "20min";
     enable = true;
     flake = "github:alyraffauf/nixcfg";
-    operation = "boot";
+    operation = "switch";
     rebootWindow = {
       lower = "02:00";
       upper = "05:00";
