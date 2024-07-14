@@ -1,4 +1,4 @@
-name: "nix"
+name: "nix-check"
 on:
   push:
     paths-ignore:
