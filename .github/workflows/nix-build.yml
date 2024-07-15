@@ -9,6 +9,8 @@ jobs:
   default-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
@@ -23,6 +25,8 @@ jobs:
   fallarbor-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
@@ -37,6 +41,8 @@ jobs:
   lavaridge-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
@@ -51,6 +57,8 @@ jobs:
   mauville-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
@@ -65,6 +73,8 @@ jobs:
   petalburg-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
@@ -79,6 +89,8 @@ jobs:
   rustboro-build:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
