@@ -15,8 +15,6 @@ in {
         inherit
           (import ./vars.nix)
           defaultWorkspaces
-          externalMonitors
-          laptopMonitors
           layerRules
           modifier
           windowManagerBinds
@@ -110,12 +108,10 @@ in {
               ${hyprctl} keyword monitor "eDP-1, disable"
             fi
           elif [ "$1" == "off" ]; then
-            ${
-            lib.strings.concatLines
-            (
-              lib.attrsets.mapAttrsToList (name: monitor: ''${hyprctl} keyword monitor "${monitor}"'')
-              laptopMonitors
-            )
+          ${
+            lib.strings.concatMapStringsSep "\n"
+            (monitor: ''${hyprctl} keyword monitor "${monitor}"'')
+            cfg.desktop.hyprland.laptopMonitors
           }
           fi
         '';
@@ -172,143 +168,138 @@ in {
           }
         '';
       in ''
-          ${
-          lib.strings.concatLines
-          (
-            lib.attrsets.mapAttrsToList (name: value: "monitor = ${value}")
-            (laptopMonitors // externalMonitors)
-          )
+        ${
+          lib.strings.concatMapStringsSep "\n"
+          (monitor: ''monitor = ${monitor}'')
+          (cfg.desktop.hyprland.laptopMonitors
+            ++ cfg.desktop.hyprland.monitors)
         }
-          monitor = ,preferred,auto,auto
 
-          # Turn off the internal display when lid is closed.
-          bindl=,switch:on:Lid Switch,exec,${clamshell} on
-          bindl=,switch:off:Lid Switch,exec,${clamshell} off
+        monitor = ,preferred,auto,auto
 
-          # Enable virtual keyboard in tablet mode
-          bindl=,switch:Lenovo Yoga Tablet Mode Control switch,exec,${tablet}
+        # Turn off the internal display when lid is closed.
+        bindl=,switch:on:Lid Switch,exec,${clamshell} on
+        bindl=,switch:off:Lid Switch,exec,${clamshell} off
 
-          # unscale XWayland apps
-          xwayland {
-            force_zero_scaling = true
-          }
+        # Enable virtual keyboard in tablet mode
+        bindl=,switch:Lenovo Yoga Tablet Mode Control switch,exec,${tablet}
 
-          # Some default env vars.
-          env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
-          env = QT_QPA_PLATFORMTHEME,qt6ct
+        # unscale XWayland apps
+        xwayland {
+          force_zero_scaling = true
+        }
 
-          # Execute necessary apps
-          ${
+        # Some default env vars.
+        env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
+        env = QT_QPA_PLATFORMTHEME,qt6ct
+
+        # Execute necessary apps
+        ${
           lib.strings.concatMapStringsSep
           "\n"
           (x: "exec-once = ${x}")
           startupApps
         }
 
-          # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-          input {
-            kb_layout = us
-            kb_variant = altgr-intl
-            follow_mouse = 1
-            sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
-            touchpad {
-              clickfinger_behavior = true
-              drag_lock = true
-              middle_button_emulation = true
-              natural_scroll = true
-              tap-to-click = true
-            }
+        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
+        input {
+          kb_layout = us
+          kb_variant = altgr-intl
+          follow_mouse = 1
+          sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
+          touchpad {
+            clickfinger_behavior = true
+            drag_lock = true
+            middle_button_emulation = true
+            natural_scroll = true
+            tap-to-click = true
           }
+        }
 
-          gestures {
-            workspace_swipe = true
-            workspace_swipe_touch = true
+        gestures {
+          workspace_swipe = true
+          workspace_swipe_touch = true
+        }
+
+        general {
+          gaps_in = 5
+          gaps_out = 6
+          border_size = 2
+          col.active_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg
+          col.inactive_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)  
+          layout = dwindle
+          allow_tearing = false
+        }
+
+        decoration {
+          rounding = 10
+          blur {
+            enabled = true
+            size = 8
+            passes = 1
           }
+          drop_shadow = yes
+          shadow_range = 4
+          shadow_render_power = 3
+          col.shadow = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.shadow}EE)
+          dim_special = 0.5
+          ${layerRules}
+        }
 
-          general {
-            gaps_in = 5
-            gaps_out = 6
-            border_size = 2
-            col.active_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg
-            col.inactive_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)
+        animations {
+          enabled = yes
+          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+  
+          animation = border, 1, 10, default
+          animation = borderangle, 1, 8, default
+          animation = fade, 1, 7, default
+          animation = specialWorkspace, 1, 6, default, slidevert
+          animation = windows, 1, 7, myBezier
+          animation = windowsOut, 1, 7, default, popin 80%
+          animation = workspaces, 1, 6, default
+        }
 
-            layout = dwindle
+        dwindle {
+          preserve_split = yes
+        }
 
-            allow_tearing = false
-          }
+        master {
+          always_center_master = true
+          new_status = false
+        }
 
-          decoration {
-            rounding = 10
-            blur {
-              enabled = true
-              size = 8
-              passes = 1
-            }
-            drop_shadow = yes
-            shadow_range = 4
-            shadow_render_power = 3
-            col.shadow = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.shadow}EE)
+        misc {
+          disable_hyprland_logo = true
+          disable_splash_rendering = true
+          focus_on_activate = true
+          vfr = true
+        }
 
-            dim_special = 0.5
+        # Window Rules
+        ${windowRules}
 
-            # Window-specific rules
-            ${layerRules}
-          }
+        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+        bind = ${modifier}, B, exec, ${defaultApps.browser}
+        bind = ${modifier}, E, exec, ${defaultApps.editor}
+        bind = ${modifier}, F, exec, ${defaultApps.fileManager}
+        bind = ${modifier}, R, exec, ${defaultApps.launcher}
+        bind = ${modifier}, T, exec, ${defaultApps.terminal}
 
-          animations {
-            enabled = yes
-            bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+        # Manage session.
+        bind = ${modifier}, C, killactive,
+        bind = ${modifier} CONTROL, L, exec, ${defaultApps.lock}
+        bind = ${modifier}, M, exec, ${defaultApps.logout}
 
-            animation = border, 1, 10, default
-            animation = borderangle, 1, 8, default
-            animation = fade, 1, 7, default
-            animation = specialWorkspace, 1, 6, default, slidevert
-            animation = windows, 1, 7, myBezier
-            animation = windowsOut, 1, 7, default, popin 80%
-            animation = workspaces, 1, 6, default
-          }
+        # Basic window management.
+        bind = ${modifier} SHIFT, W, fullscreen
+        bind = ${modifier} SHIFT, V, togglefloating,
+        # bind = ${modifier} SHIFT, P, pseudo, # dwindle
+        bind = ${modifier} SHIFT, backslash, togglesplit, # dwindle
 
-          dwindle {
-            preserve_split = yes
-          }
-
-          master {
-            always_center_master = true
-            new_status = false
-          }
-
-          misc {
-            disable_hyprland_logo = true
-            disable_splash_rendering = true
-            focus_on_activate = true
-            vfr = true
-          }
-
-          # Window Rules
-          ${windowRules}
-
-          # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-          bind = ${modifier}, B, exec, ${defaultApps.browser}
-          bind = ${modifier}, E, exec, ${defaultApps.editor}
-          bind = ${modifier}, F, exec, ${defaultApps.fileManager}
-          bind = ${modifier}, R, exec, ${defaultApps.launcher}
-          bind = ${modifier}, T, exec, ${defaultApps.terminal}
-
-          # Manage session.
-          bind = ${modifier}, C, killactive,
-          bind = ${modifier} CONTROL, L, exec, ${defaultApps.lock}
-          bind = ${modifier}, M, exec, ${defaultApps.logout}
-
-          # Basic window management.
-          bind = ${modifier} SHIFT, W, fullscreen
-          bind = ${modifier} SHIFT, V, togglefloating,
-          # bind = ${modifier} SHIFT, P, pseudo, # dwindle
-          bind = ${modifier} SHIFT, backslash, togglesplit, # dwindle
-
-          # Move focus with mainMod + keys ++
-          # Move window with mainMod SHIFT + keys ++
-          # Move workspace to another output with mainMod CONTROL SHIFT + keys.
-          ${
+        # Move focus with mainMod + keys ++
+        # Move window with mainMod SHIFT + keys ++
+        # Move workspace to another output with mainMod CONTROL SHIFT + keys.
+        ${
           lib.strings.concatLines
           (
             lib.attrsets.mapAttrsToList (key: direction: ''
@@ -320,14 +311,14 @@ in {
           )
         }
 
-          # Gnome-like workspaces.
-          bind = ${modifier}, comma, exec, ${hyprnome} --previous
-          bind = ${modifier}, period, exec, ${hyprnome}
-          bind = ${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move
-          bind = ${modifier} SHIFT, period, exec, ${hyprnome} --move
+        # Gnome-like workspaces.
+        bind = ${modifier}, comma, exec, ${hyprnome} --previous
+        bind = ${modifier}, period, exec, ${hyprnome}
+        bind = ${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move
+        bind = ${modifier} SHIFT, period, exec, ${hyprnome} --move
 
-          # Switch workspaces with mainMod + [1-9] ++
-          # Move active window to a workspace with mainMod + SHIFT + [1-9].
+        # Switch workspaces with mainMod + [1-9] ++
+        # Move active window to a workspace with mainMod + SHIFT + [1-9].
         ${
           lib.strings.concatMapStringsSep "\n"
           (x: ''
@@ -337,56 +328,56 @@ in {
           defaultWorkspaces
         }
 
-          # Scratchpad show and move
-          bind = ${modifier}, S, togglespecialworkspace, magic
-          bind = ${modifier} SHIFT, S, movetoworkspace, special:magic
+        # Scratchpad show and move
+        bind = ${modifier}, S, togglespecialworkspace, magic
+        bind = ${modifier} SHIFT, S, movetoworkspace, special:magic
 
-          # Scroll through existing workspaces with mainMod + scroll
-          bind = ${modifier}, mouse_down, workspace, +1
-          bind = ${modifier}, mouse_up, workspace, -1
+        # Scroll through existing workspaces with mainMod + scroll
+        bind = ${modifier}, mouse_down, workspace, +1
+        bind = ${modifier}, mouse_up, workspace, -1
 
-          # Move/resize windows with mainMod + LMB/RMB and dragging
-          bindm = ${modifier}, mouse:272, movewindow
-          bindm = ${modifier}, mouse:273, resizewindow
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+        bindm = ${modifier}, mouse:272, movewindow
+        bindm = ${modifier}, mouse:273, resizewindow
 
-          # Display, volume, microphone, and media keys.
-          bindle = , xf86monbrightnessup, exec, ${brightness.up}
-          bindle = , xf86monbrightnessdown, exec, ${brightness.down}
-          bindle = , xf86audioraisevolume, exec, ${volume.up};
-          bindle = , xf86audiolowervolume, exec, ${volume.down};
-          bindl = , xf86audiomute, exec, ${volume.mute}
-          bindl = , xf86audiomicmute, exec, ${volume.micMute}
-          bindl = , xf86audioplay, exec, ${media.play}
-          bindl = , xf86audioprev, exec, ${media.prev}
-          bindl = , xf86audionext, exec, ${media.next}
+        # Display, volume, microphone, and media keys.
+        bindle = , xf86monbrightnessup, exec, ${brightness.up}
+        bindle = , xf86monbrightnessdown, exec, ${brightness.down}
+        bindle = , xf86audioraisevolume, exec, ${volume.up};
+        bindle = , xf86audiolowervolume, exec, ${volume.down};
+        bindl = , xf86audiomute, exec, ${volume.mute}
+        bindl = , xf86audiomicmute, exec, ${volume.micMute}
+        bindl = , xf86audioplay, exec, ${media.play}
+        bindl = , xf86audioprev, exec, ${media.prev}
+        bindl = , xf86audionext, exec, ${media.next}
 
-          # Screenshot with hyprshot.
-          bind = , PRINT, exec, ${screenshot.screen}
-          bind = ${modifier}, PRINT, exec, ${screenshot.region}
-          bind = CONTROL, F12, exec, ${screenshot.screen}
-          bind = ${modifier} CONTROL, F12, exec, ${screenshot.region}
+        # Screenshot with hyprshot.
+        bind = , PRINT, exec, ${screenshot.screen}
+        bind = ${modifier}, PRINT, exec, ${screenshot.region}
+        bind = CONTROL, F12, exec, ${screenshot.screen}
+        bind = ${modifier} CONTROL, F12, exec, ${screenshot.region}
 
-          # Show/hide waybar.
-          bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
+        # Show/hide waybar.
+        bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
 
-          bind=CTRL ALT,R,submap,resize
-          submap=resize
-            binde=,down,resizeactive,0 10
-            binde=,left,resizeactive,-10 0
-            binde=,right,resizeactive,10 0
-            binde=,up,resizeactive,0 -10
-            binde=,j,resizeactive,0 10
-            binde=,h,resizeactive,-10 0
-            binde=,l,resizeactive,10 0
-            binde=,k,resizeactive,0 -10
-            bind=,escape,submap,reset
-          submap=reset
+        bind=CTRL ALT,R,submap,resize
+        submap=resize
+        binde=,down,resizeactive,0 10
+        binde=,left,resizeactive,-10 0
+        binde=,right,resizeactive,10 0
+        binde=,up,resizeactive,0 -10
+        binde=,j,resizeactive,0 10
+        binde=,h,resizeactive,-10 0
+        binde=,l,resizeactive,10 0
+        binde=,k,resizeactive,0 -10
+        bind=,escape,submap,reset
+        submap=reset
 
-          bind=CTRL ALT,M,submap,move
-          submap=move
-            # Move window with keys ++
-            # Move workspaces across monitors with CONTROL + keys.
-          ${
+        bind=CTRL ALT,M,submap,move
+        submap=move
+        # Move window with keys ++
+        # Move workspaces across monitors with CONTROL + keys.
+        ${
           lib.strings.concatLines
           (
             lib.attrsets.mapAttrsToList (key: direction: ''
@@ -397,18 +388,18 @@ in {
           )
         }
 
-          # Move active window to a workspace with [1-9]
-          ${
+        # Move active window to a workspace with [1-9]
+        ${
           lib.strings.concatMapStringsSep "\n"
           (x: "bind = , ${toString x}, movetoworkspace, ${toString x}")
           defaultWorkspaces
         }
 
-            # hyprnome
-            bind = , comma, exec, ${hyprnome} --previous --move
-            bind = , period, exec, ${hyprnome} --move
-            bind=,escape,submap,reset
-          submap=reset
+        # hyprnome
+        bind = , comma, exec, ${hyprnome} --previous --move
+        bind = , period, exec, ${hyprnome} --move
+        bind=,escape,submap,reset
+        submap=reset
       '';
     };
   };

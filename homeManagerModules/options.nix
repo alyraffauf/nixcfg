@@ -3,7 +3,6 @@
   lib,
   osConfig,
   pkgs,
-  self,
   ...
 }: let
   cfg = config.ar.home;
@@ -103,6 +102,29 @@ in {
           description = "Whether to autosuspend on idle.";
           default = cfg.desktop.hyprland.enable;
           type = lib.types.bool;
+        };
+
+        laptopMonitors = lib.mkOption {
+          description = "List of internal laptop monitors.";
+          default = [
+            "desc:BOE 0x095F,preferred,auto,1.566667"
+            "desc:LG Display 0x0569,preferred,auto,1.0"
+            "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"
+          ];
+          type = lib.types.listOf lib.types.str;
+        };
+
+        monitors = lib.mkOption {
+          description = "List of external monitors.";
+          default = [
+            "desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"
+            "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
+            "desc:LG Electronics LG ULTRAWIDE 207NTHM9F673, preferred,auto,1.25,vrr,2"
+            "desc:LG Electronics LG IPS QHD 207NTVSE5615,preferred,-1152x0,1.25,transform,1"
+            "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6"
+            "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
+          ];
+          type = lib.types.listOf lib.types.str;
         };
 
         randomWallpaper = lib.mkOption {
