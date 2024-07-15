@@ -57,6 +57,12 @@ in {
         enable = lib.mkEnableOption "Zed text editor.";
         package = lib.mkPackageOption pkgs "zed-editor" {};
 
+        keymaps = lib.mkOption {
+          description = "Zed keymaps.";
+          default = [];
+          type = lib.types.listOf lib.types.attrs;
+        };
+
         settings = lib.mkOption {
           description = "Zed settings.";
           default = {};
