@@ -106,13 +106,7 @@ in {
 
         laptopMonitors = lib.mkOption {
           description = "List of internal laptop monitors.";
-
-          default = [
-            "desc:BOE 0x095F,preferred,auto,1.566667"
-            "desc:LG Display 0x0569,preferred,auto,1.0"
-            "desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"
-          ];
-
+          default = [];
           type = lib.types.listOf lib.types.str;
         };
 

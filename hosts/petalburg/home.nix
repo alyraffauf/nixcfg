@@ -24,7 +24,10 @@
         exec-once = ${lib.getExe self.inputs.iio-hyprland.packages.${pkgs.system}.default} "desc:Samsung Display Corp. 0x4152"
       '';
 
-      ar.home.desktop.hyprland.tabletMode.enable = true;
+      ar.home.desktop.hyprland = {
+        laptopMonitors = ["desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"];
+        tabletMode.enable = true;
+      };
     }
   ];
 }
