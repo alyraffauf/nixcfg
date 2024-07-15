@@ -3,7 +3,6 @@
   lib,
   osConfig,
   pkgs,
-  self,
   ...
 }: let
   cfg = config.ar.home;
@@ -105,6 +104,18 @@ in {
           type = lib.types.bool;
         };
 
+        laptopMonitors = lib.mkOption {
+          description = "List of internal laptop monitors.";
+          default = [];
+          type = lib.types.listOf lib.types.str;
+        };
+
+        monitors = lib.mkOption {
+          description = "List of external monitors.";
+          default = [];
+          type = lib.types.listOf lib.types.str;
+        };
+
         randomWallpaper = lib.mkOption {
           description = "Whether to enable random wallpaper script.";
           default = cfg.desktop.hyprland.enable;
@@ -130,6 +141,12 @@ in {
             description = "Whether to add menu button for waybar.";
             default = cfg.desktop.hyprland.tabletMode.enable;
             type = lib.types.bool;
+          };
+
+          tabletSwitches = lib.mkOption {
+            description = "Switches to activate tablet mode when toggled.";
+            default = [];
+            type = lib.types.listOf lib.types.str;
           };
 
           virtKeyboard = lib.mkOption {
