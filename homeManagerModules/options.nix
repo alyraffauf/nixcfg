@@ -148,7 +148,7 @@ in {
             default = [];
             type = lib.types.listOf lib.types.str;
           };
-          
+
           virtKeyboard = lib.mkOption {
             description = "Whether to enable dynamic virtual keyboard.";
             default = cfg.desktop.hyprland.tabletMode.enable;
