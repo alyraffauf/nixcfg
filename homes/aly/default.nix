@@ -79,11 +79,17 @@ in {
       keepassxc.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
-      zed.enable = true;
-      zed.package = unstable.zed-editor;
+
+      zed = {
+        enable = true;
+        package = unstable.zed-editor;
+      };
     };
 
-    defaultApps.enable = true;
+    defaultApps = {
+      enable = true;
+      editor = config.ar.home.apps.zed.package;
+    };
 
     theme = {
       enable = true;
