@@ -211,12 +211,6 @@ in {
             kb_variant = altgr-intl
             follow_mouse = 1
             sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
-            tablet {
-              output = eDP-1
-            }
-            touchdevice {
-              output = eDP-1
-            }
             touchpad {
               clickfinger_behavior = true
               drag_lock = true
