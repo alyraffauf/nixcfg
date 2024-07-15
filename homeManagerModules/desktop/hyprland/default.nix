@@ -177,9 +177,11 @@ in {
 
         monitor = ,preferred,auto,auto
 
-        # Turn off the internal display when lid is closed.
-        bindl = ,switch:on:Lid Switch,exec,${clamshell} on
-        bindl = ,switch:off:Lid Switch,exec,${clamshell} off
+        ${lib.optionalString (cfg.desktop.hyprland.laptopMonitors != []) ''
+          # Turn off the internal display when lid is closed.
+          bindl = ,switch:on:Lid Switch,exec,${clamshell} on
+          bindl = ,switch:off:Lid Switch,exec,${clamshell} off
+        ''}
 
         # Enable virtual keyboard in tablet mode
         ${
