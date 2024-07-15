@@ -178,11 +178,15 @@ in {
         monitor = ,preferred,auto,auto
 
         # Turn off the internal display when lid is closed.
-        bindl=,switch:on:Lid Switch,exec,${clamshell} on
-        bindl=,switch:off:Lid Switch,exec,${clamshell} off
+        bindl = ,switch:on:Lid Switch,exec,${clamshell} on
+        bindl = ,switch:off:Lid Switch,exec,${clamshell} off
 
         # Enable virtual keyboard in tablet mode
-        bindl=,switch:Lenovo Yoga Tablet Mode Control switch,exec,${tablet}
+        ${
+          lib.strings.concatMapStringsSep "\n"
+          (switch: ''bindl = ,switch:${switch},exec,${tablet}'')
+          cfg.desktop.hyprland.tabletMode.tabletSwitches
+        }
 
         # unscale XWayland apps
         xwayland {

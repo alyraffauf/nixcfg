@@ -26,7 +26,10 @@
 
       ar.home.desktop.hyprland = {
         laptopMonitors = ["desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"];
-        tabletMode.enable = true;
+        tabletMode = {
+          enable = true;
+          tabletSwitches = ["Lenovo Yoga Tablet Mode Control switch"];
+        };
       };
     }
   ];
