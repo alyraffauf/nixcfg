@@ -13,6 +13,7 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Drybuild fallarbor
         run: nix build --dry-run .#nixosConfigurations.fallarbor.config.system.build.toplevel
   lavaridge-drybuild:
@@ -22,6 +23,7 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Drybuild lavaridge
         run: nix build --dry-run .#nixosConfigurations.lavaridge.config.system.build.toplevel
   mauville-drybuild:
@@ -31,6 +33,7 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Drybuild mauville
         run: nix build --dry-run .#nixosConfigurations.mauville.config.system.build.toplevel
   petalburg-drybuild:
@@ -40,6 +43,7 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Drybuild petalburg
         run: nix build --dry-run .#nixosConfigurations.petalburg.config.system.build.toplevel
   rustboro-drybuild:
@@ -49,5 +53,6 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Drybuild rustboro
         run: nix build --dry-run .#nixosConfigurations.rustboro.config.system.build.toplevel

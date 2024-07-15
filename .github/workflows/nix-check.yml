@@ -13,6 +13,7 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Check formatting
         run: nix fmt -- -c .
   eval-check:
@@ -22,5 +23,6 @@ jobs:
         with:
           fetch-depth: 1
       - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Check flake evaluation
         run: nix flake check
