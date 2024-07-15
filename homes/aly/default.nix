@@ -30,7 +30,6 @@ in {
       pkgs.curl
       pkgs.fractal
       pkgs.git
-      pkgs.gitui
       pkgs.nicotine-plus
       pkgs.obsidian
       pkgs.picard
@@ -57,6 +56,7 @@ in {
       };
     };
 
+    gitui.enable = true;
     home-manager.enable = true;
 
     nixvim = {
