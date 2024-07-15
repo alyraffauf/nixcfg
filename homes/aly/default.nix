@@ -48,6 +48,13 @@ in {
       lfs.enable = true;
       userName = "Aly Raffauf";
       userEmail = "aly@raffauflabs.com";
+
+      extraConfig = {
+        color.ui = true;
+        core.editor = "${lib.getExe unstable.zed-editor} --wait";
+        github.user = "alyraffauf";
+        push.autoSetupRemote = true;
+      };
     };
 
     home-manager.enable = true;
