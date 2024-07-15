@@ -226,7 +226,7 @@ in {
           gaps_out = 6
           border_size = 2
           col.active_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg
-          col.inactive_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)  
+          col.inactive_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)
           layout = dwindle
           allow_tearing = false
         }
@@ -249,7 +249,7 @@ in {
         animations {
           enabled = yes
           bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-  
+
           animation = border, 1, 10, default
           animation = borderangle, 1, 8, default
           animation = fade, 1, 7, default
