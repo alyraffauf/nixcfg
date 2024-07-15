@@ -39,7 +39,7 @@ self: {
 
     defaultApps.enable = true;
 
-    ar.home.desktop.hyprland = {
+    desktop.hyprland = {
       monitors = [
         "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6"
         "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"

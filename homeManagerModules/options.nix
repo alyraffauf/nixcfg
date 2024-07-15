@@ -112,12 +112,7 @@ in {
 
         monitors = lib.mkOption {
           description = "List of external monitors.";
-
-          default = [
-            "desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"
-            "desc:LG Electronics LG ULTRAWIDE 207NTHM9F673,preferred,auto,1.25,vrr,2"
-          ];
-
+          default = [];
           type = lib.types.listOf lib.types.str;
         };
 
