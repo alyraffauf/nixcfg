@@ -11,7 +11,7 @@
   mediaDirectory = "/mnt/Media";
 in {
   imports = [
-    ../common.nix
+    ../common
     ./filesystems.nix
     ./home.nix
     self.inputs.nixhw.nixosModules.common-amd-cpu

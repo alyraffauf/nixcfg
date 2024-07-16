@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../common.nix
+    ../common
     ./disko.nix
     ./home.nix
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th

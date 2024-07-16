@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../common.nix
+    ../common
     ./disko.nix
     ./home.nix
     self.inputs.nixhw.nixosModules.framework-13-intel-11th
