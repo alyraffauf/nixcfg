@@ -12,7 +12,7 @@
 in {
   imports = [
     ../common
-    ./filesystems.nix
+    ./disko.nix
     ./home.nix
     self.inputs.nixhw.nixosModules.common-amd-cpu
     self.inputs.nixhw.nixosModules.common-amd-gpu
