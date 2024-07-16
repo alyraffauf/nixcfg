@@ -18,6 +18,11 @@ in {
     self.inputs.nur.hmModules.nur
   ];
 
+  age.secrets = {
+    backblazeKeyId.file = ../../secrets/backblaze/keyId.age;
+    backblazeKey.file = ../../secrets/backblaze/key.age;
+  };
+
   home = {
     homeDirectory = "/home/aly";
 
@@ -26,6 +31,7 @@ in {
     };
 
     packages = [
+      pkgs.backblaze-b2
       pkgs.browsh
       pkgs.curl
       pkgs.fractal
