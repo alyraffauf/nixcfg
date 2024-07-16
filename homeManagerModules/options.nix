@@ -12,7 +12,7 @@ in {
       alacritty.enable = lib.mkEnableOption "Alacritty terminal.";
 
       backblaze = {
-        enable = lib.mkEnableOption "Enable backblaze cli client.";
+        enable = lib.mkEnableOption "Backblaze-b2 client with declarative authentication.";
 
         keyIdFile = lib.mkOption {
           description = "Backblaze key ID.";
