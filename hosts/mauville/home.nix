@@ -18,7 +18,13 @@
     ];
 
     users.aly = lib.mkForce {
+      age.secrets = {
+        backblazeKeyId.file = ../../secrets/backblaze/keyId.age;
+        backblazeKey.file = ../../secrets/backblaze/key.age;
+      };
+
       imports = [self.homeManagerModules.aly];
+
       systemd.user = {
         services.backblaze-sync = {
           Unit.Description = "Backup to Backblaze.";
