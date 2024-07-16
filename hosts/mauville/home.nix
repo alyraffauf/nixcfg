@@ -17,12 +17,7 @@
       }
     ];
 
-    users.aly = lib.mkForce ({
-      config,
-      pkgs,
-      lib,
-      ...
-    }: {
+    users.aly = lib.mkForce {
       imports = [self.homeManagerModules.aly];
 
       systemd.user = {
@@ -30,12 +25,6 @@
           Unit.Description = "Backup to Backblaze.";
 
           Service.ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
-            # Authenticate with backblaze.
-            b2KeyId=`cat ${config.age.secrets.backblazeKeyId.path}`
-            b2Key=`cat ${config.age.secrets.backblazeKey.path}`
-
-            ${lib.getExe pkgs.backblaze-b2} authorize_account $b2KeyId $b2Key
-
             declare -A backups
             backups=(
               ['/home/aly/pics/camera']="b2://aly-camera"
@@ -63,6 +52,6 @@
           Unit.Description = "Daily backups to Backblaze.";
         };
       };
-    });
+    };
   };
 }
