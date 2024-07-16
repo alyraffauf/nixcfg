@@ -4,8 +4,17 @@ self: {
   pkgs,
   ...
 }: {
-  console.useXkbConfig = true;
+  boot = {
+    consoleLogLevel = 0;
+    initrd.verbose = false;
 
+    plymouth = {
+      enable = true;
+      font = "${pkgs.nerdfonts.override {fonts = ["Noto"];}}/share/fonts/truetype/NerdFonts/NotoSansNerdFont-Regular.ttf";
+    };
+  };
+
+  console.useXkbConfig = true;
   hardware.keyboard.qmk.enable = true;
 
   programs = {
