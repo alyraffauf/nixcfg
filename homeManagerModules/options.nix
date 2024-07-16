@@ -10,6 +10,7 @@ in {
   options.ar.home = {
     apps = {
       alacritty.enable = lib.mkEnableOption "Alacritty terminal.";
+      backblaze.enable = lib.mkEnableOption "Enable backblaze cli client.";
       bash.enable = lib.mkEnableOption "Bash defaults.";
 
       chromium = {
