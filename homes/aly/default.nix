@@ -83,7 +83,13 @@ in {
   ar.home = {
     apps = {
       alacritty.enable = true;
-      backblaze.enable = true;
+
+      backblaze = {
+        enable = true;
+        keyIdFile = config.age.secrets.backblazeKeyId.path;
+        keyFile = config.age.secrets.backblazeKey.path;
+      };
+
       bash.enable = true;
       chromium.enable = true;
       emacs.enable = true;

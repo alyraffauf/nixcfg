@@ -17,13 +17,13 @@ in {
         keyIdFile = lib.mkOption {
           description = "Backblaze key ID.";
           default = null;
-          type = lib.types.nullOr lib.types.path;
+          type = lib.types.nullOr lib.types.str;
         };
 
         keyFile = lib.mkOption {
           description = "Backblaze application key.";
           default = null;
-          type = lib.types.nullOr lib.types.path;
+          type = lib.types.nullOr lib.types.str;
         };
       };
 
