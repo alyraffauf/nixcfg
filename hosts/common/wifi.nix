@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  self,
-  ...
-}: {
+{config, ...}: {
   networking.networkmanager = {
     enable = true;
 
