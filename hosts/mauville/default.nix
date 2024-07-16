@@ -22,6 +22,8 @@ in {
   ];
 
   age.secrets = {
+    backblazeKeyId.file = ../../secrets/backblaze/keyId.age;
+    backblazeKey.file = ../../secrets/backblaze/key.age;
     cloudflare.file = ../../secrets/cloudflare.age;
 
     lastfmId = {

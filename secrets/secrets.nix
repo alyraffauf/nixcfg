@@ -17,6 +17,8 @@ let
   userKeys = builtins.map (user: builtins.readFile ./publicKeys/${user}.pub) users;
   keys = systemKeys ++ userKeys;
 in {
+  "backblaze/key.age".publicKeys = keys;
+  "backblaze/keyId.age".publicKeys = keys;
   "cloudflare.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
   "lastFM/secret.age".publicKeys = keys;
