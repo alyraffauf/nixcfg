@@ -8,7 +8,7 @@
 in {
   config = lib.mkIf cfg.enable {
     home = {
-      activation.backblazeAuthentication = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      activation.backblazeAuthentication = lib.hm.dag.entryAfter ["writeBoundary" "reloadSystemD"] ''
         ${
           if ((cfg.keyIdFile != null) && (cfg.keyFile != null))
           then "run --quiet ${lib.getExe pkgs.backblaze-b2} authorize_account `${lib.getExe' pkgs.coreutils "cat"} ${cfg.keyIdFile}` `${lib.getExe' pkgs.coreutils "cat"} ${cfg.keyFile}`"
