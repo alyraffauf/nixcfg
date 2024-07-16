@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./alacritty
+    ./backblaze
     ./bash
     ./chromium
     ./emacs
