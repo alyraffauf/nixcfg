@@ -17,7 +17,12 @@
       }
     ];
 
-    users.aly = lib.mkForce {
+    users.aly = lib.mkForce ({
+      config,
+      pkgs,
+      lib,
+      ...
+    }: {
       imports = [self.homeManagerModules.aly];
 
       systemd.user = {
@@ -58,6 +63,6 @@
           Unit.Description = "Daily backups to Backblaze.";
         };
       };
-    };
+    });
   };
 }
