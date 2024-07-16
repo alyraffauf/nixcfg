@@ -27,9 +27,9 @@
             # Authenticate with backblaze.
             b2KeyId=`cat ${config.age.secrets.backblazeKeyId.path}`
             b2Key=`cat ${config.age.secrets.backblazeKey.path}`
-            
+
             ${lib.getExe pkgs.backblaze-b2} authorize_account $b2KeyId $b2Key
-            
+
             declare -A backups
             backups=(
               ['/home/aly/pics/camera']="b2://aly-camera"
@@ -38,7 +38,7 @@
               ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
               ['/mnt/Media/Music']="b2://aly-music"
             )
-            
+
             # Recursively backup folders to B2 with sanity checks.
             for folder in "''${!backups[@]}"; do
               if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
