@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   environment.variables.FLAKE = "github:alyraffauf/nixcfg";
 
   nix.settings = {
@@ -22,7 +22,7 @@
     enable = true;
     allowReboot = true;
     dates = "02:00";
-    flake = "github:alyraffauf/nixcfg";
+    flake = config.environment.variables.FLAKE;
     operation = "switch";
     persistent = true;
     randomizedDelaySec = "30min";

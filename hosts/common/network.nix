@@ -47,4 +47,10 @@
       };
     };
   };
+
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    authKeyFile = config.age.secrets.tailscaleAuthKey.path;
+  };
 }
