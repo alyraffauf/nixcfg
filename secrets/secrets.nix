@@ -38,5 +38,6 @@ in {
   "syncthing/rustboro/key.age".publicKeys = keys;
   "tailscale/authKeyFile.age".publicKeys = keys;
   "transmission.age".publicKeys = keys;
+  "transmissionRemote.age".publicKeys = keys;
   "wifi.age".publicKeys = keys;
 }
