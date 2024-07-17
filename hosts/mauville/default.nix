@@ -134,12 +134,7 @@ in {
   };
 
   environment.variables.GDK_SCALE = "1.25";
-
-  system = {
-    autoUpgrade.allowReboot = lib.mkForce false;
-    stateVersion = "24.05";
-  };
-
+  system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
   ar = {
