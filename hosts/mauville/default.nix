@@ -46,6 +46,8 @@ in {
 
     syncthingCert.file = ../../secrets/syncthing/mauville/cert.age;
     syncthingKey.file = ../../secrets/syncthing/mauville/key.age;
+
+    transmission.file = ../../secrets/transmission.age;
   };
 
   boot = {
@@ -116,6 +118,8 @@ in {
       enable = true;
       openFirewall = true;
     };
+
+    transmission.credentialsFile = config.age.secrets.transmission.path;
   };
 
   environment.variables.GDK_SCALE = "1.25";
