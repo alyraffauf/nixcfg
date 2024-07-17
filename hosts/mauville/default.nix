@@ -12,7 +12,7 @@
 in {
   imports = [
     ../common
-    ./filesystems.nix
+    ./disko.nix
     ./home.nix
     self.inputs.nixhw.nixosModules.common-amd-cpu
     self.inputs.nixhw.nixosModules.common-amd-gpu
@@ -48,8 +48,44 @@ in {
     syncthingKey.file = ../../secrets/syncthing/mauville/key.age;
   };
 
+  system.activationScripts.gen-initrd-ssh.text = ''
+    KEY_PATH="/etc/secrets/initrd/ssh_host_ed25519_key"
+
+    mkdir -p /etc/secrets/initrd
+
+    # Check if the file already exists
+    if [ -f "$KEY_PATH" ]; then
+      echo "Key already exists at $KEY_PATH. Skipping ssh-keygen."
+    else
+      # Generate the SSH key if it doesn't exist
+      ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -N "" -f "$KEY_PATH"
+      echo "SSH key generated at $KEY_PATH."
+    fi
+  '';
+
   boot = {
-    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
+    initrd = {
+      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
+
+      network = {
+        enable = true;
+        flushBeforeStage2 = true;
+
+        ssh = {
+          enable = true;
+          port = 22;
+          authorizedKeyFiles = config.users.users.root.openssh.authorizedKeys.keyFiles;
+          hostKeys = [/etc/secrets/initrd/ssh_host_ed25519_key];
+        };
+
+        udhcpc.enable = true;
+
+        postCommands = ''
+          # Automatically ask for the password on SSH login
+          echo 'cryptsetup-askpass || echo "Unlock was successful; exiting SSH session" && exit 1' >> /root/.profile
+        '';
+      };
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -98,7 +134,12 @@ in {
   };
 
   environment.variables.GDK_SCALE = "1.25";
-  system.stateVersion = "23.11";
+
+  system = {
+    autoUpgrade.allowReboot = lib.mkForce false;
+    stateVersion = "24.05";
+  };
+
   zramSwap.memoryPercent = 100;
 
   ar = {
