@@ -21,13 +21,19 @@ in {
   age.secrets = {
     backblazeKeyId.file = ../../secrets/backblaze/keyId.age;
     backblazeKey.file = ../../secrets/backblaze/key.age;
+    transmissionRemote = {
+      file = ../../secrets/transmissionRemote.age;
+      path = "${config.home.homeDirectory}/.config/transmission-remote-gtk/config.json";
+    };
   };
 
   home = {
     homeDirectory = "/home/aly";
 
-    file."${config.xdg.cacheHome}/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
-      General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
+    file = {
+      "${config.xdg.cacheHome}/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
+        General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
+      };
     };
 
     packages = [
@@ -39,6 +45,7 @@ in {
       pkgs.obsidian
       pkgs.picard
       pkgs.tauon
+      pkgs.transmission-remote-gtk
       pkgs.webcord
     ];
 
