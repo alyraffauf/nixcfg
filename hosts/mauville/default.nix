@@ -185,14 +185,11 @@ in {
     inherit domain;
     enable = true;
 
-    containers.oci = {
-      audiobookshelf.enable = true;
-      freshRSS.enable = true;
-      plexMediaServer.enable = true;
-      transmission.enable = true;
-    };
+    containers.oci.freshRSS.enable = true;
 
     services = {
+      audiobookshelf.enable = true;
+
       ddclient = {
         enable = true;
         passwordFile = config.age.secrets.cloudflare.path;
@@ -200,6 +197,7 @@ in {
       };
 
       forgejo.enable = true;
+
       navidrome = {
         enable = true;
 
@@ -213,6 +211,9 @@ in {
           secretFile = config.age.secrets.spotifySecret.path;
         };
       };
+
+      plexMediaServer.enable = true;
+      transmission.enable = true;
     };
   };
 }

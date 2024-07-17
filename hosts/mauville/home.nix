@@ -29,7 +29,6 @@
             backups=(
               ['/home/aly/pics/camera']="b2://aly-camera"
               ['/home/aly/sync']="b2://aly-sync"
-              ['/mnt/Archive/Archive']="b2://aly-archive"
               ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
               ['/mnt/Media/Music']="b2://aly-music"
             )

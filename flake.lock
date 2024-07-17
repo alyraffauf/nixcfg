@@ -433,11 +433,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721023988,
-        "narHash": "sha256-C+mibzpLG8oSo3JKiOtS+L8Lbj8+taI09U4LNfCffVo=",
+        "lastModified": 1721185058,
+        "narHash": "sha256-+zPK6EryuoWyOKX9RT4hbCbu8oiGbV4iAqsq50pGbX8=",
         "owner": "alyraffauf",
         "repo": "raffauflabs",
-        "rev": "6f4de389b15e6bc25834ef297fbcf9b0bd6bc561",
+        "rev": "69d6578aaa23b19827a7704aaced3ea7178ca829",
         "type": "github"
       },
       "original": {
