@@ -3,7 +3,7 @@
     disk = {
       media = {
         type = "disk";
-        device = "/dev/sda1";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -22,7 +22,7 @@
 
       archive = {
         type = "disk";
-        device = "/dev/sda2";
+        device = "/dev/sdb";
         content = {
           type = "gpt";
           partitions = {
