@@ -51,7 +51,7 @@ Substitute `$HOSTNAME` for whichever hostname you have chosen. Reboot to apply t
 ### Installing from Live USB
 > :red_circle: **This will erase your computer's disk** as specified by the host configuration, installing a fresh copy of NixOS. Backup first!
 
-If you want to install NixOS from this flake, run the following commands, ideally from a NixOS live environment, substituting `$HOSTNAME` with a NixOS configuration specified in `flake.nix`.
+If you want to install NixOS from this flake, run the following commands, ideally from a NixOS live environment, providing the hostname associated with a NixOS configuration specified in `flake.nix`.
 ```console
-sudo nix --experimental-features "nix-command flakes" run github:alyraffauf/nixcfg -- $HOSTNAME
+sudo nix --experimental-features "nix-command flakes" run github:alyraffauf/nixcfg
 ```
