@@ -60,8 +60,6 @@ in {
 
         ssh = {
           enable = true;
-          port = 22;
-          authorizedKeyFiles = config.users.users.root.openssh.authorizedKeys.keyFiles;
           hostKeys = [/etc/secrets/initrd/ssh_host_ed25519_key];
         };
 
