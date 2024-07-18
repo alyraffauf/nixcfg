@@ -125,7 +125,7 @@ in {
 
       settings = {
         download-dir = mediaDirectory;
-        peer-port = 5143;
+        peer-port = 51413;
         rpc-bind-address = "0.0.0.0";
         rpc-port = 9091;
       };
