@@ -81,9 +81,9 @@ in {
                   # Update wallpapers after the set interval
                   active_monitors.each do |monitor|
                     if Time.now - last_update_time[monitor] >= update_interval
-                      Process.kill('TERM', current_pids[monitor]) if current_pids[monitor]
                       random_background = Dir.glob(File.join(directory, '*.{png,jpg}')).sample
                       pid = spawn("${lib.getExe pkgs.swaybg}", '-o', monitor, '-i', random_background, '-m', 'fill')
+                      Process.kill('TERM', current_pids[monitor]) if current_pids[monitor]
                       current_pids[monitor] = pid
                       last_update_time[monitor] = Time.now
                       known_monitors[monitor] = random_background
