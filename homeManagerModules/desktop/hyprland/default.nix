@@ -83,6 +83,7 @@ in {
                     if Time.now - last_update_time[monitor] >= update_interval
                       random_background = Dir.glob(File.join(directory, '*.{png,jpg}')).sample
                       pid = spawn("${lib.getExe pkgs.swaybg}", '-o', monitor, '-i', random_background, '-m', 'fill')
+                      sleep 1
                       Process.kill('TERM', current_pids[monitor]) if current_pids[monitor]
                       current_pids[monitor] = pid
                       last_update_time[monitor] = Time.now
