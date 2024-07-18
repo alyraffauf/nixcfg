@@ -121,10 +121,12 @@ in {
       enable = true;
       credentialsFile = config.age.secrets.transmission.path;
       openFirewall = true;
+      openRPCPort = true;
 
       settings = {
         download-dir = mediaDirectory;
         peer-port = 5143;
+        rpc-bind-address = "0.0.0.0";
         rpc-port = 9091;
       };
     };
