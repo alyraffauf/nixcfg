@@ -117,7 +117,17 @@ in {
       openFirewall = true;
     };
 
-    transmission.credentialsFile = config.age.secrets.transmission.path;
+    transmission = {
+      enable = true;
+      credentialsFile = config.age.secrets.transmission.path;
+      openFirewall = true;
+
+      settings = {
+        download-dir = mediaDirectory;
+        peer-port = 5143;
+        rpc-port = 9091;
+      };
+    };
   };
 
   environment.variables.GDK_SCALE = "1.25";
@@ -214,7 +224,6 @@ in {
       };
 
       plexMediaServer.enable = true;
-      transmission.enable = true;
     };
   };
 }
