@@ -45,34 +45,52 @@ in {
 
               directory = "${config.xdg.dataHome}/backgrounds/"
               hyprctl = "${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}"
-              old_pids = []
+              current_pids = {}
+              known_monitors = {}
+              last_update_time = {}
+
+              update_interval = 900 # 15 minutes in seconds
 
               sleep 1
 
               if Dir.exist?(directory)
                 loop do
-                  new_pids = []
-
                   outputs = IO.popen([hyprctl, 'monitors']).read
-                  monitors = outputs.each_line.map { |line| line.split[1] if line.include?('Monitor') }.compact
+                  active_monitors = outputs.each_line.map { |line| line.split[1] if line.include?('Monitor') }.compact
 
-                  monitors.each do |monitor|
+                  added_monitors = active_monitors - known_monitors.keys
+                  removed_monitors = known_monitors.keys - active_monitors
+
+                  # Handle newly added monitors
+                  added_monitors.each do |monitor|
                     random_background = Dir.glob(File.join(directory, '*.{png,jpg}')).sample
-                    pid = spawn("${lib.getExe pkgs.swaybg}", '-o', monitor, '-i', random_background, '-m', 'fill')
-                    new_pids << pid
+                    pid = spawn("/nix/store/azvrjs0k5ap90dcqw280xrbqlm6nkibv-swaybg-1.2.1/bin/swaybg", '-o', monitor, '-i', random_background, '-m', 'fill')
+                    current_pids[monitor] = pid
+                    last_update_time[monitor] = Time.now
+                    known_monitors[monitor] = random_background
                   end
 
-                  if old_pids.empty?
-                    sleep 900
-                  else
-                    sleep 5
-                    old_pids.each do |pid|
-                      Process.kill('TERM', pid)
+                  # Remove wallpapers from removed monitors
+                  removed_monitors.each do |monitor|
+                    Process.kill('TERM', current_pids[monitor]) if current_pids[monitor]
+                    current_pids.delete(monitor)
+                    last_update_time.delete(monitor)
+                    known_monitors.delete(monitor)
+                  end
+
+                  # Update wallpapers after the set interval
+                  active_monitors.each do |monitor|
+                    if Time.now - last_update_time[monitor] >= update_interval
+                      Process.kill('TERM', current_pids[monitor]) if current_pids[monitor]
+                      random_background = Dir.glob(File.join(directory, '*.{png,jpg}')).sample
+                      pid = spawn("${lib.getExe pkgs.swaybg}", '-o', monitor, '-i', random_background, '-m', 'fill')
+                      current_pids[monitor] = pid
+                      last_update_time[monitor] = Time.now
+                      known_monitors[monitor] = random_background
                     end
-                    sleep 895
                   end
 
-                  old_pids = new_pids
+                  sleep 5 # Check for monitor changes and update intervals every 5 seconds
                 end
               end
             ''
