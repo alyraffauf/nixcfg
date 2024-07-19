@@ -9,10 +9,23 @@ in {
   config = lib.mkIf cfg.desktop.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      settings =
-        import ./settings.nix {inherit config lib pkgs;};
+      settings = import ./settings.nix {inherit config lib pkgs;};
 
-      extraConfig = ''
+      extraConfig = let
+        moveMonitorBinds =
+          lib.attrsets.mapAttrsToList (
+            key: direction: "bind=CONTROL,${key},movecurrentworkspacetomonitor,${direction}"
+          )
+          cfg.desktop.hyprland.windowManagerBinds;
+
+        moveWindowBinds =
+          lib.attrsets.mapAttrsToList (
+            key: direction: "bind=,${key},movewindow,${direction}"
+          )
+          cfg.desktop.hyprland.windowManagerBinds;
+
+        moveWorkspaceBinds = builtins.map (x: "bind=,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9];
+      in ''
         submap=resize
         binde=,down,resizeactive,0 10
         binde=,left,resizeactive,-10 0
@@ -26,29 +39,11 @@ in {
         submap=reset
 
         submap=move
-        # Move window with keys ++
-        # Move workspaces across monitors with CONTROL + keys.
-        ${
-          lib.strings.concatLines
-          (
-            lib.attrsets.mapAttrsToList (key: direction: ''
-              bind = , ${key}, movewindow, ${direction}
-              bind = CONTROL, ${key}, movecurrentworkspacetomonitor, ${direction}
-            '')
-            cfg.desktop.hyprland.windowManagerBinds
-          )
-        }
-
-        # Move active window to a workspace with [1-9]
-        ${
-          lib.strings.concatMapStringsSep "\n"
-          (x: "bind = , ${toString x}, movetoworkspace, ${toString x}")
-          [1 2 3 4 5 6 7 8 9]
-        }
-
-        # hyprnome
-        bind = , comma, exec, ${lib.getExe pkgs.hyprnome} --previous --move
-        bind = , period, exec, ${lib.getExe pkgs.hyprnome} --move
+        ${lib.strings.concatLines moveMonitorBinds}
+        ${lib.strings.concatLines moveWindowBinds}
+        ${lib.strings.concatLines moveWorkspaceBinds}
+        bind=,comma,exec,${lib.getExe pkgs.hyprnome} --previous --move
+        bind=,period,exec,${lib.getExe pkgs.hyprnome} --move
         bind=,escape,submap,reset
         submap=reset
       '';
