@@ -5,7 +5,6 @@ variables:
   GIT_STRATEGY: clone
   GIT_DEPTH: 1
 
-
 stages:
   - "Update"
   - "Checks"

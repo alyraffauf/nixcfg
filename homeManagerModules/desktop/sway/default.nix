@@ -26,18 +26,7 @@
         editor = lib.getExe config.ar.home.defaultApps.editor;
         terminal = lib.getExe config.ar.home.defaultApps.terminal;
 
-        brightness = lib.getExe' pkgs.swayosd "swayosd-client";
-        brightness_up = "${brightness} --brightness=raise";
-        brightness_down = "${brightness} --brightness=lower";
-        volume = brightness;
-        volume_up = "${volume} --output-volume=raise";
-        volume_down = "${volume} --output-volume=lower";
-        volume_mute = "${volume} --output-volume=mute-toggle";
-        mic_mute = "${volume} --input-volume=mute-toggle";
         media = lib.getExe pkgs.playerctl;
-        media_play = "${media} play-pause";
-        media_next = "${media} next";
-        media_prev = "${media} previous";
 
         # Sway desktop utilities
         bar = lib.getExe pkgs.waybar;
@@ -65,9 +54,6 @@
         screenshot = lib.getExe' pkgs.shotman "shotman";
         screenshot_screen = "${screenshot} --capture output";
         screenshot_region = "${screenshot} --capture region";
-
-        qt_platform_theme = "qt6ct";
-        gdk_scale = "1.5";
 
         cycleSwayDisplayModes = pkgs.writeShellScriptBin "cycleSwayDisplayModes" ''
           # TODO: remove petalburg hardcodes
