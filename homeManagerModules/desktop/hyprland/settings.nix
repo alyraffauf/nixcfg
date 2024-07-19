@@ -51,68 +51,68 @@ in {
 
   animations = {
     enabled = true;
-    bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+    bezier = "myBezier,0.05,0.9,0.1,1.05";
 
     animation = [
-      "border, 1, 10, default"
-      "borderangle, 1, 8, default"
-      "fade, 1, 7, default"
-      "specialWorkspace, 1, 6, default, slidevert"
-      "windows, 1, 7, myBezier"
-      "windowsOut, 1, 7, default, popin 80%"
-      "workspaces, 1, 6, default"
+      "border,1,10,default"
+      "borderangle,1,8,default"
+      "fade,1,7,default"
+      "specialWorkspace,1,6,default,slidevert"
+      "windows,1,7,myBezier"
+      "windowsOut,1,7,default,popin 80%"
+      "workspaces,1,6,default"
     ];
   };
 
   bind =
     [
-      "$mod CONTROL, F12, exec, ${screenshot.region}"
-      "$mod CONTROL, L, exec, ${lib.getExe pkgs.swaylock}"
-      "$mod SHIFT, S, movetoworkspace, special:magic"
-      "$mod SHIFT, V, togglefloating"
-      "$mod SHIFT, W, fullscreen"
-      "$mod SHIFT, backslash, togglesplit"
-      "$mod SHIFT, comma, exec, ${lib.getExe pkgs.hyprnome} --previous --move"
-      "$mod SHIFT, period, exec, ${lib.getExe pkgs.hyprnome} --move"
-      "$mod, B, exec, ${defaultApps.browser}"
-      "$mod, C, killactive"
-      "$mod, E, exec, ${defaultApps.editor}"
-      "$mod, F, exec, ${defaultApps.fileManager}"
-      "$mod, F11, exec, pkill -SIGUSR1 waybar"
-      "$mod, M, exec, ${defaultApps.logout}"
-      "$mod, PRINT, exec, ${screenshot.region}"
-      "$mod, R, exec, ${defaultApps.launcher}"
-      "$mod, S, togglespecialworkspace, magic"
-      "$mod, T, exec, ${defaultApps.terminal}"
-      "$mod, comma, exec, ${lib.getExe pkgs.hyprnome} --previous"
-      "$mod, mouse_down, workspace, +1"
-      "$mod, mouse_up, workspace, -1"
-      "$mod, period, exec, ${lib.getExe pkgs.hyprnome}"
-      ", PRINT, exec, ${screenshot.screen}"
-      "CONTROL, F12, exec, ${screenshot.screen}"
+      "$mod CONTROL,F12,exec,${screenshot.region}"
+      "$mod CONTROL,L,exec,${lib.getExe pkgs.swaylock}"
+      "$mod SHIFT,S,movetoworkspace,special:magic"
+      "$mod SHIFT,V,togglefloating"
+      "$mod SHIFT,W,fullscreen"
+      "$mod SHIFT,backslash,togglesplit"
+      "$mod SHIFT,comma,exec,${lib.getExe pkgs.hyprnome} --previous --move"
+      "$mod SHIFT,period,exec,${lib.getExe pkgs.hyprnome} --move"
+      "$mod,B,exec,${defaultApps.browser}"
+      "$mod,C,killactive"
+      "$mod,E,exec,${defaultApps.editor}"
+      "$mod,F,exec,${defaultApps.fileManager}"
+      "$mod,F11,exec,pkill -SIGUSR1 waybar"
+      "$mod,M,exec,${defaultApps.logout}"
+      "$mod,PRINT,exec,${screenshot.region}"
+      "$mod,R,exec,${defaultApps.launcher}"
+      "$mod,S,togglespecialworkspace,magic"
+      "$mod,T,exec,${defaultApps.terminal}"
+      "$mod,comma,exec,${lib.getExe pkgs.hyprnome} --previous"
+      "$mod,mouse_down,workspace,+1"
+      "$mod,mouse_up,workspace,-1"
+      "$mod,period,exec,${lib.getExe pkgs.hyprnome}"
+      ",PRINT,exec,${screenshot.screen}"
+      "CONTROL,F12,exec,${screenshot.screen}"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
     ]
-    ++ builtins.map (x: "$mod, ${toString x}, workspace, ${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod SHIFT, ${toString x}, movetoworkspace, ${toString x}") [1 2 3 4 5 6 7 8 9]
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod, ${key}, movefocus, ${direction}") cfg.desktop.hyprland.windowManagerBinds
+    ++ builtins.map (x: "$mod, ${toString x}, workspace, ${toString x}") [1 2 3 4 5 6 7 8 9]
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}") cfg.desktop.hyprland.windowManagerBinds
     ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT, ${key}, movewindow, ${direction}") cfg.desktop.hyprland.windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}") cfg.desktop.hyprland.windowManagerBinds;
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod, ${key}, movefocus, ${direction}") cfg.desktop.hyprland.windowManagerBinds;
 
   bindm = [
     # Move/resize windows with mainMod + LMB/RMB and dragging
-    "$mod, mouse:272, movewindow"
-    "$mod, mouse:273, resizewindow"
+    "$mod,mouse:272,movewindow"
+    "$mod,mouse:273,resizewindow"
   ];
 
   bindl =
     [
       # Volume, microphone, and media keys.
-      ", xf86audiomute, exec, ${volume.mute}"
-      ", xf86audiomicmute, exec, ${volume.micMute}"
-      ", xf86audioplay, exec, ${media.play}"
-      ", xf86audioprev, exec, ${media.prev}"
-      ", xf86audionext, exec, ${media.next}"
+      ",xf86audiomute,exec,${volume.mute}"
+      ",xf86audiomicmute,exec,${volume.micMute}"
+      ",xf86audioplay,exec,${media.play}"
+      ",xf86audioprev,exec,${media.prev}"
+      ",xf86audionext,exec,${media.next}"
     ]
     ++ builtins.map (switch: ",switch:${switch},exec,${tablet}") cfg.desktop.hyprland.tabletMode.tabletSwitches
     ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
@@ -123,10 +123,10 @@ in {
 
   bindle = [
     # Display, volume, microphone, and media keys.
-    ", xf86monbrightnessup, exec, ${brightness.up}"
-    ", xf86monbrightnessdown, exec, ${brightness.down}"
-    ", xf86audioraisevolume, exec, ${volume.up}"
-    ", xf86audiolowervolume, exec, ${volume.down}"
+    ", xf86monbrightnessup,exec,${brightness.up}"
+    ", xf86monbrightnessdown,exec,${brightness.down}"
+    ", xf86audioraisevolume,exec,${volume.up}"
+    ", xf86audiolowervolume,exec,${volume.down}"
   ];
 
   decoration = {
@@ -141,14 +141,14 @@ in {
     drop_shadow = true;
 
     layerrule = [
-      "blur, launcher"
-      "blur, logout_dialog"
-      "blur, notifications"
-      "blur, swayosd"
-      "blur, waybar"
-      "ignorezero, notifications"
-      "ignorezero, swayosd"
-      "ignorezero, waybar"
+      "blur,launcher"
+      "blur,logout_dialog"
+      "blur,notifications"
+      "blur,swayosd"
+      "blur,waybar"
+      "ignorezero,notifications"
+      "ignorezero,swayosd"
+      "ignorezero,waybar"
     ];
 
     rounding = 10;
@@ -235,7 +235,7 @@ in {
     "float,class:(com.github.wwmm.easyeffects)"
     "float,class:(pavucontrol)"
     "move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$"
-    "pin, class:^(firefox)$, title:^(Picture-in-Picture)$"
+    "pin,class:^(firefox)$, title:^(Picture-in-Picture)$"
     "size 40% 60%,class:(.blueman-manager-wrapped)"
     "size 40% 60%,class:(com.github.wwmm.easyeffects)"
     "size 40% 60%,class:(pavucontrol)"

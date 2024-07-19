@@ -21,9 +21,9 @@
 
     hyprland.settings = {
       bind = [
-        "SUPER SHIFT, N, movetoworkspace, special:notes"
-        "SUPER, N, togglespecialworkspace, notes"
-        "SUPER, P, exec, ${lib.getExe' pkgs.keepassxc "keepassxc"}"
+        "SUPER SHIFT,N,movetoworkspace,special:notes"
+        "SUPER,N,togglespecialworkspace,notes"
+        "SUPER,P,exec,${lib.getExe' pkgs.keepassxc "keepassxc"}"
       ];
 
       exec-once = ["sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}"];
@@ -43,10 +43,10 @@
       ];
 
       workspace = [
-        "1, defaultName:web, on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}"
-        "2, defaultName:code, on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
-        "special:magic, on-created-empty:${lib.getExe pkgs.fractal}"
-        "special:notes, on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
+        "1,defaultName:web,on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}"
+        "2,defaultName:code,on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
+        "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
+        "special:notes,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
       ];
     };
   };

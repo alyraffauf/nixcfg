@@ -8,8 +8,8 @@
     {
       wayland.windowManager.hyprland.settings = {
         bind = [
-          ", xf86launch4, exec, ${lib.getExe self.inputs.pp-adjuster.packages.${pkgs.system}.default}"
-          ", xf86launch2, exec, ${lib.getExe pkgs.playerctl} play-pause"
+          ",xf86launch4,exec,${lib.getExe self.inputs.pp-adjuster.packages.${pkgs.system}.default}"
+          ",xf86launch2,exec,${lib.getExe pkgs.playerctl} play-pause"
         ];
 
         exec-once = [''${
