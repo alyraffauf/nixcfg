@@ -27,17 +27,16 @@ in {
 
   defaultWorkspaces = [1 2 3 4 5 6 7 8 9];
 
-  layerRules = ''
-    # Window-specific rules
-    layerrule = blur, waybar
-    layerrule = ignorezero, waybar
-    layerrule = blur, launcher
-    layerrule = blur, notifications
-    layerrule = ignorezero, notifications
-    layerrule = blur, logout_dialog
-    layerrule = blur, swayosd
-    layerrule = ignorezero, swayosd
-  '';
+  layerRules = [
+    "blur, launcher"
+    "blur, logout_dialog"
+    "blur, notifications"
+    "blur, swayosd"
+    "blur, waybar"
+    "ignorezero, notifications"
+    "ignorezero, swayosd"
+    "ignorezero, waybar"
+  ];
 
   media = rec {
     bin = lib.getExe pkgs.playerctl;
@@ -75,23 +74,19 @@ in {
     l = "r";
   };
 
-  windowRules = ''
-    windowrulev2 = center(1),class:(.blueman-manager-wrapped)
-    windowrulev2 = float,class:(.blueman-manager-wrapped)
-    windowrulev2 = size 40% 60%,class:(.blueman-manager-wrapped})
-
-    windowrulev2 = center(1),class:(com.github.wwmm.easyeffects)
-    windowrulev2 = float,class:(com.github.wwmm.easyeffects)
-    windowrulev2 = size 40% 60%,class:(com.github.wwmm.easyeffects})
-
-    windowrulev2 = center(1),class:(pavucontrol)
-    windowrulev2 = float,class:(pavucontrol)
-    windowrulev2 = size 40% 60%,class:(pavucontrol})
-
-    windowrulev2 = float, class:^(firefox)$, title:^(Picture-in-Picture)$
-    windowrulev2 = move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$
-    windowrulev2 = pin,   class:^(firefox)$, title:^(Picture-in-Picture)$
-
-    windowrulev2 = suppressevent maximize, class:.*
-  '';
+  windowRules = [
+    "center(1),class:(.blueman-manager-wrapped)"
+    "center(1),class:(com.github.wwmm.easyeffects)"
+    "center(1),class:(pavucontrol)"
+    "float, class:^(firefox)$, title:^(Picture-in-Picture)$"
+    "float,class:(.blueman-manager-wrapped)"
+    "float,class:(com.github.wwmm.easyeffects)"
+    "float,class:(pavucontrol)"
+    "move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$"
+    "pin, class:^(firefox)$, title:^(Picture-in-Picture)$"
+    "size 40% 60%,class:(.blueman-manager-wrapped)"
+    "size 40% 60%,class:(com.github.wwmm.easyeffects)"
+    "size 40% 60%,class:(pavucontrol)"
+    "suppressevent maximize, class:.*"
+  ];
 }

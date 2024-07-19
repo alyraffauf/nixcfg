@@ -46,37 +46,30 @@ in {
         };
 
         bind = [
-          "${modifier}, B, exec, ${defaultApps.browser}"
-          "${modifier}, E, exec, ${defaultApps.editor}"
-          "${modifier}, F, exec, ${defaultApps.fileManager}"
-          "${modifier}, R, exec, ${defaultApps.launcher}"
-          "${modifier}, T, exec, ${defaultApps.terminal}"
-          # Manage session.
-          "${modifier}, C, killactive"
+          "${modifier} CONTROL, F12, exec, ${screenshot.region}"
           "${modifier} CONTROL, L, exec, ${defaultApps.lock}"
-          "${modifier}, M, exec, ${defaultApps.logout}"
-          # Basic window management.
-          "${modifier} SHIFT, W, fullscreen"
+          "${modifier} SHIFT, S, movetoworkspace, special:magic"
           "${modifier} SHIFT, V, togglefloating"
+          "${modifier} SHIFT, W, fullscreen"
           "${modifier} SHIFT, backslash, togglesplit"
-          # Gnome-like workspaces.
-          "${modifier}, comma, exec, ${hyprnome} --previous"
-          "${modifier}, period, exec, ${hyprnome}"
           "${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move"
           "${modifier} SHIFT, period, exec, ${hyprnome} --move"
-          # Scratchpad show and move
+          "${modifier}, B, exec, ${defaultApps.browser}"
+          "${modifier}, C, killactive"
+          "${modifier}, E, exec, ${defaultApps.editor}"
+          "${modifier}, F, exec, ${defaultApps.fileManager}"
+          "${modifier}, F11, exec, pkill -SIGUSR1 waybar"
+          "${modifier}, M, exec, ${defaultApps.logout}"
+          "${modifier}, PRINT, exec, ${screenshot.region}"
+          "${modifier}, R, exec, ${defaultApps.launcher}"
           "${modifier}, S, togglespecialworkspace, magic"
-          "${modifier} SHIFT, S, movetoworkspace, special:magic"
-          # Scroll through existing workspaces with mainMod + scroll
+          "${modifier}, T, exec, ${defaultApps.terminal}"
+          "${modifier}, comma, exec, ${hyprnome} --previous"
           "${modifier}, mouse_down, workspace, +1"
           "${modifier}, mouse_up, workspace, -1"
-          # Screenshot with hyprshot.
+          "${modifier}, period, exec, ${hyprnome}"
           ", PRINT, exec, ${screenshot.screen}"
-          "${modifier}, PRINT, exec, ${screenshot.region}"
           "CONTROL, F12, exec, ${screenshot.screen}"
-          "${modifier} CONTROL, F12, exec, ${screenshot.region}"
-          # Show/hide waybar.
-          "${modifier}, F11, exec, pkill -SIGUSR1 waybar"
         ];
 
         bindm = [
@@ -94,12 +87,11 @@ in {
             ", xf86audioprev, exec, ${media.prev}"
             ", xf86audionext, exec, ${media.next}"
           ]
-          ++ lib.lists.optional (cfg.desktop.hyprland.laptopMonitors != [])
-          ''
-            # Turn off the internal display when lid is closed.
-            bindl = ,switch:on:Lid Switch,exec,${clamshell} on
-            bindl = ,switch:off:Lid Switch,exec,${clamshell} off
-          '';
+          ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
+          [
+            ",switch:on:Lid Switch,exec,${clamshell} on"
+            ",switch:off:Lid Switch,exec,${clamshell} off"
+          ];
 
         bindle = [
           # Display, volume, microphone, and media keys.
@@ -109,9 +101,28 @@ in {
           ", xf86audiolowervolume, exec, ${volume.down}"
         ];
 
-        dwindle = {
-          preserve_split = true;
+        decoration = {
+          blur = {
+            enabled = true;
+            passes = 1;
+            size = 8;
+          };
+
+          "col.shadow" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.shadow}EE)";
+          dim_special = 0.5;
+          drop_shadow = true;
+          layerrule = layerRules;
+          rounding = 10;
+          shadow_range = 4;
+          shadow_render_power = 3;
         };
+
+        dwindle.preserve_split = true;
+
+        env = [
+          "QT_QPA_PLATFORMTHEME,qt6ct"
+          "XCURSOR_SIZE,${toString config.home.pointerCursor.size}"
+        ];
 
         exec-once =
           [
@@ -130,11 +141,11 @@ in {
           "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";
 
         input = {
-          # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
+          follow_mouse = 1;
           kb_layout = "us";
           kb_variant = "altgr-intl";
-          follow_mouse = 1;
           sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
+          
           touchpad = {
             clickfinger_behavior = true;
             drag_lock = true;
@@ -145,13 +156,13 @@ in {
         };
 
         general = {
-          gaps_in = 5;
-          gaps_out = 6;
-          border_size = 2;
           "col.active_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg";
           "col.inactive_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)";
-          layout = "dwindle";
           allow_tearing = false;
+          border_size = 2;
+          gaps_in = 5;
+          gaps_out = 6;
+          layout = "dwindle";
         };
 
         gestures = {
@@ -172,8 +183,7 @@ in {
         };
 
         monitor = ",preferred,auto,auto";
-
-        # unscale XWayland apps
+        windowrulev2 = windowRules;
         xwayland.force_zero_scaling = true;
       };
 
@@ -181,10 +191,8 @@ in {
         inherit
           (import ./vars.nix {inherit config lib pkgs;})
           defaultWorkspaces
-          layerRules
           modifier
           windowManagerBinds
-          windowRules
           ;
 
         inherit (import ./scripts.nix {inherit config lib pkgs;}) tablet;
@@ -205,28 +213,6 @@ in {
           (switch: ''bindl = ,switch:${switch},exec,${tablet}'')
           cfg.desktop.hyprland.tabletMode.tabletSwitches
         }
-
-        # Some default env vars.
-        env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
-        env = QT_QPA_PLATFORMTHEME,qt6ct
-
-        decoration {
-          rounding = 10
-          blur {
-            enabled = true
-            size = 8
-            passes = 1
-          }
-          drop_shadow = yes
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.shadow}EE)
-          dim_special = 0.5
-          ${layerRules}
-        }
-
-        # Window Rules
-        ${windowRules}
 
         # Move focus with mainMod + keys ++
         # Move window with mainMod SHIFT + keys ++
