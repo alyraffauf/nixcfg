@@ -10,7 +10,7 @@ in {
     wayland.windowManager = {
       hyprland.enable = true;
 
-      hyprland.extraConfig = let
+      hyprland.settings = let
         inherit
           (import ./vars.nix {inherit config lib pkgs;})
           brightness
@@ -24,12 +24,96 @@ in {
           windowManagerBinds
           windowRules
           ;
-        inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD tablet wallpaperD;
+
+        inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD wallpaperD;
 
         # Hyprland desktop utilities
         hyprnome = lib.getExe pkgs.hyprnome;
+      in {
+        animations = {
+          enabled = true;
+          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
 
-        startupApps =
+          animation = [
+            "border, 1, 10, default"
+            "borderangle, 1, 8, default"
+            "fade, 1, 7, default"
+            "specialWorkspace, 1, 6, default, slidevert"
+            "windows, 1, 7, myBezier"
+            "windowsOut, 1, 7, default, popin 80%"
+            "workspaces, 1, 6, default"
+          ];
+        };
+
+        bind = [
+          "${modifier}, B, exec, ${defaultApps.browser}"
+          "${modifier}, E, exec, ${defaultApps.editor}"
+          "${modifier}, F, exec, ${defaultApps.fileManager}"
+          "${modifier}, R, exec, ${defaultApps.launcher}"
+          "${modifier}, T, exec, ${defaultApps.terminal}"
+          # Manage session.
+          "${modifier}, C, killactive"
+          "${modifier} CONTROL, L, exec, ${defaultApps.lock}"
+          "${modifier}, M, exec, ${defaultApps.logout}"
+          # Basic window management.
+          "${modifier} SHIFT, W, fullscreen"
+          "${modifier} SHIFT, V, togglefloating"
+          "${modifier} SHIFT, backslash, togglesplit"
+          # Gnome-like workspaces.
+          "${modifier}, comma, exec, ${hyprnome} --previous"
+          "${modifier}, period, exec, ${hyprnome}"
+          "${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move"
+          "${modifier} SHIFT, period, exec, ${hyprnome} --move"
+          # Scratchpad show and move
+          "${modifier}, S, togglespecialworkspace, magic"
+          "${modifier} SHIFT, S, movetoworkspace, special:magic"
+          # Scroll through existing workspaces with mainMod + scroll
+          "${modifier}, mouse_down, workspace, +1"
+          "${modifier}, mouse_up, workspace, -1"
+          # Screenshot with hyprshot.
+          ", PRINT, exec, ${screenshot.screen}"
+          "${modifier}, PRINT, exec, ${screenshot.region}"
+          "CONTROL, F12, exec, ${screenshot.screen}"
+          "${modifier} CONTROL, F12, exec, ${screenshot.region}"
+          # Show/hide waybar.
+          "${modifier}, F11, exec, pkill -SIGUSR1 waybar"
+        ];
+
+        bindm = [
+          # Move/resize windows with mainMod + LMB/RMB and dragging
+          "${modifier}, mouse:272, movewindow"
+          "${modifier}, mouse:273, resizewindow"
+        ];
+
+        bindl =
+          [
+            # Volume, microphone, and media keys.
+            ", xf86audiomute, exec, ${volume.mute}"
+            ", xf86audiomicmute, exec, ${volume.micMute}"
+            ", xf86audioplay, exec, ${media.play}"
+            ", xf86audioprev, exec, ${media.prev}"
+            ", xf86audionext, exec, ${media.next}"
+          ]
+          ++ lib.lists.optional (cfg.desktop.hyprland.laptopMonitors != [])
+          ''
+            # Turn off the internal display when lid is closed.
+            bindl = ,switch:on:Lid Switch,exec,${clamshell} on
+            bindl = ,switch:off:Lid Switch,exec,${clamshell} off
+          '';
+
+        bindle = [
+          # Display, volume, microphone, and media keys.
+          ", xf86monbrightnessup, exec, ${brightness.up}"
+          ", xf86monbrightnessdown, exec, ${brightness.down}"
+          ", xf86audioraisevolume, exec, ${volume.up}"
+          ", xf86audiolowervolume, exec, ${volume.down}"
+        ];
+
+        dwindle = {
+          preserve_split = true;
+        };
+
+        exec-once =
           [
             wallpaperD
             (lib.getExe pkgs.waybar)
@@ -44,6 +128,69 @@ in {
           ]
           ++ lib.lists.optional (cfg.desktop.hyprland.redShift)
           "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";
+
+        input = {
+          # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
+          kb_layout = "us";
+          kb_variant = "altgr-intl";
+          follow_mouse = 1;
+          sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
+          touchpad = {
+            clickfinger_behavior = true;
+            drag_lock = true;
+            middle_button_emulation = true;
+            natural_scroll = true;
+            tap-to-click = true;
+          };
+        };
+
+        general = {
+          gaps_in = 5;
+          gaps_out = 6;
+          border_size = 2;
+          "col.active_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg";
+          "col.inactive_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)";
+          layout = "dwindle";
+          allow_tearing = false;
+        };
+
+        gestures = {
+          workspace_swipe = true;
+          workspace_swipe_touch = true;
+        };
+
+        master = {
+          always_center_master = true;
+          new_status = false;
+        };
+
+        misc = {
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          focus_on_activate = true;
+          vfr = true;
+        };
+
+        monitor = ",preferred,auto,auto";
+
+        # unscale XWayland apps
+        xwayland.force_zero_scaling = true;
+      };
+
+      hyprland.extraConfig = let
+        inherit
+          (import ./vars.nix {inherit config lib pkgs;})
+          defaultWorkspaces
+          layerRules
+          modifier
+          windowManagerBinds
+          windowRules
+          ;
+
+        inherit (import ./scripts.nix {inherit config lib pkgs;}) tablet;
+
+        # Hyprland desktop utilities
+        hyprnome = lib.getExe pkgs.hyprnome;
       in ''
         ${
           lib.strings.concatMapStringsSep "\n"
@@ -52,14 +199,6 @@ in {
             ++ cfg.desktop.hyprland.monitors)
         }
 
-        monitor = ,preferred,auto,auto
-
-        ${lib.optionalString (cfg.desktop.hyprland.laptopMonitors != []) ''
-          # Turn off the internal display when lid is closed.
-          bindl = ,switch:on:Lid Switch,exec,${clamshell} on
-          bindl = ,switch:off:Lid Switch,exec,${clamshell} off
-        ''}
-
         # Enable virtual keyboard in tablet mode
         ${
           lib.strings.concatMapStringsSep "\n"
@@ -67,52 +206,9 @@ in {
           cfg.desktop.hyprland.tabletMode.tabletSwitches
         }
 
-        # unscale XWayland apps
-        xwayland {
-          force_zero_scaling = true
-        }
-
         # Some default env vars.
         env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
         env = QT_QPA_PLATFORMTHEME,qt6ct
-
-        # Execute necessary apps
-        ${
-          lib.strings.concatMapStringsSep
-          "\n"
-          (x: "exec-once = ${x}")
-          startupApps
-        }
-
-        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-        input {
-          kb_layout = us
-          kb_variant = altgr-intl
-          follow_mouse = 1
-          sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
-          touchpad {
-            clickfinger_behavior = true
-            drag_lock = true
-            middle_button_emulation = true
-            natural_scroll = true
-            tap-to-click = true
-          }
-        }
-
-        gestures {
-          workspace_swipe = true
-          workspace_swipe_touch = true
-        }
-
-        general {
-          gaps_in = 5
-          gaps_out = 6
-          border_size = 2
-          col.active_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg
-          col.inactive_border = rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)
-          layout = dwindle
-          allow_tearing = false
-        }
 
         decoration {
           rounding = 10
@@ -129,55 +225,8 @@ in {
           ${layerRules}
         }
 
-        animations {
-          enabled = yes
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
-          animation = fade, 1, 7, default
-          animation = specialWorkspace, 1, 6, default, slidevert
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = workspaces, 1, 6, default
-        }
-
-        dwindle {
-          preserve_split = yes
-        }
-
-        master {
-          always_center_master = true
-          new_status = false
-        }
-
-        misc {
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-          focus_on_activate = true
-          vfr = true
-        }
-
         # Window Rules
         ${windowRules}
-
-        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        bind = ${modifier}, B, exec, ${defaultApps.browser}
-        bind = ${modifier}, E, exec, ${defaultApps.editor}
-        bind = ${modifier}, F, exec, ${defaultApps.fileManager}
-        bind = ${modifier}, R, exec, ${defaultApps.launcher}
-        bind = ${modifier}, T, exec, ${defaultApps.terminal}
-
-        # Manage session.
-        bind = ${modifier}, C, killactive,
-        bind = ${modifier} CONTROL, L, exec, ${defaultApps.lock}
-        bind = ${modifier}, M, exec, ${defaultApps.logout}
-
-        # Basic window management.
-        bind = ${modifier} SHIFT, W, fullscreen
-        bind = ${modifier} SHIFT, V, togglefloating,
-        # bind = ${modifier} SHIFT, P, pseudo, # dwindle
-        bind = ${modifier} SHIFT, backslash, togglesplit, # dwindle
 
         # Move focus with mainMod + keys ++
         # Move window with mainMod SHIFT + keys ++
@@ -194,12 +243,6 @@ in {
           )
         }
 
-        # Gnome-like workspaces.
-        bind = ${modifier}, comma, exec, ${hyprnome} --previous
-        bind = ${modifier}, period, exec, ${hyprnome}
-        bind = ${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move
-        bind = ${modifier} SHIFT, period, exec, ${hyprnome} --move
-
         # Switch workspaces with mainMod + [1-9] ++
         # Move active window to a workspace with mainMod + SHIFT + [1-9].
         ${
@@ -210,38 +253,6 @@ in {
           '')
           defaultWorkspaces
         }
-
-        # Scratchpad show and move
-        bind = ${modifier}, S, togglespecialworkspace, magic
-        bind = ${modifier} SHIFT, S, movetoworkspace, special:magic
-
-        # Scroll through existing workspaces with mainMod + scroll
-        bind = ${modifier}, mouse_down, workspace, +1
-        bind = ${modifier}, mouse_up, workspace, -1
-
-        # Move/resize windows with mainMod + LMB/RMB and dragging
-        bindm = ${modifier}, mouse:272, movewindow
-        bindm = ${modifier}, mouse:273, resizewindow
-
-        # Display, volume, microphone, and media keys.
-        bindle = , xf86monbrightnessup, exec, ${brightness.up}
-        bindle = , xf86monbrightnessdown, exec, ${brightness.down}
-        bindle = , xf86audioraisevolume, exec, ${volume.up};
-        bindle = , xf86audiolowervolume, exec, ${volume.down};
-        bindl = , xf86audiomute, exec, ${volume.mute}
-        bindl = , xf86audiomicmute, exec, ${volume.micMute}
-        bindl = , xf86audioplay, exec, ${media.play}
-        bindl = , xf86audioprev, exec, ${media.prev}
-        bindl = , xf86audionext, exec, ${media.next}
-
-        # Screenshot with hyprshot.
-        bind = , PRINT, exec, ${screenshot.screen}
-        bind = ${modifier}, PRINT, exec, ${screenshot.region}
-        bind = CONTROL, F12, exec, ${screenshot.screen}
-        bind = ${modifier} CONTROL, F12, exec, ${screenshot.region}
-
-        # Show/hide waybar.
-        bind = ${modifier}, F11, exec, pkill -SIGUSR1 waybar
 
         bind=CTRL ALT,R,submap,resize
         submap=resize
