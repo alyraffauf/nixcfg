@@ -6,7 +6,7 @@
 }: let
   cfg = config.ar.home;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
-  inherit (import ./vars.nix {inherit config lib pkgs;}) defaultApps media;
+  inherit (import ./helpers.nix {inherit config lib pkgs;}) defaultApps media;
 in {
   clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
     NUM_MONITORS=$(${hyprctl} monitors all | grep Monitor | wc --lines)
