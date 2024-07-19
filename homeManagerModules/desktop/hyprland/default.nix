@@ -25,7 +25,7 @@ in {
           windowRules
           ;
 
-        inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD wallpaperD;
+        inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD tablet wallpaperD;
 
         # Hyprland desktop utilities
         hyprnome = lib.getExe pkgs.hyprnome;
@@ -45,32 +45,38 @@ in {
           ];
         };
 
-        bind = [
-          "${modifier} CONTROL, F12, exec, ${screenshot.region}"
-          "${modifier} CONTROL, L, exec, ${defaultApps.lock}"
-          "${modifier} SHIFT, S, movetoworkspace, special:magic"
-          "${modifier} SHIFT, V, togglefloating"
-          "${modifier} SHIFT, W, fullscreen"
-          "${modifier} SHIFT, backslash, togglesplit"
-          "${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move"
-          "${modifier} SHIFT, period, exec, ${hyprnome} --move"
-          "${modifier}, B, exec, ${defaultApps.browser}"
-          "${modifier}, C, killactive"
-          "${modifier}, E, exec, ${defaultApps.editor}"
-          "${modifier}, F, exec, ${defaultApps.fileManager}"
-          "${modifier}, F11, exec, pkill -SIGUSR1 waybar"
-          "${modifier}, M, exec, ${defaultApps.logout}"
-          "${modifier}, PRINT, exec, ${screenshot.region}"
-          "${modifier}, R, exec, ${defaultApps.launcher}"
-          "${modifier}, S, togglespecialworkspace, magic"
-          "${modifier}, T, exec, ${defaultApps.terminal}"
-          "${modifier}, comma, exec, ${hyprnome} --previous"
-          "${modifier}, mouse_down, workspace, +1"
-          "${modifier}, mouse_up, workspace, -1"
-          "${modifier}, period, exec, ${hyprnome}"
-          ", PRINT, exec, ${screenshot.screen}"
-          "CONTROL, F12, exec, ${screenshot.screen}"
-        ];
+        bind =
+          [
+            "${modifier} CONTROL, F12, exec, ${screenshot.region}"
+            "${modifier} CONTROL, L, exec, ${defaultApps.lock}"
+            "${modifier} SHIFT, S, movetoworkspace, special:magic"
+            "${modifier} SHIFT, V, togglefloating"
+            "${modifier} SHIFT, W, fullscreen"
+            "${modifier} SHIFT, backslash, togglesplit"
+            "${modifier} SHIFT, comma, exec, ${hyprnome} --previous --move"
+            "${modifier} SHIFT, period, exec, ${hyprnome} --move"
+            "${modifier}, B, exec, ${defaultApps.browser}"
+            "${modifier}, C, killactive"
+            "${modifier}, E, exec, ${defaultApps.editor}"
+            "${modifier}, F, exec, ${defaultApps.fileManager}"
+            "${modifier}, F11, exec, pkill -SIGUSR1 waybar"
+            "${modifier}, M, exec, ${defaultApps.logout}"
+            "${modifier}, PRINT, exec, ${screenshot.region}"
+            "${modifier}, R, exec, ${defaultApps.launcher}"
+            "${modifier}, S, togglespecialworkspace, magic"
+            "${modifier}, T, exec, ${defaultApps.terminal}"
+            "${modifier}, comma, exec, ${hyprnome} --previous"
+            "${modifier}, mouse_down, workspace, +1"
+            "${modifier}, mouse_up, workspace, -1"
+            "${modifier}, period, exec, ${hyprnome}"
+            ", PRINT, exec, ${screenshot.screen}"
+            "CONTROL, F12, exec, ${screenshot.screen}"
+          ]
+          ++ builtins.map (x: "${modifier}, ${toString x}, workspace, ${toString x}") defaultWorkspaces
+          ++ builtins.map (x: "${modifier} SHIFT, ${toString x}, movetoworkspace, ${toString x}") defaultWorkspaces
+          ++ lib.attrsets.mapAttrsToList (key: direction: "${modifier}, ${key}, movefocus, ${direction}") windowManagerBinds
+          ++ lib.attrsets.mapAttrsToList (key: direction: "${modifier} SHIFT, ${key}, movewindow, ${direction}") windowManagerBinds
+          ++ lib.attrsets.mapAttrsToList (key: direction: "${modifier} CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}") windowManagerBinds;
 
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -87,6 +93,7 @@ in {
             ", xf86audioprev, exec, ${media.prev}"
             ", xf86audionext, exec, ${media.next}"
           ]
+          ++ builtins.map (switch: ",switch:${switch},exec,${tablet}") cfg.desktop.hyprland.tabletMode.tabletSwitches
           ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
           [
             ",switch:on:Lid Switch,exec,${clamshell} on"
@@ -182,7 +189,11 @@ in {
           vfr = true;
         };
 
-        monitor = ",preferred,auto,auto";
+        monitor =
+          [",preferred,auto,auto"]
+          ++ cfg.desktop.hyprland.laptopMonitors
+          ++ cfg.desktop.hyprland.monitors;
+
         windowrulev2 = windowRules;
         xwayland.force_zero_scaling = true;
       };
@@ -195,51 +206,9 @@ in {
           windowManagerBinds
           ;
 
-        inherit (import ./scripts.nix {inherit config lib pkgs;}) tablet;
-
         # Hyprland desktop utilities
         hyprnome = lib.getExe pkgs.hyprnome;
       in ''
-        ${
-          lib.strings.concatMapStringsSep "\n"
-          (monitor: ''monitor = ${monitor}'')
-          (cfg.desktop.hyprland.laptopMonitors
-            ++ cfg.desktop.hyprland.monitors)
-        }
-
-        # Enable virtual keyboard in tablet mode
-        ${
-          lib.strings.concatMapStringsSep "\n"
-          (switch: ''bindl = ,switch:${switch},exec,${tablet}'')
-          cfg.desktop.hyprland.tabletMode.tabletSwitches
-        }
-
-        # Move focus with mainMod + keys ++
-        # Move window with mainMod SHIFT + keys ++
-        # Move workspace to another output with mainMod CONTROL SHIFT + keys.
-        ${
-          lib.strings.concatLines
-          (
-            lib.attrsets.mapAttrsToList (key: direction: ''
-              bind = ${modifier}, ${key}, movefocus, ${direction}
-              bind = ${modifier} SHIFT, ${key}, movewindow, ${direction}
-              bind = ${modifier} CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}
-            '')
-            windowManagerBinds
-          )
-        }
-
-        # Switch workspaces with mainMod + [1-9] ++
-        # Move active window to a workspace with mainMod + SHIFT + [1-9].
-        ${
-          lib.strings.concatMapStringsSep "\n"
-          (x: ''
-            bind = ${modifier}, ${toString x}, workspace, ${toString x}
-            bind = ${modifier} SHIFT, ${toString x}, movetoworkspace, ${toString x}
-          '')
-          defaultWorkspaces
-        }
-
         bind=CTRL ALT,R,submap,resize
         submap=resize
         binde=,down,resizeactive,0 10
