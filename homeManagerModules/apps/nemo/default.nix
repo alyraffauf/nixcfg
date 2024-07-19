@@ -9,7 +9,7 @@
 
     dconf = {
       enable = true;
-      
+
       settings = {
         "org/nemo/preferences" = {
           show-image-thumbnails = "always";

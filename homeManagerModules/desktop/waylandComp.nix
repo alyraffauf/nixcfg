@@ -16,7 +16,7 @@
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/desktop/wm/preferences" = {button-layout = "";};
+        "org/gnome/desktop/wm/preferences".button-layout = "";
         "org/gnome/nm-applet".disable-connected-notifications = true;
       };
     };
