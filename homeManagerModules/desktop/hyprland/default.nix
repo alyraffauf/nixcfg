@@ -31,7 +31,7 @@ in {
         hyprnome = lib.getExe pkgs.hyprnome;
       in {
         inherit windowrulev2;
-        
+
         animations = {
           enabled = true;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
