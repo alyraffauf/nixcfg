@@ -10,7 +10,7 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       settings =
-        import ./vars.nix {inherit config lib pkgs;};
+        import ./settings.nix {inherit config lib pkgs;};
 
       extraConfig = ''
         submap=resize
