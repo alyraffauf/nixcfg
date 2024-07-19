@@ -145,7 +145,7 @@ in {
           kb_layout = "us";
           kb_variant = "altgr-intl";
           sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
-          
+
           touchpad = {
             clickfinger_behavior = true;
             drag_lock = true;
