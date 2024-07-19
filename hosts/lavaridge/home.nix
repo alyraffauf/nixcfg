@@ -1,9 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   home-manager.sharedModules = [
     {
       ar.home = {

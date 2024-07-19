@@ -1,7 +1,7 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.home.desktop.sway.redShift {

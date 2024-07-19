@@ -2,7 +2,6 @@
   config,
   lib,
   osConfig,
-  pkgs,
   ...
 }: {
   imports = [

@@ -95,6 +95,7 @@
           ui_font_size = 16;
           vim_mode = false;
         };
+
         settings = defaults // config.ar.home.apps.zed.settings;
       in
         lib.generators.toJSON {} settings;

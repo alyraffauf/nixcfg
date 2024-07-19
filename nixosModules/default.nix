@@ -1,9 +1,4 @@
-self: {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{
   imports = [
     ./apps
     ./desktop
