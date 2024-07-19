@@ -1,5 +1,13 @@
-# nixcfg
-NixOS flake for all mine + my family's hosts, including modules for Hyprland, Sway, GNOME, and more. 
+![](./_img/hyprland.png)
+
+## Overview
+My comprehensive NixOS flake for managing my laptop, desktop, and home lab environments.
+
+## Features
+- **Hyprland** Dynamic tiling Wayland compositor and window manager.
+- **Home Lab Services:** Media, file sharing, and more.
+- **Reverse Proxy:** Efficient traffic routing for my home lab services.
+- **Modular Configuration:** Reasonably adaptable for different hardware and use cases.
 
 ## Inputs
 This flake takes a variety of inputs, first and foremost my other flakes:
@@ -20,18 +28,12 @@ As well as upstream third-party projects that I use for various tasks:
 - homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
 - nixosModules.base: opinionated basic system configuration.
 - nixosModules.nixos: opinionated desktop, app, and service modules.
-- nixosModules.users: basic user configuration for three users.
+- nixosModules.users: basic user configuration..
 
-In addition, this flake outputs NixOS configuration and home-manager configurations for all of my hosts and users, respectively. 
-
-## Rice
-![](./_img/hyprland.png)
+In addition, this flake outputs NixOS configuration and home-manager configurations for all of my hosts and users, respectively.
 
 ## Deploying to NixOS
-> :red_circle: **Do not deploy this flake unmodified to your machine. It won't work.**
-> This is my own [NixOS](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager) flake for my personal devices.
-> Each hardware configuration is host-specific. If you fork this repository, add a host configuration for your own hardware.
-> Secrets are encrypted with [agenix](https://github.com/ryantm/agenix) and will not be available without the private decryption keys.
+Each hardware configuration is host-specific. If you fork this repository, add a host configuration for your own hardware. Secrets are encrypted with [agenix](https://github.com/ryantm/agenix) and will not be available without the private decryption keys.
 
 ### Enabling Flakes
 While widely used and considered stable, [flakes](https://wiki.nixos.org/wiki/Flakes) are still considered experimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
@@ -49,8 +51,6 @@ sudo nixos-rebuild boot --flake github:alyraffauf/nixcfg#$HOSTNAME
 Substitute `$HOSTNAME` for whichever hostname you have chosen. Reboot to apply the flake's configuration for the chosen host.
 
 ### Installing from Live USB
-> :red_circle: **This will erase your computer's disk** as specified by the host configuration, installing a fresh copy of NixOS. Backup first!
-
 If you want to install NixOS from this flake, run the following commands, ideally from a NixOS live environment, providing the hostname associated with a NixOS configuration specified in `flake.nix` when prompted.
 ```console
 sudo nix --experimental-features "nix-command flakes" run github:alyraffauf/nixcfg
