@@ -93,8 +93,8 @@ in {
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
     ]
-    ++ builtins.map (x: "$mod, ${toString x}, workspace, ${toString x}") cfg.desktop.hyprland.workspaces
-    ++ builtins.map (x: "$mod SHIFT, ${toString x}, movetoworkspace, ${toString x}") cfg.desktop.hyprland.workspaces
+    ++ builtins.map (x: "$mod, ${toString x}, workspace, ${toString x}") [1 2 3 4 5 6 7 8 9]
+    ++ builtins.map (x: "$mod SHIFT, ${toString x}, movetoworkspace, ${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ lib.attrsets.mapAttrsToList (key: direction: "$mod, ${key}, movefocus, ${direction}") cfg.desktop.hyprland.windowManagerBinds
     ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT, ${key}, movewindow, ${direction}") cfg.desktop.hyprland.windowManagerBinds
     ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}") cfg.desktop.hyprland.windowManagerBinds;

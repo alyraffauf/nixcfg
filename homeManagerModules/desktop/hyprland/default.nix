@@ -43,7 +43,7 @@ in {
         ${
           lib.strings.concatMapStringsSep "\n"
           (x: "bind = , ${toString x}, movetoworkspace, ${toString x}")
-          cfg.desktop.hyprland.workspaces
+          [1 2 3 4 5 6 7 8 9]
         }
 
         # hyprnome
