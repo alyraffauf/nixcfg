@@ -7,22 +7,22 @@
   cfg = config.ar.home;
 in {
   config = lib.mkIf cfg.desktop.hyprland.enable {
-    wayland.windowManager = {
-      hyprland.enable = true;
+    wayland.windowManager.hyprland = {
+      enable = true;
 
-      hyprland.settings = let
+      settings = let
         inherit
           (import ./vars.nix {inherit config lib pkgs;})
           brightness
           defaultApps
           defaultWorkspaces
-          layerRules
+          layerrule
           media
           modifier
           screenshot
           volume
           windowManagerBinds
-          windowRules
+          windowrulev2
           ;
 
         inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD tablet wallpaperD;
@@ -30,6 +30,8 @@ in {
         # Hyprland desktop utilities
         hyprnome = lib.getExe pkgs.hyprnome;
       in {
+        inherit windowrulev2;
+        
         animations = {
           enabled = true;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
@@ -111,6 +113,7 @@ in {
         ];
 
         decoration = {
+          inherit layerrule;
           blur = {
             enabled = true;
             passes = 1;
@@ -120,7 +123,6 @@ in {
           "col.shadow" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.shadow}EE)";
           dim_special = 0.5;
           drop_shadow = true;
-          layerrule = layerRules;
           rounding = 10;
           shadow_range = 4;
           shadow_render_power = 3;
@@ -196,11 +198,10 @@ in {
           ++ cfg.desktop.hyprland.laptopMonitors
           ++ cfg.desktop.hyprland.monitors;
 
-        windowrulev2 = windowRules;
         xwayland.force_zero_scaling = true;
       };
 
-      hyprland.extraConfig = let
+      extraConfig = let
         inherit
           (import ./vars.nix {inherit config lib pkgs;})
           defaultWorkspaces

@@ -27,7 +27,7 @@ in {
 
   defaultWorkspaces = [1 2 3 4 5 6 7 8 9];
 
-  layerRules = [
+  layerrule = [
     "blur, launcher"
     "blur, logout_dialog"
     "blur, notifications"
@@ -74,7 +74,7 @@ in {
     l = "r";
   };
 
-  windowRules = [
+  windowrulev2 = [
     "center(1),class:(.blueman-manager-wrapped)"
     "center(1),class:(com.github.wwmm.easyeffects)"
     "center(1),class:(pavucontrol)"
