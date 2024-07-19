@@ -1,7 +1,7 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf (config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable) {
@@ -16,7 +16,7 @@
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/desktop/wm/preferences" = {button-layout = "";};
+        "org/gnome/desktop/wm/preferences".button-layout = "";
         "org/gnome/nm-applet".disable-connected-notifications = true;
       };
     };

@@ -1,17 +1,8 @@
-self: {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+self: {lib, ...}: {
   boot = {
     consoleLogLevel = 0;
     initrd.verbose = false;
-
-    plymouth = {
-      enable = true;
-      font = "${pkgs.nerdfonts.override {fonts = ["Noto"];}}/share/fonts/truetype/NerdFonts/NotoSansNerdFont-Regular.ttf";
-    };
+    plymouth.enable = true;
   };
 
   console.useXkbConfig = true;
@@ -59,6 +50,7 @@ self: {
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
+
       publish = {
         enable = true;
         addresses = true;
@@ -80,7 +72,6 @@ self: {
     };
 
     printing.enable = true;
-
     system-config-printer.enable = true;
   };
 

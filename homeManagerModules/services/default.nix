@@ -1,8 +1,6 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  imports = [./easyeffects ./mpd];
+  imports = [
+    ./easyeffects
+    ./mpd
+  ];
 }

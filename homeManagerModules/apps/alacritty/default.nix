@@ -1,7 +1,6 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
   ...
 }: {
   config = lib.mkIf config.ar.home.apps.alacritty.enable {

@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   home-manager.sharedModules = [
     {
       gtk.font.size = lib.mkForce 14;

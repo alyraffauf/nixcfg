@@ -20,16 +20,16 @@
   '';
 in {
   config = lib.mkIf config.ar.desktop.gnome.enable {
-    environment.systemPackages = with pkgs;
+    environment.systemPackages =
       [
-        gnomeExtensions.appindicator
-        gnomeExtensions.blur-my-shell
-        gnomeExtensions.gsconnect
-        gnomeExtensions.light-shell
-        gnomeExtensions.night-theme-switcher
-        gnomeExtensions.noannoyance-fork
-        gnomeExtensions.tailscale-status
-        gnomeExtensions.tiling-assistant
+        pkgs.gnomeExtensions.appindicator
+        pkgs.gnomeExtensions.blur-my-shell
+        pkgs.gnomeExtensions.gsconnect
+        pkgs.gnomeExtensions.light-shell
+        pkgs.gnomeExtensions.night-theme-switcher
+        pkgs.gnomeExtensions.noannoyance-fork
+        pkgs.gnomeExtensions.tailscale-status
+        pkgs.gnomeExtensions.tiling-assistant
       ]
       ++ [gnomeCsAdjuster];
 

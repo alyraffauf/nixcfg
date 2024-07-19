@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: let
   sway-randomWallpaper = pkgs.writeShellScriptBin "sway-randomWallpaper" ''
@@ -38,7 +37,10 @@
   '';
 in {
   config = lib.mkIf config.ar.home.desktop.sway.randomWallpaper {
-    home.packages = with pkgs; [swaybg sway-randomWallpaper];
+    home.packages = [
+      pkgs.swaybg
+      sway-randomWallpaper
+    ];
 
     wayland.windowManager.sway.config.startup = [
       {command = "${lib.getExe sway-randomWallpaper}";}

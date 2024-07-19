@@ -1,16 +1,15 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.home.apps.nemo.enable {
-    home.packages = with pkgs; [
-      cinnamon.nemo
-    ];
+    home.packages = [pkgs.cinnamon.nemo];
 
     dconf = {
       enable = true;
+
       settings = {
         "org/nemo/preferences" = {
           show-image-thumbnails = "always";
