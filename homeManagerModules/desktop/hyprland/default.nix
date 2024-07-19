@@ -9,13 +9,10 @@ in {
   config = lib.mkIf cfg.desktop.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-
       settings =
         import ./vars.nix {inherit config lib pkgs;};
 
-      extraConfig = let
-        inherit (import ./helpers.nix {inherit config lib pkgs;}) defaultWorkspaces windowManagerBinds;
-      in ''
+      extraConfig = ''
         submap=resize
         binde=,down,resizeactive,0 10
         binde=,left,resizeactive,-10 0
@@ -38,7 +35,7 @@ in {
               bind = , ${key}, movewindow, ${direction}
               bind = CONTROL, ${key}, movecurrentworkspacetomonitor, ${direction}
             '')
-            windowManagerBinds
+            cfg.desktop.hyprland.windowManagerBinds
           )
         }
 
@@ -46,7 +43,7 @@ in {
         ${
           lib.strings.concatMapStringsSep "\n"
           (x: "bind = , ${toString x}, movetoworkspace, ${toString x}")
-          defaultWorkspaces
+          cfg.desktop.hyprland.workspaces
         }
 
         # hyprnome

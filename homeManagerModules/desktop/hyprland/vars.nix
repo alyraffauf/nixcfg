@@ -6,16 +6,46 @@
 }: let
   cfg = config.ar.home;
   inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD tablet wallpaperD;
-  inherit
-    (import ./helpers.nix {inherit config lib pkgs;})
-    brightness
-    defaultApps
-    defaultWorkspaces
-    media
-    screenshot
-    volume
-    windowManagerBinds
-    ;
+
+  # Media/hardware commands
+  brightness = rec {
+    bin = lib.getExe' pkgs.swayosd "swayosd-client";
+    up = "${bin} --brightness=raise";
+    down = "${bin} --brightness=lower";
+  };
+
+  # Default apps
+  defaultApps = {
+    browser = lib.getExe cfg.defaultApps.webBrowser;
+    editor = lib.getExe cfg.defaultApps.editor;
+    fileManager = lib.getExe cfg.defaultApps.fileManager;
+    launcher = lib.getExe pkgs.fuzzel;
+    logout = lib.getExe pkgs.wlogout;
+    terminal = lib.getExe cfg.defaultApps.terminal;
+  };
+
+  media = rec {
+    bin = lib.getExe pkgs.playerctl;
+    play = "${bin} play-pause";
+    paus = "${bin} pause";
+    next = "${bin} next";
+    prev = "${bin} previous";
+  };
+
+  screenshot = rec {
+    bin = lib.getExe pkgs.hyprshot;
+    folder = "${config.xdg.userDirs.pictures}/screenshots";
+    screen = "${bin} -m output -o ${folder}";
+    region = "${bin} -m region -o ${folder}";
+  };
+
+  volume = rec {
+    bin = lib.getExe' pkgs.swayosd "swayosd-client";
+    up = "${bin} --output-volume=raise";
+    down = "${bin} --output-volume=lower";
+    mute = "${bin} --output-volume=mute-toggle";
+    micMute = "${bin} --input-volume=mute-toggle";
+  };
 in {
   "$mod" = "SUPER";
 
@@ -37,7 +67,7 @@ in {
   bind =
     [
       "$mod CONTROL, F12, exec, ${screenshot.region}"
-      "$mod CONTROL, L, exec, ${defaultApps.lock}"
+      "$mod CONTROL, L, exec, ${lib.getExe pkgs.swaylock}"
       "$mod SHIFT, S, movetoworkspace, special:magic"
       "$mod SHIFT, V, togglefloating"
       "$mod SHIFT, W, fullscreen"
@@ -63,11 +93,11 @@ in {
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
     ]
-    ++ builtins.map (x: "$mod, ${toString x}, workspace, ${toString x}") defaultWorkspaces
-    ++ builtins.map (x: "$mod SHIFT, ${toString x}, movetoworkspace, ${toString x}") defaultWorkspaces
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod, ${key}, movefocus, ${direction}") windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT, ${key}, movewindow, ${direction}") windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}") windowManagerBinds;
+    ++ builtins.map (x: "$mod, ${toString x}, workspace, ${toString x}") cfg.desktop.hyprland.workspaces
+    ++ builtins.map (x: "$mod SHIFT, ${toString x}, movetoworkspace, ${toString x}") cfg.desktop.hyprland.workspaces
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod, ${key}, movefocus, ${direction}") cfg.desktop.hyprland.windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT, ${key}, movewindow, ${direction}") cfg.desktop.hyprland.windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CONTROL SHIFT, ${key}, movecurrentworkspacetomonitor, ${direction}") cfg.desktop.hyprland.windowManagerBinds;
 
   bindm = [
     # Move/resize windows with mainMod + LMB/RMB and dragging

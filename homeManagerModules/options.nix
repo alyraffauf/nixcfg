@@ -151,6 +151,27 @@ in {
           type = lib.types.bool;
         };
 
+        workspaces = lib.mkOption {
+          description = "Default numbered workspaces to create.";
+          default = [1 2 3 4 5 6 7 8 9];
+          type = lib.types.listOf lib.types.int;
+        };
+
+        windowManagerBinds = lib.mkOption {
+          description = "Default binds for window management.";
+          default = {
+            down = "d";
+            left = "l";
+            right = "r";
+            up = "u";
+            h = "l";
+            j = "d";
+            k = "u";
+            l = "r";
+          };
+          type = lib.types.attrs;
+        };
+
         tabletMode = {
           enable = lib.mkEnableOption "Tablet mode for hyprland.";
 

@@ -6,7 +6,7 @@
 }: let
   cfg = config.ar.home;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
-  inherit (import ./helpers.nix {inherit config lib pkgs;}) defaultApps media;
+  virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
 in {
   clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
     NUM_MONITORS=$(${hyprctl} monitors all | grep Monitor | wc --lines)
@@ -25,11 +25,11 @@ in {
 
   idleD = pkgs.writeShellScript "hyprland-idled" ''
     ${lib.getExe pkgs.swayidle} -w \
-      before-sleep '${media.paus}' \
-      before-sleep '${defaultApps.lock}' \
+      before-sleep '${lib.getExe pkgs.playerctl} play-pause' \
+      before-sleep '${lib.getExe pkgs.swaylock}' \
       timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
         resume '${lib.getExe pkgs.brightnessctl} -r' \
-      timeout 300 '${defaultApps.lock}' \
+      timeout 300 '${lib.getExe pkgs.swaylock}' \
       timeout 330 '${hyprctl} dispatch dpms off' \
         resume '${hyprctl} dispatch dpms on' \
       ${
@@ -43,8 +43,8 @@ in {
     STATE=`${lib.getExe pkgs.dconf} read /org/gnome/desktop/a11y/applications/screen-keyboard-enabled`
 
     if [ $STATE -z ] || [ $STATE == "false" ]; then
-      if ! [ `pgrep -f ${defaultApps.virtKeyboard}` ]; then
-        ${defaultApps.virtKeyboard} &
+      if ! [ `pgrep -f ${virtKeyboard}` ]; then
+        ${virtKeyboard} &
       fi
       ${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled true
     elif [ $STATE == "true" ]; then
