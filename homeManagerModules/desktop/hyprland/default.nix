@@ -71,6 +71,8 @@ in {
             "${modifier}, period, exec, ${hyprnome}"
             ", PRINT, exec, ${screenshot.screen}"
             "CONTROL, F12, exec, ${screenshot.screen}"
+            "CTRL ALT,M,submap,move"
+            "CTRL ALT,R,submap,resize"
           ]
           ++ builtins.map (x: "${modifier}, ${toString x}, workspace, ${toString x}") defaultWorkspaces
           ++ builtins.map (x: "${modifier} SHIFT, ${toString x}, movetoworkspace, ${toString x}") defaultWorkspaces
@@ -202,14 +204,12 @@ in {
         inherit
           (import ./vars.nix {inherit config lib pkgs;})
           defaultWorkspaces
-          modifier
           windowManagerBinds
           ;
 
         # Hyprland desktop utilities
         hyprnome = lib.getExe pkgs.hyprnome;
       in ''
-        bind=CTRL ALT,R,submap,resize
         submap=resize
         binde=,down,resizeactive,0 10
         binde=,left,resizeactive,-10 0
@@ -222,7 +222,6 @@ in {
         bind=,escape,submap,reset
         submap=reset
 
-        bind=CTRL ALT,M,submap,move
         submap=move
         # Move window with keys ++
         # Move workspaces across monitors with CONTROL + keys.
