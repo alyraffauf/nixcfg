@@ -14,16 +14,6 @@
     down = "${bin} --brightness=lower";
   };
 
-  # Default apps
-  defaultApps = {
-    browser = lib.getExe cfg.defaultApps.webBrowser;
-    editor = lib.getExe cfg.defaultApps.editor;
-    fileManager = lib.getExe cfg.defaultApps.fileManager;
-    launcher = lib.getExe pkgs.fuzzel;
-    logout = lib.getExe pkgs.wlogout;
-    terminal = lib.getExe cfg.defaultApps.terminal;
-  };
-
   media = rec {
     bin = lib.getExe pkgs.playerctl;
     play = "${bin} play-pause";
@@ -74,16 +64,16 @@ in {
       "$mod SHIFT,backslash,togglesplit"
       "$mod SHIFT,comma,exec,${lib.getExe pkgs.hyprnome} --previous --move"
       "$mod SHIFT,period,exec,${lib.getExe pkgs.hyprnome} --move"
-      "$mod,B,exec,${defaultApps.browser}"
+      "$mod,B,exec,${lib.getExe cfg.defaultApps.webBrowser}"
       "$mod,C,killactive"
-      "$mod,E,exec,${defaultApps.editor}"
-      "$mod,F,exec,${defaultApps.fileManager}"
+      "$mod,E,exec,${lib.getExe cfg.defaultApps.editor}"
+      "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
-      "$mod,M,exec,${defaultApps.logout}"
+      "$mod,M,exec,${lib.getExe pkgs.wlogout}"
       "$mod,PRINT,exec,${screenshot.region}"
-      "$mod,R,exec,${defaultApps.launcher}"
+      "$mod,R,exec,${lib.getExe pkgs.fuzzel}"
       "$mod,S,togglespecialworkspace,magic"
-      "$mod,T,exec,${defaultApps.terminal}"
+      "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
       "$mod,comma,exec,${lib.getExe pkgs.hyprnome} --previous"
       "$mod,mouse_down,workspace,+1"
       "$mod,mouse_up,workspace,-1"
