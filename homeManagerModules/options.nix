@@ -151,6 +151,21 @@ in {
           type = lib.types.bool;
         };
 
+        windowManagerBinds = lib.mkOption {
+          description = "Default binds for window management.";
+          default = {
+            down = "d";
+            left = "l";
+            right = "r";
+            up = "u";
+            h = "l";
+            j = "d";
+            k = "u";
+            l = "r";
+          };
+          type = lib.types.attrs;
+        };
+
         tabletMode = {
           enable = lib.mkEnableOption "Tablet mode for hyprland.";
 

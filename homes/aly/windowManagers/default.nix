@@ -19,40 +19,36 @@
       ];
     };
 
-    hyprland.extraConfig = ''
-      exec-once = sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}
-      bind = SUPER, P, exec, ${lib.getExe' pkgs.keepassxc "keepassxc"}
-      windowrulev2 = center(1),class:(org.keepassxc.KeePassXC)
-      windowrulev2 = float,class:(org.keepassxc.KeePassXC)
-      windowrulev2 = size 80% 80%,class:(org.keepassxc.KeePassXC)
+    hyprland.settings = {
+      bind = [
+        "SUPER SHIFT,N,movetoworkspace,special:notes"
+        "SUPER,N,togglespecialworkspace,notes"
+        "SUPER,P,exec,${lib.getExe' pkgs.keepassxc "keepassxc"}"
+      ];
 
-      # Workspace - Browser
-      workspace = 1, defaultName:web, on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}
-      windowrulev2 = workspace 1,class:(firefox)
-      windowrulev2 = workspace 1,class:(brave-browser)
+      exec-once = ["sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}"];
 
-      # Workspace - Coding
-      workspace = 2, defaultName:code, on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}
-      windowrulev2 = workspace 2,class:(codium-url-handler)
-      windowrulev2 = workspace 2,class:(dev.zed.Zed)
+      windowrulev2 = [
+        "center(1),class:(org.keepassxc.KeePassXC)"
+        "float,class:(org.keepassxc.KeePassXC)"
+        "size 80% 80%,class:(org.keepassxc.KeePassXC)"
+        "workspace 1,class:(brave-browser)"
+        "workspace 1,class:(firefox)"
+        "workspace 2,class:(codium-url-handler)"
+        "workspace 2,class:(dev.zed.Zed)"
+        "workspace 3,class:(firework)"
+        "workspace 3,class:(google-chrome)"
+        "workspace special:magic,class:(WebCord)"
+        "workspace special:magic,class:(org.gnome.Fractal)"
+      ];
 
-      # Workspace - Work
-      windowrulev2 = workspace 3,class:(google-chrome)
-      windowrulev2 = workspace 3,class:(firework)
-
-      # Scratchpad Chat
-      # bind = SUPER, S, togglespecialworkspace, magic
-      # bind = SUPER SHIFT, W, movetoworkspace, special:magic
-      workspace = special:magic, on-created-empty:${lib.getExe pkgs.fractal}
-      windowrulev2 = workspace special:magic,class:(org.gnome.Fractal)
-      windowrulev2 = workspace special:magic,class:(WebCord)
-
-      # Scratchpad Notes
-      bind = SUPER, N, togglespecialworkspace, notes
-      bind = SUPER SHIFT, N, movetoworkspace, special:notes
-      workspace = special:notes, on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}
-      # windowrulev2 = workspace special:notes,class:(obsidian)
-    '';
+      workspace = [
+        "1,defaultName:web,on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}"
+        "2,defaultName:code,on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
+        "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
+        "special:notes,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
+      ];
+    };
   };
 
   ar.home.desktop.hyprland.monitors = [
