@@ -32,7 +32,7 @@
 
   home-manager.sharedModules = [
     {
-      gtk.gtk3.bookmarks = lib.optionals (config.networking.hostName != "mauville") [
+      gtk.gtk3.bookmarks = [
         "file:///mnt/Media"
         "file:///mnt/Archive"
       ];
