@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.ar.home;
-  inherit (import ./scripts.nix {inherit config lib pkgs;}) clamshell idleD tablet wallpaperD;
+  scripts = import ./scripts.nix {inherit config lib pkgs;};
 
   # Media/hardware commands
   brightness = rec {
@@ -104,11 +104,11 @@ in {
       ",xf86audioprev,exec,${media.prev}"
       ",xf86audionext,exec,${media.next}"
     ]
-    ++ builtins.map (switch: ",switch:${switch},exec,${tablet}") cfg.desktop.hyprland.tabletMode.tabletSwitches
+    ++ builtins.map (switch: ",switch:${switch},exec,${scripts.tablet}") cfg.desktop.hyprland.tabletMode.tabletSwitches
     ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
     [
-      ",switch:on:Lid Switch,exec,${clamshell} on"
-      ",switch:off:Lid Switch,exec,${clamshell} off"
+      ",switch:on:Lid Switch,exec,${scripts.clamshell} on"
+      ",switch:off:Lid Switch,exec,${scripts.clamshell} off"
     ];
 
   bindle = [
@@ -150,9 +150,9 @@ in {
 
   exec-once =
     [
-      wallpaperD
+      scripts.wallpaperD
       (lib.getExe pkgs.waybar)
-      idleD
+      scripts.idleD
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
       (lib.getExe' pkgs.blueman "blueman-applet")
       (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
