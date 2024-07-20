@@ -8,21 +8,27 @@
       enable = true;
       settings = {
         colors = {
+          draw_bold_text_with_bright_colors = true;
+
           primary = {
             background = "${config.ar.home.theme.colors.background}";
             foreground = "${config.ar.home.theme.colors.text}";
           };
+
           transparent_background_colors = true;
-          draw_bold_text_with_bright_colors = true;
         };
+
         font = {
           normal = {
             family = "NotoSansM Nerd Font";
             style = "Regular";
           };
+
           size = config.gtk.font.size;
         };
+
         selection.save_to_clipboard = true;
+
         window = {
           blur = true;
           decorations = "Full";
