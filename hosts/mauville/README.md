@@ -30,7 +30,7 @@ Served over samba to my LAN as 'Media'.
 ### /mnt/Archive
 Archival btrfs volume. Not used for anything important, just spillover for things not backed up to Backblaze.
 
-Serves over samba to my LAN as 'Archive'.
+Served over samba to my LAN as 'Archive'.
 
 ## Display
 34" LG 34WP65C-B curved 3440 x 1440 160Hz ultrawide. Typically used at 1.25x scaling. 
