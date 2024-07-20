@@ -148,11 +148,6 @@ in {
 
   dwindle.preserve_split = true;
 
-  env = [
-    "QT_QPA_PLATFORMTHEME,qt6ct"
-    "XCURSOR_SIZE,${toString config.home.pointerCursor.size}"
-  ];
-
   exec-once =
     [
       wallpaperD
