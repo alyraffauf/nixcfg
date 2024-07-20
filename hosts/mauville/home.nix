@@ -9,9 +9,13 @@
       {
         xdg.userDirs.music = "/mnt/Media/Music";
 
-        ar.home.desktop.hyprland = {
-          autoSuspend = false;
-          monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"];
+        ar.home = {
+          desktop.hyprland = {
+            autoSuspend = false;
+            monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"];
+          };
+
+          theme.darkMode = false;
         };
       }
     ];
