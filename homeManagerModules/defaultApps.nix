@@ -4,15 +4,7 @@
   ...
 }: let
   cfg = config.ar.home.defaultApps;
-  inherit
-    (import ./mimetypes.nix)
-    audioFiles
-    browserFiles
-    documentFiles
-    editorFiles
-    imageFiles
-    videoFiles
-    ;
+  mimeTypes = import ./mimeTypes.nix;
 in {
   config = lib.mkIf cfg.enable {
     dconf = {
@@ -50,29 +42,29 @@ in {
         defaultApplications = let
           mkDefaults = files: desktopFile: lib.genAttrs files (_: [desktopFile]);
           audioTypes =
-            mkDefaults audioFiles
+            mkDefaults mimeTypes.audioFiles
             "defaultAudioPlayer.desktop";
 
           browserTypes =
-            mkDefaults browserFiles
+            mkDefaults mimeTypes.browserFiles
             "defaultWebBrowser.desktop";
 
           documentTypes =
-            mkDefaults documentFiles
+            mkDefaults mimeTypes.documentFiles
             "defaultPdfViewer.desktop";
 
           editorTypes =
-            mkDefaults editorFiles
+            mkDefaults mimeTypes.editorFiles
             "defaultEditor.desktop";
 
           folderTypes = {"inode/directory" = "defaultFileManager.desktop";};
 
           imageTypes =
-            mkDefaults imageFiles
+            mkDefaults mimeTypes.imageFiles
             "defaultImageViewer.desktop";
 
           videoTypes =
-            mkDefaults videoFiles
+            mkDefaults mimeTypes.videoFiles
             "defaultVideoPlayer.desktop";
         in
           audioTypes
