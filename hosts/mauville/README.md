@@ -1,6 +1,12 @@
 # mauville
 ## Overview
-Home lab/server built in a mini-ITX case from NZXT. Also used for gaming, but bottlenecked by the CPU.
+Home lab/server built in a mini-ITX case from NZXT. Also used for gaming, but bottlenecked by the CPU. Home lab services are largely configured [upstream](https://github.com/alyraffauf/raffauflabs).
+
+## Todo
+- [ ] upgrade CPU.
+- [ ] upgrade RAM to 32GB.
+- [ ] add second 2TB SSD in btrfs pool.
+
 ## Specs
 | Model   | Custom Mini-ITX Desktop   |
 |---------|---------------------------|
@@ -32,7 +38,8 @@ Serves over samba to my LAN as 'Archive'.
 ## Services
 | Service        | Description                       | Domain                           |
 |----------------|-----------------------------------|----------------------------------|
+| Audiobookshelf | Podcasts & audiobooks.            | https://podcasts.raffauflabs.com |
+| Forĝejo        | Git & DevOps.                     | https://git.raffauflabs.com      |
 | Navidrome      | SubSonic-compatible music server. | https://music.raffauflabs.com    |
 | Plex           | Music, TV, and Movie streaming.   | https://plex.raffauflabs.com     |
-| Audiobookshelf | Podcasts & audiobooks.            | https://podcasts.raffauflabs.com |
 | Transmission   | BitTorrent.                       | Tailnet/LAN                      |
