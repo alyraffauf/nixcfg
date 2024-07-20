@@ -2,7 +2,7 @@ name: "nix-check"
 on:
   push:
     paths-ignore:
-      - '*.md'
+      - '**/*.md'
       - '.github/**'
       - '_img/**'
   workflow_dispatch:
