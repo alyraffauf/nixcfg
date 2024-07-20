@@ -3,7 +3,7 @@
 Framework Laptop 13 with AMD 7000 series mainboard. My primary machine used for work, productivity, development work, media, you name it.
 
 ## Todo
-- [ ] upgrade to [2.8k Framework screen](https://frame.work/products/display-kit?v=FRANJF0001).
+- [ ] upgrade to [2.8k 120Hz Framework screen](https://frame.work/products/display-kit?v=FRANJF0001).
 
 ## Specs
 | Model   | Framework Laptop 13       |
