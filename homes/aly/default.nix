@@ -99,12 +99,10 @@ in {
 
       bash.enable = true;
       chromium.enable = true;
-      emacs.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
       keepassxc.enable = true;
       tmux.enable = true;
-      vsCodium.enable = true;
 
       zed = {
         enable = true;
