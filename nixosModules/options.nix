@@ -13,7 +13,6 @@
     };
 
     desktop = {
-      cinnamon.enable = lib.mkEnableOption "Cinnamon desktop session.";
       gnome.enable = lib.mkEnableOption "GNOME desktop session.";
 
       greetd = {

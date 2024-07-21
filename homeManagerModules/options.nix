@@ -102,12 +102,6 @@ in {
     };
 
     desktop = {
-      cinnamon.enable = lib.mkOption {
-        description = "Cinnamon with sane defaults";
-        default = osConfig.ar.desktop.cinnamon.enable;
-        type = lib.types.bool;
-      };
-
       gnome.enable = lib.mkOption {
         description = "GNOME with sane defaults.";
         default = osConfig.ar.desktop.gnome.enable;
