@@ -113,10 +113,10 @@ in {
 
   bindle = [
     # Display, volume, microphone, and media keys.
-    ", xf86monbrightnessup,exec,${brightness.up}"
-    ", xf86monbrightnessdown,exec,${brightness.down}"
-    ", xf86audioraisevolume,exec,${volume.up}"
-    ", xf86audiolowervolume,exec,${volume.down}"
+    ",xf86monbrightnessup,exec,${brightness.up}"
+    ",xf86monbrightnessdown,exec,${brightness.down}"
+    ",xf86audioraisevolume,exec,${volume.up}"
+    ",xf86audiolowervolume,exec,${volume.down}"
   ];
 
   decoration = {
