@@ -14,7 +14,7 @@
 
         exec-once = [''${
             lib.getExe self.inputs.iio-hyprland.packages.${pkgs.system}.default
-          } "desc:Samsung Display Corp. 0x4152''];
+          } "desc:Samsung Display Corp. 0x4152"''];
 
         input = {
           tablet.output = "eDP-1";
