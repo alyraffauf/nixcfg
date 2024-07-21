@@ -1,6 +1,8 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 16GB RAM, 512GB SSD.
 {
   config,
+  lib,
+  pkgs,
   self,
   ...
 }: {
