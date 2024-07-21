@@ -6,6 +6,7 @@
 }: let
   cfg = config.ar.home;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+  pkill = lib.getExe' pkgs.procps "pkill";
   virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
 in {
   clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
@@ -13,6 +14,7 @@ in {
     if [ "$1" == "on" ]; then
       if [ $NUM_MONITORS -gt 1 ]; then
         ${hyprctl} keyword monitor "eDP-1, disable"
+        ${pkill} -SIGUSR2 waybar
       fi
     elif [ "$1" == "off" ]; then
     ${
@@ -20,6 +22,7 @@ in {
       (monitor: ''${hyprctl} keyword monitor "${monitor}"'')
       cfg.desktop.hyprland.laptopMonitors
     }
+      ${pkill} -SIGUSR2 waybar
     fi
   '';
 
