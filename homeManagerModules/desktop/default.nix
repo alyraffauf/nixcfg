@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./cinnamon
     ./gnome
     ./hyprland
     ./sway
