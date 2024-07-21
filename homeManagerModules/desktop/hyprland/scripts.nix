@@ -6,6 +6,7 @@
 }: let
   cfg = config.ar.home;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+  pkill = lib.getExe' pkgs.procps "pkill";
   virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
 in {
   clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
@@ -20,6 +21,8 @@ in {
       (monitor: ''${hyprctl} keyword monitor "${monitor}"'')
       cfg.desktop.hyprland.laptopMonitors
     }
+      sleep 1
+      ${pkill} -SIGUSR2 waybar
     fi
   '';
 
