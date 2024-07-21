@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./cinnamon
     ./gnome
     ./greetd
     ./hyprland
@@ -15,8 +14,7 @@
 
   config =
     lib.mkIf (
-      config.ar.desktop.cinnamon.enable
-      || config.ar.desktop.gnome.enable
+      config.ar.desktop.gnome.enable
       || config.ar.desktop.hyprland.enable
       || config.ar.desktop.steam.enable
       || config.ar.desktop.sway.enable

@@ -51,7 +51,7 @@
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" =
-          if config.ar.home.desktop.gnome.enable || config.ar.home.desktop.cinnamon.enable
+          if config.ar.home.desktop.gnome.enable
           then "custom"
           else "native";
         "window.zoomPerWindow" = false;
