@@ -17,6 +17,11 @@ jobs:
           git config --local user.email  "github-actions[bot]@users.noreply.github.com"
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Update fetchGit repos
+        run: |
+          nix run nixpkgs#update-nix-fetchgit -- homeManagerModules/desktop/default.nix
+          nix run nixpkgs#update-nix-fetchgit -- homes/aly/firefox/default.nix
+          nix run nixpkgs#update-nix-fetchgit -- homes/aly/mail/default.nix
       - uses: DeterminateSystems/update-flake-lock@main
         with:
           token: ${{ secrets.FLAKE_UPDATE_PAT }}
