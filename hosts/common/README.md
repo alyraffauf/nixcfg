@@ -6,7 +6,7 @@ Common modules for my nix hosts that aren't better expressed as options & flake 
 
 ## Declarative WiFi Connections
 
-WiFi networks can be configured declaratiely in `nixosModules/system/wifi.nix` using `config.networking.networkmanager.ensureProfiles.profiles`, provided by nixpkgs.
+WiFi networks can be configured declaratiely in `wifi.nix` using `config.networking.networkmanager.ensureProfiles.profiles`, provided by nixpkgs. I also provide helper functions for common wifi security types.
 
 [nm2nix](https://github.com/janik-haag/nm2nix) can generate nix code for all WiFi networks currently configured in `/etc/NetworkManager/system-connections/` and `/run/NetworkManager/system-connections` with the following command:
 
@@ -14,7 +14,7 @@ WiFi networks can be configured declaratiely in `nixosModules/system/wifi.nix` u
 sudo su -c "cd /etc/NetworkManager/system-connections && nix --extra-experimental-features 'nix-command flakes' run github:Janik-Haag/nm2nix | nix --extra-experimental-features 'nix-command flakes' run nixpkgs#nixfmt-rfc-style"
 ```
 
-\[\[Secrets\]\] (passwords, certificates, and identities) are supported, but must be declared and available as variables with agenix. They will be replaced upon activation with `envsubst`.
+Secrets (passwords, certificates, and identities) are supported, but must be declared and available as variables with agenix. They will be replaced upon activation with `envsubst`.
 
 In short,
 
