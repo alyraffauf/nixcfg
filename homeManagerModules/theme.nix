@@ -113,31 +113,6 @@ in {
     };
 
     dconf.settings = {
-      "org/cinnamon/desktop/background".picture-uri = "file://${cfg.wallpaper}";
-
-      "org/cinnamon/desktop/interface" = {
-        cursor-size = config.home.pointerCursor.size;
-        cursor-theme = config.home.pointerCursor.name;
-        font-name = "${config.gtk.font.name} ${toString config.gtk.font.size}";
-
-        gtk-theme =
-          if cfg.darkMode
-          then "adw-gtk3-dark"
-          else "adw-gtk3";
-
-        icon-theme =
-          if cfg.darkMode
-          then "Papirus-Dark"
-          else "Papirus";
-      };
-
-      "org/cinnamon/theme".name =
-        if cfg.darkMode
-        then "adw-gtk3-dark"
-        else "adw-gtk3";
-
-      "org/cinnamon/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} ${toString config.gtk.font.size}";
-
       "org/gnome/desktop/background" = {
         picture-uri = "file://${cfg.wallpaper}";
         picture-uri-dark = "file://${cfg.wallpaper}";
