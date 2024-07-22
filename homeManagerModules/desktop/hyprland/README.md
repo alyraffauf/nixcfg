@@ -34,8 +34,7 @@
 
 ### Screenshots
 
-- PRINT // CTRL + F12: Take screenshot of monitor.
-- SUPER + PRINT // SUPER CTRL + F12: Take screenshot of selected area.
+- PRINT // CTRL + F12: Take screenshot of monitor or selected area.
 
 ### Session Control
 

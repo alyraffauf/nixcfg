@@ -27,7 +27,6 @@ in {
 
   bind =
     [
-      "$mod CONTROL,F12,exec,${helpers.screenshot.region}"
       "$mod CONTROL,L,exec,${lib.getExe pkgs.swaylock}"
       "$mod SHIFT,S,movetoworkspace,special:magic"
       "$mod SHIFT,V,togglefloating"
@@ -41,7 +40,6 @@ in {
       "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
       "$mod,M,exec,${lib.getExe pkgs.wlogout}"
-      "$mod,PRINT,exec,${helpers.screenshot.region}"
       "$mod,R,exec,${lib.getExe pkgs.fuzzel}"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
@@ -49,8 +47,8 @@ in {
       "$mod,mouse_down,workspace,+1"
       "$mod,mouse_up,workspace,-1"
       "$mod,period,exec,${lib.getExe pkgs.hyprnome}"
-      ",PRINT,exec,${helpers.screenshot.screen}"
-      "CONTROL,F12,exec,${helpers.screenshot.screen}"
+      ",PRINT,exec,${helpers.screenshot}"
+      "CONTROL,F12,exec,${helpers.screenshot}"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
     ]
