@@ -14,6 +14,18 @@
         "workspace 10: zoom" = [{class = "zoom";} {app_id = "Zoom";}];
       };
 
+      output = {
+        "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 0000000000001" = {
+          scale = "1.5";
+          pos = "-2560 0";
+        };
+
+        "HP Inc. HP 24mh 3CM037248S   " = {
+          scale = "1.0";
+          pos = "-1920 0";
+        };
+      };
+
       startup = [
         {command = ''${lib.getExe' pkgs.keepassxc "keepassxc"}'';}
       ];

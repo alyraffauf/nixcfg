@@ -231,23 +231,6 @@ in {
       ++ lib.optional cfg.desktop.sway.randomWallpaper {command = "${scripts.randomWallpaper}";}
       ++ lib.optional (!cfg.desktop.sway.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
-    output = {
-      "BOE 0x095F Unknown".scale = "1.5";
-      "LG Display 0x0569 Unknown".scale = "1.0";
-      "Samsung Display Corp. 0x4152 Unknown".scale = "2.0";
-      "LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.25";
-
-      "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 0000000000001" = {
-        scale = "1.5";
-        pos = "-2560 0";
-      };
-
-      "HP Inc. HP 24mh 3CM037248S   " = {
-        scale = "1.0";
-        pos = "-1920 0";
-      };
-    };
-
     floating.criteria = [
       {app_id = ".blueman-manager-wrapped";}
       {app_id = "Bitwarden";}
@@ -340,7 +323,7 @@ in {
         blur enable
         blur_passes 1
 
-        corner_radius 10
+        # corner_radius 10
         shadows enable
         shadows_on_csd enable
         shadow_color ${cfg.theme.colors.shadow}
