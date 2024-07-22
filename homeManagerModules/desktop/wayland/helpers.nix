@@ -20,7 +20,7 @@
   screenshot = {
     region = pkgs.writeShellScript "screenshot-region" ''
       FILENAME=$HOME/pics/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
-      
+
       ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" "$FILENAME"
       ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
       ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"
@@ -28,7 +28,7 @@
 
     screen = pkgs.writeShellScript "screenshot-screen" ''
       FILENAME=$HOME/pics/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
-      
+
       ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -o)" "$FILENAME"
       ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
       ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"

@@ -12,7 +12,9 @@
       then true
       else false;
 
-    wayland.windowManager.sway = {
+    wayland.windowManager.sway = let
+      helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
+    in {
       enable = true;
       wrapperFeatures.gtk = true;
       checkConfig = false;
@@ -27,8 +29,6 @@
         editor = lib.getExe config.ar.home.defaultApps.editor;
         terminal = lib.getExe config.ar.home.defaultApps.terminal;
 
-        media = lib.getExe pkgs.playerctl;
-
         # Sway desktop utilities
         bar = lib.getExe pkgs.waybar;
         launcher = lib.getExe pkgs.fuzzel;
@@ -38,7 +38,7 @@
         lock = lib.getExe pkgs.swaylock;
         idled = pkgs.writeShellScript "sway-idled" ''
           ${lib.getExe pkgs.swayidle} -w \
-            before-sleep '${media} pause' \
+            before-sleep '${helpers.media} pause' \
             before-sleep '${lock}' \
             timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
               resume '${lib.getExe pkgs.brightnessctl} -r' \
@@ -51,10 +51,6 @@
             else ''\''
           }
         '';
-
-        screenshot = lib.getExe' pkgs.shotman "shotman";
-        screenshot_screen = "${screenshot} --capture output";
-        screenshot_region = "${screenshot} --capture region";
 
         cycleSwayDisplayModes = pkgs.writeShellScriptBin "cycleSwayDisplayModes" ''
           # TODO: remove petalburg hardcodes
@@ -231,8 +227,8 @@
           "XF86Launch3" = "exec ${lib.getExe cycleSwayDisplayModes}";
 
           # Screenshots
-          "PRINT" = "exec ${screenshot_screen}";
-          "${modifier}+PRINT" = "exec ${screenshot_region}";
+          "PRINT" = "exec ${helpers.screenshot.screen}";
+          "${modifier}+PRINT" = "exec ${helpers.screenshot.region}";
 
           # Show/hide waybar
           "${modifier}+F11" = "exec pkill -SIGUSR1 waybar";
@@ -370,30 +366,16 @@
         workspaceAutoBackAndForth = true;
       };
 
-      extraConfig = let
-        brightness = lib.getExe' pkgs.swayosd "swayosd-client";
-        brightness_up = "${brightness} --brightness=raise";
-        brightness_down = "${brightness} --brightness=lower";
-        volume = brightness;
-        volume_up = "${volume} --output-volume=raise";
-        volume_down = "${volume} --output-volume=lower";
-        volume_mute = "${volume} --output-volume=mute-toggle";
-        mic_mute = "${volume} --input-volume=mute-toggle";
-        media = lib.getExe pkgs.playerctl;
-        media_play = "${media} play-pause";
-        media_next = "${media} next";
-        media_prev = "${media} previous";
-      in ''
-        bindsym --locked XF86MonBrightnessUp exec ${brightness_up}
-        bindsym --locked XF86MonBrightnessDown exec ${brightness_down}
-        bindsym --locked XF86AudioRaiseVolume exec ${volume_up}
-        bindsym --locked XF86AudioLowerVolume exec ${volume_down}
-        bindsym --locked XF86AudioMute exec ${volume_mute}
-        bindsym --locked XF86AudioMicMute exec ${mic_mute}
-        bindsym --locked XF86AudioPlay exec ${media_play}
-        bindsym --locked XF86AudioPrev exec ${media_prev}
-        bindsym --locked XF86AudioNext exec ${media_next}
-        bindsym --locked XF86Launch2 exec ${media_play}
+      extraConfig = ''
+        bindsym --locked XF86MonBrightnessUp exec ${helpers.brightness.up}
+        bindsym --locked XF86MonBrightnessDown exec ${helpers.brightness.down}
+        bindsym --locked XF86AudioRaiseVolume exec ${helpers.volume.up}
+        bindsym --locked XF86AudioLowerVolume exec ${helpers.volume.down}
+        bindsym --locked XF86AudioMute exec ${helpers.volume.mute}
+        bindsym --locked XF86AudioMicMute exec ${helpers.mic.mute}
+        bindsym --locked XF86AudioPlay exec ${helpers.media.play}
+        bindsym --locked XF86AudioPrev exec ${helpers.media.prev}
+        bindsym --locked XF86AudioNext exec ${helpers.media.next}
 
         mode "move" {
           bindgesture swipe:right move container to workspace prev; workspace prev
