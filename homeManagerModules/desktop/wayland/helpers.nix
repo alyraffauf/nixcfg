@@ -17,22 +17,24 @@
     prev = "${bin} previous";
   };
 
-  screenshot = {
-    region = pkgs.writeShellScript "screenshot-region" ''
+  screenshot = rec {
+    bin = pkgs.writeShellScript "screenshooter" ''
       FILENAME=$HOME/pics/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
 
-      ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" "$FILENAME"
+      if [ "$1" == "region" ]; then
+        ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" "$FILENAME"
+      elif [ "$1" == "screen" ]; then
+        ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -o)" "$FILENAME"
+      else
+          exit 1
+      fi
+
       ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
       ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"
     '';
 
-    screen = pkgs.writeShellScript "screenshot-screen" ''
-      FILENAME=$HOME/pics/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
-
-      ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -o)" "$FILENAME"
-      ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
-      ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"
-    '';
+    region = "${bin} region";
+    screen = "${bin} screen";
   };
 
   volume = rec {
