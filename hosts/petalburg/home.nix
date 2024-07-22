@@ -23,7 +23,18 @@
           };
         };
 
-        sway.config.output = {"Samsung Display Corp. 0x4152 Unknown".scale = "2.0";};
+        sway.config = {
+          input = {
+            "1386:21186:Wacom_HID_52C2_Finger" = {
+              map_to_output = "'Samsung Display Corp. 0x4152 Unknown'";
+            };
+
+            "1386:21186:Wacom_HID_52C2_Pen" = {
+              map_to_output = "'Samsung Display Corp. 0x4152 Unknown'";
+            };
+          };
+          output = {"Samsung Display Corp. 0x4152 Unknown".scale = "2.0";};
+        };
       };
 
       ar.home.desktop.hyprland = {
