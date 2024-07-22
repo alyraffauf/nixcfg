@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -19,7 +20,7 @@
 
   screenshot = rec {
     bin = pkgs.writeShellScript "screenshooter" ''
-      FILENAME=$HOME/pics/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
+      FILENAME=${config.xdg.userDirs.pictures}/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
 
       if [ "$1" == "region" ]; then
         ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" "$FILENAME"
