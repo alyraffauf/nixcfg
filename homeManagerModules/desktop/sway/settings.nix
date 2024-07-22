@@ -47,7 +47,6 @@ in {
     focus = {
       followMouse = "always";
       newWindow = "focus";
-      # mouseWarping = "container";
     };
 
     fonts = {
@@ -218,12 +217,6 @@ in {
 
     startup =
       [
-        {
-          command =
-            if cfg.desktop.sway.randomWallpaper
-            then "true"
-            else "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
-        }
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = "${scripts.idleD}";}
         {command = lib.getExe pkgs.autotiling;}
@@ -234,7 +227,8 @@ in {
         {command = lib.getExe pkgs.mako;}
       ]
       ++ lib.optional cfg.desktop.sway.redShift
-      {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";};
+      {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}
+      ++ lib.optional cfg.desktop.sway.randomWallpaper {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
     output = {
       "BOE 0x095F Unknown".scale = "1.5";
