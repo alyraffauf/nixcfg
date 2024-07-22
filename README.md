@@ -1,7 +1,5 @@
 # nixos
 
-## Overview
-
 My comprehensive NixOS flake for managing my laptop, desktop, and home lab environments.
 
 ![](./_img/hyprland.png)
