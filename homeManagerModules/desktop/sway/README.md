@@ -1,4 +1,4 @@
-# Hyprland
+# Sway
 
 ## Features
 
@@ -6,11 +6,7 @@
 - Default apps + theme integration
 - Random wallpapers that cycle every 15 minutes
 - Slick looks
-- Tablet mode
-  - Auto rotate
-  - Extra menu buttons for touch screens
-  - Tablet switch setup
-  - Virtual keyboard
+- swayfx support
 
 ## Desktop Utilities
 
@@ -48,30 +44,13 @@
 - SUPER + {1..9}: Switch to numbered workspace.
 - SUPER + Comma: Switch to previous numbered workspace.
 - SUPER + Period: Switch to next numbered workspace.
-- SUPER + Mouse Scroll Up: Switch to previous numbered workspace.
-- SUPER + Mouse Scroll Down: Switch to next numbered workspace.
 - TOUCHPAD: 3 Finger Swipe Left/Right.
-
-#### Multi-Monitor Workspace Management
-
-- SUPER CTRL SHIFT + Down: Move current workspace to monitor below.
-- SUPER CTRL SHIFT + Up: Move current workspace to monitor above.
-- SUPER CTRL SHIFT + Left: Move current workspace to monitor left.
-- SUPER CTRL SHIFT + Right: Move current workspace to monitor right.
-
-______________________________________________________________________
-
-- SUPER CTRL SHIFT + J: Move current workspace to monitor below.
-- SUPER CTRL SHIFT + K: Move current workspace to monitor above.
-- SUPER CTRL SHIFT + H: Move current workspace to monitor left.
-- SUPER CTRL SHIFT + L: Move current workspace to monitor right.
 
 ### Window Management
 
 - SUPER + C: Kill focused window.
 - SUPER SHIFT + W: Toggle fullscreen.
 - SUPER + V: Toggle floating window.
-- SUPER SHIFT + Backslash: Toggle vertical/horizontal splits.
 - SUPER + F11: Show/hide top panel.
 
 #### Focus
@@ -94,7 +73,6 @@ ______________________________________________________________________
 - SUPER SHIFT + Up: Move window up.
 - SUPER SHIFT + Left: Move window left.
 - SUPER SHIFT + Right: Move window right.
-- SUPER + Left Mouse Button: Move window.
 
 ______________________________________________________________________
 
@@ -102,10 +80,6 @@ ______________________________________________________________________
 - SUPER SHIFT + K: Move window up.
 - SUPER SHIFT + H: Move window left.
 - SUPER SHIFT + L: Move window right.
-
-#### Resizing
-
-- SUPER + Right Mouse Button: Resize Window.
 
 #### Moving between Workspaces
 
@@ -118,11 +92,11 @@ ______________________________________________________________________
 - SUPER + S: Switch to scratchpad (overlay).
 - SUPER SHIFT + S: Move window to scratchpad.
 
-### Submaps
+### Modes
 
-These submaps provide special modes where you are free to use various key binds without pressing the full key combo, because certain keys are assumed.
+These modes provide special submaps where you are free to use various key binds without pressing the full key combo, because certain keys are assumed.
 
-#### Resize Submap
+#### Resize Mode
 
 - CTRL ALT + R: Enter resize mode.
 
@@ -140,7 +114,7 @@ These submaps provide special modes where you are free to use various key binds 
 
 - ESCAPE: Exit resize mode.
 
-#### Move Submap
+#### Move Mode
 
 - CTRL ALT + M: Enter move mode.
 
@@ -157,23 +131,9 @@ These submaps provide special modes where you are free to use various key binds 
 
   ______________________________________________________________________
 
-  - CTRL + Down: Move current workspace to monitor below.
-  - CTRL + Up: Move current workspace to monitor above.
-  - CTRL + Left: Move current workspace to monitor left.
-  - CTRL + Right: Move current workspace to monitor right.
-
-  ______________________________________________________________________
-
   - J: Move window down.
   - K: Move window up.
   - H: Move window left.
   - L: Move window right.
-
-  ______________________________________________________________________
-
-  - CTRL + J: Move current workspace to monitor below.
-  - CTRL + K: Move current workspace to monitor above.
-  - CTRL + H: Move current workspace to monitor left.
-  - CTRL + L: Move current workspace to monitor right.
 
 - ESCAPE: Exit move mode.
