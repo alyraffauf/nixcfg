@@ -6,36 +6,7 @@
 }: let
   cfg = config.ar.home;
   scripts = import ./scripts.nix {inherit config lib pkgs;};
-
-  # Media/hardware commands
-  brightness = rec {
-    bin = lib.getExe' pkgs.swayosd "swayosd-client";
-    up = "${bin} --brightness=raise";
-    down = "${bin} --brightness=lower";
-  };
-
-  media = rec {
-    bin = lib.getExe pkgs.playerctl;
-    play = "${bin} play-pause";
-    paus = "${bin} pause";
-    next = "${bin} next";
-    prev = "${bin} previous";
-  };
-
-  screenshot = rec {
-    bin = lib.getExe pkgs.hyprshot;
-    folder = "${config.xdg.userDirs.pictures}/screenshots";
-    screen = "${bin} -m output -o ${folder}";
-    region = "${bin} -m region -o ${folder}";
-  };
-
-  volume = rec {
-    bin = lib.getExe' pkgs.swayosd "swayosd-client";
-    up = "${bin} --output-volume=raise";
-    down = "${bin} --output-volume=lower";
-    mute = "${bin} --output-volume=mute-toggle";
-    micMute = "${bin} --input-volume=mute-toggle";
-  };
+  helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
 in {
   "$mod" = "SUPER";
 
@@ -56,7 +27,7 @@ in {
 
   bind =
     [
-      "$mod CONTROL,F12,exec,${screenshot.region}"
+      "$mod CONTROL,F12,exec,${helpers.screenshot.region}"
       "$mod CONTROL,L,exec,${lib.getExe pkgs.swaylock}"
       "$mod SHIFT,S,movetoworkspace,special:magic"
       "$mod SHIFT,V,togglefloating"
@@ -70,7 +41,7 @@ in {
       "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
       "$mod,M,exec,${lib.getExe pkgs.wlogout}"
-      "$mod,PRINT,exec,${screenshot.region}"
+      "$mod,PRINT,exec,${helpers.screenshot.region}"
       "$mod,R,exec,${lib.getExe pkgs.fuzzel}"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
@@ -78,8 +49,8 @@ in {
       "$mod,mouse_down,workspace,+1"
       "$mod,mouse_up,workspace,-1"
       "$mod,period,exec,${lib.getExe pkgs.hyprnome}"
-      ",PRINT,exec,${screenshot.screen}"
-      "CONTROL,F12,exec,${screenshot.screen}"
+      ",PRINT,exec,${helpers.screenshot.screen}"
+      "CONTROL,F12,exec,${helpers.screenshot.screen}"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
     ]
@@ -98,11 +69,11 @@ in {
   bindl =
     [
       # Volume, microphone, and media keys.
-      ",xf86audiomute,exec,${volume.mute}"
-      ",xf86audiomicmute,exec,${volume.micMute}"
-      ",xf86audioplay,exec,${media.play}"
-      ",xf86audioprev,exec,${media.prev}"
-      ",xf86audionext,exec,${media.next}"
+      ",xf86audiomute,exec,${helpers.volume.mute}"
+      ",xf86audiomicmute,exec,${helpers.volume.micMute}"
+      ",xf86audioplay,exec,${helpers.media.play}"
+      ",xf86audioprev,exec,${helpers.media.prev}"
+      ",xf86audionext,exec,${helpers.media.next}"
     ]
     ++ builtins.map (switch: ",switch:${switch},exec,${scripts.tablet}") cfg.desktop.hyprland.tabletMode.tabletSwitches
     ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
@@ -113,10 +84,10 @@ in {
 
   bindle = [
     # Display, volume, microphone, and media keys.
-    ",xf86monbrightnessup,exec,${brightness.up}"
-    ",xf86monbrightnessdown,exec,${brightness.down}"
-    ",xf86audioraisevolume,exec,${volume.up}"
-    ",xf86audiolowervolume,exec,${volume.down}"
+    ",xf86monbrightnessup,exec,${helpers.brightness.up}"
+    ",xf86monbrightnessdown,exec,${helpers.brightness.down}"
+    ",xf86audioraisevolume,exec,${helpers.volume.up}"
+    ",xf86audiolowervolume,exec,${helpers.volume.down}"
   ];
 
   decoration = {

@@ -11,12 +11,13 @@
       if config.wayland.windowManager.sway.package == pkgs.sway
       then true
       else false;
-    wayland = {
-      windowManager.sway.enable = true;
-      windowManager.sway.wrapperFeatures.gtk = true;
-      windowManager.sway.checkConfig = false;
 
-      windowManager.sway.config = let
+    wayland.windowManager.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      checkConfig = false;
+
+      config = let
         modifier = "Mod4";
         swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
 
@@ -369,7 +370,7 @@
         workspaceAutoBackAndForth = true;
       };
 
-      windowManager.sway.extraConfig = let
+      extraConfig = let
         brightness = lib.getExe' pkgs.swayosd "swayosd-client";
         brightness_up = "${brightness} --brightness=raise";
         brightness_down = "${brightness} --brightness=lower";

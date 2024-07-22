@@ -8,7 +8,7 @@
     ./gnome
     ./hyprland
     ./sway
-    ./waylandComp.nix
+    ./wayland
   ];
 
   config =
