@@ -45,12 +45,12 @@ self: {
         "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
       ];
 
-      randomWallpaper = true;
+      randomWallpaper = false;
     };
 
     theme = {
       enable = true;
-      wallpaper = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
+      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-6d66dl.jpg";
     };
   };
 }
