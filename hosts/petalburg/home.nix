@@ -21,6 +21,8 @@
           touchdevice.output = "eDP-1";
         };
       };
+      
+      ar.home.desktop.sway.enable = true;
 
       ar.home.desktop.hyprland = {
         laptopMonitors = ["desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"];

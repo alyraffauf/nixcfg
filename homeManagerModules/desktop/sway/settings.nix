@@ -224,7 +224,7 @@ in {
           else "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
       }
       {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-      {command = scripts.idleD;}
+      {command = "${scripts.idleD}";}
       {command = lib.getExe pkgs.autotiling;}
       {command = lib.getExe' pkgs.blueman "blueman-applet";}
       {command = lib.getExe' pkgs.networkmanagerapplet "nm-applet";}
@@ -316,7 +316,7 @@ in {
     bindsym --locked XF86AudioRaiseVolume exec ${helpers.volume.up}
     bindsym --locked XF86AudioLowerVolume exec ${helpers.volume.down}
     bindsym --locked XF86AudioMute exec ${helpers.volume.mute}
-    bindsym --locked XF86AudioMicMute exec ${helpers.mic.mute}
+    bindsym --locked XF86AudioMicMute exec ${helpers.volume.micMute}
     bindsym --locked XF86AudioPlay exec ${helpers.media.play}
     bindsym --locked XF86AudioPrev exec ${helpers.media.prev}
     bindsym --locked XF86AudioNext exec ${helpers.media.next}
