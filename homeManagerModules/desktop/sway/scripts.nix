@@ -4,7 +4,26 @@
   pkgs,
   ...
 }: let
-  sway-randomWallpaper = pkgs.writeShellScriptBin "sway-randomWallpaper" ''
+  cfg = config.ar.home;
+  swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
+in {
+  idleD = pkgs.writeShellScript "sway-idled" ''
+    ${lib.getExe pkgs.swayidle} -w \
+      before-sleep '${lib.getExe pkgs.playerctl} pause' \
+      before-sleep '${lib.getExe pkgs.swaylock}' \
+      timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
+        resume '${lib.getExe pkgs.brightnessctl} -r' \
+      timeout 300 '${lib.getExe pkgs.swaylock}' \
+      timeout 330 '${swaymsg} "output * dpms off"' \
+        resume '${swaymsg} "output * dpms on"' \
+      ${
+      if cfg.desktop.sway.autoSuspend
+      then ''timeout 900 '${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
+      else ''\''
+    }
+  '';
+
+  randomWallpaper = pkgs.writeShellScript "sway-randomWallpaper" ''
     kill `pidof swaybg`
 
     OLD_PIDS=()
@@ -35,15 +54,4 @@
         done
     fi
   '';
-in {
-  config = lib.mkIf config.ar.home.desktop.sway.randomWallpaper {
-    home.packages = [
-      pkgs.swaybg
-      sway-randomWallpaper
-    ];
-
-    wayland.windowManager.sway.config.startup = [
-      {command = "${lib.getExe sway-randomWallpaper}";}
-    ];
-  };
 }

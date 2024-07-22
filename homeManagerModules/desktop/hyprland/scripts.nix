@@ -28,7 +28,7 @@ in {
 
   idleD = pkgs.writeShellScript "hyprland-idled" ''
     ${lib.getExe pkgs.swayidle} -w \
-      before-sleep '${lib.getExe pkgs.playerctl} play-pause' \
+      before-sleep '${lib.getExe pkgs.playerctl} pause' \
       before-sleep '${lib.getExe pkgs.swaylock}' \
       timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
         resume '${lib.getExe pkgs.brightnessctl} -r' \
