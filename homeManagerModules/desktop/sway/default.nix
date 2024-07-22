@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  imports = [./randomWallpaper.nix ./redShift.nix];
+  imports = [./randomWallpaper.nix];
 
   config = lib.mkIf config.ar.home.desktop.sway.enable {
     ar.home.theme.gtk.hideTitleBar =

@@ -216,22 +216,25 @@ in {
       };
     };
 
-    startup = [
-      {
-        command =
-          if cfg.desktop.sway.randomWallpaper
-          then "true"
-          else "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
-      }
-      {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-      {command = "${scripts.idleD}";}
-      {command = lib.getExe pkgs.autotiling;}
-      {command = lib.getExe' pkgs.blueman "blueman-applet";}
-      {command = lib.getExe' pkgs.networkmanagerapplet "nm-applet";}
-      {command = lib.getExe' pkgs.playerctl "playerctld";}
-      {command = lib.getExe' pkgs.swayosd "swayosd-server";}
-      {command = lib.getExe pkgs.mako;}
-    ];
+    startup =
+      [
+        {
+          command =
+            if cfg.desktop.sway.randomWallpaper
+            then "true"
+            else "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
+        }
+        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+        {command = "${scripts.idleD}";}
+        {command = lib.getExe pkgs.autotiling;}
+        {command = lib.getExe' pkgs.blueman "blueman-applet";}
+        {command = lib.getExe' pkgs.networkmanagerapplet "nm-applet";}
+        {command = lib.getExe' pkgs.playerctl "playerctld";}
+        {command = lib.getExe' pkgs.swayosd "swayosd-server";}
+        {command = lib.getExe pkgs.mako;}
+      ]
+      ++ lib.optional cfg.desktop.sway.redShift
+      {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";};
 
     output = {
       "BOE 0x095F Unknown".scale = "1.5";
