@@ -15,7 +15,7 @@ in {
 
   config = {
     bars = [{command = lib.getExe pkgs.waybar;}];
-    modifier = "${modifier}";
+    modifier = modifier;
     colors.background = "${cfg.theme.colors.primary}EE";
 
     colors.focused = {
