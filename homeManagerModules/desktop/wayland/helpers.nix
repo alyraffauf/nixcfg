@@ -20,22 +20,30 @@
 
   screenshot = rec {
     bin = pkgs.writeShellScript "screenshooter" ''
-      FILENAME=${config.xdg.userDirs.pictures}/screenshots/$(date +'%Y-%m-%d-%H:%M_grim.png')
-
-      if [ "$1" == "region" ]; then
-        ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" "$FILENAME"
-      elif [ "$1" == "screen" ]; then
-        ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -o)" "$FILENAME"
+      FILENAME=${config.xdg.userDirs.pictures}/screenshots/$(date +'%Y-%m-%d-%H:%M:%S_grim.png')
+      MAKO_MODE=$(${lib.getExe' pkgs.mako "makoctl"} mode)
+      
+      if echo "$MAKO_MODE" | grep -q "do-not-disturb"; then
+        DND=true
       else
-          exit 1
+        DND=false
+        ${lib.getExe' pkgs.mako "makoctl"} mode -t do-not-disturb
       fi
 
-      ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
-      ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"
+      ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -o)" "$FILENAME"
+      
+      if [ "$DND" = false ]; then
+        ${lib.getExe' pkgs.mako "makoctl"} mode -t do-not-disturb
+      fi
+      
+      if [ -e "$FILENAME" ]; then
+        ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
+        ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"
+      fi
     '';
 
-    region = "${bin} region";
-    screen = "${bin} screen";
+    region = "${bin}";
+    screen = "${bin}";
   };
 
   volume = rec {
