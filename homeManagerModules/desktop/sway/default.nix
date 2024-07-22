@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [./randomWallpaper.nix];
-
   config = lib.mkIf config.ar.home.desktop.sway.enable {
     ar.home.theme.gtk.hideTitleBar =
       if config.wayland.windowManager.sway.package == pkgs.sway
