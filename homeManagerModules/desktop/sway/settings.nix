@@ -17,30 +17,33 @@ in {
   config = {
     bars = [{command = lib.getExe pkgs.waybar;}];
     modifier = modifier;
-    colors.background = "${cfg.theme.colors.primary}EE";
 
-    colors.focused = {
+    colors = {
       background = "${cfg.theme.colors.primary}EE";
-      border = "${cfg.theme.colors.primary}EE";
-      childBorder = "${cfg.theme.colors.primary}EE";
-      indicator = "${cfg.theme.colors.primary}EE";
-      text = "${cfg.theme.colors.text}";
-    };
 
-    colors.focusedInactive = {
-      background = "${cfg.theme.colors.inactive}AA";
-      border = "${cfg.theme.colors.inactive}AA";
-      childBorder = "${cfg.theme.colors.inactive}AA";
-      indicator = "${cfg.theme.colors.inactive}AA";
-      text = "${cfg.theme.colors.text}";
-    };
+      focused = {
+        background = "${cfg.theme.colors.primary}EE";
+        border = "${cfg.theme.colors.primary}EE";
+        childBorder = "${cfg.theme.colors.primary}EE";
+        indicator = "${cfg.theme.colors.primary}EE";
+        text = "${cfg.theme.colors.text}";
+      };
 
-    colors.unfocused = {
-      background = "${cfg.theme.colors.inactive}AA";
-      border = "${cfg.theme.colors.inactive}AA";
-      childBorder = "${cfg.theme.colors.inactive}AA";
-      indicator = "${cfg.theme.colors.inactive}AA";
-      text = "${cfg.theme.colors.text}";
+      focusedInactive = {
+        background = "${cfg.theme.colors.inactive}AA";
+        border = "${cfg.theme.colors.inactive}AA";
+        childBorder = "${cfg.theme.colors.inactive}AA";
+        indicator = "${cfg.theme.colors.inactive}AA";
+        text = "${cfg.theme.colors.text}";
+      };
+
+      unfocused = {
+        background = "${cfg.theme.colors.inactive}AA";
+        border = "${cfg.theme.colors.inactive}AA";
+        childBorder = "${cfg.theme.colors.inactive}AA";
+        indicator = "${cfg.theme.colors.inactive}AA";
+        text = "${cfg.theme.colors.text}";
+      };
     };
 
     defaultWorkspace = "workspace number 1";
@@ -56,8 +59,10 @@ in {
       size = config.gtk.font.size + 0.0;
     };
 
-    gaps.inner = 5;
-    gaps.outer = 5;
+    gaps = {
+      inner = 5;
+      outer = 5;
+    };
 
     input = {
       "type:touchpad" = {

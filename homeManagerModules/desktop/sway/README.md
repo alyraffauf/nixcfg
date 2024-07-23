@@ -46,6 +46,20 @@
 - SUPER + Period: Switch to next numbered workspace.
 - TOUCHPAD: 3 Finger Swipe Left/Right.
 
+#### Multi-Monitor Workspace Management
+
+- SUPER CTRL SHIFT + Down: Move current workspace to monitor below.
+- SUPER CTRL SHIFT + Up: Move current workspace to monitor above.
+- SUPER CTRL SHIFT + Left: Move current workspace to monitor left.
+- SUPER CTRL SHIFT + Right: Move current workspace to monitor right.
+
+______________________________________________________________________
+
+- SUPER CTRL SHIFT + J: Move current workspace to monitor below.
+- SUPER CTRL SHIFT + K: Move current workspace to monitor above.
+- SUPER CTRL SHIFT + H: Move current workspace to monitor left.
+- SUPER CTRL SHIFT + L: Move current workspace to monitor right.
+
 ### Window Management
 
 - SUPER + C: Kill focused window.
