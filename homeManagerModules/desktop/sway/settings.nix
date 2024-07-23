@@ -10,8 +10,9 @@
   modifier = "Mod4";
 in {
   enable = true;
-  wrapperFeatures.gtk = true;
   checkConfig = false;
+  package = lib.mkDefault pkgs.swayfx;
+  wrapperFeatures.gtk = true;
 
   config = {
     bars = [{command = lib.getExe pkgs.waybar;}];
@@ -162,8 +163,8 @@ in {
       "${modifier}+Shift+S" = "move scratchpad";
 
       # Screenshots
-      "PRINT" = "exec ${helpers.screenshot.screen}";
-      "${modifier}+PRINT" = "exec ${helpers.screenshot.region}";
+      "PRINT" = "exec ${helpers.screenshot}";
+      "Control+F12" = "exec ${helpers.screenshot}";
 
       # Show/hide waybar
       "${modifier}+F11" = "exec pkill -SIGUSR1 waybar";
