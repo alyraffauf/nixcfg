@@ -52,6 +52,23 @@
       };
     };
 
+    home.packages = [
+      (pkgs.writeShellScriptBin "gcs-toggle" ''
+        # Get current color scheme
+        color_scheme=$(${lib.getExe' pkgs.glib "gsettings"} get org.gnome.desktop.interface color-scheme)
+
+        # Toggle between light and dark color schemes
+        if [ "$color_scheme" == "'default'" ] || [ "$color_scheme" == "'prefer-light'" ]; then
+            color_scheme="'prefer-dark'"
+        else
+            color_scheme="'prefer-light'"
+        fi
+
+        # Apply the updated color scheme
+        ${lib.getExe' pkgs.glib "gsettings"} set org.gnome.desktop.interface color-scheme $color_scheme
+      '')
+    ];
+
     programs.gnome-shell = {
       enable = true;
 
