@@ -26,16 +26,16 @@
           workspaces-only-on-primary = true;
         };
 
-        # "org/gnome/shell".enabled-extensions = [
-        #   "appindicatorsupport@rgcjonas.gmail.com"
-        #   "blur-my-shell@aunetx"
-        #   "gsconnect@andyholmes.github.io"
-        #   "nightthemeswitcher@romainvigier.fr"
-        #   "noannoyance-fork@vrba.dev"
-        #   "tailscale-status@maxgallup.github.com"
-        #   "tiling-assistant@leleat-on-github"
-        #   "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        # ];
+        "org/gnome/shell".enabled-extensions = [
+          "appindicatorsupport@rgcjonas.gmail.com"
+          "blur-my-shell@aunetx"
+          "gsconnect@andyholmes.github.io"
+          "nightthemeswitcher@romainvigier.fr"
+          "noannoyance-fork@vrba.dev"
+          "tailscale-status@maxgallup.github.com"
+          "tiling-assistant@leleat-on-github"
+          "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        ];
 
         "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
 
