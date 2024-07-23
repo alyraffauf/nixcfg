@@ -6,11 +6,6 @@
 }: let
   mkPassword = secret: "${lib.getExe' pkgs.coreutils "cat"} ${secret}";
 in {
-  age.secrets = {
-    achacegaGmail.file = ../../../secrets/mail/achacega_gmail.age;
-    alyraffaufFastmail.file = ../../../secrets/mail/alyraffauf_fastmail.age;
-  };
-
   accounts.email.accounts = {
     "alyraffauf@fastmail.com" = {
       address = "alyraffauf@fastmail.com";

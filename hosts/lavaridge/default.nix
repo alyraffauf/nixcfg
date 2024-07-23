@@ -8,13 +8,9 @@
     ../common
     ./disko.nix
     ./home.nix
+    ./secrets.nix
     self.inputs.nixhw.nixosModules.framework-13-amd-7000
   ];
-
-  age.secrets = {
-    syncthingCert.file = ../../secrets/syncthing/lavaridge/cert.age;
-    syncthingKey.file = ../../secrets/syncthing/lavaridge/key.age;
-  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;

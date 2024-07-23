@@ -8,13 +8,9 @@
     ../common
     ./disko.nix
     ./home.nix
+    ./secrets.nix
     self.inputs.nixhw.nixosModules.thinkpad-t440p
   ];
-
-  age.secrets = {
-    syncthingCert.file = ../../secrets/syncthing/rustboro/cert.age;
-    syncthingKey.file = ../../secrets/syncthing/rustboro/key.age;
-  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;

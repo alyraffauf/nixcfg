@@ -8,13 +8,9 @@
     ../common
     ./disko.nix
     ./home.nix
+    ./secrets.nix
     self.inputs.nixhw.nixosModules.framework-13-intel-11th
   ];
-
-  age.secrets = {
-    syncthingCert.file = ../../secrets/syncthing/fallarbor/cert.age;
-    syncthingKey.file = ../../secrets/syncthing/fallarbor/key.age;
-  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;

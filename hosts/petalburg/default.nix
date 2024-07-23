@@ -1,8 +1,6 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 16GB RAM, 512GB SSD.
 {
   config,
-  lib,
-  pkgs,
   self,
   ...
 }: {
@@ -10,13 +8,9 @@
     ../common
     ./disko.nix
     ./home.nix
+    ./secrets.nix
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
   ];
-
-  age.secrets = {
-    syncthingCert.file = ../../secrets/syncthing/petalburg/cert.age;
-    syncthingKey.file = ../../secrets/syncthing/petalburg/key.age;
-  };
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -63,7 +57,7 @@
         autologin = "aly";
       };
 
-      hyprland.enable = true;
+      gnome.enable = true;
     };
 
     users.aly = {

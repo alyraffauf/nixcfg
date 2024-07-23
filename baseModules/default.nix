@@ -2,6 +2,7 @@ self: {lib, ...}: {
   boot = {
     consoleLogLevel = 0;
     initrd.verbose = false;
+    loader.systemd-boot.configurationLimit = lib.mkDefault 10;
     plymouth.enable = true;
   };
 
