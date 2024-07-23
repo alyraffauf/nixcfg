@@ -15,7 +15,7 @@
               owner = "vanvugt";
               repo = "mutter";
               rev = "triple-buffering-v4-46";
-              hash = "sha256-fkPjB/5DPBX06t7yj0Rb3UEuu5b9mu3aS+jhH18+lpI=";
+              hash = "sha256-nz1Enw1NjxLEF3JUG0qknJgf4328W/VvdMjJmoOEMYs=";
             };
           });
         });
