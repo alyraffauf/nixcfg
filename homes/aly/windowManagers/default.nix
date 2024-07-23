@@ -8,10 +8,17 @@
     sway.config = {
       assigns = {
         "workspace 1: web" = [{app_id = "firefox";} {app_id = "brave-browser";}];
-        "workspace 2: code" = [{app_id = "codium-url-handler";}];
-        "workspace 3: chat" = [{app_id = "org.gnome.Fractal";} {app_id = "WebCord";}];
-        "workspace 4: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";} {app_id = "firework";}];
-        "workspace 10: zoom" = [{class = "zoom";} {app_id = "Zoom";}];
+        "workspace 2: code" = [{app_id = "codium-url-handler";} {app_id = "dev.zed.Zed";}];
+        "workspace 3: note" = [{app_id = "obsidian";}];
+        "workspace 4: chat" = [{app_id = "org.gnome.Fractal";} {app_id = "WebCord";}];
+        "workspace 5: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";} {app_id = "firework";}];
+      };
+
+      floating.criteria = [{app_id = "org.keepassxc.KeePassXC";}];
+
+      keybindings = {
+        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe' pkgs.keepassxc "keepassxc"}";
+        "${config.wayland.windowManager.sway.config.modifier}+N" = "exec ${lib.getExe' pkgs.obsidian "obsidian"}";
       };
 
       output = {
@@ -26,8 +33,13 @@
         };
       };
 
-      startup = [
-        {command = ''${lib.getExe' pkgs.keepassxc "keepassxc"}'';}
+      startup = [{command = ''sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}'';}];
+
+      window.commands = [
+        {
+          command = "resize set 80ppt 80ppt; move position center; sticky toggle; ";
+          criteria = {app_id = "org.keepassxc.KeePassXC";};
+        }
       ];
     };
 

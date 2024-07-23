@@ -226,10 +226,8 @@ in {
 
     floating.criteria = [
       {app_id = ".blueman-manager-wrapped";}
-      {app_id = "Bitwarden";}
       {app_id = "blueberry.py";}
       {app_id = "com.github.wwmm.easyeffects";}
-      {app_id = "org.keepassxc.KeePassXC";}
       {app_id = "pavucontrol";}
       {app_id = "solaar";}
       {title = "Open File";}
@@ -265,10 +263,6 @@ in {
         {
           command = "resize set 60ppt 80ppt; move position center";
           criteria = {app_id = "solaar";};
-        }
-        {
-          command = "resize set 80ppt 80ppt; move position center";
-          criteria = {app_id = "org.keepassxc.KeePassXC";};
         }
         {
           command = "resize set 40ppt 60ppt; move position center";
