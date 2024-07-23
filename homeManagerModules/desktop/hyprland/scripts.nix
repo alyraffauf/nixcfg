@@ -35,10 +35,12 @@ in {
       ]
       ++ lib.optional cfg.desktop.hyprland.autoSuspend "timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend'";
 
-    beforeSleeps = [
-      "before-sleep '${lib.getExe pkgs.playerctl} pause'"
-      "before-sleep '${lib.getExe pkgs.swaylock}'"
-    ];
+    beforeSleeps =
+      lib.optionals cfg.desktop.hyprland.autoSuspend
+      [
+        "before-sleep '${lib.getExe pkgs.playerctl} pause'"
+        "before-sleep '${lib.getExe pkgs.swaylock}'"
+      ];
 
     command = "${lib.getExe pkgs.swayidle} -w ${lib.strings.concatStringsSep " " (timeouts ++ beforeSleeps)}";
   in
