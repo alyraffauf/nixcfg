@@ -23,7 +23,7 @@
     ];
 
     security.pam.services = {
-      login.fprintAuth = false;
+      login.fprintAuth = !config.services.fprintd.enable;
 
       gdm = {
         enableGnomeKeyring = true;
