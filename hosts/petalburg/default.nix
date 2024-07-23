@@ -57,7 +57,7 @@
         autologin = "aly";
       };
 
-      hyprland.enable = true;
+      gnome.enable = true;
     };
 
     users.aly = {
