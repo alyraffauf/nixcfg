@@ -50,26 +50,26 @@
 
         "org/gnome/system/location".enabled = true;
       };
+    };
 
-      programs.gnome-shell = {
-        enable = true;
+    programs.gnome-shell = {
+      enable = true;
 
-        extensions = [
-          {package = pkgs.gnomeExtensions.appindicator;}
-          {package = pkgs.gnomeExtensions.blur-my-shell;}
-          {package = pkgs.gnomeExtensions.gsconnect;}
-          {package = pkgs.gnomeExtensions.light-shell;}
-          {package = pkgs.gnomeExtensions.night-theme-switcher;}
-          {package = pkgs.gnomeExtensions.noannoyance-fork;}
-          {package = pkgs.gnomeExtensions.tailscale-status;}
-          {package = pkgs.gnomeExtensions.tiling-assistant;}
-        ];
-      };
+      extensions = [
+        {package = pkgs.gnomeExtensions.appindicator;}
+        {package = pkgs.gnomeExtensions.blur-my-shell;}
+        {package = pkgs.gnomeExtensions.gsconnect;}
+        {package = pkgs.gnomeExtensions.light-shell;}
+        {package = pkgs.gnomeExtensions.night-theme-switcher;}
+        {package = pkgs.gnomeExtensions.noannoyance-fork;}
+        {package = pkgs.gnomeExtensions.tailscale-status;}
+        {package = pkgs.gnomeExtensions.tiling-assistant;}
+      ];
+    };
 
-      xdg.mimeApps.defaultApplications = {
-        "x-scheme-handler/sms" = "org.gnome.Shell.Extensions.GSConnect.desktop";
-        "x-scheme-handler/tel" = "org.gnome.Shell.Extensions.GSConnect.desktop";
-      };
+    xdg.mimeApps.defaultApplications = {
+      "x-scheme-handler/sms" = "org.gnome.Shell.Extensions.GSConnect.desktop";
+      "x-scheme-handler/tel" = "org.gnome.Shell.Extensions.GSConnect.desktop";
     };
   };
 }
