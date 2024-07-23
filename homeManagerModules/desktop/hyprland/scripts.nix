@@ -26,21 +26,23 @@ in {
     fi
   '';
 
-  idleD = pkgs.writeShellScript "hyprland-idled" ''
-    ${lib.getExe pkgs.swayidle} -w \
-      before-sleep '${lib.getExe pkgs.playerctl} pause' \
-      before-sleep '${lib.getExe pkgs.swaylock}' \
-      timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' \
-        resume '${lib.getExe pkgs.brightnessctl} -r' \
-      timeout 300 '${lib.getExe pkgs.swaylock}' \
-      timeout 330 '${hyprctl} dispatch dpms off' \
-        resume '${hyprctl} dispatch dpms on' \
-      ${
-      if cfg.desktop.hyprland.autoSuspend
-      then ''timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend' \''
-      else ''\''
-    }
-  '';
+  idleD = let
+    timeouts =
+      [
+        "timeout 240 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r'"
+        "timeout 300 '${lib.getExe pkgs.swaylock}'"
+        "timeout 330 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'"
+      ]
+      ++ lib.optional cfg.desktop.hyprland.autoSuspend "timeout 900 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend'";
+
+    beforeSleeps = [
+      "before-sleep '${lib.getExe pkgs.playerctl} pause'"
+      "before-sleep '${lib.getExe pkgs.swaylock}'"
+    ];
+
+    command = "${lib.getExe pkgs.swayidle} -w ${lib.strings.concatStringsSep " " (timeouts ++ beforeSleeps)}";
+  in
+    pkgs.writeShellScript "hyprland-idled" command;
 
   tablet = pkgs.writeShellScript "hyprland-tablet" ''
     STATE=`${lib.getExe pkgs.dconf} read /org/gnome/desktop/a11y/applications/screen-keyboard-enabled`
