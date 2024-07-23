@@ -1,6 +1,7 @@
 {
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.home.desktop.gnome.enable {
@@ -25,16 +26,16 @@
           workspaces-only-on-primary = true;
         };
 
-        "org/gnome/shell".enabled-extensions = [
-          "appindicatorsupport@rgcjonas.gmail.com"
-          "blur-my-shell@aunetx"
-          "gsconnect@andyholmes.github.io"
-          "nightthemeswitcher@romainvigier.fr"
-          "noannoyance-fork@vrba.dev"
-          "tailscale-status@maxgallup.github.com"
-          "tiling-assistant@leleat-on-github"
-          "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        ];
+        # "org/gnome/shell".enabled-extensions = [
+        #   "appindicatorsupport@rgcjonas.gmail.com"
+        #   "blur-my-shell@aunetx"
+        #   "gsconnect@andyholmes.github.io"
+        #   "nightthemeswitcher@romainvigier.fr"
+        #   "noannoyance-fork@vrba.dev"
+        #   "tailscale-status@maxgallup.github.com"
+        #   "tiling-assistant@leleat-on-github"
+        #   "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        # ];
 
         "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
 
@@ -48,6 +49,21 @@
         };
 
         "org/gnome/system/location".enabled = true;
+      };
+
+      programs.gnome-shell = {
+        enable = true;
+
+        extensions = [
+          {package = pkgs.gnomeExtensions.appindicator;}
+          {package = pkgs.gnomeExtensions.blur-my-shell;}
+          {package = pkgs.gnomeExtensions.gsconnect;}
+          {package = pkgs.gnomeExtensions.light-shell;}
+          {package = pkgs.gnomeExtensions.night-theme-switcher;}
+          {package = pkgs.gnomeExtensions.noannoyance-fork;}
+          {package = pkgs.gnomeExtensions.tailscale-status;}
+          {package = pkgs.gnomeExtensions.tiling-assistant;}
+        ];
       };
 
       xdg.mimeApps.defaultApplications = {

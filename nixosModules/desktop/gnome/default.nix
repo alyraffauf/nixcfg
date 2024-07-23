@@ -20,18 +20,7 @@
   '';
 in {
   config = lib.mkIf config.ar.desktop.gnome.enable {
-    environment.systemPackages =
-      [
-        pkgs.gnomeExtensions.appindicator
-        pkgs.gnomeExtensions.blur-my-shell
-        pkgs.gnomeExtensions.gsconnect
-        pkgs.gnomeExtensions.light-shell
-        pkgs.gnomeExtensions.night-theme-switcher
-        pkgs.gnomeExtensions.noannoyance-fork
-        pkgs.gnomeExtensions.tailscale-status
-        pkgs.gnomeExtensions.tiling-assistant
-      ]
-      ++ [gnomeCsAdjuster];
+    environment.systemPackages = [gnomeCsAdjuster];
 
     nixpkgs.overlays = [
       # GNOME 46: triple-buffering-v4-46
