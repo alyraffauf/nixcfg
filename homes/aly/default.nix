@@ -11,6 +11,7 @@ in {
   imports = [
     ./firefox
     ./mail
+    ./secrets.nix
     ./windowManagers
     self.homeManagerModules.default
     self.inputs.agenix.homeManagerModules.default
