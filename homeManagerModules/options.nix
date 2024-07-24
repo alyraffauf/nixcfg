@@ -71,6 +71,7 @@ in {
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
+      yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
 
       zed = {
         enable = lib.mkEnableOption "Zed text editor.";

@@ -20,6 +20,7 @@
     ./vsCodium
     ./waybar
     ./wlogout
+    ./yazi
     ./zed
   ];
 }

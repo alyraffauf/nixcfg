@@ -81,6 +81,7 @@ in {
       keepassxc.enable = true;
       kitty.enable = true;
       tmux.enable = true;
+      yazi.enable = true;
 
       zed = {
         enable = true;
