@@ -30,11 +30,6 @@
       url = "github:alyraffauf/nixhw";
     };
 
-    nixvim = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/nixvim/nixos-24.05";
-    };
-
     nur.url = "github:nix-community/NUR";
 
     pp-adjuster = {

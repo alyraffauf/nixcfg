@@ -15,7 +15,6 @@ in {
     ./windowManagers
     self.homeManagerModules.default
     self.inputs.agenix.homeManagerModules.default
-    self.inputs.nixvim.homeManagerModules.nixvim
     self.inputs.nur.hmModules.nur
   ];
 
@@ -62,19 +61,6 @@ in {
 
     gitui.enable = true;
     home-manager.enable = true;
-
-    nixvim = {
-      enable = true;
-      colorschemes.ayu.enable = true;
-
-      plugins = {
-        lightline.enable = true;
-        markdown-preview.enable = true;
-        neo-tree.enable = true;
-        neogit.enable = true;
-        nix.enable = true;
-      };
-    };
   };
 
   systemd.user.startServices = "legacy"; # Needed for auto-mounting agenix secrets.
