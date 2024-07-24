@@ -8,6 +8,7 @@
     ./fastfetch
     ./firefox
     ./fuzzel
+    ./helix
     ./kitty
     ./keepassxc
     ./librewolf

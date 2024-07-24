@@ -91,6 +91,7 @@ in {
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
+      helix.enable = true;
       keepassxc.enable = true;
       kitty.enable = true;
       tmux.enable = true;
