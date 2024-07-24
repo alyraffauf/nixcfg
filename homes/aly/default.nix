@@ -19,15 +19,6 @@ in {
     self.inputs.nur.hmModules.nur
   ];
 
-  age.secrets = {
-    backblazeKeyId.file = ../../secrets/backblaze/keyId.age;
-    backblazeKey.file = ../../secrets/backblaze/key.age;
-    transmissionRemote = {
-      file = ../../secrets/transmissionRemote.age;
-      path = "${config.home.homeDirectory}/.config/transmission-remote-gtk/config.json";
-    };
-  };
-
   home = {
     homeDirectory = "/home/aly";
 
