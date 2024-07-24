@@ -81,8 +81,6 @@ in {
 
   ar.home = {
     apps = {
-      alacritty.enable = true;
-
       backblaze = {
         enable = true;
         keyIdFile = config.age.secrets.backblazeKeyId.path;
@@ -94,6 +92,7 @@ in {
       fastfetch.enable = true;
       firefox.enable = true;
       keepassxc.enable = true;
+      kitty.enable = true;
       tmux.enable = true;
 
       zed = {

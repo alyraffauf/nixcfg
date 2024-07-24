@@ -7,6 +7,7 @@
   config = lib.mkIf (config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable) {
     ar.home.apps = {
       fuzzel.enable = lib.mkDefault true;
+      kitty.enable = lib.mkDefault true;
       mako.enable = lib.mkDefault true;
       swaylock.enable = lib.mkDefault true;
       waybar.enable = lib.mkDefault true;

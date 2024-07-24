@@ -96,7 +96,7 @@ in {
       fileManager = lib.mkPackageOption pkgs "file manager" {default = ["cinnamon" "nemo"];};
       imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["gnome" "eog"];};
       pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
-      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["alacritty"];};
+      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["kitty"];};
       terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
       videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
       webBrowser = lib.mkPackageOption pkgs "web browser" {default = ["firefox"];};
