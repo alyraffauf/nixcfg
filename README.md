@@ -25,7 +25,6 @@ As well as upstream third-party projects that I use for various tasks:
 - [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
-- [nixvim](https://github.com/nix-community/nixvim): helpful neovim modules.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 
 ## Outputs
