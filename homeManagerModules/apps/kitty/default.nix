@@ -14,12 +14,10 @@
       };
 
       settings = {
-        # background = "${config.ar.home.theme.colors.background}";
         background_opacity = "0.8";
-        # foreground = "${config.ar.home.theme.colors.text}";
         notify_on_cmd_finish = "unfocused 10.0 command ${lib.getExe pkgs.libnotify} \"Job Finished with Status: %s\" %c";
       };
-      
+
       theme = "Adwaita dark";
     };
   };
