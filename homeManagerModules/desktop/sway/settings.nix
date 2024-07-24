@@ -80,129 +80,69 @@ in {
       };
     };
 
-    keybindings = {
-      # Apps
-      "${modifier}+B" = "exec ${lib.getExe cfg.defaultApps.webBrowser}";
-      "${modifier}+E" = "exec ${lib.getExe cfg.defaultApps.editor}";
-      "${modifier}+F" = "exec ${lib.getExe cfg.defaultApps.fileManager}";
-      "${modifier}+R" = "exec ${lib.getExe pkgs.fuzzel}";
-      "${modifier}+T" = "exec ${lib.getExe cfg.defaultApps.terminal}";
-
-      # Manage session.
-      "${modifier}+C" = "kill";
-      "${modifier}+Control+L" = "exec ${lib.getExe pkgs.swaylock}";
-      "${modifier}+M" = "exec ${lib.getExe pkgs.wlogout}";
-
-      # Basic window management.
-      "${modifier}+Shift+W" = "fullscreen toggle";
-      "${modifier}+Shift+V" = "floating toggle";
-
-      # Move focus with modifier + arrow keys
-      "${modifier}+Left" = "focus left";
-      "${modifier}+Down" = "focus down";
-      "${modifier}+Up" = "focus up";
-      "${modifier}+Right" = "focus right";
-
-      # Move focus with modifier + hjkl keys (vim/ADM-3A terminal)
-      "${modifier}+H" = "focus left";
-      "${modifier}+J" = "focus down";
-      "${modifier}+K" = "focus up";
-      "${modifier}+L" = "focus right";
-
-      # Move window with modifier SHIFT + arrow keys
-      "${modifier}+Shift+Left" = "move left";
-      "${modifier}+Shift+Down" = "move down";
-      "${modifier}+Shift+Up" = "move up";
-      "${modifier}+Shift+Right" = "move right";
-
-      # Move window with modifier SHIFT + hjkl keys
-      "${modifier}+Shift+H" = "move left";
-      "${modifier}+Shift+J" = "move down";
-      "${modifier}+Shift+K" = "move up";
-      "${modifier}+Shift+L" = "move right";
-
-      # Gnome-like workspaces.
-      "${modifier}+Comma" = "workspace prev";
-      "${modifier}+Period" = "workspace next";
-      "${modifier}+Shift+Comma" = "move container to workspace prev; workspace prev";
-      "${modifier}+Shift+Period" = "move container to workspace next; workspace next";
-
-      # Switch workspaces with modifier + [0-9]
-      "${modifier}+1" = "workspace number 1";
-      "${modifier}+2" = "workspace number 2";
-      "${modifier}+3" = "workspace number 3";
-      "${modifier}+4" = "workspace number 4";
-      "${modifier}+5" = "workspace number 5";
-      "${modifier}+6" = "workspace number 6";
-      "${modifier}+7" = "workspace number 7";
-      "${modifier}+8" = "workspace number 8";
-      "${modifier}+9" = "workspace number 9";
-      "${modifier}+0" = "workspace number 10";
-
-      # Move active window to a workspace with modifier + SHIFT + [0-9]
-      "${modifier}+Shift+1" = "move container to workspace number 1; workspace 1";
-      "${modifier}+Shift+2" = "move container to workspace number 2; workspace 2";
-      "${modifier}+Shift+3" = "move container to workspace number 3; workspace 3";
-      "${modifier}+Shift+4" = "move container to workspace number 4; workspace 4";
-      "${modifier}+Shift+5" = "move container to workspace number 5; workspace 5";
-      "${modifier}+Shift+6" = "move container to workspace number 6; workspace 6";
-      "${modifier}+Shift+7" = "move container to workspace number 7; workspace 7";
-      "${modifier}+Shift+8" = "move container to workspace number 8; workspace 8";
-      "${modifier}+Shift+9" = "move container to workspace number 9; workspace 9";
-      "${modifier}+Shift+0" = "move container to workspace number 10; workspace 10";
-
-      # Move workspace to another output.
-      "${modifier}+Control+Shift+Left" = "move workspace to output left";
-      "${modifier}+Control+Shift+Down" = "move workspace to output down";
-      "${modifier}+Control+Shift+Up" = "move workspace to output up";
-      "${modifier}+Control+Shift+Right" = "move workspace to output right";
-
-      # Move workspace to another output.
-      "${modifier}+Control+Shift+H" = "move workspace to output left";
-      "${modifier}+Control+Shift+J" = "move workspace to output down";
-      "${modifier}+Control+Shift+K" = "move workspace to output up";
-      "${modifier}+Control+Shift+L" = "move workspace to output right";
-
-      # Scratchpad show and move
-      "${modifier}+S" = "scratchpad show";
-      "${modifier}+Shift+S" = "move scratchpad";
-
-      # Screenshots
-      "PRINT" = "exec ${helpers.screenshot}";
-      "Control+F12" = "exec ${helpers.screenshot}";
-
-      # Show/hide waybar
-      "${modifier}+F11" = "exec pkill -SIGUSR1 waybar";
-
-      "Ctrl+Mod1+M" = "mode move";
-      "Ctrl+Mod1+R" = "mode resize";
-    };
+    keybindings =
+      {
+        "${modifier}+B" = "exec ${lib.getExe cfg.defaultApps.webBrowser}";
+        "${modifier}+C" = "kill";
+        "${modifier}+Comma" = "workspace prev";
+        "${modifier}+Control+L" = "exec ${lib.getExe pkgs.swaylock}";
+        "${modifier}+E" = "exec ${lib.getExe cfg.defaultApps.editor}";
+        "${modifier}+F" = "exec ${lib.getExe cfg.defaultApps.fileManager}";
+        "${modifier}+F11" = "exec pkill -SIGUSR1 waybar"; # Show/hide waybar
+        "${modifier}+M" = "exec ${lib.getExe pkgs.wlogout}";
+        "${modifier}+Period" = "workspace next";
+        "${modifier}+R" = "exec ${lib.getExe pkgs.fuzzel}";
+        "${modifier}+S" = "scratchpad show";
+        "${modifier}+Shift+Comma" = "move container to workspace prev; workspace prev";
+        "${modifier}+Shift+Period" = "move container to workspace next; workspace next";
+        "${modifier}+Shift+S" = "move scratchpad";
+        "${modifier}+Shift+V" = "floating toggle";
+        "${modifier}+Shift+W" = "fullscreen toggle";
+        "${modifier}+T" = "exec ${lib.getExe cfg.defaultApps.terminal}";
+        "Control+F12" = "exec ${helpers.screenshot}";
+        "Ctrl+Mod1+M" = "mode move";
+        "Ctrl+Mod1+R" = "mode resize";
+        "PRINT" = "exec ${helpers.screenshot}";
+      }
+      // builtins.listToAttrs (
+        builtins.concatMap (workspace: [
+          {
+            name = "${modifier}+${toString workspace}";
+            value = "workspace number ${toString workspace}";
+          }
+          {
+            name = "${modifier}+Shift+${toString workspace}";
+            value = "move container to workspace number ${toString workspace}; workspace ${toString workspace}";
+          }
+        ]) [1 2 3 4 5 6 7 8 9]
+      )
+      // lib.attrsets.concatMapAttrs
+      (key: direction: {
+        "${modifier}+${key}" = "focus ${direction}";
+        "${modifier}+Shift+${key}" = "move ${direction}";
+        "${modifier}+Control+Shift+${key}" = "move workspace to output ${direction}";
+      })
+      cfg.desktop.sway.windowManagerBinds;
 
     modes = {
-      move = {
-        Escape = "mode default";
-        Left = "move left";
-        Down = "move down";
-        Up = "move up";
-        Right = "move right";
-        H = "move left";
-        J = "move down";
-        K = "move up";
-        L = "move right";
-        Comma = "move container to workspace prev; workspace prev";
-        Period = "move container to workspace next; workspace next";
-        "1" = "move container to workspace number 1; workspace 1";
-        "2" = "move container to workspace number 2; workspace 2";
-        "3" = "move container to workspace number 3; workspace 3";
-        "4" = "move container to workspace number 4; workspace 4";
-        "5" = "move container to workspace number 5; workspace 5";
-        "6" = "move container to workspace number 6; workspace 6";
-        "7" = "move container to workspace number 7; workspace 7";
-        "8" = "move container to workspace number 8; workspace 8";
-        "9" = "move container to workspace number 9; workspace 9";
-        "0" = "move container to workspace number 10; workspace 10";
-        S = "move scratchpad";
-      };
+      move =
+        {
+          Comma = "move container to workspace prev; workspace prev";
+          Escape = "mode default";
+          Period = "move container to workspace next; workspace next";
+          S = "move scratchpad";
+        }
+        // builtins.listToAttrs (
+          builtins.concatMap (workspace: [
+            {
+              name = toString workspace;
+              value = "move container to workspace number ${toString workspace}; workspace ${toString workspace}";
+            }
+          ]) [1 2 3 4 5 6 7 8 9]
+        )
+        // lib.attrsets.concatMapAttrs
+        (key: direction: {"${key}" = "move ${direction}";})
+        cfg.desktop.sway.windowManagerBinds;
 
       resize = {
         Escape = "mode default";

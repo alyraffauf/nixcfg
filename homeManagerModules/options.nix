@@ -213,6 +213,21 @@ in {
           default = cfg.desktop.sway.enable;
           type = lib.types.bool;
         };
+
+        windowManagerBinds = lib.mkOption {
+          description = "Default binds for window management.";
+          default = {
+            Down = "down";
+            Left = "left";
+            Right = "right";
+            Up = "up";
+            H = "left";
+            J = "down";
+            K = "up";
+            L = "right";
+          };
+          type = lib.types.attrs;
+        };
       };
     };
 
