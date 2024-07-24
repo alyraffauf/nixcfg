@@ -15,7 +15,9 @@
 
       settings = {
         background_opacity = "0.8";
+        confirm_os_window_close = "0";
         notify_on_cmd_finish = "unfocused 10.0 command ${lib.getExe pkgs.libnotify} \"Job Finished with Status: %s\" %c";
+        tab_bar_style = "powerline";
       };
 
       theme = "Adwaita dark";
