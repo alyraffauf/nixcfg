@@ -49,6 +49,7 @@ in {
         };
       };
 
+      kitty.enable = lib.mkEnableOption "Kitty terminal.";
       librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
       mako.enable = lib.mkEnableOption "Mako notification daemon.";
 
