@@ -125,30 +125,24 @@ in {
       cfg.desktop.sway.windowManagerBinds;
 
     modes = {
-      move = {
-        Escape = "mode default";
-        Left = "move left";
-        Down = "move down";
-        Up = "move up";
-        Right = "move right";
-        H = "move left";
-        J = "move down";
-        K = "move up";
-        L = "move right";
-        Comma = "move container to workspace prev; workspace prev";
-        Period = "move container to workspace next; workspace next";
-        "1" = "move container to workspace number 1; workspace 1";
-        "2" = "move container to workspace number 2; workspace 2";
-        "3" = "move container to workspace number 3; workspace 3";
-        "4" = "move container to workspace number 4; workspace 4";
-        "5" = "move container to workspace number 5; workspace 5";
-        "6" = "move container to workspace number 6; workspace 6";
-        "7" = "move container to workspace number 7; workspace 7";
-        "8" = "move container to workspace number 8; workspace 8";
-        "9" = "move container to workspace number 9; workspace 9";
-        "0" = "move container to workspace number 10; workspace 10";
-        S = "move scratchpad";
-      };
+      move =
+        {
+          Comma = "move container to workspace prev; workspace prev";
+          Escape = "mode default";
+          Period = "move container to workspace next; workspace next";
+          S = "move scratchpad";
+        }
+        // builtins.listToAttrs (
+          builtins.concatMap (workspace: [
+            {
+              name = toString workspace;
+              value = "move container to workspace number ${toString workspace}; workspace ${toString workspace}";
+            }
+          ]) [1 2 3 4 5 6 7 8 9]
+        )
+        // lib.attrsets.concatMapAttrs
+        (key: direction: {"${key}" = "move ${direction}";})
+        cfg.desktop.sway.windowManagerBinds;
 
       resize = {
         Escape = "mode default";
