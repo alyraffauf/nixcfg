@@ -36,7 +36,7 @@
     fi
 
     if [ -e "$FILENAME" ]; then
-      ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} $FILENAME
+      ${lib.getExe' pkgs.wl-clipboard-rs "wl-copy"} -t image/png < $FILENAME
       ${lib.getExe' pkgs.libnotify "notify-send"} "Screenshot saved" "$FILENAME" -i "$FILENAME"
     fi
   '';
