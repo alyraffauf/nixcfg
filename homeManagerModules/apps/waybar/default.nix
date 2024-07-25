@@ -121,9 +121,9 @@
           };
 
           "bluetooth" = {
-            "format" = "󰂯";
+            "format" = "";
             "format-disabled" = ""; # an empty format will hide the module
-            "format-connected" = "󰂯　{num_connections} connected";
+            "format-connected" = "　{num_connections}";
             "tooltip-format" = "{controller_alias}	{controller_address}";
             "tooltip-format-connected" = ''
               {controller_alias}	{controller_address}
@@ -193,7 +193,7 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "blueberry" "network" "power-profiles-daemon" "battery" "custom/logout"];
+            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "custom/logout"];
           };
         };
       };

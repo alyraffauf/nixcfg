@@ -22,6 +22,7 @@
     };
 
     home.packages = with pkgs; [
+      blueberry
       gnome.file-roller
       networkmanagerapplet
       swayosd
