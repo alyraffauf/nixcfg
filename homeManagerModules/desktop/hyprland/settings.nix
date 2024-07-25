@@ -39,8 +39,8 @@ in {
       "$mod,E,exec,${lib.getExe cfg.defaultApps.editor}"
       "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
-      "$mod,M,exec,${lib.getExe pkgs.wlogout}"
-      "$mod,R,exec,${lib.getExe pkgs.fuzzel}"
+      ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
+      "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
       "$mod,comma,exec,${lib.getExe pkgs.hyprnome} --previous"

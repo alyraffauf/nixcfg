@@ -25,7 +25,6 @@ in {
           "window"
           "drun"
           "ssh"
-          # "power-menu:${lib.getExe pkgs.rofi-power-menu} --no-symbols --choices=logout/lockscreen/suspend/shutdown/reboot"
         ];
 
         display-drun = "  ";
