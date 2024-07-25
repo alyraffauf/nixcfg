@@ -50,14 +50,15 @@ in {
     xdg.configFile."networkmanager-dmenu/config.ini".text = ''
       [dmenu]
       dmenu_command = ${lib.getExe config.programs.rofi.package}
-      l = 40
-      rofi_highlight = True
+      highlight = True
 
       [dmenu_passphrase]
-      rofi_obscure = True
+      obscure = True
 
       [editor]
+      gui = ${pkgs.networkmanagerapplet}/bin/nm-connection-editor
       gui_if_available = True
+      terminal = ${lib.getExe cfg.defaultApps.terminal}
     '';
   };
 }
