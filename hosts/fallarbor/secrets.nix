@@ -1,6 +1,6 @@
 {
   age.secrets = {
-    syncthingCert.file = ../../secrets/syncthing/fallarbor/cert.age;
-    syncthingKey.file = ../../secrets/syncthing/fallarbor/key.age;
+    syncthingCert.file = ../../secrets/aly/syncthing/fallarbor/cert.age;
+    syncthingKey.file = ../../secrets/aly/syncthing/fallarbor/key.age;
   };
 }

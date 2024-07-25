@@ -22,8 +22,8 @@
       file = ../../secrets/spotify/clientSecret.age;
     };
 
-    syncthingCert.file = ../../secrets/syncthing/mauville/cert.age;
-    syncthingKey.file = ../../secrets/syncthing/mauville/key.age;
+    syncthingCert.file = ../../secrets/aly/syncthing/mauville/cert.age;
+    syncthingKey.file = ../../secrets/aly/syncthing/mauville/key.age;
     transmission.file = ../../secrets/transmission.age;
   };
 }
