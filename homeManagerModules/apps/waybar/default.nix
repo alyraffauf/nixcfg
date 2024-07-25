@@ -130,7 +130,7 @@
 
               {device_enumerate}'';
             "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
-            "on-click" = lib.getExe pkgs.rofi-bluetooth;
+            "on-click" = lib.getExe' pkgs.blueberry "blueberry";
           };
 
           "pulseaudio" = {
@@ -193,7 +193,7 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "network" "power-profiles-daemon" "battery" "custom/logout"];
+            modules = ["pulseaudio" "blueberry" "network" "power-profiles-daemon" "battery" "custom/logout"];
           };
         };
       };
