@@ -7,6 +7,8 @@
   cfg = config.ar.home;
 in {
   config = lib.mkIf cfg.apps.rofi.enable {
+    home.packages = [pkgs.networkmanager_dmenu];
+
     programs.rofi = {
       enable = true;
       font = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
@@ -27,12 +29,10 @@ in {
           "ssh"
         ];
 
-        display-drun = "  ";
-        display-filebrowser = "  ";
-        display-power-menu = "  ";
-        display-run = "  ";
-        display-ssh = "  ";
-        display-window = " 﩯 ";
+        display-combi = "Search";
+        display-filebrowser = "Files";
+        display-ssh = "SSH";
+        display-window = "Windows";
         drun-display-format = "{icon} {name}";
         hide-scrollbar = true;
         hover-select = true;

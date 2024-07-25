@@ -130,7 +130,7 @@
 
               {device_enumerate}'';
             "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
-            "on-click" = lib.getExe' pkgs.blueberry "blueberry";
+            "on-click" = lib.getExe pkgs.rofi-bluetooth;
           };
 
           "pulseaudio" = {
