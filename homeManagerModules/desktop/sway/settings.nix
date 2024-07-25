@@ -89,9 +89,9 @@ in {
         "${modifier}+E" = "exec ${lib.getExe cfg.defaultApps.editor}";
         "${modifier}+F" = "exec ${lib.getExe cfg.defaultApps.fileManager}";
         "${modifier}+F11" = "exec pkill -SIGUSR1 waybar"; # Show/hide waybar
-        "${modifier}+M" = "exec ${lib.getExe pkgs.wlogout}";
+        "${modifier}+M" = ''exec ${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
         "${modifier}+Period" = "workspace next";
-        "${modifier}+R" = "exec ${lib.getExe pkgs.fuzzel}";
+        "${modifier}+R" = "exec ${lib.getExe config.programs.rofi.package} -show combi";
         "${modifier}+S" = "scratchpad show";
         "${modifier}+Shift+Comma" = "move container to workspace prev; workspace prev";
         "${modifier}+Shift+Period" = "move container to workspace next; workspace next";
