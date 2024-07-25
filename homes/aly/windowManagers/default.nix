@@ -52,6 +52,8 @@
 
       exec-once = ["sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}"];
 
+      input.kb_options = "ctrl:nocaps";
+
       windowrulev2 = [
         "center(1),class:(org.keepassxc.KeePassXC)"
         "float,class:(org.keepassxc.KeePassXC)"
