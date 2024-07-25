@@ -12,7 +12,7 @@ in {
       font = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
       location = "center";
       package = pkgs.rofi-wayland;
-      plugins = [pkgs.rofi-emoji pkgs.rofi-power-menu];
+      plugins = [pkgs.rofi-power-menu];
       terminal = lib.getExe cfg.defaultApps.terminal;
       theme = "glue_pro_blue";
 
