@@ -14,6 +14,7 @@
     ./librewolf
     ./mako
     ./nemo
+    ./rofi
     ./swaylock
     ./thunar
     ./tmux

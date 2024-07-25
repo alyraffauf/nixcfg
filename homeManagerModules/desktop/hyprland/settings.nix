@@ -103,6 +103,7 @@ in {
       "blur,launcher"
       "blur,logout_dialog"
       "blur,notifications"
+      "blur,rofi"
       "blur,swayosd"
       "blur,waybar"
       "ignorezero,notifications"
