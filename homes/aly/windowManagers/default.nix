@@ -3,7 +3,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  keepassxc = "${lib.getExe' pkgs.keepassxc "keepassxc"} --pw-stdin ${config.home.homeDirectory}/sync/Passwords.kdbx < ${config.age.secrets.keepassxc.path}";
+in {
   wayland.windowManager = {
     sway.config = {
       assigns = {
@@ -17,7 +19,7 @@
       floating.criteria = [{app_id = "org.keepassxc.KeePassXC";}];
 
       keybindings = {
-        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe' pkgs.keepassxc "keepassxc"}";
+        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${keepassxc}";
         "${config.wayland.windowManager.sway.config.modifier}+N" = "exec ${lib.getExe' pkgs.obsidian "obsidian"}";
       };
 
@@ -33,7 +35,7 @@
         };
       };
 
-      startup = [{command = ''sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}'';}];
+      startup = [{command = ''sleep 1 && ${keepassxc}'';}];
 
       window.commands = [
         {
@@ -47,10 +49,10 @@
       bind = [
         "SUPER SHIFT,N,movetoworkspace,special:notes"
         "SUPER,N,togglespecialworkspace,notes"
-        "SUPER,P,exec,${lib.getExe' pkgs.keepassxc "keepassxc"}"
+        "SUPER,P,exec,${keepassxc}"
       ];
 
-      exec-once = ["sleep 1 && ${lib.getExe' pkgs.keepassxc "keepassxc"}"];
+      exec-once = ["sleep 1 && ${keepassxc}"];
 
       input.kb_options = "ctrl:nocaps";
 

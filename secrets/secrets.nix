@@ -19,13 +19,9 @@ let
 in {
   "aly/backblaze/key.age".publicKeys = keys;
   "aly/backblaze/keyId.age".publicKeys = keys;
-  "cloudflare.age".publicKeys = keys;
-  "lastFM/apiKey.age".publicKeys = keys;
-  "lastFM/secret.age".publicKeys = keys;
+  "aly/keepassxc.age".publicKeys = keys;
   "aly/mail/achacega_gmail.age".publicKeys = keys;
   "aly/mail/alyraffauf_fastmail.age".publicKeys = keys;
-  "spotify/clientId.age".publicKeys = keys;
-  "spotify/clientSecret.age".publicKeys = keys;
   "aly/syncthing/fallarbor/cert.age".publicKeys = keys;
   "aly/syncthing/fallarbor/key.age".publicKeys = keys;
   "aly/syncthing/lavaridge/cert.age".publicKeys = keys;
@@ -36,8 +32,13 @@ in {
   "aly/syncthing/petalburg/key.age".publicKeys = keys;
   "aly/syncthing/rustboro/cert.age".publicKeys = keys;
   "aly/syncthing/rustboro/key.age".publicKeys = keys;
+  "aly/transmissionRemote.age".publicKeys = keys;
+  "cloudflare.age".publicKeys = keys;
+  "lastFM/apiKey.age".publicKeys = keys;
+  "lastFM/secret.age".publicKeys = keys;
+  "spotify/clientId.age".publicKeys = keys;
+  "spotify/clientSecret.age".publicKeys = keys;
   "tailscale/authKeyFile.age".publicKeys = keys;
   "transmission.age".publicKeys = keys;
-  "aly/transmissionRemote.age".publicKeys = keys;
   "wifi.age".publicKeys = keys;
 }

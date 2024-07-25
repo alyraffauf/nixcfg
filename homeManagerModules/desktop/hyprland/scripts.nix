@@ -88,7 +88,7 @@ in {
             # Handle newly added monitors
             added_monitors.each do |monitor|
               random_background = Dir.glob(File.join(directory, '*.{png,jpg}')).sample
-              pid = spawn("/nix/store/azvrjs0k5ap90dcqw280xrbqlm6nkibv-swaybg-1.2.1/bin/swaybg", '-o', monitor, '-i', random_background, '-m', 'fill')
+              pid = spawn("${lib.getExe pkgs.swaybg}", '-o', monitor, '-i', random_background, '-m', 'fill')
               current_pids[monitor] = pid
               last_update_time[monitor] = Time.now
               known_monitors[monitor] = random_background
