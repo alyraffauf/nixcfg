@@ -80,7 +80,6 @@ in {
       helix.enable = true;
       keepassxc.enable = true;
       kitty.enable = true;
-      rofi.enable = true;
       tmux.enable = true;
       yazi.enable = true;
 
