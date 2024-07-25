@@ -165,7 +165,7 @@
           "tray" = {"spacing" = 15;};
 
           "custom/logout" = {
-            "on-click" = "${lib.getExe pkgs.wlogout}";
+            "on-click" = ''${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
             "format" = "󰗽";
           };
 

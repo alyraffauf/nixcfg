@@ -60,7 +60,9 @@ in {
         type = lib.types.bool;
       };
 
+      rofi.enable = lib.mkEnableOption "Rofi launcher.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
+
       thunar.enable = lib.mkOption {
         description = "Thunar file manager.";
         default = cfg.defaultApps.fileManager == pkgs.xfce.thunar;
