@@ -46,5 +46,18 @@ in {
         window-thumbnail = false;
       };
     };
+
+    xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+      [dmenu]
+      dmenu_command = ${lib.getExe config.programs.rofi.package}
+      l = 40
+      rofi_highlight = True
+
+      [dmenu_passphrase]
+      rofi_obscure = True
+
+      [editor]
+      gui_if_available = True
+    '';
   };
 }

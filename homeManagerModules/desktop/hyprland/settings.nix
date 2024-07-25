@@ -125,7 +125,6 @@ in {
       scripts.idleD
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
       (lib.getExe' pkgs.blueman "blueman-applet")
-      (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
       (lib.getExe' pkgs.playerctl "playerctld")
       (lib.getExe' pkgs.swayosd "swayosd-server")
       (lib.getExe pkgs.mako)

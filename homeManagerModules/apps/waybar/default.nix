@@ -159,7 +159,7 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${lib.getExe config.ar.home.defaultApps.terminalEditor} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = lib.getExe pkgs.networkmanager_dmenu;
           };
 
           "tray" = {"spacing" = 15;};
@@ -193,7 +193,7 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "power-profiles-daemon" "battery" "custom/logout"];
+            modules = ["pulseaudio" "network" "power-profiles-daemon" "battery" "custom/logout"];
           };
         };
       };
