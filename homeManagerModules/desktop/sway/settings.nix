@@ -159,7 +159,6 @@ in {
         {command = "${scripts.idleD}";}
         {command = lib.getExe pkgs.autotiling;}
         {command = lib.getExe' pkgs.blueman "blueman-applet";}
-        {command = lib.getExe' pkgs.networkmanagerapplet "nm-applet";}
         {command = lib.getExe' pkgs.playerctl "playerctld";}
         {command = lib.getExe' pkgs.swayosd "swayosd-server";}
         {command = lib.getExe pkgs.mako;}

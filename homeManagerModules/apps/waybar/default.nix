@@ -121,9 +121,9 @@
           };
 
           "bluetooth" = {
-            "format" = "󰂯";
+            "format" = "";
             "format-disabled" = ""; # an empty format will hide the module
-            "format-connected" = "󰂯　{num_connections} connected";
+            "format-connected" = "　{num_connections}";
             "tooltip-format" = "{controller_alias}	{controller_address}";
             "tooltip-format-connected" = ''
               {controller_alias}	{controller_address}
@@ -159,7 +159,7 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = "${lib.getExe config.ar.home.defaultApps.terminalEditor} --class nmtui -e ${pkgs.networkmanager}/bin/nmtui";
+            "on-click" = lib.getExe pkgs.networkmanager_dmenu;
           };
 
           "tray" = {"spacing" = 15;};
@@ -193,7 +193,7 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "power-profiles-daemon" "battery" "custom/logout"];
+            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "custom/logout"];
           };
         };
       };

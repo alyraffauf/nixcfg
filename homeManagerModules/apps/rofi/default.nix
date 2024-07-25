@@ -7,6 +7,8 @@
   cfg = config.ar.home;
 in {
   config = lib.mkIf cfg.apps.rofi.enable {
+    home.packages = [pkgs.networkmanager_dmenu];
+
     programs.rofi = {
       enable = true;
       font = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
@@ -27,12 +29,10 @@ in {
           "ssh"
         ];
 
-        display-drun = "  ";
-        display-filebrowser = "  ";
-        display-power-menu = "  ";
-        display-run = "  ";
-        display-ssh = "  ";
-        display-window = " 﩯 ";
+        display-combi = "Search";
+        display-filebrowser = "Files";
+        display-ssh = "SSH";
+        display-window = "Windows";
         drun-display-format = "{icon} {name}";
         hide-scrollbar = true;
         hover-select = true;
@@ -46,5 +46,19 @@ in {
         window-thumbnail = false;
       };
     };
+
+    xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+      [dmenu]
+      dmenu_command = ${lib.getExe config.programs.rofi.package}
+      highlight = True
+
+      [dmenu_passphrase]
+      obscure = True
+
+      [editor]
+      gui = ${pkgs.networkmanagerapplet}/bin/nm-connection-editor
+      gui_if_available = True
+      terminal = ${lib.getExe cfg.defaultApps.terminal}
+    '';
   };
 }

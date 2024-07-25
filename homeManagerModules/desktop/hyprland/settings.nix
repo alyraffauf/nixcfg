@@ -124,8 +124,6 @@ in {
       (lib.getExe pkgs.waybar)
       scripts.idleD
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
-      (lib.getExe' pkgs.blueman "blueman-applet")
-      (lib.getExe' pkgs.networkmanagerapplet "nm-applet")
       (lib.getExe' pkgs.playerctl "playerctld")
       (lib.getExe' pkgs.swayosd "swayosd-server")
       (lib.getExe pkgs.mako)
@@ -183,15 +181,18 @@ in {
 
   windowrulev2 = [
     "center(1),class:(.blueman-manager-wrapped)"
+    "center(1),class:(blueberry.py)"
     "center(1),class:(com.github.wwmm.easyeffects)"
     "center(1),class:(pavucontrol)"
     "float, class:^(firefox)$, title:^(Picture-in-Picture)$"
     "float,class:(.blueman-manager-wrapped)"
+    "float,class:(blueberry.py)"
     "float,class:(com.github.wwmm.easyeffects)"
     "float,class:(pavucontrol)"
     "move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$"
     "pin,class:^(firefox)$, title:^(Picture-in-Picture)$"
     "size 40% 60%,class:(.blueman-manager-wrapped)"
+    "size 40% 60%,class:(blueberry.py)"
     "size 40% 60%,class:(com.github.wwmm.easyeffects)"
     "size 40% 60%,class:(pavucontrol)"
     "suppressevent maximize, class:.*"
