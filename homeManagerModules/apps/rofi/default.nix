@@ -7,7 +7,10 @@
   cfg = config.ar.home;
 in {
   config = lib.mkIf cfg.apps.rofi.enable {
-    home.packages = [pkgs.networkmanager_dmenu];
+    home.packages = [
+      pkgs.networkmanager_dmenu
+      pkgs.rofi-bluetooth
+    ];
 
     programs.rofi = {
       enable = true;
