@@ -36,6 +36,7 @@
       };
 
       hyprland.enable = true;
+      sway.enable = true;
     };
 
     users.aly = {
