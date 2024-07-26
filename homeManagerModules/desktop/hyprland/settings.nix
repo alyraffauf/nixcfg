@@ -43,6 +43,7 @@ in {
       "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
+      "$mod,Tab,exec,${lib.getExe config.programs.rofi.package} -show window"
       "$mod,comma,exec,${lib.getExe pkgs.hyprnome} --previous"
       "$mod,mouse_down,workspace,+1"
       "$mod,mouse_up,workspace,-1"

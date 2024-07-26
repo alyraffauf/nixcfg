@@ -100,6 +100,7 @@ in {
         "${modifier}+Shift+V" = "floating toggle";
         "${modifier}+Shift+W" = "fullscreen toggle";
         "${modifier}+T" = "exec ${lib.getExe cfg.defaultApps.terminal}";
+        "${modifier}+Tab" = "exec ${lib.getExe config.programs.rofi.package} -show window";
         "Control+F12" = "exec ${helpers.screenshot}";
         "Ctrl+Mod1+M" = "mode move";
         "Ctrl+Mod1+R" = "mode resize";
