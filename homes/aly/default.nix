@@ -94,8 +94,6 @@ in {
       editor = config.ar.home.apps.zed.package;
     };
 
-    services.mpd.enable = true;
-
     theme = {
       enable = true;
       wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
