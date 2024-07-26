@@ -160,7 +160,6 @@ in {
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = "${scripts.idleD}";}
         {command = lib.getExe pkgs.autotiling;}
-        {command = lib.getExe' pkgs.blueman "blueman-applet";}
         {command = lib.getExe' pkgs.playerctl "playerctld";}
         {command = lib.getExe' pkgs.swayosd "swayosd-server";}
         {command = lib.getExe pkgs.mako;}
