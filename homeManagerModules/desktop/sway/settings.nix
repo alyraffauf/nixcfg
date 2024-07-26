@@ -173,6 +173,7 @@ in {
       {app_id = ".blueman-manager-wrapped";}
       {app_id = "blueberry.py";}
       {app_id = "com.github.wwmm.easyeffects";}
+      {app_id = "nm-connection-editor";}
       {app_id = "pavucontrol";}
       {app_id = "solaar";}
       {title = "Open File";}
@@ -212,6 +213,10 @@ in {
         {
           command = "resize set 40ppt 60ppt; move position center";
           criteria = {app_id = ".blueman-manager-wrapped";};
+        }
+        {
+          command = "resize set 40ppt 60ppt; move position center";
+          criteria = {app_id = "nm-connection-editor";};
         }
         {
           command = "resize set 40ppt 60ppt; move position center";
@@ -267,6 +272,8 @@ in {
         layer_effects logout_dialog blur enable
         layer_effects notifications blur enable
         layer_effects notifications blur_ignore_transparent enable
+        layer_effects rofi blur enable
+        layer_effects rofi blur_ignore_transparent enable
         layer_effects swaybar blur enable
         layer_effects swaybar blur_ignore_transparent enable
         layer_effects swayosd blur enable
