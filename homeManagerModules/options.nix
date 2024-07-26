@@ -307,6 +307,7 @@ in {
 
       gtk.hideTitleBar = lib.mkOption {
         description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
+        default = false;
         type = lib.types.bool;
       };
 
