@@ -95,6 +95,7 @@ in {
         "${modifier}+S" = "scratchpad show";
         "${modifier}+Shift+Comma" = "move container to workspace prev; workspace prev";
         "${modifier}+Shift+Period" = "move container to workspace next; workspace next";
+        "${modifier}+Shift+R" = "exec ${lib.getExe config.programs.rofi.package} -show run";
         "${modifier}+Shift+S" = "move scratchpad";
         "${modifier}+Shift+V" = "floating toggle";
         "${modifier}+Shift+W" = "fullscreen toggle";

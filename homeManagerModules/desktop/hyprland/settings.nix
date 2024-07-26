@@ -28,6 +28,7 @@ in {
   bind =
     [
       "$mod CONTROL,L,exec,${lib.getExe pkgs.swaylock}"
+      "$mod SHIFT,R,exec,${lib.getExe config.programs.rofi.package} -show run"
       "$mod SHIFT,S,movetoworkspace,special:magic"
       "$mod SHIFT,V,togglefloating"
       "$mod SHIFT,W,fullscreen"
@@ -39,7 +40,6 @@ in {
       "$mod,E,exec,${lib.getExe cfg.defaultApps.editor}"
       "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
-      ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
       "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
@@ -51,6 +51,7 @@ in {
       "CONTROL,F12,exec,${helpers.screenshot}"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
+      ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]

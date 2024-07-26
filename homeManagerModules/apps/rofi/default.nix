@@ -31,6 +31,7 @@ in {
 
         display-combi = "Search";
         display-filebrowser = "Files";
+        display-run = "Run";
         display-ssh = "SSH";
         display-window = "Windows";
         drun-display-format = "{icon} {name}";
