@@ -29,7 +29,7 @@
 
     desktop = {
       greetd.enable = true;
-      hyprland.enable = true;
+      sway.enable = true;
     };
 
     services.flatpak.enable = true;
