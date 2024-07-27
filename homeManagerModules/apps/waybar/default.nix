@@ -159,13 +159,13 @@
             "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
             "tooltip-format-ethernet" = "{ifname} ";
             "tooltip-format-disconnected" = "Disconnected";
-            "on-click" = lib.getExe pkgs.networkmanager_dmenu;
+            "on-click" = "${lib.getExe pkgs.networkmanager_dmenu} -i";
           };
 
           "tray" = {"spacing" = 15;};
 
           "custom/logout" = {
-            "on-click" = ''${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
+            "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
             "format" = "󰗽";
           };
 
