@@ -1,6 +1,7 @@
 # Framework 13 with 11th gen Intel Core i5, 16GB RAM, 512GB SSD.
 {
   config,
+  lib,
   self,
   ...
 }: {
@@ -28,7 +29,11 @@
     };
 
     desktop = {
-      greetd.enable = true;
+      greetd = {
+        enable = true;
+        session = lib.getExe config.programs.sway.package;
+      };
+
       sway.enable = true;
     };
 
