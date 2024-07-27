@@ -122,7 +122,7 @@ in {
 
   exec-once =
     [
-      scripts.wallpaperD
+      helpers.wallpaperD
       (lib.getExe pkgs.waybar)
       scripts.idleD
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
