@@ -70,6 +70,10 @@
       settings = {
         theme = "adwaita-dark";
         editor = {
+          auto-completion = true;
+          auto-format = true;
+          auto-pairs = false;
+          auto-save = true;
           color-modes = true;
           cursorline = true;
 
@@ -86,8 +90,15 @@
             display-messages = true;
           };
 
+          soft-wrap = {
+            enable = true;
+            wrap-at-text-width = true;
+          };
+
           statusline.center = ["position-percentage"];
+          text-width = 80;
           true-color = true;
+
           whitespace.characters = {
             newline = "↴";
             tab = "⇥";
