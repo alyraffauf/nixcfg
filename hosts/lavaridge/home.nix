@@ -8,7 +8,7 @@
 
         services.easyeffects = {
           enable = true;
-          preset = "framework13";
+          preset = "LoudnessEqualizer";
         };
       };
     }
