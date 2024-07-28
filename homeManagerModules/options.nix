@@ -107,12 +107,6 @@ in {
     };
 
     desktop = {
-      gnome.enable = lib.mkOption {
-        description = "GNOME with sane defaults.";
-        default = osConfig.ar.desktop.gnome.enable;
-        type = lib.types.bool;
-      };
-
       hyprland = {
         enable = lib.mkOption {
           description = "Hyprland with full desktop session components.";
