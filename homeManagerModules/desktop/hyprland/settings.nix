@@ -108,6 +108,7 @@ in {
       "blur,rofi"
       "blur,swayosd"
       "blur,waybar"
+      "dimaround,rofi"
       "ignorezero,notifications"
       "ignorezero,swayosd"
       "ignorezero,waybar"
