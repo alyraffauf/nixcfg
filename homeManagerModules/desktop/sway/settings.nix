@@ -77,6 +77,7 @@ in {
       "type:keyboard" = {
         xkb_layout = "us";
         xkb_variant = "altgr-intl";
+        xkb_options = "caps:ctrl_modifier";
       };
     };
 
