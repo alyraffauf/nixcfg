@@ -50,10 +50,7 @@
         "terminal.integrated.fontSize" = lib.mkDefault 14;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
-        "window.titleBarStyle" =
-          if config.ar.home.desktop.gnome.enable
-          then "custom"
-          else "native";
+        "window.titleBarStyle" = lib.mkDefault "native";
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
           if config.ar.home.theme.darkMode
