@@ -38,14 +38,18 @@ self: {
 
     defaultApps.enable = true;
 
-    desktop.hyprland = {
-      monitors = [
-        "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6"
-        "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
-        "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
-      ];
+    desktop = {
+      hyprland = {
+        monitors = [
+          "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6"
+          "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
+          "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
+        ];
 
-      randomWallpaper = false;
+        randomWallpaper = false;
+      };
+
+      sway.randomWallpaper = false;
     };
 
     theme = {
