@@ -13,8 +13,6 @@
     };
 
     desktop = {
-      gnome.enable = lib.mkEnableOption "GNOME desktop session.";
-
       greetd = {
         enable = lib.mkEnableOption "Greetd display manager.";
 
