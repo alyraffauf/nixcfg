@@ -87,7 +87,7 @@ in {
   home.file = let
     source = builtins.fetchGit {
       url = "https://github.com/rafaelmardojai/thunderbird-gnome-theme.git";
-      rev = "1c89a500dd35b7746ef1fde104a1baf809c2b59a";
+      rev = "628fcccb7788e3e0ad34f67114f563c87ac8c1dc";
       ref = "main";
     };
   in {
