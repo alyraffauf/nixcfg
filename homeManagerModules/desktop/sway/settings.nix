@@ -228,59 +228,57 @@ in {
     workspaceAutoBackAndForth = true;
   };
 
-  extraConfig = ''
-    bindsym --locked XF86MonBrightnessUp exec ${helpers.brightness.up}
-    bindsym --locked XF86MonBrightnessDown exec ${helpers.brightness.down}
-    bindsym --locked XF86AudioRaiseVolume exec ${helpers.volume.up}
-    bindsym --locked XF86AudioLowerVolume exec ${helpers.volume.down}
-    bindsym --locked XF86AudioMute exec ${helpers.volume.mute}
-    bindsym --locked XF86AudioMicMute exec ${helpers.volume.micMute}
-    bindsym --locked XF86AudioPlay exec ${helpers.media.play}
-    bindsym --locked XF86AudioPrev exec ${helpers.media.prev}
-    bindsym --locked XF86AudioNext exec ${helpers.media.next}
+  extraConfig =
+    ''
+      bindsym --locked XF86MonBrightnessUp exec ${helpers.brightness.up}
+      bindsym --locked XF86MonBrightnessDown exec ${helpers.brightness.down}
+      bindsym --locked XF86AudioRaiseVolume exec ${helpers.volume.up}
+      bindsym --locked XF86AudioLowerVolume exec ${helpers.volume.down}
+      bindsym --locked XF86AudioMute exec ${helpers.volume.mute}
+      bindsym --locked XF86AudioMicMute exec ${helpers.volume.micMute}
+      bindsym --locked XF86AudioPlay exec ${helpers.media.play}
+      bindsym --locked XF86AudioPrev exec ${helpers.media.prev}
+      bindsym --locked XF86AudioNext exec ${helpers.media.next}
 
-    mode "move" {
-      bindgesture swipe:right move container to workspace prev; workspace prev
-      bindgesture swipe:left move container to workspace next; workspace next
-      bindgesture pinch:inward+up move up
-      bindgesture pinch:inward+down move down
-      bindgesture pinch:inward+left move left
-      bindgesture pinch:inward+right move right
-    }
+      mode "move" {
+        bindgesture swipe:right move container to workspace prev; workspace prev
+        bindgesture swipe:left move container to workspace next; workspace next
+        bindgesture pinch:inward+up move up
+        bindgesture pinch:inward+down move down
+        bindgesture pinch:inward+left move left
+        bindgesture pinch:inward+right move right
+      }
 
-    bindgesture swipe:right workspace prev
-    bindgesture swipe:left workspace next
+      bindgesture swipe:right workspace prev
+      bindgesture swipe:left workspace next
 
-    bindswitch --reload --locked lid:on output eDP-1 disable
-    bindswitch --reload --locked lid:off output eDP-1 enable
+      bindswitch --reload --locked lid:on output eDP-1 disable
+      bindswitch --reload --locked lid:off output eDP-1 enable
+    ''
+    + lib.strings.optionalString (config.wayland.windowManager.sway.package
+      == pkgs.swayfx) ''
+      blur enable
+      blur_passes 1
 
-    ${
-      if config.wayland.windowManager.sway.package == pkgs.swayfx
-      then "
-        blur enable
-        blur_passes 1
+      # corner_radius 10
+      shadows enable
+      shadows_on_csd enable
+      shadow_color ${cfg.theme.colors.shadow}
 
-        # corner_radius 10
-        shadows enable
-        shadows_on_csd enable
-        shadow_color ${cfg.theme.colors.shadow}
+      default_dim_inactive 0.05
 
-        default_dim_inactive 0.05
-
-        layer_effects launcher blur enable
-        layer_effects launcher blur_ignore_transparent enable
-        layer_effects logout_dialog blur enable
-        layer_effects notifications blur enable
-        layer_effects notifications blur_ignore_transparent enable
-        layer_effects rofi blur enable
-        layer_effects rofi blur_ignore_transparent enable
-        layer_effects swaybar blur enable
-        layer_effects swaybar blur_ignore_transparent enable
-        layer_effects swayosd blur enable
-        layer_effects swayosd blur_ignore_transparent enable
-        layer_effects waybar blur enable
-        layer_effects waybar blur_ignore_transparent enable"
-      else ""
-    }
-  '';
+      layer_effects launcher blur enable
+      layer_effects launcher blur_ignore_transparent enable
+      layer_effects logout_dialog blur enable
+      layer_effects notifications blur enable
+      layer_effects notifications blur_ignore_transparent enable
+      layer_effects rofi blur enable
+      layer_effects rofi blur_ignore_transparent enable
+      layer_effects swaybar blur enable
+      layer_effects swaybar blur_ignore_transparent enable
+      layer_effects swayosd blur enable
+      layer_effects swayosd blur_ignore_transparent enable
+      layer_effects waybar blur enable
+      layer_effects waybar blur_ignore_transparent enable
+    '';
 }
