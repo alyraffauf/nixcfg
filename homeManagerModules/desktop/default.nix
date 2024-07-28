@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./gnome
     ./hyprland
     ./sway
     ./wayland
@@ -13,8 +12,7 @@
 
   config =
     lib.mkIf (
-      config.ar.home.desktop.gnome.enable
-      || config.ar.home.desktop.hyprland.enable
+      config.ar.home.desktop.hyprland.enable
       || config.ar.home.desktop.sway.enable
     ) {
       dconf = {
