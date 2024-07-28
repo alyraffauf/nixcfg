@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./gnome
     ./greetd
     ./hyprland
     ./sway

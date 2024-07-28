@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./gnome
     ./hyprland
     ./sway
     ./wayland
