@@ -268,6 +268,8 @@ in {
 
       default_dim_inactive 0.05
 
+      layer_effects gtk-layer-shell blur enable
+      layer_effects gtk-layer-shell blur_ignore_transparent enable
       layer_effects launcher blur enable
       layer_effects launcher blur_ignore_transparent enable
       layer_effects logout_dialog blur enable

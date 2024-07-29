@@ -102,6 +102,7 @@ in {
     drop_shadow = true;
 
     layerrule = [
+      "blur,gtk-layer-shell"
       "blur,launcher"
       "blur,logout_dialog"
       "blur,notifications"
@@ -109,6 +110,7 @@ in {
       "blur,swayosd"
       "blur,waybar"
       "dimaround,rofi"
+      "ignorezero,gtk-layer-shell"
       "ignorezero,notifications"
       "ignorezero,swayosd"
       "ignorezero,waybar"
