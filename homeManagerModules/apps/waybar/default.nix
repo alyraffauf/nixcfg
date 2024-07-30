@@ -259,16 +259,6 @@
         color: #FFFFFF;
       }
 
-      #tags button {
-        padding: 0px 5px;
-        margin: 0 0px;
-        color: ${config.ar.home.theme.colors.text};
-      }
-
-      #tags button.focused {
-        color: ${config.ar.home.theme.colors.primary};
-      }
-
       #clock,
       #battery,
       #bluetooth,
@@ -305,7 +295,6 @@
       #tray,
       #clock,
       #custom-menu,
-      #custom-sway-close,
       #custom-hyprland-close,
       #hardware {
           border-radius: 10;
