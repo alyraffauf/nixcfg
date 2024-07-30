@@ -125,7 +125,6 @@ in {
 
   exec-once =
     [
-      helpers.wallpaperD
       (lib.getExe pkgs.waybar)
       scripts.idleD
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
@@ -135,7 +134,11 @@ in {
       "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
     ]
     ++ lib.lists.optional (cfg.desktop.hyprland.redShift)
-    "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";
+    "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
+    ++ lib.lists.optional (cfg.desktop.randomWallpaper)
+    helpers.wallpaperD
+    ++ lib.lists.optional (!cfg.desktop.randomWallpaper)
+    "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
 
   input = {
     follow_mouse = 1;

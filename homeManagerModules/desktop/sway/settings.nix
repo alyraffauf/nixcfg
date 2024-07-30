@@ -167,8 +167,8 @@ in {
       ]
       ++ lib.optional cfg.desktop.sway.redShift
       {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}
-      ++ lib.optional cfg.desktop.sway.randomWallpaper {command = "${helpers.wallpaperD}";}
-      ++ lib.optional (!cfg.desktop.sway.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
+      ++ lib.optional cfg.desktop.randomWallpaper {command = "${helpers.wallpaperD}";}
+      ++ lib.optional (!cfg.desktop.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
     floating.criteria = [
       {app_id = ".blueman-manager-wrapped";}
