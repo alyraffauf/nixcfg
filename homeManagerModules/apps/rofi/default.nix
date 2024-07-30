@@ -17,11 +17,17 @@ in {
       font = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
       location = "center";
       package = pkgs.rofi-wayland;
-      plugins = [pkgs.rofi-power-menu];
+
+      plugins = [
+        pkgs.rofi-power-menu
+        pkgs.rofi-file-browser
+      ];
+
       terminal = lib.getExe cfg.defaultApps.terminal;
       theme = "theme.rasi";
 
       extraConfig = {
+        case-sensitive = false;
         click-to-exit = true;
         combi-display-format = "{text}";
         combi-hide-mode-prefix = true;
@@ -30,19 +36,22 @@ in {
           "window"
           "drun"
           "ssh"
+          "recursivebrowser"
         ];
 
         display-combi = "Search";
+        display-drun = "Apps";
         display-filebrowser = "Files";
+        display-recursivebrowser = "Files";
         display-run = "Run";
         display-ssh = "SSH";
         display-window = "Windows";
         drun-display-format = "{icon} {name}";
-        hide-scrollbar = true;
         hover-select = true;
         me-accept-entry = "MousePrimary";
         me-select-entry = "";
-        modes = "drun,window,ssh,combi,filebrowser";
+        modes = "drun,window,ssh,recursivebrowser";
+        scrollbar = false;
         show-display-name = false;
         show-icons = true;
         sort = true;
@@ -87,14 +96,14 @@ in {
           background-color: ${cfg.theme.colors.background}CC;
           border:           2;
           border-radius:    10px;
-          padding:          5;
+          padding:          0;
       }
       mainbox {
           border:  0;
           padding: 0;
       }
       message {
-          border:       1px dash 0px 0px ;
+          border:       2px solid 0px 0px ;
           border-color: @separatorcolor;
           padding:      1px ;
       }
@@ -103,10 +112,10 @@ in {
       }
       listview {
           fixed-height: 0;
-          border:       2px dash 0px 0px ;
+          border:       2px solid 0px 0px ;
           border-color: @separatorcolor;
           spacing:      2px ;
-          scrollbar:    true;
+          scrollbar:    false;
           padding:      2px 0px 0px ;
       }
       element {
@@ -154,13 +163,13 @@ in {
           text-color:       @alternate-active-foreground;
       }
       scrollbar {
-          width:        4px ;
+          width:        0px ;
           border:       0;
-          handle-width: 8px ;
+          handle-width: 0px ;
           padding:      0;
       }
       mode-switcher {
-          border:       2px dash 0px 0px ;
+          border:       2px solid 0px 0px ;
           border-color: @separatorcolor;
       }
       button.selected {
@@ -174,7 +183,7 @@ in {
       inputbar {
           spacing:    0;
           text-color: @normal-foreground;
-          padding:    1px ;
+          padding:    10px ;
       }
       case-indicator {
           spacing:    0;
@@ -187,6 +196,7 @@ in {
       prompt {
           spacing:    0;
           text-color: @normal-foreground;
+          margin: 1px;
       }
       inputbar {
           children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
