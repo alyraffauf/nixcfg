@@ -186,7 +186,7 @@
           };
 
           "custom/logout" = {
-            "format" = "󰗽";
+            "format" = "󰤆";
             "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
             "tooltip-format" = "Manage your session.";
           };
