@@ -92,14 +92,6 @@
             "format" = "󰅗";
           };
 
-          "river/window" = {
-            "max-length" = 100;
-          };
-
-          "river/tags" = {
-            "num-tags" = 4;
-          };
-
           "clock" = {
             "format" = "{:%I:%M%p}";
             "interval" = 60;
