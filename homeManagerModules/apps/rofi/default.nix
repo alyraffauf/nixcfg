@@ -48,6 +48,7 @@ in {
         display-window = "Windows";
         drun-display-format = "{icon} {name}";
         hover-select = true;
+        matching = "fuzzy";
         me-accept-entry = "MousePrimary";
         me-select-entry = "";
         modes = "drun,window,ssh,recursivebrowser";
