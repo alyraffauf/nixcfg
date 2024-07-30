@@ -27,5 +27,5 @@ in {
       ];
   in
     pkgs.writeShellScript "sway-idled"
-    "${lib.getExe pkgs.swayidle} -w ${lib.strings.concatStringsSep " " (timeouts ++ beforeSleeps)}";
+    "${lib.getExe pkgs.swayidle} -w lock '${lib.getExe pkgs.swaylock}' ${lib.strings.concatStringsSep " " (timeouts ++ beforeSleeps)}";
 }
