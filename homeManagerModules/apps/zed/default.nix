@@ -80,8 +80,8 @@
           };
 
           telemetry = {
-            diagnostics = true;
-            metrics = true;
+            diagnostics = false;
+            metrics = false;
           };
 
           terminal.font_size = 12;
