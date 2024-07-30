@@ -291,7 +291,7 @@
       #custom-dnd.on {
         color: #e78284;
       }
-    
+
       #workspaces,
       #mode,
       #submap,
@@ -306,7 +306,7 @@
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
       }
-      
+
       #session {
           border-radius: 10;
           background: rgba (36, 36, 36, 0.8);
