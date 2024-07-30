@@ -10,14 +10,14 @@
 
 ## Desktop Utilities
 
-- Bluetooth: [blueman](https://github.com/blueman-project/blueman).
+- Bluetooth: [blueberry.py](https://github.com/linuxmint/blueberry).
 - Idle daemon: [swayidle](https://github.com/swaywm/swayidle).
 - Launcher [rofi-wayland](https://github.com/lbonn/rofi).
 - Notifications: [mako](https://github.com/emersion/mako).
 - Panel: [waybar](https://github.com/Alexays/Waybar).
 - Polkit: [mate-polkit](https://github.com/mate-desktop/mate-polkit).
 - Wallpapers: [swaybg](https://github.com/swaywm/swaybg).
-- WiFi: [network-manager-applet](https://gitlab.gnome.org/GNOME/network-manager-applet).
+- WiFi: [networkmanager-dmenu](https://github.com/firecat53/networkmanager-dmenu).
 
 ## Keybindings
 
