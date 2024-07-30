@@ -39,7 +39,7 @@ in {
       );
 
     beforeSleeps =
-      lib.optionals cfg.desktop.hyprland.autoSuspend
+      lib.optionals cfg.desktop.autoSuspend
       [
         "before-sleep '${lib.getExe pkgs.playerctl} pause'"
         "before-sleep '${lib.getExe pkgs.swaylock}'"

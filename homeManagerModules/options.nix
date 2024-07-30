@@ -107,16 +107,16 @@ in {
     };
 
     desktop = {
+      autoSuspend = lib.mkOption {
+        description = "Whether to autosuspend on idle.";
+        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
+        type = lib.types.bool;
+      };
+      
       hyprland = {
         enable = lib.mkOption {
           description = "Hyprland with full desktop session components.";
           default = osConfig.ar.desktop.hyprland.enable;
-          type = lib.types.bool;
-        };
-
-        autoSuspend = lib.mkOption {
-          description = "Whether to autosuspend on idle.";
-          default = cfg.desktop.hyprland.enable;
           type = lib.types.bool;
         };
 
@@ -192,12 +192,6 @@ in {
         enable = lib.mkOption {
           description = "Sway with full desktop session components.";
           default = osConfig.ar.desktop.sway.enable;
-          type = lib.types.bool;
-        };
-
-        autoSuspend = lib.mkOption {
-          description = "Whether to autosuspend on idle.";
-          default = cfg.desktop.sway.enable;
           type = lib.types.bool;
         };
 
