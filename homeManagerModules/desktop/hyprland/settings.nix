@@ -133,7 +133,7 @@ in {
       (lib.getExe pkgs.mako)
       "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
     ]
-    ++ lib.lists.optional (cfg.desktop.hyprland.redShift)
+    ++ lib.lists.optional (cfg.desktop.redShift)
     "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
     ++ lib.lists.optional (cfg.desktop.randomWallpaper)
     helpers.wallpaperD
