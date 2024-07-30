@@ -232,7 +232,7 @@
             "orientation" = "horizontal";
             modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
           };
-          
+
           "group/session" = {
             "orientation" = "horizontal";
             modules = ["custom/dnd" "idle_inhibitor" "custom/logout"];
