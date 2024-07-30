@@ -80,12 +80,6 @@
             "tooltip-format" = "{app}: {title}";
           };
 
-          "custom/sway-close" = {
-            "on-click" = ''${lib.getExe'
-                config.wayland.windowManager.sway.package "swaymsg"} kill'';
-            "format" = "󰅗";
-          };
-
           "custom/hyprland-close" = {
             "on-click" = ''${lib.getExe'
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive'';
@@ -204,11 +198,13 @@
           "custom/logout" = {
             "format" = "󰗽";
             "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
+            "tooltip-format" = "Manage your session.";
           };
 
           "custom/menu" = {
             "format" = "󰀻";
             "on-click" = "${lib.getExe pkgs.nwg-drawer} -mt 5";
+            "tooltip-format" = "Touch-friendly application menu.";
           };
 
           "power-profiles-daemon" = {
