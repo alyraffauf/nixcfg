@@ -104,11 +104,11 @@
             "timeout" = 45;
 
             "tooltip-format-activated" = ''
-              Idle inhibited.
+              Presentation mode enabled.
               System will not sleep.'';
 
             "tooltip-format-deactivated" = ''
-              Idle uninhibited.
+              Presentation mode disabled.
               System will sleep normally.'';
           };
 
@@ -164,9 +164,9 @@
               show() {
                   MAKO_MODE=$(${lib.getExe' pkgs.mako "makoctl"} mode)
                   if echo "$MAKO_MODE" | grep -q "do-not-disturb"; then
-                      printf '{"text": "󰂛", "class": "on", "tooltip": "Notifications are snoozed."}\n'
+                      printf '{"text": "󰂛", "class": "on", "tooltip": "Notifications snoozed."}\n'
                   else
-                      printf '{"text": "󰂚", "class": "off","tooltip": "Notifications are enabled."}\n'
+                      printf '{"text": "󰂚", "class": "off","tooltip": "Notifications enabled."}\n'
                   fi
               }
 
@@ -287,11 +287,11 @@
       #battery.critical:not(.charging) {
           color: #e78284;
       }
-      
+
       #custom-dnd.on {
         color: #e78284;
       }
-
+    
       #workspaces,
       #mode,
       #submap,
@@ -306,6 +306,7 @@
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
       }
+      
       #session {
           border-radius: 10;
           background: rgba (36, 36, 36, 0.8);
