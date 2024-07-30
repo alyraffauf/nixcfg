@@ -111,13 +111,23 @@
               Draw: {power} watts.'';
           };
 
-          "inhibitor" = {
-            "what" = "sleep";
+          "idle_inhibitor" = {
             "format" = "{icon}";
+
             "format-icons" = {
               "activated" = "󰅶";
               "deactivated" = "󰾪";
             };
+
+            "timeout" = 45;
+
+            "tooltip-format-activated" = ''
+              Sleep inhibited.
+              System will not sleep.'';
+
+            "tooltip-format-deactivated" = ''
+              Sleep uninhibited.
+              System will sleep normally.'';
           };
 
           "bluetooth" = {
@@ -193,7 +203,7 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "inhibitor" "custom/logout"];
+            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "idle_inhibitor" "custom/logout"];
           };
         };
       };
@@ -248,7 +258,7 @@
       #power-profiles-daemon,
       #pulseaudio,
       #wireplumber,
-      #inhibitor,
+      #idle_inhibitor,
       #custom-logout,
       #custom-menu,
       #custom-sway-close,
