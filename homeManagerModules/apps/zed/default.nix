@@ -92,6 +92,7 @@
             mode = "system";
           };
 
+          ui_font_family = "NotoSans Nerd Font";
           ui_font_size = 16;
           use_autoclose = false;
           vim_mode = false;
