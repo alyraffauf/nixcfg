@@ -112,7 +112,13 @@ in {
         default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
         type = lib.types.bool;
       };
-      
+
+      randomWallpaper = lib.mkOption {
+        description = "Whether to enable random wallpaper script.";
+        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
+        type = lib.types.bool;
+      };
+
       hyprland = {
         enable = lib.mkOption {
           description = "Hyprland with full desktop session components.";
@@ -130,12 +136,6 @@ in {
           description = "List of external monitors.";
           default = [];
           type = lib.types.listOf lib.types.str;
-        };
-
-        randomWallpaper = lib.mkOption {
-          description = "Whether to enable random wallpaper script.";
-          default = cfg.desktop.hyprland.enable;
-          type = lib.types.bool;
         };
 
         redShift = lib.mkOption {
@@ -192,12 +192,6 @@ in {
         enable = lib.mkOption {
           description = "Sway with full desktop session components.";
           default = osConfig.ar.desktop.sway.enable;
-          type = lib.types.bool;
-        };
-
-        randomWallpaper = lib.mkOption {
-          description = "Whether to enable random wallpaper script.";
-          default = cfg.desktop.sway.enable;
           type = lib.types.bool;
         };
 
