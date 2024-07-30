@@ -1,5 +1,6 @@
 self: {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -21,6 +22,12 @@ self: {
   };
 
   programs.home-manager.enable = true;
+
+  wayland.windowManager.sway.config.input."type:keyboard" = lib.mkForce {
+    xkb_layout = "us";
+    xkb_variant = "altgr-intl";
+    xkb_options = "";
+  };
 
   xdg.mimeApps = {
     enable = true;
