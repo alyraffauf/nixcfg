@@ -70,7 +70,7 @@
           preferred_line_length = 80;
 
           tab_bar = {
-            show = false;
+            show = true;
             show_nav_history_buttons = false;
           };
 
