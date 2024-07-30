@@ -31,6 +31,7 @@
           "hyprland/workspaces" = {
             "all-outputs" = true;
             "format" = "{icon} {name}";
+
             "format-icons" = {
               "default" = "󰝥";
               "active" = "󰪥";
@@ -46,18 +47,20 @@
 
           "hyprland/window" = {
             "format" = "";
+            "icon" = true;
             "max-length" = 100;
             "separate-outputs" = true;
-            "icon" = true;
           };
 
           "sway/workspaces" = {
             "all-outputs" = true;
             "format" = "{icon} {name}";
+
             "format-icons" = {
               "default" = "󰝥";
               "focused" = "󰪥";
             };
+
             "sort-by" = "id";
           };
 
@@ -71,8 +74,8 @@
 
           "sway/scratchpad" = {
             "format" = "{icon}　{count}";
-            "show-empty" = false;
             "format-icons" = ["" ""];
+            "show-empty" = false;
             "tooltip" = true;
             "tooltip-format" = "{app}: {title}";
           };
@@ -98,18 +101,20 @@
           };
 
           "clock" = {
-            "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
-            "interval" = 60;
             "format" = "{:%I:%M%p}";
+            "interval" = 60;
+            "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
           };
 
           "battery" = {
-            "states" = {"critical" = 20;};
             "format" = "{icon}";
             "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+
             "tooltip-format" = ''
               {capacity}%: {timeTo}.
               Draw: {power} watts.'';
+
+            "states" = {"critical" = 20;};
           };
 
           "idle_inhibitor" = {
@@ -123,25 +128,27 @@
             "timeout" = 45;
 
             "tooltip-format-activated" = ''
-              Sleep inhibited.
+              Idle inhibited.
               System will not sleep.'';
 
             "tooltip-format-deactivated" = ''
-              Sleep uninhibited.
+              Idle uninhibited.
               System will sleep normally.'';
           };
 
           "bluetooth" = {
             "format" = "";
-            "format-disabled" = ""; # an empty format will hide the module
             "format-connected" = "　{num_connections}";
+            "format-disabled" = ""; # an empty format will hide the module
+            "on-click" = lib.getExe' pkgs.blueberry "blueberry";
             "tooltip-format" = "{controller_alias}	{controller_address}";
+
             "tooltip-format-connected" = ''
               {controller_alias}	{controller_address}
 
               {device_enumerate}'';
+
             "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
-            "on-click" = lib.getExe' pkgs.blueberry "blueberry";
           };
 
           "pulseaudio" = {
@@ -156,21 +163,21 @@
               "default" = ["" "" ""];
             };
 
-            "scroll-step" = 5;
             "ignored-sinks" = ["Easy Effects Sink"];
             "on-click" = "${lib.getExe pkgs.pavucontrol} -t 3";
+            "scroll-step" = 5;
           };
 
           "network" = {
-            "format-wifi" = "{icon}";
+            "format-disconnected" = "󰀦";
             "format-ethernet" = "󰈀";
-            "format-disconnected" = "⚠";
             "format-icons" = ["󰤟" "󰤢" "󰤥" "󰤨"];
-            "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
-            "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
-            "tooltip-format-ethernet" = "{ifname} ";
-            "tooltip-format-disconnected" = "Disconnected";
+            "format-wifi" = "{icon}";
             "on-click" = "${lib.getExe pkgs.networkmanager_dmenu} -i";
+            "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
+            "tooltip-format-disconnected" = "Disconnected";
+            "tooltip-format-ethernet" = "{ifname} ";
+            "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
           };
 
           "tray" = {"spacing" = 15;};
@@ -202,30 +209,30 @@
           };
 
           "custom/logout" = {
-            "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
             "format" = "󰗽";
+            "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
           };
 
           "custom/menu" = {
-            "on-click" = "${lib.getExe pkgs.nwg-drawer} -mt 5";
             "format" = "󰀻";
+            "on-click" = "${lib.getExe pkgs.nwg-drawer} -mt 5";
           };
 
           "power-profiles-daemon" = {
             "format" = "{icon}";
+
+            "format-icons" = {
+              "balanced" = "󰗑";
+              "default" = "󱐌";
+              "performance" = "󱐌";
+              "power-saver" = "󰌪";
+            };
 
             "tooltip-format" = ''
               Profile: {profile}
               Driver: {driver}'';
 
             "tooltip" = true;
-
-            "format-icons" = {
-              "default" = "󱐌";
-              "performance" = "󱐌";
-              "balanced" = "󰗑";
-              "power-saver" = "󰌪";
-            };
           };
 
           "group/hardware" = {
