@@ -116,11 +116,12 @@ in {
           border-color: @separatorcolor;
           spacing:      2px ;
           scrollbar:    false;
-          padding:      2px 0px 0px ;
+          padding:      5px;
       }
       element {
           border:  0;
-          padding: 1px ;
+          padding: 5px;
+          border-radius:    10px;
       }
       element-text {
           background-color: inherit;
