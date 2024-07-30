@@ -287,6 +287,10 @@
       #battery.critical:not(.charging) {
           color: #e78284;
       }
+      
+      #custom-dnd.on {
+        color: #e78284;
+      }
 
       #workspaces,
       #mode,
