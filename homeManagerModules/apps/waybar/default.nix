@@ -115,8 +115,8 @@
             "what" = "sleep";
             "format" = "{icon}";
             "format-icons" = {
-              "activated" = "";
-              "deactivated" = "";
+              "activated" = "󰅶";
+              "deactivated" = "󰾪";
             };
           };
 
@@ -193,7 +193,7 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "custom/logout"];
+            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "inhibitor" "custom/logout"];
           };
         };
       };
