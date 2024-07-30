@@ -25,6 +25,7 @@
           modules-right = [
             "tray"
             "group/hardware"
+            "group/session"
           ];
 
           "hyprland/workspaces" = {
@@ -174,6 +175,32 @@
 
           "tray" = {"spacing" = 15;};
 
+          "custom/dnd" = let
+            mako-dnd = pkgs.writeShellScript "mako-dnd" ''
+              show() {
+                  MAKO_MODE=$(${lib.getExe' pkgs.mako "makoctl"} mode)
+                  if echo "$MAKO_MODE" | grep -q "do-not-disturb"; then
+                      printf '{"text": "󰂛", "class": "on", "tooltip": "Notifications are snoozed."}\n'
+                  else
+                      printf '{"text": "󰂚", "class": "off","tooltip": "Notifications are enabled."}\n'
+                  fi
+              }
+
+              toggle() {
+                  ${lib.getExe' pkgs.mako "makoctl"} mode -t do-not-disturb
+                  ${lib.getExe' pkgs.procps "pkill"} -SIGRTMIN+2 .waybar-wrapped
+              }
+
+              [ $# -gt 0 ] && toggle || show
+            '';
+          in {
+            "exec" = "${mako-dnd}";
+            "interval" = "once";
+            "on-click" = "${mako-dnd} toggle";
+            "return-type" = "json";
+            "signal" = 2;
+          };
+
           "custom/logout" = {
             "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
             "format" = "󰗽";
@@ -203,7 +230,12 @@
 
           "group/hardware" = {
             "orientation" = "horizontal";
-            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery" "idle_inhibitor" "custom/logout"];
+            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
+          };
+          
+          "group/session" = {
+            "orientation" = "horizontal";
+            modules = ["custom/dnd" "idle_inhibitor" "custom/logout"];
           };
         };
       };
@@ -259,6 +291,7 @@
       #pulseaudio,
       #wireplumber,
       #idle_inhibitor,
+      #custom-dnd,
       #custom-logout,
       #custom-menu,
       #custom-sway-close,
@@ -289,6 +322,12 @@
       #custom-sway-close,
       #custom-hyprland-close,
       #hardware {
+          border-radius: 10;
+          background: rgba (36, 36, 36, 0.8);
+          margin: 5px 10px 0px 10px;
+          padding: 0px 10px 0px 10px;
+      }
+      #session {
           border-radius: 10;
           background: rgba (36, 36, 36, 0.8);
           margin: 5px 10px 0px 10px;
