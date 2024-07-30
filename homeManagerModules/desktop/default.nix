@@ -45,7 +45,7 @@
       xdg = {
         dataFile."backgrounds".source = builtins.fetchGit {
           url = "https://github.com/alyraffauf/wallpapers.git";
-          rev = "c0cf7212851ecf37103511fcf16fea11819eeff0";
+          rev = "f6d8a67457be351ae2c3cbffccf14ba20fb7f6a0";
           ref = "master";
         };
 
