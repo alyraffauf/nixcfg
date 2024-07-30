@@ -18,7 +18,7 @@
             ["hyprland/workspaces" "hyprland/submap"]
             ++ lib.optionals (config.ar.home.desktop.sway.enable)
             ["sway/workspaces" "sway/scratchpad" "sway/mode"]
-            ++ lib.optionals (config.ar.home.desktop.hyprland.tabletMode.menuButton)
+            ++ lib.optionals (config.ar.home.desktop.hyprland.tabletMode.enable)
             ["custom/menu" "custom/hyprland-close"];
 
           modules-center = ["clock"];

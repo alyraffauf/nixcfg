@@ -48,7 +48,7 @@
 
         tabletMode = {
           enable = true;
-          tabletSwitches = ["Lenovo Yoga Tablet Mode Control switch"];
+          switches = ["Lenovo Yoga Tablet Mode Control switch"];
         };
       };
     }
