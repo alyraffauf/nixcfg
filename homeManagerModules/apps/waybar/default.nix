@@ -84,6 +84,7 @@
             "on-click" = ''${lib.getExe'
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive'';
             "format" = "󰅗";
+            "tooltip-format" = "Close the focused window.";
           };
 
           "clock" = {
