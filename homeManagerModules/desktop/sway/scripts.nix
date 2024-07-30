@@ -11,7 +11,7 @@ in {
     timeouts =
       ["timeout 120 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r'"]
       ++ (
-        if cfg.desktop.sway.autoSuspend
+        if cfg.desktop.autoSuspend
         then ["timeout 600 '${lib.getExe' pkgs.systemd "systemctl"} suspend'"]
         else [
           "timeout 600 '${lib.getExe pkgs.swaylock}'"
@@ -20,7 +20,7 @@ in {
       );
 
     beforeSleeps =
-      lib.optionals cfg.desktop.sway.autoSuspend
+      lib.optionals cfg.desktop.autoSuspend
       [
         "before-sleep '${lib.getExe pkgs.playerctl} pause'"
         "before-sleep '${lib.getExe pkgs.swaylock}'"

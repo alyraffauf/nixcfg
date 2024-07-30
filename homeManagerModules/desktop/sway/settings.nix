@@ -165,10 +165,10 @@ in {
         {command = lib.getExe' pkgs.swayosd "swayosd-server";}
         {command = lib.getExe pkgs.mako;}
       ]
-      ++ lib.optional cfg.desktop.sway.redShift
+      ++ lib.optional cfg.desktop.redShift
       {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}
-      ++ lib.optional cfg.desktop.sway.randomWallpaper {command = "${helpers.wallpaperD}";}
-      ++ lib.optional (!cfg.desktop.sway.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
+      ++ lib.optional cfg.desktop.randomWallpaper {command = "${helpers.wallpaperD}";}
+      ++ lib.optional (!cfg.desktop.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
     floating.criteria = [
       {app_id = ".blueman-manager-wrapped";}
