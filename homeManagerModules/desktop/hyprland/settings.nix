@@ -75,7 +75,7 @@ in {
       ",xf86audioprev,exec,${helpers.media.prev}"
       ",xf86audionext,exec,${helpers.media.next}"
     ]
-    ++ builtins.map (switch: ",switch:${switch},exec,${scripts.tablet}") cfg.desktop.hyprland.tabletMode.tabletSwitches
+    ++ builtins.map (switch: ",switch:${switch},exec,${scripts.tablet}") cfg.desktop.hyprland.tabletMode.switches
     ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
     [
       ",switch:on:Lid Switch,exec,${scripts.clamshell} on"
