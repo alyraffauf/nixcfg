@@ -169,6 +169,7 @@
           };
 
           "network" = {
+            "format-disabled" = "󰀝";
             "format-disconnected" = "󰀦";
             "format-ethernet" = "󰈀";
             "format-icons" = ["󰤟" "󰤢" "󰤥" "󰤨"];
