@@ -12,7 +12,7 @@ in {
       ["timeout 120 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r'"]
       ++ (
         if cfg.desktop.sway.autoSuspend
-        then ["timeout 600 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend'"]
+        then ["timeout 600 '${lib.getExe' pkgs.systemd "systemctl"} suspend'"]
         else [
           "timeout 600 '${lib.getExe pkgs.swaylock}'"
           "timeout 630 '${swaymsg} \"output * dpms off\"' resume '${swaymsg} \"output * dpms on\"'"
