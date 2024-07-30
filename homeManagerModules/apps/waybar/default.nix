@@ -45,13 +45,6 @@
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch submap reset'';
           };
 
-          "hyprland/window" = {
-            "format" = "";
-            "icon" = true;
-            "max-length" = 100;
-            "separate-outputs" = true;
-          };
-
           "sway/workspaces" = {
             "all-outputs" = true;
             "format" = "{icon} {name}";
@@ -66,10 +59,6 @@
 
           "sway/mode" = {
             "on-click" = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} mode default'';
-          };
-
-          "sway/window" = {
-            "max-length" = 100;
           };
 
           "sway/scratchpad" = {
