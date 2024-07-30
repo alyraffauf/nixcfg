@@ -252,13 +252,6 @@
         color: ${config.ar.home.theme.colors.primary};
       }
 
-      #submap,
-      #mode {
-        padding: 0 15px;
-        margin: 0 5px;
-        color: #FFFFFF;
-      }
-
       #clock,
       #battery,
       #bluetooth,
@@ -270,7 +263,6 @@
       #custom-dnd,
       #custom-logout,
       #custom-menu,
-      #custom-sway-close,
       #tray {
         padding: 0 7.5px;
         margin: 0 5px;
@@ -284,37 +276,28 @@
           color: ${config.ar.home.theme.colors.primary};
       }
 
-      #battery.critical:not(.charging) {
+      #battery.critical:not(.charging),
+      #custom-dnd.on {
           color: #e78284;
       }
 
-      #custom-dnd.on {
-        color: #e78284;
-      }
-
-      #workspaces,
-      #mode,
-      #submap,
-      #scratchpad,
-      #tray,
       #clock,
-      #custom-menu,
       #custom-hyprland-close,
-      #hardware {
+      #custom-menu,
+      #hardware,
+      #mode,
+      #scratchpad,
+      #session,
+      #submap,
+      #tray,
+      #workspaces {
           border-radius: 10;
           background: rgba (36, 36, 36, 0.8);
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
       }
 
-      #session {
-          border-radius: 10;
-          background: rgba (36, 36, 36, 0.8);
-          margin: 5px 10px 0px 10px;
-          padding: 0px 10px 0px 10px;
-      }
-
-      #clock, #custom-menu, #custom-sway-close, #custom-hyprland-close {
+      #clock, #custom-menu, #custom-hyprland-close {
           padding: 0px 20px 0px 20px;
       }
 
