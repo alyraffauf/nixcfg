@@ -45,6 +45,19 @@ in {
   };
 
   programs = {
+    password-store = {
+      enable = true;
+
+      package = pkgs.pass.withExtensions (exts:
+        with exts; [
+          pass-checkup
+          pass-file
+          pass-genphrase
+          pass-otp
+          pass-update
+        ]);
+    };
+
     git = {
       enable = true;
       lfs.enable = true;
