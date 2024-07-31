@@ -78,9 +78,8 @@ in {
     rofi.pass = {
       enable = true;
       package = pkgs.rofi-pass-wayland;
-      
+
       extraConfig = ''
-        URL_field='url'
         USERNAME_field='login'
       '';
     };
