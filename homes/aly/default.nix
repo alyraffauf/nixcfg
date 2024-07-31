@@ -96,7 +96,7 @@ in {
 
     theme = {
       enable = true;
-      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-3led2d.jpg";
+      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-5g6g33.jpg";
     };
   };
 }
