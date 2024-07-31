@@ -37,6 +37,7 @@
       ring-color=${config.ar.home.theme.colors.primary}CC
       ring-ver-color=a6d189cc
       ring-wrong-color=e78284cc
+      scaling=fill
       separator-color=${config.ar.home.theme.colors.background}CC
       text-caps-lock-color=c6d0f5
       text-clear-color=c6d0f5
