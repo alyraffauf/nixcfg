@@ -45,19 +45,6 @@ in {
   };
 
   programs = {
-    password-store = {
-      enable = true;
-
-      package = pkgs.pass.withExtensions (exts:
-        with exts; [
-          pass-checkup
-          pass-file
-          pass-genphrase
-          pass-otp
-          pass-update
-        ]);
-    };
-
     git = {
       enable = true;
       lfs.enable = true;
@@ -74,6 +61,29 @@ in {
 
     gitui.enable = true;
     home-manager.enable = true;
+
+    password-store = {
+      enable = true;
+
+      package = pkgs.pass.withExtensions (exts:
+        with exts; [
+          pass-checkup
+          pass-file
+          pass-genphrase
+          pass-otp
+          pass-update
+        ]);
+    };
+
+    rofi.pass = {
+      enable = true;
+      package = pkgs.rofi-pass-wayland;
+      
+      extraConfig = ''
+        URL_field='url'
+        USERNAME_field='login'
+      '';
+    };
   };
 
   systemd.user.startServices = "legacy"; # Needed for auto-mounting agenix secrets.
