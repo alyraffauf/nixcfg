@@ -161,9 +161,10 @@ in {
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = "${scripts.idleD}";}
         {command = lib.getExe pkgs.autotiling;}
+        {command = lib.getExe pkgs.mako;}
+        {command = lib.getExe pkgs.wayland-pipewire-idle-inhibit;}
         {command = lib.getExe' pkgs.playerctl "playerctld";}
         {command = lib.getExe' pkgs.swayosd "swayosd-server";}
-        {command = lib.getExe pkgs.mako;}
       ]
       ++ lib.optional cfg.desktop.redShift
       {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}

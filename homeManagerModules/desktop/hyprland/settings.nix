@@ -125,13 +125,13 @@ in {
 
   exec-once =
     [
+      "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
+      (lib.getExe pkgs.mako)
       (lib.getExe pkgs.waybar)
-      scripts.idleD
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
       (lib.getExe' pkgs.playerctl "playerctld")
       (lib.getExe' pkgs.swayosd "swayosd-server")
-      (lib.getExe pkgs.mako)
-      "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
+      scripts.idleD
     ]
     ++ lib.lists.optional (cfg.desktop.redShift)
     "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
