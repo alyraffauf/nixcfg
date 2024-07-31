@@ -18,7 +18,11 @@
     systemd-boot.enable = true;
   };
 
-  environment.variables.GDK_SCALE = "1.25";
+  environment.variables = {
+    FLAKE = "https://flakehub.com/f/alyraffauf/nixcfg/*.tar.gz";
+    GDK_SCALE = "1.25";
+  };
+
   networking.hostName = "rustboro";
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;

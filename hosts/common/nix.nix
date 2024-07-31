@@ -1,9 +1,10 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
-  environment.variables.FLAKE = "github:alyraffauf/nixcfg";
+  environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
 
   nix.settings = {
     substituters = [
