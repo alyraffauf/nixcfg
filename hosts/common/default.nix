@@ -7,5 +7,5 @@
     ./secrets.nix
   ];
 
-  environment.systemPackages = with pkgs; [inxi];
+  environment.systemPackages = with pkgs; [git inxi];
 }
