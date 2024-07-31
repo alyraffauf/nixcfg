@@ -42,6 +42,7 @@ in {
 
       keepassxc = {
         enable = lib.mkEnableOption "KeePassXC password manager.";
+        package = lib.mkPackageOption pkgs "keepassxc" {};
 
         settings = lib.mkOption {
           description = "KeePassXC settings.";

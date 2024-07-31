@@ -1,11 +1,10 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.home.apps.keepassxc.enable {
-    home.packages = [pkgs.keepassxc];
+    home.packages = [config.ar.home.apps.keepassxc.package];
 
     xdg.configFile."keepassxc/keepassxc.ini".text = let
       defaults = {

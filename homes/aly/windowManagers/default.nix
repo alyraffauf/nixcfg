@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  keepassxc = "${lib.getExe' pkgs.keepassxc "keepassxc"} --pw-stdin ${config.home.homeDirectory}/sync/Passwords.kdbx < ${config.age.secrets.keepassxc.path}";
+  keepassxc = "${lib.getExe' config.ar.home.apps.keepassxc.package "keepassxc"} --pw-stdin ${config.home.homeDirectory}/sync/Passwords.kdbx < ${config.age.secrets.keepassxc.path}";
 in {
   programs.waybar.settings.mainBar."bluetooth" = {
     "on-click" = lib.mkForce "${lib.getExe pkgs.rofi-bluetooth} -i";
