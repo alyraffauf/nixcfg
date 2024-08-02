@@ -39,7 +39,13 @@
       swayosd.enable = lib.mkDefault true;
     };
 
-    systemd.user.services.swayosd.Install.WantedBy = ["hyprland-session.target" "sway-session.target"];
+    systemd.user.services.swayosd = {
+      Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
+      Service = {
+        Restart = lib.mkForce "on-failure";
+        RestartSec = 5;
+      };
+    };
 
     xdg.portal = {
       enable = true;

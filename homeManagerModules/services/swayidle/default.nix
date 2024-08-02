@@ -62,6 +62,12 @@ in {
         };
     };
 
-    systemd.user.services.swayidle.Service.Restart = lib.mkForce "on-failure";
+    systemd.user.services.swayidle = {
+      Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
+      Service = {
+        Restart = lib.mkForce "on-failure";
+        RestartSec = 5;
+      };
+    };
   };
 }
