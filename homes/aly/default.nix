@@ -75,6 +75,16 @@ in {
         ]);
     };
 
+    rbw = {
+      enable = true;
+      package = unstable.rbw;
+
+      settings = {
+        email = "alyraffauf@fastmail.com";
+        pinentry = pkgs.pinentry-gnome3;
+      };
+    };
+
     rofi.pass = {
       enable = true;
       package = pkgs.rofi-pass-wayland;
