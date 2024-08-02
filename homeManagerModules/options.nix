@@ -205,6 +205,8 @@ in {
           type = lib.types.str;
         };
       };
+      
+      gammastep.enable = lib.mkEnableOption "Gammastep redshift daemon.";
 
       easyeffects = {
         enable = lib.mkEnableOption "EasyEffects user service.";

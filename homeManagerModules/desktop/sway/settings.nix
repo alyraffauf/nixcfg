@@ -162,8 +162,6 @@ in {
         {command = lib.getExe pkgs.mako;}
         {command = lib.getExe pkgs.wayland-pipewire-idle-inhibit;}
       ]
-      ++ lib.optional cfg.desktop.redShift
-      {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}
       ++ lib.optional cfg.desktop.randomWallpaper {command = "${helpers.wallpaperD}";}
       ++ lib.optional (!cfg.desktop.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
