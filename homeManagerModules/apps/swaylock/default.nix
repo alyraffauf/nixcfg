@@ -6,7 +6,6 @@
 }: {
   config = lib.mkIf config.ar.home.apps.swaylock.enable {
     home.packages = with pkgs; [swaylock];
-
     programs.swaylock.enable = true;
 
     xdg.configFile."swaylock/config".text = ''
@@ -14,7 +13,6 @@
       caps-lock-bs-hl-color=e78284
       caps-lock-key-hl-color=e78284
       color=303446
-      daemonize
       font="NotoSansMNerdFont-Regular"
       image=${config.ar.home.theme.wallpaper}
       indicator-caps-lock
