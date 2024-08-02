@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.ar.home;
-  scripts = import ./scripts.nix {inherit config lib pkgs;};
   helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
   modifier = "Mod4";
 in {
@@ -15,7 +14,7 @@ in {
   wrapperFeatures.gtk = true;
 
   config = {
-    bars = [{command = lib.getExe pkgs.waybar;}];
+    bars = [];
     modifier = modifier;
 
     colors = {
@@ -159,17 +158,9 @@ in {
     startup =
       [
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = "${scripts.idleD}";}
         {command = lib.getExe pkgs.autotiling;}
-        {command = lib.getExe pkgs.mako;}
-        {command = lib.getExe pkgs.wayland-pipewire-idle-inhibit;}
-        {command = lib.getExe' pkgs.playerctl "playerctld";}
-        {command = lib.getExe' pkgs.swayosd "swayosd-server";}
       ]
-      ++ lib.optional cfg.desktop.redShift
-      {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}
-      ++ lib.optional cfg.desktop.randomWallpaper {command = "${helpers.wallpaperD}";}
-      ++ lib.optional (!cfg.desktop.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
+      ++ lib.optional (!cfg.services.randomWallpaper.enable) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
     floating.criteria = [
       {app_id = ".blueman-manager-wrapped";}

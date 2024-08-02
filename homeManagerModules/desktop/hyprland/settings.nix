@@ -126,18 +126,8 @@ in {
   exec-once =
     [
       "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
-      (lib.getExe pkgs.mako)
-      (lib.getExe pkgs.waybar)
-      (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
-      (lib.getExe' pkgs.playerctl "playerctld")
-      (lib.getExe' pkgs.swayosd "swayosd-server")
-      scripts.idleD
     ]
-    ++ lib.lists.optional (cfg.desktop.redShift)
-    "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"
-    ++ lib.lists.optional (cfg.desktop.randomWallpaper)
-    helpers.wallpaperD
-    ++ lib.lists.optional (!cfg.desktop.randomWallpaper)
+    ++ lib.lists.optional (!cfg.services.randomWallpaper.enable)
     "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
 
   input = {

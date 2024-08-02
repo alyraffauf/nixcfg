@@ -106,6 +106,11 @@ in {
       editor = config.ar.home.apps.zed.package;
     };
 
+    services = {
+      gammastep.enable = true;
+      randomWallpaper.enable = true;
+    };
+
     theme = {
       enable = true;
       wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-5g6g33.jpg";

@@ -12,14 +12,12 @@
     ./kitty
     ./keepassxc
     ./librewolf
-    ./mako
     ./nemo
     ./rofi
     ./swaylock
     ./thunar
     ./tmux
     ./vsCodium
-    ./waybar
     ./wlogout
     ./yazi
     ./zed

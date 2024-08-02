@@ -53,7 +53,6 @@ in {
 
       kitty.enable = lib.mkEnableOption "Kitty terminal.";
       librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
-      mako.enable = lib.mkEnableOption "Mako notification daemon.";
 
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
@@ -72,7 +71,6 @@ in {
 
       tmux.enable = lib.mkEnableOption "Tmux shell session manager.";
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
-      waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
 
@@ -110,18 +108,6 @@ in {
     desktop = {
       autoSuspend = lib.mkOption {
         description = "Whether to autosuspend on idle.";
-        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-
-      randomWallpaper = lib.mkOption {
-        description = "Whether to enable random wallpaper script.";
-        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-
-      redShift = lib.mkOption {
-        description = "Whether to redshift display colors at night.";
         default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
         type = lib.types.bool;
       };
@@ -196,6 +182,19 @@ in {
     };
 
     services = {
+      easyeffects = {
+        enable = lib.mkEnableOption "EasyEffects user service.";
+
+        preset = lib.mkOption {
+          description = "Name of preset to start with.";
+          default = "";
+          type = lib.types.str;
+        };
+      };
+
+      gammastep.enable = lib.mkEnableOption "Gammastep redshift daemon.";
+      mako.enable = lib.mkEnableOption "Mako notification daemon.";
+
       mpd = {
         enable = lib.mkEnableOption "MPD user service.";
 
@@ -206,15 +205,10 @@ in {
         };
       };
 
-      easyeffects = {
-        enable = lib.mkEnableOption "EasyEffects user service.";
-
-        preset = lib.mkOption {
-          description = "Name of preset to start with.";
-          default = "";
-          type = lib.types.str;
-        };
-      };
+      pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
+      randomWallpaper.enable = lib.mkEnableOption "Lightweight swaybg-based random wallpaper daemon.";
+      swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
+      waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };
 
     theme = {
