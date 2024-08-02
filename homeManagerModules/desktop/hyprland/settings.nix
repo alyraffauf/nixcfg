@@ -130,7 +130,6 @@ in {
       (lib.getExe pkgs.waybar)
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
       (lib.getExe' pkgs.playerctl "playerctld")
-      (lib.getExe' pkgs.swayosd "swayosd-server")
     ]
     ++ lib.lists.optional (cfg.desktop.redShift)
     "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"

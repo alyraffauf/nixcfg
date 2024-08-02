@@ -162,7 +162,6 @@ in {
         {command = lib.getExe pkgs.mako;}
         {command = lib.getExe pkgs.wayland-pipewire-idle-inhibit;}
         {command = lib.getExe' pkgs.playerctl "playerctld";}
-        {command = lib.getExe' pkgs.swayosd "swayosd-server";}
       ]
       ++ lib.optional cfg.desktop.redShift
       {command = "${lib.getExe pkgs.gammastep} -l 33.74:-84.38";}
