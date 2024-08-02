@@ -62,6 +62,7 @@ in {
       };
 
       rofi.enable = lib.mkEnableOption "Rofi launcher.";
+      swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
 
       thunar.enable = lib.mkOption {

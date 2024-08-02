@@ -26,28 +26,6 @@ in {
     fi
   '';
 
-  idleD = let
-    timeouts =
-      ["timeout 120 '${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r'"]
-      ++ (
-        if cfg.desktop.autoSuspend
-        then ["timeout 600 'sleep 2 && ${lib.getExe' pkgs.systemd "systemctl"} suspend'"]
-        else [
-          "timeout 600 '${lib.getExe pkgs.swaylock}'"
-          "timeout 630 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'"
-        ]
-      );
-
-    beforeSleeps =
-      lib.optionals cfg.desktop.autoSuspend
-      [
-        "before-sleep '${lib.getExe pkgs.playerctl} pause'"
-        "before-sleep '${lib.getExe pkgs.swaylock}'"
-      ];
-  in
-    pkgs.writeShellScript "hyprland-idled"
-    "${lib.getExe pkgs.swayidle} -w lock '${lib.getExe pkgs.swaylock}' ${lib.strings.concatStringsSep " " (timeouts ++ beforeSleeps)}";
-
   tablet = pkgs.writeShellScript "hyprland-tablet" ''
     STATE=`${lib.getExe pkgs.dconf} read /org/gnome/desktop/a11y/applications/screen-keyboard-enabled`
 

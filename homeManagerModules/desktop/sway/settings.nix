@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.ar.home;
-  scripts = import ./scripts.nix {inherit config lib pkgs;};
   helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
   modifier = "Mod4";
 in {
@@ -159,7 +158,6 @@ in {
     startup =
       [
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = "${scripts.idleD}";}
         {command = lib.getExe pkgs.autotiling;}
         {command = lib.getExe pkgs.mako;}
         {command = lib.getExe pkgs.wayland-pipewire-idle-inhibit;}

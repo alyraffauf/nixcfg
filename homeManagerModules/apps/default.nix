@@ -15,6 +15,7 @@
     ./mako
     ./nemo
     ./rofi
+    ./swayidle
     ./swaylock
     ./thunar
     ./tmux
