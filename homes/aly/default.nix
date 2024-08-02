@@ -71,15 +71,6 @@ in {
         pinentry = pkgs.pinentry-gnome3;
       };
     };
-
-    rofi.pass = {
-      enable = true;
-      package = pkgs.rofi-pass-wayland;
-
-      extraConfig = ''
-        USERNAME_field='login'
-      '';
-    };
   };
 
   systemd.user.startServices = "legacy"; # Needed for auto-mounting agenix secrets.
