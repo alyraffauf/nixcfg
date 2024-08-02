@@ -12,7 +12,6 @@
     ./kitty
     ./keepassxc
     ./librewolf
-    ./mako
     ./nemo
     ./rofi
     ./swaylock

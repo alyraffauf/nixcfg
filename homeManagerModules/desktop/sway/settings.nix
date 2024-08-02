@@ -159,7 +159,6 @@ in {
       [
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = lib.getExe pkgs.autotiling;}
-        {command = lib.getExe pkgs.mako;}
         {command = lib.getExe pkgs.wayland-pipewire-idle-inhibit;}
       ]
       ++ lib.optional cfg.desktop.randomWallpaper {command = "${helpers.wallpaperD}";}

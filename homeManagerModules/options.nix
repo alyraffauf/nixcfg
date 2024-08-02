@@ -53,7 +53,6 @@ in {
 
       kitty.enable = lib.mkEnableOption "Kitty terminal.";
       librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
-      mako.enable = lib.mkEnableOption "Mako notification daemon.";
 
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
@@ -196,24 +195,25 @@ in {
     };
 
     services = {
-      mpd = {
-        enable = lib.mkEnableOption "MPD user service.";
-
-        musicDirectory = lib.mkOption {
-          description = "Name of music directory";
-          default = config.xdg.userDirs.music;
-          type = lib.types.str;
-        };
-      };
-
-      gammastep.enable = lib.mkEnableOption "Gammastep redshift daemon.";
-
       easyeffects = {
         enable = lib.mkEnableOption "EasyEffects user service.";
 
         preset = lib.mkOption {
           description = "Name of preset to start with.";
           default = "";
+          type = lib.types.str;
+        };
+      };
+
+      gammastep.enable = lib.mkEnableOption "Gammastep redshift daemon.";
+      mako.enable = lib.mkEnableOption "Mako notification daemon.";
+
+      mpd = {
+        enable = lib.mkEnableOption "MPD user service.";
+
+        musicDirectory = lib.mkOption {
+          description = "Name of music directory";
+          default = config.xdg.userDirs.music;
           type = lib.types.str;
         };
       };
