@@ -23,7 +23,7 @@ in {
       floating.criteria = [{app_id = "org.keepassxc.KeePassXC";}];
 
       keybindings = {
-        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${keepassxc}";
+        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe pkgs.rofi-rbw-wayland}";
         "${config.wayland.windowManager.sway.config.modifier}+N" = "exec ${lib.getExe' pkgs.obsidian "obsidian"}";
       };
 
@@ -53,7 +53,7 @@ in {
       bind = [
         "SUPER SHIFT,N,movetoworkspace,special:notes"
         "SUPER,N,togglespecialworkspace,notes"
-        "SUPER,P,exec,${keepassxc}"
+        "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
       ];
 
       exec-once = ["sleep 1 && ${keepassxc}"];
