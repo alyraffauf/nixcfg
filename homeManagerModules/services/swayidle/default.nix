@@ -58,7 +58,7 @@ in {
           command = "${swaymsg} \"output * dpms off\"' resume '${swaymsg} \"output * dpms on\"";
         };
     };
-    
-    systemd.user.services.swayidle.Service.Restart = lib.mkForce  "on-failure";
+
+    systemd.user.services.swayidle.Service.Restart = lib.mkForce "on-failure";
   };
 }

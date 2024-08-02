@@ -38,8 +38,8 @@
       playerctld.enable = lib.mkDefault true;
       swayosd.enable = lib.mkDefault true;
     };
-    
-    systemd.user.services.swayosd.Install.WantedBy = [ "hyprland-session.target" "sway-session.target" ];
+
+    systemd.user.services.swayosd.Install.WantedBy = ["hyprland-session.target" "sway-session.target"];
 
     xdg.portal = {
       enable = true;
