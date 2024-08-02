@@ -14,7 +14,7 @@ in {
   wrapperFeatures.gtk = true;
 
   config = {
-    bars = [{command = lib.getExe pkgs.waybar;}];
+    bars = [];
     modifier = modifier;
 
     colors = {

@@ -7,6 +7,7 @@
   config = lib.mkIf config.ar.home.apps.waybar.enable {
     programs.waybar = {
       enable = true;
+
       settings = {
         mainBar = {
           height = 32;
@@ -224,6 +225,16 @@
             modules = ["custom/dnd" "idle_inhibitor" "custom/logout"];
           };
         };
+      };
+
+      systemd.enable = true;
+    };
+
+    systemd.user.services.waybar = {
+      Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
+      Service = {
+        Restart = lib.mkForce "on-failure";
+        RestartSec = 5;
       };
     };
 
