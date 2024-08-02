@@ -28,6 +28,7 @@ in {
     };
 
     packages = [
+      pkgs.bitwarden-desktop
       pkgs.browsh
       pkgs.curl
       pkgs.fractal
