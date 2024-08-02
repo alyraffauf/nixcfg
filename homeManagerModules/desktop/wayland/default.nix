@@ -5,14 +5,18 @@
   ...
 }: {
   config = lib.mkIf (config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable) {
-    ar.home.apps = {
-      kitty.enable = lib.mkDefault true;
-      mako.enable = lib.mkDefault true;
-      rofi.enable = lib.mkDefault true;
-      swayidle.enable = lib.mkDefault true;
-      swaylock.enable = lib.mkDefault true;
-      swayosd.enable = lib.mkDefault true;
-      waybar.enable = lib.mkDefault true;
+    ar.home = {
+      apps = {
+        kitty.enable = lib.mkDefault true;
+        mako.enable = lib.mkDefault true;
+        rofi.enable = lib.mkDefault true;
+        swaylock.enable = lib.mkDefault true;
+        waybar.enable = lib.mkDefault true;
+      };
+      services = {
+        swayidle.enable = lib.mkDefault true;
+        swayosd.enable = lib.mkDefault true;
+      };
     };
 
     dconf = {

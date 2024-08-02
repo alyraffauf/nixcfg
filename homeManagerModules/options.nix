@@ -62,9 +62,7 @@ in {
       };
 
       rofi.enable = lib.mkEnableOption "Rofi launcher.";
-      swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
-      swayosd.enable = lib.mkEnableOption "On Screen Display (OSD) for volume/brightness/etc.";
 
       thunar.enable = lib.mkOption {
         description = "Thunar file manager.";
@@ -217,6 +215,9 @@ in {
           type = lib.types.str;
         };
       };
+
+      swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
+      swayosd.enable = lib.mkEnableOption "On Screen Display (OSD) for volume/brightness/etc.";
     };
 
     theme = {

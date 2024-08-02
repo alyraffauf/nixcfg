@@ -15,9 +15,7 @@
     ./mako
     ./nemo
     ./rofi
-    ./swayidle
     ./swaylock
-    ./swayosd
     ./thunar
     ./tmux
     ./vsCodium
