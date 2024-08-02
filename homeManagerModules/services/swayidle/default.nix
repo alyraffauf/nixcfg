@@ -31,7 +31,8 @@ in {
         [
           {
             timeout = 120;
-            command = "${lib.getExe pkgs.brightnessctl} -s set 10' resume '${lib.getExe pkgs.brightnessctl} -r";
+            command = "${lib.getExe pkgs.brightnessctl} -s set 10";
+            resumeCommand = "${lib.getExe pkgs.brightnessctl} -r";
           }
           {
             timeout = 600;
@@ -50,12 +51,14 @@ in {
         ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.hyprland.enable)
         {
           timeout = 630;
-          command = "${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'";
+          command = "${hyprctl} dispatch dpms off";
+          resumeCommand = "${hyprctl} dispatch dpms on";
         }
         ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.sway.enable)
         {
           timeout = 630;
-          command = "${swaymsg} \"output * dpms off\"' resume '${swaymsg} \"output * dpms on\"";
+          command = "${swaymsg} \"output * dpms off\"";
+          resumeCommand = "${swaymsg} \"output * dpms on\"";
         };
     };
 
