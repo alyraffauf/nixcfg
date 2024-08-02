@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  keepassxc = "${lib.getExe' config.ar.home.apps.keepassxc.package "keepassxc"} --pw-stdin ${config.home.homeDirectory}/sync/Passwords.kdbx < ${config.age.secrets.keepassxc.path}";
-in {
+}: {
   programs.waybar.settings.mainBar."bluetooth" = {
     "on-click" = lib.mkForce "${lib.getExe pkgs.rofi-bluetooth} -i";
   };
@@ -39,8 +37,6 @@ in {
         };
       };
 
-      startup = [{command = ''sleep 1 && ${keepassxc}'';}];
-
       window.commands = [
         {
           command = "resize set 80ppt 80ppt; move position center; sticky toggle; ";
@@ -55,8 +51,6 @@ in {
         "SUPER,N,togglespecialworkspace,notes"
         "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
       ];
-
-      exec-once = ["sleep 1 && ${keepassxc}"];
 
       input.kb_options = "ctrl:nocaps";
 
