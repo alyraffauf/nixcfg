@@ -11,6 +11,7 @@
       rofi.enable = lib.mkDefault true;
       swayidle.enable = lib.mkDefault true;
       swaylock.enable = lib.mkDefault true;
+      swayosd.enable = lib.mkDefault true;
       waybar.enable = lib.mkDefault true;
     };
 

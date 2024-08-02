@@ -9,7 +9,7 @@
   swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
 
 in {
-  config = lib.mkIf config.ar.home.apps.swayidle.enable {
+  config = lib.mkIf cfg.apps.swayidle.enable {
     services.swayidle = {
       enable = true;
 
