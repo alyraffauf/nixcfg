@@ -34,10 +34,6 @@ in {
             command = "${lib.getExe pkgs.brightnessctl} -s set 10";
             resumeCommand = "${lib.getExe pkgs.brightnessctl} -r";
           }
-          {
-            timeout = 600;
-            command = "${pkgs.swaylock}/bin/swaylock";
-          }
         ]
         ++ lib.optional cfg.desktop.autoSuspend {
           timeout = 600;
