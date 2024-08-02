@@ -22,7 +22,6 @@
         extensions = with config.nur.repos.rycee.firefox-addons; [
           augmented-steam
           decentraleyes
-          keepassxc-browser
           omnivore
           raindropio
           sidebery
@@ -162,7 +161,6 @@
           clearurls
           consent-o-matic
           decentraleyes
-          keepassxc-browser
           ublock-origin
           zoom-redirector
         ];

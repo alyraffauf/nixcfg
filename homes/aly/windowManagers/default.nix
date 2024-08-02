@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  keepassxc = "${lib.getExe' config.ar.home.apps.keepassxc.package "keepassxc"} --pw-stdin ${config.home.homeDirectory}/sync/Passwords.kdbx < ${config.age.secrets.keepassxc.path}";
-in {
+}: {
   programs.waybar.settings.mainBar."bluetooth" = {
     "on-click" = lib.mkForce "${lib.getExe pkgs.rofi-bluetooth} -i";
   };
@@ -20,10 +18,10 @@ in {
         "workspace 5: work" = [{app_id = "google-chrome";} {app_id = "chromium-browser";} {app_id = "firework";}];
       };
 
-      floating.criteria = [{app_id = "org.keepassxc.KeePassXC";}];
+      floating.criteria = [{app_id = "Bitwarden";} {app_id = "org.keepassxc.KeePassXC";}];
 
       keybindings = {
-        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${keepassxc}";
+        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe pkgs.rofi-rbw-wayland}";
         "${config.wayland.windowManager.sway.config.modifier}+N" = "exec ${lib.getExe' pkgs.obsidian "obsidian"}";
       };
 
@@ -39,11 +37,13 @@ in {
         };
       };
 
-      startup = [{command = ''sleep 1 && ${keepassxc}'';}];
-
       window.commands = [
         {
-          command = "resize set 80ppt 80ppt; move position center; sticky toggle; ";
+          command = "resize set 80ppt 80ppt; move position center;";
+          criteria = {app_id = "Bitwarden";};
+        }
+        {
+          command = "resize set 80ppt 80ppt; move position center; sticky toggle;";
           criteria = {app_id = "org.keepassxc.KeePassXC";};
         }
       ];
@@ -53,16 +53,17 @@ in {
       bind = [
         "SUPER SHIFT,N,movetoworkspace,special:notes"
         "SUPER,N,togglespecialworkspace,notes"
-        "SUPER,P,exec,${keepassxc}"
+        "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
       ];
-
-      exec-once = ["sleep 1 && ${keepassxc}"];
 
       input.kb_options = "ctrl:nocaps";
 
       windowrulev2 = [
+        "center(1),class:(Bitwarden)"
         "center(1),class:(org.keepassxc.KeePassXC)"
+        "float,class:(Bitwarden)"
         "float,class:(org.keepassxc.KeePassXC)"
+        "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
         "workspace 1,class:(brave-browser)"
         "workspace 1,class:(firefox)"

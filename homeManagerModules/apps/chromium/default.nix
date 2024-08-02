@@ -12,7 +12,6 @@
         {id = "enamippconapkdmgfgjchkhakpfinmaj";} # dearrow
         {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist
         {id = "mnjggcdmjocbbbhaepdhchncahnbgone";} # sponsorblock
-        {id = "oboonakemofpalcgghocfoadofidjkkk";} # keepassxc
         {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
       ];
     };

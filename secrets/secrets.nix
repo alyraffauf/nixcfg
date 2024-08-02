@@ -19,7 +19,6 @@ let
 in {
   "aly/backblaze/key.age".publicKeys = keys;
   "aly/backblaze/keyId.age".publicKeys = keys;
-  "aly/keepassxc.age".publicKeys = keys;
   "aly/mail/achacega_gmail.age".publicKeys = keys;
   "aly/mail/alyraffauf_fastmail.age".publicKeys = keys;
   "aly/syncthing/fallarbor/cert.age".publicKeys = keys;

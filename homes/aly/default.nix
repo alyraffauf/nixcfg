@@ -28,6 +28,7 @@ in {
     };
 
     packages = [
+      pkgs.bitwarden-desktop
       pkgs.browsh
       pkgs.curl
       pkgs.fractal
@@ -62,26 +63,14 @@ in {
     gitui.enable = true;
     home-manager.enable = true;
 
-    password-store = {
+    rbw = {
       enable = true;
+      package = unstable.rbw;
 
-      package = pkgs.pass.withExtensions (exts:
-        with exts; [
-          pass-checkup
-          pass-file
-          pass-genphrase
-          pass-otp
-          pass-update
-        ]);
-    };
-
-    rofi.pass = {
-      enable = true;
-      package = pkgs.rofi-pass-wayland;
-
-      extraConfig = ''
-        USERNAME_field='login'
-      '';
+      settings = {
+        email = "alyraffauf@fastmail.com";
+        pinentry = pkgs.pinentry-gnome3;
+      };
     };
   };
 
