@@ -60,11 +60,15 @@ self: {lib, ...}: {
       };
     };
 
-    logind.extraConfig = ''
-      # Don't shutdown when power button is short-pressed
-      HandlePowerKey=suspend
-      HandlePowerKeyLongPress=poweroff
-    '';
+    logind = {
+      powerKey = "suspend";
+      powerKeyLongPress = "poweroff";
+      extraConfig = ''
+        # Don't shutdown when power button is short-pressed
+        HandlePowerKey=suspend
+        HandlePowerKeyLongPress=poweroff
+      '';
+    };
 
     openssh = {
       enable = true;
