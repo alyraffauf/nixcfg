@@ -112,18 +112,6 @@ in {
         type = lib.types.bool;
       };
 
-      randomWallpaper = lib.mkOption {
-        description = "Whether to enable random wallpaper script.";
-        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-
-      redShift = lib.mkOption {
-        description = "Whether to redshift display colors at night.";
-        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
-        type = lib.types.bool;
-      };
-
       hyprland = {
         enable = lib.mkOption {
           description = "Hyprland with full desktop session components.";

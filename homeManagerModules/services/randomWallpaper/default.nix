@@ -72,7 +72,7 @@
     end
   '';
 in {
-  config = lib.mkIf (config.ar.home.services.randomWallpaper.enable || config.ar.home.desktop.randomWallpaper) {
+  config = lib.mkIf config.ar.home.services.randomWallpaper.enable {
     systemd.user.services.randomWallpaper = {
       Unit = {
         After = "graphical-session.target";
