@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.waybar.enable {
+  config = lib.mkIf config.ar.home.services.waybar.enable {
     programs.waybar = {
       enable = true;
 

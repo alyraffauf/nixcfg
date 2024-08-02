@@ -6,5 +6,6 @@
     ./mpd
     ./pipewire-inhibit
     ./swayidle
+    ./waybar
   ];
 }

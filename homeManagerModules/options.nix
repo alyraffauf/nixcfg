@@ -71,7 +71,6 @@ in {
 
       tmux.enable = lib.mkEnableOption "Tmux shell session manager.";
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
-      waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
 
@@ -220,6 +219,7 @@ in {
 
       pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
       swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
+      waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };
 
     theme = {

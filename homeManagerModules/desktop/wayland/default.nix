@@ -10,13 +10,13 @@
         kitty.enable = lib.mkDefault true;
         rofi.enable = lib.mkDefault true;
         swaylock.enable = lib.mkDefault true;
-        waybar.enable = lib.mkDefault true;
       };
 
       services = {
         mako.enable = lib.mkDefault true;
         pipewire-inhibit.enable = lib.mkDefault true;
         swayidle.enable = lib.mkDefault true;
+        waybar.enable = lib.mkDefault true;
       };
     };
 

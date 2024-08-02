@@ -18,7 +18,6 @@
     ./thunar
     ./tmux
     ./vsCodium
-    ./waybar
     ./wlogout
     ./yazi
     ./zed
