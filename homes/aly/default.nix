@@ -62,19 +62,6 @@ in {
     gitui.enable = true;
     home-manager.enable = true;
 
-    password-store = {
-      enable = true;
-
-      package = pkgs.pass.withExtensions (exts:
-        with exts; [
-          pass-checkup
-          pass-file
-          pass-genphrase
-          pass-otp
-          pass-update
-        ]);
-    };
-
     rbw = {
       enable = true;
       package = unstable.rbw;
