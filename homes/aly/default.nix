@@ -69,6 +69,7 @@ in {
 
       settings = {
         email = "alyraffauf@fastmail.com";
+        lock_timeout = 14400;
         pinentry = pkgs.pinentry-gnome3;
       };
     };
