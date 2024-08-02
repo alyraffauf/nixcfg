@@ -218,6 +218,7 @@ in {
         };
       };
 
+      pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
       swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
     };
 

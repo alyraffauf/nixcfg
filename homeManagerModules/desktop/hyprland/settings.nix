@@ -127,7 +127,6 @@ in {
     [
       "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
       (lib.getExe pkgs.waybar)
-      (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
     ]
     ++ lib.lists.optional (cfg.desktop.randomWallpaper)
     helpers.wallpaperD

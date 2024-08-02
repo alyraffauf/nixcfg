@@ -15,6 +15,7 @@
 
       services = {
         mako.enable = lib.mkDefault true;
+        pipewire-inhibit.enable = lib.mkDefault true;
         swayidle.enable = lib.mkDefault true;
       };
     };

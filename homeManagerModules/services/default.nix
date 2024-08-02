@@ -4,6 +4,7 @@
     ./gammastep
     ./mako
     ./mpd
+    ./pipewire-inhibit
     ./swayidle
   ];
 }
