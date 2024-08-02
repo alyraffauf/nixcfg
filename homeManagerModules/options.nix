@@ -217,7 +217,6 @@ in {
       };
 
       swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
-      swayosd.enable = lib.mkEnableOption "On Screen Display (OSD) for volume/brightness/etc.";
     };
 
     theme = {

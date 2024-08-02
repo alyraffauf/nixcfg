@@ -129,7 +129,6 @@ in {
       (lib.getExe pkgs.mako)
       (lib.getExe pkgs.waybar)
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
-      (lib.getExe' pkgs.playerctl "playerctld")
     ]
     ++ lib.lists.optional (cfg.desktop.redShift)
     "${lib.getExe pkgs.gammastep} -l 33.74:-84.38"

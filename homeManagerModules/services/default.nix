@@ -3,6 +3,5 @@
     ./easyeffects
     ./mpd
     ./swayidle
-    ./swayosd
   ];
 }

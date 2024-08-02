@@ -7,9 +7,8 @@
   cfg = config.ar.home;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
-
 in {
-  config = lib.mkIf cfg.apps.swayidle.enable {
+  config = lib.mkIf cfg.services.swayidle.enable {
     services.swayidle = {
       enable = true;
 

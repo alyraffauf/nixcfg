@@ -13,9 +13,9 @@
         swaylock.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
       };
+
       services = {
         swayidle.enable = lib.mkDefault true;
-        swayosd.enable = lib.mkDefault true;
       };
     };
 
@@ -33,6 +33,11 @@
       networkmanagerapplet
       swayosd
     ];
+
+    services = {
+      playerctld.enable = lib.mkDefault true;
+      swayosd.enable = lib.mkDefault true;
+    };
 
     xdg.portal = {
       enable = true;
