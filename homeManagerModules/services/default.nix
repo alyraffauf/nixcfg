@@ -5,6 +5,7 @@
     ./mako
     ./mpd
     ./pipewire-inhibit
+    ./randomWallpaper
     ./swayidle
     ./waybar
   ];

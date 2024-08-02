@@ -160,7 +160,6 @@ in {
         {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
         {command = lib.getExe pkgs.autotiling;}
       ]
-      ++ lib.optional cfg.desktop.randomWallpaper {command = "${helpers.wallpaperD}";}
       ++ lib.optional (!cfg.desktop.randomWallpaper) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
 
     floating.criteria = [
