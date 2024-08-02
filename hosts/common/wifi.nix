@@ -31,7 +31,6 @@ let
   );
 in {
   "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
-  "FCS-WiFi2" = mkEAPWiFi "FCS-WiFi2" "$FCSIdentity" "$FCSPassword" "mschapv2";
   "javapatron" = mkOpenWiFi "javapatron";
   "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
   "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
