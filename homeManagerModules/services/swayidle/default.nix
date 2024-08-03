@@ -19,11 +19,11 @@ in {
         }
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${lib.getExe pkgs.swaylock}";
         }
         {
           event = "lock";
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${lib.getExe pkgs.swaylock}";
         }
       ];
 
@@ -42,7 +42,7 @@ in {
         ++ lib.optional (!cfg.desktop.autoSuspend)
         {
           timeout = 600;
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${lib.getExe pkgs.swaylock}";
         }
         ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.hyprland.enable)
         {
