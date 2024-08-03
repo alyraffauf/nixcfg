@@ -93,7 +93,7 @@
               perc=$(cat $bat/capacity)
 
               if [[ $perc -le $CRIT ]] && [[ $stat == "Discharging" ]]; then
-                $NOTIFY --urgency=critical --icon=dialog-warning "Battery Critical" "Current charge: $perc%".
+                $NOTIFY --urgency=critical --icon=dialog-error "Battery Critical" "Current charge: $perc%".
               fi
             '';
           in {
