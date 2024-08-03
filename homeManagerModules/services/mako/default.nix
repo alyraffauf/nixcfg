@@ -6,21 +6,27 @@
 }: {
   config = lib.mkIf config.ar.home.services.mako.enable {
     services.mako = {
-      enable = true;
+      actions = true;
       anchor = "top-center";
       backgroundColor = "${config.ar.home.theme.colors.background}CC";
       borderColor = "${config.ar.home.theme.colors.primary}EE";
-      borderSize = 2;
       borderRadius = 10;
+      borderSize = 2;
       defaultTimeout = 10000;
+      enable = true;
       font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
       height = 300;
+      iconPath = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
+      icons = true;
       layer = "top";
+      margin = "20,0";
       padding = "15";
       textColor = "${config.ar.home.theme.colors.text}";
       width = 400;
-      margin = "20,0";
+
       extraConfig = ''
+        on-notify=exec ${lib.getExe pkgs.mpv} ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga
+
         [mode=do-not-disturb]
         invisible=1
       '';
