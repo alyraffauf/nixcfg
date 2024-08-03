@@ -28,7 +28,7 @@
       loop do
         active_monitors = get_outputs
         break if active_monitors.empty?
-        
+
         added_monitors = active_monitors - known_monitors.keys
         removed_monitors = known_monitors.keys - active_monitors
 
