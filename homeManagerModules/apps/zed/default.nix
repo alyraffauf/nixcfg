@@ -84,7 +84,7 @@
             metrics = false;
           };
 
-          terminal.font_size = 12;
+          terminal.font_size = 14;
 
           theme = {
             dark = "Adwaita Pastel Dark";
@@ -93,7 +93,7 @@
           };
 
           ui_font_family = "UbuntuSans Nerd Font";
-          ui_font_size = 16;
+          ui_font_size = 14;
           use_autoclose = false;
           vim_mode = false;
         };

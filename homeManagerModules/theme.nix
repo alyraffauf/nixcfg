@@ -30,7 +30,7 @@ in {
       enable = true;
       defaultFonts = {
         monospace = ["UbuntuSansMono Nerd Font"];
-        serif = ["NotoSerif Nerd Font"];
+        serif = ["NotoSerif Nerd Font" "Liberation Serif"];
         sansSerif = [config.gtk.font.name];
       };
     };
