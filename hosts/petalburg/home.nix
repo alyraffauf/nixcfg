@@ -10,7 +10,6 @@
         hyprland.settings = {
           bind = [
             ",xf86launch2,exec,${lib.getExe pkgs.playerctl} play-pause"
-            ",xf86launch4,exec,${lib.getExe self.inputs.pp-adjuster.packages.${pkgs.system}.default}"
           ];
 
           exec-once = [''${
@@ -36,7 +35,6 @@
 
           keybindings = {
             "XF86Launch2" = "exec ${lib.getExe pkgs.playerctl} play-pause";
-            "XF86Launch4" = "exec ${lib.getExe self.inputs.pp-adjuster.packages.${pkgs.system}.default}";
           };
 
           output = {"Samsung Display Corp. 0x4152 Unknown".scale = "2.0";};

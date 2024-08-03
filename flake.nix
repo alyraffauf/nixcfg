@@ -32,11 +32,6 @@
 
     nur.url = "github:nix-community/NUR";
 
-    pp-adjuster = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:alyraffauf/pp-adjuster";
-    };
-
     raffauflabs = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/raffauflabs";

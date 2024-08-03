@@ -195,26 +195,6 @@
         "type": "github"
       }
     },
-    "pp-adjuster": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1720620069,
-        "narHash": "sha256-fWHo+6xjXaTmkX9Gn/vIXSEWZAQqi46adrKyvT3CLps=",
-        "owner": "alyraffauf",
-        "repo": "pp-adjuster",
-        "rev": "bae61cf8f5964acb943997d9fb24b1217be534b2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alyraffauf",
-        "repo": "pp-adjuster",
-        "type": "github"
-      }
-    },
     "raffauflabs": {
       "inputs": {
         "nixpkgs": [
@@ -245,7 +225,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "pp-adjuster": "pp-adjuster",
         "raffauflabs": "raffauflabs"
       }
     },
