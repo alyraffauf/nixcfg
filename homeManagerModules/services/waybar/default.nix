@@ -83,10 +83,24 @@
             "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
           };
 
-          "battery" = {
+          "battery" = let
+            checkBattery = pkgs.writeShellScript "check-battery" ''
+              bat=/sys/class/power_supply/BAT0
+              CRIT=''${1:-10}
+              NOTIFY=${lib.getExe' pkgs.libnotify "notify-send"}
+
+              stat=$(cat $bat/status)
+              perc=$(cat $bat/capacity)
+
+              if [[ $perc -le $CRIT ]] && [[ $stat == "Discharging" ]]; then
+                $NOTIFY --urgency=critical --icon=dialog-warning "Battery Critical" "Current charge: $perc%".
+              fi
+            '';
+          in {
             "format" = "{icon}";
             "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
 
+            "on-update" = "${checkBattery}";
             "tooltip-format" = ''
               {capacity}%: {timeTo}.
               Draw: {power} watts.'';
