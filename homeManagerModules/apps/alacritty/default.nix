@@ -20,7 +20,7 @@
 
         font = {
           normal = {
-            family = "NotoSansM Nerd Font";
+            family = "UbuntuSans Nerd Font";
             style = "Regular";
           };
 

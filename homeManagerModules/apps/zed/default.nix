@@ -45,7 +45,7 @@
 
           auto_update = false;
           autosave.after_delay.milliseconds = 1000;
-          buffer_font_family = "NotoSansM Nerd Font";
+          buffer_font_family = "UbuntuSansMono Nerd Font";
           buffer_font_size = 14;
           current_line_highlight = "line";
 
@@ -92,7 +92,7 @@
             mode = "system";
           };
 
-          ui_font_family = "NotoSans Nerd Font";
+          ui_font_family = "UbuntuSans Nerd Font";
           ui_font_size = 16;
           use_autoclose = false;
           vim_mode = false;

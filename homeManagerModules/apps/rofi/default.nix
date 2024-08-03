@@ -15,7 +15,7 @@ in {
 
     programs.rofi = {
       enable = true;
-      font = "NotoSansM Nerd Font ${toString config.gtk.font.size}";
+      font = "UbuntuSans Nerd Font ${toString config.gtk.font.size}";
       location = "center";
       package = pkgs.rofi-wayland;
 

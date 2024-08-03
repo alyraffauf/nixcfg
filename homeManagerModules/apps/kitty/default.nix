@@ -9,7 +9,7 @@
       enable = true;
 
       font = {
-        name = "NotoSansM Nerd Font";
+        name = "UbuntuSansMono Nerd Font";
         size = config.gtk.font.size;
       };
 
