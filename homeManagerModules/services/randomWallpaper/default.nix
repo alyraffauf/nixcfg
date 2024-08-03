@@ -62,7 +62,7 @@
           end
         end
 
-        sleep 5 # Check for monitor changes and update intervals every 5 seconds
+        sleep 3
       end
     end
   '';
