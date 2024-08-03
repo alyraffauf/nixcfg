@@ -3,7 +3,11 @@ self: {
   lib,
   pkgs,
   ...
-}: {
+}: let
+  unstable = import self.inputs.nixpkgs-unstable {
+    system = pkgs.system;
+  };
+in {
   imports = [self.homeManagerModules.default];
 
   home = {
@@ -21,11 +25,36 @@ self: {
     ];
   };
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
 
-  wayland.windowManager.sway.config.input."type:keyboard" = lib.mkForce {
-    xkb_layout = "us";
-    xkb_variant = "altgr-intl";
+    rbw = {
+      enable = true;
+      package = unstable.rbw;
+
+      settings = {
+        email = "dustinmraffauf@gmail.com";
+        lock_timeout = 14400;
+        pinentry = pkgs.pinentry-gnome3;
+      };
+    };
+  };
+
+  wayland.windowManager = {
+    hyprland.settings.bind = [
+      "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
+    ];
+
+    sway.config = {
+      input."type:keyboard" = lib.mkForce {
+        xkb_layout = "us";
+        xkb_variant = "altgr-intl";
+      };
+
+      keybindings = {
+        "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe pkgs.rofi-rbw-wayland}";
+      };
+    };
   };
 
   xdg.mimeApps = {
