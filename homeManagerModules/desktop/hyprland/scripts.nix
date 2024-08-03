@@ -21,8 +21,6 @@ in {
       (monitor: ''${hyprctl} keyword monitor "${monitor}"'')
       cfg.desktop.hyprland.laptopMonitors
     }
-      sleep 1
-      ${pkill} -SIGUSR2 waybar
     fi
   '';
 
