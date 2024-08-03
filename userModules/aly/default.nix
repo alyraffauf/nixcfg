@@ -14,7 +14,6 @@
       extraGroups = config.ar.users.defaultGroups;
       hashedPassword = config.ar.users.aly.password;
       isNormalUser = true;
-      linger = true;
 
       openssh.authorizedKeys = {
         keys = [
