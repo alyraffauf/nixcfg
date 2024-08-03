@@ -14,18 +14,12 @@
 
     update_interval = 900 # 15 minutes in seconds
 
-    def process_running?(process_name)
-      system("pidof #{process_name} > /dev/null 2>&1")
-    end
-
     def get_outputs
-      if process_running?("sway")
-        outputs = IO.popen(["${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"}", '-t', 'get_outputs', '-p']).readlines
-        outputs.select { |line| line.include?('Output') }.map { |line| line.split[1] }
-      elsif process_running?("Hyprland")
-        outputs = IO.popen(["${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}", 'monitors']).read
-        outputs.each_line.map { |line| line.split[1] if line.include?('Monitor') }.compact
-      end
+      hyprctl = IO.popen(["${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}", 'monitors']).read
+      swaymsg = IO.popen(["${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"}", '-t', 'get_outputs', '-p']).readlines
+      hypr_outputs = hyprctl.each_line.map { |line| line.split[1] if line.include?('Monitor') }.compact
+      sway_outputs = swaymsg.select { |line| line.include?('Output') }.map { |line| line.split[1] }
+      return sway_outputs | hypr_outputs
     end
 
     sleep 1
