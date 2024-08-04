@@ -124,7 +124,7 @@ in {
         "${modifier}+Shift+${key}" = "move ${direction}";
         "${modifier}+Control+Shift+${key}" = "move workspace to output ${direction}";
       })
-      cfg.desktop.sway.windowManagerBinds;
+      cfg.desktop.windowManagerBinds;
 
     modes = {
       move =
@@ -144,7 +144,7 @@ in {
         )
         // lib.attrsets.concatMapAttrs
         (key: direction: {"${key}" = "move ${direction}";})
-        cfg.desktop.sway.windowManagerBinds;
+        cfg.desktop.windowManagerBinds;
 
       resize = {
         Escape = "mode default";

@@ -14,15 +14,15 @@ in {
       extraConfig = let
         moveMonitorBinds =
           lib.attrsets.mapAttrsToList (
-            key: direction: "bind=CONTROL,${key},movecurrentworkspacetomonitor,${direction}"
+            key: direction: "bind=CONTROL,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}"
           )
-          cfg.desktop.hyprland.windowManagerBinds;
+          cfg.desktop.windowManagerBinds;
 
         moveWindowBinds =
           lib.attrsets.mapAttrsToList (
-            key: direction: "bind=,${key},movewindow,${direction}"
+            key: direction: "bind=,${key},movewindow,${builtins.substring 0 1 direction}"
           )
-          cfg.desktop.hyprland.windowManagerBinds;
+          cfg.desktop.windowManagerBinds;
 
         moveWorkspaceBinds = builtins.map (x: "bind=,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9];
       in ''

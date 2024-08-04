@@ -131,21 +131,6 @@ in {
           type = lib.types.listOf lib.types.str;
         };
 
-        windowManagerBinds = lib.mkOption {
-          description = "Default binds for window management.";
-          default = {
-            down = "d";
-            left = "l";
-            right = "r";
-            up = "u";
-            h = "l";
-            j = "d";
-            k = "u";
-            l = "r";
-          };
-          type = lib.types.attrs;
-        };
-
         tabletMode = {
           enable = lib.mkEnableOption "Tablet mode for hyprland.";
 
@@ -163,21 +148,23 @@ in {
           default = osConfig.ar.desktop.sway.enable;
           type = lib.types.bool;
         };
+      };
 
-        windowManagerBinds = lib.mkOption {
-          description = "Default binds for window management.";
-          default = {
-            Down = "down";
-            Left = "left";
-            Right = "right";
-            Up = "up";
-            H = "left";
-            J = "down";
-            K = "up";
-            L = "right";
-          };
-          type = lib.types.attrs;
+      windowManagerBinds = lib.mkOption {
+        description = "Default binds for window management.";
+
+        default = {
+          Down = "down";
+          Left = "left";
+          Right = "right";
+          Up = "up";
+          H = "left";
+          J = "down";
+          K = "up";
+          L = "right";
         };
+
+        type = lib.types.attrs;
       };
     };
 
