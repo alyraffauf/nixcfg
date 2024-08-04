@@ -9,11 +9,11 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
+        (nerdfonts.override {fonts = ["UbuntuSans"];})
         adwaita-qt
         gnome.adwaita-icon-theme
         liberation_ttf
         vegur
-        (nerdfonts.override {fonts = ["UbuntuSans"];})
       ];
 
       pointerCursor = {
@@ -33,9 +33,9 @@ in {
       enable = true;
 
       defaultFonts = {
-        monospace = ["UbuntuSansMono Nerd Font"];
-        serif = ["Vegur"];
-        sansSerif = [config.gtk.font.name];
+        monospace = ["UbuntuSansMono Nerd Font" "Liberation Mono"];
+        serif = ["Vegur" "Liberation Serif"];
+        sansSerif = [config.gtk.font.name "LIberation Sans"];
       };
     };
 
