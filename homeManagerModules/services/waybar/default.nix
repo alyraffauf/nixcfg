@@ -256,7 +256,7 @@
       * {
         border: none;
         border-radius: 0px;
-        font-family: "UbuntuSans Nerd Font";
+        font-family: "UbuntuSansMono Nerd Font";
         font-size: 14px;
         font-weight: 600;
       }
