@@ -15,7 +15,7 @@ self: {
       fractal
       libreoffice-fresh
       plexamp
-      teams
+      teams-for-linux
       webcord
       xfce.xfce4-taskmanager
       zoom-us

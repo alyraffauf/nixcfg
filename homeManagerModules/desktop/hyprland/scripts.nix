@@ -9,10 +9,10 @@
   virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
 in {
   clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
-    NUM_MONITORS=$(${hyprctl} monitors all | grep Monitor | wc --lines)
     EDP_STATUS=$(${hyprctl} monitors all | grep -A 15 "Monitor eDP-1" | grep "disabled:")
+
     if [ "$1" == "on" ]; then
-      if [ $NUM_MONITORS -gt 1 ]; then
+      if [[ "$(${hyprctl} monitors all)" =~ \s(DP|HDMI)-[0-9]+ ]]; then
         ${hyprctl} keyword monitor "eDP-1, disable"
       fi
     elif [ "$1" == "off" ]; then
