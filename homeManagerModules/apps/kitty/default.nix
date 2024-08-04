@@ -9,8 +9,8 @@
       enable = true;
 
       font = {
-        name = "NotoSansM Nerd Font";
-        size = config.gtk.font.size;
+        name = "UbuntuSansMono Nerd Font";
+        size = config.gtk.font.size + 1;
       };
 
       settings = {

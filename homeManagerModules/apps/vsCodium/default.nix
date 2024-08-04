@@ -13,7 +13,7 @@
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'NotoSansM Nerd Font', 'monospace', monospace";
+        "editor.fontFamily" = "'UbuntuSansMono Nerd Font', 'monospace', monospace";
         "editor.fontSize" = lib.mkDefault 14;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;

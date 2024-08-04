@@ -13,7 +13,7 @@
         };
 
         main = {
-          font = "NotoSansM Nerd Font:size=${toString config.gtk.font.size}";
+          font = "UbuntuSansMono Nerd Font:size=${toString config.gtk.font.size}";
           icon-theme = "${config.gtk.iconTheme.name}";
           layer = "overlay";
           lines = 3;

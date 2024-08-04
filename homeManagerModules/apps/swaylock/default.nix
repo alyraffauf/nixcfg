@@ -15,7 +15,7 @@
       caps-lock-key-hl-color=e78284
       color=303446
       daemonize
-      font="NotoSansMNerdFont-Regular"
+      font="UbuntuSansMonoNerdFont-Regular"
       image=${config.ar.home.theme.wallpaper}
       indicator-caps-lock
       indicator-idle-visible
