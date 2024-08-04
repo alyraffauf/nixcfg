@@ -63,6 +63,11 @@ in {
     gitui.enable = true;
     home-manager.enable = true;
 
+    oh-my-posh = {
+      enable = true;
+      useTheme = "zash";
+    };
+
     rbw = {
       enable = true;
       package = pkgs.rbw;
@@ -93,6 +98,7 @@ in {
       keepassxc.enable = true;
       kitty.enable = true;
       tmux.enable = true;
+      vsCodium.enable = true;
       yazi.enable = true;
 
       zed = {
@@ -101,10 +107,7 @@ in {
       };
     };
 
-    defaultApps = {
-      enable = true;
-      editor = config.ar.home.apps.zed.package;
-    };
+    defaultApps.enable = true;
 
     services = {
       gammastep.enable = true;
