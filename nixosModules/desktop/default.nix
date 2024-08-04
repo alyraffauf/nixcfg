@@ -22,7 +22,9 @@
       };
 
       fonts.packages = with pkgs; [
+        (nerdfonts.override {fonts = ["UbuntuSans"];})
         liberation_ttf
+        vegur
       ];
 
       hardware.logitech.wireless = {

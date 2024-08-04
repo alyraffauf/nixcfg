@@ -13,6 +13,7 @@ in {
         gnome.adwaita-icon-theme
         liberation_ttf
         vegur
+        (nerdfonts.override {fonts = ["UbuntuSans"];})
       ];
 
       pointerCursor = {
@@ -30,6 +31,7 @@ in {
 
     fonts.fontconfig = {
       enable = true;
+
       defaultFonts = {
         monospace = ["UbuntuSansMono Nerd Font"];
         serif = ["Vegur"];
