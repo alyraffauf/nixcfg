@@ -102,7 +102,10 @@ in {
       };
     };
 
-    defaultApps.enable = true;
+    defaultApps = {
+      enable = true;
+      editor = config.ar.home.apps.zed.package;
+    };
 
     services = {
       gammastep.enable = true;
