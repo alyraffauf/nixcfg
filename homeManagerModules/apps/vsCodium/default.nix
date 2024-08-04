@@ -11,6 +11,25 @@
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
 
+      keybindings = [
+        {
+          "key" = "alt+e";
+          "command" = "workbench.action.quickOpen";
+        }
+        {
+          "key" = "ctrl+p";
+          "command" = "-workbench.action.quickOpen";
+        }
+        {
+          "key" = "ctrl+p";
+          "command" = "workbench.action.showCommands";
+        }
+        {
+          "key" = "ctrl+shift+p";
+          "command" = "-workbench.action.showCommands";
+        }
+      ];
+
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.fontFamily" = "'UbuntuSansMono Nerd Font', 'monospace', monospace";
@@ -19,6 +38,8 @@
         "editor.formatOnSave" = true;
         "editor.formatOnType" = true;
         "editor.rulers" = [80];
+        "editor.wordWrap" = "wordWrapColumn";
+        "editor.wordWrapColumn" = 80;
         "explorer.confirmDelete" = false;
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
@@ -27,15 +48,23 @@
         "nix" = {
           "enableLanguageServer" = true;
           "formatterPath" = lib.getExe pkgs.alejandra;
-          "serverPath" = lib.getExe pkgs.nil;
+          "serverPath" = lib.getExe pkgs.nixd;
 
-          "serverSettings"."nil" = {
-            "diagnostics" = {
-              "ignored" = ["unused_binding" "unused_with"];
+          "serverSettings" = {
+            "nil" = {
+              "diagnostics" = {
+                "ignored" = ["unused_binding" "unused_with"];
+              };
+
+              "formatting" = {
+                "command" = ["${lib.getExe pkgs.alejandra}"];
+              };
             };
 
-            "formatting" = {
-              "command" = ["${lib.getExe pkgs.alejandra}"];
+            "nixd" = {
+              "formatting" = {
+                "command" = ["${lib.getExe pkgs.alejandra}"];
+              };
             };
           };
         };
