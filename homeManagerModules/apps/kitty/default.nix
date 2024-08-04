@@ -10,7 +10,7 @@
 
       font = {
         name = "UbuntuSansMono Nerd Font";
-        size = config.gtk.font.size;
+        size = config.gtk.font.size + 1;
       };
 
       settings = {
