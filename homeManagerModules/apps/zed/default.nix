@@ -68,6 +68,8 @@
           };
 
           preferred_line_length = 80;
+          show_wrap_guides = true;
+          soft_wrap = "preferred_line_length";
 
           tab_bar = {
             show = true;
