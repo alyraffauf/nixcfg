@@ -181,6 +181,7 @@ in {
     "center(1),class:(.blueman-manager-wrapped)"
     "center(1),class:(blueberry.py)"
     "center(1),class:(com.github.wwmm.easyeffects)"
+    "center(1),class:(gcr-prompter)"
     "center(1),class:(nm-connection-editor)"
     "center(1),class:(pavucontrol)"
     "float, class:^(firefox)$, title:^(Picture-in-Picture)$"
@@ -190,12 +191,14 @@ in {
     "float,class:(nm-connection-editor)"
     "float,class:(pavucontrol)"
     "move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$"
+    "pin,class:(gcr-prompter)"
     "pin,class:^(firefox)$, title:^(Picture-in-Picture)$"
     "size 40% 60%,class:(.blueman-manager-wrapped)"
     "size 40% 60%,class:(blueberry.py)"
     "size 40% 60%,class:(com.github.wwmm.easyeffects)"
     "size 40% 60%,class:(nm-connection-editor)"
     "size 40% 60%,class:(pavucontrol)"
+    "stayfocused,class:(gcr-prompter)"
     "suppressevent maximize, class:.*"
   ];
 

@@ -188,6 +188,10 @@ in {
           };
         }
         {
+          command = "focus; sticky toggle";
+          criteria = {app_id = "gcr-prompter";};
+        }
+        {
           command = "resize set 40ppt 60ppt; move position center";
           criteria = {title = "Open Folder";};
         }
