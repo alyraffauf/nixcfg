@@ -255,8 +255,8 @@
     xdg.configFile."waybar/style.css".text = ''
       * {
         border: none;
-        border-radius: 0;
-        font-family: "NotoSansM Nerd Font";
+        border-radius: 0px;
+        font-family: "UbuntuSansMono Nerd Font";
         font-size: 14px;
         font-weight: 600;
       }
@@ -268,7 +268,7 @@
 
       #workspaces button {
         padding: 0px 5px;
-        margin: 0 0px;
+        margin: 0px 0px;
         color: ${config.ar.home.theme.colors.text};
       }
 
@@ -289,8 +289,8 @@
       #custom-logout,
       #custom-menu,
       #tray {
-        padding: 0 7.5px;
-        margin: 0 5px;
+        padding: 0px 7.5px;
+        margin: 0px 5px;
       }
 
       #battery {
@@ -316,7 +316,7 @@
       #submap,
       #tray,
       #workspaces {
-          border-radius: 10;
+          border-radius: 10px;
           background: rgba (36, 36, 36, 0.8);
           margin: 5px 10px 0px 10px;
           padding: 0px 10px 0px 10px;
