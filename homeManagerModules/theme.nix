@@ -51,7 +51,7 @@ in {
       };
 
       iconTheme = {
-        package = pkgs.papirus-icon-theme;
+        package = pkgs.papirus-icon-theme.override {color = "adwaita";};
         name =
           if cfg.darkMode
           then "Papirus-Dark"
