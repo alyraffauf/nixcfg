@@ -11,6 +11,8 @@ in {
       packages = with pkgs; [
         adwaita-qt
         gnome.adwaita-icon-theme
+        liberation_ttf
+        vegur
       ];
 
       pointerCursor = {
@@ -30,7 +32,7 @@ in {
       enable = true;
       defaultFonts = {
         monospace = ["UbuntuSansMono Nerd Font"];
-        serif = ["NotoSerif Nerd Font" "Liberation Serif"];
+        serif = ["Vegur"];
         sansSerif = [config.gtk.font.name];
       };
     };
@@ -56,7 +58,7 @@ in {
 
       font = {
         name = "UbuntuSans Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["Noto" "UbuntuSans"];};
+        package = pkgs.nerdfonts.override {fonts = ["UbuntuSans"];};
         size = lib.mkDefault 11;
       };
 
@@ -127,7 +129,7 @@ in {
         cursor-theme = config.home.pointerCursor.name;
         cursor-size = config.home.pointerCursor.size;
 
-        document-font-name = "NotoSerif Nerd Font ${toString config.gtk.font.size}";
+        document-font-name = "Vegur ${toString config.gtk.font.size}";
 
         gtk-theme =
           if cfg.darkMode
