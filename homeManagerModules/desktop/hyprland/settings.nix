@@ -27,7 +27,7 @@ in {
 
   bind =
     [
-      "$mod CONTROL,L,exec,${lib.getExe pkgs.swaylock}"
+      "$mod CTRL,L,exec,${lib.getExe pkgs.swaylock}"
       "$mod SHIFT,R,exec,${lib.getExe config.programs.rofi.package} -show run"
       "$mod SHIFT,S,movetoworkspace,special:magic"
       "$mod SHIFT,V,togglefloating"
@@ -49,14 +49,14 @@ in {
       "$mod,mouse_up,workspace,-1"
       "$mod,period,exec,${lib.getExe pkgs.hyprnome}"
       ",PRINT,exec,${helpers.screenshot}"
-      "CONTROL,F12,exec,${helpers.screenshot}"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
+      "CTRL,F12,exec,${helpers.screenshot}"
       ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CONTROL SHIFT,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CTRL SHIFT,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds
     ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT,${key},movewindow,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds
     ++ lib.attrsets.mapAttrsToList (key: direction: "$mod,${key},movefocus,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds;
 
