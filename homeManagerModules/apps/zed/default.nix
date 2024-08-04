@@ -16,6 +16,7 @@
           {
             "context" = "Workspace";
             "bindings" = {
+              "alt-e" = "file_finder::Toggle";
               "ctrl-p" = "command_palette::Toggle";
               "ctrl-shift-p" = "file_finder::Toggle";
             };
