@@ -30,7 +30,7 @@ in {
 
     rbw = {
       enable = true;
-      package = unstable.rbw;
+      package = pkgs.rbw;
 
       settings = {
         email = "dustinmraffauf@gmail.com";
