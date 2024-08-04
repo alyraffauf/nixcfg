@@ -93,7 +93,7 @@
           };
 
           ui_font_family = "UbuntuSans Nerd Font";
-          ui_font_size = 14;
+          ui_font_size = 16;
           use_autoclose = false;
           vim_mode = false;
         };
