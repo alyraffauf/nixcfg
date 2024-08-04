@@ -2,18 +2,18 @@
   imports = [
     ./alacritty
     ./backblaze
-    ./bash
     ./chromium
     ./emacs
     ./fastfetch
     ./firefox
     ./fuzzel
     ./helix
-    ./kitty
     ./keepassxc
+    ./kitty
     ./librewolf
     ./nemo
     ./rofi
+    ./shell
     ./swaylock
     ./thunar
     ./tmux

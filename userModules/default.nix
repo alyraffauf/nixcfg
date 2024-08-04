@@ -5,6 +5,8 @@ self: {
     ./options.nix
   ];
 
+  programs.zsh.enable = true;
+
   users = {
     mutableUsers = false;
 

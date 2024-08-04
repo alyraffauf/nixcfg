@@ -3,11 +3,7 @@ self: {
   lib,
   pkgs,
   ...
-}: let
-  unstable = import self.inputs.nixpkgs-unstable {
-    system = pkgs.system;
-  };
-in {
+}: {
   imports = [self.homeManagerModules.default];
 
   home = {
@@ -64,10 +60,10 @@ in {
 
   ar.home = {
     apps = {
-      bash.enable = true;
       chromium.enable = true;
       firefox.enable = true;
       kitty.enable = true;
+      shell.enable = true;
       vsCodium.enable = true;
     };
 

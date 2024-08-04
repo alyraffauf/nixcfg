@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
@@ -29,6 +30,7 @@
         ];
       };
 
+      shell = pkgs.zsh;
       uid = 1000;
     };
   };

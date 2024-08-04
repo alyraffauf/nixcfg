@@ -27,8 +27,6 @@ in {
         };
       };
 
-      bash.enable = lib.mkEnableOption "Bash defaults.";
-
       chromium = {
         enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
         package = lib.mkPackageOption pkgs "brave" {};
@@ -61,6 +59,7 @@ in {
       };
 
       rofi.enable = lib.mkEnableOption "Rofi launcher.";
+      shell.enable = lib.mkEnableOption "Shell with defaults.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
 
       thunar.enable = lib.mkOption {

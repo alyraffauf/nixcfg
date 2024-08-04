@@ -54,7 +54,7 @@ in {
 
       extraConfig = {
         color.ui = true;
-        core.editor = "${lib.getExe unstable.zed-editor} --wait";
+        core.editor = "${lib.getExe config.programs.vscode.package} --wait";
         github.user = "alyraffauf";
         push.autoSetupRemote = true;
       };
@@ -62,11 +62,6 @@ in {
 
     gitui.enable = true;
     home-manager.enable = true;
-
-    oh-my-posh = {
-      enable = true;
-      useTheme = "zash";
-    };
 
     rbw = {
       enable = true;
@@ -90,13 +85,13 @@ in {
         keyFile = config.age.secrets.backblazeKey.path;
       };
 
-      bash.enable = true;
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
       helix.enable = true;
       keepassxc.enable = true;
       kitty.enable = true;
+      shell.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
       yazi.enable = true;
