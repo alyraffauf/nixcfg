@@ -24,7 +24,7 @@
             style = "Regular";
           };
 
-          size = config.gtk.font.size;
+          size = config.gtk.font.size + 1;
         };
 
         selection.save_to_clipboard = true;
