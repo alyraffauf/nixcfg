@@ -19,7 +19,7 @@ in {
         }
         {
           event = "before-sleep";
-          command = "${lib.getExe pkgs.swaylock}";
+          command = "${lib.getExe pkgs.swaylock} && ${lib.getExe' pkgs.coreutils "sleep"} 2";
         }
         {
           event = "lock";
