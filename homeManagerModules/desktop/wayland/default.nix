@@ -31,6 +31,7 @@
     home.packages = with pkgs; [
       blueberry
       gnome.file-roller
+      libnotify
       networkmanagerapplet
       swayosd
     ];
