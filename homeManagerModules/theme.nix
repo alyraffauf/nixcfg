@@ -5,15 +5,68 @@
   ...
 }: let
   cfg = config.ar.home.theme;
+
+  gtk = {
+    extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
+
+    extraCss = ''
+      @define-color accent_bg_color ${cfg.colors.primary};
+      @define-color accent_color @accent_bg_color;
+
+      ${
+        lib.strings.optionalString
+        cfg.gtk.hideTitleBar
+        ''
+          /* No (default) title bar on wayland */
+          headerbar.default-decoration {
+            /* You may need to tweak these values depending on your GTK theme */
+            margin-bottom: 50px;
+            margin-top: -100px;
+
+            background: transparent;
+            padding: 0;
+            border: 0;
+            min-height: 0;
+            font-size: 0;
+            box-shadow: none;
+          }
+
+          /* rm -rf window shadows */
+          window.csd,             /* gtk4? */
+          window.csd decoration { /* gtk3 */
+            box-shadow: none;
+          }
+        ''
+      }
+    '';
+  };
+
+  font = {
+    name = "UbuntuSans Nerd Font";
+    package = pkgs.nerdfonts.override {fonts = ["UbuntuSans"];};
+    size = 11;
+  };
+
+  monospaceFont = {
+    inherit (font) package size;
+    name = "UbuntuSansMono Nerd Font";
+  };
+
+  serifFont = {
+    inherit (font) size;
+    name = "Vegur";
+    package = pkgs.vegur;
+  };
 in {
   config = lib.mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        (nerdfonts.override {fonts = ["UbuntuSans"];})
-        adwaita-qt
-        gnome.adwaita-icon-theme
-        liberation_ttf
-        vegur
+      packages = [
+        font.package
+        monospaceFont.package
+        pkgs.adwaita-qt
+        pkgs.gnome.adwaita-icon-theme
+        pkgs.liberation_ttf
+        serifFont.package
       ];
 
       pointerCursor = {
@@ -33,9 +86,9 @@ in {
       enable = true;
 
       defaultFonts = {
-        monospace = ["UbuntuSansMono Nerd Font" "Liberation Mono"];
-        serif = ["Vegur" "Liberation Serif"];
-        sansSerif = [config.gtk.font.name "LIberation Sans"];
+        monospace = [monospaceFont.name];
+        sansSerif = [font.name];
+        serif = [serifFont.name];
       };
     };
 
@@ -43,76 +96,40 @@ in {
       enable = true;
 
       theme = {
-        package = pkgs.adw-gtk3;
         name =
           if cfg.darkMode
           then "adw-gtk3-dark"
           else "adw-gtk3";
+
+        package = pkgs.adw-gtk3;
       };
 
+      font = {inherit (font) name package size;};
+
       iconTheme = {
-        package = pkgs.papirus-icon-theme.override {color = "adwaita";};
         name =
           if cfg.darkMode
           then "Papirus-Dark"
           else "Papirus";
+
+        package = pkgs.papirus-icon-theme.override {color = "adwaita";};
       };
 
-      font = {
-        name = "UbuntuSans Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["UbuntuSans"];};
-        size = lib.mkDefault 11;
-      };
-
-      gtk3 = {
-        extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
-        extraCss = ''
-          @define-color accent_bg_color ${cfg.colors.primary};
-          @define-color accent_color @accent_bg_color;
-
-          ${
-            lib.strings.optionalString
-            cfg.gtk.hideTitleBar
-            ''
-              /* No (default) title bar on wayland */
-              headerbar.default-decoration {
-                /* You may need to tweak these values depending on your GTK theme */
-                margin-bottom: 50px;
-                margin-top: -100px;
-
-                background: transparent;
-                padding: 0;
-                border: 0;
-                min-height: 0;
-                font-size: 0;
-                box-shadow: none;
-              }
-
-              /* rm -rf window shadows */
-              window.csd,             /* gtk4? */
-              window.csd decoration { /* gtk3 */
-                box-shadow: none;
-              }
-            ''
-          }
-        '';
-      };
-
-      gtk4 = {
-        extraConfig = lib.attrsets.optionalAttrs (cfg.darkMode) {gtk-application-prefer-dark-theme = 1;};
-        extraCss = config.gtk.gtk3.extraCss;
-      };
+      gtk3 = {inherit (gtk) extraConfig extraCss;};
+      gtk4 = {inherit (gtk) extraConfig extraCss;};
     };
 
     qt = {
       enable = true;
       platformTheme.name = "qtct";
+
       style = {
-        package = pkgs.adwaita-qt6;
         name =
           if cfg.darkMode
           then "Adwaita-Dark"
           else "Adwaita";
+
+        package = pkgs.adwaita-qt6;
       };
     };
 
@@ -128,25 +145,11 @@ in {
           then "prefer-dark"
           else "prefer-light";
 
-        cursor-theme = config.home.pointerCursor.name;
-        cursor-size = config.home.pointerCursor.size;
-
-        document-font-name = "Vegur ${toString config.gtk.font.size}";
-
-        gtk-theme =
-          if cfg.darkMode
-          then "adw-gtk3-dark"
-          else "adw-gtk3";
-
-        icon-theme =
-          if cfg.darkMode
-          then "Papirus-Dark"
-          else "Papirus";
-
-        monospace-font-name = "UbuntuSansMono Nerd Font ${toString config.gtk.font.size}";
+        document-font-name = "${serifFont.name} ${toString serifFont.size}";
+        monospace-font-name = "${monospaceFont.name} ${toString monospaceFont.size}";
       };
 
-      "org/gnome/desktop/wm/preferences".titlebar-font = "${config.gtk.font.name} ${toString config.gtk.font.size}";
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${font.name} ${toString font.size}";
     };
   };
 }
