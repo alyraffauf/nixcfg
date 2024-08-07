@@ -89,8 +89,8 @@
               CRIT=''${1:-10}
               NOTIFY=${lib.getExe' pkgs.libnotify "notify-send"}
 
-              stat=$(${lib.getExe pkgs.coreutils "cat"} $bat/status)
-              perc=$(${lib.getExe pkgs.coreutils "cat"} $bat/capacity)
+              stat=$(${lib.getExe' pkgs.coreutils "cat"} $bat/status)
+              perc=$(${lib.getExe' pkgs.coreutils "cat"} $bat/capacity)
 
               if [[ $perc -le $CRIT ]] && [[ $stat == "Discharging" ]]; then
                 $NOTIFY --urgency=critical --icon=dialog-error "Battery Critical" "Current charge: $perc%".
@@ -178,10 +178,10 @@
             mako-dnd = pkgs.writeShellScript "mako-dnd" ''
               show() {
                   MAKO_MODE=$(${lib.getExe' pkgs.mako "makoctl"} mode)
-                  if ${lib.getExe pkgs.coreutils "echo"} "$MAKO_MODE" | ${lib.getExe pkgs.gnugrep "grep"} -q "do-not-disturb"; then
-                      ${lib.getExe pkgs.coreutils "printf"} '{"text": "󰂛", "class": "on", "tooltip": "Notifications snoozed."}\n'
+                  if ${lib.getExe' pkgs.coreutils "echo"} "$MAKO_MODE" | ${lib.getExe' pkgs.gnugrep "grep"} -q "do-not-disturb"; then
+                      ${lib.getExe' pkgs.coreutils "printf"} '{"text": "󰂛", "class": "on", "tooltip": "Notifications snoozed."}\n'
                   else
-                      ${lib.getExe pkgs.coreutils "printf"} '{"text": "󰂚", "class": "off","tooltip": "Notifications enabled."}\n'
+                      ${lib.getExe' pkgs.coreutils "printf"} '{"text": "󰂚", "class": "off","tooltip": "Notifications enabled."}\n'
                   fi
               }
 
