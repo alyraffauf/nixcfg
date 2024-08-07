@@ -38,7 +38,6 @@
         session = lib.getExe config.programs.sway.package;
       };
 
-      hyprland.enable = true;
       sway.enable = true;
     };
 
