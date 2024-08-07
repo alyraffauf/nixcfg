@@ -16,6 +16,7 @@ self: {
       libreoffice-fresh
       plexamp
       teams-for-linux
+      trayscale
       webcord
       xfce.xfce4-taskmanager
       zoom-us
@@ -38,9 +39,12 @@ self: {
   };
 
   wayland.windowManager = {
-    hyprland.settings.bind = [
-      "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
-    ];
+    hyprland.settings = {
+      bind = [
+        "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
+      ];
+      exec-once = ["${lib.getExe pkgs.trayscale}"];
+    };
 
     sway.config = {
       input."type:keyboard" = lib.mkForce {
@@ -51,6 +55,8 @@ self: {
       keybindings = {
         "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe pkgs.rofi-rbw-wayland}";
       };
+
+      startup = [{command = "${lib.getExe pkgs.trayscale}";}];
     };
   };
 
