@@ -63,7 +63,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    allowReboot = true;
+    allowReboot = false;
     dates = "02:00";
     flags = ["--accept-flake-config"];
     flake = config.environment.variables.FLAKE;
@@ -72,7 +72,7 @@
     randomizedDelaySec = "30min";
 
     rebootWindow = {
-      lower = "04:00";
+      lower = "02:00";
       upper = "06:00";
     };
   };
