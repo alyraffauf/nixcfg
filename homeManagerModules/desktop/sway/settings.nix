@@ -13,6 +13,11 @@ in {
   package = lib.mkDefault pkgs.swayfx;
   wrapperFeatures.gtk = true;
 
+  systemd = {
+    enable = true;
+    variables = ["--all"];
+  };
+
   config = {
     bars = [];
     modifier = modifier;

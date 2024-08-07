@@ -11,6 +11,11 @@ in {
       enable = true;
       settings = import ./settings.nix {inherit config lib pkgs;};
 
+      systemd = {
+        enable = true;
+        variables = ["--all"];
+      };
+
       extraConfig = let
         moveMonitorBinds =
           lib.attrsets.mapAttrsToList (
