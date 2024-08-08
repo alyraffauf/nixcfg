@@ -256,6 +256,9 @@ in {
 
       bindswitch --reload --locked lid:on output eDP-1 disable
       bindswitch --reload --locked lid:off output eDP-1 enable
+      
+      default_border pixel 2
+      default_floating_border pixel 2
     ''
     + lib.strings.optionalString (config.wayland.windowManager.sway.package
       == pkgs.swayfx) ''
