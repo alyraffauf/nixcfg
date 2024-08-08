@@ -6,7 +6,7 @@
   home.file = let
     source = builtins.fetchGit {
       url = "https://github.com/rafaelmardojai/firefox-gnome-theme.git";
-      rev = "cc70ec20e2775df7cd2bccdd20dcdecc3e0a733b";
+      rev = "3690ce89ab496df771dd3a470908da71e46271a6";
       ref = "master";
     };
   in {
