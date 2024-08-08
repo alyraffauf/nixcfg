@@ -109,7 +109,6 @@ in {
       "blur,rofi"
       "blur,swayosd"
       "blur,waybar"
-      "dimaround,rofi"
       "ignorezero,gtk-layer-shell"
       "ignorezero,notifications"
       "ignorezero,swayosd"
