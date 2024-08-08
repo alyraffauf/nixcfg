@@ -15,7 +15,7 @@ in {
 
     programs.rofi = {
       enable = true;
-      font = "UbuntuSansMono Nerd Font ${toString config.gtk.font.size}";
+      font = "${cfg.theme.monospaceFont.name} ${cfg.theme.monospaceFont.size}";
       location = "center";
       package = pkgs.rofi-wayland;
 
