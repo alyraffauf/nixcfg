@@ -259,7 +259,7 @@ in {
         border: none;
         border-radius: 0px;
         font-family: "${cfg.theme.monospaceFont.name}";
-        font-size: 14px;
+        font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
         font-weight: 600;
       }
 
