@@ -3,8 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.ar.home.apps.vsCodium.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.apps.vsCodium.enable {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -32,7 +34,7 @@
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'UbuntuSansMono Nerd Font', 'monospace', monospace";
+        "editor.fontFamily" = "'${cfg.theme.monospaceFont.name} ${cfg.theme.monospaceFont.size}', 'monospace', monospace";
         "editor.fontSize" = lib.mkDefault 14;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
@@ -75,14 +77,14 @@
 
         "shellformat.flag" = "-i 4";
 
-        "terminal.external.linuxExec" = lib.getExe config.ar.home.defaultApps.terminal;
+        "terminal.external.linuxExec" = lib.getExe cfg.defaultApps.terminal;
         "terminal.integrated.fontSize" = lib.mkDefault 14;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" = lib.mkDefault "native";
         "window.zoomPerWindow" = false;
         "workbench.colorTheme" =
-          if config.ar.home.theme.darkMode
+          if cfg.theme.darkMode
           then "Adwaita Dark"
           else "Adwaita Light";
         "workbench.iconTheme" = "vs-seti";
