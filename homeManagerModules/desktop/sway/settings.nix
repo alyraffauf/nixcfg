@@ -58,9 +58,9 @@ in {
     };
 
     fonts = {
-      names = ["${config.gtk.font.name}"];
+      names = [cfg.theme.font.sansFont.name];
       style = "Bold";
-      size = config.gtk.font.size + 0.0;
+      size = cfg.theme.font.sansFont.size + 0.0;
     };
 
     gaps = {
