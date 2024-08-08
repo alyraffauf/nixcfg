@@ -3,25 +3,27 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.ar.home.services.mako.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.services.mako.enable {
     services.mako = {
       actions = true;
       anchor = "top-center";
-      backgroundColor = "${config.ar.home.theme.colors.background}CC";
-      borderColor = "${config.ar.home.theme.colors.primary}EE";
+      backgroundColor = "${cfg.theme.colors.background}CC";
+      borderColor = "${cfg.theme.colors.primary}EE";
       borderRadius = 10;
       borderSize = 2;
       defaultTimeout = 10000;
       enable = true;
-      font = "${config.gtk.font.name} Regular ${toString config.gtk.font.size}";
+      font = "${cfg.theme.sansFont.name} Regular ${toString cfg.theme.sansFont.size}";
       height = 300;
       iconPath = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
       icons = true;
       layer = "top";
       margin = "20,0";
       padding = "15";
-      textColor = "${config.ar.home.theme.colors.text}";
+      textColor = "${cfg.theme.colors.text}";
       width = 400;
 
       extraConfig = ''
