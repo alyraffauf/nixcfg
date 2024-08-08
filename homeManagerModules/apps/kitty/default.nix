@@ -11,7 +11,7 @@ in {
       enable = true;
 
       font = {
-        inherit (cfg.theme.monospaceFont) name;
+        name = cfg.theme.monospaceFont.name;
         size = cfg.theme.monospaceFont.size + 1;
       };
 

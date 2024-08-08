@@ -15,7 +15,7 @@ in {
         };
 
         main = {
-          font = "${cfg.theme.monospaceFont.name}:size=${cfg.theme.monospaceFont.size}";
+          font = "${cfg.theme.monospaceFont.name}:size=${toString cfg.theme.monospaceFont.size}";
           icon-theme = "${config.gtk.iconTheme.name}";
           layer = "overlay";
           lines = 3;

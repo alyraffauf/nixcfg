@@ -15,7 +15,7 @@ in {
 
     programs.rofi = {
       enable = true;
-      font = "${cfg.theme.monospaceFont.name} ${cfg.theme.monospaceFont.size}";
+      font = "${cfg.theme.monospaceFont.name} ${toString cfg.theme.monospaceFont.size}";
       location = "center";
       package = pkgs.rofi-wayland;
 

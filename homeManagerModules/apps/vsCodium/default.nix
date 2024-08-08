@@ -34,7 +34,7 @@ in {
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'${cfg.theme.monospaceFont.name} ${cfg.theme.monospaceFont.size}', 'monospace', monospace";
+        "editor.fontFamily" = "'${cfg.theme.monospaceFont.name} ${toString cfg.theme.monospaceFont.size}', 'monospace', monospace";
         "editor.fontSize" = lib.mkDefault 14;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
