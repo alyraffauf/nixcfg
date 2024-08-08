@@ -268,7 +268,6 @@ in {
       serifFont = mkFontOption "serif" "Vegur" pkgs.vegur 11;
       monospaceFont = mkFontOption "monospace" "UbuntuSansMono Nerd Font" (pkgs.nerdfonts.override {fonts = ["UbuntuSans"];}) 11;
 
-
       gtk.hideTitleBar = lib.mkOption {
         description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
         default = false;
