@@ -49,7 +49,7 @@ in {
           auto_update = false;
           autosave.after_delay.milliseconds = 1000;
           buffer_font_family = cfg.theme.monospaceFont.name;
-          buffer_font_size = 14;
+          buffer_font_size = cfg.theme.monospaceFont.size + 3;
           current_line_highlight = "line";
 
           indent_guides = {
@@ -89,7 +89,7 @@ in {
             metrics = false;
           };
 
-          terminal.font_size = 14;
+          terminal.font_size = cfg.theme.monospaceFont.size + 3;
 
           theme = {
             dark = "Adwaita Pastel Dark";
@@ -98,7 +98,7 @@ in {
           };
 
           ui_font_family = cfg.theme.sansFont.name;
-          ui_font_size = 16;
+          ui_font_size = cfg.theme.sansFont.size + 5;
           use_autoclose = false;
           vim_mode = false;
         };
