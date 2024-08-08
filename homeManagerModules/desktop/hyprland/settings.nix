@@ -93,7 +93,7 @@ in {
   decoration = {
     blur = {
       enabled = true;
-      passes = 1;
+      passes = 2;
       size = 8;
     };
 
@@ -146,8 +146,8 @@ in {
   };
 
   general = {
-    "col.active_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}EE) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}EE) 45deg";
-    "col.inactive_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}AA)";
+    "col.active_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
+    "col.inactive_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
     allow_tearing = false;
     border_size = 2;
     gaps_in = 5;
