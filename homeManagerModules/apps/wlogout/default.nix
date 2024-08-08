@@ -3,8 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.ar.home.apps.wlogout.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.apps.wlogout.enable {
     programs.wlogout = {
       enable = true;
 
@@ -33,7 +35,7 @@
         * {
           background-image: none;
           box-shadow: none;
-          font-family: "${config.gtk.font.name}", sans-serif;
+          font-family: "${cfg.theme.sansFont.name}", sans-serif;
           transition: 20ms;
         }
 
@@ -42,21 +44,21 @@
         }
 
         button {
-          background-color: ${config.ar.home.theme.colors.background};
+          background-color: ${cfg.theme.colors.background};
           background-position: center;
           background-repeat: no-repeat;
           background-size: 25%;
-          border-color: ${config.ar.home.theme.colors.primary};
+          border-color: ${cfg.theme.colors.primary};
           border-radius: 10;
           border-style: solid;
           border-width: 2;
-          color: ${config.ar.home.theme.colors.text};
+          color: ${cfg.theme.colors.text};
           margin: 5px;
-          text-decoration-color: ${config.ar.home.theme.colors.text};
+          text-decoration-color: ${cfg.theme.colors.text};
         }
 
         button:active, button:hover {
-          background-color: ${config.ar.home.theme.colors.primary};
+          background-color: ${cfg.theme.colors.primary};
           outline-style: none;
         }
 
