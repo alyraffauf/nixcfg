@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.ar.home.apps.zed.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.apps.zed.enable {
     home.packages = [
-      config.ar.home.apps.zed.package
+      cfg.apps.zed.package
       pkgs.nixd
     ];
 
@@ -22,7 +24,7 @@
             };
           }
         ];
-        keymaps = defaults ++ config.ar.home.apps.zed.keymaps;
+        keymaps = defaults ++ cfg.apps.zed.keymaps;
       in
         lib.generators.toJSON {} keymaps;
 
@@ -46,7 +48,7 @@
 
           auto_update = false;
           autosave.after_delay.milliseconds = 1000;
-          buffer_font_family = "UbuntuSansMono Nerd Font";
+          buffer_font_family = cfg.theme.monospaceFont.name;
           buffer_font_size = 14;
           current_line_highlight = "line";
 
@@ -95,13 +97,13 @@
             mode = "system";
           };
 
-          ui_font_family = "UbuntuSans Nerd Font";
+          ui_font_family = cfg.theme.sansFont.name;
           ui_font_size = 16;
           use_autoclose = false;
           vim_mode = false;
         };
 
-        settings = defaults // config.ar.home.apps.zed.settings;
+        settings = defaults // cfg.apps.zed.settings;
       in
         lib.generators.toJSON {} settings;
     };
