@@ -3,14 +3,16 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.ar.home.apps.kitty.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.apps.kitty.enable {
     programs.kitty = {
       enable = true;
 
       font = {
-        name = "UbuntuSansMono Nerd Font";
-        size = config.gtk.font.size + 1;
+        inherit (cfg.theme.monospaceFont) name;
+        size = cfg.theme.monospaceFont.size + 1;
       };
 
       settings = {
