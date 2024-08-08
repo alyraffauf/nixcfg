@@ -26,7 +26,7 @@ in {
             style = "Regular";
           };
 
-          size = config.gtk.font.size + 1;
+          size = cfg.theme.font.monospaceFont.size + 1;
         };
 
         selection.save_to_clipboard = true;
