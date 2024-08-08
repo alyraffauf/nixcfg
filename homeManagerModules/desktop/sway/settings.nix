@@ -58,9 +58,9 @@ in {
     };
 
     fonts = {
-      names = [cfg.theme.font.sansFont.name];
+      names = [cfg.theme.sansFont.name];
       style = "Bold";
-      size = cfg.theme.font.sansFont.size + 0.0;
+      size = cfg.theme.sansFont.size + 0.0;
     };
 
     gaps = {
