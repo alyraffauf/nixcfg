@@ -87,12 +87,19 @@ in {
 
           "battery" = let
             checkBattery = pkgs.writeShellScript "check-battery" ''
-              bat=/sys/class/power_supply/BAT0
+              if [ -d /sys/class/power_supply/BAT0 ]; then
+                BAT=/sys/class/power_supply/BAT0
+              elif [ -d /sys/class/power_supply/BAT1 ]; then
+                BAT=/sys/class/power_supply/BAT1
+              else
+                echo "No battery found."
+                exit 1
+              fi
               CRIT=''${1:-10}
               NOTIFY=${lib.getExe' pkgs.libnotify "notify-send"}
 
-              stat=$(${lib.getExe' pkgs.coreutils "cat"} $bat/status)
-              perc=$(${lib.getExe' pkgs.coreutils "cat"} $bat/capacity)
+              stat=$(${lib.getExe' pkgs.coreutils "cat"} $BAT/status)
+              perc=$(${lib.getExe' pkgs.coreutils "cat"} $BAT/capacity)
 
               if [[ $perc -le $CRIT ]] && [[ $stat == "Discharging" ]]; then
                 $NOTIFY --urgency=critical --icon=dialog-error "Battery Critical" "Current charge: $perc%".
