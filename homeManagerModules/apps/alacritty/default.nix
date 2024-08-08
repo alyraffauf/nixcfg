@@ -2,8 +2,10 @@
   config,
   lib,
   ...
-}: {
-  config = lib.mkIf config.ar.home.apps.alacritty.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.apps.alacritty.enable {
     programs.alacritty = {
       enable = true;
       settings = {
@@ -11,8 +13,8 @@
           draw_bold_text_with_bright_colors = true;
 
           primary = {
-            background = "${config.ar.home.theme.colors.background}";
-            foreground = "${config.ar.home.theme.colors.text}";
+            background = "${cfg.theme.colors.background}";
+            foreground = "${cfg.theme.colors.text}";
           };
 
           transparent_background_colors = true;
@@ -20,11 +22,11 @@
 
         font = {
           normal = {
-            family = "UbuntuSans Nerd Font";
+            family = cfg.theme.font.monospaceFont.name;
             style = "Regular";
           };
 
-          size = config.gtk.font.size + 1;
+          size = cfg.theme.font.monospaceFont.size + 1;
         };
 
         selection.save_to_clipboard = true;

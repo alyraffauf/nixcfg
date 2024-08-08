@@ -197,7 +197,27 @@ in {
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };
 
-    theme = {
+    theme = let
+      mkFontOption = typ: nam: pkg: siz: {
+        name = lib.mkOption {
+          description = "Default ${typ} font name.";
+          default = nam;
+          type = lib.types.str;
+        };
+
+        package = lib.mkOption {
+          description = "Default ${typ} font package.";
+          default = pkg;
+          type = lib.types.package;
+        };
+
+        size = lib.mkOption {
+          description = "Default ${typ} font size.";
+          default = siz;
+          type = lib.types.int;
+        };
+      };
+    in {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
 
       darkMode = lib.mkOption {
@@ -243,6 +263,10 @@ in {
           type = lib.types.str;
         };
       };
+
+      sansFont = mkFontOption "sans serif" "UbuntuSans Nerd Font" (pkgs.nerdfonts.override {fonts = ["UbuntuSans"];}) 11;
+      serifFont = mkFontOption "serif" "Vegur" pkgs.vegur 11;
+      monospaceFont = mkFontOption "monospace" "UbuntuSansMono Nerd Font" (pkgs.nerdfonts.override {fonts = ["UbuntuSans"];}) 11;
 
       gtk.hideTitleBar = lib.mkOption {
         description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";

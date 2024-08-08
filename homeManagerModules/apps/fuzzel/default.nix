@@ -2,8 +2,10 @@
   config,
   lib,
   ...
-}: {
-  config = lib.mkIf config.ar.home.apps.fuzzel.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.apps.fuzzel.enable {
     programs.fuzzel = {
       enable = true;
       settings = {
@@ -13,21 +15,21 @@
         };
 
         main = {
-          font = "UbuntuSansMono Nerd Font:size=${toString config.gtk.font.size}";
+          font = "${cfg.theme.monospaceFont.name}:size=${toString cfg.theme.monospaceFont.size}";
           icon-theme = "${config.gtk.iconTheme.name}";
           layer = "overlay";
           lines = 3;
-          terminal = lib.getExe config.ar.home.defaultApps.terminal;
+          terminal = lib.getExe cfg.defaultApps.terminal;
           width = 36;
         };
 
         colors = {
-          background = "${config.ar.home.theme.colors.background}CC";
-          border = "${config.ar.home.theme.colors.primary}EE";
-          selection = "${config.ar.home.theme.colors.background}FF";
-          selection-match = "${config.ar.home.theme.colors.primary}FF";
-          selection-text = "${config.ar.home.theme.colors.secondary}FF";
-          text = "${config.ar.home.theme.colors.text}FF";
+          background = "${cfg.theme.colors.background}CC";
+          border = "${cfg.theme.colors.primary}EE";
+          selection = "${cfg.theme.colors.background}FF";
+          selection-match = "${cfg.theme.colors.primary}FF";
+          selection-text = "${cfg.theme.colors.secondary}FF";
+          text = "${cfg.theme.colors.text}FF";
         };
       };
     };

@@ -3,8 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.ar.home.services.waybar.enable {
+}: let
+  cfg = config.ar.home;
+in {
+  config = lib.mkIf cfg.services.waybar.enable {
     programs.waybar = {
       enable = true;
 
@@ -15,11 +17,11 @@
           output = ["*"];
           position = "top";
           modules-left =
-            lib.optionals (config.ar.home.desktop.hyprland.enable)
+            lib.optionals (cfg.desktop.hyprland.enable)
             ["hyprland/workspaces" "hyprland/submap"]
-            ++ lib.optionals (config.ar.home.desktop.sway.enable)
+            ++ lib.optionals (cfg.desktop.sway.enable)
             ["sway/workspaces" "sway/scratchpad" "sway/mode"]
-            ++ lib.optionals (config.ar.home.desktop.hyprland.tabletMode.enable)
+            ++ lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
             ["custom/menu" "custom/hyprland-close"];
 
           modules-center = ["clock"];
@@ -256,25 +258,25 @@
       * {
         border: none;
         border-radius: 0px;
-        font-family: "UbuntuSansMono Nerd Font";
-        font-size: 14px;
+        font-family: "${cfg.theme.monospaceFont.name}";
+        font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
         font-weight: 600;
       }
 
       window#waybar {
         background: rgba (35, 38, 52, 0.0);
-        color: ${config.ar.home.theme.colors.text};
+        color: ${cfg.theme.colors.text};
       }
 
       #workspaces button {
         padding: 0px 5px;
         margin: 0px 0px;
-        color: ${config.ar.home.theme.colors.text};
+        color: ${cfg.theme.colors.text};
       }
 
       #workspaces button.active,
       #workspaces button.focused {
-        color: ${config.ar.home.theme.colors.primary};
+        color: ${cfg.theme.colors.primary};
       }
 
       #clock,
@@ -294,11 +296,11 @@
       }
 
       #battery {
-          color: ${config.ar.home.theme.colors.text};
+          color: ${cfg.theme.colors.text};
       }
 
       #battery.charging {
-          color: ${config.ar.home.theme.colors.primary};
+          color: ${cfg.theme.colors.primary};
       }
 
       #battery.critical:not(.charging),
@@ -328,7 +330,7 @@
 
       #submap,
       #mode {
-          color: ${config.ar.home.theme.colors.text};
+          color: ${cfg.theme.colors.text};
           background: rgba(255, 123, 99, 0.8);
       }
     '';

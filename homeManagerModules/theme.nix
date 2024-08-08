@@ -40,33 +40,16 @@
       }
     '';
   };
-
-  font = {
-    name = "UbuntuSans Nerd Font";
-    package = pkgs.nerdfonts.override {fonts = ["UbuntuSans"];};
-    size = 11;
-  };
-
-  monospaceFont = {
-    inherit (font) package size;
-    name = "UbuntuSansMono Nerd Font";
-  };
-
-  serifFont = {
-    inherit (font) size;
-    name = "Vegur";
-    package = pkgs.vegur;
-  };
 in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = [
-        font.package
-        monospaceFont.package
+        cfg.monospaceFont.package
+        cfg.sansFont.package
+        cfg.serifFont.package
         pkgs.adwaita-qt
         pkgs.gnome.adwaita-icon-theme
         pkgs.liberation_ttf
-        serifFont.package
       ];
 
       pointerCursor = {
@@ -86,9 +69,9 @@ in {
       enable = true;
 
       defaultFonts = {
-        monospace = [monospaceFont.name];
-        sansSerif = [font.name];
-        serif = [serifFont.name];
+        monospace = [cfg.monospaceFont.name];
+        sansSerif = [cfg.sansFont.name];
+        serif = [cfg.serifFont.name];
       };
     };
 
@@ -104,7 +87,7 @@ in {
         package = pkgs.adw-gtk3;
       };
 
-      font = {inherit (font) name package size;};
+      font = {inherit (cfg.sansFont) name package size;};
 
       iconTheme = {
         name =
@@ -145,11 +128,11 @@ in {
           then "prefer-dark"
           else "prefer-light";
 
-        document-font-name = "${serifFont.name} ${toString serifFont.size}";
-        monospace-font-name = "${monospaceFont.name} ${toString monospaceFont.size}";
+        document-font-name = "${cfg.serifFont.name} ${toString cfg.serifFont.size}";
+        monospace-font-name = "${cfg.monospaceFont.name} ${toString cfg.monospaceFont.size}";
       };
 
-      "org/gnome/desktop/wm/preferences".titlebar-font = "${font.name} ${toString font.size}";
+      "org/gnome/desktop/wm/preferences".titlebar-font = "${cfg.sansFont.name} ${toString cfg.sansFont.size}";
     };
   };
 }

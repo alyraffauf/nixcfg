@@ -1,8 +1,6 @@
-{lib, ...}: {
+{
   home-manager.sharedModules = [
     {
-      gtk.font.size = lib.mkForce 14;
-      home.pointerCursor.size = lib.mkForce 24;
       wayland.windowManager.sway.config.output = {"LG Display 0x0569 Unknown".scale = "1.0";};
 
       ar.home = {
@@ -11,6 +9,12 @@
         services.easyeffects = {
           enable = true;
           preset = "LoudnessEqualizer";
+        };
+
+        theme = {
+          monospaceFont.size = 14;
+          sansFont.size = 14;
+          serifFont.size = 14;
         };
       };
     }
