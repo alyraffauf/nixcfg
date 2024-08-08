@@ -32,60 +32,60 @@ in {
           ];
 
           "hyprland/workspaces" = {
-            "all-outputs" = true;
-            "format" = "{icon} {name}";
+            all-outputs = true;
+            format = "{icon} {name}";
 
-            "format-icons" = {
-              "default" = "󰝥";
-              "active" = "󰪥";
+            format-icons = {
+              default = "󰝥";
+              active = "󰪥";
             };
 
-            "sort-by" = "id";
+            sort-by = "id";
           };
 
           "hyprland/submap" = {
-            "on-click" = ''${lib.getExe'
+            on-click = ''${lib.getExe'
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch submap reset'';
           };
 
           "sway/workspaces" = {
-            "all-outputs" = true;
-            "format" = "{icon} {name}";
+            all-outputs = true;
+            format = "{icon} {name}";
 
-            "format-icons" = {
-              "default" = "󰝥";
-              "focused" = "󰪥";
+            format-icons = {
+              default = "󰝥";
+              focused = "󰪥";
             };
 
-            "sort-by" = "id";
+            sort-by = "id";
           };
 
           "sway/mode" = {
-            "on-click" = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} mode default'';
+            on-click = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} mode default'';
           };
 
           "sway/scratchpad" = {
-            "format" = "{icon}　{count}";
-            "format-icons" = ["" ""];
-            "show-empty" = false;
-            "tooltip" = true;
-            "tooltip-format" = "{app}: {title}";
+            format = "{icon}　{count}";
+            format-icons = ["" ""];
+            show-empty = false;
+            tooltip = true;
+            tooltip-format = "{app}: {title}";
           };
 
           "custom/hyprland-close" = {
-            "on-click" = ''${lib.getExe'
+            on-click = ''${lib.getExe'
                 config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive'';
-            "format" = "󰅗";
-            "tooltip-format" = "Close the focused window.";
+            format = "󰅗";
+            tooltip-format = "Close the focused window.";
           };
 
-          "clock" = {
-            "format" = "{:%I:%M%p}";
-            "interval" = 60;
-            "tooltip-format" = "{:%Y-%m-%d | %H:%M}";
+          clock = {
+            format = "{:%I:%M%p}";
+            interval = 60;
+            tooltip-format = "{:%Y-%m-%d | %H:%M}";
           };
 
-          "battery" = let
+          battery = let
             checkBattery = pkgs.writeShellScript "check-battery" ''
               if [ -d /sys/class/power_supply/BAT0 ]; then
                 BAT=/sys/class/power_supply/BAT0
@@ -106,82 +106,82 @@ in {
               fi
             '';
           in {
-            "format" = "{icon}";
-            "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            format = "{icon}";
+            format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
 
-            "on-update" = "${checkBattery}";
-            "tooltip-format" = ''
+            on-update = "${checkBattery}";
+            tooltip-format = ''
               {capacity}%: {timeTo}.
               Draw: {power} watts.'';
 
-            "states" = {"critical" = 20;};
+            states = {critical = 20;};
           };
 
-          "idle_inhibitor" = {
-            "format" = "{icon}";
+          idle_inhibitor = {
+            format = "{icon}";
 
-            "format-icons" = {
-              "activated" = "󰅶";
-              "deactivated" = "󰾪";
+            format-icons = {
+              activated = "󰅶";
+              deactivated = "󰾪";
             };
 
-            "timeout" = 45;
+            timeout = 45;
 
-            "tooltip-format-activated" = ''
+            tooltip-format-activated = ''
               Presentation mode enabled.
               System will not sleep.'';
 
-            "tooltip-format-deactivated" = ''
+            tooltip-format-deactivated = ''
               Presentation mode disabled.
               System will sleep normally.'';
           };
 
-          "bluetooth" = {
-            "format" = "";
-            "format-connected" = "　{num_connections}";
-            "format-disabled" = ""; # an empty format will hide the module
-            "on-click" = lib.getExe' pkgs.blueberry "blueberry";
-            "tooltip-format" = "{controller_alias}	{controller_address}";
+          bluetooth = {
+            format = "";
+            format-connected = "　{num_connections}";
+            format-disabled = ""; # an empty format will hide the module
+            on-clic = lib.getExe' pkgs.blueberry "blueberry";
+            tooltip-format = "{controller_alias}	{controller_address}";
 
-            "tooltip-format-connected" = ''
+            tooltip-format-connected = ''
               {controller_alias}	{controller_address}
 
               {device_enumerate}'';
 
-            "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
+            tooltip-format-enumerate-connected = "{device_alias}	{device_address}";
           };
 
-          "pulseaudio" = {
-            "format" = "{icon}";
-            "format-bluetooth" = "{volume}% {icon}󰂯";
-            "format-muted" = "";
+          pulseaudio = {
+            format = "{icon}";
+            format-bluetooth = "{volume}% {icon}󰂯";
+            format-muted = "";
 
-            "format-icons" = {
-              "headphones" = "󰋋";
-              "handsfree" = "󰋎";
-              "headset" = "󰋎";
-              "default" = ["" "" ""];
+            format-icons = {
+              headphones = "󰋋";
+              handsfree = "󰋎";
+              headset = "󰋎";
+              default = ["" "" ""];
             };
 
-            "ignored-sinks" = ["Easy Effects Sink"];
-            "on-click" = "${lib.getExe pkgs.pavucontrol} -t 3";
-            "scroll-step" = 5;
+            ignored-sinks = ["Easy Effects Sink"];
+            on-click = "${lib.getExe pkgs.pavucontrol} -t 3";
+            scroll-step = 5;
           };
 
-          "network" = {
-            "format-disabled" = "󰀝";
-            "format-disconnected" = "󰀦";
-            "format-ethernet" = "󰈀";
-            "format-icons" = ["󰤟" "󰤢" "󰤥" "󰤨"];
-            "format-wifi" = "{icon}";
-            "on-click" = "${lib.getExe pkgs.networkmanager_dmenu} -i";
-            "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
-            "tooltip-format-disconnected" = "Disconnected";
-            "tooltip-format-ethernet" = "{ifname} ";
-            "tooltip-format-wifi" = "{essid} ({signalStrength}%) {icon}";
+          network = {
+            format-disabled = "󰀝";
+            format-disconnected = "󰀦";
+            format-ethernet = "󰈀";
+            format-icons = ["󰤟" "󰤢" "󰤥" "󰤨"];
+            format-wifi = "{icon}";
+            on-click = "${lib.getExe pkgs.networkmanager_dmenu} -i";
+            tooltip-format = "{ifname} via {gwaddr} 󰊗";
+            tooltip-format-disconnected = "Disconnected";
+            tooltip-format-ethernet = "{ifname} ";
+            tooltip-format-wifi = "{essid} ({signalStrength}%) {icon}";
           };
 
-          "tray" = {"spacing" = 15;};
+          tray = {spacing = 15;};
 
           "custom/dnd" = let
             mako-dnd = pkgs.writeShellScript "mako-dnd" ''
@@ -202,53 +202,134 @@ in {
               [ $# -gt 0 ] && toggle || show
             '';
           in {
-            "exec" = "${mako-dnd}";
-            "interval" = "once";
-            "on-click" = "${mako-dnd} toggle";
-            "return-type" = "json";
-            "signal" = 2;
+            exec = "${mako-dnd}";
+            interval = "once";
+            on-click = "${mako-dnd} toggle";
+            return-type = "json";
+            signal = 2;
           };
 
           "custom/logout" = {
-            "format" = "󰤆";
-            "on-click" = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
-            "tooltip-format" = "Manage your session.";
+            format = "󰤆";
+            on-click = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
+            tooltip-format = "Manage your session.";
           };
 
           "custom/menu" = {
-            "format" = "󰀻";
-            "on-click" = "${lib.getExe pkgs.nwg-drawer} -mt 5";
-            "tooltip-format" = "Touch-friendly application menu.";
+            format = "󰀻";
+            on-click = "${lib.getExe pkgs.nwg-drawer} -mt 5";
+            tooltip-format = "Touch-friendly application menu.";
           };
 
-          "power-profiles-daemon" = {
-            "format" = "{icon}";
+          power-profiles-daemon = {
+            format = "{icon}";
 
-            "format-icons" = {
-              "balanced" = "󰗑";
-              "default" = "󱐌";
-              "performance" = "󱐌";
-              "power-saver" = "󰌪";
+            format-icons = {
+              balanced = "󰗑";
+              default = "󱐌";
+              performance = "󱐌";
+              power-saver = "󰌪";
             };
 
-            "tooltip-format" = ''
+            tooltip-format = ''
               Profile: {profile}
               Driver: {driver}'';
 
-            "tooltip" = true;
+            tooltip = true;
           };
 
           "group/hardware" = {
-            "orientation" = "horizontal";
+            orientation = "horizontal";
             modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
           };
 
           "group/session" = {
-            "orientation" = "horizontal";
+            orientation = "horizontal";
             modules = ["custom/dnd" "idle_inhibitor" "custom/logout"];
           };
         };
       };
+
+      style = ''
+        * {
+          border: none;
+          border-radius: 0px;
+          font-family: "${cfg.theme.monospaceFont.name}";
+          font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
+          font-weight: 600;
+        }
+
+        window#waybar {
+          background: rgba (35, 38, 52, 0.0);
+          color: ${cfg.theme.colors.text};
+        }
+
+        #workspaces button {
+          padding: 0px 5px;
+          margin: 0px 0px;
+          color: ${cfg.theme.colors.text};
+        }
+
+        #workspaces button.active,
+        #workspaces button.focused {
+          color: ${cfg.theme.colors.primary};
+        }
+
+        #clock,
+        #battery,
+        #bluetooth,
+        #network,
+        #power-profiles-daemon,
+        #pulseaudio,
+        #wireplumber,
+        #idle_inhibitor,
+        #custom-dnd,
+        #custom-logout,
+        #custom-menu,
+        #tray {
+          padding: 0px 7.5px;
+          margin: 0px 5px;
+        }
+
+        #battery {
+            color: ${cfg.theme.colors.text};
+        }
+
+        #battery.charging {
+            color: ${cfg.theme.colors.primary};
+        }
+
+        #battery.critical:not(.charging),
+        #custom-dnd.on {
+            color: #e78284;
+        }
+
+        #clock,
+        #custom-hyprland-close,
+        #custom-menu,
+        #hardware,
+        #mode,
+        #scratchpad,
+        #session,
+        #submap,
+        #tray,
+        #workspaces {
+            border-radius: 10px;
+            background: rgba (36, 36, 36, 0.8);
+            margin: 5px 10px 0px 10px;
+            padding: 0px 10px 0px 10px;
+        }
+
+        #clock, #custom-menu, #custom-hyprland-close {
+            padding: 0px 20px 0px 20px;
+        }
+
+        #submap,
+        #mode {
+            color: ${cfg.theme.colors.text};
+            background: rgba(255, 123, 99, 0.8);
+        }
+      '';
 
       systemd.enable = true;
     };
@@ -260,86 +341,5 @@ in {
         RestartSec = 5;
       };
     };
-
-    xdg.configFile."waybar/style.css".text = ''
-      * {
-        border: none;
-        border-radius: 0px;
-        font-family: "${cfg.theme.monospaceFont.name}";
-        font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
-        font-weight: 600;
-      }
-
-      window#waybar {
-        background: rgba (35, 38, 52, 0.0);
-        color: ${cfg.theme.colors.text};
-      }
-
-      #workspaces button {
-        padding: 0px 5px;
-        margin: 0px 0px;
-        color: ${cfg.theme.colors.text};
-      }
-
-      #workspaces button.active,
-      #workspaces button.focused {
-        color: ${cfg.theme.colors.primary};
-      }
-
-      #clock,
-      #battery,
-      #bluetooth,
-      #network,
-      #power-profiles-daemon,
-      #pulseaudio,
-      #wireplumber,
-      #idle_inhibitor,
-      #custom-dnd,
-      #custom-logout,
-      #custom-menu,
-      #tray {
-        padding: 0px 7.5px;
-        margin: 0px 5px;
-      }
-
-      #battery {
-          color: ${cfg.theme.colors.text};
-      }
-
-      #battery.charging {
-          color: ${cfg.theme.colors.primary};
-      }
-
-      #battery.critical:not(.charging),
-      #custom-dnd.on {
-          color: #e78284;
-      }
-
-      #clock,
-      #custom-hyprland-close,
-      #custom-menu,
-      #hardware,
-      #mode,
-      #scratchpad,
-      #session,
-      #submap,
-      #tray,
-      #workspaces {
-          border-radius: 10px;
-          background: rgba (36, 36, 36, 0.8);
-          margin: 5px 10px 0px 10px;
-          padding: 0px 10px 0px 10px;
-      }
-
-      #clock, #custom-menu, #custom-hyprland-close {
-          padding: 0px 20px 0px 20px;
-      }
-
-      #submap,
-      #mode {
-          color: ${cfg.theme.colors.text};
-          background: rgba(255, 123, 99, 0.8);
-      }
-    '';
   };
 }
