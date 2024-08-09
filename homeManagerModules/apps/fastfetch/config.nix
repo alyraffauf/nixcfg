@@ -1,106 +1,68 @@
 {
   "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
-  display = {separator = " -> ";};
-  logo = {padding = {bottom = 2;};};
+  display = {separator = "  ";};
+  logo = {
+    padding = {
+      bottom = 3;
+      top = 3;
+    };
+    source = "NixOS_small";
+  };
   modules = [
+    "break"
+    "title"
     {
-      format = "[90m┌────────────────────────────────────────────────────────────┐";
-      type = "custom";
-    }
-    {
-      keyWidth = 10;
-      type = "title";
-    }
-    {
-      format = "[90m└────────────────────────────────────────────────────────────┘";
-      type = "custom";
-    }
-    {
-      format = " [90m  [31m  [32m  [33m  [34m  [35m  [36m  [37m  [38m  [39m       [38m  [37m  [36m  [35m  [34m  [33m  [32m  [31m  [90m";
-      type = "custom";
-    }
-    {
-      format = "[90m┌────────────────────────────────────────────────────────────┐";
-      type = "custom";
-    }
-    {
-      key = " OS";
-      keyColor = "yellow";
-      type = "os";
-    }
-    {
-      key = "│ └";
-      keyColor = "yellow";
-      type = "shell";
-    }
-    {
-      key = " DE/WM";
-      keyColor = "blue";
-      type = "wm";
-    }
-    {
-      key = "│ ├󰉼";
-      keyColor = "blue";
-      type = "theme";
-    }
-    {
-      key = "│ ├";
-      keyColor = "blue";
-      type = "terminal";
-    }
-    {
-      key = "│ └󰸉";
-      keyColor = "blue";
-      type = "wallpaper";
-    }
-    {
-      key = "󰌢 PC";
-      keyColor = "green";
+      format = "{5} {1}";
+      key = "host  ";
+      keyColor = "33";
       type = "host";
     }
     {
-      key = "│ ├󰻠";
-      keyColor = "green";
+      format = "{3}";
+      key = "os    ";
+      keyColor = "33";
+      type = "os";
+    }
+    {
+      format = "{2}h {3}m";
+      key = "uptime";
+      keyColor = "33";
+      type = "uptime";
+    }
+    {
+      key = "kernel";
+      keyColor = "33";
+      type = "kernel";
+    }
+    {
+      format = "{1}";
+      key = "wm    ";
+      keyColor = "33";
+      type = "wm";
+    }
+    {
+      format = "{1}";
+      key = "cpu   ";
+      keyColor = "33";
       type = "cpu";
     }
     {
-      key = "│ ├󰑭";
-      keyColor = "green";
+      key = "memory";
+      keyColor = "33";
       type = "memory";
     }
     {
-      key = "│ ├";
-      keyColor = "green";
+      format = "{1} / {2} ({3})";
+      key = "disk  ";
+      keyColor = "33";
       type = "disk";
     }
     {
-      key = "│ └󰍹";
-      keyColor = "green";
-      type = "display";
-    }
-    {
-      key = "│ ├";
-      keyColor = "green";
+      format = "{5} ({4})";
+      key = "bat   ";
+      keyColor = "33";
       type = "battery";
     }
-    {
-      key = " SND";
-      keyColor = "cyan";
-      type = "player";
-    }
-    {
-      key = "│ └󰝚";
-      keyColor = "cyan";
-      type = "media";
-    }
-    {
-      format = "[90m└────────────────────────────────────────────────────────────┘";
-      type = "custom";
-    }
     "break"
-    {
-      format = " [90m  [31m  [32m  [33m  [34m  [35m  [36m  [37m  [38m  [39m       [38m  [37m  [36m  [35m  [34m  [33m  [32m  [31m  [90m";
-      type = "custom";
-    }
   ];
 }
