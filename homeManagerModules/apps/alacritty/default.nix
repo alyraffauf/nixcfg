@@ -22,11 +22,11 @@ in {
 
         font = {
           normal = {
-            family = cfg.theme.font.monospaceFont.name;
+            family = cfg.theme.monospaceFont.name;
             style = "Regular";
           };
 
-          size = cfg.theme.font.monospaceFont.size + 1;
+          size = cfg.theme.monospaceFont.size + 1;
         };
 
         selection.save_to_clipboard = true;
