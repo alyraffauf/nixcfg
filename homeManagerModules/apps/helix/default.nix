@@ -68,7 +68,7 @@
       };
 
       settings = {
-        theme = "adwaita-dark";
+        theme = lib.mkDefault "adwaita-dark";
         editor = {
           auto-completion = true;
           auto-format = true;
