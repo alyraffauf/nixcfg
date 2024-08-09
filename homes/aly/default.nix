@@ -63,6 +63,7 @@ in {
     gitui.enable = true;
     helix.settings.theme = "rose-pine-moon";
     home-manager.enable = true;
+    kitty.theme = "Rosé Pine Moon";
 
     rbw = {
       enable = true;
@@ -116,6 +117,7 @@ in {
     defaultApps = {
       enable = true;
       editor = config.ar.home.apps.zed.package;
+      fileManager = pkgs.xfce.thunar;
     };
 
     services = {
