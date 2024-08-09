@@ -70,7 +70,7 @@ in {
 
       "rofi/theme.rasi".text = ''
         * {
-            selected-normal-foreground:  ${cfg.theme.colors.text};
+            selected-normal-foreground:  ${cfg.theme.colors.secondary};
             foreground:                  ${cfg.theme.colors.text};
             normal-foreground:           @foreground;
             alternate-normal-background: transparent;
@@ -81,14 +81,14 @@ in {
             alternate-urgent-background: transparent;
             active-foreground:           ${cfg.theme.colors.primary}CC;
             lightbg:                     rgba ( 238, 232, 213, 80 % );
-            selected-active-foreground:  ${cfg.theme.colors.text};
+            selected-active-foreground:  ${cfg.theme.colors.secondary};
             alternate-active-background: transparent;
             background:                  transparent;
             bordercolor:                 ${cfg.theme.colors.background}99;
             alternate-normal-foreground: @foreground;
             normal-background:           transparent;
             lightfg:                     ${cfg.theme.colors.primary}CC;
-            selected-normal-background:  ${cfg.theme.colors.primary};
+            selected-normal-background:  ${cfg.theme.colors.background};
             border-color:                ${cfg.theme.colors.primary}CC;
             spacing:                     2;
             separatorcolor:              ${cfg.theme.colors.primary}CC;
@@ -98,11 +98,12 @@ in {
             background-color:            transparent;
             alternate-active-foreground: @active-foreground;
             active-background:           transparent;
-            selected-active-background:  ${cfg.theme.colors.primary};
+            selected-active-background:  ${cfg.theme.colors.background};
         }
         window {
-            background-color: ${cfg.theme.colors.background}99;
-            border:           2;
+            background-color: ${cfg.theme.colors.background}CC;
+            border:           4;
+            border-color:     @border-color;
             border-radius:    10px;
             padding:          0;
         }
