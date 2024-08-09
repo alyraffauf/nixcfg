@@ -250,7 +250,30 @@ in {
         };
       };
 
-      style = ''
+      style = let
+        hexToRGBA = hex: let
+          r = builtins.substring 0 2 hex;
+          g = builtins.substring 2 2 hex;
+          b = builtins.substring 4 2 hex;
+          a = "ff"; # Default alpha to fully opaque if not provided
+        in {
+          r = builtins.fromJSON "0x${r}";
+          g = builtins.fromJSON "0x${g}";
+          b = builtins.fromJSON "0x${b}";
+          a = builtins.fromJSON "0x${a}";
+        };
+
+        rgba = hex: let
+          rgbaValues = hexToRGBA hex;
+        in [
+          rgbaValues.r
+          rgbaValues.g
+          rgbaValues.b
+          (rgbaValues.a / 255.0) # Convert alpha from 0-255 to 0-1
+        ];
+        
+        backgroundColor = builtins.concatStringsSep "," (rgba "${cfg.theme.colors.background}CC");
+      in ''
         * {
           border: none;
           border-radius: 0px;
@@ -315,7 +338,8 @@ in {
         #tray,
         #workspaces {
             border-radius: 10px;
-            background: rgba (46, 52, 64, 0.8);
+            background: ${cfg.theme.colors.background};
+            opacity: 0.8;
             margin: 5px 10px 0px 10px;
             padding: 0px 10px 0px 10px;
         }
