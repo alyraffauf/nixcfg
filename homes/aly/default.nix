@@ -129,7 +129,7 @@ in {
       enable = true;
 
       colors = {
-        text = "#FFFFFF";
+        text = "#e0def4";
         background = "#2a273f";
         primary = "#3e8fb0";
         secondary = "#f6c177";
