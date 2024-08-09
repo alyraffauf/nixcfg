@@ -184,8 +184,8 @@ in {
         background-color: @window_bg_color;
       }'';
   in {
-    gtk3.extraCss = nordCss;
-    gtk4.extraCss = nordCss;
+    # gtk3.extraCss = nordCss;
+    # gtk4.extraCss = nordCss;
   };
 
   programs = {
@@ -247,8 +247,8 @@ in {
           auto_install_extensions = {nord = true;};
 
           theme = {
-            dark = "Nord Dark";
-            light = "Nord Light";
+            dark = "Rosé Pine Moon";
+            light = "Rosé Pine Dawn";
             mode = "system";
           };
         };
@@ -270,9 +270,11 @@ in {
 
       colors = {
         text = "#FFFFFF";
-        background = "#2E3440";
-        primary = "#8FBCBB";
-        secondary = "#CA9EE6";
+        background = "#2a273f";
+        secondary = "#ea9a97";
+        primary = "#3e8fb0";
+        inactive = "#393552";
+        shadow = "#232136";
       };
 
       wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-6d7xmx.jpg";
