@@ -111,6 +111,7 @@ in {
       "blur,waybar"
       "ignorezero,gtk-layer-shell"
       "ignorezero,notifications"
+      "ignorezero,rofi"
       "ignorezero,swayosd"
       "ignorezero,waybar"
     ];
