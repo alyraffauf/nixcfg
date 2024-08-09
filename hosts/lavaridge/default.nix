@@ -14,13 +14,9 @@
     self.inputs.nixhw.nixosModules.framework-13-amd-7000
   ];
 
-  boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-    };
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
 
   environment.variables.GDK_SCALE = "1.5";
