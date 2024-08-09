@@ -12,8 +12,27 @@
     extraCss = ''
       @define-color accent_bg_color ${cfg.colors.primary};
       @define-color accent_color @accent_bg_color;
+      @define-color accent_fg_color ${cfg.colors.text};
+      @define-color window_bg_color ${cfg.colors.background};
+      @define-color window_fg_color ${cfg.colors.text};
+      @define-color view_bg_color ${cfg.colors.background};
+      @define-color view_fg_color @window_fg_color;
+      @define-color headerbar_bg_color ${cfg.colors.background};
+      @define-color headerbar_backdrop_color @window_bg_color;
+      @define-color headerbar_fg_color @window_fg_color;
 
-      ${
+      @define-color popover_bg_color ${cfg.colors.background};
+      @define-color popover_fg_color @view_fg_color;
+      @define-color dialog_bg_color @popover_bg_color;
+      @define-color dialog_fg_color @popover_fg_color;
+      @define-color card_bg_color @popover_bg_color;
+      @define-color card_fg_color @window_fg_color;
+      @define-color sidebar_bg_color @headerbar_bg_color;
+      @define-color sidebar_fg_color @window_fg_color;
+      @define-color sidebar_backdrop_color @window_bg_color;
+      @define-color sidebar_shade_color rgba(0,0,0,0.25);
+
+        ${
         lib.strings.optionalString
         cfg.gtk.hideTitleBar
         ''
