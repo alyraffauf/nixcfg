@@ -314,8 +314,9 @@ in {
         #submap,
         #tray,
         #workspaces {
-            border-radius: 10px;
-            background: rgba (36, 36, 36, 0.6);
+            border-radius: ${toString cfg.theme.borderRadius}px;
+            background: ${cfg.theme.colors.background};
+            opacity: 1.0;
             margin: 5px 10px 0px 10px;
             padding: 0px 10px 0px 10px;
         }
@@ -327,7 +328,7 @@ in {
         #submap,
         #mode {
             color: ${cfg.theme.colors.text};
-            background: rgba(255, 123, 99, 0.6);
+            background: rgba(255, 123, 99, 0.8);
         }
       '';
 

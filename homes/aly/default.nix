@@ -61,7 +61,9 @@ in {
     };
 
     gitui.enable = true;
+    helix.settings.theme = "rose-pine-moon";
     home-manager.enable = true;
+    kitty.theme = "Rosé Pine Moon";
 
     rbw = {
       enable = true;
@@ -99,12 +101,23 @@ in {
       zed = {
         enable = true;
         package = unstable.zed-editor;
+
+        settings = {
+          auto_install_extensions = {nord = true;};
+
+          theme = {
+            dark = "Rosé Pine Moon";
+            light = "Rosé Pine Dawn";
+            mode = "system";
+          };
+        };
       };
     };
 
     defaultApps = {
       enable = true;
       editor = config.ar.home.apps.zed.package;
+      fileManager = pkgs.xfce.thunar;
     };
 
     services = {
@@ -114,6 +127,17 @@ in {
 
     theme = {
       enable = true;
+      borderRadius = 0;
+
+      colors = {
+        text = "#e0def4";
+        background = "#2a273f";
+        primary = "#3e8fb0";
+        secondary = "#f6c177";
+        inactive = "#393552";
+        shadow = "#232136";
+      };
+
       wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-6d7xmx.jpg";
     };
   };

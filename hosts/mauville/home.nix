@@ -16,7 +16,18 @@
             hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"];
           };
 
-          theme.darkMode = false;
+          theme = {
+            colors = lib.mkForce {
+              text = "#575279";
+              background = "#fffaf3";
+              primary = "#286983";
+              secondary = "#ea9d34";
+              inactive = "#393552";
+              shadow = "#232136";
+            };
+
+            darkMode = false;
+          };
         };
       }
     ];

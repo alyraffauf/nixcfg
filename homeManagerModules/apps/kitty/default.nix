@@ -22,7 +22,7 @@ in {
         tab_bar_style = "powerline";
       };
 
-      theme = "Adwaita dark";
+      theme = lib.mkDefault "Adwaita dark";
     };
   };
 }

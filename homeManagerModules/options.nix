@@ -226,6 +226,12 @@ in {
         type = lib.types.bool;
       };
 
+      borderRadius = lib.mkOption {
+        description = "Global border radius.";
+        default = 10;
+        type = lib.types.int;
+      };
+
       colors = {
         text = lib.mkOption {
           description = "Text color.";

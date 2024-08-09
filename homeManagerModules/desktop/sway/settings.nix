@@ -257,15 +257,15 @@ in {
       bindswitch --reload --locked lid:on output eDP-1 disable
       bindswitch --reload --locked lid:off output eDP-1 enable
 
-      default_border pixel 2
-      default_floating_border pixel 2
+      default_border pixel 4
+      default_floating_border pixel 4
     ''
     + lib.strings.optionalString (config.wayland.windowManager.sway.package
       == pkgs.swayfx) ''
       blur enable
       blur_passes 2
 
-      # corner_radius 10
+      # corner_radius ${toString cfg.theme.borderRadius}
       shadows enable
       shadows_on_csd enable
       shadow_color ${cfg.theme.colors.shadow}
