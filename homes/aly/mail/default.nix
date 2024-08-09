@@ -84,16 +84,16 @@ in {
     };
   };
 
-  home.file = let
-    source = builtins.fetchGit {
-      url = "https://github.com/rafaelmardojai/thunderbird-gnome-theme.git";
-      rev = "628fcccb7788e3e0ad34f67114f563c87ac8c1dc";
-      ref = "main";
-    };
-  in {
-    ".thunderbird/default/chrome".source = source;
-    ".thunderbird/work/chrome".source = source;
-  };
+  # home.file = let
+  #   source = builtins.fetchGit {
+  #     url = "https://github.com/rafaelmardojai/thunderbird-gnome-theme.git";
+  #     rev = "628fcccb7788e3e0ad34f67114f563c87ac8c1dc";
+  #     ref = "main";
+  #   };
+  # in {
+  #   ".thunderbird/default/chrome".source = source;
+  #   ".thunderbird/work/chrome".source = source;
+  # };
 
   programs = {
     himalaya.enable = true;

@@ -63,6 +63,7 @@
         "center(1),class:(org.keepassxc.KeePassXC)"
         "float,class:(Bitwarden)"
         "float,class:(org.keepassxc.KeePassXC)"
+        "opacity 0.95,class:(dev.zed.Zed)"
         "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
         "workspace 1,class:(brave-browser)"

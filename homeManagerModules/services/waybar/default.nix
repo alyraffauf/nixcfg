@@ -315,7 +315,7 @@ in {
         #tray,
         #workspaces {
             border-radius: 10px;
-            background: rgba (36, 36, 36, 0.6);
+            background: rgba (46, 52, 64, 0.8);
             margin: 5px 10px 0px 10px;
             padding: 0px 10px 0px 10px;
         }
@@ -327,7 +327,7 @@ in {
         #submap,
         #mode {
             color: ${cfg.theme.colors.text};
-            background: rgba(255, 123, 99, 0.6);
+            background: rgba(255, 123, 99, 08);
         }
       '';
 

@@ -95,7 +95,7 @@ in {
           then "Papirus-Dark"
           else "Papirus";
 
-        package = pkgs.papirus-icon-theme.override {color = "adwaita";};
+        package = pkgs.papirus-nord;
       };
 
       gtk3 = {inherit (gtk) extraConfig extraCss;};
