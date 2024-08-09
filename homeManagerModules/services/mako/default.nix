@@ -13,7 +13,7 @@ in {
       backgroundColor = "${cfg.theme.colors.background}99";
       borderColor = "${cfg.theme.colors.primary}CC";
       borderRadius = 10;
-      borderSize = 2;
+      borderSize = 4;
       defaultTimeout = 10000;
       enable = true;
       font = "${cfg.theme.sansFont.name} Regular ${toString cfg.theme.sansFont.size}";
