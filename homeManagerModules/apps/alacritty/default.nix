@@ -35,7 +35,7 @@ in {
           blur = true;
           decorations = "Full";
           dynamic_padding = true;
-          opacity = 0.8;
+          opacity = 0.6;
         };
       };
     };

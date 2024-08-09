@@ -23,29 +23,29 @@ in {
     modifier = modifier;
 
     colors = {
-      background = "${cfg.theme.colors.primary}EE";
+      background = "${cfg.theme.colors.primary}CC";
 
       focused = {
-        background = "${cfg.theme.colors.primary}EE";
-        border = "${cfg.theme.colors.primary}EE";
-        childBorder = "${cfg.theme.colors.primary}EE";
-        indicator = "${cfg.theme.colors.primary}EE";
+        background = "${cfg.theme.colors.primary}CC";
+        border = "${cfg.theme.colors.primary}CC";
+        childBorder = "${cfg.theme.colors.primary}CC";
+        indicator = "${cfg.theme.colors.primary}CC";
         text = "${cfg.theme.colors.text}";
       };
 
       focusedInactive = {
-        background = "${cfg.theme.colors.inactive}AA";
-        border = "${cfg.theme.colors.inactive}AA";
-        childBorder = "${cfg.theme.colors.inactive}AA";
-        indicator = "${cfg.theme.colors.inactive}AA";
+        background = "${cfg.theme.colors.inactive}99";
+        border = "${cfg.theme.colors.inactive}99";
+        childBorder = "${cfg.theme.colors.inactive}99";
+        indicator = "${cfg.theme.colors.inactive}99";
         text = "${cfg.theme.colors.text}";
       };
 
       unfocused = {
-        background = "${cfg.theme.colors.inactive}AA";
-        border = "${cfg.theme.colors.inactive}AA";
-        childBorder = "${cfg.theme.colors.inactive}AA";
-        indicator = "${cfg.theme.colors.inactive}AA";
+        background = "${cfg.theme.colors.inactive}99";
+        border = "${cfg.theme.colors.inactive}99";
+        childBorder = "${cfg.theme.colors.inactive}99";
+        indicator = "${cfg.theme.colors.inactive}99";
         text = "${cfg.theme.colors.text}";
       };
     };
@@ -256,11 +256,14 @@ in {
 
       bindswitch --reload --locked lid:on output eDP-1 disable
       bindswitch --reload --locked lid:off output eDP-1 enable
+
+      default_border pixel 2
+      default_floating_border pixel 2
     ''
     + lib.strings.optionalString (config.wayland.windowManager.sway.package
       == pkgs.swayfx) ''
       blur enable
-      blur_passes 1
+      blur_passes 2
 
       # corner_radius 10
       shadows enable

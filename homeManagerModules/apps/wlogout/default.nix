@@ -40,7 +40,7 @@ in {
         }
 
         window {
-          background-color: rgba(35, 38, 52, 0.8);
+          background-color: rgba(35, 38, 52, 0.6);
         }
 
         button {

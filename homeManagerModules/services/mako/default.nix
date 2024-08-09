@@ -10,8 +10,8 @@ in {
     services.mako = {
       actions = true;
       anchor = "top-center";
-      backgroundColor = "${cfg.theme.colors.background}CC";
-      borderColor = "${cfg.theme.colors.primary}EE";
+      backgroundColor = "${cfg.theme.colors.background}99";
+      borderColor = "${cfg.theme.colors.primary}CC";
       borderRadius = 10;
       borderSize = 2;
       defaultTimeout = 10000;
