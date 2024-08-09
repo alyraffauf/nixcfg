@@ -17,7 +17,7 @@
           };
 
           theme = {
-            colors = {
+            colors = lib.mkForce {
               text = "#575279";
               background = "#fffaf3";
               primary = "#286983";
