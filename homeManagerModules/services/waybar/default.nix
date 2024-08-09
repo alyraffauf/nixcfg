@@ -316,7 +316,7 @@ in {
         #workspaces {
             border-radius: 10px;
             background: ${cfg.theme.colors.background};
-            opacity: 0.8;
+            opacity: 1.0;
             margin: 5px 10px 0px 10px;
             padding: 0px 10px 0px 10px;
         }
