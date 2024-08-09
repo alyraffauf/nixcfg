@@ -148,7 +148,7 @@ in {
     "col.active_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
     "col.inactive_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
     allow_tearing = false;
-    border_size = 2;
+    border_size = 4;
     gaps_in = 5;
     gaps_out = 6;
     layout = "dwindle";
