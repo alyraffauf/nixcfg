@@ -104,7 +104,7 @@ in {
             background-color: ${cfg.theme.colors.background}CC;
             border:           4;
             border-color:     @border-color;
-            border-radius:    10px;
+            border-radius:    ${toString cfg.theme.borderRadius}px;
             padding:          0;
         }
         mainbox {

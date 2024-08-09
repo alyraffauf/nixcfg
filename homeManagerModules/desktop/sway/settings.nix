@@ -265,7 +265,7 @@ in {
       blur enable
       blur_passes 2
 
-      # corner_radius 10
+      # corner_radius ${toString cfg.theme.borderRadius}
       shadows enable
       shadows_on_csd enable
       shadow_color ${cfg.theme.colors.shadow}

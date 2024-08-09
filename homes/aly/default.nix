@@ -127,6 +127,7 @@ in {
 
     theme = {
       enable = true;
+      borderRadius = 0;
 
       colors = {
         text = "#e0def4";

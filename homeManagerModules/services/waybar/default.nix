@@ -314,7 +314,7 @@ in {
         #submap,
         #tray,
         #workspaces {
-            border-radius: 10px;
+            border-radius: ${toString cfg.theme.borderRadius}px;
             background: ${cfg.theme.colors.background};
             opacity: 1.0;
             margin: 5px 10px 0px 10px;
