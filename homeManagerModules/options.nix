@@ -251,6 +251,12 @@ in {
           type = lib.types.str;
         };
 
+        tertiary = lib.mkOption {
+          description = "Tertiary color.";
+          default = "#CA9EE6"; #"#99D1DB";
+          type = lib.types.str;
+        };
+
         inactive = lib.mkOption {
           description = "Inactive color.";
           default = "#242424";
