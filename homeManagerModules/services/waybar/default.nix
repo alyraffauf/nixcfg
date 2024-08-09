@@ -271,7 +271,7 @@ in {
           rgbaValues.b
           (rgbaValues.a / 255.0) # Convert alpha from 0-255 to 0-1
         ];
-        
+
         backgroundColor = builtins.concatStringsSep "," (rgba "${cfg.theme.colors.background}CC");
       in ''
         * {
