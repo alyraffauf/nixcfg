@@ -271,9 +271,8 @@ in {
       colors = {
         text = "#FFFFFF";
         background = "#2a273f";
-        secondary = "#ea9a97";
         primary = "#3e8fb0";
-        tertiary = "#f6c177";
+        secondary = "#f6c177";
         inactive = "#393552";
         shadow = "#232136";
       };
