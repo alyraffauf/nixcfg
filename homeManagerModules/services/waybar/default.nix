@@ -271,16 +271,15 @@ in {
         }
 
         window#waybar {
-          background: rgba (0, 0, 0, 0.0);
-          color: ${cfg.theme.colors.text};
           background-color: alpha(${cfg.theme.colors.background}, 0.8);
+          color: ${cfg.theme.colors.text};
         }
 
         #workspaces button {
+          border-radius: ${toString cfg.theme.borderRadius};
           color: ${cfg.theme.colors.text};
           margin: 0px 0px;
           padding: 0px 5px;
-          border-radius: ${toString cfg.theme.borderRadius};
         }
 
         #workspaces button.active,
@@ -306,16 +305,16 @@ in {
         }
 
         #battery {
-            color: ${cfg.theme.colors.text};
+          color: ${cfg.theme.colors.text};
         }
 
         #battery.charging {
-            color: ${cfg.theme.colors.primary};
+          color: ${cfg.theme.colors.primary};
         }
 
         #battery.critical:not(.charging),
         #custom-dnd.on {
-            color: #e78284;
+          color: ${cfg.theme.colors.secondary};
         }
 
         #clock,
@@ -331,13 +330,11 @@ in {
           padding: 0px 5px 0px 5px;
         }
 
-        #clock {
-        }
-
         #submap,
         #mode {
-            background: rgba(255, 123, 99, 1.0);
-            color: ${cfg.theme.colors.text};
+          background-color: ${cfg.theme.colors.secondary};
+          border-radius: ${toString cfg.theme.borderRadius};
+          color: ${cfg.theme.colors.background};
         }
       '';
 
