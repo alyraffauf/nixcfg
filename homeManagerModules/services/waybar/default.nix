@@ -267,11 +267,16 @@ in {
           border: none;
           font-family: "${cfg.theme.sansFont.name}", FontAwesome, sans-serif;
           font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
-          font-weight: 700;
+          font-weight: bold;
         }
 
         window#waybar {
           background-color: alpha(${cfg.theme.colors.background}, 0.8);
+          color: ${cfg.theme.colors.text};
+        }
+        
+        tooltip {
+          background-color: ${cfg.theme.colors.background};
           color: ${cfg.theme.colors.text};
         }
 
@@ -304,16 +309,17 @@ in {
           padding: 0px 7.5px;
         }
 
-        #battery {
-          color: ${cfg.theme.colors.text};
-        }
-
-        #battery.charging {
+        #battery.charging,
+        #power-profiles-daemon.power-saver {
           color: ${cfg.theme.colors.primary};
         }
 
         #battery.critical:not(.charging),
-        #custom-dnd.on {
+        #custom-dnd.on,
+        #idle_inhibitor.activated,
+        #network.disabled,
+        #network.disconnected,
+        #power-profiles-daemon.performance {
           color: ${cfg.theme.colors.secondary};
         }
 
