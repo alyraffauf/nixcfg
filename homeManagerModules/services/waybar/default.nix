@@ -274,7 +274,7 @@ in {
           background-color: alpha(${cfg.theme.colors.background}, 0.8);
           color: ${cfg.theme.colors.text};
         }
-        
+
         tooltip {
           background-color: ${cfg.theme.colors.background};
           color: ${cfg.theme.colors.text};
