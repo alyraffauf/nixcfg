@@ -16,6 +16,7 @@
         mako.enable = lib.mkDefault true;
         pipewire-inhibit.enable = lib.mkDefault true;
         swayidle.enable = lib.mkDefault true;
+        swayosd.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
       };
     };
@@ -33,21 +34,9 @@
       gnome.file-roller
       libnotify
       networkmanagerapplet
-      swayosd
     ];
 
-    services = {
-      playerctld.enable = lib.mkDefault true;
-      swayosd.enable = lib.mkDefault true;
-    };
-
-    systemd.user.services.swayosd = {
-      Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
-      Service = {
-        Restart = lib.mkForce "on-failure";
-        RestartSec = 5;
-      };
-    };
+    services.playerctld.enable = lib.mkDefault true;
 
     xdg.portal = {
       enable = true;

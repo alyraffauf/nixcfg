@@ -194,6 +194,7 @@ in {
       pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
       randomWallpaper.enable = lib.mkEnableOption "Lightweight swaybg-based random wallpaper daemon.";
       swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
+      swayosd.enable = lib.mkEnableOption "OSD for brightness and volume keys.";
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };
 
