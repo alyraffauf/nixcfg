@@ -54,7 +54,7 @@ in {
 
       extraConfig = {
         color.ui = true;
-        core.editor = "${lib.getExe config.programs.zed.package} --wait";
+        core.editor = "${lib.getExe config.ar.home.apps.zed.package} --wait";
         github.user = "alyraffauf";
         push.autoSetupRemote = true;
       };
