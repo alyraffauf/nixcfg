@@ -201,6 +201,10 @@ in {
           criteria = {app_id = "polkit-mate-authentication-agent-1";};
         }
         {
+          command = "floating enable; resize set 40ppt 20ppt; move position center";
+          criteria = {title = "File Operation Progress";};
+        }
+        {
           command = "resize set 40ppt 60ppt; move position center";
           criteria = {title = "Open Folder";};
         }
