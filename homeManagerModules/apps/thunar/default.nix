@@ -17,7 +17,7 @@
 
     xdg.configFile."xfce4/helpers.rc".text = ''
       FileManager=thunar
-      TerminalEmulator=alacritty
+      TerminalEmulator=kitty
       WebBrowser=firefox
     '';
   };
