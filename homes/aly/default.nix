@@ -3,11 +3,7 @@ self: {
   lib,
   pkgs,
   ...
-}: let
-  unstable = import self.inputs.nixpkgs-unstable {
-    system = pkgs.system;
-  };
-in {
+}: {
   imports = [
     ./firefox
     ./mail
