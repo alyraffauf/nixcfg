@@ -54,7 +54,7 @@ in {
 
       extraConfig = {
         color.ui = true;
-        core.editor = "${lib.getExe config.programs.vscode.package} --wait";
+        core.editor = "${lib.getExe config.programs.zed.package} --wait";
         github.user = "alyraffauf";
         push.autoSetupRemote = true;
       };
