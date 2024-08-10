@@ -23,6 +23,7 @@ in {
       layer = "top";
       margin = "20,0";
       padding = "15";
+      progressColor = "source ${cfg.theme.colors.secondary}";
       textColor = "${cfg.theme.colors.text}";
       width = 400;
 
