@@ -15,19 +15,25 @@ in {
           height = 32;
           layer = "top";
           output = ["*"];
-          position = "top";
+          position = "bottom";
           modules-left =
-            lib.optionals (cfg.desktop.hyprland.enable)
-            ["hyprland/workspaces" "hyprland/submap"]
+            lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
+            ["group/tablet"]
+            ++ lib.optionals (cfg.desktop.hyprland.enable)
+            ["hyprland/submap"]
             ++ lib.optionals (cfg.desktop.sway.enable)
-            ["sway/workspaces" "sway/scratchpad" "sway/mode"]
-            ++ lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
-            ["group/tablet"];
+            ["sway/scratchpad" "sway/mode"];
 
-          modules-center = ["clock"];
+          modules-center =
+            lib.optionals (cfg.desktop.hyprland.enable)
+            ["hyprland/workspaces"]
+            ++ lib.optionals (cfg.desktop.sway.enable)
+            ["sway/workspaces"];
+
           modules-right = [
             "tray"
             "group/hardware"
+            "clock"
             "group/session"
           ];
 
@@ -275,7 +281,7 @@ in {
           margin: 0px 0px;
           padding: 0px 5px;
         }
-        
+
         #workspaces button.active,
         #workspaces button.focused {
           color: ${cfg.theme.colors.secondary};
