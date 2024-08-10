@@ -232,7 +232,7 @@ in {
 
             format-icons = {
               balanced = "󰗑";
-              default = "󱐌";
+              default = "󰗑";
               performance = "󱐌";
               power-saver = "󰌪";
             };
