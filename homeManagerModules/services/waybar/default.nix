@@ -267,6 +267,7 @@ in {
         window#waybar {
           background: rgba (0, 0, 0, 0.0);
           color: ${cfg.theme.colors.text};
+          background-color: alpha(${cfg.theme.colors.background}, 0.8);
         }
 
         #workspaces button {
@@ -319,20 +320,16 @@ in {
         #submap,
         #tray,
         #workspaces {
-            background-color: alpha(${cfg.theme.colors.background}, 1.0);
-            border-radius: ${toString cfg.theme.borderRadius}px;
-            border: 4px solid alpha(${cfg.theme.colors.background}, 0.8);
-            margin: 5px 6px 0px 6px;
-            padding: 0px 10px 0px 10px;
+          margin: 5px 6px 5px 6px;
+          padding: 0px 5px 0px 5px;
         }
 
         #clock {
-            padding: 0px 20px 0px 20px;
         }
 
         #submap,
         #mode {
-            background: rgba(255, 123, 99, 0.8);
+            background: rgba(255, 123, 99, 1.0);
             color: ${cfg.theme.colors.text};
         }
       '';
