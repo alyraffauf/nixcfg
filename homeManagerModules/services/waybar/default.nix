@@ -261,7 +261,7 @@ in {
           border: none;
           font-family: "${cfg.theme.sansFont.name}";
           font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
-          font-weight: 600;
+          font-weight: 700;
         }
 
         window#waybar {
