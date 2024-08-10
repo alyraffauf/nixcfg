@@ -16,8 +16,8 @@ in {
       borderSize = 4;
       defaultTimeout = 10000;
       enable = true;
-      font = "${cfg.theme.sansFont.name} Regular ${toString cfg.theme.sansFont.size}";
-      groupBy = "app-name,summary";
+      font = "${cfg.theme.sansFont.name} ${toString cfg.theme.sansFont.size}";
+      groupBy = "app-name";
       height = 300;
       iconPath = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
       icons = true;
