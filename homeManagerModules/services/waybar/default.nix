@@ -259,7 +259,7 @@ in {
         * {
           border-radius: 0px;
           border: none;
-          font-family: "${cfg.theme.sansFont.name}";
+          font-family: "${cfg.theme.sansFont.name}", FontAwesome, sans-serif;
           font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
           font-weight: 700;
         }
