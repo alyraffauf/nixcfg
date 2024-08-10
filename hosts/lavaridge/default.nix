@@ -1,8 +1,6 @@
 # Framework Laptop 13 with AMD Ryzen 7640U, 32GB RAM, 1TB SSD.
 {
   config,
-  lib,
-  pkgs,
   self,
   ...
 }: {
