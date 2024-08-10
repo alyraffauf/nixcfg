@@ -52,6 +52,7 @@
         xserver = {
           enable = true;
           excludePackages = with pkgs; [xterm];
+          libinput.enable = true;
         };
       };
     };
