@@ -9,7 +9,7 @@ in {
   config = lib.mkIf cfg.services.mako.enable {
     services.mako = {
       actions = true;
-      anchor = "top-center";
+      anchor = "bottom-right";
       backgroundColor = "${cfg.theme.colors.background}99";
       borderColor = "${cfg.theme.colors.primary}CC";
       borderRadius = cfg.theme.borderRadius;
@@ -17,6 +17,7 @@ in {
       defaultTimeout = 10000;
       enable = true;
       font = "${cfg.theme.sansFont.name} Regular ${toString cfg.theme.sansFont.size}";
+      groupBy = "app-name,summary";
       height = 300;
       iconPath = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
       icons = true;
@@ -24,11 +25,13 @@ in {
       margin = "20,0";
       padding = "15";
       progressColor = "source ${cfg.theme.colors.secondary}";
+      sort = "+time";
       textColor = "${cfg.theme.colors.text}";
       width = 400;
 
       extraConfig = ''
         on-notify=exec ${lib.getExe pkgs.mpv} ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga
+        outer-margin=20
 
         [mode=do-not-disturb]
         invisible=1
