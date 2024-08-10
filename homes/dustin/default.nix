@@ -28,7 +28,6 @@ self: {
 
     rbw = {
       enable = true;
-      package = pkgs.rbw;
 
       settings = {
         email = "dustinmraffauf@gmail.com";

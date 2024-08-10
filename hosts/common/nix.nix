@@ -2,8 +2,13 @@
   config,
   lib,
   pkgs,
+  self,
   ...
-}: {
+}: let
+  unstable = import self.inputs.nixpkgs-unstable {
+    system = pkgs.system;
+  };
+in {
   environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
 
   nix.settings = {
@@ -26,24 +31,7 @@
 
     overlays = [
       (final: prev: {
-        rbw = prev.rbw.override (super: {
-          rustPlatform =
-            super.rustPlatform
-            // {
-              buildRustPackage = args:
-                super.rustPlatform.buildRustPackage (args
-                  // {
-                    version = "1.12.1";
-                    src = pkgs.fetchFromGitHub {
-                      owner = "doy";
-                      repo = "rbw";
-                      rev = "1.12.1";
-                      hash = "sha256-+1kalFyhk2UL+iVzuFLDsSSTudrd4QpXw+3O4J+KsLc=";
-                    };
-                    cargoHash = "sha256-cKbbsDb449WANGT+x8APhzs+hf5SR3RBsCBWDNceRMA=";
-                  });
-            };
-        });
+        rbw = unstable.rbw;
 
         rofi-bluetooth =
           prev.rofi-bluetooth.overrideAttrs
@@ -57,6 +45,8 @@
               sha256 = "sha256-o0Sr3/888L/2KzZZP/EcXx+8ZUzdHB/I/VIeVuJvJks=";
             };
           });
+
+        zed-editor = unstable.zed-editor;
       })
     ];
   };

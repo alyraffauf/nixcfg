@@ -67,7 +67,6 @@ in {
 
     rbw = {
       enable = true;
-      package = pkgs.rbw;
 
       settings = {
         email = "alyraffauf@fastmail.com";
@@ -100,16 +99,11 @@ in {
 
       zed = {
         enable = true;
-        package = unstable.zed-editor;
 
-        settings = {
-          auto_install_extensions = {nord = true;};
-
-          theme = {
-            dark = "Rosé Pine Moon";
-            light = "Rosé Pine Dawn";
-            mode = "system";
-          };
+        settings.theme = {
+          dark = "Rosé Pine Moon";
+          light = "Rosé Pine Dawn";
+          mode = "system";
         };
       };
     };
