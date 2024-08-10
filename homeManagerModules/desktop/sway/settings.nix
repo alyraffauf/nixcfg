@@ -197,6 +197,10 @@ in {
           criteria = {app_id = "gcr-prompter";};
         }
         {
+          command = "focus; sticky toggle";
+          criteria = {app_id = "polkit-mate-authentication-agent-1";};
+        }
+        {
           command = "resize set 40ppt 60ppt; move position center";
           criteria = {title = "Open Folder";};
         }

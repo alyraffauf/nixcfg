@@ -184,6 +184,7 @@ in {
     "center(1),class:(gcr-prompter)"
     "center(1),class:(nm-connection-editor)"
     "center(1),class:(pavucontrol)"
+    "center(1),class:(polkit-mate-authentication-agent-1)"
     "float, class:^(firefox)$, title:^(Picture-in-Picture)$"
     "float,class:(.blueman-manager-wrapped)"
     "float,class:(blueberry.py)"
@@ -192,6 +193,7 @@ in {
     "float,class:(pavucontrol)"
     "move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$"
     "pin,class:(gcr-prompter)"
+    "pin,class:(polkit-mate-authentication-agent-1)"
     "pin,class:^(firefox)$, title:^(Picture-in-Picture)$"
     "size 40% 60%,class:(.blueman-manager-wrapped)"
     "size 40% 60%,class:(blueberry.py)"
@@ -199,6 +201,7 @@ in {
     "size 40% 60%,class:(nm-connection-editor)"
     "size 40% 60%,class:(pavucontrol)"
     "stayfocused,class:(gcr-prompter)"
+    "stayfocused,class:(polkit-mate-authentication-agent-1)"
     "suppressevent maximize, class:.*"
   ];
 
