@@ -15,19 +15,25 @@ in {
           height = 32;
           layer = "top";
           output = ["*"];
-          position = "top";
+          position = "bottom";
           modules-left =
-            lib.optionals (cfg.desktop.hyprland.enable)
-            ["hyprland/workspaces" "hyprland/submap"]
+            lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
+            ["group/tablet"]
+            ++ lib.optionals (cfg.desktop.hyprland.enable)
+            ["hyprland/submap"]
             ++ lib.optionals (cfg.desktop.sway.enable)
-            ["sway/workspaces" "sway/scratchpad" "sway/mode"]
-            ++ lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
-            ["group/tablet"];
+            ["sway/scratchpad" "sway/mode"];
 
-          modules-center = ["clock"];
+          modules-center =
+            lib.optionals (cfg.desktop.hyprland.enable)
+            ["hyprland/workspaces"]
+            ++ lib.optionals (cfg.desktop.sway.enable)
+            ["sway/workspaces"];
+
           modules-right = [
             "tray"
             "group/hardware"
+            "clock"
             "group/session"
           ];
 
@@ -226,7 +232,7 @@ in {
 
             format-icons = {
               balanced = "󰗑";
-              default = "󱐌";
+              default = "󰗑";
               performance = "󱐌";
               power-saver = "󰌪";
             };
@@ -259,17 +265,23 @@ in {
         * {
           border-radius: 0px;
           border: none;
-          font-family: "${cfg.theme.monospaceFont.name}";
-          font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
-          font-weight: 600;
+          font-family: "${cfg.theme.sansFont.name}", FontAwesome, sans-serif;
+          font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
+          font-weight: bold;
         }
 
         window#waybar {
-          background: rgba (0, 0, 0, 0.0);
+          background-color: alpha(${cfg.theme.colors.background}, 0.8);
+          color: ${cfg.theme.colors.text};
+        }
+
+        tooltip {
+          background-color: ${cfg.theme.colors.background};
           color: ${cfg.theme.colors.text};
         }
 
         #workspaces button {
+          border-radius: ${toString cfg.theme.borderRadius};
           color: ${cfg.theme.colors.text};
           margin: 0px 0px;
           padding: 0px 5px;
@@ -297,17 +309,19 @@ in {
           padding: 0px 7.5px;
         }
 
-        #battery {
-            color: ${cfg.theme.colors.text};
-        }
-
-        #battery.charging {
-            color: ${cfg.theme.colors.primary};
+        #battery.charging,
+        #power-profiles-daemon.power-saver {
+          color: ${cfg.theme.colors.primary};
         }
 
         #battery.critical:not(.charging),
-        #custom-dnd.on {
-            color: #e78284;
+        #custom-dnd.on,
+        #idle_inhibitor.activated,
+        #network.disabled,
+        #network.disconnected,
+        #power-profiles-daemon.performance,
+        #pulseaudio.muted {
+          color: ${cfg.theme.colors.secondary};
         }
 
         #clock,
@@ -319,21 +333,15 @@ in {
         #submap,
         #tray,
         #workspaces {
-            background-color: alpha(${cfg.theme.colors.background}, 1.0);
-            border-radius: ${toString cfg.theme.borderRadius}px;
-            border: 4px solid alpha(${cfg.theme.colors.background}, 0.8);
-            margin: 5px 6px 0px 6px;
-            padding: 0px 10px 0px 10px;
-        }
-
-        #clock {
-            padding: 0px 20px 0px 20px;
+          margin: 5px 6px 5px 6px;
+          padding: 0px 5px 0px 5px;
         }
 
         #submap,
         #mode {
-            background: rgba(255, 123, 99, 0.8);
-            color: ${cfg.theme.colors.text};
+          background-color: ${cfg.theme.colors.secondary};
+          border-radius: ${toString cfg.theme.borderRadius};
+          color: ${cfg.theme.colors.background};
         }
       '';
 

@@ -7,6 +7,7 @@ My comprehensive NixOS flake for managing my laptop, desktop, and home lab envir
 ## Features
 
 - **Hyprland:** Dynamic tiling Wayland compositor and window manager.
+- **Theme Engine:** Recolor your whole desktop with simple theme options.
 - **Home Lab Services:** Media, file sharing, and more.
 - **Reverse Proxy:** Efficient traffic routing for my home lab services.
 - **Modular Configuration:** Reasonably adaptable for different hardware and use cases.
