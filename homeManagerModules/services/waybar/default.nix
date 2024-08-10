@@ -22,7 +22,7 @@ in {
             ++ lib.optionals (cfg.desktop.sway.enable)
             ["sway/workspaces" "sway/scratchpad" "sway/mode"]
             ++ lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
-            ["custom/menu" "custom/hyprland-close"];
+            ["group/tablet"];
 
           modules-center = ["clock"];
           modules-right = [
@@ -238,6 +238,11 @@ in {
             tooltip = true;
           };
 
+          "group/tablet" = {
+            orientation = "horizontal";
+            modules = ["custom/menu" "custom/hyprland-close"];
+          };
+
           "group/hardware" = {
             orientation = "horizontal";
             modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
@@ -252,27 +257,27 @@ in {
 
       style = ''
         * {
-          border: none;
           border-radius: 0px;
+          border: none;
           font-family: "${cfg.theme.monospaceFont.name}";
           font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
           font-weight: 600;
         }
 
         window#waybar {
-          background: rgba (35, 38, 52, 0.0);
+          background: rgba (0, 0, 0, 0.0);
           color: ${cfg.theme.colors.text};
         }
 
         #workspaces button {
-          padding: 0px 5px;
-          margin: 0px 0px;
           color: ${cfg.theme.colors.text};
+          margin: 0px 0px;
+          padding: 0px 5px;
         }
 
         #workspaces button.active,
         #workspaces button.focused {
-          color: ${cfg.theme.colors.primary};
+          color: ${cfg.theme.colors.secondary};
         }
 
         #clock,
@@ -286,9 +291,10 @@ in {
         #custom-dnd,
         #custom-logout,
         #custom-menu,
+        #custom-hyprland-close,
         #tray {
-          padding: 0px 7.5px;
           margin: 0px 5px;
+          padding: 0px 7.5px;
         }
 
         #battery {
@@ -305,8 +311,7 @@ in {
         }
 
         #clock,
-        #custom-hyprland-close,
-        #custom-menu,
+        #tablet,
         #hardware,
         #mode,
         #scratchpad,
@@ -314,21 +319,21 @@ in {
         #submap,
         #tray,
         #workspaces {
+            background-color: alpha(${cfg.theme.colors.background}, 1.0);
             border-radius: ${toString cfg.theme.borderRadius}px;
-            background: ${cfg.theme.colors.background};
-            opacity: 1.0;
-            margin: 5px 10px 0px 10px;
+            border: 4px solid alpha(${cfg.theme.colors.background}, 0.8);
+            margin: 5px 6px 0px 6px;
             padding: 0px 10px 0px 10px;
         }
 
-        #clock, #custom-menu, #custom-hyprland-close {
+        #clock {
             padding: 0px 20px 0px 20px;
         }
 
         #submap,
         #mode {
-            color: ${cfg.theme.colors.text};
             background: rgba(255, 123, 99, 0.8);
+            color: ${cfg.theme.colors.text};
         }
       '';
 
