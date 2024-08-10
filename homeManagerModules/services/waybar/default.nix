@@ -319,7 +319,8 @@ in {
         #idle_inhibitor.activated,
         #network.disabled,
         #network.disconnected,
-        #power-profiles-daemon.performance {
+        #power-profiles-daemon.performance,
+        #pulseaudio.muted {
           color: ${cfg.theme.colors.secondary};
         }
 
