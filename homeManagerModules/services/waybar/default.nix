@@ -280,6 +280,7 @@ in {
           color: ${cfg.theme.colors.text};
           margin: 0px 0px;
           padding: 0px 5px;
+          border-radius: ${toString cfg.theme.borderRadius};
         }
 
         #workspaces button.active,
