@@ -259,8 +259,8 @@ in {
         * {
           border-radius: 0px;
           border: none;
-          font-family: "${cfg.theme.monospaceFont.name}";
-          font-size: ${toString (cfg.theme.monospaceFont.size + 3)}px;
+          font-family: "${cfg.theme.sansFont.name}";
+          font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
           font-weight: 600;
         }
 
@@ -275,7 +275,7 @@ in {
           margin: 0px 0px;
           padding: 0px 5px;
         }
-
+        
         #workspaces button.active,
         #workspaces button.focused {
           color: ${cfg.theme.colors.secondary};
