@@ -16,6 +16,7 @@
         mako.enable = lib.mkDefault true;
         pipewire-inhibit.enable = lib.mkDefault true;
         swayidle.enable = lib.mkDefault true;
+        swayosd.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
       };
     };
@@ -33,68 +34,9 @@
       gnome.file-roller
       libnotify
       networkmanagerapplet
-      swayosd
     ];
 
-    services = {
-      playerctld.enable = lib.mkDefault true;
-      swayosd = {
-        enable = lib.mkDefault true;
-        stylePath = "${config.xdg.configHome}/swayosd/style.css";
-      };
-    };
-
-    xdg.configFile."swayosd/style.css" = {
-      text = ''
-        window#osd {
-          padding: 12px 20px;
-          border-radius: ${toString config.ar.home.theme.borderRadius}px;
-          border: 4px solid alpha(${config.ar.home.theme.colors.primary}, 0.8);
-          background: alpha(${config.ar.home.theme.colors.background}, 0.8);
-        }
-        window#osd #container {
-          margin: 16px;
-        }
-        window#osd image,
-        window#osd label {
-          color: ${config.ar.home.theme.colors.secondary};
-        }
-        window#osd progressbar:disabled,
-        window#osd image:disabled {
-          opacity: 0.5;
-        }
-        window#osd progressbar {
-          min-height: 6px;
-          border-radius: 999px;
-          background: transparent;
-          border: none;
-        }
-        window#osd trough {
-          min-height: inherit;
-          border-radius: inherit;
-          border: none;
-          background: alpha(${config.ar.home.theme.colors.secondary}, 0.5);
-        }
-        window#osd progress {
-          min-height: inherit;
-          border-radius: inherit;
-          border: none;
-          background: ${config.ar.home.theme.colors.secondary};
-        }
-      '';
-
-      onChange = ''
-        ${lib.getExe' pkgs.systemd "systemctl"} restart --user swayosd
-      '';
-    };
-
-    systemd.user.services.swayosd = {
-      Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
-      Service = {
-        Restart = lib.mkForce "on-failure";
-        RestartSec = 5;
-      };
-    };
+    services.playerctld.enable = lib.mkDefault true;
 
     xdg.portal = {
       enable = true;
