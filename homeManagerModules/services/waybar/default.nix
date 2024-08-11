@@ -297,19 +297,21 @@ in {
           color: ${cfg.theme.colors.secondary};
         }
 
-        #clock,
         #battery,
         #bluetooth,
+        #clock,
+        #custom-dnd,
+        #custom-hyprland-close,
+        #custom-logout,
+        #custom-menu,
+        #idle_inhibitor,
+        #mode,
         #network,
         #power-profiles-daemon,
         #pulseaudio,
-        #wireplumber,
-        #idle_inhibitor,
-        #custom-dnd,
-        #custom-logout,
-        #custom-menu,
-        #custom-hyprland-close,
-        #tray {
+        #submap,
+        #tray,
+        #wireplumber {
           margin: 0px 5px;
           padding: 0px 5px;
         }
