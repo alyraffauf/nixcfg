@@ -225,7 +225,7 @@ in {
 
           "custom/menu" = {
             format = "󰀻";
-            on-click = "${lib.getExe pkgs.nwg-drawer} -mt 5";
+            on-click = "${lib.getExe pkgs.nwg-drawer}";
             tooltip-format = "Touch-friendly application menu.";
           };
 
@@ -357,5 +357,48 @@ in {
         RestartSec = 5;
       };
     };
+
+    xdg.configFile."nwg-drawer/drawer.css".text = ''
+      window {
+        background-color: alpha (${cfg.theme.colors.background}, 0.8);
+        color: ${cfg.theme.colors.text}
+      }
+
+      /* search entry */
+      entry {
+        background-color: rgba (0, 0, 0, 0.2);
+        border: 4px solid ${cfg.theme.colors.primary};
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+
+      button, image {
+        background: none;
+        border: none;
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+
+      button:active, button:hover, button:focused {
+        background-color: alpha (${cfg.theme.colors.text}, 0.2);
+        border: none;
+        border-radius: ${toString cfg.theme.borderRadius}px;
+        color: ${cfg.theme.colors.secondary}
+      }
+
+      #category-button {
+        margin: 0 10px 0 10px;
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+
+      #pinned-box {
+        padding-bottom: 5px;
+        border-bottom: 1px dotted gray
+      }
+
+      #files-box {
+        padding: 5px;
+        border: 1px dotted gray;
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+    '';
   };
 }
