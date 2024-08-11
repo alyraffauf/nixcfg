@@ -51,9 +51,14 @@
 
     hyprland.settings = {
       bind = [
-        "SUPER SHIFT,N,movetoworkspace,special:notes"
-        "SUPER,N,togglespecialworkspace,notes"
+        "SUPER,N,exec,${lib.getExe' pkgs.obsidian "obsidian"}"
         "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
+      ];
+
+      dwindle.no_gaps_when_only = "1";
+
+      exec-once = [
+        "sleep 2 && hyprctl dispatch workspace 2 && sleep 2 && hyprctl dispatch workspace 3 && sleep 2 && hyprctl dispatch workspace 4 && sleep 2 && hyprctl dispatch workspace 1;"
       ];
 
       input.kb_options = "ctrl:nocaps";
@@ -66,20 +71,22 @@
         "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
         "workspace 1,class:(brave-browser)"
-        "workspace 1,class:(firefox)"
-        "workspace 2,class:(codium-url-handler)"
-        "workspace 2,class:(dev.zed.Zed)"
-        "workspace 3,class:(firework)"
-        "workspace 3,class:(google-chrome)"
+        "workspace 5,class:(firework)"
         "workspace special:magic,class:(WebCord)"
         "workspace special:magic,class:(org.gnome.Fractal)"
+        # "workspace 1,class:(firefox)"
+        # "workspace 2,class:(obsidian)"
+        # "workspace 3,class:(codium-url-handler)"
+        # "workspace 3,class:(dev.zed.Zed)"
+        # "workspace 4,class:(thunderbird)"
       ];
 
       workspace = [
         "1,defaultName:web,on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}"
-        "2,defaultName:code,on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
+        "2,defaultName:note,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
+        "3,defaultName:code,on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
+        "4,defaultName:mail,on-created-empty:${lib.getExe pkgs.thunderbird}"
         "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
-        "special:notes,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
       ];
     };
   };
