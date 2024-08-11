@@ -17,7 +17,6 @@ in {
           output = ["*"];
           position = "bottom";
           modules-left =
-            lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
             ["group/tablet"]
             ++ lib.optionals (cfg.desktop.hyprland.enable)
             ["hyprland/submap"]
@@ -247,7 +246,11 @@ in {
           };
 
           "group/tablet" = {
-            modules = ["custom/menu" "custom/hyprland-close"];
+            modules =
+              ["custom/menu"]
+              ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
+              "custom/hyprland-close";
+
             orientation = "horizontal";
           };
 
