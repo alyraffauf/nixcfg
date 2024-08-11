@@ -42,8 +42,9 @@ in {
             format = "{icon} {name}";
 
             format-icons = {
-              default = "󰝥";
               active = "󰪥";
+              default = "󰝥";
+              urgent = "";
             };
 
             sort-by = "id";
@@ -61,6 +62,7 @@ in {
             format-icons = {
               default = "󰝥";
               focused = "󰪥";
+              urgent = "";
             };
 
             sort-by = "id";
@@ -245,18 +247,18 @@ in {
           };
 
           "group/tablet" = {
-            orientation = "horizontal";
             modules = ["custom/menu" "custom/hyprland-close"];
+            orientation = "horizontal";
           };
 
           "group/hardware" = {
-            orientation = "horizontal";
             modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
+            orientation = "horizontal";
           };
 
           "group/session" = {
-            orientation = "horizontal";
             modules = ["custom/dnd" "idle_inhibitor" "custom/logout"];
+            orientation = "horizontal";
           };
         };
       };
@@ -306,7 +308,7 @@ in {
         #custom-hyprland-close,
         #tray {
           margin: 0px 5px;
-          padding: 0px 7.5px;
+          padding: 0px 5px;
         }
 
         #battery.charging,
@@ -333,8 +335,8 @@ in {
         #submap,
         #tray,
         #workspaces {
-          margin: 5px 6px 5px 6px;
-          padding: 0px 5px 0px 5px;
+          margin: 5px 5px;
+          padding: 0px 2.5px;
         }
 
         #submap,
