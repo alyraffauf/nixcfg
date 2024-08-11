@@ -53,6 +53,13 @@ self: {
         "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe pkgs.rofi-rbw-wayland}";
       };
 
+      output = {
+        "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 0000000000001" = {
+          scale = "1.5";
+          pos = "-2560 0";
+        };
+      };
+
       startup = [{command = "sleep 2 && ${lib.getExe pkgs.trayscale} --hide-window";}];
     };
   };
