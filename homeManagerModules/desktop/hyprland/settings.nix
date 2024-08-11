@@ -28,6 +28,7 @@ in {
   bind =
     [
       "$mod CTRL,L,exec,${lib.getExe pkgs.swaylock}"
+      "$mod SHIFT,G,togglegroup"
       "$mod SHIFT,R,exec,${lib.getExe config.programs.rofi.package} -show run"
       "$mod SHIFT,S,movetoworkspace,special:magic"
       "$mod SHIFT,V,togglefloating"
@@ -160,15 +161,35 @@ in {
     workspace_swipe_touch = true;
   };
 
+  group = {
+    "col.border_active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
+    "col.border_inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
+    "col.border_locked_active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
+    "col.border_locked_inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
+
+    groupbar = {
+      "col.active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC)";
+      "col.inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}CC)";
+      "col.locked_active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC)";
+      "col.locked_inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}CC)";
+      font_family = cfg.theme.sansFont.name;
+      font_size = cfg.theme.sansFont.size;
+      height = 24;
+      text_color = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.text}FF)";
+    };
+  };
+
   master = {
     always_center_master = true;
     new_status = false;
   };
 
   misc = {
+    background_color = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.background}FF)";
     disable_hyprland_logo = true;
     disable_splash_rendering = true;
     focus_on_activate = true;
+    font_family = cfg.theme.sansFont.name;
     vfr = true;
   };
 

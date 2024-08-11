@@ -17,7 +17,6 @@ in {
           output = ["*"];
           position = "bottom";
           modules-left =
-            lib.optionals (cfg.desktop.hyprland.tabletMode.enable)
             ["group/tablet"]
             ++ lib.optionals (cfg.desktop.hyprland.enable)
             ["hyprland/submap"]
@@ -42,8 +41,9 @@ in {
             format = "{icon} {name}";
 
             format-icons = {
-              default = "󰝥";
               active = "󰪥";
+              default = "󰝥";
+              urgent = "";
             };
 
             sort-by = "id";
@@ -61,6 +61,7 @@ in {
             format-icons = {
               default = "󰝥";
               focused = "󰪥";
+              urgent = "";
             };
 
             sort-by = "id";
@@ -223,7 +224,7 @@ in {
 
           "custom/menu" = {
             format = "󰀻";
-            on-click = "${lib.getExe pkgs.nwg-drawer} -mt 5";
+            on-click = "${lib.getExe pkgs.nwg-drawer}";
             tooltip-format = "Touch-friendly application menu.";
           };
 
@@ -245,18 +246,22 @@ in {
           };
 
           "group/tablet" = {
+            modules =
+              ["custom/menu"]
+              ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
+              "custom/hyprland-close";
+
             orientation = "horizontal";
-            modules = ["custom/menu" "custom/hyprland-close"];
           };
 
           "group/hardware" = {
-            orientation = "horizontal";
             modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
+            orientation = "horizontal";
           };
 
           "group/session" = {
-            orientation = "horizontal";
             modules = ["custom/dnd" "idle_inhibitor" "custom/logout"];
+            orientation = "horizontal";
           };
         };
       };
@@ -292,21 +297,23 @@ in {
           color: ${cfg.theme.colors.secondary};
         }
 
-        #clock,
         #battery,
         #bluetooth,
+        #clock,
+        #custom-dnd,
+        #custom-hyprland-close,
+        #custom-logout,
+        #custom-menu,
+        #idle_inhibitor,
+        #mode,
         #network,
         #power-profiles-daemon,
         #pulseaudio,
-        #wireplumber,
-        #idle_inhibitor,
-        #custom-dnd,
-        #custom-logout,
-        #custom-menu,
-        #custom-hyprland-close,
-        #tray {
+        #submap,
+        #tray,
+        #wireplumber {
           margin: 0px 5px;
-          padding: 0px 7.5px;
+          padding: 0px 5px;
         }
 
         #battery.charging,
@@ -333,8 +340,8 @@ in {
         #submap,
         #tray,
         #workspaces {
-          margin: 5px 6px 5px 6px;
-          padding: 0px 5px 0px 5px;
+          margin: 5px 5px;
+          padding: 0px 2.5px;
         }
 
         #submap,
@@ -355,5 +362,48 @@ in {
         RestartSec = 5;
       };
     };
+
+    xdg.configFile."nwg-drawer/drawer.css".text = ''
+      window {
+        background-color: alpha (${cfg.theme.colors.background}, 0.8);
+        color: ${cfg.theme.colors.text}
+      }
+
+      /* search entry */
+      entry {
+        background-color: rgba (0, 0, 0, 0.2);
+        border: 4px solid ${cfg.theme.colors.primary};
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+
+      button, image {
+        background: none;
+        border: none;
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+
+      button:active, button:hover, button:focused {
+        background-color: alpha (${cfg.theme.colors.text}, 0.2);
+        border: none;
+        border-radius: ${toString cfg.theme.borderRadius}px;
+        color: ${cfg.theme.colors.secondary}
+      }
+
+      #category-button {
+        margin: 0 10px 0 10px;
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+
+      #pinned-box {
+        padding-bottom: 5px;
+        border-bottom: 1px dotted gray
+      }
+
+      #files-box {
+        padding: 5px;
+        border: 1px dotted gray;
+        border-radius: ${toString cfg.theme.borderRadius}px
+      }
+    '';
   };
 }
