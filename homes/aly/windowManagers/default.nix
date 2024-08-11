@@ -55,11 +55,9 @@
         "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
       ];
 
+      dwindle.no_gaps_when_only = "1";
+
       exec-once = [
-        # "${lib.getExe config.ar.home.defaultApps.webBrowser}"
-        # "${lib.getExe' pkgs.obsidian "obsidian"}"
-        # "${lib.getExe config.ar.home.defaultApps.editor}"
-        # "${lib.getExe pkgs.thunderbird}"
         "sleep 2 && hyprctl dispatch workspace 2 && sleep 2 && hyprctl dispatch workspace 3 && sleep 2 && hyprctl dispatch workspace 4 && sleep 2 && hyprctl dispatch workspace 1;"
       ];
 
