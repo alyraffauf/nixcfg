@@ -98,7 +98,9 @@ in {
         "${modifier}+Period" = "workspace next";
         "${modifier}+R" = "exec ${lib.getExe config.programs.rofi.package} -show combi";
         "${modifier}+S" = "scratchpad show";
+        "${modifier}+Shift+Backslash" = "layout toggle split";
         "${modifier}+Shift+Comma" = "move container to workspace prev; workspace prev";
+        "${modifier}+Shift+G" = "layout toggle splitv tabbed";
         "${modifier}+Shift+Period" = "move container to workspace next; workspace next";
         "${modifier}+Shift+R" = "exec ${lib.getExe config.programs.rofi.package} -show run";
         "${modifier}+Shift+S" = "move scratchpad";
