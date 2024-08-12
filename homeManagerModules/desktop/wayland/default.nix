@@ -9,7 +9,7 @@
       apps = {
         kitty.enable = lib.mkDefault true;
         rofi.enable = lib.mkDefault true;
-        swaylock.enable = lib.mkDefault true;
+        gtklock.enable = lib.mkDefault true;
       };
 
       services = {
