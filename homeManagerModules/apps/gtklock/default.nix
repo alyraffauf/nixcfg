@@ -26,14 +26,14 @@ in {
            background-position: center;
            background-color: black;
         }
-        
+
         #clock-label {
           margin-bottom: 50px;
           font-size: 700%;
           font-weight: bold;
           color: ${cfg.theme.colors.text};
         }
-        
+
         #input-label {
           color: ${cfg.theme.colors.text};
         }
