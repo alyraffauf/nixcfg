@@ -7,7 +7,7 @@
   home-manager = {
     sharedModules = [
       {
-        wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.25";};
+        wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.0";};
         xdg.userDirs.music = "/mnt/Media/Music";
 
         ar.home = {
@@ -17,16 +17,9 @@
           };
 
           theme = {
-            colors = lib.mkForce {
-              text = "#575279";
-              background = "#fffaf3";
-              primary = "#286983";
-              secondary = "#ea9d34";
-              inactive = "#393552";
-              shadow = "#232136";
-            };
-
-            darkMode = false;
+            monospaceFont.size = 14;
+            sansFont.size = 14;
+            serifFont.size = 14;
           };
         };
       }
