@@ -13,9 +13,9 @@ in {
     };
 
     systemd.user.services.gammastep = {
-      Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
+      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
       Service.Restart = lib.mkForce "no";
-      Unit.BindsTo = ["hyprland-session.target" "sway-session.target"];
+      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
     };
   };
 }

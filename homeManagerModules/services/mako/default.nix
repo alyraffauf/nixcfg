@@ -41,7 +41,7 @@ in {
     systemd.user.services.mako = {
       Unit = {
         After = "graphical-session.target";
-        BindsTo = ["hyprland-session.target" "sway-session.target"];
+        BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
         Description = "Lightweight Wayland notification daemon";
         Documentation = "man:mako(1)";
         PartOf = "graphical-session.target";
@@ -55,7 +55,7 @@ in {
         Type = "dbus";
       };
 
-      Install.WantedBy = ["hyprland-session.target" "sway-session.target"];
+      Install.WantedBy = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
     };
   };
 }
