@@ -60,10 +60,8 @@ in {
 
     systemd.user.services.swayidle = {
       Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
-      Service = {
-        Restart = lib.mkForce "on-failure";
-        RestartSec = 5;
-      };
+      Service.Restart = lib.mkForce "no";
+      Unit.BindsTo = ["hyprland-session.target" "sway-session.target"];
     };
   };
 }

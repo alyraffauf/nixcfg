@@ -15,6 +15,12 @@ in {
 
   systemd = {
     enable = true;
+
+    extraCommands = lib.mkDefault [
+      "systemctl --user stop sway-session.target"
+      "systemctl --user start sway-session.target"
+    ];
+
     variables = ["--all"];
   };
 
