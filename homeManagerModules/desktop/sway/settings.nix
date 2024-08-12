@@ -7,6 +7,7 @@
   cfg = config.ar.home;
   helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
   modifier = "Mod4";
+  scripts = import ./scripts.nix {inherit config lib pkgs;};
 in {
   enable = true;
   checkConfig = false;
@@ -269,8 +270,8 @@ in {
       bindgesture swipe:right workspace prev
       bindgesture swipe:left workspace next
 
-      bindswitch --reload --locked lid:on output eDP-1 disable
-      bindswitch --reload --locked lid:off output eDP-1 enable
+      bindswitch --reload --locked lid:on exec ${scripts.clamshell} on
+      bindswitch --reload --locked lid:off exec ${scripts.clamshell} off
 
       default_border pixel 4
       default_floating_border pixel 4
