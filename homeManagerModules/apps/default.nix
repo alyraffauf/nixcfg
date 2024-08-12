@@ -7,6 +7,7 @@
     ./fastfetch
     ./firefox
     ./fuzzel
+    ./gtklock
     ./helix
     ./keepassxc
     ./kitty
