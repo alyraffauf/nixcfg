@@ -14,7 +14,7 @@
     };
 
     security.pam.services = let
-      pamConfig = ''
+      text = ''
         # Account management.
         account required pam_unix.so # unix (order 10900)
 
@@ -35,8 +35,8 @@
         session required pam_unix.so # unix (order 10200)
       '';
     in {
-      gtklock = {text = pamConfig;};
-      swaylock = {text = pamConfig;};
+      gtklock = {inherit text;};
+      swaylock = {inherit text;};
     };
   };
 }
