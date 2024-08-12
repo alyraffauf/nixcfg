@@ -150,10 +150,11 @@ in {
       greetd = {
         enable = true;
         autologin = "aly";
+        session = lib.getExe config.programs.sway.package;
       };
 
-      hyprland.enable = true;
       steam.enable = true;
+      sway.enable = true;
     };
 
     users = {
