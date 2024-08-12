@@ -19,7 +19,7 @@
         account required pam_unix.so # unix (order 10900)
 
         # Authentication management.
-        auth sufficient pam_unix.so likeauth try_first_pass likeauth nullok # unix (order 11500)
+        auth sufficient pam_unix.so likeauth try_first_pass nullok # unix (order 11500)
         ${
           lib.strings.optionalString config.services.fprintd.enable
           "auth sufficient ${pkgs.fprintd}/lib/security/pam_fprintd.so # fprintd (order 11300)"
