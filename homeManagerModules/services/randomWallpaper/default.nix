@@ -89,14 +89,14 @@ in {
     systemd.user.services.randomWallpaper = {
       Unit = {
         After = "graphical-session.target";
+        BindsTo = ["hyprland-session.target" "sway-session.target"];
         Description = "Lightweight swaybg-based random wallpaper daemon.";
         PartOf = "graphical-session.target";
       };
 
       Service = {
         ExecStart = "${wallpaperD}";
-        Restart = "on-failure";
-        RestartSec = 5;
+        Restart = "no";
       };
 
       Install.WantedBy = ["hyprland-session.target" "sway-session.target"];

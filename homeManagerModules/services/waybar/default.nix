@@ -357,10 +357,8 @@ in {
 
     systemd.user.services.waybar = {
       Install.WantedBy = lib.mkForce ["hyprland-session.target" "sway-session.target"];
-      Service = {
-        Restart = lib.mkForce "on-failure";
-        RestartSec = 5;
-      };
+      Service.Restart = lib.mkForce "no";
+      Unit.BindsTo = ["hyprland-session.target" "sway-session.target"];
     };
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''

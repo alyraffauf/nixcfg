@@ -41,6 +41,7 @@ in {
     systemd.user.services.mako = {
       Unit = {
         After = "graphical-session.target";
+        BindsTo = ["hyprland-session.target" "sway-session.target"];
         Description = "Lightweight Wayland notification daemon";
         Documentation = "man:mako(1)";
         PartOf = "graphical-session.target";
@@ -50,8 +51,7 @@ in {
         BusName = "org.freedesktop.Notifications";
         ExecReload = ''${lib.getExe' pkgs.mako "makoctl"} reload'';
         ExecStart = "${lib.getExe pkgs.mako}";
-        Restart = "on-failure";
-        RestartSec = 5;
+        Restart = lib.mkForce "no";
         Type = "dbus";
       };
 
