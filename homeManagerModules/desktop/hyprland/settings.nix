@@ -27,7 +27,7 @@ in {
 
   bind =
     [
-      "$mod CTRL,L,exec,${lib.getExe pkgs.gtklock}"
+      "$mod CTRL,L,exec,${lib.getExe pkgs.swaylock}"
       "$mod SHIFT,G,togglegroup"
       "$mod SHIFT,R,exec,${lib.getExe config.programs.rofi.package} -show run"
       "$mod SHIFT,S,movetoworkspace,special:magic"

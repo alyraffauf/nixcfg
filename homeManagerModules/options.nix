@@ -36,7 +36,6 @@ in {
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
       fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
-      gtklock.enable = lib.mkEnableOption "GTK lockscreen based on gtkgreet.";
       helix.enable = lib.mkEnableOption "Helix text editor.";
 
       keepassxc = {
