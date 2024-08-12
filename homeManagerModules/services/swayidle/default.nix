@@ -19,11 +19,11 @@ in {
         }
         {
           event = "before-sleep";
-          command = "${lib.getExe pkgs.swaylock} && ${lib.getExe' pkgs.coreutils "sleep"} 2";
+          command = "${lib.getExe pkgs.gtklock} && ${lib.getExe' pkgs.coreutils "sleep"} 2";
         }
         {
           event = "lock";
-          command = "${lib.getExe pkgs.swaylock}";
+          command = "${lib.getExe pkgs.gtklock}";
         }
       ];
 
@@ -42,7 +42,7 @@ in {
         ++ lib.optional (!cfg.desktop.autoSuspend)
         {
           timeout = 600;
-          command = "${lib.getExe pkgs.swaylock}";
+          command = "${lib.getExe pkgs.gtklock}";
         }
         ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.hyprland.enable)
         {
