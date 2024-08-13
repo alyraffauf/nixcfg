@@ -80,9 +80,9 @@ in {
             tooltip-format = "{app}: {title}";
           };
 
-          "custom/hyprland-close" = {
+          "custom/app-close" = {
             on-click = ''${lib.getExe'
-                config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive'';
+                config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive || ${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} kill'';
             format = "󰅗";
             tooltip-format = "Close the focused window.";
           };
@@ -250,7 +250,7 @@ in {
             modules =
               ["custom/menu"]
               ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
-              "custom/hyprland-close";
+              "custom/app-close";
 
             orientation = "horizontal";
           };
@@ -302,7 +302,7 @@ in {
         #bluetooth,
         #clock,
         #custom-dnd,
-        #custom-hyprland-close,
+        #custom-app-close,
         #custom-logout,
         #custom-menu,
         #idle_inhibitor,
