@@ -74,6 +74,7 @@ in {
           "sway/scratchpad" = {
             format = "{icon}　{count}";
             format-icons = ["" ""];
+            on-click = "${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} scratchpad show";
             show-empty = false;
             tooltip = true;
             tooltip-format = "{app}: {title}";
