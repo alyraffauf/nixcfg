@@ -1,6 +1,8 @@
 # Framework Laptop 13 with AMD Ryzen 7640U, 32GB RAM, 1TB SSD.
 {
   config,
+  lib,
+  pkgs,
   self,
   ...
 }: {
@@ -12,9 +14,13 @@
     self.inputs.nixhw.nixosModules.framework-13-amd-7000
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
   environment.variables.GDK_SCALE = "1.5";
