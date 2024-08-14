@@ -8,5 +8,5 @@
     ./secrets.nix
   ];
 
-  environment.systemPackages = with pkgs; [git inxi];
+  environment.systemPackages = with pkgs; [git inxi python3];
 }
