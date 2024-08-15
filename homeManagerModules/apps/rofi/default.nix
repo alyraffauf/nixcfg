@@ -50,7 +50,7 @@ in {
           lightbgopaque = mkRgb "base01";
           lightfgopaque = mkRgb "base06";
 
-          background-color = mkRgb "base00";
+          background-color = mkLiteral "transparent";
           separatorcolor = mkLiteral "@foreground";
           border-color = mkLiteral "@foreground";
           selected-normal-foreground = mkLiteral "@lightbgopaque";
@@ -60,17 +60,17 @@ in {
           selected-urgent-foreground = mkLiteral "@background";
           selected-urgent-background = mkLiteral "@red";
           normal-foreground = mkLiteral "@foreground";
-          normal-background = mkLiteral "@background";
+          normal-background = mkLiteral "transparent";
           active-foreground = mkLiteral "@blue";
-          active-background = mkLiteral "@background";
+          active-background = mkLiteral "transparent";
           urgent-foreground = mkLiteral "@red";
-          urgent-background = mkLiteral "@background";
+          urgent-background = mkLiteral "transparent";
           alternate-normal-foreground = mkLiteral "@foreground";
-          alternate-normal-background = mkLiteral "@lightbg";
+          alternate-normal-background = mkLiteral "transparent";
           alternate-active-foreground = mkLiteral "@blue";
-          alternate-active-background = mkLiteral "@lightbg";
+          alternate-active-background = mkLiteral "transparent";
           alternate-urgent-foreground = mkLiteral "@red";
-          alternate-urgent-background = mkLiteral "@lightbg";
+          alternate-urgent-background = mkLiteral "transparent";
 
           # Text Colors
           base-text = mkRgb "base05";
@@ -168,6 +168,7 @@ in {
         scrollbar.handle-color = mkLiteral "@normal-foreground";
         sidebar.border-color = mkLiteral "@separatorcolor";
         button.text-color = mkLiteral "@normal-text";
+
         "button selected" = {
           background-color = mkLiteral "@selected-normal-background";
           text-color = mkLiteral "@selected-normal-text";
@@ -190,7 +191,7 @@ in {
 
         prompt = {
           spacing = 0;
-          margin = mkLiteral "1px";
+          margin = 1;
         };
 
         "#inputbar" = {
