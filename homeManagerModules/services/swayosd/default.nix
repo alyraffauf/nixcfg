@@ -27,8 +27,8 @@ in {
         window#osd {
           padding: 12px 20px;
           border-radius: ${toString cfg.theme.borderRadius}px;
-          border: 4px solid alpha(${cfg.theme.colors.primary}, 0.8);
-          background: alpha(${cfg.theme.colors.background}, 0.8);
+          border: 4px solid alpha(${config.lib.stylix.colors.withHashtag."base07"}, ${toString config.stylix.opacity.popups});
+          background: alpha(${config.lib.stylix.colors.withHashtag."base01"}, ${toString config.stylix.opacity.popups});
         }
 
         window#osd #container {
@@ -37,7 +37,7 @@ in {
 
         window#osd image,
         window#osd label {
-          color: ${cfg.theme.colors.secondary};
+          color: ${config.lib.stylix.colors.withHashtag."base06"};
         }
 
         window#osd progressbar:disabled,
@@ -56,14 +56,14 @@ in {
           min-height: inherit;
           border-radius: inherit;
           border: none;
-          background: alpha(${cfg.theme.colors.secondary}, 0.5);
+          background: alpha(${config.lib.stylix.colors.withHashtag."base06"}, 0.5);
         }
 
         window#osd progress {
           min-height: inherit;
           border-radius: inherit;
           border: none;
-          background: ${cfg.theme.colors.secondary};
+          background: ${config.lib.stylix.colors.withHashtag."base06"};
         }
       '';
 
