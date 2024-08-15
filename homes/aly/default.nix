@@ -115,7 +115,7 @@ self: {
 
     theme = {
       enable = true;
-      borderRadius = 0;
+      borders.radius = 0;
     };
   };
 }

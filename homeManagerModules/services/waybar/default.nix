@@ -301,7 +301,7 @@ in {
         }
 
         #workspaces button {
-          border-radius: ${toString cfg.theme.borderRadius};
+          border-radius: ${toString cfg.theme.borders.radius};
         }
 
         #workspaces button.active,
@@ -327,7 +327,7 @@ in {
         #submap,
         #mode {
           background-color: ${config.lib.stylix.colors.withHashtag."base08"};
-          border-radius: ${toString cfg.theme.borderRadius};
+          border-radius: ${toString cfg.theme.borders.radius};
           color: ${config.lib.stylix.colors.withHashtag."base00"};
           font-weight: bold;
         }
@@ -352,25 +352,25 @@ in {
       entry {
         background-color: rgba (0, 0, 0, 0.2);
         border: alpha(${config.lib.stylix.colors.withHashtag."base07"}, ${toString config.stylix.opacity.popups});
-        border-radius: ${toString cfg.theme.borderRadius}px
+        border-radius: ${toString cfg.theme.borders.radius}px
       }
 
       button, image {
         background: none;
         border: none;
-        border-radius: ${toString cfg.theme.borderRadius}px
+        border-radius: ${toString cfg.theme.borders.radius}px
       }
 
       button:active, button:hover, button:focused {
         background-color: alpha (${config.lib.stylix.colors.withHashtag."base05"}, 0.2);
         border: none;
-        border-radius: ${toString cfg.theme.borderRadius}px;
+        border-radius: ${toString cfg.theme.borders.radius}px;
         color: ${config.lib.stylix.colors.withHashtag."base0D"}
       }
 
       #category-button {
         margin: 0 10px 0 10px;
-        border-radius: ${toString cfg.theme.borderRadius}px
+        border-radius: ${toString cfg.theme.borders.radius}px
       }
 
       #pinned-box {
@@ -381,7 +381,7 @@ in {
       #files-box {
         padding: 5px;
         border: 1px dotted gray;
-        border-radius: ${toString cfg.theme.borderRadius}px
+        border-radius: ${toString cfg.theme.borders.radius}px
       }
     '';
   };

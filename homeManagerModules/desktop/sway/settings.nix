@@ -256,7 +256,7 @@ in {
       blur enable
       blur_passes 2
 
-      # corner_radius ${toString cfg.theme.borderRadius}
+      # corner_radius ${toString cfg.theme.borders.radius}
       shadows enable
       shadows_on_csd enable
       shadow_color ${config.lib.stylix.colors.withHashtag."base00"}CC

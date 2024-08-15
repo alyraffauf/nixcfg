@@ -118,7 +118,7 @@ in {
       "ignorezero,waybar"
     ];
 
-    rounding = cfg.theme.borderRadius;
+    rounding = cfg.theme.borders.radius;
     shadow_range = 4;
     shadow_render_power = 3;
   };

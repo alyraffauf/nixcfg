@@ -10,7 +10,7 @@ in {
       enable = true;
       settings = {
         border = {
-          radius = cfg.theme.borderRadius;
+          radius = cfg.theme.borders.radius;
           width = 4;
         };
 

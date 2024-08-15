@@ -37,7 +37,7 @@ in {
 
     stylix.targets.gtk.extraCss = ''
       // Control rounded corners
-      window.background { border-radius: ${toString cfg.borderRadius}; }
+      window.background { border-radius: ${toString cfg.borders.radius}; }
 
       ${
         lib.strings.optionalString

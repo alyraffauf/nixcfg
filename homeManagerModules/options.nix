@@ -201,10 +201,12 @@ in {
     theme = {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
 
-      borderRadius = lib.mkOption {
-        description = "Global border radius.";
-        default = 10;
-        type = lib.types.int;
+      borders = {
+        radius = lib.mkOption {
+          description = "Global border radius.";
+          default = 10;
+          type = lib.types.int;
+        };
       };
 
       gtk.hideTitleBar = lib.mkOption {
