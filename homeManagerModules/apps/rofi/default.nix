@@ -55,8 +55,8 @@ in {
           border-color = mkLiteral "@foreground";
           selected-normal-foreground = mkLiteral "@lightbgopaque";
           selected-normal-background = mkLiteral "@lightfgopaque";
-          selected-active-foreground = mkLiteral "@background";
-          selected-active-background = mkLiteral "@blue";
+          selected-active-foreground = mkLiteral "@lightbgopaque";
+          selected-active-background = mkLiteral "@lightfgopaque";
           selected-urgent-foreground = mkLiteral "@background";
           selected-urgent-background = mkLiteral "@red";
           normal-foreground = mkLiteral "@foreground";
