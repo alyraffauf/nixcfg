@@ -55,5 +55,19 @@ in {
       gtk3 = {inherit (gtk) extraCss;};
       gtk4 = {inherit (gtk) extraCss;};
     };
+
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+
+      style = {
+        name =
+          if config.stylix.polarity == "dark"
+          then "Adwaita-Dark"
+          else "Adwaita";
+
+        package = pkgs.adwaita-qt6;
+      };
+    };
   };
 }
