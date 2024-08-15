@@ -10,6 +10,7 @@
     ./disko.nix
     ./home.nix
     ./secrets.nix
+    ./stylix.nix
     self.inputs.nixhw.nixosModules.framework-13-intel-11th
   ];
 

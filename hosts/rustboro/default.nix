@@ -10,6 +10,7 @@
     ./disko.nix
     ./home.nix
     ./secrets.nix
+    ./stylix.nix
     self.inputs.nixhw.nixosModules.thinkpad-t440p
   ];
 
