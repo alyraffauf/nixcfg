@@ -268,36 +268,6 @@ in {
       };
 
       style = ''
-        * {
-          border-radius: 0px;
-          border: none;
-          font-family: "${cfg.theme.sansFont.name}", FontAwesome, sans-serif;
-          font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
-          font-weight: bold;
-        }
-
-        window#waybar {
-          background-color: alpha(${cfg.theme.colors.background}, 0.8);
-          color: ${cfg.theme.colors.text};
-        }
-
-        tooltip {
-          background-color: ${cfg.theme.colors.background};
-          color: ${cfg.theme.colors.text};
-        }
-
-        #workspaces button {
-          border-radius: ${toString cfg.theme.borderRadius};
-          color: ${cfg.theme.colors.text};
-          margin: 0px 0px;
-          padding: 0px 5px;
-        }
-
-        #workspaces button.active,
-        #workspaces button.focused {
-          color: ${cfg.theme.colors.secondary};
-        }
-
         #battery,
         #bluetooth,
         #clock,
@@ -317,21 +287,6 @@ in {
           padding: 0px 5px;
         }
 
-        #battery.charging,
-        #power-profiles-daemon.power-saver {
-          color: ${cfg.theme.colors.primary};
-        }
-
-        #battery.critical:not(.charging),
-        #custom-dnd.on,
-        #idle_inhibitor.activated,
-        #network.disabled,
-        #network.disconnected,
-        #power-profiles-daemon.performance,
-        #pulseaudio.muted {
-          color: ${cfg.theme.colors.secondary};
-        }
-
         #clock,
         #tablet,
         #hardware,
@@ -341,15 +296,8 @@ in {
         #submap,
         #tray,
         #workspaces {
-          margin: 5px 5px;
+          margin: 0px 5px;
           padding: 0px 2.5px;
-        }
-
-        #submap,
-        #mode {
-          background-color: ${cfg.theme.colors.secondary};
-          border-radius: ${toString cfg.theme.borderRadius};
-          color: ${cfg.theme.colors.background};
         }
       '';
 
