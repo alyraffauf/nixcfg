@@ -299,6 +299,38 @@ in {
           margin: 0px 5px;
           padding: 0px 2.5px;
         }
+
+        #workspaces button {
+          border-radius: ${toString cfg.theme.borderRadius};
+        }
+
+        #workspaces button.active,
+        #workspaces button.focused {
+          color: ${config.lib.stylix.colors.withHashtag."base0D"};
+        }
+
+        #battery.charging,
+        #power-profiles-daemon.power-saver {
+          color: ${config.lib.stylix.colors.withHashtag."base0B"};
+        }
+
+        #battery.critical:not(.charging),
+        #custom-dnd.on,
+        #idle_inhibitor.activated,
+        #network.disabled,
+        #network.disconnected,
+        #power-profiles-daemon.performance,
+        #pulseaudio.muted {
+          color: ${config.lib.stylix.colors.withHashtag."base08"};
+        }
+
+        #submap,
+        #mode {
+          background-color: ${config.lib.stylix.colors.withHashtag."base08"};
+          border-radius: ${toString cfg.theme.borderRadius};
+          color: ${config.lib.stylix.colors.withHashtag."base00"};
+          font-weight: bold;
+        }
       '';
 
       systemd.enable = true;
@@ -333,7 +365,7 @@ in {
         background-color: alpha (${config.lib.stylix.colors.withHashtag."base05"}, 0.2);
         border: none;
         border-radius: ${toString cfg.theme.borderRadius}px;
-        color:${config.lib.stylix.colors.withHashtag."base02"}
+        color: ${config.lib.stylix.colors.withHashtag."base0D"}
       }
 
       #category-button {
