@@ -268,36 +268,6 @@ in {
       };
 
       style = ''
-        * {
-          border-radius: 0px;
-          border: none;
-          font-family: "${cfg.theme.sansFont.name}", FontAwesome, sans-serif;
-          font-size: ${toString (cfg.theme.sansFont.size + 3)}px;
-          font-weight: bold;
-        }
-
-        window#waybar {
-          background-color: alpha(${cfg.theme.colors.background}, 0.8);
-          color: ${cfg.theme.colors.text};
-        }
-
-        tooltip {
-          background-color: ${cfg.theme.colors.background};
-          color: ${cfg.theme.colors.text};
-        }
-
-        #workspaces button {
-          border-radius: ${toString cfg.theme.borderRadius};
-          color: ${cfg.theme.colors.text};
-          margin: 0px 0px;
-          padding: 0px 5px;
-        }
-
-        #workspaces button.active,
-        #workspaces button.focused {
-          color: ${cfg.theme.colors.secondary};
-        }
-
         #battery,
         #bluetooth,
         #clock,
@@ -317,21 +287,6 @@ in {
           padding: 0px 5px;
         }
 
-        #battery.charging,
-        #power-profiles-daemon.power-saver {
-          color: ${cfg.theme.colors.primary};
-        }
-
-        #battery.critical:not(.charging),
-        #custom-dnd.on,
-        #idle_inhibitor.activated,
-        #network.disabled,
-        #network.disconnected,
-        #power-profiles-daemon.performance,
-        #pulseaudio.muted {
-          color: ${cfg.theme.colors.secondary};
-        }
-
         #clock,
         #tablet,
         #hardware,
@@ -341,15 +296,40 @@ in {
         #submap,
         #tray,
         #workspaces {
-          margin: 5px 5px;
+          margin: 0px 5px;
           padding: 0px 2.5px;
+        }
+
+        #workspaces button {
+          border-radius: ${toString cfg.theme.borderRadius};
+        }
+
+        #workspaces button.active,
+        #workspaces button.focused {
+          color: ${config.lib.stylix.colors.withHashtag."base0D"};
+        }
+
+        #battery.charging,
+        #power-profiles-daemon.power-saver {
+          color: ${config.lib.stylix.colors.withHashtag."base0B"};
+        }
+
+        #battery.critical:not(.charging),
+        #custom-dnd.on,
+        #idle_inhibitor.activated,
+        #network.disabled,
+        #network.disconnected,
+        #power-profiles-daemon.performance,
+        #pulseaudio.muted {
+          color: ${config.lib.stylix.colors.withHashtag."base08"};
         }
 
         #submap,
         #mode {
-          background-color: ${cfg.theme.colors.secondary};
+          background-color: ${config.lib.stylix.colors.withHashtag."base08"};
           border-radius: ${toString cfg.theme.borderRadius};
-          color: ${cfg.theme.colors.background};
+          color: ${config.lib.stylix.colors.withHashtag."base00"};
+          font-weight: bold;
         }
       '';
 
@@ -364,14 +344,14 @@ in {
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''
       window {
-        background-color: alpha (${cfg.theme.colors.background}, 0.8);
-        color: ${cfg.theme.colors.text}
+        background-color: alpha (${config.lib.stylix.colors.withHashtag."base00"}, ${toString config.stylix.opacity.popups});
+        color: ${config.lib.stylix.colors.withHashtag."base05"}
       }
 
       /* search entry */
       entry {
         background-color: rgba (0, 0, 0, 0.2);
-        border: 4px solid ${cfg.theme.colors.primary};
+        border: alpha(${config.lib.stylix.colors.withHashtag."base07"}, ${toString config.stylix.opacity.popups});
         border-radius: ${toString cfg.theme.borderRadius}px
       }
 
@@ -382,10 +362,10 @@ in {
       }
 
       button:active, button:hover, button:focused {
-        background-color: alpha (${cfg.theme.colors.text}, 0.2);
+        background-color: alpha (${config.lib.stylix.colors.withHashtag."base05"}, 0.2);
         border: none;
         border-radius: ${toString cfg.theme.borderRadius}px;
-        color: ${cfg.theme.colors.secondary}
+        color: ${config.lib.stylix.colors.withHashtag."base0D"}
       }
 
       #category-button {

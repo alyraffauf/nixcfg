@@ -15,6 +15,7 @@ in {
     ./disko.nix
     ./home.nix
     ./secrets.nix
+    ./stylix.nix
     self.inputs.nixhw.nixosModules.common-amd-cpu
     self.inputs.nixhw.nixosModules.common-amd-gpu
     self.inputs.nixhw.nixosModules.common-bluetooth

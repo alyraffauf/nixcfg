@@ -34,8 +34,7 @@ in {
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'${cfg.theme.monospaceFont.name} ${toString cfg.theme.monospaceFont.size}', 'monospace', monospace";
-        "editor.fontSize" = cfg.theme.monospaceFont.size + 3;
+        "editor.fontSize" = config.stylix.fonts.sizes.applications + 3;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnType" = true;
@@ -78,18 +77,11 @@ in {
         "shellformat.flag" = "-i 4";
 
         "terminal.external.linuxExec" = lib.getExe cfg.defaultApps.terminal;
-        "terminal.integrated.fontSize" = cfg.theme.monospaceFont.size + 3;
+        "terminal.integrated.fontSize" = config.stylix.fonts.sizes.terminal + 3;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" = lib.mkDefault "native";
         "window.zoomPerWindow" = false;
-        "workbench.colorTheme" =
-          if cfg.theme.darkMode
-          then "Adwaita Dark"
-          else "Adwaita Light";
-        "workbench.iconTheme" = "vs-seti";
-        "workbench.preferredDarkColorTheme" = "Adwaita Dark";
-        "workbench.preferredLightColorTheme" = "Adwaita Light";
       };
 
       extensions = with pkgs.vscode-extensions; [
@@ -102,7 +94,6 @@ in {
         ms-python.python
         ms-vscode.cpptools-extension-pack
         oderwat.indent-rainbow
-        piousdeer.adwaita-theme
         rubymaniac.vscode-paste-and-indent
         rust-lang.rust-analyzer
         tomoki1207.pdf

@@ -198,34 +198,8 @@ in {
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };
 
-    theme = let
-      mkFontOption = typ: nam: pkg: siz: {
-        name = lib.mkOption {
-          description = "Default ${typ} font name.";
-          default = nam;
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "Default ${typ} font package.";
-          default = pkg;
-          type = lib.types.package;
-        };
-
-        size = lib.mkOption {
-          description = "Default ${typ} font size.";
-          default = siz;
-          type = lib.types.int;
-        };
-      };
-    in {
+    theme = {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
-
-      darkMode = lib.mkOption {
-        description = "Whether to prefer dark mode apps or not.";
-        default = cfg.theme.enable;
-        type = lib.types.bool;
-      };
 
       borderRadius = lib.mkOption {
         description = "Global border radius.";
@@ -233,58 +207,10 @@ in {
         type = lib.types.int;
       };
 
-      colors = {
-        text = lib.mkOption {
-          description = "Text color.";
-          default = "#FFFFFF";
-          type = lib.types.str;
-        };
-
-        background = lib.mkOption {
-          description = "Background color.";
-          default = "#242424";
-          type = lib.types.str;
-        };
-
-        primary = lib.mkOption {
-          description = "Primary color.";
-          default = "#78AEED"; #"#CA9EE6";
-          type = lib.types.str;
-        };
-
-        secondary = lib.mkOption {
-          description = "Secondary color.";
-          default = "#CA9EE6"; #"#99D1DB";
-          type = lib.types.str;
-        };
-
-        inactive = lib.mkOption {
-          description = "Inactive color.";
-          default = "#242424";
-          type = lib.types.str;
-        };
-
-        shadow = lib.mkOption {
-          description = "Drop shadow color.";
-          default = "#1A1A1A";
-          type = lib.types.str;
-        };
-      };
-
-      sansFont = mkFontOption "sans serif" "UbuntuSans Nerd Font" (pkgs.nerdfonts.override {fonts = ["UbuntuSans"];}) 11;
-      serifFont = mkFontOption "serif" "Vegur" pkgs.vegur 11;
-      monospaceFont = mkFontOption "monospace" "UbuntuSansMono Nerd Font" (pkgs.nerdfonts.override {fonts = ["UbuntuSans"];}) 11;
-
       gtk.hideTitleBar = lib.mkOption {
         description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
         default = false;
         type = lib.types.bool;
-      };
-
-      wallpaper = lib.mkOption {
-        description = "Default wallpaper.";
-        default = "${config.xdg.dataHome}/backgrounds/jr-korpa-9XngoIpxcEo-unsplash.jpg";
-        type = lib.types.str;
       };
     };
   };

@@ -36,6 +36,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/raffauflabs";
     };
+
+    stylix.url = "github:danth/stylix";
   };
 
   nixConfig = {
@@ -104,6 +106,7 @@
             self.inputs.agenix.nixosModules.default
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
+            self.inputs.stylix.nixosModules.stylix
             self.nixosModules.base
             self.nixosModules.nixos
             self.nixosModules.users

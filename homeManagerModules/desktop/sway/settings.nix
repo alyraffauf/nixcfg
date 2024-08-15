@@ -5,9 +5,12 @@
   ...
 }: let
   cfg = config.ar.home;
+  focused = config.lib.stylix.colors.withHashtag.base0D;
   helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
   modifier = "Mod4";
   scripts = import ./scripts.nix {inherit config lib pkgs;};
+  unfocused = config.lib.stylix.colors.withHashtag.base03;
+  urgent = config.lib.stylix.colors.withHashtag.base08;
 in {
   enable = true;
   checkConfig = false;
@@ -30,31 +33,11 @@ in {
     modifier = modifier;
 
     colors = {
-      background = "${cfg.theme.colors.primary}CC";
-
-      focused = {
-        background = "${cfg.theme.colors.primary}CC";
-        border = "${cfg.theme.colors.primary}CC";
-        childBorder = "${cfg.theme.colors.primary}CC";
-        indicator = "${cfg.theme.colors.primary}CC";
-        text = "${cfg.theme.colors.text}";
-      };
-
-      focusedInactive = {
-        background = "${cfg.theme.colors.inactive}99";
-        border = "${cfg.theme.colors.inactive}99";
-        childBorder = "${cfg.theme.colors.inactive}99";
-        indicator = "${cfg.theme.colors.inactive}99";
-        text = "${cfg.theme.colors.text}";
-      };
-
-      unfocused = {
-        background = "${cfg.theme.colors.inactive}99";
-        border = "${cfg.theme.colors.inactive}99";
-        childBorder = "${cfg.theme.colors.inactive}99";
-        indicator = "${cfg.theme.colors.inactive}99";
-        text = "${cfg.theme.colors.text}";
-      };
+      focused.indicator = lib.mkForce focused;
+      focusedInactive.indicator = lib.mkForce unfocused;
+      placeholder.indicator = lib.mkForce unfocused;
+      unfocused.indicator = lib.mkForce unfocused;
+      urgent.indicator = lib.mkForce urgent;
     };
 
     defaultWorkspace = "workspace number 1";
@@ -77,12 +60,6 @@ in {
     focus = {
       followMouse = "always";
       newWindow = "focus";
-    };
-
-    fonts = {
-      names = [cfg.theme.sansFont.name];
-      style = "Bold";
-      size = cfg.theme.sansFont.size + 0.0;
     };
 
     gaps = {
@@ -183,12 +160,10 @@ in {
       };
     };
 
-    startup =
-      [
-        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = lib.getExe pkgs.autotiling;}
-      ]
-      ++ lib.optional (!cfg.services.randomWallpaper.enable) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
+    startup = [
+      {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+      {command = lib.getExe pkgs.autotiling;}
+    ];
 
     window = {
       titlebar = false;
@@ -284,7 +259,7 @@ in {
       # corner_radius ${toString cfg.theme.borderRadius}
       shadows enable
       shadows_on_csd enable
-      shadow_color ${cfg.theme.colors.shadow}
+      shadow_color ${config.lib.stylix.colors.withHashtag."base00"}CC
 
       default_dim_inactive 0.05
 

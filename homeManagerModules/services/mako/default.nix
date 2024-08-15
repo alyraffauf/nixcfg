@@ -10,13 +10,10 @@ in {
     services.mako = {
       actions = true;
       anchor = "bottom-right";
-      backgroundColor = "${cfg.theme.colors.background}99";
-      borderColor = "${cfg.theme.colors.primary}CC";
       borderRadius = cfg.theme.borderRadius;
       borderSize = 4;
       defaultTimeout = 10000;
       enable = true;
-      font = "${cfg.theme.sansFont.name} ${toString cfg.theme.sansFont.size}";
       groupBy = "app-name";
       height = 300;
       iconPath = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
@@ -24,9 +21,7 @@ in {
       layer = "top";
       margin = "20,0";
       padding = "15";
-      progressColor = "source ${cfg.theme.colors.secondary}";
       sort = "+time";
-      textColor = "${cfg.theme.colors.text}";
       width = 400;
 
       extraConfig = ''

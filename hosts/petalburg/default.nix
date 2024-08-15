@@ -9,6 +9,7 @@
     ./disko.nix
     ./home.nix
     ./secrets.nix
+    ./stylix.nix
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
   ];
 

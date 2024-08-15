@@ -5,6 +5,18 @@
   ...
 }: let
   cfg = config.ar.home;
+
+  inherit (config.lib.formats.rasi) mkLiteral;
+  mkRgba = opacity: color: let
+    c = config.lib.stylix.colors;
+    r = c."${color}-rgb-r";
+    g = c."${color}-rgb-g";
+    b = c."${color}-rgb-b";
+  in
+    mkLiteral
+    "rgba ( ${r}, ${g}, ${b}, ${opacity} % )";
+  mkRgb = mkRgba "100";
+  rofiOpacity = builtins.toString (builtins.ceil (config.stylix.opacity.popups * 100));
 in {
   config = lib.mkIf cfg.apps.rofi.enable {
     home.packages = [
@@ -13,9 +25,11 @@ in {
       pkgs.rofi-rbw-wayland
     ];
 
+    stylix.targets.rofi.enable = false;
+
     programs.rofi = {
       enable = true;
-      font = "${cfg.theme.monospaceFont.name} ${toString cfg.theme.monospaceFont.size}";
+      font = "${config.stylix.fonts.monospace.name} ${toString config.stylix.fonts.sizes.popups}";
       location = "center";
       package = pkgs.rofi-wayland;
 
@@ -25,7 +39,173 @@ in {
       ];
 
       terminal = lib.getExe cfg.defaultApps.terminal;
-      theme = "theme.rasi";
+      theme = {
+        "*" = {
+          background = mkRgba rofiOpacity "base00";
+          lightbg = mkRgba rofiOpacity "base01";
+          red = mkRgba rofiOpacity "base08";
+          blue = mkRgba rofiOpacity "base0D";
+          lightfg = mkRgba rofiOpacity "base06";
+          foreground = mkRgb "base05";
+          lightbgopaque = mkRgb "base01";
+          lightfgopaque = mkRgb "base06";
+
+          background-color = mkLiteral "transparent";
+          separatorcolor = mkLiteral "@foreground";
+          border-color = mkLiteral "@foreground";
+          selected-normal-foreground = mkLiteral "@lightbgopaque";
+          selected-normal-background = mkLiteral "@lightfgopaque";
+          selected-active-foreground = mkLiteral "@lightbgopaque";
+          selected-active-background = mkLiteral "@lightfgopaque";
+          selected-urgent-foreground = mkLiteral "@background";
+          selected-urgent-background = mkLiteral "@red";
+          normal-foreground = mkLiteral "@foreground";
+          normal-background = mkLiteral "transparent";
+          active-foreground = mkLiteral "@blue";
+          active-background = mkLiteral "transparent";
+          urgent-foreground = mkLiteral "@red";
+          urgent-background = mkLiteral "transparent";
+          alternate-normal-foreground = mkLiteral "@foreground";
+          alternate-normal-background = mkLiteral "transparent";
+          alternate-active-foreground = mkLiteral "@blue";
+          alternate-active-background = mkLiteral "transparent";
+          alternate-urgent-foreground = mkLiteral "@red";
+          alternate-urgent-background = mkLiteral "transparent";
+
+          # Text Colors
+          base-text = mkRgb "base05";
+          selected-normal-text = mkRgb "base01";
+          selected-active-text = mkRgb "base00";
+          selected-urgent-text = mkRgb "base00";
+          normal-text = mkRgb "base05";
+          active-text = mkRgb "base0D";
+          urgent-text = mkRgb "base08";
+          alternate-normal-text = mkRgb "base05";
+          alternate-active-text = mkRgb "base0D";
+          alternate-urgent-text = mkRgb "base08";
+        };
+
+        window = {
+          background-color = mkLiteral "@background";
+          border = 4;
+          border-color = mkLiteral "@blue";
+          border-radius = mkLiteral "${toString cfg.theme.borderRadius}";
+        };
+
+        message = {
+          border-color = mkLiteral "@separatorcolor";
+          border = mkLiteral "2px solid 0px 0px";
+          padding = 1;
+        };
+
+        textbox.text-color = mkLiteral "@base-text";
+
+        listview = {
+          border-color = mkLiteral "@separatorcolor";
+          border = mkLiteral "2px solid 0px 0px";
+          spacing = 4;
+          scrollbar = false;
+        };
+
+        element = {
+          border = 0;
+          padding = 5;
+        };
+
+        element-text = {
+          background-color = mkLiteral "inherit";
+          text-color = mkLiteral "inherit";
+        };
+
+        element-icon = {
+          background-color = mkLiteral "inherit";
+          text-color = mkLiteral "inherit";
+        };
+
+        "element normal.normal" = {
+          background-color = mkLiteral "@normal-background";
+          text-color = mkLiteral "@normal-text";
+        };
+
+        "element normal.urgent" = {
+          background-color = mkLiteral "@urgent-background";
+          text-color = mkLiteral "@urgent-text";
+        };
+
+        "element normal.active" = {
+          background-color = mkLiteral "@active-background";
+          text-color = mkLiteral "@active-text";
+        };
+
+        "element selected.normal" = {
+          background-color = mkLiteral "@selected-normal-background";
+          text-color = mkLiteral "@selected-normal-text";
+        };
+
+        "element selected.urgent" = {
+          background-color = mkLiteral "@selected-urgent-background";
+          text-color = mkLiteral "@selected-urgent-text";
+        };
+
+        "element selected.active" = {
+          background-color = mkLiteral "@selected-active-background";
+          text-color = mkLiteral "@selected-active-text";
+        };
+
+        "element alternate.normal" = {
+          background-color = mkLiteral "@alternate-normal-background";
+          text-color = mkLiteral "@alternate-normal-text";
+        };
+
+        "element alternate.urgent" = {
+          background-color = mkLiteral "@alternate-urgent-background";
+          text-color = mkLiteral "@alternate-urgent-text";
+        };
+
+        "element alternate.active" = {
+          background-color = mkLiteral "@alternate-active-background";
+          text-color = mkLiteral "@alternate-active-text";
+        };
+
+        scrollbar.handle-color = mkLiteral "@normal-foreground";
+        sidebar.border-color = mkLiteral "@separatorcolor";
+        button.text-color = mkLiteral "@normal-text";
+
+        "button selected" = {
+          background-color = mkLiteral "@selected-normal-background";
+          text-color = mkLiteral "@selected-normal-text";
+        };
+
+        inputbar.text-color = mkLiteral "@normal-text";
+        case-indicator.text-color = mkLiteral "@normal-text";
+        entry.text-color = mkLiteral "@normal-text";
+        prompt.text-color = mkLiteral "@normal-text";
+
+        "#textbox-prompt-colon" = {
+          expand = false;
+          margin = mkLiteral "0px 0.3em 0em 0em";
+          str = ":";
+          text-color = mkLiteral "inherit";
+        };
+
+        case-indicator.spacing = 0;
+        entry.spacing = 0;
+
+        prompt = {
+          spacing = 0;
+          margin = 1;
+        };
+
+        "#inputbar" = {
+          children = map mkLiteral ["prompt" "textbox-prompt-colon" "entry" "case-indicator"];
+          padding = 10;
+        };
+
+        mode-switcher = {
+          border = mkLiteral "2px solid 0px 0px";
+          border-color = mkLiteral "@separatorcolor";
+        };
+      };
 
       extraConfig = {
         case-sensitive = false;
@@ -66,157 +246,6 @@ in {
       "rofi-rbw.rc".text = ''
         prompt "Bitwarden"
         clear-after 60
-      '';
-
-      "rofi/theme.rasi".text = ''
-        * {
-            selected-normal-foreground:  ${cfg.theme.colors.secondary};
-            foreground:                  ${cfg.theme.colors.text};
-            normal-foreground:           @foreground;
-            alternate-normal-background: transparent;
-            red:                         ${cfg.theme.colors.secondary}CC;
-            selected-urgent-foreground:  ${cfg.theme.colors.secondary}CC;
-            blue:                        ${cfg.theme.colors.primary}CC;
-            urgent-foreground:           ${cfg.theme.colors.primary}CC;
-            alternate-urgent-background: transparent;
-            active-foreground:           ${cfg.theme.colors.primary}CC;
-            lightbg:                     rgba ( 238, 232, 213, 80 % );
-            selected-active-foreground:  ${cfg.theme.colors.secondary};
-            alternate-active-background: transparent;
-            background:                  transparent;
-            bordercolor:                 ${cfg.theme.colors.background}99;
-            alternate-normal-foreground: @foreground;
-            normal-background:           transparent;
-            lightfg:                     ${cfg.theme.colors.primary}CC;
-            selected-normal-background:  ${cfg.theme.colors.background};
-            border-color:                ${cfg.theme.colors.primary}CC;
-            spacing:                     2;
-            separatorcolor:              ${cfg.theme.colors.primary}CC;
-            urgent-background:           transparent;
-            selected-urgent-background:  ${cfg.theme.colors.primary}CC;
-            alternate-urgent-foreground: @urgent-foreground;
-            background-color:            transparent;
-            alternate-active-foreground: @active-foreground;
-            active-background:           transparent;
-            selected-active-background:  ${cfg.theme.colors.background};
-        }
-        window {
-            background-color: ${cfg.theme.colors.background}CC;
-            border:           4;
-            border-color:     @border-color;
-            border-radius:    ${toString cfg.theme.borderRadius}px;
-            padding:          0;
-        }
-        mainbox {
-            border:  0;
-            padding: 0;
-        }
-        message {
-            border:       2px solid 0px 0px ;
-            border-color: @separatorcolor;
-            padding:      1px ;
-        }
-        textbox {
-            text-color: @foreground;
-        }
-        listview {
-            fixed-height: 0;
-            border:       2px solid 0px 0px ;
-            border-color: @separatorcolor;
-            spacing:      2px ;
-            scrollbar:    false;
-            padding:      5px;
-        }
-        element {
-            border:  0;
-            padding: 5px;
-            border-radius:    10px;
-        }
-        element-text {
-            background-color: inherit;
-            text-color:       inherit;
-        }
-        element.normal.normal {
-            background-color: @normal-background;
-            text-color:       @normal-foreground;
-        }
-        element.normal.urgent {
-            background-color: @urgent-background;
-            text-color:       @urgent-foreground;
-        }
-        element.normal.active {
-            background-color: @active-background;
-            text-color:       @active-foreground;
-        }
-        element.selected.normal {
-            background-color: @selected-normal-background;
-            text-color:       @selected-normal-foreground;
-        }
-        element.selected.urgent {
-            background-color: @selected-urgent-background;
-            text-color:       @selected-urgent-foreground;
-        }
-        element.selected.active {
-            background-color: @selected-active-background;
-            text-color:       @selected-active-foreground;
-        }
-        element.alternate.normal {
-            background-color: @alternate-normal-background;
-            text-color:       @alternate-normal-foreground;
-        }
-        element.alternate.urgent {
-            background-color: @alternate-urgent-background;
-            text-color:       @alternate-urgent-foreground;
-        }
-        element.alternate.active {
-            background-color: @alternate-active-background;
-            text-color:       @alternate-active-foreground;
-        }
-        scrollbar {
-            width:        0px ;
-            border:       0;
-            handle-width: 0px ;
-            padding:      0;
-        }
-        mode-switcher {
-            border:       2px solid 0px 0px ;
-            border-color: @separatorcolor;
-        }
-        button.selected {
-            background-color: @selected-normal-background;
-            text-color:       @selected-normal-foreground;
-        }
-        button {
-            background-color: @background;
-            text-color:       @foreground;
-        }
-        inputbar {
-            spacing:    0;
-            text-color: @normal-foreground;
-            padding:    10px ;
-        }
-        case-indicator {
-            spacing:    0;
-            text-color: @normal-foreground;
-        }
-        entry {
-            spacing:    0;
-            text-color: @normal-foreground;
-        }
-        prompt {
-            spacing:    0;
-            text-color: @normal-foreground;
-            margin: 1px;
-        }
-        inputbar {
-            children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-        }
-        textbox-prompt-colon {
-            expand:     false;
-            str:        ":";
-            margin:     0px 0.3em 0em 0em ;
-            text-color: @normal-foreground;
-        }
       '';
 
       "networkmanager-dmenu/config.ini".text = ''
