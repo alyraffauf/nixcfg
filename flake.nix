@@ -37,7 +37,10 @@
       url = "github:alyraffauf/raffauflabs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:danth/stylix";
+    };
   };
 
   nixConfig = {
