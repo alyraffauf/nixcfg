@@ -268,6 +268,10 @@ in {
       };
 
       style = ''
+        tooltip {
+          border-radius: ${toString cfg.theme.borders.radius};
+        }
+
         #battery,
         #bluetooth,
         #clock,
