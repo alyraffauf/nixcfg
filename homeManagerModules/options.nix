@@ -36,6 +36,7 @@ in {
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
       fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
+      foot.enable = lib.mkEnableOption "Foot terminal for wayland.";
       helix.enable = lib.mkEnableOption "Helix text editor.";
 
       keepassxc = {
