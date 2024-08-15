@@ -59,6 +59,21 @@ in {
 
     defaultWorkspace = "workspace number 1";
 
+    floating.criteria = [
+      {app_id = ".blueman-manager-wrapped";}
+      {app_id = "blueberry.py";}
+      {app_id = "com.github.wwmm.easyeffects";}
+      {app_id = "nm-connection-editor";}
+      {app_id = "pavucontrol";}
+      {app_id = "solaar";}
+      {title = "Open File";}
+      {title = "Open Folder";}
+      {window_role = "bubble";}
+      {window_role = "dialog";}
+      {window_role = "pop-up";}
+      {window_type = "dialog";}
+    ];
+
     focus = {
       followMouse = "always";
       newWindow = "focus";
@@ -174,21 +189,6 @@ in {
         {command = lib.getExe pkgs.autotiling;}
       ]
       ++ lib.optional (!cfg.services.randomWallpaper.enable) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
-
-    floating.criteria = [
-      {app_id = ".blueman-manager-wrapped";}
-      {app_id = "blueberry.py";}
-      {app_id = "com.github.wwmm.easyeffects";}
-      {app_id = "nm-connection-editor";}
-      {app_id = "pavucontrol";}
-      {app_id = "solaar";}
-      {title = "Open File";}
-      {title = "Open Folder";}
-      {window_role = "bubble";}
-      {window_role = "dialog";}
-      {window_role = "pop-up";}
-      {window_type = "dialog";}
-    ];
 
     window = {
       titlebar = false;
