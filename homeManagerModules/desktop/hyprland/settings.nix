@@ -100,7 +100,6 @@ in {
       size = 8;
     };
 
-    "col.shadow" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.shadow}EE)";
     dim_special = 0.5;
     drop_shadow = true;
 
@@ -149,8 +148,6 @@ in {
   };
 
   general = {
-    "col.active_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
-    "col.inactive_border" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
     allow_tearing = false;
     border_size = 4;
     gaps_in = 5;
@@ -164,20 +161,8 @@ in {
   };
 
   group = {
-    "col.border_active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
-    "col.border_inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
-    "col.border_locked_active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.secondary}CC) rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC) 45deg";
-    "col.border_locked_inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}99)";
-
     groupbar = {
-      "col.active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC)";
-      "col.inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}CC)";
-      "col.locked_active" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.primary}CC)";
-      "col.locked_inactive" = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.inactive}CC)";
-      font_family = cfg.theme.sansFont.name;
-      font_size = cfg.theme.sansFont.size;
       height = 24;
-      text_color = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.text}FF)";
     };
   };
 
@@ -187,7 +172,6 @@ in {
   };
 
   misc = {
-    background_color = "rgba(${lib.strings.removePrefix "#" cfg.theme.colors.background}FF)";
     disable_hyprland_logo = true;
     disable_splash_rendering = true;
     focus_on_activate = true;

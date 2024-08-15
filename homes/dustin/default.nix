@@ -92,10 +92,5 @@ self: {
       gammastep.enable = true;
       randomWallpaper.enable = false;
     };
-
-    theme = {
-      enable = true;
-      wallpaper = "${config.xdg.dataHome}/backgrounds/wallhaven-6d66dl.jpg";
-    };
   };
 }

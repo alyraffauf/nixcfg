@@ -34,7 +34,6 @@ in {
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontFamily" = "'${cfg.theme.monospaceFont.name} ${toString cfg.theme.monospaceFont.size}', 'monospace', monospace";
         "editor.fontSize" = cfg.theme.monospaceFont.size + 3;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
@@ -83,13 +82,13 @@ in {
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" = lib.mkDefault "native";
         "window.zoomPerWindow" = false;
-        "workbench.colorTheme" =
-          if cfg.theme.darkMode
-          then "Adwaita Dark"
-          else "Adwaita Light";
-        "workbench.iconTheme" = "vs-seti";
-        "workbench.preferredDarkColorTheme" = "Adwaita Dark";
-        "workbench.preferredLightColorTheme" = "Adwaita Light";
+        # "workbench.colorTheme" =
+        #   if cfg.theme.darkMode
+        #   then "Adwaita Dark"
+        #   else "Adwaita Light";
+        # "workbench.iconTheme" = "vs-seti";
+        # "workbench.preferredDarkColorTheme" = "Adwaita Dark";
+        # "workbench.preferredLightColorTheme" = "Adwaita Light";
       };
 
       extensions = with pkgs.vscode-extensions; [

@@ -11,12 +11,6 @@ in {
       settings = {
         colors = {
           draw_bold_text_with_bright_colors = true;
-
-          primary = {
-            background = "${cfg.theme.colors.background}";
-            foreground = "${cfg.theme.colors.text}";
-          };
-
           transparent_background_colors = true;
         };
 

@@ -29,34 +29,6 @@ in {
     bars = [];
     modifier = modifier;
 
-    colors = {
-      background = "${cfg.theme.colors.primary}CC";
-
-      focused = {
-        background = "${cfg.theme.colors.primary}CC";
-        border = "${cfg.theme.colors.primary}CC";
-        childBorder = "${cfg.theme.colors.primary}CC";
-        indicator = "${cfg.theme.colors.primary}CC";
-        text = "${cfg.theme.colors.text}";
-      };
-
-      focusedInactive = {
-        background = "${cfg.theme.colors.inactive}99";
-        border = "${cfg.theme.colors.inactive}99";
-        childBorder = "${cfg.theme.colors.inactive}99";
-        indicator = "${cfg.theme.colors.inactive}99";
-        text = "${cfg.theme.colors.text}";
-      };
-
-      unfocused = {
-        background = "${cfg.theme.colors.inactive}99";
-        border = "${cfg.theme.colors.inactive}99";
-        childBorder = "${cfg.theme.colors.inactive}99";
-        indicator = "${cfg.theme.colors.inactive}99";
-        text = "${cfg.theme.colors.text}";
-      };
-    };
-
     defaultWorkspace = "workspace number 1";
 
     floating.criteria = [
@@ -77,12 +49,6 @@ in {
     focus = {
       followMouse = "always";
       newWindow = "focus";
-    };
-
-    fonts = {
-      names = [cfg.theme.sansFont.name];
-      style = "Bold";
-      size = cfg.theme.sansFont.size + 0.0;
     };
 
     gaps = {

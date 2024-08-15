@@ -36,7 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/raffauflabs";
     };
-    
+
     stylix.url = "github:danth/stylix";
   };
 
