@@ -3,17 +3,6 @@
   pkgs,
   ...
 }: {
-  # home.file = let
-  #   source = builtins.fetchGit {
-  #     url = "https://github.com/rafaelmardojai/firefox-gnome-theme.git";
-  #     rev = "fb5b578a4f49ae8705e5fea0419242ed1b8dba70";
-  #     ref = "master";
-  #   };
-  # in {
-  #   ".mozilla/firefox/default/chrome".source = source;
-  #   ".mozilla/firefox/work/chrome".source = source;
-  # };
-
   programs.firefox = {
     enable = true;
 
