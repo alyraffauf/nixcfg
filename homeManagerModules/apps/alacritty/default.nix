@@ -14,15 +14,6 @@ in {
           transparent_background_colors = true;
         };
 
-        font = {
-          normal = {
-            family = cfg.theme.monospaceFont.name;
-            style = "Regular";
-          };
-
-          size = cfg.theme.monospaceFont.size + 1;
-        };
-
         selection.save_to_clipboard = true;
 
         window = {

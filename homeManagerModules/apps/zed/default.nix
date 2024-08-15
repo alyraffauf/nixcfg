@@ -49,7 +49,7 @@ in {
           auto_update = false;
           autosave.after_delay.milliseconds = 1000;
           buffer_font_family = config.stylix.fonts.monospace.name;
-          buffer_font_size = config.stylix.fonts.sizes.applications + 3;
+          buffer_font_size = config.stylix.fonts.sizes.applications + 2;
           current_line_highlight = "line";
 
           indent_guides = {
@@ -89,7 +89,7 @@ in {
             metrics = false;
           };
 
-          terminal.font_size = config.stylix.fonts.sizes.terminal + 3;
+          terminal.font_size = config.stylix.fonts.sizes.terminal + 2;
 
           theme = {
             dark = "Adwaita Pastel Dark";

@@ -82,13 +82,6 @@ in {
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" = lib.mkDefault "native";
         "window.zoomPerWindow" = false;
-        # "workbench.colorTheme" =
-        #   if cfg.theme.darkMode
-        #   then "Adwaita Dark"
-        #   else "Adwaita Light";
-        # "workbench.iconTheme" = "vs-seti";
-        # "workbench.preferredDarkColorTheme" = "Adwaita Dark";
-        # "workbench.preferredLightColorTheme" = "Adwaita Light";
       };
 
       extensions = with pkgs.vscode-extensions; [
@@ -101,7 +94,6 @@ in {
         ms-python.python
         ms-vscode.cpptools-extension-pack
         oderwat.indent-rainbow
-        piousdeer.adwaita-theme
         rubymaniac.vscode-paste-and-indent
         rust-lang.rust-analyzer
         tomoki1207.pdf

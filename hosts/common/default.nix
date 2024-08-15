@@ -46,6 +46,13 @@
         name = "Vegur";
         package = pkgs.vegur;
       };
+
+      sizes = {
+        applications = 12;
+        desktop = 11;
+        popups = 12;
+        terminal = 13;
+      };
     };
 
     opacity = {
