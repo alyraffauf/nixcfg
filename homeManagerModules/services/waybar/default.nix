@@ -312,14 +312,14 @@ in {
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''
       window {
-        background-color: alpha (${cfg.theme.colors.background}, 0.8);
-        color: ${cfg.theme.colors.text}
+        background-color: alpha (${config.lib.stylix.colors.withHashtag."base00"}, ${toString config.stylix.opacity.popups});
+        color: ${config.lib.stylix.colors.withHashtag."base05"}
       }
 
       /* search entry */
       entry {
         background-color: rgba (0, 0, 0, 0.2);
-        border: 4px solid ${cfg.theme.colors.primary};
+        border: alpha(${config.lib.stylix.colors.withHashtag."base07"}, ${toString config.stylix.opacity.popups});
         border-radius: ${toString cfg.theme.borderRadius}px
       }
 
@@ -330,10 +330,10 @@ in {
       }
 
       button:active, button:hover, button:focused {
-        background-color: alpha (${cfg.theme.colors.text}, 0.2);
+        background-color: alpha (${config.lib.stylix.colors.withHashtag."base05"}, 0.2);
         border: none;
         border-radius: ${toString cfg.theme.borderRadius}px;
-        color: ${cfg.theme.colors.secondary}
+        color:${config.lib.stylix.colors.withHashtag."base02"}
       }
 
       #category-button {

@@ -149,12 +149,10 @@ in {
       };
     };
 
-    startup =
-      [
-        {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
-        {command = lib.getExe pkgs.autotiling;}
-      ]
-      ++ lib.optional (!cfg.services.randomWallpaper.enable) {command = "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";};
+    startup = [
+      {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+      {command = lib.getExe pkgs.autotiling;}
+    ];
 
     window = {
       titlebar = false;
@@ -250,7 +248,7 @@ in {
       # corner_radius ${toString cfg.theme.borderRadius}
       shadows enable
       shadows_on_csd enable
-      shadow_color ${cfg.theme.colors.shadow}
+      shadow_color ${config.lib.stylix.colors.withHashtag."base00"}CC
 
       default_dim_inactive 0.05
 

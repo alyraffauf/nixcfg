@@ -112,5 +112,7 @@ self: {
       gammastep.enable = true;
       randomWallpaper.enable = true;
     };
+
+    theme.enable = true;
   };
 }

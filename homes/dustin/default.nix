@@ -92,5 +92,7 @@ self: {
       gammastep.enable = true;
       randomWallpaper.enable = false;
     };
+
+    theme.enable = true;
   };
 }

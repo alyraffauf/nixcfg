@@ -34,7 +34,7 @@ in {
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.fontSize" = cfg.theme.monospaceFont.size + 3;
+        "editor.fontSize" = config.stylix.fonts.sizes.applications + 3;
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnType" = true;
@@ -77,7 +77,7 @@ in {
         "shellformat.flag" = "-i 4";
 
         "terminal.external.linuxExec" = lib.getExe cfg.defaultApps.terminal;
-        "terminal.integrated.fontSize" = cfg.theme.monospaceFont.size + 3;
+        "terminal.integrated.fontSize" = config.stylix.fonts.sizes.terminal + 3;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
         "window.titleBarStyle" = lib.mkDefault "native";

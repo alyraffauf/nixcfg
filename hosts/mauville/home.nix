@@ -20,12 +20,6 @@
             enable = true;
             preset = "LoudnessEqualizer";
           };
-
-          theme = {
-            monospaceFont.size = 14;
-            sansFont.size = 14;
-            serifFont.size = 14;
-          };
         };
       }
     ];

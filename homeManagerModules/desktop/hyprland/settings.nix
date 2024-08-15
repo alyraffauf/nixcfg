@@ -175,7 +175,6 @@ in {
     disable_hyprland_logo = true;
     disable_splash_rendering = true;
     focus_on_activate = true;
-    font_family = cfg.theme.sansFont.name;
     vfr = true;
   };
 

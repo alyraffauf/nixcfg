@@ -10,6 +10,11 @@
 
   environment.systemPackages = with pkgs; [git inxi python3];
 
+  home-manager.sharedModules = [
+    {
+    }
+  ];
+
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
