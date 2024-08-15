@@ -207,12 +207,6 @@ in {
         type = lib.types.int;
       };
 
-      darkMode = lib.mkOption {
-        description = "Whether to prefer dark mode apps or not.";
-        default = config.stylix.polarity == "dark";
-        type = lib.types.bool;
-      };
-
       gtk.hideTitleBar = lib.mkOption {
         description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
         default = false;
