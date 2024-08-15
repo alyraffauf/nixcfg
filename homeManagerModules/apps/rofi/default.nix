@@ -89,6 +89,7 @@ in {
           background-color = mkLiteral "@background";
           border = 4;
           border-color = mkLiteral "@blue";
+          border-radius = mkLiteral "${toString cfg.theme.borderRadius}";
         };
 
         message = {
