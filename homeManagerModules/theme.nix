@@ -45,7 +45,7 @@ in {
     gtk = {
       iconTheme = {
         name =
-          if cfg.darkMode
+          if config.stylix.polarity == "dark"
           then "Papirus-Dark"
           else "Papirus";
 

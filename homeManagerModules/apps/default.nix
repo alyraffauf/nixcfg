@@ -6,6 +6,7 @@
     ./emacs
     ./fastfetch
     ./firefox
+    ./fuzzel
     ./helix
     ./keepassxc
     ./kitty

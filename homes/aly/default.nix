@@ -116,7 +116,6 @@ self: {
     theme = {
       enable = true;
       borderRadius = 0;
-      darkMode = true;
     };
   };
 }
