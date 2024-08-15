@@ -5,9 +5,12 @@
   ...
 }: let
   cfg = config.ar.home;
+  focused = config.lib.stylix.colors.withHashtag.base0D;
   helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
   modifier = "Mod4";
   scripts = import ./scripts.nix {inherit config lib pkgs;};
+  unfocused = config.lib.stylix.colors.withHashtag.base03;
+  urgent = config.lib.stylix.colors.withHashtag.base08;
 in {
   enable = true;
   checkConfig = false;
@@ -28,6 +31,14 @@ in {
   config = {
     bars = [];
     modifier = modifier;
+
+    colors = {
+      focused.indicator = lib.mkForce focused;
+      focusedInactive.indicator = lib.mkForce unfocused;
+      placeholder.indicator = lib.mkForce unfocused;
+      unfocused.indicator = lib.mkForce unfocused;
+      urgent.indicator = lib.mkForce urgent;
+    };
 
     defaultWorkspace = "workspace number 1";
 
