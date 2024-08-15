@@ -88,6 +88,7 @@ in {
         window = {
           background-color = mkLiteral "@background";
           border = 4;
+          border-color = mkLiteral "@blue";
         };
 
         message = {
