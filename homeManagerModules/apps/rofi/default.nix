@@ -45,18 +45,19 @@ in {
           lightbg = mkRgba rofiOpacity "base01";
           red = mkRgba rofiOpacity "base08";
           blue = mkRgba rofiOpacity "base0D";
+          blueopaque = mkRgb "base0D";
           lightfg = mkRgba rofiOpacity "base06";
           foreground = mkRgb "base05";
           lightbgopaque = mkRgb "base01";
           lightfgopaque = mkRgb "base06";
 
           background-color = mkLiteral "transparent";
-          separatorcolor = mkLiteral "@foreground";
+          separatorcolor = mkLiteral "@blueopaque";
           border-color = mkLiteral "@foreground";
           selected-normal-foreground = mkLiteral "@lightbgopaque";
-          selected-normal-background = mkLiteral "@lightfgopaque";
+          selected-normal-background = mkLiteral "@blueopaque";
           selected-active-foreground = mkLiteral "@lightbgopaque";
-          selected-active-background = mkLiteral "@lightfgopaque";
+          selected-active-background = mkLiteral "@blueopaque";
           selected-urgent-foreground = mkLiteral "@background";
           selected-urgent-background = mkLiteral "@red";
           normal-foreground = mkLiteral "@foreground";
