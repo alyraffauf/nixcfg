@@ -245,13 +245,6 @@ in {
         clear-after 60
       '';
 
-      # "rofi/theme.rasi".text = ''
-      #   mainbox {
-      #       border:  0;
-      #       padding: 0;
-      #   }
-      # '';
-
       "networkmanager-dmenu/config.ini".text = ''
         [dmenu]
         dmenu_command = ${lib.getExe config.programs.rofi.package}
