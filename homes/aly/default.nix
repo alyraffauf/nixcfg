@@ -113,6 +113,10 @@ self: {
       randomWallpaper.enable = true;
     };
 
-    theme.enable = true;
+    theme = {
+      enable = true;
+      borderRadius = 0;
+      darkMode = true;
+    };
   };
 }

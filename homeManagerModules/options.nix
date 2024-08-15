@@ -198,39 +198,19 @@ in {
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };
 
-    theme = let
-      mkFontOption = typ: nam: pkg: siz: {
-        name = lib.mkOption {
-          description = "Default ${typ} font name.";
-          default = nam;
-          type = lib.types.str;
-        };
-
-        package = lib.mkOption {
-          description = "Default ${typ} font package.";
-          default = pkg;
-          type = lib.types.package;
-        };
-
-        size = lib.mkOption {
-          description = "Default ${typ} font size.";
-          default = siz;
-          type = lib.types.int;
-        };
-      };
-    in {
+    theme = {
       enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
-
-      darkMode = lib.mkOption {
-        description = "Whether to prefer dark mode apps or not.";
-        default = cfg.theme.enable;
-        type = lib.types.bool;
-      };
 
       borderRadius = lib.mkOption {
         description = "Global border radius.";
         default = 10;
         type = lib.types.int;
+      };
+
+      darkMode = lib.mkOption {
+        description = "Whether to prefer dark mode apps or not.";
+        default = config.stylix.polarity == "dark";
+        type = lib.types.bool;
       };
 
       gtk.hideTitleBar = lib.mkOption {
