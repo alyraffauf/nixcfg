@@ -18,7 +18,15 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
-    image = ../../_img/hyprland.png;
+
+    image = let
+      wallpapers = builtins.fetchGit {
+        url = "https://github.com/alyraffauf/wallpapers.git";
+        rev = "21018eef106928c7c44d206c6c3730cce5f781f3";
+        ref = "master";
+      };
+    in "${wallpapers}/wallhaven-mp886k.jpg";
+
     imageScalingMode = "fill";
     polarity = "dark";
 
@@ -46,7 +54,7 @@
     };
 
     opacity = {
-      applications = 0.8;
+      applications = 1.0;
       desktop = 0.8;
       terminal = 0.8;
       popups = 0.8;
