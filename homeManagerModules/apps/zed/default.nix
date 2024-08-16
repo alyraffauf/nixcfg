@@ -23,7 +23,7 @@ in {
               appearance = config.stylix.polarity;
               name = "Stylix";
               style = {
-                background = config.lib.stylix.colors.withHashtag.base00;
+                background = config.lib.stylix.colors.withHashtag.base01;
                 border = config.lib.stylix.colors.withHashtag.base02;
                 "border.disabled" = null;
                 "border.focused" = null;
@@ -58,7 +58,7 @@ in {
                 "element.disabled" = null;
                 "element.hover" = config.lib.stylix.colors.withHashtag.base02;
                 "element.selected" = config.lib.stylix.colors.withHashtag.base02;
-                "elevated_surface.background" = config.lib.stylix.colors.withHashtag.base00;
+                "elevated_surface.background" = config.lib.stylix.colors.withHashtag.base01;
                 error = config.lib.stylix.colors.withHashtag.base08;
                 "error.background" = config.lib.stylix.colors.withHashtag.base00;
                 "error.border" = config.lib.stylix.colors.withHashtag.base08;
@@ -89,7 +89,7 @@ in {
                 "modified.background" = config.lib.stylix.colors.withHashtag.base00;
                 "modified.border" = config.lib.stylix.colors.withHashtag.base0D;
                 "pane.focused_border" = null;
-                "panel.background" = config.lib.stylix.colors.withHashtag.base00;
+                "panel.background" = config.lib.stylix.colors.withHashtag.base01;
                 "panel.focused_border" = config.lib.stylix.colors.withHashtag.base02;
                 players = [
                   {
