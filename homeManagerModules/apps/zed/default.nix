@@ -297,7 +297,7 @@ in {
                 "terminal.background" = config.lib.stylix.colors.withHashtag.base00;
                 "terminal.bright_foreground" = null;
                 "terminal.dim_foreground" = null;
-                "terminal.foreground" = null;
+                "terminal.foreground" = config.lib.stylix.colors.withHashtag.base05;
                 text = config.lib.stylix.colors.withHashtag.base05;
                 "text.accent" = config.lib.stylix.colors.withHashtag.base0C;
                 "text.disabled" = config.lib.stylix.colors.withHashtag.base02;
