@@ -62,7 +62,7 @@ in {
                 error = config.lib.stylix.colors.withHashtag.base08;
                 "error.background" = config.lib.stylix.colors.withHashtag.base00;
                 "error.border" = config.lib.stylix.colors.withHashtag.base08;
-                "ghost_element.active" = null;
+                "ghost_element.active" = config.lib.stylix.colors.withHashtag.base02;
                 "ghost_element.background" = null;
                 "ghost_element.disabled" = null;
                 "ghost_element.hover" = config.lib.stylix.colors.withHashtag.base01;
