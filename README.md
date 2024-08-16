@@ -28,6 +28,8 @@ As well as upstream third-party projects that I use for various tasks:
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
+- [stylix](https://github.com/danth/stylix): system-wide colorscheming and typography.
+- [sway](https://github.com/swaywm/sway): fantastic, rock-solid tiling compositor for wayland.
 
 ## Outputs
 
