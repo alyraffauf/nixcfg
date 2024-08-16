@@ -91,15 +91,7 @@ self: {
       vsCodium.enable = true;
       yazi.enable = true;
 
-      zed = {
-        enable = true;
-
-        settings.theme = {
-          dark = "Rosé Pine Moon";
-          light = "Rosé Pine Dawn";
-          mode = "system";
-        };
-      };
+      zed. enable = true;
     };
 
     defaultApps = {
