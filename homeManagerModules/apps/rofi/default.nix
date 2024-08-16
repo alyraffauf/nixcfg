@@ -102,10 +102,12 @@ in {
         textbox.text-color = mkLiteral "@base-text";
 
         listview = {
-          border-color = mkLiteral "@separatorcolor";
           border = mkLiteral "2px solid 0px 0px";
-          spacing = 4;
+          border-color = mkLiteral "@separatorcolor";
+          border-radius = cfg.theme.borders.radius;
+          padding = 5;
           scrollbar = false;
+          spacing = 4;
         };
 
         element = {
