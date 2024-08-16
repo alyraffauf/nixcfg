@@ -53,7 +53,7 @@ in {
                 "editor.line_number" = config.lib.stylix.colors.withHashtag.base03;
                 "editor.subheader.background" = config.lib.stylix.colors.withHashtag.base00;
                 "editor.wrap_guide" = config.lib.stylix.colors.withHashtag.base01;
-                "element.active" = null;
+                "element.active" = config.lib.stylix.colors.withHashtag.base03;
                 "element.background" = config.lib.stylix.colors.withHashtag.base01;
                 "element.disabled" = null;
                 "element.hover" = config.lib.stylix.colors.withHashtag.base02;
@@ -304,6 +304,7 @@ in {
                 "text.muted" = config.lib.stylix.colors.withHashtag.base04;
                 "text.placeholder" = config.lib.stylix.colors.withHashtag.base0F;
                 "title_bar.background" = config.lib.stylix.colors.withHashtag.base00;
+                "title_bar.inactive_background" = config.lib.stylix.colors.withHashtag.base01;
                 "toolbar.background" = config.lib.stylix.colors.withHashtag.base00;
                 unreachable = config.lib.stylix.colors.withHashtag.base0A;
                 "unreachable.background" = config.lib.stylix.colors.withHashtag.base00;
