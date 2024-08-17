@@ -45,7 +45,7 @@
 - SUPER + {1..9}: Switch to numbered workspace.
 - SUPER + Comma: Switch to previous numbered workspace.
 - SUPER + Period: Switch to next numbered workspace.
-- TOUCHPAD: 3 Finger Swipe Left/Right.
+- TOUCHPAD: 3 Finger Swipe Left/Up or Right/Down.
 
 #### Multi-Monitor Workspace Management
 

@@ -234,16 +234,20 @@ in {
       bindsym --locked XF86AudioNext exec ${helpers.media.next}
 
       mode "move" {
-        bindgesture swipe:right move container to workspace prev; workspace prev
-        bindgesture swipe:left move container to workspace next; workspace next
-        bindgesture pinch:inward+up move up
         bindgesture pinch:inward+down move down
         bindgesture pinch:inward+left move left
         bindgesture pinch:inward+right move right
+        bindgesture pinch:inward+up move up
+        bindgesture swipe:down move container to workspace prev; workspace prev
+        bindgesture swipe:left move container to workspace next; workspace next
+        bindgesture swipe:right move container to workspace prev; workspace prev
+        bindgesture swipe:up move container to workspace next; workspace next
       }
 
-      bindgesture swipe:right workspace prev
+      bindgesture swipe:down workspace prev
       bindgesture swipe:left workspace next
+      bindgesture swipe:right workspace prev
+      bindgesture swipe:up workspace next
 
       bindswitch --reload --locked lid:on exec ${scripts.clamshell} on
       bindswitch --reload --locked lid:off exec ${scripts.clamshell} off
