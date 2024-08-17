@@ -107,7 +107,7 @@ in {
                 "scrollbar.thumb.border" = config.lib.stylix.colors.withHashtag.base02;
                 "scrollbar.thumb.hover_background" = config.lib.stylix.colors.withHashtag.base03;
                 "scrollbar.track.background" = config.lib.stylix.colors.withHashtag.base00;
-                "scrollbar.track.border" = null;
+                "scrollbar.track.border" = config.lib.stylix.colors.withHashtag.base00;
                 "scrollbar_thumb.background" = config.lib.stylix.colors.withHashtag.base02;
                 "search.match_background" = config.lib.stylix.colors.withHashtag.base02;
                 "status_bar.background" = config.lib.stylix.colors.withHashtag.base00;
