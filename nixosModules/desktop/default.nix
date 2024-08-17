@@ -38,6 +38,8 @@
         gnome.gnome-keyring.enable = true;
         gvfs.enable = true; # Mount, trash, etc.
 
+        libinput.enable = true;
+
         pipewire = {
           enable = true;
 
@@ -52,7 +54,6 @@
         xserver = {
           enable = true;
           excludePackages = with pkgs; [xterm];
-          libinput.enable = true;
         };
       };
     };
