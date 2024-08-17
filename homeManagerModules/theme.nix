@@ -31,7 +31,7 @@ in {
           then "Adwaita-Dark"
           else "Adwaita";
 
-        package = pkgs.adwaita-qt6;
+        package = pkgs.adwaita-qt;
       };
     };
 
