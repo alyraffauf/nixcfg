@@ -112,6 +112,7 @@ in {
 
         element = {
           border = 0;
+          border-radius = cfg.theme.borders.radius;
           padding = 5;
         };
 
