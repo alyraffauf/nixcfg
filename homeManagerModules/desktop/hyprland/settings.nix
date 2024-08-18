@@ -125,12 +125,9 @@ in {
 
   dwindle.preserve_split = true;
 
-  exec-once =
-    [
-      "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
-    ]
-    ++ lib.lists.optional (!cfg.services.randomWallpaper.enable)
-    "${lib.getExe pkgs.swaybg} -i ${cfg.theme.wallpaper}";
+  exec-once = [
+    "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
+  ];
 
   input = {
     follow_mouse = 1;
