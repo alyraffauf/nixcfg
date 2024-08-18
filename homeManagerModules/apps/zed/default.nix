@@ -377,6 +377,7 @@ in {
           };
 
           preferred_line_length = 80;
+          restore_on_startup = "last_workspace";
           show_wrap_guides = true;
           soft_wrap = "preferred_line_length";
 
