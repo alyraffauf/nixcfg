@@ -262,7 +262,7 @@ in {
 
       # corner_radius ${toString cfg.theme.borders.radius}
       shadows enable
-      shadows_on_csd enable
+      shadows_on_csd disable
       shadow_color ${config.lib.stylix.colors.withHashtag."base00"}CC
 
       default_dim_inactive 0.05
