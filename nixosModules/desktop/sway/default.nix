@@ -8,6 +8,7 @@
     programs = {
       sway = {
         enable = true;
+        extraPackages = lib.mkDefault [];
         package = pkgs.swayfx;
       };
     };
