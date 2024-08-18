@@ -259,11 +259,12 @@ in {
       == pkgs.swayfx) ''
       blur enable
       blur_passes 2
+      blur_radius 8
 
       # corner_radius ${toString cfg.theme.borders.radius}
       shadows enable
       shadows_on_csd disable
-      shadow_color ${config.lib.stylix.colors.withHashtag."base00"}CC
+      shadow_color ${config.lib.stylix.colors.withHashtag.base00}
 
       default_dim_inactive 0.05
 
