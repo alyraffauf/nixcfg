@@ -31,8 +31,6 @@ in {
 
     overlays = [
       (final: prev: {
-        rbw = unstable.rbw;
-
         rofi-bluetooth =
           prev.rofi-bluetooth.overrideAttrs
           (old: {
