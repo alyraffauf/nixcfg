@@ -88,7 +88,6 @@
           "browser.aboutConfig.showWarning" = false;
           "browser.bookmarks.addedImportButton" = false;
           "browser.tabs.inTitlebar" = 0;
-          "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionPolicyAccepted" = true;
           "dom.security.https_only_mode" = true;
           "extensions.autoDisableScopes" = 0;
