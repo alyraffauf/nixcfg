@@ -9,7 +9,7 @@
       sway = {
         enable = true;
         extraPackages = lib.mkDefault [];
-        package = pkgs.swayfx;
+        package = lib.mkDefault pkgs.swayfx;
       };
     };
   };
