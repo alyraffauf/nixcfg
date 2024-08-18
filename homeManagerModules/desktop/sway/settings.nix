@@ -262,9 +262,11 @@ in {
       blur_radius 8
 
       # corner_radius ${toString cfg.theme.borders.radius}
+      shadow_blur_radius 8
+      shadow_color ${config.lib.stylix.colors.withHashtag.base00}
+      shadow_offset 4 4
       shadows enable
       shadows_on_csd disable
-      shadow_color ${config.lib.stylix.colors.withHashtag.base00}
 
       default_dim_inactive 0.05
 
