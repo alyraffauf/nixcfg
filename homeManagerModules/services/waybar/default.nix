@@ -267,74 +267,82 @@ in {
         };
       };
 
-      style = ''
-        tooltip {
-          border-radius: ${toString cfg.theme.borders.radius};
+      style = lib.mkAfter ''
+        ${
+          lib.optionalString (config.stylix.polarity == "light") "
+          tooltip {
+            background: alpha(@base05, ${builtins.toString config.stylix.opacity.desktop});
+            color: ${config.lib.stylix.colors.withHashtag.base00};
+          }"
         }
 
-        #battery,
-        #bluetooth,
-        #clock,
-        #custom-dnd,
-        #custom-app-close,
-        #custom-logout,
-        #custom-menu,
-        #idle_inhibitor,
-        #mode,
-        #network,
-        #power-profiles-daemon,
-        #pulseaudio,
-        #submap,
-        #tray,
-        #wireplumber {
-          margin: 0px 5px;
-          padding: 0px 5px;
-        }
+          tooltip {
+            border-radius: ${toString cfg.theme.borders.radius}px;
+          }
 
-        #clock,
-        #tablet,
-        #hardware,
-        #mode,
-        #scratchpad,
-        #session,
-        #submap,
-        #tray,
-        #workspaces {
-          margin: 0px 5px;
-          padding: 0px 2.5px;
-        }
+          #battery,
+          #bluetooth,
+          #clock,
+          #custom-dnd,
+          #custom-app-close,
+          #custom-logout,
+          #custom-menu,
+          #idle_inhibitor,
+          #mode,
+          #network,
+          #power-profiles-daemon,
+          #pulseaudio,
+          #submap,
+          #tray,
+          #wireplumber {
+            margin: 0px 5px;
+            padding: 0px 5px;
+          }
 
-        #workspaces button {
-          border-radius: ${toString cfg.theme.borders.radius};
-        }
+          #clock,
+          #tablet,
+          #hardware,
+          #mode,
+          #scratchpad,
+          #session,
+          #submap,
+          #tray,
+          #workspaces {
+            margin: 0px 5px;
+            padding: 0px 2.5px;
+          }
 
-        #workspaces button.active,
-        #workspaces button.focused {
-          color: ${config.lib.stylix.colors.withHashtag."base0D"};
-        }
+          #workspaces button {
+            border-radius: 0px;
+          }
 
-        #battery.charging,
-        #power-profiles-daemon.power-saver {
-          color: ${config.lib.stylix.colors.withHashtag."base0B"};
-        }
+          #workspaces button.active,
+          #workspaces button.focused {
+            color: ${config.lib.stylix.colors.withHashtag.base0D};
+          }
 
-        #battery.critical:not(.charging),
-        #custom-dnd.on,
-        #idle_inhibitor.activated,
-        #network.disabled,
-        #network.disconnected,
-        #power-profiles-daemon.performance,
-        #pulseaudio.muted {
-          color: ${config.lib.stylix.colors.withHashtag."base08"};
-        }
+          #battery.charging,
+          #power-profiles-daemon.power-saver {
+            color: ${config.lib.stylix.colors.withHashtag.base0B};
+          }
 
-        #submap,
-        #mode {
-          background-color: ${config.lib.stylix.colors.withHashtag."base08"};
-          border-radius: ${toString cfg.theme.borders.radius};
-          color: ${config.lib.stylix.colors.withHashtag."base00"};
-          font-weight: bold;
-        }
+          #battery.critical:not(.charging),
+          #custom-dnd.on,
+          #idle_inhibitor.activated,
+          #network.disabled,
+          #network.disconnected,
+          #power-profiles-daemon.performance,
+          #pulseaudio.muted {
+            color: ${config.lib.stylix.colors.withHashtag.base08};
+          }
+
+          #submap,
+          #mode {
+            background-color: ${config.lib.stylix.colors.withHashtag.base08};
+            border-radius: ${toString cfg.theme.borders.radius}px;
+            color: ${config.lib.stylix.colors.withHashtag.base00};
+            font-weight: bold;
+          }
       '';
 
       systemd.enable = true;
@@ -348,14 +356,14 @@ in {
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''
       window {
-        background-color: alpha (${config.lib.stylix.colors.withHashtag."base00"}, ${toString config.stylix.opacity.popups});
-        color: ${config.lib.stylix.colors.withHashtag."base05"}
+        background-color: alpha (${config.lib.stylix.colors.withHashtag.base00}, ${toString config.stylix.opacity.popups});
+        color: ${config.lib.stylix.colors.withHashtag.base05}
       }
 
       /* search entry */
       entry {
         background-color: rgba (0, 0, 0, 0.2);
-        border: alpha(${config.lib.stylix.colors.withHashtag."base07"}, ${toString config.stylix.opacity.popups});
+        border: alpha(${config.lib.stylix.colors.withHashtag.base07}, ${toString config.stylix.opacity.popups});
         border-radius: ${toString cfg.theme.borders.radius}px
       }
 
@@ -366,10 +374,10 @@ in {
       }
 
       button:active, button:hover, button:focused {
-        background-color: alpha (${config.lib.stylix.colors.withHashtag."base05"}, 0.2);
+        background-color: alpha (${config.lib.stylix.colors.withHashtag.base05}, 0.2);
         border: none;
         border-radius: ${toString cfg.theme.borders.radius}px;
-        color: ${config.lib.stylix.colors.withHashtag."base0D"}
+        color: ${config.lib.stylix.colors.withHashtag.base0D}
       }
 
       #category-button {
