@@ -6,7 +6,7 @@
     image = let
       wallpapers = builtins.fetchGit {
         url = "https://github.com/alyraffauf/wallpapers.git";
-        rev = "21018eef106928c7c44d206c6c3730cce5f781f3";
+        rev = "ff956327520f2ecdd0f8b1cdab4420bef4095d38";
         ref = "master";
       };
     in "${wallpapers}/wallhaven-6d66dl.jpg";
