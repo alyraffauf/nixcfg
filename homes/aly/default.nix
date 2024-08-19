@@ -56,8 +56,8 @@ self: {
       };
     };
 
-    gitui.enable = true;
     home-manager.enable = true;
+    lazygit.enable = true;
 
     rbw = {
       enable = true;
