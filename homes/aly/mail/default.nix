@@ -104,6 +104,7 @@ in {
         settings = {
           "calendar.timezone.useSystemTimezone" = true;
           "datareporting.healthreport.uploadEnabled" = false;
+          "mail.tabs.drawInTitlebar" = false;
           "mailnews.default_sort_order" = 2; # descending, 1 for ascending
           "mailnews.default_sort_type" = 18; # sort by date
           "mailnews.message_display.disable_remote_image" = false;

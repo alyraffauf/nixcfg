@@ -23,7 +23,7 @@ self: {
       };
     };
 
-    packages = with pkgs;[
+    packages = with pkgs; [
       bitwarden-desktop
       browsh
       curl
