@@ -5,12 +5,9 @@
   ...
 }: {
   config = lib.mkIf config.ar.desktop.sway.enable {
-    programs = {
-      sway = {
-        enable = true;
-        extraPackages = lib.mkDefault [];
-        package = lib.mkDefault pkgs.swayfx;
-      };
+    programs.sway = {
+      enable = true;
+      extraPackages = lib.mkDefault [];
     };
   };
 }

@@ -14,7 +14,6 @@
 in {
   enable = true;
   checkConfig = false;
-  package = lib.mkDefault pkgs.swayfx;
   wrapperFeatures.gtk = true;
 
   systemd = {
