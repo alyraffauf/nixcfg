@@ -23,18 +23,19 @@ self: {
       };
     };
 
-    packages = [
-      pkgs.bitwarden-desktop
-      pkgs.browsh
-      pkgs.curl
-      pkgs.fractal
-      pkgs.git
-      pkgs.nicotine-plus
-      pkgs.obsidian
-      pkgs.picard
-      pkgs.tauon
-      pkgs.transmission-remote-gtk
-      pkgs.webcord
+    packages = with pkgs;[
+      bitwarden-desktop
+      browsh
+      curl
+      fractal
+      git
+      nicotine-plus
+      obsidian
+      picard
+      tauon
+      transmission-remote-gtk
+      tuba
+      webcord
     ];
 
     stateVersion = "24.05";
