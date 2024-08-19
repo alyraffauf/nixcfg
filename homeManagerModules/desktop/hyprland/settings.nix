@@ -41,6 +41,8 @@ in {
       "$mod,E,exec,${lib.getExe cfg.defaultApps.editor}"
       "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
+      "$mod,H,changegroupactive,b"
+      "$mod,L,changegroupactive,f"
       "$mod,Left,changegroupactive,b"
       "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "$mod,Right,changegroupactive,f"
