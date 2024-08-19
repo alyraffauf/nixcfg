@@ -7,7 +7,7 @@
   home-manager = {
     sharedModules = [
       {
-        wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.0";};
+        wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.25";};
         xdg.userDirs.music = "/mnt/Media/Music";
 
         ar.home = {

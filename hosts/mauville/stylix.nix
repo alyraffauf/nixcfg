@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
     image = let
       wallpapers = builtins.fetchGit {
@@ -12,7 +12,7 @@
     in "${wallpapers}/wallhaven-mp886k.jpg";
 
     imageScalingMode = "fill";
-    polarity = "light";
+    polarity = "dark";
 
     cursor = {
       name = "Bibata-Modern-Classic";
