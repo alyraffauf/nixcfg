@@ -1,23 +1,20 @@
 {
   config,
   lib,
+  osConfig,
   pkgs,
   ...
 }: {
+  imports =
+    if (osConfig.networking.hostName == "mauville")
+    then [./ultrawide.nix]
+    else [./laptop.nix];
   programs.waybar.settings.mainBar."bluetooth" = {
     "on-click" = lib.mkForce "${lib.getExe pkgs.rofi-bluetooth} -i";
   };
 
   wayland.windowManager = {
     sway.config = {
-      assigns = {
-        "workspace 1:web" = [{app_id = "firefox";} {app_id = "brave-browser";}];
-        "workspace 2:note" = [{app_id = "obsidian";}];
-        "workspace 3:code" = [{app_id = "codium-url-handler";} {app_id = "dev.zed.Zed";}];
-        "workspace 4:mail" = [{app_id = "thunderbird";}];
-        "workspace 5:work" = [{app_id = "firework";}];
-      };
-
       floating.criteria = [{app_id = "Bitwarden";} {app_id = "org.keepassxc.KeePassXC";}];
 
       gaps = {
@@ -33,7 +30,6 @@
       };
 
       startup = [
-        {command = "sleep 2 && ${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} workspace 1:web";}
         {command = lib.getExe config.ar.home.defaultApps.editor;}
         {command = lib.getExe config.ar.home.defaultApps.webBrowser;}
         {command = lib.getExe pkgs.fractal;}
@@ -77,10 +73,6 @@
 
       dwindle.no_gaps_when_only = "1";
 
-      exec-once = [
-        "sleep 2 && hyprctl dispatch workspace 2 && sleep 2 && hyprctl dispatch workspace 3 && sleep 2 && hyprctl dispatch workspace 4 && sleep 2 && hyprctl dispatch workspace 1;"
-      ];
-
       input.kb_options = "ctrl:nocaps";
 
       windowrulev2 = [
@@ -90,17 +82,11 @@
         "float,class:(org.keepassxc.KeePassXC)"
         "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
-        "workspace 1,class:(brave-browser)"
-        "workspace 5,class:(firework)"
         "workspace special:magic,class:(WebCord)"
         "workspace special:magic,class:(org.gnome.Fractal)"
       ];
 
       workspace = [
-        "1,defaultName:web,on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}"
-        "2,defaultName:note,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
-        "3,defaultName:code,on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
-        "4,defaultName:mail,on-created-empty:${lib.getExe pkgs.thunderbird}"
         "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
       ];
     };
