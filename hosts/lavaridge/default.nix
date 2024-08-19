@@ -45,6 +45,8 @@
       hyprland.enable = true;
       sway.enable = true;
     };
+    
+    laptopMode = true;
 
     users.aly = {
       enable = true;

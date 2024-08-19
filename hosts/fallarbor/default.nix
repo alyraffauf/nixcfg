@@ -41,7 +41,8 @@
 
       sway.enable = true;
     };
-
+    
+    laptopMode = true;
     services.flatpak.enable = true;
 
     users = {

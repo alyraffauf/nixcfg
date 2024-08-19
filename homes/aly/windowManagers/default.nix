@@ -1,14 +1,11 @@
 {
   config,
   lib,
-  osConfig,
   pkgs,
   ...
 }: {
-  imports =
-    if (osConfig.networking.hostName == "mauville")
-    then [./ultrawide.nix]
-    else [./laptop.nix];
+  imports = [./laptop.nix];
+
   programs.waybar.settings.mainBar."bluetooth" = {
     "on-click" = lib.mkForce "${lib.getExe pkgs.rofi-bluetooth} -i";
   };

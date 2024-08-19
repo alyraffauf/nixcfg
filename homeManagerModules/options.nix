@@ -167,6 +167,12 @@ in {
       };
     };
 
+    laptopMode = lib.mkOption {
+      description = "Enable laptop configuration.";
+      default = osConfig.ar.laptopMode;
+      type = lib.types.bool;
+    };
+
     services = {
       easyeffects = {
         enable = lib.mkEnableOption "EasyEffects user service.";

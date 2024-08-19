@@ -33,6 +33,8 @@
       steam.enable = lib.mkEnableOption "Steam + Gamescope session.";
       sway.enable = lib.mkEnableOption "Sway wayland session.";
     };
+    
+    laptopMode = lib.mkEnableOption "Enable laptop configuration.";
 
     services.flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
   };
