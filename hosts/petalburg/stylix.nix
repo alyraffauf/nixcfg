@@ -9,7 +9,7 @@
         rev = "ff956327520f2ecdd0f8b1cdab4420bef4095d38";
         ref = "master";
       };
-    in "${wallpapers}/wallhaven-mp886k.jpg";
+    in "${wallpapers}/wallhaven-jxp18w.jpg";
 
     imageScalingMode = "fill";
     polarity = "dark";
