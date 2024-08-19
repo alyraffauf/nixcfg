@@ -13,9 +13,13 @@
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
   environment.variables.GDK_SCALE = "2";
