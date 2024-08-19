@@ -40,7 +40,7 @@
 
       sway.enable = true;
     };
-    
+
     laptopMode = true;
 
     users.aly = {
