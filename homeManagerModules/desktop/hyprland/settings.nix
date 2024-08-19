@@ -160,6 +160,8 @@ in {
   group = {
     groupbar = {
       height = 24;
+      text_color = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
+      font_size = config.stylix.fonts.sizes.desktop;
     };
   };
 
@@ -172,6 +174,7 @@ in {
     disable_hyprland_logo = true;
     disable_splash_rendering = true;
     focus_on_activate = true;
+    font_family = config.stylix.fonts.sansSerif.name;
     vfr = true;
   };
 
