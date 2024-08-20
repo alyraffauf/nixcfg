@@ -16,9 +16,13 @@
             hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"];
           };
 
-          services.easyeffects = {
-            enable = true;
-            preset = "LoudnessEqualizer";
+          services = {
+            easyeffects = {
+              enable = true;
+              preset = "LoudnessEqualizer";
+            };
+
+            gammastep.enable = lib.mkForce false;
           };
         };
       }
