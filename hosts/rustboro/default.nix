@@ -41,6 +41,8 @@
       sway.enable = true;
     };
 
+    laptopMode = true;
+
     users.aly = {
       enable = true;
       password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
