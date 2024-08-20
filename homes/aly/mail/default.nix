@@ -77,30 +77,22 @@ in {
 
       thunderbird = {
         enable = true;
-        profiles = ["work"];
+        profiles = ["default"];
       };
 
       userName = "aly.chace@joingsg.com";
     };
   };
 
-  # home.file = let
-  #   source = builtins.fetchGit {
-  #     url = "https://github.com/rafaelmardojai/thunderbird-gnome-theme.git";
-  #     rev = "628fcccb7788e3e0ad34f67114f563c87ac8c1dc";
-  #     ref = "main";
-  #   };
-  # in {
-  #   ".thunderbird/default/chrome".source = source;
-  #   ".thunderbird/work/chrome".source = source;
-  # };
-
   programs = {
     himalaya.enable = true;
 
     thunderbird = {
       enable = true;
-      profiles = let
+
+      profiles.default = {
+        isDefault = true;
+
         settings = {
           "calendar.timezone.useSystemTimezone" = true;
           "datareporting.healthreport.uploadEnabled" = false;
@@ -123,26 +115,7 @@ in {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "toolkit.telemetry.enabled" = false;
         };
-      in {
-        default = {
-          inherit settings;
-          isDefault = true;
-        };
-        work.settings = settings;
       };
     };
-  };
-
-  xdg.desktopEntries.thunderwork = {
-    categories = ["Application" "Network" "Chat" "Email" "Feed" "GTK" "News"];
-    comment = "Read and write e-mails or RSS feeds, or manage tasks on calendars.";
-    exec = "thunderbird -P work --name thunderwork %U";
-    genericName = "Email Client";
-    icon = "thunderbird";
-    mimeType = ["message/rfc822" "x-scheme-handler/mailto" "text/calendar" "text/x-vcard"];
-    name = "Thunderbird (work)";
-    settings.StartupWMClass = "thunderwork";
-    startupNotify = true;
-    terminal = false;
   };
 }
