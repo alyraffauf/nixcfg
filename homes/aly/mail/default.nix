@@ -59,29 +59,6 @@ in {
 
       userName = "achacega@gmail.com";
     };
-
-    "aly.chace@joingsg.com" = {
-      address = "aly.chace@joingsg.com";
-      flavor = "gmail.com";
-      realName = "Aly Raffauf";
-
-      signature = {
-        text = ''
-          Aly Raffauf (née Chace)
-          Content Operations Specialist 1
-          Global Savings Group
-        '';
-
-        showSignature = "append";
-      };
-
-      thunderbird = {
-        enable = true;
-        profiles = ["default"];
-      };
-
-      userName = "aly.chace@joingsg.com";
-    };
   };
 
   programs = {
