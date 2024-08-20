@@ -256,7 +256,11 @@ in {
           };
 
           "group/hardware" = {
-            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
+            modules =
+              ["pulseaudio" "bluetooth" "network"]
+              ++ lib.optionals (cfg.laptopMode)
+              ["power-profiles-daemon" "battery"];
+
             orientation = "horizontal";
           };
 
