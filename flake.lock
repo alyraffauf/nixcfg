@@ -319,11 +319,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1723443267,
-        "narHash": "sha256-7J6Q2cUOL9GYrwr7wGtWfPN3m3PL3qjpxTsaTdBuhE4=",
+        "lastModified": 1724203844,
+        "narHash": "sha256-cQsIdb2zSPhYFPghQ4gDcdPxVFRIdTqv/wMAukv5z50=",
         "owner": "alyraffauf",
         "repo": "nixhw",
-        "rev": "28348d3a045d44e717f39123e9cce33c224b5961",
+        "rev": "d8eb88f071a9aac51d517ad7c059b3f336478f77",
         "type": "github"
       },
       "original": {
