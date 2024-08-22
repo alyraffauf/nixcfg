@@ -17,18 +17,11 @@ self: {
   home = {
     homeDirectory = "/home/aly";
 
-    file = {
-      "${config.xdg.cacheHome}/keepassxc/keepassxc.ini".text = lib.generators.toINI {} {
-        General.LastActiveDatabase = "${config.home.homeDirectory}/sync/Passwords.kdbx";
-      };
-    };
-
     packages = with pkgs; [
       bitwarden-desktop
       browsh
       curl
       fractal
-      git
       nicotine-plus
       obsidian
       picard
@@ -85,13 +78,11 @@ self: {
       fastfetch.enable = true;
       firefox.enable = true;
       helix.enable = true;
-      keepassxc.enable = true;
       kitty.enable = true;
       shell.enable = true;
       tmux.enable = true;
       vsCodium.enable = true;
       yazi.enable = true;
-
       zed. enable = true;
     };
 
