@@ -34,9 +34,8 @@ As well as upstream third-party projects that I use for various tasks:
 ## Outputs
 
 - homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
-- nixosModules.base: opinionated basic system configuration.
-- nixosModules.nixos: opinionated desktop, app, and service modules.
-- nixosModules.users: basic user configuration.
+- nixosModules.nixos: opinionated desktop, app, and service options.
+- nixosModules.users: basic user configuration options.
 
 In addition, this flake outputs NixOS configuration and home-manager configurations for all of my hosts and users, respectively.
 
