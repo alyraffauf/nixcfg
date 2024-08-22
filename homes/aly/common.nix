@@ -1,18 +1,8 @@
-self: {
+{
   config,
   pkgs,
   ...
 }: {
-  imports = [
-    self.homeManagerModules.default
-    self.inputs.agenix.homeManagerModules.default
-  ];
-
-  age.secrets = {
-    backblazeKeyId.file = ../../secrets/aly/backblaze/keyId.age;
-    backblazeKey.file = ../../secrets/aly/backblaze/key.age;
-  };
-
   home = {
     homeDirectory = "/home/aly";
 
@@ -40,7 +30,6 @@ self: {
     };
 
     gitui.enable = true;
-    helix.defaultEditor = true;
     home-manager.enable = true;
 
     rbw = {
