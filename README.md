@@ -34,6 +34,10 @@ As well as upstream third-party projects that I use for various tasks:
 ## Outputs
 
 - homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
+- homeManagerModules.aly: my home-manager config.
+- homeManagerModules.aly-nox: my home-manager config, but for headless systems.
+- homeManagerModules.dustin: my husband's home-manager config.
+- nixosModules.common: various common modules specific to my hosts.
 - nixosModules.nixos: opinionated desktop, app, and service options.
 - nixosModules.users: basic user configuration options.
 
