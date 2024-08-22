@@ -83,7 +83,7 @@ self: {
       tmux.enable = true;
       vsCodium.enable = true;
       yazi.enable = true;
-      zed. enable = true;
+      zed.enable = true;
     };
 
     defaultApps = {
