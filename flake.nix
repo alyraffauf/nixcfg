@@ -96,11 +96,8 @@
     };
 
     nixosModules = {
-      base = import ./baseModules self;
-      nixos = import ./nixosModules self;
-      users = import ./userModules self;
-
       common-auto-upgrade = import ./common/autoUpgrade.nix;
+      common-base = import ./common/base.nix;
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
       common-nix = import ./common/nix.nix;
@@ -108,6 +105,9 @@
       common-pkgs = import ./common/pkgs.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
+
+      nixos = import ./nixosModules self;
+      users = import ./userModules self;
     };
 
     nixosConfigurations = forAllHosts (
@@ -120,7 +120,6 @@
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.stylix.nixosModules.stylix
-            self.nixosModules.base
             self.nixosModules.nixos
             self.nixosModules.users
             {

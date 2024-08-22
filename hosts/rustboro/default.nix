@@ -12,6 +12,7 @@
     ./stylix.nix
     self.inputs.nixhw.nixosModules.thinkpad-t440p
     self.nixosModules.common-auto-upgrade
+    self.nixosModules.common-base
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
     self.nixosModules.common-overlays

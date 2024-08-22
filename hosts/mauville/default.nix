@@ -21,6 +21,7 @@ in {
     self.inputs.nixhw.nixosModules.common-ssd
     self.inputs.raffauflabs.nixosModules.raffauflabs
     self.nixosModules.common-auto-upgrade
+    self.nixosModules.common-base
     self.nixosModules.common-nix
     self.nixosModules.common-overlays
     self.nixosModules.common-pkgs

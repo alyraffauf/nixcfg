@@ -1,4 +1,4 @@
-self: {lib, ...}: {
+{lib, ...}: {
   boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
   console.useXkbConfig = true;
   hardware.keyboard.qmk.enable = true;
