@@ -1,9 +1,7 @@
 {
-  home-manager = {
-    sharedModules = [
-      {
-        xdg.userDirs.music = "/mnt/Media/Music";
-      }
-    ];
-  };
+  lib,
+  self,
+  ...
+}: {
+  home-manager.users.aly = lib.mkForce self.homeManagerModules.aly-nox;
 }

@@ -90,7 +90,8 @@
 
     homeManagerModules = {
       default = import ./homeManagerModules self;
-      aly = import ./homes/aly self;
+      aly = import ./homes/aly/gui.nix self;
+      aly-nox = import ./homes/aly/nox.nix self;
       dustin = import ./homes/dustin self;
       morgan = import ./homes/morgan self;
     };
