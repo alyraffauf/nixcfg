@@ -35,6 +35,7 @@ in {
   "aly/syncthing/slateport/key.age".publicKeys = keys;
   "aly/transmissionRemote.age".publicKeys = keys;
   "cloudflare.age".publicKeys = keys;
+  "k3s.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
   "lastFM/secret.age".publicKeys = keys;
   "spotify/clientId.age".publicKeys = keys;

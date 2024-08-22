@@ -31,6 +31,14 @@ in {
 
   hardware.enableAllFirmware = true;
   networking.hostName = "slateport";
+
+  services.k3s = {
+    enable = true;
+    clusterInit = true;
+    role = "server";
+    tokenFile = config.age.secrets.k3s.path;
+  };
+
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
