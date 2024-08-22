@@ -91,6 +91,7 @@
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
+      aly-nox = import ./homes/aly-nox self;
       dustin = import ./homes/dustin self;
       morgan = import ./homes/morgan self;
     };
