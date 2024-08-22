@@ -7,6 +7,11 @@
   home-manager = {
     sharedModules = [
       {
+        gtk.gtk3.bookmarks = [
+          "file:///mnt/Media"
+          "file:///mnt/Archive"
+        ];
+
         wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.25";};
         xdg.userDirs.music = "/mnt/Media/Music";
 

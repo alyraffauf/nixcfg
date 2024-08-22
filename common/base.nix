@@ -1,11 +1,5 @@
-self: {lib, ...}: {
-  boot = {
-    consoleLogLevel = 0;
-    initrd.verbose = false;
-    loader.systemd-boot.configurationLimit = lib.mkDefault 10;
-    plymouth.enable = true;
-  };
-
+{lib, ...}: {
+  boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
   console.useXkbConfig = true;
   hardware.keyboard.qmk.enable = true;
 
@@ -18,28 +12,7 @@ self: {lib, ...}: {
     nh.enable = true;
   };
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 3d";
-      persistent = true;
-      randomizedDelaySec = "60min";
-    };
-
-    # Run GC when there is less than 100MiB left.
-    extraOptions = ''
-      min-free = ${toString (100 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
-
-    optimise.automatic = true;
-
-    settings = {
-      auto-optimise-store = false;
-      experimental-features = ["nix-command" "flakes"];
-    };
-  };
+  networking.networkmanager.enable = true;
 
   security = {
     polkit.enable = true;
@@ -70,9 +43,6 @@ self: {lib, ...}: {
       openFirewall = true;
       settings.PasswordAuthentication = false;
     };
-
-    printing.enable = true;
-    system-config-printer.enable = true;
   };
 
   sound.enable = true;
