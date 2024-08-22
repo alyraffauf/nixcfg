@@ -42,7 +42,7 @@ in {
             "sync" = {
               id = "default";
               path = "/home/aly/sync";
-              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "petalburg" "rustboro" "mossdeep" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "mossdeep" "petalburg" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 type = "staggered";
                 params = {
@@ -55,7 +55,7 @@ in {
             "camera" = {
               id = "fcsgh-dlxys";
               path = "/home/aly/pics/camera";
-              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
@@ -65,7 +65,7 @@ in {
             "screenshots" = {
               id = "screenshots";
               path = "/home/aly/pics/screenshots";
-              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
