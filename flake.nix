@@ -76,6 +76,7 @@
       "mauville"
       "petalburg"
       "rustboro"
+      "slateport"
     ];
   in {
     formatter = forDefaultSystems (system: self.inputs.nixpkgs.legacyPackages.${system}.alejandra);
