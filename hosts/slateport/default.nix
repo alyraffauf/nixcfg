@@ -1,7 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
   self,
   ...
 }: let
@@ -11,7 +9,6 @@ in {
     ./disko.nix
     ./home.nix
     ./secrets.nix
-    ./stylix.nix
     self.inputs.nixhw.nixosModules.common-intel-cpu
     self.inputs.nixhw.nixosModules.common-intel-gpu
     self.inputs.nixhw.nixosModules.common-bluetooth
