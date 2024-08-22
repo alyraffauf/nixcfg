@@ -27,12 +27,6 @@
         sessionVariables.NIXOS_OZONE_WL = "1";
       };
 
-      fonts.packages = with pkgs; [
-        (nerdfonts.override {fonts = ["UbuntuSans"];})
-        liberation_ttf
-        vegur
-      ];
-
       hardware.logitech.wireless = {
         enable = true;
         enableGraphical = true;
