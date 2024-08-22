@@ -99,7 +99,7 @@
       base = import ./baseModules self;
       nixos = import ./nixosModules self;
       users = import ./userModules self;
-      
+
       common-auto-upgrade = import ./common/autoUpgrade.nix;
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
