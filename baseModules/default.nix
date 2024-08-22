@@ -1,11 +1,5 @@
 self: {lib, ...}: {
-  boot = {
-    consoleLogLevel = 0;
-    initrd.verbose = false;
-    loader.systemd-boot.configurationLimit = lib.mkDefault 10;
-    plymouth.enable = true;
-  };
-
+  boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
   console.useXkbConfig = true;
   hardware.keyboard.qmk.enable = true;
 
@@ -72,9 +66,6 @@ self: {lib, ...}: {
       openFirewall = true;
       settings.PasswordAuthentication = false;
     };
-
-    printing.enable = true;
-    system-config-printer.enable = true;
   };
 
   sound.enable = true;

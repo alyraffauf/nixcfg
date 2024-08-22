@@ -17,6 +17,12 @@
       || config.ar.desktop.steam.enable
       || config.ar.desktop.sway.enable
     ) {
+      boot = {
+        consoleLogLevel = 0;
+        initrd.verbose = false;
+        plymouth.enable = true;
+      };
+
       environment = {
         sessionVariables.NIXOS_OZONE_WL = "1";
       };
@@ -50,6 +56,9 @@
 
           pulse.enable = true;
         };
+
+        printing.enable = true;
+        system-config-printer.enable = true;
 
         xserver = {
           enable = true;
