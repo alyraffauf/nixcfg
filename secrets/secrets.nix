@@ -31,6 +31,8 @@ in {
   "aly/syncthing/petalburg/key.age".publicKeys = keys;
   "aly/syncthing/rustboro/cert.age".publicKeys = keys;
   "aly/syncthing/rustboro/key.age".publicKeys = keys;
+  "aly/syncthing/slateport/cert.age".publicKeys = keys;
+  "aly/syncthing/slateport/key.age".publicKeys = keys;
   "aly/transmissionRemote.age".publicKeys = keys;
   "cloudflare.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
