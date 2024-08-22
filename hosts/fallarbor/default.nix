@@ -6,12 +6,18 @@
   ...
 }: {
   imports = [
-    ../common
     ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
     self.inputs.nixhw.nixosModules.framework-13-intel-11th
+    self.nixosModules.common-auto-upgrade
+    self.nixosModules.common-mauville-share
+    self.nixosModules.common-nix
+    self.nixosModules.common-overlays
+    self.nixosModules.common-pkgs
+    self.nixosModules.common-tailscale
+    self.nixosModules.common-wifi-profiles
   ];
 
   boot.loader = {

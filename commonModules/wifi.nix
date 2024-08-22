@@ -1,4 +1,4 @@
-let
+{config, ...}: let
   mkOpenWiFi = ssid: {
     connection.id = "${ssid}";
     connection.type = "wifi";
@@ -30,11 +30,22 @@ let
     }
   );
 in {
-  "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
-  "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
-  "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
-  "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
-  "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
-  "javapatron" = mkOpenWiFi "javapatron";
-  "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
+  age.secrets.wifi.file = ../secrets/wifi.age;
+
+  networking.networkmanager = {
+    enable = true;
+
+    ensureProfiles = {
+      environmentFiles = [config.age.secrets.wifi.path];
+      profiles = {
+        "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
+        "javapatron" = mkOpenWiFi "javapatron";
+        "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
+        "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
+        "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
+        "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
+        "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
+      };
+    };
+  };
 }

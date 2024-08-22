@@ -99,6 +99,15 @@
       base = import ./baseModules self;
       nixos = import ./nixosModules self;
       users = import ./userModules self;
+      
+      common-auto-upgrade = import ./commonModules/autoUpgrade.nix;
+      common-locale = import ./commonModules/locale.nix;
+      common-mauville-share = import ./commonModules/samba.nix;
+      common-nix = import ./commonModules/nix.nix;
+      common-overlays = import ./commonModules/overlays.nix;
+      common-pkgs = import ./commonModules/pkgs.nix;
+      common-tailscale = import ./commonModules/tailscale.nix;
+      common-wifi-profiles = import ./commonModules/wifi.nix;
     };
 
     nixosConfigurations = forAllHosts (

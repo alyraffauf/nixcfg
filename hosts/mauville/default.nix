@@ -11,7 +11,6 @@
   mediaDirectory = "/mnt/Media";
 in {
   imports = [
-    ../common
     ./disko.nix
     ./home.nix
     ./secrets.nix
@@ -21,6 +20,12 @@ in {
     self.inputs.nixhw.nixosModules.common-bluetooth
     self.inputs.nixhw.nixosModules.common-ssd
     self.inputs.raffauflabs.nixosModules.raffauflabs
+    self.nixosModules.common-auto-upgrade
+    self.nixosModules.common-nix
+    self.nixosModules.common-overlays
+    self.nixosModules.common-pkgs
+    self.nixosModules.common-tailscale
+    self.nixosModules.common-wifi-profiles
   ];
 
   boot = {

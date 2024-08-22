@@ -18,6 +18,8 @@ self: {lib, ...}: {
     nh.enable = true;
   };
 
+  networking.networkmanager.enable = true;
+
   nix = {
     gc = {
       automatic = true;
