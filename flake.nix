@@ -100,14 +100,14 @@
       nixos = import ./nixosModules self;
       users = import ./userModules self;
       
-      common-auto-upgrade = import ./commonModules/autoUpgrade.nix;
-      common-locale = import ./commonModules/locale.nix;
-      common-mauville-share = import ./commonModules/samba.nix;
-      common-nix = import ./commonModules/nix.nix;
-      common-overlays = import ./commonModules/overlays.nix;
-      common-pkgs = import ./commonModules/pkgs.nix;
-      common-tailscale = import ./commonModules/tailscale.nix;
-      common-wifi-profiles = import ./commonModules/wifi.nix;
+      common-auto-upgrade = import ./common/autoUpgrade.nix;
+      common-locale = import ./common/locale.nix;
+      common-mauville-share = import ./common/samba.nix;
+      common-nix = import ./common/nix.nix;
+      common-overlays = import ./common/overlays.nix;
+      common-pkgs = import ./common/pkgs.nix;
+      common-tailscale = import ./common/tailscale.nix;
+      common-wifi-profiles = import ./common/wifi.nix;
     };
 
     nixosConfigurations = forAllHosts (
