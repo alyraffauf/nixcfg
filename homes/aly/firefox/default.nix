@@ -129,20 +129,22 @@
           ];
         };
 
-        settings = {
-          "browser.toolbars.bookmarks.visibility" = "newtab";
-          "network.cookie.cookieBehavior" = 1;
-          "permissions.default.desktop-notification" = 2;
-          "privacy.donottrackheader.enabled" = true;
-          "privacy.fingerprintingProtection" = true;
-          "privacy.trackingprotection.emailtracking.enabled" = true;
-          "privacy.trackingprotection.enabled" = true;
-          "privacy.trackingprotection.global-checkbox.enabled" = true;
-          "privacy.trackingprotection.socialtracking.enabled" = true;
-          "services.sync.prefs.sync.browser.uiCustomization.state" = true;
-          "svg.context-properties.content.enabled" = true;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        };
+        settings =
+          (import ./betterfox.nix)
+          // {
+            "browser.toolbars.bookmarks.visibility" = "newtab";
+            "network.cookie.cookieBehavior" = 1;
+            "permissions.default.desktop-notification" = 2;
+            "privacy.donottrackheader.enabled" = true;
+            "privacy.fingerprintingProtection" = true;
+            "privacy.trackingprotection.emailtracking.enabled" = true;
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.global-checkbox.enabled" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "services.sync.prefs.sync.browser.uiCustomization.state" = true;
+            "svg.context-properties.content.enabled" = true;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          };
       };
 
       work = {
@@ -154,22 +156,24 @@
           zoom-redirector
         ];
 
-        settings = {
-          "browser.bookmarks.file" = "${./bookmarks-work.html}";
-          "browser.places.importBookmarksHTML" = true;
-          "browser.toolbars.bookmarks.visibility" = "newtab";
-          "identity.fxaccounts.enabled" = false;
-          "network.cookie.cookieBehavior" = 1;
-          "privacy.donottrackheader.enabled" = true;
-          "privacy.fingerprintingProtection" = true;
-          "privacy.trackingprotection.emailtracking.enabled" = true;
-          "privacy.trackingprotection.enabled" = true;
-          "privacy.trackingprotection.global-checkbox.enabled" = true;
-          "privacy.trackingprotection.socialtracking.enabled" = true;
-          "signon.rememberSignons" = false;
-          "svg.context-properties.content.enabled" = true;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        };
+        settings =
+          (import ./betterfox.nix)
+          // {
+            "browser.bookmarks.file" = "${./bookmarks-work.html}";
+            "browser.places.importBookmarksHTML" = true;
+            "browser.toolbars.bookmarks.visibility" = "newtab";
+            "identity.fxaccounts.enabled" = false;
+            "network.cookie.cookieBehavior" = 1;
+            "privacy.donottrackheader.enabled" = true;
+            "privacy.fingerprintingProtection" = true;
+            "privacy.trackingprotection.emailtracking.enabled" = true;
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.global-checkbox.enabled" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "signon.rememberSignons" = false;
+            "svg.context-properties.content.enabled" = true;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          };
 
         id = 1;
 
