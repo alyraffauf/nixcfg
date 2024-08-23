@@ -29,13 +29,19 @@ in {
       ];
 
       sessionVariables = {
-        BROWSER = "${lib.getExe cfg.webBrowser}";
-        EDITOR = "${lib.getExe cfg.terminalEditor}";
-        TERMINAL = "${lib.getExe cfg.terminal}";
+        BROWSER = "${builtins.baseNameOf (lib.getExe cfg.webBrowser)}";
+        EDITOR = "${builtins.baseNameOf (lib.getExe cfg.terminalEditor)}";
+        TERMINAL = "${builtins.baseNameOf (lib.getExe cfg.terminal)}";
       };
     };
 
     xdg = {
+      configFile."xfce4/helpers.rc".text = ''
+        FileManager=${builtins.baseNameOf (lib.getExe cfg.fileManager)}
+        TerminalEmulator=${builtins.baseNameOf (lib.getExe cfg.terminal)}
+        WebBrowser=${builtins.baseNameOf (lib.getExe cfg.webBrowser)}
+      '';
+
       mimeApps = {
         enable = true;
 

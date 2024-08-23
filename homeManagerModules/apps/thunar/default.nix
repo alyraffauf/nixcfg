@@ -14,11 +14,5 @@
       xfce.tumbler
       xfce.xfconf
     ];
-
-    xdg.configFile."xfce4/helpers.rc".text = ''
-      FileManager=thunar
-      TerminalEmulator=kitty
-      WebBrowser=firefox
-    '';
   };
 }
