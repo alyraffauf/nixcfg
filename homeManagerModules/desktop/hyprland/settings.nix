@@ -128,7 +128,7 @@ in {
   dwindle.preserve_split = true;
 
   exec-once = [
-    "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
+    "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
   ];
 
   input = {

@@ -160,7 +160,7 @@ in {
     };
 
     startup = [
-      {command = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";}
+      {command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";}
       {command = lib.getExe pkgs.autotiling;}
     ];
 
