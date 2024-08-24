@@ -40,7 +40,6 @@ self: {
   wayland.windowManager = {
     hyprland.settings = {
       bind = ["SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"];
-      exec-once = ["sleep 2 && ${lib.getExe pkgs.trayscale} --hide-window"];
     };
 
     sway.config = {
@@ -59,8 +58,6 @@ self: {
           pos = "-2560 0";
         };
       };
-
-      startup = [{command = "sleep 2 && ${lib.getExe pkgs.trayscale} --hide-window";}];
     };
   };
 
