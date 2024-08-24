@@ -51,11 +51,7 @@
     };
 
     desktop = {
-      greetd = {
-        enable = true;
-        autologin = "aly";
-      };
-
+      greetd.enable = true;
       hyprland.enable = true;
       sway.enable = true;
     };
