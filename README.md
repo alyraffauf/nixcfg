@@ -9,9 +9,8 @@ My comprehensive NixOS flake for managing my laptop, desktop, and home lab envir
 
 - **Hyprland:** Dynamic tiling Wayland compositor and window manager.
 - **Stylix:** Auto-gnerated base16 themes for the whole desktop.
-- **Home Lab Services:** Media, file sharing, and more.
-- **Reverse Proxy:** Efficient traffic routing for my home lab services.
-- **Modular Configuration:** Reasonably adaptable for different hardware and use cases.
+- **Encryption:** Encrypted boot drives with Secure Boot and LUKS with TPM decryption.
+- **Home Lab:** Media, file sharing, and more with a efficnet routing via reverse proxy.
 
 ## Inputs
 
@@ -27,6 +26,7 @@ As well as upstream third-party projects that I use for various tasks:
 - [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
+- [lanzaboote](https://github.com/nix-community/lanzaboote): ssecure boot for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide colorscheming and typography.
 - [sway](https://github.com/swaywm/sway): fantastic, rock-solid tiling compositor for wayland.
