@@ -11,7 +11,6 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.inputs.lanzaboote.nixosModules.lanzaboote
     self.inputs.nixhw.nixosModules.framework-13-amd-7000
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base

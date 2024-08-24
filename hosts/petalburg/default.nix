@@ -10,7 +10,6 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.inputs.lanzaboote.nixosModules.lanzaboote
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base

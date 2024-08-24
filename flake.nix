@@ -125,6 +125,7 @@
             self.inputs.agenix.nixosModules.default
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
+            self.inputs.lanzaboote.nixosModules.lanzaboote
             self.inputs.stylix.nixosModules.stylix
             self.nixosModules.nixos
             self.nixosModules.users
