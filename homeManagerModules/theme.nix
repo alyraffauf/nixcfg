@@ -46,25 +46,26 @@ in {
           /* No (default) title bar on wayland */
           headerbar.default-decoration {
             /* You may need to tweak these values depending on your GTK theme */
+            border-radius: 0;
+            border: 0;
+            box-shadow: none;
+            font-size: 0;
             margin-bottom: 50px;
             margin-top: -100px;
-
-            padding: 0;
-            border: 0;
             min-height: 0;
-            font-size: 0;
-            box-shadow: none;
+            padding: 0;
           }
 
           .titlebar,
           .titlebar .background
           {
-              border-radius: 0;
+            border-radius: 0;
           }
 
           /* rm -rf window shadows */
           window.csd,             /* gtk4? */
           window.csd decoration { /* gtk3 */
+            border-radius: 0;
             box-shadow: none;
           }
         ''
