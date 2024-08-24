@@ -49,12 +49,17 @@ in {
             margin-bottom: 50px;
             margin-top: -100px;
 
-            background: transparent;
             padding: 0;
             border: 0;
             min-height: 0;
             font-size: 0;
             box-shadow: none;
+          }
+
+          .titlebar,
+          .titlebar .background
+          {
+              border-radius: 0;
           }
 
           /* rm -rf window shadows */

@@ -166,7 +166,12 @@ in {
 
     window = {
       titlebar = false;
+
       commands = [
+        {
+          command = "border pixel 4"; # Workaround for libadwaita + CSD apps not having borders when floating.
+          criteria = {all = true;};
+        }
         {
           command = "floating enable; sticky toggle; resize 35ppt 10ppt";
           criteria = {
