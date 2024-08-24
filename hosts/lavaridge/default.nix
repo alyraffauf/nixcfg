@@ -11,6 +11,7 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
+    self.inputs.lanzaboote.nixosModules.lanzaboote
     self.inputs.nixhw.nixosModules.framework-13-amd-7000
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
@@ -24,11 +25,17 @@
   ];
 
   boot = {
+    initrd.systemd.enable = true;
     kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
     };
   };
 
