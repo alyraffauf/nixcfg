@@ -25,6 +25,11 @@
       url = "github:JeanSchoeller/iio-hyprland";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixhw = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/nixhw";
