@@ -27,7 +27,7 @@ self: {
       tauon
       transmission-remote-gtk
       tuba
-      webcord
+      vesktop
     ];
 
     stateVersion = "24.05";

@@ -59,6 +59,10 @@
           command = "move to scratchpad";
           criteria = {app_id = "org.gnome.Fractal";};
         }
+        {
+          command = "move to scratchpad";
+          criteria = {app_id = "vesktop";};
+        }
       ];
     };
 
@@ -79,7 +83,7 @@
         "float,class:(org.keepassxc.KeePassXC)"
         "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
-        "workspace special:magic,class:(WebCord)"
+        "workspace special:magic,class:(vesktop)"
         "workspace special:magic,class:(org.gnome.Fractal)"
       ];
 
