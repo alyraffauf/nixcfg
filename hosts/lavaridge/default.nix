@@ -24,11 +24,17 @@
   ];
 
   boot = {
+    initrd.systemd.enable = true;
     kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
     };
   };
 
@@ -45,11 +51,7 @@
     };
 
     desktop = {
-      greetd = {
-        enable = true;
-        autologin = "aly";
-      };
-
+      greetd.enable = true;
       hyprland.enable = true;
       sway.enable = true;
     };

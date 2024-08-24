@@ -1,6 +1,7 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 16GB RAM, 512GB SSD.
 {
   config,
+  lib,
   self,
   ...
 }: {
@@ -22,11 +23,17 @@
   ];
 
   boot = {
+    initrd.systemd.enable = true;
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
     };
   };
 
@@ -65,11 +72,7 @@
     };
 
     desktop = {
-      greetd = {
-        enable = true;
-        autologin = "aly";
-      };
-
+      greetd.enable = true;
       hyprland.enable = true;
       sway.enable = true;
     };

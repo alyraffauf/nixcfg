@@ -25,6 +25,11 @@
       url = "github:JeanSchoeller/iio-hyprland";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixhw = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/nixhw";
@@ -120,6 +125,7 @@
             self.inputs.agenix.nixosModules.default
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
+            self.inputs.lanzaboote.nixosModules.lanzaboote
             self.inputs.stylix.nixosModules.stylix
             self.nixosModules.nixos
             self.nixosModules.users
