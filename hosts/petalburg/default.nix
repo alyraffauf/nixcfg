@@ -76,6 +76,8 @@
 
     laptopMode = true;
 
+    services.flatpak.enable = true;
+
     users.aly = {
       enable = true;
       password = "$y$j9T$TitXX3J690cnK41XciNMg/$APKHM/os6FKd9H9aXGxaHaQ8zP5SenO9EO94VYafl43";
