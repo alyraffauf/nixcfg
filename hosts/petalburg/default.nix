@@ -1,6 +1,7 @@
 # Lenovo Yoga 9i Convertible with Intel Core i7-1360P, 16GB RAM, 512GB SSD.
 {
   config,
+  lib,
   self,
   ...
 }: {
@@ -9,6 +10,7 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
+    self.inputs.lanzaboote.nixosModules.lanzaboote
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
@@ -22,11 +24,17 @@
   ];
 
   boot = {
+    initrd.systemd.enable = true;
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
     };
   };
 
