@@ -96,3 +96,5 @@ In short,
 
    Replace `/dev/nvme0n1p2` with your root partition.
    Check the [Linux TPM PCR Registry](https://uapi-group.org/specifications/specs/linux_tpm_pcr_registry/) for more details.
+
+   **NOTE:** This requires a TPM2 module, devices with prior versions will not work.
