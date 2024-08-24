@@ -33,28 +33,17 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
+      systemd.enable = true;
+    };
 
-      network = {
-        enable = true;
-        flushBeforeStage2 = true;
-
-        ssh = {
-          enable = true;
-          hostKeys = [/etc/secrets/initrd/ssh_host_ed25519_key];
-        };
-
-        udhcpc.enable = true;
-
-        postCommands = ''
-          # Automatically ask for the password on SSH login
-          echo 'cryptsetup-askpass || echo "Unlock was successful; exiting SSH session" && exit 1' >> /root/.profile
-        '';
-      };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
     };
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
     };
   };
 
