@@ -2,7 +2,6 @@
 {
   config,
   lib,
-  pkgs,
   self,
   ...
 }: {
@@ -25,7 +24,6 @@
 
   boot = {
     initrd.systemd.enable = true;
-    kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
 
     lanzaboote = {
       enable = true;
