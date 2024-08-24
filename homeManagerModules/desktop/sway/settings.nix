@@ -185,7 +185,7 @@ in {
         }
         {
           command = "focus; sticky toggle";
-          criteria = {app_id = "polkit-mate-authentication-agent-1";};
+          criteria = {app_id = "polkit-gnome-authentication-agent-1";};
         }
         {
           command = "floating enable; resize set 40ppt 20ppt; move position center";

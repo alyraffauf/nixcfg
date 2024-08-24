@@ -192,7 +192,7 @@ in {
     "center(1),class:(gcr-prompter)"
     "center(1),class:(nm-connection-editor)"
     "center(1),class:(pavucontrol)"
-    "center(1),class:(polkit-mate-authentication-agent-1)"
+    "center(1),class:(polkit-gnome-authentication-agent-1)"
     "center(1),initialTitle:(File Operation Progress)"
     "float,class:(.blueman-manager-wrapped)"
     "float,class:(blueberry.py)"
@@ -203,7 +203,7 @@ in {
     "float,initialTitle:(File Operation Progress)"
     "move 70% 20%, class:^(firefox)$, title:^(Picture-in-Picture)$"
     "pin,class:(gcr-prompter)"
-    "pin,class:(polkit-mate-authentication-agent-1)"
+    "pin,class:(polkit-gnome-authentication-agent-1)"
     "pin,class:^(firefox)$, title:^(Picture-in-Picture)$"
     "size 40% 20%,initialTitle:(File Operation Progress)"
     "size 40% 60%,class:(.blueman-manager-wrapped)"
@@ -212,7 +212,7 @@ in {
     "size 40% 60%,class:(nm-connection-editor)"
     "size 40% 60%,class:(pavucontrol)"
     "stayfocused,class:(gcr-prompter)"
-    "stayfocused,class:(polkit-mate-authentication-agent-1)"
+    "stayfocused,class:(polkit-gnome-authentication-agent-1)"
     "suppressevent maximize, class:.*"
   ];
 
