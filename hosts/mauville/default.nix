@@ -112,26 +112,7 @@ in {
   };
 
   environment.variables.GDK_SCALE = "1.25";
-
-  system = {
-    activationScripts.gen-initrd-ssh.text = ''
-      KEY_PATH="/etc/secrets/initrd/ssh_host_ed25519_key"
-
-      mkdir -p /etc/secrets/initrd
-
-      # Check if the file already exists
-      if [ -f "$KEY_PATH" ]; then
-        echo "[initrd] ssh key exists at $KEY_PATH."
-      else
-        # Generate the SSH key if it doesn't exist
-        ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -N "" -f "$KEY_PATH"
-        echo "[initrd] ssh key generated at $KEY_PATH."
-      fi
-    '';
-
-    stateVersion = "24.05";
-  };
-
+  system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
   ar = {
