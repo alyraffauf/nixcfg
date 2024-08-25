@@ -39,6 +39,26 @@ in {
       // Control rounded corners
       window.background { border-radius: ${toString cfg.borders.radius}; }
 
+      tooltip {
+        &.background {
+          background-color: alpha(${config.lib.stylix.colors.withHashtag.base00}, ${builtins.toString config.stylix.opacity.popups});
+          border: 1px solid ${config.lib.stylix.colors.withHashtag.base0D};
+        }
+
+        background-color: alpha(${config.lib.stylix.colors.withHashtag.base00}, ${builtins.toString config.stylix.opacity.popups});
+        border-radius: ${toString cfg.borders.radius};
+        border: 1px solid ${config.lib.stylix.colors.withHashtag.base0D};
+        color: white;
+      }
+
+      ${
+        lib.optionalString (config.stylix.polarity == "light") "
+        tooltip {
+          &.background { background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups}); }
+          background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups});
+        }"
+      }
+
       ${
         lib.strings.optionalString
         cfg.gtk.hideTitleBar
