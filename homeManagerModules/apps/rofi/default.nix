@@ -248,8 +248,9 @@ in {
 
     xdg.configFile = {
       "rofi-rbw.rc".text = ''
-        prompt "Bitwarden"
         clear-after 60
+        prompt "Bitwarden"
+        typing-key-delay 30
       '';
 
       "networkmanager-dmenu/config.ini".text = ''
