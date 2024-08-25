@@ -39,12 +39,13 @@ in {
       environmentFiles = [config.age.secrets.wifi.path];
       profiles = {
         "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
-        "javapatron" = mkOpenWiFi "javapatron";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
+        "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
         "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
         "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
-        "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
         "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
+        "javapatron" = mkOpenWiFi "javapatron";
+        "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
       };
     };
   };
