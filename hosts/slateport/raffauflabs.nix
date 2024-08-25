@@ -71,7 +71,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://${config.services.forgejo.settings.server.HTTP_ADDR}:${toString config.services.forgejo.settings.server.HTTP_PORT}";
+            proxyPass = "http://${ip}:${toString 3000}";
 
             extraConfig = ''
               client_max_body_size 512M;
