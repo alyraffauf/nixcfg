@@ -13,7 +13,7 @@
     flake = config.environment.variables.FLAKE;
     operation = "switch";
     persistent = true;
-    randomizedDelaySec = "30min";
+    randomizedDelaySec = "60min";
 
     rebootWindow = {
       lower = "02:00";
