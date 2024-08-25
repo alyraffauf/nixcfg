@@ -26,8 +26,8 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/lanzaboote/v0.4.1";
     };
 
     nixhw = {
@@ -36,11 +36,6 @@
     };
 
     nur.url = "github:nix-community/NUR";
-
-    raffauflabs = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:alyraffauf/raffauflabs";
-    };
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
