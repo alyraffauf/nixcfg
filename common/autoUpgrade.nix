@@ -7,7 +7,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    allowReboot = false;
+    allowReboot = true;
     dates = "02:00";
     flags = ["--accept-flake-config"];
     flake = config.environment.variables.FLAKE;
