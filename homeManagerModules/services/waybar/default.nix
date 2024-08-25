@@ -12,7 +12,7 @@ in {
 
       settings = {
         mainBar = {
-          height = 34;
+          height = 36;
           layer = "top";
           output = ["*"];
           position = "bottom";
