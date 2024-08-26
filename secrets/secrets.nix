@@ -5,6 +5,7 @@ let
     "mauville"
     "petalburg"
     "rustboro"
+    "slateport"
   ];
   users = [
     "aly_fallarbor"
