@@ -13,6 +13,7 @@ let
     "aly_mauville"
     "aly_petalburg"
     "aly_rustboro"
+    "aly_slateport"
   ];
   systemKeys = builtins.map (host: builtins.readFile ./publicKeys/root_${host}.pub) hosts;
   userKeys = builtins.map (user: builtins.readFile ./publicKeys/${user}.pub) users;
