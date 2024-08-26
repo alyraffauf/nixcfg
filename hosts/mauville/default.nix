@@ -6,19 +6,18 @@
   ...
 }: let
   archiveDirectory = "/mnt/Archive";
-  domain = "raffauflabs.com";
   mediaDirectory = "/mnt/Media";
 in {
   imports = [
     ./disko.nix
     ./home.nix
+    ./raffauflabs.nix
     ./secrets.nix
     ./stylix.nix
     self.inputs.nixhw.nixosModules.common-amd-cpu
     self.inputs.nixhw.nixosModules.common-amd-gpu
     self.inputs.nixhw.nixosModules.common-bluetooth
     self.inputs.nixhw.nixosModules.common-ssd
-    self.inputs.raffauflabs.nixosModules.raffauflabs
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-locale
@@ -50,8 +49,6 @@ in {
   networking.hostName = "mauville";
 
   services = {
-    forgejo.settings.service.DISABLE_REGISTRATION = lib.mkForce true;
-
     samba = {
       enable = true;
       openFirewall = true;
@@ -93,20 +90,6 @@ in {
     samba-wsdd = {
       enable = true;
       openFirewall = true;
-    };
-
-    transmission = {
-      enable = true;
-      credentialsFile = config.age.secrets.transmission.path;
-      openFirewall = true;
-      openRPCPort = true;
-
-      settings = {
-        download-dir = mediaDirectory;
-        peer-port = 51413;
-        rpc-bind-address = "0.0.0.0";
-        rpc-port = 9091;
-      };
     };
   };
 
@@ -151,41 +134,6 @@ in {
         enable = true;
         password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
       };
-    };
-  };
-
-  raffauflabs = {
-    inherit domain;
-    enable = true;
-
-    containers.oci.freshRSS.enable = true;
-
-    services = {
-      audiobookshelf.enable = true;
-
-      ddclient = {
-        enable = true;
-        passwordFile = config.age.secrets.cloudflare.path;
-        protocol = "cloudflare";
-      };
-
-      forgejo.enable = true;
-
-      navidrome = {
-        enable = true;
-
-        lastfm = {
-          idFile = config.age.secrets.lastfmId.path;
-          secretFile = config.age.secrets.lastfmSecret.path;
-        };
-
-        spotify = {
-          idFile = config.age.secrets.spotifyId.path;
-          secretFile = config.age.secrets.spotifySecret.path;
-        };
-      };
-
-      plexMediaServer.enable = true;
     };
   };
 }

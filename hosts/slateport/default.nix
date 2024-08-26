@@ -2,18 +2,16 @@
   config,
   self,
   ...
-}: let
-  domain = "raffauflabs.com";
-in {
+}: {
   imports = [
     ./disko.nix
     ./home.nix
+    ./raffauflabs.nix
     ./secrets.nix
     self.inputs.nixhw.nixosModules.common-intel-cpu
     self.inputs.nixhw.nixosModules.common-intel-gpu
     self.inputs.nixhw.nixosModules.common-bluetooth
     self.inputs.nixhw.nixosModules.common-ssd
-    self.inputs.raffauflabs.nixosModules.raffauflabs
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-locale
@@ -36,14 +34,6 @@ in {
 
   hardware.enableAllFirmware = true;
   networking.hostName = "slateport";
-
-  services.k3s = {
-    enable = true;
-    clusterInit = true;
-    role = "server";
-    tokenFile = config.age.secrets.k3s.path;
-  };
-
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
@@ -60,17 +50,6 @@ in {
         keyFile = config.age.secrets.syncthingKey.path;
         syncMusic = false;
       };
-    };
-  };
-
-  raffauflabs = {
-    inherit domain;
-    enable = true;
-
-    services.ddclient = {
-      enable = true;
-      passwordFile = config.age.secrets.cloudflare.path;
-      protocol = "cloudflare";
     };
   };
 }
