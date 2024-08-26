@@ -8,7 +8,7 @@ in {
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "alyraffauf@fastmail.com";
+    defaults.email = "alyraffauf@gmail.com";
   };
 
   services = {
