@@ -57,7 +57,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "${ip}:${toString 9091}";
+            proxyPass = "http://${ip}:${toString 9091}";
             proxyWebsockets = true;
 
             extraConfig = ''
@@ -84,7 +84,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "${ip}:${toString 4533}";
+            proxyPass = "http://${ip}:${toString 4533}";
             proxyWebsockets = true;
 
             extraConfig = ''
@@ -98,7 +98,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "${ip}:32400";
+            proxyPass = "http://${ip}:${toString 32400}";
             proxyWebsockets = true;
 
             extraConfig = ''
@@ -112,7 +112,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "${ip}:${toString 13378}";
+            proxyPass = "http://${ip}:${toString 13378}";
 
             extraConfig = ''
               client_max_body_size 500M;
