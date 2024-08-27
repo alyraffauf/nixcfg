@@ -1,5 +1,5 @@
 {config, ...}: let
-  ip = "192.168.0.103";
+  ip = "mauville";
   domain = "raffauflabs.com";
 in {
   networking = {
