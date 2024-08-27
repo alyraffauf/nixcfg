@@ -53,19 +53,19 @@ in {
       recommendedTlsSettings = true;
 
       virtualHosts = {
-        "bt.${domain}" = {
-          enableACME = true;
-          forceSSL = true;
+        # "bt.${domain}" = {
+        #   enableACME = true;
+        #   forceSSL = true;
 
-          locations."/" = {
-            proxyPass = "http://${ip}:${toString 9091}";
-            proxyWebsockets = true;
+        #   locations."/" = {
+        #     proxyPass = "http://${ip}:${toString 9091}";
+        #     proxyWebsockets = true;
 
-            extraConfig = ''
-              proxy_buffering off;
-            '';
-          };
-        };
+        #     extraConfig = ''
+        #       proxy_buffering off;
+        #     '';
+        #   };
+        # };
 
         "git.${domain}" = {
           enableACME = true;
