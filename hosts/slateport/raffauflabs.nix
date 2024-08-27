@@ -20,6 +20,7 @@ in {
         "bt.${domain}"
         "git.${domain}"
         "music.${domain}"
+        "passwords.${domain}"
         "plex.${domain}"
         "podcasts.${domain}"
         domain
@@ -39,12 +40,133 @@ in {
       bantime = "1h";
     };
 
-    k3s = {
+    homepage-dashboard = {
       enable = true;
-      clusterInit = true;
-      role = "server";
-      tokenFile = config.age.secrets.k3s.path;
+      openFirewall = true;
+
+      bookmarks = [
+        # {
+        # Websites = [
+        # {
+        #   "Aly Raffauf" = [
+        #     {
+        #       abbr = "AR";
+        #       description = "Personal website and portfolio.";
+        #       href = "https://aly.raffauflabs.com/";
+        #     }
+        #   ];
+        # }
+        # ];
+        # }
+      ];
+
+      services = [
+        {
+          Websites = [
+            {
+              "Aly Raffauf" = {
+                abbr = "AR";
+                description = "Personal website and portfolio.";
+                href = "https://aly.raffauflabs.com/";
+              };
+            }
+            {
+              "Specular Anomalies" = {
+                abbr = "SA";
+                description = "Academic & tech blog.";
+                href = "https://distort.jp/";
+              };
+            }
+          ];
+        }
+        {
+          Media = [
+            {
+              "Audiobookshelf" = {
+                description = "Audiobooks & podcasts.";
+                href = "https://podcasts.raffauflabs.com";
+                icon = "audiobookshelf";
+              };
+            }
+            {
+              "Plex" = {
+                description = "TV Shows, movies & music.";
+                href = "https://plex.raffauflabs.com";
+                icon = "plex";
+              };
+            }
+            {
+              "Navidrome" = {
+                description = "Subsonic-compatible music streaming.";
+                href = "https://music.raffauflabs.com";
+                icon = "navidrome";
+              };
+            }
+          ];
+        }
+        {
+          Tools = [
+            {
+              "Forĝejo" = {
+                description = "Git forge for open source projects.";
+                href = "https://git.raffauflabs.com";
+                icon = "forgejo";
+              };
+            }
+            {
+              "Transmission (Tailnet only)" = {
+                description = "Torrent client with web UI.";
+                href = "http://mauville:9091";
+                icon = "transmission";
+              };
+            }
+            {
+              "Vaultwarden" = {
+                description = "Secure password manager.";
+                href = "https://passwords.raffauflabs.com";
+                icon = "vaultwarden";
+              };
+            }
+          ];
+        }
+      ];
+
+      settings = {
+        color = "sky";
+        target = "_self";
+        title = "RaffaufLabs.com";
+      };
+
+      widgets = [
+        {
+          glances = {
+            url = "http:/mauville:61208/";
+            cpu = true;
+            mem = true;
+            disk = "/mnt/Media";
+          };
+        }
+        {
+          search = {
+            provider = "brave";
+            showSearchSuggestions = true;
+          };
+        }
+        {
+          datetime = {
+            text_size = "xl";
+            format.timeStyle = "short";
+          };
+        }
+      ];
     };
+
+    # k3s = {
+    #   enable = true;
+    #   clusterInit = true;
+    #   role = "server";
+    #   tokenFile = config.age.secrets.k3s.path;
+    # };
 
     nginx = {
       enable = true;
@@ -53,19 +175,18 @@ in {
       recommendedTlsSettings = true;
 
       virtualHosts = {
-        # "bt.${domain}" = {
-        #   enableACME = true;
-        #   forceSSL = true;
+        "${domain}" = {
+          enableACME = true;
+          forceSSL = true;
 
-        #   locations."/" = {
-        #     proxyPass = "http://${ip}:${toString 9091}";
-        #     proxyWebsockets = true;
+          locations."/" = {
+            proxyPass = "http://localhost:${toString config.services.homepage-dashboard.listenPort}";
 
-        #     extraConfig = ''
-        #       proxy_buffering off;
-        #     '';
-        #   };
-        # };
+            extraConfig = ''
+              client_max_body_size 512M;
+            '';
+          };
+        };
 
         "git.${domain}" = {
           enableACME = true;
@@ -91,6 +212,14 @@ in {
             extraConfig = ''
               proxy_buffering off;
             '';
+          };
+        };
+
+        "passwords.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
           };
         };
 
@@ -127,6 +256,18 @@ in {
             '';
           };
         };
+      };
+    };
+
+    vaultwarden = {
+      enable = true;
+
+      config = {
+        DOMAIN = "https://passowrds.raffauflabs.com";
+        ROCKET_ADDRESS = "127.0.0.1";
+        ROCKET_LOG = "critical";
+        ROCKET_PORT = 8222;
+        SIGNUPS_ALLOWED = false;
       };
     };
   };

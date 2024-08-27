@@ -29,7 +29,7 @@
   };
 in {
   networking = {
-    firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443];
+    firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443 61208];
     firewall.allowedUDPPorts = [8472];
   };
 
@@ -91,12 +91,12 @@ in {
       };
     };
 
-    k3s = {
-      enable = true;
-      role = "server";
-      tokenFile = config.age.secrets.k3s.path;
-      serverAddr = "https://192.168.0.104:6443";
-    };
+    # k3s = {
+    #   enable = true;
+    #   role = "server";
+    #   tokenFile = config.age.secrets.k3s.path;
+    #   serverAddr = "https://192.168.0.104:6443";
+    # };
 
     navidrome = {
       enable = true;
@@ -123,44 +123,53 @@ in {
     };
   };
 
-  systemd.services.navidrome.serviceConfig = let
-    navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
-      Address = "0.0.0.0";
-      DefaultTheme = "Auto";
-      MusicFolder = musicDirectory;
-      Port = navidrome.port;
-      SubsonicArtistParticipations = true;
-      UIWelcomeMessage = "Welcome to Navidrome @ ${domain}";
-      "Spotify.ID" = "@spotifyClientId@";
-      "Spotify.Secret" = "@spotifyClientSecret@";
-      "LastFM.Enabled" = true;
-      "LastFM.ApiKey" = "@lastFMApiKey@";
-      "LastFM.Secret" = "@lastFMSecret@";
-      "LastFM.Language" = "en";
-    });
+  systemd.services = {
+    glances = {
+      wantedBy = ["multi-user.target"];
+      after = ["network.target"];
+      path = [pkgs.glances];
+      script = "glances --webserver --bind 0.0.0.0 --port 61208";
+    };
 
-    navidrome-secrets = pkgs.writeShellScript "navidrome-secrets" ''
-      lastFMApiKey=$(cat "${navidrome.lastfm.idFile}")
-      lastFMSecret=$(cat "${navidrome.lastfm.secretFile}")
-      spotifyClientId=$(cat "${navidrome.spotify.idFile}")
-      spotifyClientSecret=$(cat "${navidrome.spotify.secretFile}")
-      ${pkgs.gnused}/bin/sed -e "s/@lastFMApiKey@/$lastFMApiKey/" -e "s/@lastFMSecret@/$lastFMSecret/" \
-        -e "s/@spotifyClientId@/$spotifyClientId/" -e "s/@spotifyClientSecret@/$spotifyClientSecret/" \
-        ${navidromeConfig} > /var/lib/navidrome/navidrome.json
-    '';
-  in {
-    BindReadOnlyPaths = [
-      navidrome.lastfm.idFile
-      navidrome.lastfm.secretFile
-      navidrome.spotify.idFile
-      navidrome.spotify.secretFile
-      musicDirectory
-    ];
+    navidrome.serviceConfig = let
+      navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
+        Address = "0.0.0.0";
+        DefaultTheme = "Auto";
+        MusicFolder = musicDirectory;
+        Port = navidrome.port;
+        SubsonicArtistParticipations = true;
+        UIWelcomeMessage = "Welcome to Navidrome @ ${domain}";
+        "Spotify.ID" = "@spotifyClientId@";
+        "Spotify.Secret" = "@spotifyClientSecret@";
+        "LastFM.Enabled" = true;
+        "LastFM.ApiKey" = "@lastFMApiKey@";
+        "LastFM.Secret" = "@lastFMSecret@";
+        "LastFM.Language" = "en";
+      });
 
-    ExecStartPre = navidrome-secrets;
-    ExecStart = lib.mkForce ''
-      ${config.services.navidrome.package}/bin/navidrome --configfile /var/lib/navidrome/navidrome.json \
-        --datafolder /var/lib/navidrome/
-    '';
+      navidrome-secrets = pkgs.writeShellScript "navidrome-secrets" ''
+        lastFMApiKey=$(cat "${navidrome.lastfm.idFile}")
+        lastFMSecret=$(cat "${navidrome.lastfm.secretFile}")
+        spotifyClientId=$(cat "${navidrome.spotify.idFile}")
+        spotifyClientSecret=$(cat "${navidrome.spotify.secretFile}")
+        ${pkgs.gnused}/bin/sed -e "s/@lastFMApiKey@/$lastFMApiKey/" -e "s/@lastFMSecret@/$lastFMSecret/" \
+          -e "s/@spotifyClientId@/$spotifyClientId/" -e "s/@spotifyClientSecret@/$spotifyClientSecret/" \
+          ${navidromeConfig} > /var/lib/navidrome/navidrome.json
+      '';
+    in {
+      BindReadOnlyPaths = [
+        navidrome.lastfm.idFile
+        navidrome.lastfm.secretFile
+        navidrome.spotify.idFile
+        navidrome.spotify.secretFile
+        musicDirectory
+      ];
+
+      ExecStartPre = navidrome-secrets;
+      ExecStart = lib.mkForce ''
+        ${config.services.navidrome.package}/bin/navidrome --configfile /var/lib/navidrome/navidrome.json \
+          --datafolder /var/lib/navidrome/
+      '';
+    };
   };
 }
