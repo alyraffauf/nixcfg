@@ -28,10 +28,15 @@
     bitTorrentPort = 5143;
   };
 in {
+  networking = {
+    firewall.allowedTCPPorts = [80 443 3000];
+  };
+
   services = {
     audiobookshelf = {
       enable = true;
       host = "0.0.0.0";
+      openFirewall = true;
       port = audiobookshelf.port;
     };
 
@@ -85,7 +90,10 @@ in {
       };
     };
 
-    navidrome.enable = true;
+    navidrome = {
+      enable = true;
+      openFirewall = true;
+    };
 
     plex = {
       enable = true;
