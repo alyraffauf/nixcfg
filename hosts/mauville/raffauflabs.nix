@@ -31,6 +31,7 @@ in {
   services = {
     audiobookshelf = {
       enable = true;
+      host = "0.0.0.0";
       port = audiobookshelf.port;
     };
 
@@ -83,6 +84,8 @@ in {
         };
       };
     };
+
+    navidrome.enable = true;
 
     plex = {
       enable = true;
