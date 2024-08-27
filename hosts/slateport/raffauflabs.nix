@@ -3,7 +3,8 @@
   domain = "raffauflabs.com";
 in {
   networking = {
-    firewall.allowedTCPPorts = [80 443];
+    firewall.allowedTCPPorts = [80 443 2379 2380 6443];
+    firewall.allowedUDPPorts = [8472];
   };
 
   security.acme = {

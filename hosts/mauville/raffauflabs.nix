@@ -29,7 +29,8 @@
   };
 in {
   networking = {
-    firewall.allowedTCPPorts = [80 443 3000];
+    firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443];
+    firewall.allowedUDPPorts = [8472];
   };
 
   services = {
@@ -88,6 +89,13 @@ in {
           KEYWORDS = "git,source code,forge,forĝejo,aly raffauf";
         };
       };
+    };
+
+    k3s = {
+      enable = true;
+      role = "server";
+      tokenFile = config.age.secrets.k3s.path;
+      serverAddr = "http://192.168.0.104:6443";
     };
 
     navidrome = {

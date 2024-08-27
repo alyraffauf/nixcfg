@@ -1,6 +1,6 @@
 {
   age.secrets = {
-    cloudflare.file = ../../secrets/cloudflare.age;
+    k3s.file = ../../secrets/k3s.age;
 
     lastfmId = {
       owner = "navidrome";
