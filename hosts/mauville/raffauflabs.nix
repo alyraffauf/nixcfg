@@ -95,7 +95,7 @@ in {
       enable = true;
       role = "server";
       tokenFile = config.age.secrets.k3s.path;
-      serverAddr = "http://192.168.0.104:6443";
+      serverAddr = "https://192.168.0.104:6443";
     };
 
     navidrome = {
