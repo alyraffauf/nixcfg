@@ -3,6 +3,7 @@
   domain = "raffauflabs.com";
 in {
   networking = {
+    hosts."127.0.0.1" = ["passwords.${domain}"];
     firewall.allowedTCPPorts = [80 443 2379 2380 6443];
     firewall.allowedUDPPorts = [8472];
   };

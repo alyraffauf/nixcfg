@@ -36,6 +36,7 @@
       enable = true;
 
       settings = {
+        base_url = "https://passwords.raffauflabs.com";
         email = "alyraffauf@fastmail.com";
         lock_timeout = 14400;
       };
