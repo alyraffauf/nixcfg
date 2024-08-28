@@ -264,7 +264,7 @@ in {
       enable = true;
 
       config = {
-        DOMAIN = "https://passowrds.raffauflabs.com";
+        DOMAIN = "https://passwords.raffauflabs.com";
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_LOG = "critical";
         ROCKET_PORT = 8222;
