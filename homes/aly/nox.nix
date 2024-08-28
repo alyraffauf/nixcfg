@@ -1,4 +1,4 @@
-self: {
+self: {pkgs, ...}: {
   imports = [
     ./common.nix
     ./secrets.nix
@@ -6,5 +6,8 @@ self: {
     self.inputs.agenix.homeManagerModules.default
   ];
 
-  programs.helix.defaultEditor = true;
+  programs = {
+    helix.defaultEditor = true;
+    rbw.settings.pinentry = pkgs.pinentry-tty;
+  };
 }
