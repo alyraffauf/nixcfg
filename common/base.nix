@@ -4,6 +4,8 @@
   hardware.keyboard.qmk.enable = true;
 
   programs = {
+    dconf.enable = true; # Needed for home-manager
+
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
