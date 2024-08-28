@@ -24,7 +24,7 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -34,6 +34,7 @@
 
   hardware.enableAllFirmware = true;
   networking.hostName = "slateport";
+  services.fwupd.enable = true;
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
