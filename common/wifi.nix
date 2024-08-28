@@ -39,6 +39,7 @@ in {
       environmentFiles = [config.age.secrets.wifi.path];
       profiles = {
         "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
+        "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
         "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
         "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
