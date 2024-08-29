@@ -62,7 +62,7 @@ in {
       Service = {
         Environment = lib.mkForce [
           "PATH=${
-            pkgs.lib.makeBinPath ((with pkgs; [
+            lib.makeBinPath ((with pkgs; [
                 bash
                 brightnessctl
                 coreutils
