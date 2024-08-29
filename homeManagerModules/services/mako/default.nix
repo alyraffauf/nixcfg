@@ -25,7 +25,7 @@ in {
       width = 400;
 
       extraConfig = ''
-        on-notify=exec ${lib.getExe pkgs.mpv} ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga
+        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga
         outer-margin=20
 
         [mode=do-not-disturb]
@@ -44,6 +44,7 @@ in {
 
       Service = {
         BusName = "org.freedesktop.Notifications";
+        Environment = ["PATH=${pkgs.lib.makeBinPath [pkgs.bash pkgs.mpv]}"];
         ExecReload = ''${lib.getExe' pkgs.mako "makoctl"} reload'';
         ExecStart = "${lib.getExe pkgs.mako}";
         Restart = lib.mkForce "no";
