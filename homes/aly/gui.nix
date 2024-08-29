@@ -59,7 +59,7 @@ self: {
 
     services = {
       gammastep.enable = true;
-      randomWallpaper.enable = true;
+      randomWallpaper.enable = false;
     };
 
     theme = {
