@@ -30,7 +30,7 @@
         {command = lib.getExe config.ar.home.defaultApps.editor;}
         {command = lib.getExe config.ar.home.defaultApps.webBrowser;}
         {command = lib.getExe pkgs.fractal;}
-        {command = lib.getExe pkgs.thunderbird;}
+        {command = lib.getExe config.programs.thunderbird.package;}
         {command = lib.getExe' pkgs.obsidian "obsidian";}
       ];
 
