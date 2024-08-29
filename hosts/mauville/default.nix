@@ -66,23 +66,27 @@ in {
 
       shares = {
         Media = {
+          "create mask" = "0755";
+          "directory mask" = "0755";
+          "force group" = "users";
+          "force user" = "aly";
+          "guest ok" = "yes";
+          "read only" = "no";
           browseable = "yes";
           comment = "Media @ ${config.networking.hostName}";
           path = mediaDirectory;
-          "read only" = "no";
-          "guest ok" = "yes";
-          "create mask" = "0755";
-          "directory mask" = "0755";
         };
 
         Archive = {
+          "create mask" = "0755";
+          "directory mask" = "0755";
+          "force group" = "users";
+          "force user" = "aly";
+          "guest ok" = "yes";
+          "read only" = "no";
           browseable = "yes";
           comment = "Archive @ ${config.networking.hostName}";
           path = archiveDirectory;
-          "create mask" = "0755";
-          "directory mask" = "0755";
-          "guest ok" = "yes";
-          "read only" = "no";
         };
       };
     };
