@@ -37,17 +37,6 @@
           Locked = false;
         };
 
-        ExtensionSettings = {
-          "uBlock0@raymondhill.net" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-            installation_mode = "normal_installed";
-          };
-          "jid1-BoFifL9Vbdl2zQ@jetpack" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi";
-            installation_mode = "normal_installed";
-          };
-        };
-
         FirefoxHome = {
           Highlights = false;
           Locked = false;
