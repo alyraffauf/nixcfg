@@ -44,7 +44,7 @@ in {
 
       Service = {
         BusName = "org.freedesktop.Notifications";
-        Environment = ["PATH=${pkgs.lib.makeBinPath [pkgs.bash pkgs.mpv]}"];
+        Environment = ["PATH=${lib.makeBinPath [pkgs.bash pkgs.mpv]}"];
         ExecReload = ''${lib.getExe' pkgs.mako "makoctl"} reload'';
         ExecStart = "${lib.getExe pkgs.mako}";
         Restart = lib.mkForce "no";
