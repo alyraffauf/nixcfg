@@ -43,6 +43,7 @@ in {
 
     homepage-dashboard = {
       enable = true;
+      environmentFile = config.age.secrets.homepage.path;
       openFirewall = true;
 
       bookmarks = [
@@ -87,6 +88,11 @@ in {
                 description = "Audiobooks & podcasts.";
                 href = "https://podcasts.raffauflabs.com";
                 icon = "audiobookshelf";
+                widget = {
+                  type = "audiobookshelf";
+                  url = "http://mauville:13378";
+                  key = "{{HOMEPAGE_VAR_ABS}}";
+                };
               };
             }
             {
@@ -119,6 +125,13 @@ in {
                 description = "Torrent client with web UI.";
                 href = "http://mauville:9091";
                 icon = "transmission";
+                widget = {
+                  type = "transmission";
+                  url = "http://mauville:9091";
+                  username = "transmission";
+                  password = "{{HOMEPAGE_VAR_TRANSMISSION}}";
+                  rpcUrl = "/transmission/";
+                };
               };
             }
             {
