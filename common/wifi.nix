@@ -41,6 +41,7 @@ in {
         "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
         "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
+        "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
         "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
         "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
         "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
