@@ -50,8 +50,7 @@ in {
           };
 
           "hyprland/submap" = {
-            on-click = ''${lib.getExe'
-                config.wayland.windowManager.hyprland.package "hyprctl"} dispatch submap reset'';
+            on-click = ''hyprctl dispatch submap reset'';
           };
 
           "sway/workspaces" = {
@@ -68,21 +67,20 @@ in {
           };
 
           "sway/mode" = {
-            on-click = ''${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} mode default'';
+            on-click = ''swaymsg mode default'';
           };
 
           "sway/scratchpad" = {
             format = "{icon}　{count}";
             format-icons = ["" ""];
-            on-click = "${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} scratchpad show";
+            on-click = "swaymsg scratchpad show";
             show-empty = false;
             tooltip = true;
             tooltip-format = "{app}: {title}";
           };
 
           "custom/app-close" = {
-            on-click = ''${lib.getExe'
-                config.wayland.windowManager.hyprland.package "hyprctl"} dispatch killactive || ${lib.getExe' config.wayland.windowManager.sway.package "swaymsg"} kill'';
+            on-click = ''hyprctl dispatch killactive || swaymsg kill'';
             format = "󰅗";
             tooltip-format = "Close the focused window.";
           };
@@ -94,25 +92,7 @@ in {
           };
 
           battery = let
-            checkBattery = pkgs.writeShellScript "check-battery" ''
-              if [ -d /sys/class/power_supply/BAT0 ]; then
-                BAT=/sys/class/power_supply/BAT0
-              elif [ -d /sys/class/power_supply/BAT1 ]; then
-                BAT=/sys/class/power_supply/BAT1
-              else
-                echo "No battery found."
-                exit 1
-              fi
-              CRIT=''${1:-10}
-              NOTIFY=${lib.getExe' pkgs.libnotify "notify-send"}
-
-              stat=$(${lib.getExe' pkgs.coreutils "cat"} $BAT/status)
-              perc=$(${lib.getExe' pkgs.coreutils "cat"} $BAT/capacity)
-
-              if [[ $perc -le $CRIT ]] && [[ $stat == "Discharging" ]]; then
-                $NOTIFY --urgency=critical --icon=dialog-error "Battery Critical" "Current charge: $perc%".
-              fi
-            '';
+            checkBattery = pkgs.writeShellScript "check-battery" (builtins.readFile ./scripts/check-battery.sh);
           in {
             format = "{icon}";
             format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
@@ -148,7 +128,7 @@ in {
             format = "";
             format-connected = "　{num_connections}";
             format-disabled = ""; # an empty format will hide the module
-            on-clic = lib.getExe' pkgs.blueberry "blueberry";
+            on-click = "blueberry";
             tooltip-format = "{controller_alias}	{controller_address}";
 
             tooltip-format-connected = ''
@@ -172,7 +152,7 @@ in {
             };
 
             ignored-sinks = ["Easy Effects Sink"];
-            on-click = "${lib.getExe pkgs.pavucontrol} -t 3";
+            on-click = "pavucontrol -t 3";
             scroll-step = 5;
           };
 
@@ -182,7 +162,7 @@ in {
             format-ethernet = "󰈀";
             format-icons = ["󰤟" "󰤢" "󰤥" "󰤨"];
             format-wifi = "{icon}";
-            on-click = "${lib.getExe pkgs.networkmanager_dmenu} -i";
+            on-click = "networkmanager_dmenu -i";
             tooltip-format = "{ifname} via {gwaddr} 󰊗";
             tooltip-format-disconnected = "Disconnected";
             tooltip-format-ethernet = "{ifname} ";
@@ -192,23 +172,8 @@ in {
           tray = {spacing = 15;};
 
           "custom/dnd" = let
-            mako-dnd = pkgs.writeShellScript "mako-dnd" ''
-              show() {
-                  MAKO_MODE=$(${lib.getExe' pkgs.mako "makoctl"} mode)
-                  if ${lib.getExe' pkgs.coreutils "echo"} "$MAKO_MODE" | ${lib.getExe' pkgs.gnugrep "grep"} -q "do-not-disturb"; then
-                      ${lib.getExe' pkgs.coreutils "printf"} '{"text": "󰂛", "class": "on", "tooltip": "Notifications snoozed."}\n'
-                  else
-                      ${lib.getExe' pkgs.coreutils "printf"} '{"text": "󰂚", "class": "off","tooltip": "Notifications enabled."}\n'
-                  fi
-              }
-
-              toggle() {
-                  ${lib.getExe' pkgs.mako "makoctl"} mode -t do-not-disturb
-                  ${lib.getExe' pkgs.procps "pkill"} -SIGRTMIN+2 .waybar-wrapped
-              }
-
-              [ $# -gt 0 ] && toggle || show
-            '';
+            mako-dnd =
+              pkgs.writeShellScript "mako-dnd" (builtins.readFile ./scripts/mako-dnd.sh);
           in {
             exec = "${mako-dnd}";
             interval = "once";
@@ -219,13 +184,13 @@ in {
 
           "custom/logout" = {
             format = "󰤆";
-            on-click = ''${lib.getExe config.programs.rofi.package} -i -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"'';
+            on-click = ''rofi -i -show power-menu -modi "power-menu:rofi-power-menu --choices=logout/lockscreen/suspend/shutdown/reboot"'';
             tooltip-format = "Manage your session.";
           };
 
           "custom/menu" = {
             format = "󰀻";
-            on-click = "${lib.getExe pkgs.nwg-drawer}";
+            on-click = "nwg-drawer";
             tooltip-format = "Touch-friendly application menu.";
           };
 
@@ -354,7 +319,37 @@ in {
 
     systemd.user.services.waybar = {
       Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
-      Service.Restart = lib.mkForce "no";
+
+      Service = {
+        Environment = lib.mkForce [
+          "PATH=${
+            lib.makeBinPath ([
+                config.programs.rofi.package
+                config.wayland.windowManager.hyprland.package
+                config.wayland.windowManager.sway.package
+              ]
+              ++ (with pkgs; [
+                blueberry
+                bluez
+                coreutils
+                getopt
+                gnugrep
+                libnotify
+                mako
+                networkmanager
+                networkmanager_dmenu
+                nwg-drawer
+                pavucontrol
+                procps
+                rofi-power-menu
+                systemd
+              ]))
+          }"
+        ];
+
+        Restart = lib.mkForce "no";
+      };
+
       Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
     };
 

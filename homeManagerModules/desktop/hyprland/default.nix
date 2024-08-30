@@ -10,11 +10,7 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = import ./settings.nix {inherit config lib pkgs;};
-
-      systemd = {
-        enable = true;
-        variables = ["--all"];
-      };
+      systemd.enable = true;
 
       extraConfig = let
         moveMonitorBinds =
