@@ -21,7 +21,7 @@ This flake takes a variety of upstream and third party flakes as inputs:
 - [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
-- [lanzaboote](https://github.com/nix-community/lanzaboote): ssecure boot for NixOS.
+- [lanzaboote](https://github.com/nix-community/lanzaboote): secure boot for NixOS.
 - [nixhw](https://github.com/alyraffauf/nixhw): opinionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide colorscheming and typography.
