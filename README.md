@@ -14,12 +14,7 @@ My comprehensive NixOS flake for managing my laptop, desktop, and home lab envir
 
 ## Inputs
 
-This flake takes a variety of inputs, first and foremost my other flakes:
-
-- [nixhw](https://github.com/alyraffauf/nixhw): opinionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
-- [raffauflabs](https://github.com/alyraffauf/raffauflabs): everything (containers, services, nginx, etc) that makes my [home lab](https://raffauflabs.com) a home lab.
-
-As well as upstream third-party projects that I use for various tasks:
+This flake takes a variety of upstream and third party flakes as inputs:
 
 - [agenix](https://github.com/ryantm/agenix): secrets storage and orchestration.
 - [disko](https://github.com/nix-community/disko): declarative partitions and disk configuration.
@@ -27,6 +22,7 @@ As well as upstream third-party projects that I use for various tasks:
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
 - [lanzaboote](https://github.com/nix-community/lanzaboote): ssecure boot for NixOS.
+- [nixhw](https://github.com/alyraffauf/nixhw): opinionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide colorscheming and typography.
 - [sway](https://github.com/swaywm/sway): fantastic, rock-solid tiling compositor for wayland.
