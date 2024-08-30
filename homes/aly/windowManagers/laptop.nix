@@ -11,7 +11,7 @@
           "workspace 1:web" = [{app_id = "firefox";} {app_id = "brave-browser";}];
           "workspace 2:note" = [{app_id = "obsidian";}];
           "workspace 3:code" = [{app_id = "codium-url-handler";} {app_id = "dev.zed.Zed";}];
-          "workspace 4:mail" = [{app_id = "thunderbird";}];
+          "workspace 4:mail" = [{app_id = "betterbird";} {app_id = "thunderbird";}];
           "workspace 5:work" = [{app_id = "firework";}];
         };
 
