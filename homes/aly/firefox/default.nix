@@ -13,6 +13,7 @@
           decentraleyes
           omnivore
           raindropio
+          search-by-image
           sidebery
           sponsorblock
           ublock-origin
@@ -152,6 +153,7 @@
           clearurls
           consent-o-matic
           decentraleyes
+          search-by-image
           ublock-origin
           zoom-redirector
         ];
