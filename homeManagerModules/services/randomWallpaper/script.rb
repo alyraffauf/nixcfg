@@ -9,7 +9,7 @@ current_pids = {}
 known_monitors = {}
 last_update_time = {}
 
-update_interval = 900 # 15 minutes in seconds
+update_interval = 1800 # 30 minutes in seconds
 
 xdg_runtime_dir = ENV["XDG_RUNTIME_DIR"]
 hyprland_instance_signature = ENV["HYPRLAND_INSTANCE_SIGNATURE"]
@@ -78,5 +78,5 @@ loop do
     end
   end
 
-  sleep 3
+  sleep 5
 end
