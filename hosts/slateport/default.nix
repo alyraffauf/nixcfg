@@ -34,7 +34,12 @@
 
   hardware.enableAllFirmware = true;
   networking.hostName = "slateport";
-  services.fwupd.enable = true;
+
+  services = {
+    fwupd.enable = true;
+    syncthing.guiAddress = "0.0.0.0:8384";
+  };
+
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
