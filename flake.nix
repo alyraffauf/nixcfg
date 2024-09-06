@@ -58,17 +58,18 @@
   };
 
   outputs = {self, ...}: let
-    forDefaultSystems = self.inputs.nixpkgs.lib.genAttrs [
+    allSystems = [
       "aarch64-linux"
       "x86_64-linux"
       "aarch64-darwin"
       "x86_64-darwin"
     ];
 
-    forLinuxSystems = self.inputs.nixpkgs.lib.genAttrs [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    forAllSystems = f:
+      self.inputs.nixpkgs.lib.genAttrs allSystems (system:
+        f {
+          pkgs = import self.inputs.nixpkgs {inherit system;};
+        });
 
     forAllHosts = self.inputs.nixpkgs.lib.genAttrs [
       "fallarbor"
@@ -79,10 +80,28 @@
       "slateport"
     ];
   in {
-    formatter = forDefaultSystems (system: self.inputs.nixpkgs.legacyPackages.${system}.alejandra);
+    devShells = forAllSystems ({pkgs}: {
+      default = pkgs.mkShell {
+        packages =
+          (with pkgs; [
+            git
+            nh
+            mdformat
+            ruby
+            update-nix-fetchgit
+          ])
+          ++ [
+            self.formatter.${pkgs.system}
+            self.inputs.agenix.packages.${pkgs.system}.default
+            self.packages.${pkgs.system}.default
+          ];
+      };
+    });
 
-    packages = forLinuxSystems (system: {
-      default = self.inputs.nixpkgs.legacyPackages."${system}".writeShellApplication {
+    formatter = forAllSystems ({pkgs}: pkgs.alejandra);
+
+    packages = forAllSystems ({pkgs}: {
+      default = pkgs.writeShellApplication {
         name = "clean-install";
         text = ./flake/clean-install.sh;
       };
