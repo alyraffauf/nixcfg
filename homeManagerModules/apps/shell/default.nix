@@ -33,6 +33,8 @@
         '';
       };
 
+      direnv.enable = true;
+
       eza = {
         enable = true;
         extraOptions = ["--group-directories-first" "--header"];
