@@ -579,7 +579,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "wallpapers": "wallpapers"
       }
     },
     "rust-overlay": {
@@ -696,6 +697,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725258570,
+        "narHash": "sha256-0do/7t7rVSYor+3M48n6nSAq56DyKCPPRn4wDcLRMQk=",
+        "owner": "alyraffauf",
+        "repo": "wallpapers",
+        "rev": "a02d94f99498c93d4ee9144c4e843470024f2bc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "wallpapers",
         "type": "github"
       }
     }

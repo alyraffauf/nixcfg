@@ -2,6 +2,7 @@
   config,
   lib,
   osConfig,
+  self,
   ...
 }: {
   imports = [
@@ -43,11 +44,7 @@
         ) "file://${config.home.homeDirectory}/sync";
 
       xdg = {
-        dataFile."backgrounds".source = builtins.fetchGit {
-          url = "https://github.com/alyraffauf/wallpapers.git";
-          rev = "c7d61966e339dd7efdda5ff176b91778086ccb73";
-          ref = "master";
-        };
+        dataFile."backgrounds".source = self.inputs.wallpapers;
 
         userDirs = {
           enable = true;

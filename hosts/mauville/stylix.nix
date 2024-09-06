@@ -1,16 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  self,
+  ...
+}: {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-
-    image = let
-      wallpapers = builtins.fetchGit {
-        url = "https://github.com/alyraffauf/wallpapers.git";
-        rev = "c7d61966e339dd7efdda5ff176b91778086ccb73";
-        ref = "master";
-      };
-    in "${wallpapers}/wallhaven-mp886k.jpg";
-
+    image = "${self.inputs.wallpapers}/wallhaven-mp886k.jpg";
     imageScalingMode = "fill";
     polarity = "dark";
 
