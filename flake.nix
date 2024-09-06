@@ -85,9 +85,10 @@
         packages =
           (with pkgs; [
             git
-            nh
             mdformat
+            nh
             ruby
+            sbctl
             update-nix-fetchgit
           ])
           ++ [
