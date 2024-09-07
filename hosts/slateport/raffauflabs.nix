@@ -39,6 +39,7 @@ in {
     fail2ban = {
       enable = true;
       bantime = "1h";
+      bantime-increment.enable = true;
     };
 
     homepage-dashboard = {
