@@ -1,7 +1,8 @@
-{
-  pkgs,
-  self,
-  ...
-}: {
-  environment.systemPackages = with pkgs; [git inxi python3];
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    git
+    htop
+    inxi
+    python3
+  ];
 }
