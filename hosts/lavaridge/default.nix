@@ -36,7 +36,7 @@
     };
   };
 
-  environment.variables.GDK_SCALE = "1.5";
+  environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";
   programs.firefox.policies.Preferences."media.ffmpeg.vaapi.enabled" = lib.mkForce false;
   system.stateVersion = "24.05";
