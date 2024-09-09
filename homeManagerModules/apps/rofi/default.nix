@@ -104,7 +104,7 @@ in {
         listview = {
           border = mkLiteral "2px solid 0px 0px";
           border-color = mkLiteral "@separatorcolor";
-          border-radius = cfg.theme.borders.radius;
+          # border-radius = cfg.theme.borders.radius;
           padding = 5;
           scrollbar = false;
           spacing = 4;
