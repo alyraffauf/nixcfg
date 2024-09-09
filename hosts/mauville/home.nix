@@ -40,25 +40,36 @@
         services.backblaze-sync = {
           Unit.Description = "Backup to Backblaze.";
 
-          Service.ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
-            declare -A backups
-            backups=(
-              ['/home/aly/pics/camera']="b2://aly-camera"
-              ['/home/aly/sync']="b2://aly-sync"
-              ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
-              ['/mnt/Media/Music']="b2://aly-music"
-            )
+          Service = {
+            Environment = [
+              "PATH=${
+                lib.makeBinPath (with pkgs; [
+                  coreutils
+                  backblaze-b2
+                ])
+              }"
+            ];
 
-            # Recursively backup folders to B2 with sanity checks.
-            for folder in "''${!backups[@]}"; do
-              if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
-                ${lib.getExe pkgs.backblaze-b2} sync --delete $folder ''${backups[$folder]}
-              else
-                echo "$folder does not exist or is empty."
-                exit 1
-              fi
-            done
-          ''}";
+            ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
+              declare -A backups
+              backups=(
+                ['/home/aly/pics/camera']="b2://aly-camera"
+                ['/home/aly/sync']="b2://aly-sync"
+                ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
+                ['/mnt/Media/Music']="b2://aly-music"
+              )
+
+              # Recursively backup folders to B2 with sanity checks.
+              for folder in "''${!backups[@]}"; do
+                if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
+                  backblaze-b2 sync --delete $folder ''${backups[$folder]}
+                else
+                  echo "$folder does not exist or is empty."
+                  exit 1
+                fi
+              done
+            ''}";
+          };
         };
 
         timers.backblaze-sync = {
