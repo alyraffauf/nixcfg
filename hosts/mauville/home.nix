@@ -57,6 +57,8 @@
                 ['/home/aly/sync']="b2://aly-sync"
                 ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
                 ['/mnt/Media/Music']="b2://aly-music"
+                ['/mnt/Archive/Movies']="b2://aly-movies"
+                ['/mnt/Archive/Shows']="b2://aly-shows"
               )
 
               # Recursively backup folders to B2 with sanity checks.
