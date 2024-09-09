@@ -5,10 +5,10 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-mp886k.jpg";
     imageScalingMode = "fill";
-    polarity = "light";
+    polarity = "dark";
 
     cursor = {
       name = "Bibata-Modern-Classic";
@@ -33,10 +33,10 @@
       };
 
       sizes = {
-        applications = 12;
-        desktop = 11;
-        popups = 12;
-        terminal = 13;
+        applications = 11;
+        desktop = 10;
+        popups = 11;
+        terminal = 12;
       };
     };
 
