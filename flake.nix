@@ -63,12 +63,23 @@
   };
 
   outputs = {self, ...}: let
-    allSystems = [
+    allLinuxSystems = [
       "aarch64-linux"
       "x86_64-linux"
+    ];
+
+    allMacSystems = [
       "aarch64-darwin"
       "x86_64-darwin"
     ];
+
+    allSystems = allLinuxSystems ++ allMacSystems;
+
+    forAllLinuxSystems = f:
+      self.inputs.nixpkgs.lib.genAttrs allLinuxSystems (system:
+        f {
+          pkgs = import self.inputs.nixpkgs {inherit system;};
+        });
 
     forAllSystems = f:
       self.inputs.nixpkgs.lib.genAttrs allSystems (system:
@@ -85,7 +96,7 @@
       "slateport"
     ];
   in {
-    devShells = forAllSystems ({pkgs}: {
+    devShells = forAllLinuxSystems ({pkgs}: {
       default = pkgs.mkShell {
         packages =
           (with pkgs; [
@@ -105,7 +116,7 @@
 
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
-    packages = forAllSystems ({pkgs}: {
+    packages = forAllLinuxSystems ({pkgs}: {
       default = pkgs.writeShellApplication {
         name = "clean-install";
         text = ./flake/clean-install.sh;
