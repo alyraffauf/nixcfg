@@ -10,10 +10,8 @@
       default = {
         extensions = with config.nur.repos.rycee.firefox-addons; [
           augmented-steam
-          decentraleyes
           omnivore
           raindropio
-          search-by-image
           sidebery
           sponsorblock
           ublock-origin
@@ -152,8 +150,6 @@
         extensions = with config.nur.repos.rycee.firefox-addons; [
           clearurls
           consent-o-matic
-          decentraleyes
-          search-by-image
           ublock-origin
           zoom-redirector
         ];
