@@ -18,8 +18,8 @@
 
     fonts = {
       monospace = {
-        name = "UbuntuSansMono Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["UbuntuSans"];};
+        name = "CaskaydiaCove Nerd Font";
+        package = pkgs.nerdfonts.override {fonts = ["CascadiaCode"];};
       };
 
       sansSerif = {
@@ -28,8 +28,8 @@
       };
 
       serif = {
-        name = "Vegur";
-        package = pkgs.vegur;
+        name = "Source Serif Pro";
+        package = pkgs.source-serif-pro;
       };
 
       sizes = {
