@@ -12,6 +12,8 @@ in {
 
     overlays = [
       (final: prev: {
+        fractal = unstable.fractal;
+
         rofi-bluetooth =
           prev.rofi-bluetooth.overrideAttrs
           (old: {
