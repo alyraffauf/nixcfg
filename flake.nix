@@ -100,6 +100,7 @@
       default = pkgs.mkShell {
         packages =
           (with pkgs; [
+            e2fsprogs
             git
             mdformat
             nh
