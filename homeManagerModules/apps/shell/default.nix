@@ -57,6 +57,8 @@
         arguments = ["--pretty"];
       };
 
+      zellij.enable = true;
+
       zsh = {
         enable = true;
         autocd = true;
