@@ -111,6 +111,10 @@
             self.inputs.agenix.packages.${pkgs.system}.default
             self.packages.${pkgs.system}.default
           ];
+
+        shellHook = ''
+          export FLAKE="."
+        '';
       };
     });
 
