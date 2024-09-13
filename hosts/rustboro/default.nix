@@ -62,7 +62,7 @@
 
     users.aly = {
       enable = true;
-      password = "$y$j9T$VdtiEyMOegHpcUwgmCVFD0$K8Ne6.zk//VJNq2zxVQ0xE0Wg3LohvAQd3Xm9aXdM15";
+      password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
       syncthing = {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;
