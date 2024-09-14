@@ -465,11 +465,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726090583,
-        "narHash": "sha256-UGKTjNiUJhf9KJYXUA+E43kpgKfYfZgubuzMtmcKzwM=",
+        "lastModified": 1726348879,
+        "narHash": "sha256-cgMzD9oYKvtvFQIJL1INDVVq9CLM+dbBRk2hJeN/pQg=",
         "owner": "alyraffauf",
         "repo": "nixhw",
-        "rev": "4883b850fba55f999f55f4a0d5eb25faf51aaaa2",
+        "rev": "fd51ff58018bcccd22a4df9acf60bece4f8d5d93",
         "type": "github"
       },
       "original": {
