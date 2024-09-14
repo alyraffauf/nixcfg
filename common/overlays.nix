@@ -14,6 +14,8 @@ in {
       (final: prev: {
         fractal = unstable.fractal;
 
+        power-profiles-daemon = unstable.power-profiles-daemon;
+
         rofi-bluetooth =
           prev.rofi-bluetooth.overrideAttrs
           (old: {
