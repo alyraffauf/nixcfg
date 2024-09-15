@@ -7,6 +7,26 @@
   cfg = config.ar.home;
 in {
   config = lib.mkIf cfg.services.waybar.enable {
+    home.packages =
+      (with pkgs; [
+        blueberry
+        bluez
+        coreutils
+        getopt
+        gnugrep
+        libnotify
+        mako
+        networkmanager
+        networkmanager_dmenu
+        nwg-drawer
+        pavucontrol
+        procps
+        rofi-power-menu
+        systemd
+      ])
+      ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package
+      ++ lib.optional (cfg.desktop.sway.enable) config.wayland.windowManager.sway.package;
+
     programs.waybar = {
       enable = true;
 
@@ -320,35 +340,7 @@ in {
     systemd.user.services.waybar = {
       Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
 
-      Service = {
-        Environment = lib.mkForce [
-          "PATH=${
-            lib.makeBinPath ([
-                config.programs.rofi.package
-                config.wayland.windowManager.hyprland.package
-                config.wayland.windowManager.sway.package
-              ]
-              ++ (with pkgs; [
-                blueberry
-                bluez
-                coreutils
-                getopt
-                gnugrep
-                libnotify
-                mako
-                networkmanager
-                networkmanager_dmenu
-                nwg-drawer
-                pavucontrol
-                procps
-                rofi-power-menu
-                systemd
-              ]))
-          }"
-        ];
-
-        Restart = lib.mkForce "no";
-      };
+      Service.Restart = lib.mkForce "no";
 
       Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
     };
