@@ -24,7 +24,7 @@ in {
       "systemctl --user start sway-session.target"
     ];
 
-    variables = ["PATH"];
+    variables = ["--all"];
   };
 
   config = {
