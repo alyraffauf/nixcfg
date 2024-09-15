@@ -58,17 +58,29 @@ in {
     focus-follows-cursor = "normal";
 
     map = {
-      normal = {
-        "${modifier} B" = "spawn ${lib.getExe cfg.defaultApps.webBrowser}";
-        "${modifier} C" = "close";
-        "${modifier} E" = "spawn ${lib.getExe cfg.defaultApps.editor}";
-        "${modifier} F" = "spawn ${lib.getExe cfg.defaultApps.fileManager}";
-        "${modifier} M" = ''spawn "${lib.getExe config.programs.rofi.package} -show power-menu -modi 'power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot'"'';
-        "${modifier} R" = "spawn '${lib.getExe config.programs.rofi.package} -show combi'";
-        "${modifier} T" = "spawn ${lib.getExe cfg.defaultApps.terminal}";
-        "${modifier}+Control L" = "spawn ${lib.getExe pkgs.swaylock}";
-        "${modifier}+Shift V" = "toggle-float";
-      };
+      normal =
+        {
+          "${modifier} B" = "spawn ${lib.getExe cfg.defaultApps.webBrowser}";
+          "${modifier} C" = "close";
+          "${modifier} E" = "spawn ${lib.getExe cfg.defaultApps.editor}";
+          "${modifier} F" = "spawn ${lib.getExe cfg.defaultApps.fileManager}";
+          "${modifier} M" = ''spawn "${lib.getExe config.programs.rofi.package} -show power-menu -modi 'power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot'"'';
+          "${modifier} R" = "spawn '${lib.getExe config.programs.rofi.package} -show combi'";
+          "${modifier} T" = "spawn ${lib.getExe cfg.defaultApps.terminal}";
+          "${modifier}+Control L" = "spawn ${lib.getExe pkgs.swaylock}";
+          "${modifier}+Shift V" = "toggle-float";
+          "${modifier}+Shift W" = "toggle-fullscreen";
+          "${modifier} Tab" = "spawn '${lib.getExe config.programs.rofi.package} -show window'";
+          "Control F12" = "spawn ${helpers.screenshot}";
+          "None Print" = "spawn ${helpers.screenshot}";
+        }
+        // lib.attrsets.concatMapAttrs
+        (key: direction: {
+          "${modifier} ${key}" = "focus-view ${direction}";
+          "${modifier}+Shift ${key}" = "move ${direction}";
+          "${modifier}+Control+Shift ${key}" = "send-to-output ${direction}";
+        })
+        cfg.desktop.windowManagerBinds;
     };
 
     map-pointer.normal = {
@@ -82,6 +94,7 @@ in {
 
     spawn = [
       "rivertile"
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
   };
 }
