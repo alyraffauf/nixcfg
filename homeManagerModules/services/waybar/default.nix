@@ -55,6 +55,11 @@ in {
             on-click = ''hyprctl dispatch submap reset'';
           };
 
+          "river/mode" = {
+            format = "{}";
+            on-click = ''riverctl enter-mode normal'';
+          };
+
           "sway/workspaces" = {
             all-outputs = true;
             format = "{icon} {name}";
@@ -82,7 +87,7 @@ in {
           };
 
           "custom/app-close" = {
-            on-click = ''hyprctl dispatch killactive || swaymsg kill'';
+            on-click = ''hyprctl dispatch killactive || swaymsg kill || riverctl close'';
             format = "󰅗";
             tooltip-format = "Close the focused window.";
           };
@@ -334,6 +339,7 @@ in {
                 config.programs.rofi.package
                 config.wayland.windowManager.hyprland.package
                 config.wayland.windowManager.sway.package
+                config.wayland.windowManager.river.package
               ]
               ++ (with pkgs; [
                 blueberry
