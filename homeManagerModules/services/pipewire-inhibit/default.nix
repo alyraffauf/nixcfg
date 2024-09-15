@@ -10,7 +10,7 @@ in {
     systemd.user.services.pipewire-inhibit-idle = {
       Unit = {
         After = "graphical-session.target";
-        BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
+        BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target" ++ lib.optional (cfg.desktop.river.enable) "river-session.target";
         Description = "inhibit idle when audio is playing with Pipewire.";
         PartOf = "graphical-session.target";
       };
@@ -20,7 +20,7 @@ in {
         Restart = "no";
       };
 
-      Install.WantedBy = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
+      Install.WantedBy = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target" ++ lib.optional (cfg.desktop.river.enable) "river-session.target";
     };
   };
 }
