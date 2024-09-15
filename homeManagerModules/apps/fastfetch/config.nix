@@ -24,7 +24,7 @@
       type = "os";
     }
     {
-      format = "{2}h {3}m";
+      format = "{1}d {2}h {3}m";
       key = "uptime";
       keyColor = "33";
       type = "uptime";
