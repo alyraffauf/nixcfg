@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./hyprland
+    ./river
     ./sway
     ./wayland
   ];

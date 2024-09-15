@@ -149,6 +149,14 @@ in {
         };
       };
 
+      river = {
+        enable = lib.mkOption {
+          description = "River with full desktop session components.";
+          default = false; #osConfig.ar.desktop.river.enable;
+          type = lib.types.bool;
+        };
+      };
+
       windowManagerBinds = lib.mkOption {
         description = "Default binds for window management.";
 
