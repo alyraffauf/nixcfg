@@ -23,6 +23,8 @@ in {
       "systemctl --user stop sway-session.target"
       "systemctl --user start sway-session.target"
     ];
+
+    variables = ["PATH"];
   };
 
   config = {
