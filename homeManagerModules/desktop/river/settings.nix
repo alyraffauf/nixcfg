@@ -40,7 +40,10 @@ in {
     done
   '';
 
-  systemd.enable = true;
+  systemd = {
+    enable = true;
+    variables = ["--all"];
+  };
 
   settings = {
     border-color-focused = "0x${focused}";
