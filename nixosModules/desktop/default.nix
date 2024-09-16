@@ -7,6 +7,7 @@
   imports = [
     ./greetd
     ./hyprland
+    ./river
     ./sway
     ./waylandComp.nix
   ];
