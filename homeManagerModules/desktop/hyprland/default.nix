@@ -13,7 +13,7 @@ in {
 
       systemd = {
         enable = true;
-        variables = ["PATH"];
+        variables = ["--all"];
       };
 
       extraConfig = let
