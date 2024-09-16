@@ -30,6 +30,7 @@
       };
 
       hyprland.enable = lib.mkEnableOption "Hyprland wayland session.";
+      river.enable = lib.mkEnableOption "River wayland session.";
       steam.enable = lib.mkEnableOption "Steam + Gamescope session.";
       sway.enable = lib.mkEnableOption "Sway wayland session.";
     };
