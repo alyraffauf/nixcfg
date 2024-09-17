@@ -1,7 +1,6 @@
 {
   imports = [
     ./alacritty
-    ./backblaze
     ./chromium
     ./emacs
     ./fastfetch
