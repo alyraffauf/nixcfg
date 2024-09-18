@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./greetd
+    ./gnome
     ./hyprland
     ./sway
     ./waylandComp.nix
@@ -13,7 +14,8 @@
 
   config =
     lib.mkIf (
-      config.ar.desktop.hyprland.enable
+      config.ar.desktop.gnome.enable
+      || config.ar.desktop.hyprland.enable
       || config.ar.desktop.steam.enable
       || config.ar.desktop.sway.enable
     ) {
