@@ -80,7 +80,12 @@ in {
         "terminal.integrated.fontSize" = config.stylix.fonts.sizes.terminal + 3;
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
-        "window.titleBarStyle" = lib.mkDefault "native";
+
+        "window.titleBarStyle" =
+          if config.ar.home.desktop.gnome.enable
+          then "custom"
+          else "native";
+
         "window.zoomPerWindow" = false;
       };
 

@@ -36,7 +36,7 @@ in {
     };
 
     stylix.targets.gtk.extraCss = builtins.concatStringsSep "\n" [
-      (lib.optionalString (cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) ''
+      (lib.optionalString ((cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && !cfg.desktop.gnome.enable) ''
         window.background { border-radius: ${toString cfg.theme.borders.radius}; }
 
         tooltip {
@@ -52,14 +52,14 @@ in {
         }'')
 
       (lib.optionalString (
-          (cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && (config.stylix.polarity == "light")
+          (cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && (config.stylix.polarity == "light") && !cfg.desktop.gnome.enable
         ) ''
           tooltip {
             &.background { background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups}); }
             background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups});
           }'')
 
-      (lib.optionalString cfg.theme.gtk.hideTitleBar ''
+      (lib.optionalString (cfg.theme.gtk.hideTitleBar && !cfg.desktop.gnome.enable) ''
         /* No (default) title bar on wayland */
         headerbar.default-decoration {
           /* You may need to tweak these values depending on your GTK theme */

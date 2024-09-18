@@ -29,6 +29,7 @@
         };
       };
 
+      gnome.enable = lib.mkEnableOption "GNOME desktop session.";
       hyprland.enable = lib.mkEnableOption "Hyprland wayland session.";
       steam.enable = lib.mkEnableOption "Steam + Gamescope session.";
       sway.enable = lib.mkEnableOption "Sway wayland session.";
