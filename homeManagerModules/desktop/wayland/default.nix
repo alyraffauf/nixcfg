@@ -21,14 +21,6 @@
       };
     };
 
-    dconf = {
-      enable = true;
-      settings = {
-        "org/gnome/desktop/wm/preferences".button-layout = "";
-        "org/gnome/nm-applet".disable-connected-notifications = true;
-      };
-    };
-
     home.packages = with pkgs; [
       blueberry
       gnome.file-roller
