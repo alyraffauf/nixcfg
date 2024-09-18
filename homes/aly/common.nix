@@ -45,7 +45,6 @@
       fastfetch.enable = true;
       helix.enable = true;
       shell.enable = true;
-      tmux.enable = true;
       yazi.enable = true;
     };
   };
