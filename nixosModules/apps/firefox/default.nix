@@ -76,7 +76,12 @@
         Preferences = {
           "browser.aboutConfig.showWarning" = false;
           "browser.bookmarks.addedImportButton" = false;
-          "browser.tabs.inTitlebar" = 0;
+
+          "browser.tabs.inTitlebar" =
+            if config.ar.desktop.gnome.enable
+            then 1
+            else 0;
+
           "datareporting.policy.dataSubmissionPolicyAccepted" = true;
           "dom.security.https_only_mode" = true;
           "extensions.autoDisableScopes" = 0;

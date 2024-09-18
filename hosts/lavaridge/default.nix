@@ -39,9 +39,6 @@
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";
   programs.firefox.policies.Preferences."media.ffmpeg.vaapi.enabled" = lib.mkForce false;
-  # services.xserver.enable = true;
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
   system.stateVersion = "24.05";
 
   ar = {
