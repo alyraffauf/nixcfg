@@ -1,13 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
     homeDirectory = "/home/aly";
 
     packages = with pkgs; [
-      browsh
       curl
     ];
 
@@ -47,16 +42,9 @@
 
   ar.home = {
     apps = {
-      backblaze = {
-        enable = true;
-        keyIdFile = config.age.secrets.backblazeKeyId.path;
-        keyFile = config.age.secrets.backblazeKey.path;
-      };
-
       fastfetch.enable = true;
       helix.enable = true;
       shell.enable = true;
-      tmux.enable = true;
       yazi.enable = true;
     };
   };

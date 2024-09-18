@@ -8,7 +8,7 @@
 in {
   config = lib.mkIf config.ar.home.services.randomWallpaper.enable {
     services.hyprpaper.enable = lib.mkForce false;
-    stylix.targets.hyprpaper.enable = lib.mkForce false;
+    # stylix.targets.hyprpaper.enable = lib.mkForce false;
     wayland.windowManager.sway.config.output."*" = lib.mkForce {}; # Dirty. TODO: make more elegant.
 
     systemd.user.services.randomWallpaper = {

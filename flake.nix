@@ -39,7 +39,7 @@
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-24.05";
     };
 
     wallpapers = {

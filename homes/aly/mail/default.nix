@@ -20,7 +20,7 @@ in {
         text = ''
           Thank you,
           Aly Raffauf
-          https://alyraffauf.com
+          https://aly.raffauflabs.com
         '';
 
         showSignature = "append";

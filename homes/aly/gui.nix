@@ -1,9 +1,4 @@
-self: {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+self: {pkgs, ...}: {
   imports = [
     ./common.nix
     ./firefox
@@ -34,11 +29,7 @@ self: {
     username = "aly";
   };
 
-  programs = {
-    git.extraConfig.core.editor = "${lib.getExe config.ar.home.apps.zed.package} --wait";
-    rbw.settings.pinentry = pkgs.pinentry-gnome3;
-  };
-
+  programs.rbw.settings.pinentry = pkgs.pinentry-gnome3;
   systemd.user.startServices = "legacy"; # Needed for auto-mounting agenix secrets.
 
   ar.home = {
@@ -46,14 +37,11 @@ self: {
       chromium.enable = true;
       firefox.enable = true;
       kitty.enable = true;
-      tmux.enable = true;
       vsCodium.enable = true;
-      zed.enable = true;
     };
 
     defaultApps = {
       enable = true;
-      editor = config.ar.home.apps.zed.package;
       fileManager = pkgs.xfce.thunar;
     };
 

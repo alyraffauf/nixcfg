@@ -33,8 +33,13 @@
       }
     ];
 
-    users.aly = lib.mkForce {
+    users.aly = lib.mkForce ({config, ...}: {
       imports = [self.homeManagerModules.aly];
+
+      age.secrets = {
+        backblazeKeyId.file = ../../secrets/aly/backblaze/keyId.age;
+        backblazeKey.file = ../../secrets/aly/backblaze/key.age;
+      };
 
       systemd.user = {
         services.backblaze-sync = {
@@ -61,6 +66,8 @@
                 ['/mnt/Archive/Shows']="b2://aly-shows"
               )
 
+              backblaze-b2 authorize_account `cat ${config.age.secrets.backblazeKeyId.path}` `cat ${config.age.secrets.backblazeKey.path}`
+
               # Recursively backup folders to B2 with sanity checks.
               for folder in "''${!backups[@]}"; do
                 if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
@@ -80,6 +87,6 @@
           Unit.Description = "Daily backups to Backblaze.";
         };
       };
-    };
+    });
   };
 }

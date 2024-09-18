@@ -10,6 +10,7 @@
       default = {
         extensions = with config.nur.repos.rycee.firefox-addons; [
           augmented-steam
+          bitwarden
           omnivore
           raindropio
           sidebery

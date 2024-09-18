@@ -11,22 +11,6 @@ in {
     apps = {
       alacritty.enable = lib.mkEnableOption "Alacritty terminal.";
 
-      backblaze = {
-        enable = lib.mkEnableOption "Backblaze-b2 client with declarative authentication.";
-
-        keyIdFile = lib.mkOption {
-          description = "Backblaze key ID.";
-          default = null;
-          type = lib.types.nullOr lib.types.str;
-        };
-
-        keyFile = lib.mkOption {
-          description = "Backblaze application key.";
-          default = null;
-          type = lib.types.nullOr lib.types.str;
-        };
-      };
-
       chromium = {
         enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
         package = lib.mkPackageOption pkgs "brave" {};

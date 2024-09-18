@@ -40,6 +40,11 @@
     syncthing.guiAddress = "0.0.0.0:8384";
   };
 
+  stylix = {
+    enable = false;
+    image = "${self.inputs.wallpapers}/wallhaven-mp886k.jpg";
+  };
+
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 
