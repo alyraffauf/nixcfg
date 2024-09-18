@@ -444,11 +444,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726585211,
-        "narHash": "sha256-6Ra4qRRWYurpdn0vsIysNxpGXz+m/9IGbXdHr0P+gac=",
+        "lastModified": 1726660103,
+        "narHash": "sha256-6dTw76l3zyBxW2a5Xn6UfY+uFzcJgyN4IiM8tI9Vu5I=",
         "owner": "alyraffauf",
         "repo": "nixhw",
-        "rev": "f7aad63bc3f59826fd16ff748dfa3607ce2f490e",
+        "rev": "19c6cdbfe1b757aa71b9ef9e9285fb1581704be9",
         "type": "github"
       },
       "original": {
