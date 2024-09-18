@@ -38,7 +38,7 @@ in {
 
     fail2ban = {
       enable = true;
-      bantime = "1h";
+      bantime = "24h";
       bantime-increment.enable = true;
     };
 
