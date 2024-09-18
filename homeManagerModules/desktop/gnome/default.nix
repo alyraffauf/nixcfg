@@ -29,7 +29,6 @@
         "org/gnome/shell".enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "blur-my-shell@aunetx"
-          "gsconnect@andyholmes.github.io"
           "noannoyance-fork@vrba.dev"
           "tailscale-status@maxgallup.github.com"
           "tiling-assistant@leleat-on-github"
@@ -57,16 +56,10 @@
       extensions = [
         {package = pkgs.gnomeExtensions.appindicator;}
         {package = pkgs.gnomeExtensions.blur-my-shell;}
-        {package = pkgs.gnomeExtensions.gsconnect;}
         {package = pkgs.gnomeExtensions.noannoyance-fork;}
         {package = pkgs.gnomeExtensions.tailscale-status;}
         {package = pkgs.gnomeExtensions.tiling-assistant;}
       ];
-    };
-
-    xdg.mimeApps.defaultApplications = {
-      "x-scheme-handler/sms" = "org.gnome.Shell.Extensions.GSConnect.desktop";
-      "x-scheme-handler/tel" = "org.gnome.Shell.Extensions.GSConnect.desktop";
     };
   };
 }
