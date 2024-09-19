@@ -24,7 +24,6 @@
       keybindings = {
         "${config.wayland.windowManager.sway.config.modifier}+N" = "exec ${lib.getExe' pkgs.obsidian "obsidian"}";
         "${config.wayland.windowManager.sway.config.modifier}+P" = "exec ${lib.getExe pkgs.rofi-rbw-wayland}";
-        "${config.wayland.windowManager.sway.config.modifier}+Space" = "exec ${lib.getExe' pkgs.planify "io.github.alainm23.planify.quick-add"}";
       };
 
       startup = [
@@ -57,10 +56,6 @@
           criteria = {app_id = "org.keepassxc.KeePassXC";};
         }
         {
-          command = "move position center; sticky toggle; focus;";
-          criteria = {app_id = "io.github.alainm23.planify.quick-add";};
-        }
-        {
           command = "move to scratchpad";
           criteria = {app_id = "org.gnome.Fractal";};
         }
@@ -75,7 +70,6 @@
       bind = [
         "SUPER,N,exec,${lib.getExe' pkgs.obsidian "obsidian"}"
         "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
-        "SUPER,SPACE,exec,${lib.getExe' pkgs.planify "io.github.alainm23.planify.quick-add"}"
       ];
 
       dwindle.no_gaps_when_only = "1";
@@ -87,12 +81,10 @@
         "center(1),class:(org.keepassxc.KeePassXC)"
         "float,class:(Bitwarden)"
         "float,class:(org.keepassxc.KeePassXC)"
-        "pin,class:(io.github.alainm23.planify.quick-add)"
         "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
-        "stayfocused,class:(io.github.alainm23.planify.quick-add)"
-        "workspace special:magic,class:(org.gnome.Fractal)"
         "workspace special:magic,class:(vesktop)"
+        "workspace special:magic,class:(org.gnome.Fractal)"
       ];
 
       workspace = [
