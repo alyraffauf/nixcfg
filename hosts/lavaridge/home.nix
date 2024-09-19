@@ -19,6 +19,8 @@
 
           gammastep.enable = lib.mkForce false;
         };
+
+        theme.borders.radius = lib.mkForce 10;
       };
     }
   ];
