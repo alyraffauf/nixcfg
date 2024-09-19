@@ -19,6 +19,7 @@ self: {pkgs, ...}: {
       nicotine-plus
       obsidian
       picard
+      planify
       tauon
       transmission-remote-gtk
       tuba
