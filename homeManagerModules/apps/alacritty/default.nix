@@ -19,8 +19,10 @@ in {
         window = {
           blur = true;
           decorations = "Full";
-          dynamic_padding = true;
-          opacity = 0.6;
+          padding = {
+            x = 10;
+            y = 10;
+          };
         };
       };
     };
