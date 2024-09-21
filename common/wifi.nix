@@ -1,35 +1,4 @@
-{config, ...}: let
-  mkOpenWiFi = ssid: {
-    connection.id = "${ssid}";
-    connection.type = "wifi";
-    ipv4.method = "auto";
-    ipv6.addr-gen-mode = "default";
-    ipv6.method = "auto";
-    wifi.mode = "infrastructure";
-    wifi.ssid = "${ssid}";
-  };
-
-  mkWPA2WiFi = ssid: psk: (
-    (mkOpenWiFi ssid)
-    // {
-      wifi-security.auth-alg = "open";
-      wifi-security.key-mgmt = "wpa-psk";
-      wifi-security.psk = "${psk}";
-    }
-  );
-
-  mkEAPWiFi = ssid: identity: pass: auth: (
-    (mkOpenWiFi ssid)
-    // {
-      "802-1x".eap = "peap;";
-      "802-1x".identity = "${identity}";
-      "802-1x".password = "${pass}";
-      "802-1x".phase2-auth = "${auth}";
-      wifi-security.auth-alg = "open";
-      wifi-security.key-mgmt = "wpa-eap";
-    }
-  );
-in {
+{config, ...}: {
   age.secrets.wifi.file = ../secrets/wifi.age;
 
   networking.networkmanager = {
@@ -37,7 +6,38 @@ in {
 
     ensureProfiles = {
       environmentFiles = [config.age.secrets.wifi.path];
-      profiles = {
+      profiles = let
+        mkOpenWiFi = ssid: {
+          connection.id = "${ssid}";
+          connection.type = "wifi";
+          ipv4.method = "auto";
+          ipv6.addr-gen-mode = "default";
+          ipv6.method = "auto";
+          wifi.mode = "infrastructure";
+          wifi.ssid = "${ssid}";
+        };
+
+        mkWPA2WiFi = ssid: psk: (
+          (mkOpenWiFi ssid)
+          // {
+            wifi-security.auth-alg = "open";
+            wifi-security.key-mgmt = "wpa-psk";
+            wifi-security.psk = "${psk}";
+          }
+        );
+
+        mkEAPWiFi = ssid: identity: pass: auth: (
+          (mkOpenWiFi ssid)
+          // {
+            "802-1x".eap = "peap;";
+            "802-1x".identity = "${identity}";
+            "802-1x".password = "${pass}";
+            "802-1x".phase2-auth = "${auth}";
+            wifi-security.auth-alg = "open";
+            wifi-security.key-mgmt = "wpa-eap";
+          }
+        );
+      in {
         "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
         "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
@@ -50,6 +50,11 @@ in {
         "javapatron" = mkOpenWiFi "javapatron";
         "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
       };
+    };
+
+    wifi = {
+      backend = "iwd";
+      powersave = true;
     };
   };
 }
