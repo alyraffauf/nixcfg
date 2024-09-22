@@ -344,6 +344,10 @@ in {
             color: ${config.lib.stylix.colors.withHashtag.base00};
             font-weight: bold;
           }
+
+          #waybar {
+            border-radius: 0;
+          }
       '';
 
       systemd.enable = true;

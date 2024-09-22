@@ -5,11 +5,9 @@
 }: {
   config = lib.mkIf config.ar.home.services.easyeffects.enable {
     xdg.configFile = {
-      "easyeffects/output/framework13.json".source =
-        ./framework13.json;
-
-      "easyeffects/output/LoudnessEqualizer.json".source =
-        ./LoudnessEqualizer.json;
+      "easyeffects/output/framework13.json".source = ./framework13.json;
+      "easyeffects/output/fw13-easy-effects.json".source = ./framework13.json;
+      "easyeffects/output/LoudnessEqualizer.json".source = ./LoudnessEqualizer.json;
     };
 
     services.easyeffects = {

@@ -14,11 +14,13 @@
         services = {
           easyeffects = {
             enable = true;
-            preset = "LoudnessEqualizer";
+            preset = "fw13-easy-effects";
           };
 
           gammastep.enable = lib.mkForce false;
         };
+
+        theme.borders.radius = lib.mkForce 10;
       };
     }
   ];
