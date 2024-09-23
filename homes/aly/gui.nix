@@ -45,10 +45,7 @@ self: {pkgs, ...}: {
       fileManager = pkgs.xfce.thunar;
     };
 
-    services = {
-      gammastep.enable = true;
-      randomWallpaper.enable = true;
-    };
+    services.gammastep.enable = true;
 
     theme = {
       enable = true;
