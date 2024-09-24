@@ -48,6 +48,7 @@
         "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
         "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
         "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
+        "VINATL-Guest" = mkWPA2WiFi "VINATL-Guest" "$VINATLGuestPSK";
         "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
         "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
       };
