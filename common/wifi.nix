@@ -39,16 +39,17 @@
         );
       in {
         "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
+        "East Pole Coffee Co." = mkWPA2WiFi "East Pole Coffee Co." "$EastPolePSK";
         "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
+        "javapatron" = mkOpenWiFi "javapatron";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
-        "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
-        "PERC COFFEE 5 Guest" = mkWPA2WiFi "PERC COFFEE 5 Guest" "$PERCguestPSK";
         "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
+        "PERC COFFEE 5 Guest" = mkWPA2WiFi "PERC COFFEE 5 Guest" "$PERCguestPSK";
+        "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
         "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
         "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
-        "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
-        "javapatron" = mkOpenWiFi "javapatron";
         "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
+        "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
       };
     };
 
