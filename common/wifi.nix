@@ -52,9 +52,6 @@
       };
     };
 
-    wifi = {
-      backend = "iwd";
-      powersave = true;
-    };
+    wifi.powersave = true;
   };
 }
