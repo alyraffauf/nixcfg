@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [
-    ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
+    (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.inputs.nixhw.nixosModules.thinkpad-t440p
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base

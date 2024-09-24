@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [
-    ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
+    (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.inputs.nixhw.nixosModules.lenovo-yoga-9i-intel-13th
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
