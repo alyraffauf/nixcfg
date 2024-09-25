@@ -4,13 +4,13 @@
   ...
 }: {
   imports = [
-    ./disko.nix
     ./home.nix
     ./raffauflabs.nix
     ./secrets.nix
+    (import ./../../disko/btrfs-subvolumes.nix {disks = ["/dev/sda"];})
+    self.inputs.nixhw.nixosModules.common-bluetooth
     self.inputs.nixhw.nixosModules.common-intel-cpu
     self.inputs.nixhw.nixosModules.common-intel-gpu
-    self.inputs.nixhw.nixosModules.common-bluetooth
     self.inputs.nixhw.nixosModules.common-ssd
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base

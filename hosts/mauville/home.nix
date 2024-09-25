@@ -89,11 +89,10 @@
       };
 
       wayland.windowManager.hyprland.settings = {
-        bind = ["$mod SHIFT,M,layoutmsg,swapwithmaster master"];
         general.layout = lib.mkForce "master";
 
         master = {
-          mfact = 0.50;
+          mfact = 0.40;
           orientation = "center";
         };
       };

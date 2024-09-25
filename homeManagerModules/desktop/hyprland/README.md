@@ -73,8 +73,9 @@ ______________________________________________________________________
 - SUPER + F11: Show/hide top panel.
 - SUPER + TAB: Open Window list.
 - SUPER + V: Toggle floating window.
-- SUPER SHIFT + Backslash: Toggle vertical/horizontal splits.
+- SUPER SHIFT + Backslash: Toggle vertical/horizontal splits (dwindle layout only).
 - SUPER SHIFT + G: Toggle groupbar.
+- SUPER SHIFT + M: Swap window for master (master layout only).
 - SUPER SHIFT + W: Toggle fullscreen.
 
 #### Focus

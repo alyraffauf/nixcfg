@@ -11,7 +11,6 @@
     ./secrets.nix
     ./stylix.nix
     self.inputs.nixhw.nixosModules.framework-13-intel-11th
-    self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
@@ -26,11 +25,7 @@
     systemd-boot.enable = true;
   };
 
-  environment.variables = {
-    FLAKE = "https://flakehub.com/f/alyraffauf/nixcfg/*.tar.gz";
-    GDK_SCALE = "1.5";
-  };
-
+  environment.variables.GDK_SCALE = "1.5";
   networking.hostName = "fallarbor";
   system.stateVersion = "24.05";
 
