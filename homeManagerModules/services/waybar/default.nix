@@ -47,7 +47,9 @@ in {
             lib.optionals (cfg.desktop.hyprland.enable)
             ["hyprland/workspaces"]
             ++ lib.optionals (cfg.desktop.sway.enable)
-            ["sway/workspaces"];
+            ["sway/workspaces"]
+            ++ lib.optionals (cfg.desktop.river.enable)
+            ["river/tags"];
 
           modules-right = [
             "tray"
@@ -71,6 +73,11 @@ in {
 
           "hyprland/submap" = {
             on-click = ''hyprctl dispatch submap reset'';
+          };
+
+          "river/mode" = {
+            format = "{}";
+            on-click = ''riverctl enter-mode normal'';
           };
 
           "sway/workspaces" = {
@@ -100,7 +107,7 @@ in {
           };
 
           "custom/app-close" = {
-            on-click = ''hyprctl dispatch killactive || swaymsg kill'';
+            on-click = ''hyprctl dispatch killactive || swaymsg kill || riverctl close'';
             format = "󰅗";
             tooltip-format = "Close the focused window.";
           };
@@ -295,18 +302,23 @@ in {
           #scratchpad,
           #session,
           #submap,
+          #tags,
           #tray,
           #workspaces {
             margin: 0px 5px;
             padding: 0px 2.5px;
           }
 
+          #tags button,
           #workspaces button {
             border-radius: 0px;
           }
 
+          #tags button.active,
+          #tags button.focused,
           #workspaces button.active,
-          #workspaces button.focused {
+          #workspaces button.focused
+          {
             color: ${config.lib.stylix.colors.withHashtag.base0D};
           }
 
@@ -342,11 +354,9 @@ in {
     };
 
     systemd.user.services.waybar = {
-      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
-
+      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target" ++ lib.optional (cfg.desktop.river.enable) "river-session.target");
       Service.Restart = lib.mkForce "no";
-
-      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
+      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target" ++ lib.optional (cfg.desktop.river.enable) "river-session.target";
     };
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''

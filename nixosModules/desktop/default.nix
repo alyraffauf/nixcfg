@@ -8,6 +8,7 @@
     ./greetd
     ./gnome
     ./hyprland
+    ./river
     ./sway
     ./waylandComp.nix
   ];

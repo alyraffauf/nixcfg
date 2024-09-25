@@ -8,6 +8,7 @@
   imports = [
     ./gnome
     ./hyprland
+    ./river
     ./sway
     ./wayland
   ];

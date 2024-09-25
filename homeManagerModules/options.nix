@@ -131,6 +131,14 @@ in {
         };
       };
 
+      river = {
+        enable = lib.mkOption {
+          description = "River with full desktop session components.";
+          default = osConfig.ar.desktop.river.enable;
+          type = lib.types.bool;
+        };
+      };
+
       sway = {
         enable = lib.mkOption {
           description = "Sway with full desktop session components.";

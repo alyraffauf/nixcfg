@@ -57,7 +57,7 @@ in {
     };
 
     systemd.user.services.swayidle = {
-      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
+      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target" ++ lib.optional (cfg.desktop.river.enable) "river-session.target");
 
       Service = {
         Environment = lib.mkForce [
@@ -77,7 +77,7 @@ in {
         Restart = lib.mkForce "no";
       };
 
-      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
+      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target" ++ lib.optional (cfg.desktop.river.enable) "river-session.target";
     };
   };
 }
