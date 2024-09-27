@@ -30,11 +30,6 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
     };
 
-    nixhw = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:alyraffauf/nixhw";
-    };
-
     nur.url = "github:nix-community/NUR";
 
     stylix = {
@@ -137,6 +132,21 @@
     };
 
     nixosModules = {
+      hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
+      hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
+      hw-lenovo-yoga-9i-intel-13th = import ./hwModules/lenovo/yoga-9i/intel-13th;
+      hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
+
+      hw-common-amd-cpu = import ./hwModules/common/gpu/amd;
+      hw-common-amd-gpu = import ./hwModules/common/cpu/amd;
+      hw-common-bluetooth = import ./hwModules/common/bluetooth;
+      hw-common-intel-cpu = import ./hwModules/common/cpu/intel;
+      hw-common-intel-gpu = import ./hwModules/common/gpu/intel;
+      hw-common-laptop = import ./hwModules/common/laptop;
+      hw-common-laptop-amd-gpu = import ./hwModules/common/laptop/amd-gpu.nix;
+      hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
+      hw-common-ssd = import ./hwModules/common/ssd;
+
       common-auto-upgrade = import ./common/autoUpgrade.nix;
       common-base = import ./common/base.nix;
       common-locale = import ./common/locale.nix;
