@@ -437,26 +437,6 @@
         "type": "github"
       }
     },
-    "nixhw": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1727291538,
-        "narHash": "sha256-80ll70/S/rENWSp63jxpPnENSlM3BcO6vh/1DjjPIrs=",
-        "owner": "alyraffauf",
-        "repo": "nixhw",
-        "rev": "193e927e1d6b9f567ac9beb04fe7ca16e45a4edb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alyraffauf",
-        "repo": "nixhw",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1727264057,
@@ -554,7 +534,6 @@
         "home-manager": "home-manager_2",
         "iio-hyprland": "iio-hyprland",
         "lanzaboote": "lanzaboote",
-        "nixhw": "nixhw",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
