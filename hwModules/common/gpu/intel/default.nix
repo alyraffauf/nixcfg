@@ -14,16 +14,16 @@
       driSupport = true;
       driSupport32Bit = true;
 
-      extraPackages = with pkgs; [
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        (intel-vaapi-driver.override {enableHybridCodec = true;})
-        libvdpau-va-gl
+      extraPackages = [
+        pkgs.intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        (pkgs.intel-vaapi-driver.override {enableHybridCodec = true;})
+        pkgs.libvdpau-va-gl
       ];
 
-      extraPackages32 = with pkgs.driversi686Linux; [
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        (intel-vaapi-driver.override {enableHybridCodec = true;})
-        libvdpau-va-gl
+      extraPackages32 = [
+        pkgs.driversi686Linux.intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        (pkgs.driversi686Linux.intel-vaapi-driver.override {enableHybridCodec = true;})
+        pkgs.driversi686Linux.libvdpau-va-gl
       ];
     };
   };
