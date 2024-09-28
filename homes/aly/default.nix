@@ -73,7 +73,6 @@ self: {pkgs, ...}: {
     };
 
     defaultApps.enable = true;
-    services.gammastep.enable = true;
     theme.enable = true;
   };
 }

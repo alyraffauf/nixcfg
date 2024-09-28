@@ -1,8 +1,4 @@
-{
-  lib,
-  self,
-  ...
-}: {
+{self, ...}: {
   home-manager = {
     sharedModules = [
       {
@@ -21,8 +17,6 @@
               enable = true;
               preset = "fw13-easy-effects";
             };
-
-            gammastep.enable = lib.mkForce false;
           };
         };
       }

@@ -42,13 +42,17 @@
           };
         };
 
-        ar.home.desktop.hyprland = {
-          laptopMonitors = ["desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"];
+        ar.home = {
+          desktop.hyprland = {
+            laptopMonitors = ["desc:Samsung Display Corp. 0x4152,preferred,auto,2,transform,0"];
 
-          tabletMode = {
-            enable = true;
-            switches = ["Lenovo Yoga Tablet Mode Control switch"];
+            tabletMode = {
+              enable = true;
+              switches = ["Lenovo Yoga Tablet Mode Control switch"];
+            };
           };
+
+          services.gammastep.enable = true;
         };
       }
     ];
