@@ -9,7 +9,7 @@
       };
 
       ar.home = {
-        desktop.hyprland.laptopMonitors = ["eDP-1,2880x1920@120, 0x0, 2, vrr, 1"];
+        desktop.hyprland.laptopMonitors = ["eDP-1,2880x1920@60, 0x0, 2, vrr, 0"];
 
         services = {
           easyeffects = {
@@ -19,8 +19,6 @@
 
           gammastep.enable = lib.mkForce false;
         };
-
-        theme.borders.radius = lib.mkForce 10;
       };
     }
   ];
