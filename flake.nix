@@ -125,17 +125,21 @@
 
     homeManagerModules = {
       default = import ./homeManagerModules self;
-      aly = import ./homes/aly/gui.nix self;
-      aly-nox = import ./homes/aly/nox.nix self;
+      aly = import ./homes/aly self;
       dustin = import ./homes/dustin self;
       morgan = import ./homes/morgan self;
     };
 
     nixosModules = {
-      hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
-      hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
-      hw-lenovo-yoga-9i-intel-13th = import ./hwModules/lenovo/yoga-9i/intel-13th;
-      hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
+      common-auto-upgrade = import ./common/autoUpgrade.nix;
+      common-base = import ./common/base.nix;
+      common-locale = import ./common/locale.nix;
+      common-mauville-share = import ./common/samba.nix;
+      common-nix = import ./common/nix.nix;
+      common-overlays = import ./common/overlays.nix;
+      common-pkgs = import ./common/pkgs.nix;
+      common-tailscale = import ./common/tailscale.nix;
+      common-wifi-profiles = import ./common/wifi.nix;
 
       hw-common-amd-cpu = import ./hwModules/common/gpu/amd;
       hw-common-amd-gpu = import ./hwModules/common/cpu/amd;
@@ -146,16 +150,10 @@
       hw-common-laptop-amd-gpu = import ./hwModules/common/laptop/amd-gpu.nix;
       hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./hwModules/common/ssd;
-
-      common-auto-upgrade = import ./common/autoUpgrade.nix;
-      common-base = import ./common/base.nix;
-      common-locale = import ./common/locale.nix;
-      common-mauville-share = import ./common/samba.nix;
-      common-nix = import ./common/nix.nix;
-      common-overlays = import ./common/overlays.nix;
-      common-pkgs = import ./common/pkgs.nix;
-      common-tailscale = import ./common/tailscale.nix;
-      common-wifi-profiles = import ./common/wifi.nix;
+      hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
+      hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
+      hw-lenovo-yoga-9i-intel-13th = import ./hwModules/lenovo/yoga-9i/intel-13th;
+      hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 
       nixos = import ./nixosModules self;
       users = import ./userModules self;
