@@ -78,10 +78,6 @@ self: {pkgs, ...}: {
     };
 
     services.gammastep.enable = true;
-
-    theme = {
-      enable = true;
-      borders.radius = 0;
-    };
+    theme.enable = true;
   };
 }
