@@ -72,11 +72,7 @@ self: {pkgs, ...}: {
       yazi.enable = true;
     };
 
-    defaultApps = {
-      enable = true;
-      fileManager = pkgs.xfce.thunar;
-    };
-
+    defaultApps.enable = true;
     services.gammastep.enable = true;
     theme.enable = true;
   };
