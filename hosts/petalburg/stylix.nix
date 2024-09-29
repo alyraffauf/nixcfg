@@ -6,7 +6,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    image = "${self.inputs.wallpapers}/wallhaven-jxp18w.jpg";
+    image = "${self.inputs.wallpapers}/wallhaven-3lyrvy.png";
     imageScalingMode = "fill";
     polarity = "dark";
 
