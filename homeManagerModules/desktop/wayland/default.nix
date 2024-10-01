@@ -23,7 +23,7 @@
 
     home.packages = with pkgs; [
       blueberry
-      gnome.file-roller
+      file-roller
       libnotify
       networkmanagerapplet
     ];

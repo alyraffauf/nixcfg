@@ -38,7 +38,7 @@ in {
 
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
-        default = cfg.defaultApps.fileManager == pkgs.cinnamon.nemo;
+        default = cfg.defaultApps.fileManager == pkgs.nemo;
         type = lib.types.bool;
       };
 
@@ -79,8 +79,8 @@ in {
       enable = lib.mkEnableOption "Declaratively set default apps and file associations.";
       audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
       editor = lib.mkPackageOption pkgs "text editor" {default = ["vscodium"];};
-      fileManager = lib.mkPackageOption pkgs "file manager" {default = ["cinnamon" "nemo"];};
-      imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["gnome" "eog"];};
+      fileManager = lib.mkPackageOption pkgs "file manager" {default = ["nemo"];};
+      imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["eog"];};
       pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
       terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["kitty"];};
       terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
