@@ -52,19 +52,19 @@ in {
     samba = {
       enable = true;
       openFirewall = true;
-      securityType = "user";
 
-      # extraConfig = ''
-      #   read raw = Yes
-      #   write raw = Yes
-      #   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
-      #   min receivefile size = 16384
-      #   use sendfile = true
-      #   aio read size = 16384
-      #   aio write size = 16384
-      # '';
+      settings = {
+        global = {
+          security = "user";
+          "read raw" = "Yes";
+          "write raw" = "Yes";
+          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072";
+          "min receivefile size" = 16384;
+          "use sendfile" = true;
+          "aio read size" = 16384;
+          "aio write size" = 16384;
+        };
 
-      shares = {
         Media = {
           "create mask" = "0755";
           "directory mask" = "0755";
