@@ -9,7 +9,7 @@
   hardware = {
     intel-gpu-tools.enable = true;
 
-    opengl = {
+    graphics = {
       enable = true;
 
       extraPackages = [
