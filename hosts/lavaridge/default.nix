@@ -42,7 +42,6 @@
   };
 
   networking.hostName = "lavaridge";
-  programs.firefox.policies.Preferences."media.ffmpeg.vaapi.enabled" = lib.mkForce false;
   system.stateVersion = "24.05";
 
   ar = {
