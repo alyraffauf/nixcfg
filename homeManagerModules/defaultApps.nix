@@ -25,7 +25,7 @@ in {
         terminal
         terminalEditor
         videoPlayer
-        webBrowser
+        # webBrowser
       ];
 
       sessionVariables = {
