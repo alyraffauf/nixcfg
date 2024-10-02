@@ -36,7 +36,11 @@
     };
   };
 
-  environment.variables.GDK_SCALE = "2";
+  environment.variables = {
+    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/upgrade-to-2411";
+    GDK_SCALE = "2";
+  };
+
   networking.hostName = "lavaridge";
   programs.firefox.policies.Preferences."media.ffmpeg.vaapi.enabled" = lib.mkForce false;
   system.stateVersion = "24.05";
