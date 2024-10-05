@@ -85,7 +85,12 @@ in {
       terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["kitty"];};
       terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
       videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
-      webBrowser = lib.mkPackageOption pkgs "web browser" {default = ["firefox"];};
+
+      webBrowser = lib.mkOption {
+        description = "web browser";
+        default = config.programs.firefox.finalPackage;
+        type = lib.types.package;
+      };
     };
 
     desktop = {
