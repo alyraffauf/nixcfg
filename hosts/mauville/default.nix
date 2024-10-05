@@ -97,7 +97,11 @@ in {
     };
   };
 
-  environment.variables.GDK_SCALE = "1.25";
+  environment.variables = {
+    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
+    GDK_SCALE = "1.25";
+  };
+
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 

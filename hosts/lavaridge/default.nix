@@ -37,7 +37,7 @@
   };
 
   environment.variables = {
-    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/upgrade-to-2411";
+    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
     GDK_SCALE = "2";
   };
 
