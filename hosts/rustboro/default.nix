@@ -48,10 +48,10 @@
       greetd = {
         enable = true;
         autologin = "aly";
-        session = lib.getExe config.programs.sway.package;
+        session = lib.getExe config.programs.hyprland.package;
       };
 
-      sway.enable = true;
+      hyprland.enable = true;
     };
 
     laptopMode = true;
