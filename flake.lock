@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728109432,
-        "narHash": "sha256-wmbErh8FG7dRKOtMMpHUqDtFjeqt9Zjx4zssSeTalwU=",
+        "lastModified": 1728334376,
+        "narHash": "sha256-CTKEKPzD/j8FK6H4DO3EjyixZd3HHvgAgfnCwpGFP5c=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "48ebb577855fb2398653f033b3b2208a9249203d",
+        "rev": "d39ee334984fcdae6244f5a8e6ab857479cbaefe",
         "type": "github"
       },
       "original": {
@@ -327,11 +327,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728041527,
-        "narHash": "sha256-03liqiJtk9UP7YQHW4r8MduKCK242FQzud8iWvvlK+o=",
+        "lastModified": 1728337164,
+        "narHash": "sha256-VdRTjJFyq4Q9U7Z/UoC2Q5jK8vSo6E86lHc2OanXtvc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "509dbf8d45606b618e9ec3bbe4e936b7c5bc6c1e",
+        "rev": "038630363e7de57c36c417fd2f5d7c14773403e4",
         "type": "github"
       },
       "original": {
@@ -460,11 +460,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1728167912,
-        "narHash": "sha256-OeJk7SbwTD7epbVxbxOQJrlAI4qPr518zjn/uD+aWFw=",
+        "lastModified": 1728341999,
+        "narHash": "sha256-ruFg31IFfrxqJpZZ+m5iEvI5kRNNnDP3FFO9I4DSPdQ=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "7090c452983a90c066ce421bb75eaa0409f45910",
+        "rev": "bda6fb38a7cf14cfb63d343efde7fdb83cbf528f",
         "type": "github"
       },
       "original": {
@@ -558,11 +558,11 @@
         "tinted-tmux": "tinted-tmux"
       },
       "locked": {
-        "lastModified": 1727723275,
-        "narHash": "sha256-k4HrG8TJQ0RqDS1tlDz71kvWFBNQ7qZI9T5Z0qLR85Y=",
+        "lastModified": 1728312564,
+        "narHash": "sha256-z01cTK5VeLFOUekhAXrJHLDzE74uAxxMwE2p6+Wp9Sg=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "e7e97059776da7e34b739415a7bc8f80f606b803",
+        "rev": "63426a59e714c4389c5a8e559dee05a0087a3043",
         "type": "github"
       },
       "original": {
@@ -683,11 +683,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1727677872,
-        "narHash": "sha256-p68hYur7luTI48jJuwjpAaKcXC+Rs/LZhjCJkthauCs=",
+        "lastModified": 1728177558,
+        "narHash": "sha256-jD8GijFjpcjKb2O0g73utSoNkk/J8XLK4jFqhjboN44=",
         "owner": "alyraffauf",
         "repo": "wallpapers",
-        "rev": "1f3c34d936b02fd02c975e0aa99527afb423badc",
+        "rev": "767fa4a1faa166ed2f18297c013aefbd062432b8",
         "type": "github"
       },
       "original": {
