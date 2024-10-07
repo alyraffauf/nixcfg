@@ -22,6 +22,7 @@ in {
         "git.${domain}"
         "music.${domain}"
         "passwords.${domain}"
+        "pics.${domain}"
         "plex.${domain}"
         "podcasts.${domain}"
         domain
@@ -235,6 +236,26 @@ in {
           forceSSL = true;
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+          };
+        };
+
+        "pics.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://${ip}:${toString 3001}";
+
+            extraConfig = ''
+              client_max_body_size 5000M;
+              proxy_buffering off;
+              proxy_redirect                      http:// https://;
+              proxy_set_header Host               $host;
+              proxy_set_header X-Forwarded-Proto  $scheme;
+              proxy_set_header Connection         "upgrade";
+              proxy_set_header Upgrade            $http_upgrade;
+              proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
+            '';
           };
         };
 
