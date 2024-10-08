@@ -5,7 +5,7 @@
   ...
 }: {
   config = lib.mkIf config.ar.services.flatpak.enable {
-    environment.systemPackages = with pkgs; [gnome.gnome-software];
+    environment.systemPackages = with pkgs; [gnome-software];
 
     fileSystems = let
       mkRoSymBind = path: {
@@ -18,8 +18,8 @@
         name = "system-icons";
         paths =
           (with pkgs; [
-            gnome.adwaita-icon-theme
-            gnome.gnome-themes-extra
+            adwaita-icon-theme
+            gnome-themes-extra
           ])
           ++ lib.optional (config.stylix.enable) config.stylix.cursor.package;
 

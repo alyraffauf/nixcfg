@@ -52,19 +52,19 @@ in {
     samba = {
       enable = true;
       openFirewall = true;
-      securityType = "user";
 
-      extraConfig = ''
-        read raw = Yes
-        write raw = Yes
-        socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
-        min receivefile size = 16384
-        use sendfile = true
-        aio read size = 16384
-        aio write size = 16384
-      '';
+      settings = {
+        global = {
+          security = "user";
+          "read raw" = "Yes";
+          "write raw" = "Yes";
+          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072";
+          "min receivefile size" = 16384;
+          "use sendfile" = true;
+          "aio read size" = 16384;
+          "aio write size" = 16384;
+        };
 
-      shares = {
         Media = {
           "create mask" = "0755";
           "directory mask" = "0755";
@@ -97,7 +97,11 @@ in {
     };
   };
 
-  environment.variables.GDK_SCALE = "1.25";
+  environment.variables = {
+    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
+    GDK_SCALE = "1.25";
+  };
+
   system.stateVersion = "24.05";
   zramSwap.memoryPercent = 100;
 

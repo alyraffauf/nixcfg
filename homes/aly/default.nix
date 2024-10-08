@@ -58,7 +58,7 @@ self: {pkgs, ...}: {
     };
   };
 
-  systemd.user.startServices = "legacy"; # Needed for auto-mounting agenix secrets.
+  systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
   ar.home = {
     apps = {

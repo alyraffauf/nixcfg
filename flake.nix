@@ -2,7 +2,7 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     agenix = {
@@ -17,7 +17,7 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/master";
     };
 
     iio-hyprland = {
@@ -34,7 +34,7 @@
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:danth/stylix/release-24.05";
+      url = "github:danth/stylix/master";
     };
 
     wallpapers = {

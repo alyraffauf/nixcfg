@@ -1,21 +1,9 @@
-{
-  pkgs,
-  self,
-  ...
-}: let
-  unstable = import self.inputs.nixpkgs-unstable {
-    system = pkgs.system;
-  };
-in {
+{pkgs, ...}: {
   nixpkgs = {
     config.allowUnfree = true; # Allow unfree packages
 
     overlays = [
       (final: prev: {
-        fractal = unstable.fractal;
-
-        power-profiles-daemon = unstable.power-profiles-daemon;
-
         rofi-bluetooth =
           prev.rofi-bluetooth.overrideAttrs
           (old: {
@@ -28,8 +16,6 @@ in {
               sha256 = "sha256-o0Sr3/888L/2KzZZP/EcXx+8ZUzdHB/I/VIeVuJvJks=";
             };
           });
-
-        zed-editor = unstable.zed-editor;
       })
     ];
   };

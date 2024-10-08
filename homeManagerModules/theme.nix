@@ -8,7 +8,7 @@
 in {
   config = lib.mkIf cfg.theme.enable {
     home.packages = [
-      pkgs.gnome.adwaita-icon-theme
+      pkgs.adwaita-icon-theme
       pkgs.liberation_ttf
     ];
 
