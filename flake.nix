@@ -25,6 +25,11 @@
       url = "github:JeanSchoeller/iio-hyprland";
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote/v0.4.1";
