@@ -2,6 +2,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
@@ -26,7 +27,12 @@
   ];
 
   boot = {
-    initrd.systemd.enable = true;
+    initrd = {
+      availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
+      systemd.enable = true;
+    };
+
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     # lanzaboote = {
     #   enable = true;
