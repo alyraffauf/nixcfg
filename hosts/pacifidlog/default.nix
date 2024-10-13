@@ -89,11 +89,7 @@
       steam.enable = true;
     };
 
-    desktop = {
-      hyprland.enable = true;
-      steam.enable = true;
-    };
-
+    desktop.hyprland.enable = true;
     laptopMode = true;
 
     users.aly = {
