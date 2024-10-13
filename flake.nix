@@ -25,6 +25,11 @@
       url = "github:JeanSchoeller/iio-hyprland";
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -48,12 +53,16 @@
 
     extra-substituters = [
       "https://alyraffauf.cachix.org"
+      "https://jovian-nixos.cachix.org"
       "https://nix-community.cachix.org"
+      "https://nix-gaming.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
+      "jovian-nixos.cachix.org-1:mAWLjAxLNlfxAnozUjOqGj4AxQwCl7MXwOfu7msVlAo="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
   };
 
@@ -86,6 +95,7 @@
       "fallarbor"
       "lavaridge"
       "mauville"
+      "pacifidlog"
       "petalburg"
       "rustboro"
       "slateport"
@@ -152,6 +162,7 @@
       hw-common-ssd = import ./hwModules/common/ssd;
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
+      hw-lenovo-legion-go = import ./hwModules/lenovo/legion/go;
       hw-lenovo-yoga-9i-intel-13th = import ./hwModules/lenovo/yoga-9i/intel-13th;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 

@@ -17,6 +17,7 @@
         steam = {
           enable = true;
           dedicatedServer.openFirewall = true;
+          extest.enable = true;
           extraCompatPackages = with pkgs; [proton-ge-bin];
           gamescopeSession.enable = config.ar.desktop.steam.enable;
           localNetworkGameTransfers.openFirewall = true;

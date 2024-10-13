@@ -10,7 +10,6 @@
     ../../../common/laptop
     ../../../common/laptop/intel-cpu.nix
     ../../../common/ssd
-    ../../common.nix
     ../common.nix
   ];
 
@@ -18,4 +17,6 @@
     initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   };
+
+  hardware.enableAllFirmware = true;
 }
