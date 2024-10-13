@@ -1,6 +1,7 @@
 # Lenovo Legion Go
 {
   config,
+  pkgs,
   lib,
   self,
   ...
@@ -87,9 +88,19 @@
     })
   ];
 
-  services.handheld-daemon = {
+  services.handheld-daemon = let
+    adjustor = pkgs.callPackage ./adjustor.nix {};
+  in {
     enable = true;
     user = "aly";
+    package = with pkgs;
+      handheld-daemon.overrideAttrs (oldAttrs: {
+        propagatedBuildInputs =
+          oldAttrs.propagatedBuildInputs
+          ++ [
+            adjustor
+          ];
+      });
   };
 
   system.stateVersion = "24.11";
