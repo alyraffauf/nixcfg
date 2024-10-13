@@ -40,12 +40,12 @@
     GDK_SCALE = "2";
   };
 
-  # jovian.steam = {
-  #   enable = true;
-  #   autoStart = true;
-  #   desktopSession = "gamescope-wayland";
-  #   user = "aly";
-  # };
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+    desktopSession = "gamescope-wayland";
+    user = "aly";
+  };
 
   jovian.decky-loader = {
     enable = true;
