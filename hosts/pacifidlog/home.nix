@@ -2,10 +2,9 @@
   home-manager = {
     sharedModules = [
       {
-        wayland.windowManager.sway.config.output = {
-          "eDP-1" = {
-            adaptive_sync = "on";
-            scale = "2.0";
+        wayland.windowManager = {
+          hyprland.settings = {
+            input.touchdevice.output = "eDP-1";
           };
         };
 
