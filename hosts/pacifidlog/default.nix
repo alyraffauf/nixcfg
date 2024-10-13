@@ -22,13 +22,20 @@
     self.nixosModules.hw-common-amd-cpu
     self.nixosModules.hw-common-amd-gpu
     self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-laptop-amd-gpu
     self.nixosModules.hw-common-ssd
   ];
 
   boot = {
     initrd = {
-      availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
+      availableKernelModules = [
+        "nvme"
+        "sdhci_pci"
+        "thunderbolt"
+        "usb_storage"
+        "usbhid"
+        "xhci_pci"
+      ];
+
       systemd.enable = true;
     };
 
@@ -50,12 +57,12 @@
     GDK_SCALE = "2";
   };
 
-  jovian.steam = {
-    enable = true;
-    autoStart = true;
-    desktopSession = "gamescope-wayland";
-    user = "aly";
-  };
+  # jovian.steam = {
+  #   enable = true;
+  #   autoStart = true;
+  #   desktopSession = "gamescope-wayland";
+  #   user = "aly";
+  # };
 
   jovian.decky-loader = {
     enable = true;
