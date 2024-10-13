@@ -1,6 +1,7 @@
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   self,
   ...
 }: {
@@ -13,7 +14,7 @@
 
   boot = {
     initrd.availableKernelModules = ["nvme" "sdhci_pci" "thunderbolt" "usb_storage" "usbhid" "xhci_pci"];
-
+    extraModulePackages = with config.boot.kernelPackages; [lenovo-legion-module];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   };
 
