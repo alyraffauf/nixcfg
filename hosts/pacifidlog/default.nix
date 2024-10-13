@@ -2,7 +2,6 @@
 {
   config,
   lib,
-  pkgs,
   self,
   ...
 }: {
@@ -19,27 +18,11 @@
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
-    self.nixosModules.hw-common-amd-cpu
-    self.nixosModules.hw-common-amd-gpu
-    self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-ssd
+    self.nixosModules.hw-lenovo-legion-go
   ];
 
   boot = {
-    initrd = {
-      availableKernelModules = [
-        "nvme"
-        "sdhci_pci"
-        "thunderbolt"
-        "usb_storage"
-        "usbhid"
-        "xhci_pci"
-      ];
-
-      systemd.enable = true;
-    };
-
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    initrd.systemd.enable = true;
 
     # lanzaboote = {
     #   enable = true;
@@ -93,14 +76,9 @@
     })
   ];
 
-  services = {
-    handheld-daemon = {
-      enable = true;
-      user = "aly";
-    };
-
-    power-profiles-daemon.enable = true;
-    upower.enable = true;
+  services.handheld-daemon = {
+    enable = true;
+    user = "aly";
   };
 
   system.stateVersion = "24.11";

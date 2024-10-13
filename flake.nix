@@ -158,6 +158,7 @@
       hw-common-ssd = import ./hwModules/common/ssd;
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
+      hw-lenovo-legion-go = import ./hwModules/lenovo/legion/go;
       hw-lenovo-yoga-9i-intel-13th = import ./hwModules/lenovo/yoga-9i/intel-13th;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 
