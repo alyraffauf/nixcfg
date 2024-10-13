@@ -4,7 +4,9 @@
       {
         wayland.windowManager = {
           hyprland.settings = {
-            input.touchdevice.output = "eDP-1";
+            input = {
+              touchdevice.output = "eDP-1";
+            };
           };
         };
 
