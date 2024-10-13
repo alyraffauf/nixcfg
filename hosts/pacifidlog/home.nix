@@ -10,7 +10,7 @@
         };
 
         ar.home = {
-          desktop.hyprland.laptopMonitors = ["eDP-1,2560x1600@144, preferred,auto, 2, transform, 0"];
+          desktop.hyprland.laptopMonitors = ["eDP-1, 1600x2560@144, 0x0, 2, transform, 1"];
 
           # services = {
           #   easyeffects = {
