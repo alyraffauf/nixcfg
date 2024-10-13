@@ -33,7 +33,11 @@
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
+
+      systemd-boot = {
+        enable = lib.mkForce false;
+        consoleMode = "max";
+      };
     };
   };
 
