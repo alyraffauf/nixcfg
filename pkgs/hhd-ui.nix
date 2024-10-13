@@ -10,7 +10,7 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "hhd-ui";
-  version = "3.2.1";
+  version = "3.2.2";
   src = fetchurl {
     url = "https://github.com/hhd-dev/hhd-ui/releases/download/v${version}/${pname}.AppImage";
     hash = "sha256-RRXVoeWOO/pR+CAEY0J6Buf/RhA+G0PdxGQVMdAHfwA=";

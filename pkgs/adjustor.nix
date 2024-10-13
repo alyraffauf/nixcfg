@@ -5,7 +5,7 @@
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "adjustor";
-  version = "3.4.5";
+  version = "3.5.2";
   pyproject = true;
 
   src = fetchFromGitHub {
