@@ -13,7 +13,11 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = ["nvme" "sdhci_pci" "thunderbolt" "usb_storage" "usbhid" "xhci_pci"];
+    initrd = {
+      availableKernelModules = ["nvme" "sdhci_pci" "thunderbolt" "usb_storage" "usbhid" "xhci_pci"];
+      kernelModules = ["amdgpu"];
+    };
+
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   };

@@ -5,7 +5,10 @@
   lib,
   self,
   ...
-}: {
+}: let
+  adjustor = pkgs.callPackage ./adjustor.nix {};
+  hhd-ui = pkgs.callPackage ./hhd-ui.nix {};
+in {
   imports = [
     ./home.nix
     ./secrets.nix
@@ -23,10 +26,7 @@
   ];
 
   boot = {
-    initrd = {
-      kernelModules = ["amdgpu"];
-      systemd.enable = true;
-    };
+    initrd.systemd.enable = true;
 
     lanzaboote = {
       enable = true;
@@ -44,17 +44,15 @@
   };
 
   environment = {
-    systemPackages = [
-      (pkgs.callPackage ./hhd-ui.nix {})
-    ];
+    systemPackages = [hhd-ui];
 
     variables = {
-      FLAKE = lib.mkForce "github:alyraffauf/nixcfg/add-pacifidlog";
+      FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
       GDK_SCALE = "2";
     };
   };
 
-  systemd.services.handheld-daemon.path = [(pkgs.callPackage ./hhd-ui.nix {}) pkgs.lsof];
+  systemd.services.handheld-daemon.path = [hhd-ui pkgs.lsof];
 
   jovian = {
     decky-loader = {
@@ -96,11 +94,10 @@
     })
   ];
 
-  services.handheld-daemon = let
-    adjustor = pkgs.callPackage ./adjustor.nix {};
-  in {
+  services.handheld-daemon = {
     enable = true;
     user = "aly";
+
     package = with pkgs;
       handheld-daemon.overrideAttrs (oldAttrs: {
         propagatedBuildInputs =
