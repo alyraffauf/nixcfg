@@ -21,7 +21,7 @@ appimageTools.wrapType2 rec {
     description = "A UI app that can manage Handheld Daemon settings from Steam, the Desktop, and the Web.";
     platforms = platforms.linux;
     license = licenses.mit;
-    maintainers = with maintainers; [ harryaskham ];
+    maintainers = with maintainers; [harryaskham];
     mainProgram = "hhd-ui";
   };
 }

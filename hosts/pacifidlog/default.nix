@@ -54,6 +54,8 @@
     };
   };
 
+  systemd.services.handheld-daemon.path = [(pkgs.callPackage ./hhd-ui.nix {}) pkgs.lsof];
+
   jovian = {
     decky-loader = {
       enable = true;
