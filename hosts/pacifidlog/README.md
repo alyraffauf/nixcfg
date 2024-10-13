@@ -1,22 +1,23 @@
-# lavaridge
+# pacifidlog
 
 ## Overview
 
-Framework Laptop 13 with AMD 7000 series mainboard. My primary machine used for work, productivity, development work, media, you name it.
+Lenovo Legion Go with AMD Z1 Extreme. Gaming beast. Uses Jovian for Steam Deck-like interface.
 
 ## Todo
 
-- \[x\] upgrade to [2.8k 120Hz Framework screen](https://frame.work/products/display-kit?v=FRANJF0001).
+- [ ] update hdd-ui and adjustor.
+- [ ] upgrade to large SSD.
 
 ## Specs
 
-| Model   | Framework Laptop 13       |
+| Model   | Legion Go                 |
 |---------|---------------------------|
-| Display | 13.5" 2880x1920 120Hz     |
-| CPU     | AMD Ryzen 7640U           |
-| RAM     | 32GB 16GBx2  DDR5-5600Mhz |
-| GPU     | AMD Radeon 760M           |
-| Disks   | 1TB Sk hynix P41          |
+| Display | 8.8" 1600x2560 144Hz      |
+| CPU     | AMD Z1 Extreme            |
+| RAM     | 16GB LPDDR5 (soldered)    |
+| GPU     | AMD Z1 Extreme            |
+| Disks   | 512GB M.2 2242 NVMe       |
 
 ## Filesystems
 
@@ -26,4 +27,4 @@ Encrypted LUKS btrfs volume.
 
 ## Display
 
-First-gen glossy Framework Laptop 13 screen. Typically used at 1.566667 scaling with Hyprland (1.6 causes strange blurryness).
+Vertical-turned-horizontal 1600x2560 display running at 144Hz. Scales perfectly to 2x.
