@@ -22,7 +22,10 @@
   ];
 
   boot = {
-    initrd.systemd.enable = true;
+    initrd = {
+      kernelModules = ["amdgpu"];
+      systemd.enable = true;
+    };
 
     lanzaboote = {
       enable = true;
@@ -31,7 +34,11 @@
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
+
+      systemd-boot = {
+        enable = lib.mkForce false;
+        consoleMode = "max";
+      };
     };
   };
 
