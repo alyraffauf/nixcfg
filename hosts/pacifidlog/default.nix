@@ -83,14 +83,14 @@
         pyyaml # hhd-decky
       ];
 
-    plugins = {
-      "hhd-decky" = {
-        src = fetchTarball {
-          url = "https://github.com/hhd-dev/hhd-decky/releases/download/v0.1.0/hhd-decky.tar.gz";
-          sha256 = "15gpll079gwnx21gjf6qivb36dzpnrx58dkbpk0xnjjx2q0bcc47";
-        };
-      };
-    };
+    # plugins = {
+    #   "hhd-decky" = {
+    #     src = fetchTarball {
+    #       url = "https://github.com/hhd-dev/hhd-decky/releases/download/v0.1.0/hhd-decky.tar.gz";
+    #       sha256 = "15gpll079gwnx21gjf6qivb36dzpnrx58dkbpk0xnjjx2q0bcc47";
+    #     };
+    #   };
+    # };
   };
 
   networking.hostName = "pacifidlog";
