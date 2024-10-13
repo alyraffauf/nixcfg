@@ -43,7 +43,7 @@
   jovian.steam = {
     enable = true;
     autoStart = true;
-    desktopSession = "gamescope-wayland";
+    desktopSession = "hyprland";
     user = "aly";
   };
 
