@@ -57,38 +57,7 @@
 
   jovian.decky-loader = {
     enable = true;
-    user = "root";
-    # stateDir = "/home/aly/.local/share/decky"; # Keep scoped to user
-    package = pkgs.decky-loader;
-
-    extraPackages = with pkgs; [
-      # Generic packages
-      curl
-      gnugrep
-      kmod # modprobe for acpi_call check
-      libpulseaudio
-      pciutils
-      procps
-      python311
-      readline.out
-      ryzenadj # actual TDP util
-      unzip
-      util-linux
-    ];
-
-    extraPythonPackages = pythonPackages:
-      with pythonPackages; [
-        pyyaml # hhd-decky
-      ];
-
-    # plugins = {
-    #   "hhd-decky" = {
-    #     src = fetchTarball {
-    #       url = "https://github.com/hhd-dev/hhd-decky/releases/download/v0.1.0/hhd-decky.tar.gz";
-    #       sha256 = "15gpll079gwnx21gjf6qivb36dzpnrx58dkbpk0xnjjx2q0bcc47";
-    #     };
-    #   };
-    # };
+    user = "aly";
   };
 
   networking.hostName = "pacifidlog";
