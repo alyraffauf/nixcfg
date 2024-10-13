@@ -23,7 +23,11 @@
   ];
 
   boot = {
-    initrd.systemd.enable = true;
+    initrd = {
+      initrd.kernelModules = ["amdgpu"];
+      systemd.enable = true;
+    };
+
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
 
     lanzaboote = {
