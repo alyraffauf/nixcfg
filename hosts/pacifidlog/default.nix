@@ -48,16 +48,20 @@
     GDK_SCALE = "2";
   };
 
-  jovian.steam = {
-    enable = true;
-    autoStart = true;
-    desktopSession = "hyprland";
-    user = "aly";
-  };
+  jovian = {
+    decky-loader = {
+      enable = true;
+      user = "aly";
+    };
 
-  jovian.decky-loader = {
-    enable = true;
-    user = "aly";
+    hardware.has.amd.gpu = true;
+
+    steam = {
+      enable = true;
+      autoStart = true;
+      desktopSession = "hyprland";
+      user = "aly";
+    };
   };
 
   networking.hostName = "pacifidlog";
