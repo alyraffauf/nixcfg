@@ -6,8 +6,8 @@
   self,
   ...
 }: let
-  adjustor = pkgs.callPackage ./adjustor.nix {};
-  hhd-ui = pkgs.callPackage ./hhd-ui.nix {};
+  adjustor = pkgs.callPackage ./../../pkgs/adjustor.nix {};
+  hhd-ui = pkgs.callPackage ./../../pkgs/hhd-ui.nix {};
 in {
   imports = [
     ./home.nix
