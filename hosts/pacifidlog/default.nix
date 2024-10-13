@@ -103,13 +103,6 @@
     upower.enable = true;
   };
 
-  swapDevices = [
-    {
-      device = "/swap/swapfile";
-      size = 18 * 1024;
-    }
-  ];
-
   system.stateVersion = "24.11";
 
   ar = {
