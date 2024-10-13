@@ -37,7 +37,7 @@
 
       systemd-boot = {
         enable = lib.mkForce false;
-        consoleMode = "max";
+        consoleMode = "1";
       };
     };
   };
