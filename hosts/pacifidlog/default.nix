@@ -64,18 +64,16 @@
     extraPackages = with pkgs; [
       # Generic packages
       curl
+      gnugrep
+      kmod # modprobe for acpi_call check
+      libpulseaudio
+      pciutils
+      procps
+      python311
+      readline.out
+      ryzenadj # actual TDP util
       unzip
       util-linux
-      gnugrep
-
-      readline.out
-      procps
-      pciutils
-      libpulseaudio
-
-      # SimpleDeckyTDP | TODO: Remove once hhd TDP control is verified
-      ryzenadj # actual TDP util
-      kmod # modprobe for acpi_call check
     ];
 
     extraPythonPackages = pythonPackages:
