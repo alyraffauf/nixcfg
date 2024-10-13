@@ -43,9 +43,15 @@
     };
   };
 
-  environment.variables = {
-    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/add-pacifidlog";
-    GDK_SCALE = "2";
+  environment = {
+    systemPackages = [
+      (pkgs.callPackage ./hhd-ui.nix {})
+    ];
+
+    variables = {
+      FLAKE = lib.mkForce "github:alyraffauf/nixcfg/add-pacifidlog";
+      GDK_SCALE = "2";
+    };
   };
 
   jovian = {
