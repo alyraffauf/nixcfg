@@ -57,8 +57,8 @@
 
   jovian.decky-loader = {
     enable = true;
-    user = "aly";
-    stateDir = "/home/aly/.local/share/decky"; # Keep scoped to user
+    user = "root";
+    # stateDir = "/home/aly/.local/share/decky"; # Keep scoped to user
     package = pkgs.decky-loader;
 
     extraPackages = with pkgs; [
