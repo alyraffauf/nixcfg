@@ -15,6 +15,8 @@ in {
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.inputs.jovian.nixosModules.default
+    self.inputs.nix-gaming.nixosModules.pipewireLowLatency
+    self.inputs.nix-gaming.nixosModules.platformOptimizations
     self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
@@ -53,7 +55,7 @@ in {
     };
   };
 
-  systemd.services.handheld-daemon.path = [hhd-ui pkgs.lsof];
+  hardware.pulseaudio.enable = lib.mkForce false;
 
   jovian = {
     decky-loader = {
@@ -68,6 +70,17 @@ in {
       autoStart = true;
       desktopSession = "hyprland";
       user = "aly";
+    };
+
+    steamos = {
+      enableBluetoothConfig = true;
+      enableDefaultCmdlineConfig = false; # Already handled by hardware
+      enableMesaPatches = false; # Doesn't do much, takes a long time to build.
+      enableProductSerialAccess = true;
+      enableSysctlConfig = true; # Scheduling etc tweaks
+      enableVendorRadv = false; # Doesn't do much, takes a long time to build.
+      enableZram = true;
+      useSteamOSConfig = false; # No automatic enabling of stuff in the steamos module
     };
   };
 
@@ -95,21 +108,32 @@ in {
     })
   ];
 
-  services.handheld-daemon = {
-    enable = true;
-    user = "aly";
+  programs.steam.platformOptimizations.enable = true;
 
-    package = with pkgs;
-      handheld-daemon.overrideAttrs (oldAttrs: {
-        propagatedBuildInputs =
-          oldAttrs.propagatedBuildInputs
-          ++ [
-            adjustor
-          ];
-      });
+  services = {
+    handheld-daemon = {
+      enable = true;
+      user = "aly";
+
+      package = with pkgs;
+        handheld-daemon.overrideAttrs (oldAttrs: {
+          propagatedBuildInputs =
+            oldAttrs.propagatedBuildInputs
+            ++ [
+              adjustor
+            ];
+        });
+    };
+
+    pipewire.lowLatency = {
+      enable = true;
+      quantum = 256;
+      rate = 48000;
+    };
   };
 
   system.stateVersion = "24.11";
+  systemd.services.handheld-daemon.path = [hhd-ui pkgs.lsof];
 
   ar = {
     apps = {
