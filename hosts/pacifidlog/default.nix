@@ -118,7 +118,6 @@ in {
     };
 
     desktop.hyprland.enable = true;
-    laptopMode = true;
 
     users.aly = {
       enable = true;
