@@ -1,17 +1,17 @@
 {
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
-    ../../../common/bluetooth
-    ../../../common/cpu/amd
-    ../../../common/gpu/amd
-    ../../../common/laptop
-    ../../../common/laptop/amd-gpu.nix
-    ../../../common/ssd
     ../../common.nix
     ../common.nix
+    self.nixosModules.hw-common-amd-cpu
+    self.nixosModules.hw-common-amd-gpu
+    self.nixosModules.hw-common-bluetooth
+    self.nixosModules.hw-common-laptop
+    self.nixosModules.hw-common-ssd
   ];
 
   boot = {

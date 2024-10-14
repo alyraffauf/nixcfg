@@ -162,7 +162,6 @@
       hw-common-intel-cpu = import ./hwModules/common/cpu/intel;
       hw-common-intel-gpu = import ./hwModules/common/gpu/intel;
       hw-common-laptop = import ./hwModules/common/laptop;
-      hw-common-laptop-amd-gpu = import ./hwModules/common/laptop/amd-gpu.nix;
       hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./hwModules/common/ssd;
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
