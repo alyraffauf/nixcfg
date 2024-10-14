@@ -19,7 +19,7 @@
     };
 
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
   };
 
   hardware = {
