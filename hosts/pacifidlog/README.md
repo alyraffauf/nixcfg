@@ -6,8 +6,8 @@ Lenovo Legion Go with AMD Z1 Extreme. Gaming beast. Uses Jovian for Steam Deck-l
 
 ## Todo
 
-- [ ] update hdd-ui and adjustor.
-- [ ] upgrade to large SSD.
+- \[x\] update hdd-ui and adjustor.
+- \[ \] upgrade to large SSD.
 
 ## Specs
 
