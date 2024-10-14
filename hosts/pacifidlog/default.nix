@@ -67,6 +67,13 @@ in {
 
     steam = {
       enable = true;
+
+      environment = {
+        ENABLE_GAMESCOPE_WSI = 1;
+        STEAM_DISPLAY_REFRESH_LIMITS = "60,144";
+        STEAM_GAMESCOPE_COLOR_MANAGED = 0;
+      };
+
       autoStart = true;
       desktopSession = "hyprland";
       user = "aly";
