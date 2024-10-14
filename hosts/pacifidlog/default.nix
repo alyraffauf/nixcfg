@@ -69,9 +69,9 @@ in {
       enable = true;
 
       environment = {
-        ENABLE_GAMESCOPE_WSI = 1;
+        ENABLE_GAMESCOPE_WSI = "1";
         STEAM_DISPLAY_REFRESH_LIMITS = "60,144";
-        STEAM_GAMESCOPE_COLOR_MANAGED = 0;
+        STEAM_GAMESCOPE_COLOR_MANAGED = "0";
       };
 
       autoStart = true;
@@ -141,6 +141,7 @@ in {
 
   system.stateVersion = "24.11";
   systemd.services.handheld-daemon.path = [hhd-ui pkgs.lsof];
+  zramSwap.memoryPercent = 100;
 
   ar = {
     apps = {
