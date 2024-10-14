@@ -26,11 +26,12 @@
         "xhci_pci"
       ];
 
-      blacklistedKernelModules = ["k10temp"];
-      kernelModules = ["amdgpu" "zenpower"];
+      kernelModules = ["amdgpu"];
     };
 
+    blacklistedKernelModules = ["k10temp"];
     extraModulePackages = with config.boot.kernelPackages; [acpi_call zenpower];
+    kernelModules = ["zenpower"];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
   };
 
