@@ -47,7 +47,11 @@ in {
   };
 
   environment = {
-    systemPackages = [hhd-ui];
+    systemPackages = [
+      hhd-ui
+      pkgs.heroic
+      pkgs.lutris
+    ];
 
     variables = {
       FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
