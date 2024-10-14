@@ -17,6 +17,7 @@ in {
     self.inputs.jovian.nixosModules.default
     self.nixosModules.common-base
     self.nixosModules.common-locale
+    self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
     self.nixosModules.common-overlays
     self.nixosModules.common-pkgs
