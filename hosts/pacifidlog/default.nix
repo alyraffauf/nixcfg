@@ -77,16 +77,7 @@ in {
       user = "aly";
     };
 
-    steamos = {
-      enableBluetoothConfig = true;
-      enableDefaultCmdlineConfig = false; # Already handled by hardware
-      enableMesaPatches = false; # Doesn't do much, takes a long time to build.
-      enableProductSerialAccess = true;
-      enableSysctlConfig = true; # Scheduling etc tweaks
-      enableVendorRadv = false; # Doesn't do much, takes a long time to build.
-      enableZram = true;
-      useSteamOSConfig = false; # No automatic enabling of stuff in the steamos module
-    };
+    steamos.useSteamOSConfig = true;
   };
 
   networking.hostName = "pacifidlog";
