@@ -1,12 +1,7 @@
 {
-  fetchFromGitHub,
   appimageTools,
   fetchurl,
-  hidapi,
-  kmod,
   lib,
-  python3,
-  toybox,
 }:
 appimageTools.wrapType2 rec {
   pname = "hhd-ui";
