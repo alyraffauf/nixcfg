@@ -11,6 +11,7 @@ in {
     services.syncthing = {
       enable = true;
       cert = cfg.certFile;
+      configDir = "${config.services.syncthing.dataDir}/.syncthing";
       dataDir = "/home/aly";
       key = cfg.keyFile;
       openDefaultPorts = true;
