@@ -14,11 +14,23 @@
 
   boot = {
     initrd = {
-      availableKernelModules = ["nvme" "sdhci_pci" "thunderbolt" "usb_storage" "usbhid" "xhci_pci"];
-      kernelModules = ["amdgpu"];
+      availableKernelModules = [
+        "amdgpu"
+        "nvme"
+        "rtsx_pci_sdmmc"
+        "sd_mod"
+        "sdhci_pci"
+        "thunderbolt"
+        "usb_storage"
+        "usbhid"
+        "xhci_pci"
+      ];
+
+      blacklistedKernelModules = ["k10temp"];
+      kernelModules = ["amdgpu" "zenpower"];
     };
 
-    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+    extraModulePackages = with config.boot.kernelPackages; [acpi_call zenpower];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
   };
 
