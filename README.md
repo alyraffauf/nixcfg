@@ -1,6 +1,6 @@
-# nixos
+# nixcfg
 
-My comprehensive NixOS flake for managing my laptop, desktop, and home lab environments.
+My comprehensive NixOS flake for managing my laptop, desktop, gaming handheld, and home lab environments.
 
 ![](./_img/rosepinemoon.png)
 ![](./_img/rosepinedawn.png)
