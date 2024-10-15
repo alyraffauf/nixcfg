@@ -2,8 +2,7 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     agenix = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +16,7 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/master";
     };
 
     iio-hyprland = {
@@ -25,16 +24,26 @@
       url = "github:JeanSchoeller/iio-hyprland";
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote/v0.4.1";
+    };
+
+    nix-gaming = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:fufexan/nix-gaming";
     };
 
     nur.url = "github:nix-community/NUR";
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:danth/stylix/release-24.05";
+      url = "github:danth/stylix/master";
     };
 
     wallpapers = {
@@ -48,12 +57,16 @@
 
     extra-substituters = [
       "https://alyraffauf.cachix.org"
+      "https://jovian-nixos.cachix.org"
       "https://nix-community.cachix.org"
+      "https://nix-gaming.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
+      "jovian-nixos.cachix.org-1:mAWLjAxLNlfxAnozUjOqGj4AxQwCl7MXwOfu7msVlAo="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
   };
 
@@ -86,6 +99,7 @@
       "fallarbor"
       "lavaridge"
       "mauville"
+      "pacifidlog"
       "petalburg"
       "rustboro"
       "slateport"
@@ -147,11 +161,11 @@
       hw-common-intel-cpu = import ./hwModules/common/cpu/intel;
       hw-common-intel-gpu = import ./hwModules/common/gpu/intel;
       hw-common-laptop = import ./hwModules/common/laptop;
-      hw-common-laptop-amd-gpu = import ./hwModules/common/laptop/amd-gpu.nix;
       hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./hwModules/common/ssd;
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
+      hw-lenovo-legion-go = import ./hwModules/lenovo/legion/go;
       hw-lenovo-yoga-9i-intel-13th = import ./hwModules/lenovo/yoga-9i/intel-13th;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 

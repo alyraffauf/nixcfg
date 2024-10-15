@@ -53,8 +53,6 @@
     '';
   };
 
-  sound.enable = true;
-
   zramSwap = {
     enable = lib.mkDefault true;
     memoryPercent = lib.mkDefault 50;

@@ -91,6 +91,13 @@ in {
       };
     };
 
+    immich = {
+      enable = true;
+      host = "0.0.0.0";
+      mediaLocation = "${mediaDirectory}/Pictures";
+      openFirewall = true;
+    };
+
     # k3s = {
     #   enable = true;
     #   role = "server";
