@@ -53,10 +53,7 @@ in {
       pkgs.lutris
     ];
 
-    variables = {
-      FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
-      GDK_SCALE = "2";
-    };
+    variables.GDK_SCALE = "2";
   };
 
   hardware.pulseaudio.enable = lib.mkForce false;

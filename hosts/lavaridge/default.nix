@@ -36,11 +36,7 @@
     };
   };
 
-  environment.variables = {
-    FLAKE = lib.mkForce "github:alyraffauf/nixcfg/24.11";
-    GDK_SCALE = "2";
-  };
-
+  environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";
   system.stateVersion = "24.05";
 
