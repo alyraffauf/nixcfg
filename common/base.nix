@@ -2,6 +2,7 @@
   boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
   console.useXkbConfig = true;
   hardware.keyboard.qmk.enable = true;
+  environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
 
   programs = {
     dconf.enable = true; # Needed for home-manager

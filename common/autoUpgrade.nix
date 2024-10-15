@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
-
+{config, ...}: {
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
