@@ -9,10 +9,8 @@
   hardware = {
     intel-gpu-tools.enable = true;
 
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
 
       extraPackages = [
         pkgs.intel-media-driver # LIBVA_DRIVER_NAME=iHD

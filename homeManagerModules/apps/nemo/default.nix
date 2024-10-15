@@ -5,7 +5,7 @@
   ...
 }: {
   config = lib.mkIf config.ar.home.apps.nemo.enable {
-    home.packages = [pkgs.cinnamon.nemo];
+    home.packages = [pkgs.nemo];
 
     dconf = {
       enable = true;

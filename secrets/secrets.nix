@@ -3,6 +3,7 @@ let
     "fallarbor"
     "lavaridge"
     "mauville"
+    "pacifidlog"
     "petalburg"
     "rustboro"
     "slateport"
@@ -11,6 +12,7 @@ let
     "aly_fallarbor"
     "aly_lavaridge"
     "aly_mauville"
+    "aly_pacifidlog"
     "aly_petalburg"
     "aly_rustboro"
     "aly_slateport"
@@ -29,6 +31,8 @@ in {
   "aly/syncthing/lavaridge/key.age".publicKeys = keys;
   "aly/syncthing/mauville/cert.age".publicKeys = keys;
   "aly/syncthing/mauville/key.age".publicKeys = keys;
+  "aly/syncthing/pacifidlog/cert.age".publicKeys = keys;
+  "aly/syncthing/pacifidlog/key.age".publicKeys = keys;
   "aly/syncthing/petalburg/cert.age".publicKeys = keys;
   "aly/syncthing/petalburg/key.age".publicKeys = keys;
   "aly/syncthing/rustboro/cert.age".publicKeys = keys;

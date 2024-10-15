@@ -29,8 +29,8 @@ in {
           "gsgmba" = {id = "V2YCZSL-XY7H72L-FGJFWP2-JNYX72O-OJ5V2HY-V4SSSJM-77A7E3Z-7EJFAAV";}; # Work Macbook Air
           "iphone12" = {id = "SBQNUXS-H4XDJ3E-RBHJPT5-45WDJJA-2U43M4P-23XGUJ7-E3CNNKZ-BXSGIA3";}; # iPhone 12 Pro Max
           "lavaridge" = {id = "TMMSCVA-MDJTDPC-PC47NUA-2VPLAIB-6S6MEU7-KALIGUJ-AWDUOUU-XD73MAY";}; # Framework 13 AMD
-          "mauville" = {id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";}; # Desktop/homelab b
-          "mossdeep" = {id = "3DODR5S-WU6DTH6-Y35QZX7-7OZEOGG-CYVGGCJ-TJ6AOZX-MFDSRCR-NM727A6";}; # Yoga Slim 7x
+          "mauville" = {id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";}; # Desktop/homelab
+          "pacifidlog" = {id = "6EBVXYI-HZW4LQI-T6L3TTI-DZEBXJM-RP3DW7N-BCAG6FC-G2654DN-XJFSLQD";}; # Lenovo Legion Go
           "petalburg" = {id = "ECTD3LW-YZTJIXX-HLQYXT7-UGZSGST-3DDKF72-DJPMDHE-SUYDWIT-ASTKTAE";}; # Yoga 9i
           "rustboro" = {id = "7CXGPQN-7DYDYJN-DKELOR3-RD4HZUW-SSUDGLZ-WVXYFUT-DPT2MGD-6PO5BQF";}; # Thinkpad t440p
           "slateport" = {id = "MDJFDUG-UJAXQXI-AMEF2AR-PBMD5QK-Z5ZG6AA-RCJCU3M-GZHQQEA-X2JGOAK";}; # homelab a
@@ -43,7 +43,7 @@ in {
             "sync" = {
               id = "default";
               path = "/home/aly/sync";
-              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "mossdeep" "petalburg" "rustboro" "slateport" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "pacifidlog" "petalburg" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 type = "staggered";
                 params = {

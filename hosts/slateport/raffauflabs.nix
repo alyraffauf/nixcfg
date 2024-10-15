@@ -32,7 +32,7 @@ in {
       passwordFile = config.age.secrets.cloudflare.path;
       protocol = "cloudflare";
       ssl = true;
-      use = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
+      usev4 = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
       username = "token";
       zone = domain;
     };
