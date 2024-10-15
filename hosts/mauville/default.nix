@@ -14,10 +14,6 @@ in {
     ./raffauflabs.nix
     ./secrets.nix
     ./stylix.nix
-    self.inputs.nixhw.nixosModules.common-amd-cpu
-    self.inputs.nixhw.nixosModules.common-amd-gpu
-    self.inputs.nixhw.nixosModules.common-bluetooth
-    self.inputs.nixhw.nixosModules.common-ssd
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-locale
@@ -26,6 +22,10 @@ in {
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-common-amd-cpu
+    self.nixosModules.hw-common-amd-gpu
+    self.nixosModules.hw-common-bluetooth
+    self.nixosModules.hw-common-ssd
   ];
 
   boot = {

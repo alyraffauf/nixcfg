@@ -1,12 +1,9 @@
 {
   config,
   lib,
-  self,
   ...
 }: {
   config = lib.mkIf config.ar.users.dustin.enable {
-    home-manager.users.dustin = self.homeManagerModules.dustin;
-
     users.users.dustin = {
       description = "Dustin Raffauf";
       extraGroups = config.ar.users.defaultGroups;

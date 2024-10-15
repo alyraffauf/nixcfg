@@ -1,27 +1,27 @@
-{lib, ...}: {
-  home-manager.sharedModules = [
-    {
-      wayland.windowManager.sway.config.output = {
-        "eDP-1" = {
-          adaptive_sync = "on";
-          scale = "2.0";
-        };
-      };
-
-      ar.home = {
-        desktop.hyprland.laptopMonitors = ["eDP-1,2880x1920@120, 0x0, 2, vrr, 1"];
-
-        services = {
-          easyeffects = {
-            enable = true;
-            preset = "fw13-easy-effects";
+{self, ...}: {
+  home-manager = {
+    sharedModules = [
+      {
+        wayland.windowManager.sway.config.output = {
+          "eDP-1" = {
+            adaptive_sync = "on";
+            scale = "2.0";
           };
-
-          gammastep.enable = lib.mkForce false;
         };
 
-        theme.borders.radius = lib.mkForce 10;
-      };
-    }
-  ];
+        ar.home = {
+          desktop.hyprland.laptopMonitors = ["eDP-1,2880x1920@60, 0x0, 2, vrr, 0"];
+
+          services = {
+            easyeffects = {
+              enable = true;
+              preset = "fw13-easy-effects";
+            };
+          };
+        };
+      }
+    ];
+
+    users.aly = self.homeManagerModules.aly;
+  };
 }

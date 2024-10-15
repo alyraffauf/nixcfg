@@ -2,14 +2,11 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [./syncthing.nix];
 
   config = lib.mkIf config.ar.users.aly.enable {
-    home-manager.users.aly = self.homeManagerModules.aly;
-
     users.users.aly = {
       description = "Aly Raffauf";
       extraGroups = config.ar.users.defaultGroups;
@@ -25,6 +22,7 @@
         keyFiles = [
           ../../secrets/publicKeys/aly_lavaridge.pub
           ../../secrets/publicKeys/aly_mauville.pub
+          ../../secrets/publicKeys/aly_mossdeep.pub
           ../../secrets/publicKeys/aly_petalburg.pub
           ../../secrets/publicKeys/aly_rustboro.pub
         ];

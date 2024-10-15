@@ -10,7 +10,6 @@
     ./secrets.nix
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
-    self.inputs.nixhw.nixosModules.thinkpad-t440p
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-locale
@@ -20,6 +19,7 @@
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-thinkpad-t440p
   ];
 
   boot = {
@@ -48,10 +48,10 @@
       greetd = {
         enable = true;
         autologin = "aly";
-        session = lib.getExe config.programs.sway.package;
+        session = lib.getExe config.programs.hyprland.package;
       };
 
-      sway.enable = true;
+      hyprland.enable = true;
     };
 
     laptopMode = true;

@@ -10,7 +10,6 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.inputs.nixhw.nixosModules.framework-13-intel-11th
     self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
@@ -18,6 +17,7 @@
     self.nixosModules.common-overlays
     self.nixosModules.common-pkgs
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-framework-13-intel-11th
   ];
 
   boot.loader = {

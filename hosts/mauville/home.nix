@@ -33,69 +33,73 @@
       }
     ];
 
-    users.aly = lib.mkForce ({config, ...}: {
-      imports = [self.homeManagerModules.aly];
+    users = {
+      aly = {config, ...}: {
+        imports = [self.homeManagerModules.aly];
 
-      age.secrets = {
-        backblazeKeyId.file = ../../secrets/aly/backblaze/keyId.age;
-        backblazeKey.file = ../../secrets/aly/backblaze/key.age;
-      };
+        age.secrets = {
+          backblazeKeyId.file = ../../secrets/aly/backblaze/keyId.age;
+          backblazeKey.file = ../../secrets/aly/backblaze/key.age;
+        };
 
-      systemd.user = {
-        services.backblaze-sync = {
-          Unit.Description = "Backup to Backblaze.";
+        systemd.user = {
+          services.backblaze-sync = {
+            Unit.Description = "Backup to Backblaze.";
 
-          Service = {
-            Environment = [
-              "PATH=${
-                lib.makeBinPath (with pkgs; [
-                  coreutils
-                  backblaze-b2
-                ])
-              }"
-            ];
+            Service = {
+              Environment = [
+                "PATH=${
+                  lib.makeBinPath (with pkgs; [
+                    coreutils
+                    backblaze-b2
+                  ])
+                }"
+              ];
 
-            ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
-              declare -A backups
-              backups=(
-                ['/home/aly/pics/camera']="b2://aly-camera"
-                ['/home/aly/sync']="b2://aly-sync"
-                ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
-                ['/mnt/Media/Music']="b2://aly-music"
-                ['/mnt/Archive/Movies']="b2://aly-movies"
-                ['/mnt/Archive/Shows']="b2://aly-shows"
-              )
+              ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
+                declare -A backups
+                backups=(
+                  ['/home/aly/pics/camera']="b2://aly-camera"
+                  ['/home/aly/sync']="b2://aly-sync"
+                  ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
+                  ['/mnt/Media/Music']="b2://aly-music"
+                  ['/mnt/Archive/Movies']="b2://aly-movies"
+                  ['/mnt/Archive/Shows']="b2://aly-shows"
+                )
 
-              backblaze-b2 authorize_account `cat ${config.age.secrets.backblazeKeyId.path}` `cat ${config.age.secrets.backblazeKey.path}`
+                backblaze-b2 authorize_account `cat ${config.age.secrets.backblazeKeyId.path}` `cat ${config.age.secrets.backblazeKey.path}`
 
-              # Recursively backup folders to B2 with sanity checks.
-              for folder in "''${!backups[@]}"; do
-                if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
-                  backblaze-b2 sync --delete $folder ''${backups[$folder]}
-                else
-                  echo "$folder does not exist or is empty."
-                  exit 1
-                fi
-              done
-            ''}";
+                # Recursively backup folders to B2 with sanity checks.
+                for folder in "''${!backups[@]}"; do
+                  if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
+                    backblaze-b2 sync --delete $folder ''${backups[$folder]}
+                  else
+                    echo "$folder does not exist or is empty."
+                    exit 1
+                  fi
+                done
+              ''}";
+            };
+          };
+
+          timers.backblaze-sync = {
+            Install.WantedBy = ["timers.target"];
+            Timer.OnCalendar = "*-*-* 03:00:00";
+            Unit.Description = "Daily backups to Backblaze.";
           };
         };
 
-        timers.backblaze-sync = {
-          Install.WantedBy = ["timers.target"];
-          Timer.OnCalendar = "*-*-* 03:00:00";
-          Unit.Description = "Daily backups to Backblaze.";
+        wayland.windowManager.hyprland.settings = {
+          general.layout = lib.mkForce "master";
+
+          master = {
+            mfact = 0.40;
+            orientation = "center";
+          };
         };
       };
 
-      wayland.windowManager.hyprland.settings = {
-        general.layout = lib.mkForce "master";
-
-        master = {
-          mfact = 0.40;
-          orientation = "center";
-        };
-      };
-    });
+      dustin = self.homeManagerModules.dustin;
+    };
   };
 }

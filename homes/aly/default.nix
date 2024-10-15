@@ -1,9 +1,28 @@
-{pkgs, ...}: {
+self: {pkgs, ...}: {
+  imports = [
+    ./firefox
+    ./mail
+    ./secrets.nix
+    ./windowManagers
+    self.homeManagerModules.default
+    self.inputs.agenix.homeManagerModules.default
+    self.inputs.nur.hmModules.nur
+  ];
+
   home = {
     homeDirectory = "/home/aly";
 
     packages = with pkgs; [
+      bitwarden-desktop
       curl
+      fractal
+      nicotine-plus
+      obsidian
+      picard
+      tauon
+      transmission-remote-gtk
+      tuba
+      vesktop
     ];
 
     stateVersion = "24.05";
@@ -34,6 +53,7 @@
         base_url = "https://passwords.raffauflabs.com";
         email = "alyraffauf@fastmail.com";
         lock_timeout = 14400;
+        pinentry = pkgs.pinentry-gnome3;
       };
     };
   };
@@ -42,10 +62,17 @@
 
   ar.home = {
     apps = {
+      chromium.enable = true;
       fastfetch.enable = true;
+      firefox.enable = true;
       helix.enable = true;
+      kitty.enable = true;
       shell.enable = true;
+      vsCodium.enable = true;
       yazi.enable = true;
     };
+
+    defaultApps.enable = true;
+    theme.enable = true;
   };
 }
