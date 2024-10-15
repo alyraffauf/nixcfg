@@ -60,8 +60,8 @@ in {
         context.modules = [
             { name = libpipewire-module-filter-chain
                 args = {
-                    node.description = "Legion GO"
-                    media.name       = "Legion GO"
+                    node.description = "Legion Go"
+                    media.name       = "Legion Go"
                     filter.graph = {
                         nodes = [
                             {
@@ -87,7 +87,7 @@ in {
                         outputs = [ "convFL:Out" "convFR:Out" ]
                     }
                     capture.props = {
-                        node.name      = "Legion GO"
+                        node.name      = "Legion Go"
                         media.class    = "Audio/Sink"
                         priority.driver = 1000
                         priority.session = 1000
@@ -95,7 +95,7 @@ in {
                         audio.position = [ FL FR ]
                     }
                     playback.props = {
-                        node.name      = "Legion GO corrected"
+                        node.name      = "Legion Go corrected"
                         node.passive   = true
                         audio.channels = 2
                         audio.position = [ FL FR ]
