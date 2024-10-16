@@ -29,6 +29,7 @@ in {
           "iphone12" = {id = "SBQNUXS-H4XDJ3E-RBHJPT5-45WDJJA-2U43M4P-23XGUJ7-E3CNNKZ-BXSGIA3";}; # iPhone 12 Pro Max
           "lavaridge" = {id = "TMMSCVA-MDJTDPC-PC47NUA-2VPLAIB-6S6MEU7-KALIGUJ-AWDUOUU-XD73MAY";}; # Framework 13 AMD
           "mauville" = {id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";}; # Desktop/homelab
+          "norman" = {id = "IVFUFD4-LUQMX5V-FMUZQD2-EP6GOGQ-LPGYF5M-GFQDTNL-DVNQEA7-WWSWEQL";}; # Pixel 8a
           "pacifidlog" = {id = "6EBVXYI-HZW4LQI-T6L3TTI-DZEBXJM-RP3DW7N-BCAG6FC-G2654DN-XJFSLQD";}; # Lenovo Legion Go
           "petalburg" = {id = "ECTD3LW-YZTJIXX-HLQYXT7-UGZSGST-3DDKF72-DJPMDHE-SUYDWIT-ASTKTAE";}; # Yoga 9i
           "rustboro" = {id = "7CXGPQN-7DYDYJN-DKELOR3-RD4HZUW-SSUDGLZ-WVXYFUT-DPT2MGD-6PO5BQF";}; # Thinkpad t440p
@@ -41,7 +42,7 @@ in {
             "sync" = {
               id = "default";
               path = "/home/aly/sync";
-              devices = ["fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
+              devices = ["fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
               versioning = {
                 type = "staggered";
                 params = {
@@ -54,7 +55,7 @@ in {
             "camera" = {
               id = "fcsgh-dlxys";
               path = "/home/aly/pics/camera";
-              devices = ["fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "winona"];
+              devices = ["fallarbor" "lavaridge" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
@@ -64,7 +65,7 @@ in {
             "screenshots" = {
               id = "screenshots";
               path = "/home/aly/pics/screenshots";
-              devices = ["fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "winona"];
+              devices = ["fallarbor" "lavaridge" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
