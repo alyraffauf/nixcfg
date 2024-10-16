@@ -64,7 +64,7 @@ in {
             "screenshots" = {
               id = "screenshots";
               path = "/home/aly/pics/screenshots";
-              devices = ["fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport""winona"];
+              devices = ["fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
