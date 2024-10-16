@@ -140,7 +140,6 @@
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
       dustin = import ./homes/dustin self;
-      morgan = import ./homes/morgan self;
     };
 
     nixosModules = {
