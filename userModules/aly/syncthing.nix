@@ -52,16 +52,6 @@ in {
               };
             };
 
-            "camera" = {
-              id = "fcsgh-dlxys";
-              path = "/home/aly/pics/camera";
-              devices = ["fallarbor" "lavaridge" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
-              versioning = {
-                params.cleanoutDays = "5";
-                type = "trashcan";
-              };
-            };
-
             "screenshots" = {
               id = "screenshots";
               path = "/home/aly/pics/screenshots";
