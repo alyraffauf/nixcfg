@@ -23,7 +23,6 @@
           ../../secrets/publicKeys/aly_lavaridge.pub
           ../../secrets/publicKeys/aly_mauville.pub
           ../../secrets/publicKeys/aly_mossdeep.pub
-          ../../secrets/publicKeys/aly_petalburg.pub
           ../../secrets/publicKeys/aly_rustboro.pub
         ];
       };
