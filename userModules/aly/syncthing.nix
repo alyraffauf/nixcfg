@@ -31,7 +31,6 @@ in {
           "lavaridge" = {id = "TMMSCVA-MDJTDPC-PC47NUA-2VPLAIB-6S6MEU7-KALIGUJ-AWDUOUU-XD73MAY";}; # Framework 13 AMD
           "mauville" = {id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";}; # Desktop/homelab
           "pacifidlog" = {id = "6EBVXYI-HZW4LQI-T6L3TTI-DZEBXJM-RP3DW7N-BCAG6FC-G2654DN-XJFSLQD";}; # Lenovo Legion Go
-          "petalburg" = {id = "ECTD3LW-YZTJIXX-HLQYXT7-UGZSGST-3DDKF72-DJPMDHE-SUYDWIT-ASTKTAE";}; # Yoga 9i
           "rustboro" = {id = "7CXGPQN-7DYDYJN-DKELOR3-RD4HZUW-SSUDGLZ-WVXYFUT-DPT2MGD-6PO5BQF";}; # Thinkpad t440p
           "slateport" = {id = "MDJFDUG-UJAXQXI-AMEF2AR-PBMD5QK-Z5ZG6AA-RCJCU3M-GZHQQEA-X2JGOAK";}; # homelab a
           "wallace" = {id = "X55NQL2-H3TEJ5U-EXZPBKQ-LI6BMB4-W2ULDIJ-YNIHJHB-4ISCOJB-UHNLYAX";}; # Samsung a35
@@ -43,7 +42,7 @@ in {
             "sync" = {
               id = "default";
               path = "/home/aly/sync";
-              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "pacifidlog" "petalburg" "rustboro" "slateport" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "pacifidlog" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 type = "staggered";
                 params = {
@@ -56,7 +55,7 @@ in {
             "camera" = {
               id = "fcsgh-dlxys";
               path = "/home/aly/pics/camera";
-              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
@@ -66,7 +65,7 @@ in {
             "screenshots" = {
               id = "screenshots";
               path = "/home/aly/pics/screenshots";
-              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "petalburg" "rustboro" "slateport" "wallace" "winona"];
+              devices = ["brawly" "fallarbor" "lavaridge" "mauville" "rustboro" "slateport" "wallace" "winona"];
               versioning = {
                 params.cleanoutDays = "5";
                 type = "trashcan";
@@ -77,7 +76,7 @@ in {
             "music" = {
               id = "6nzmu-z9der";
               path = config.ar.users.aly.syncthing.musicPath;
-              devices = ["lavaridge" "mauville" "petalburg" "rustboro" "wallace"];
+              devices = ["lavaridge" "mauville" "rustboro" "wallace"];
             };
           };
       };
