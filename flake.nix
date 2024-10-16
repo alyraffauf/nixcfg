@@ -100,7 +100,6 @@
       "lavaridge"
       "mauville"
       "pacifidlog"
-      "petalburg"
       "rustboro"
       "slateport"
     ];
