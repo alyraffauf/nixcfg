@@ -87,19 +87,20 @@ in {
                         outputs = [ "convFL:Out" "convFR:Out" ]
                     }
                     capture.props = {
-                        node.name      = "Legion Go"
-                        media.class    = "Audio/Sink"
-                        priority.driver = 1000
-                        priority.session = 1000
-                        audio.channels = 2
-                        audio.position = [ FL FR ]
+                        node.name        = "Legion Go"
+                        node.autoconnect = true
+                        media.class      = "Audio/Sink"
+                        priority.driver  = 1000
+                        priority.session = 2000
+                        audio.channels   = 2
+                        audio.position   = [ FL FR ]
                     }
                     playback.props = {
                         node.name      = "Legion Go corrected"
                         node.passive   = true
                         audio.channels = 2
                         audio.position = [ FL FR ]
-                        node.target = "alsa_output.pci-0000_c2_00.6.analog-stereo"
+                        node.target    = "alsa_output.pci-0000_c2_00.6.analog-stereo"
                     }
                 }
             }
