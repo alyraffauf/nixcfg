@@ -15,7 +15,7 @@
           services = {
             easyeffects = {
               enable = true;
-              preset = "fw13-easy-effects";
+              preset = "fw13-autogain";
             };
           };
         };
