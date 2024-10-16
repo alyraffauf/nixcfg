@@ -2,6 +2,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
@@ -38,6 +39,31 @@
 
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";
+
+  services.udev.extraRules = let
+    hyprlandDynamicRes = pkgs.writeShellScript "hyprland-dynamic-resolution" ''
+      MON="eDP-1"
+      RES="2880x1920"
+
+      for dir in /run/user/*; do
+        for hypr_dir in "$dir/hypr/"*/; do
+          socket="''${hypr_dir}.socket.sock"
+          if [[ -S $socket ]]; then
+            monitor_info=$(echo -e "monitors" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket")
+
+            if echo "$monitor_info" | grep -q "$MON"; then
+              echo -e "keyword monitor $MON, $RES@$1, 0x0, 2, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
+            fi
+
+          fi
+        done
+      done
+    '';
+  in ''
+    SUBSYSTEM=="power_supply", ATTR{online}=="1", ACTION=="change", RUN+="${hyprlandDynamicRes} 120 1"
+    SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", RUN+="${hyprlandDynamicRes} 60 0"
+  '';
+
   system.stateVersion = "24.05";
 
   ar = {
