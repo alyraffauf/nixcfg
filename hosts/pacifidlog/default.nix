@@ -140,6 +140,7 @@ in {
     };
 
     desktop.hyprland.enable = true;
+    services.flatpak.enable = true;
 
     users.aly = {
       enable = true;
