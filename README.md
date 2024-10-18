@@ -24,7 +24,6 @@ This flake takes a variety of upstream and third party flakes as inputs:
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
 - [jovian](https://github.com/Jovian-Experiments/Jovian-NixOS): steam deck UI + optimizations.
 - [lanzaboote](https://github.com/nix-community/lanzaboote): secure boot for NixOS.
-- [nixhw](https://github.com/alyraffauf/nixhw): opinionated set of generic (AMD, Intel, Laptop, SSD) and specific (Framework 13, Yoga 9i, Thinkpad T440p) hardware configuration modules for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
 - [sway](https://github.com/swaywm/sway): fantastic, rock-solid tiling compositor for wayland.
@@ -39,7 +38,7 @@ This flake takes a variety of upstream and third party flakes as inputs:
 - nixosModules.nixos: opinionated desktop, app, and service options.
 - nixosModules.users: basic user configuration options.
 
-In addition, this flake outputs NixOS configuration and home-manager configurations for all of my hosts and users, respectively.
+In addition, this flake outputs NixOS configurations, home-manager configurations, and various hardware modules for all of my hosts and users.
 
 ## Deploying to NixOS
 

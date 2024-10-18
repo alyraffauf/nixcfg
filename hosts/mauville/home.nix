@@ -59,12 +59,12 @@
               ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
                 declare -A backups
                 backups=(
-                  ['/home/aly/pics/camera']="b2://aly-camera"
                   ['/home/aly/sync']="b2://aly-sync"
-                  ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
-                  ['/mnt/Media/Music']="b2://aly-music"
                   ['/mnt/Archive/Movies']="b2://aly-movies"
                   ['/mnt/Archive/Shows']="b2://aly-shows"
+                  ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
+                  ['/mnt/Media/Music']="b2://aly-music"
+                  ['/mnt/Media/Pictures']="b2://aly-pictures"
                 )
 
                 backblaze-b2 authorize_account `cat ${config.age.secrets.backblazeKeyId.path}` `cat ${config.age.secrets.backblazeKey.path}`
