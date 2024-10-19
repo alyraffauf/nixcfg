@@ -41,10 +41,6 @@
 
   nixpkgs = {
     config.allowUnfree = true; # Allow unfree packages
-
-    overlays = [
-      self.overlays.default
-      self.overlays.rofi-bluetooth
-    ];
+    overlays = [self.overlays.default];
   };
 }

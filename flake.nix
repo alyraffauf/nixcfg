@@ -189,7 +189,6 @@
     );
 
     overlays = {
-      rofi-bluetooth = import ./overlays/rofi-bluetooth.nix;
       tablet = import ./overlays/tablet.nix;
       default = import ./overlays/default.nix {inherit self;};
     };
@@ -205,6 +204,7 @@
       };
 
       hhd-ui = pkgs.callPackage ./pkgs/hhd-ui.nix {};
+      rofi-bluetooth = pkgs.callPackage ./pkgs/rofi-bluetooth.nix {};
     });
   };
 }
