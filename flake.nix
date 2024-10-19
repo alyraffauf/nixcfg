@@ -141,7 +141,6 @@
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
       common-nix = import ./common/nix.nix;
-      common-overlays = import ./common/overlays.nix;
       common-pkgs = import ./common/pkgs.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
@@ -191,6 +190,7 @@
     overlays = {
       rofi-bluetooth = import ./overlays/rofi-bluetooth.nix;
       tablet = import ./overlays/tablet.nix;
+      default = import ./overlays/default.nix {inherit self;};
     };
 
     packages = forAllLinuxSystems ({pkgs}: rec {

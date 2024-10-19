@@ -14,7 +14,6 @@
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
-    self.nixosModules.common-overlays
     self.nixosModules.common-pkgs
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th

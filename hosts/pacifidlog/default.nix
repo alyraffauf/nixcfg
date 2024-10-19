@@ -18,7 +18,6 @@
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
-    self.nixosModules.common-overlays
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
@@ -44,10 +43,10 @@
   };
 
   environment = {
-    systemPackages = [
-      self.packages.${pkgs.system}.hhd-ui
-      pkgs.heroic
-      pkgs.lutris
+    systemPackages = with pkgs; [
+      heroic
+      hhd-ui
+      lutris
     ];
 
     variables.GDK_SCALE = "2";
@@ -86,9 +85,7 @@
         handheld-daemon.overrideAttrs (oldAttrs: {
           propagatedBuildInputs =
             oldAttrs.propagatedBuildInputs
-            ++ [
-              self.packages.${pkgs.system}.adjustor
-            ];
+            ++ [pkgs.adjustor];
         });
 
       user = "aly";
@@ -102,7 +99,7 @@
   };
 
   system.stateVersion = "24.11";
-  systemd.services.handheld-daemon.path = [self.packages.${pkgs.system}.hhd-ui pkgs.lsof];
+  systemd.services.handheld-daemon.path = with pkgs; [hhd-ui lsof];
   zramSwap.memoryPercent = 100;
 
   ar = {
