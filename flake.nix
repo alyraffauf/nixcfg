@@ -129,13 +129,6 @@
 
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
-    packages = forAllLinuxSystems ({pkgs}: {
-      default = pkgs.writeShellApplication {
-        name = "clean-install";
-        text = ./flake/clean-install.sh;
-      };
-    });
-
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
@@ -194,5 +187,14 @@
           ];
         }
     );
+
+    overlays.tablet = import ./overlays/tablet.nix;
+
+    packages = forAllLinuxSystems ({pkgs}: {
+      default = pkgs.writeShellApplication {
+        name = "clean-install";
+        text = ./flake/clean-install.sh;
+      };
+    });
   };
 }
