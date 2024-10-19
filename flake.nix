@@ -112,6 +112,7 @@
             git
             mdformat
             nh
+            nix-update
             ruby
             sbctl
           ])
