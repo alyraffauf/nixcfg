@@ -39,7 +39,7 @@
         enable = true;
         extraOptions = ["--group-directories-first" "--header"];
         git = true;
-        icons = true;
+        icons = "auto";
       };
 
       fzf = {
