@@ -1,3 +1,4 @@
+# Text input fixes for electron apps.
 final: prev: {
   brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
 
