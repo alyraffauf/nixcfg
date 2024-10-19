@@ -1,4 +1,4 @@
-{
+{self, ...}: {
   nix = {
     gc = {
       automatic = true;
@@ -37,5 +37,14 @@
 
       trusted-users = ["aly"];
     };
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true; # Allow unfree packages
+
+    overlays = [
+      self.overlays.default
+      self.overlays.rofi-bluetooth
+    ];
   };
 }

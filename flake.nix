@@ -112,6 +112,7 @@
             git
             mdformat
             nh
+            nix-update
             ruby
             sbctl
           ])
@@ -129,13 +130,6 @@
 
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
-    packages = forAllLinuxSystems ({pkgs}: {
-      default = pkgs.writeShellApplication {
-        name = "clean-install";
-        text = ./flake/clean-install.sh;
-      };
-    });
-
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
@@ -148,7 +142,6 @@
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
       common-nix = import ./common/nix.nix;
-      common-overlays = import ./common/overlays.nix;
       common-pkgs = import ./common/pkgs.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
@@ -194,5 +187,24 @@
           ];
         }
     );
+
+    overlays = {
+      rofi-bluetooth = import ./overlays/rofi-bluetooth.nix;
+      tablet = import ./overlays/tablet.nix;
+      default = import ./overlays/default.nix {inherit self;};
+    };
+
+    packages = forAllLinuxSystems ({pkgs}: rec {
+      default = clean-install;
+
+      adjustor = pkgs.callPackage ./pkgs/adjustor.nix {};
+
+      clean-install = pkgs.writeShellApplication {
+        name = "clean-install";
+        text = ./flake/clean-install.sh;
+      };
+
+      hhd-ui = pkgs.callPackage ./pkgs/hhd-ui.nix {};
+    });
   };
 }

@@ -5,10 +5,7 @@
   lib,
   self,
   ...
-}: let
-  adjustor = pkgs.callPackage ./../../pkgs/adjustor.nix {};
-  hhd-ui = pkgs.callPackage ./../../pkgs/hhd-ui.nix {};
-in {
+}: {
   imports = [
     ./home.nix
     ./secrets.nix
@@ -21,7 +18,6 @@ in {
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
-    self.nixosModules.common-overlays
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
@@ -47,10 +43,10 @@ in {
   };
 
   environment = {
-    systemPackages = [
+    systemPackages = with pkgs; [
+      heroic
       hhd-ui
-      pkgs.heroic
-      pkgs.lutris
+      lutris
     ];
 
     variables.GDK_SCALE = "2";
@@ -68,13 +64,9 @@ in {
 
     steam = {
       enable = true;
-
-      environment = {
-        STEAM_GAMESCOPE_COLOR_MANAGED = "0";
-      };
-
       autoStart = true;
       desktopSession = "hyprland";
+      environment.STEAM_GAMESCOPE_COLOR_MANAGED = "0";
       user = "aly";
     };
 
@@ -82,44 +74,21 @@ in {
   };
 
   networking.hostName = "pacifidlog";
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      brave = prev.brave.override {commandLineArgs = "--gtk-version=4 --enable-wayland-ime";};
-
-      obsidian = prev.obsidian.overrideAttrs (old: {
-        installPhase =
-          builtins.replaceStrings ["--ozone-platform=wayland"]
-          ["--ozone-platform=wayland --enable-wayland-ime"]
-          old.installPhase;
-      });
-
-      vscodium = prev.vscodium.override {commandLineArgs = "--enable-wayland-ime";};
-
-      webcord = prev.webcord.overrideAttrs (old: {
-        installPhase =
-          builtins.replaceStrings ["--ozone-platform-hint=auto"]
-          ["--ozone-platform-hint=auto --enable-wayland-ime"]
-          old.installPhase;
-      });
-    })
-  ];
-
+  nixpkgs.overlays = [self.overlays.tablet];
   programs.steam.platformOptimizations.enable = true;
 
   services = {
     handheld-daemon = {
       enable = true;
-      user = "aly";
 
       package = with pkgs;
         handheld-daemon.overrideAttrs (oldAttrs: {
           propagatedBuildInputs =
             oldAttrs.propagatedBuildInputs
-            ++ [
-              adjustor
-            ];
+            ++ [pkgs.adjustor];
         });
+
+      user = "aly";
     };
 
     pipewire.lowLatency = {
@@ -130,7 +99,7 @@ in {
   };
 
   system.stateVersion = "24.11";
-  systemd.services.handheld-daemon.path = [hhd-ui pkgs.lsof];
+  systemd.services.handheld-daemon.path = with pkgs; [hhd-ui lsof];
   zramSwap.memoryPercent = 100;
 
   ar = {

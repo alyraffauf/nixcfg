@@ -9,28 +9,28 @@ python3.pkgs.buildPythonApplication rec {
   pyproject = true;
 
   src = fetchFromGitHub {
+    hash = "sha256-9ONWKI68Llh36giIS6nVKNrZYmNAGMfwW2vgPMFuwXM=";
     owner = "hhd-dev";
     repo = "adjustor";
     rev = "v${version}";
-    hash = "sha256-9ONWKI68Llh36giIS6nVKNrZYmNAGMfwW2vgPMFuwXM=";
   };
 
   propagatedBuildInputs = with python3.pkgs; [
-    setuptools
-    rich
-    pyroute2
+    dbus-python
     fuse
     pygobject3
-    dbus-python
+    pyroute2
+    rich
+    setuptools
   ];
 
   # This package doesn't have upstream tests.
   doCheck = false;
 
   meta = with lib; {
+    description = "TDP control of AMD Handhelds with handheld-daemon.";
     homepage = "https://github.com/hhd-dev/adjustor/";
-    description = "Allows for TDP control of AMD Handhelds under handheld-daemon support";
-    platforms = platforms.linux;
     license = licenses.mit;
+    platforms = platforms.linux;
   };
 }

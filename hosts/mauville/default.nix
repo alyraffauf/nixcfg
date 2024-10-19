@@ -18,7 +18,6 @@ in {
     self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-nix
-    self.nixosModules.common-overlays
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
