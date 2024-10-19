@@ -7,7 +7,22 @@ on:
       - '_img/**'
   workflow_dispatch:
 jobs:
-  default-build:
+  adjustor-build:
+    if: contains(github.event.head_commit.message, 'pkgs/') || contains(github.event.head_commit.message, 'flake.nix') || contains(github.event.head_commit.message, 'flake.lock')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build default package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
+  clean-install-build:
     if: contains(github.event.head_commit.message, 'flake/') || contains(github.event.head_commit.message, 'flake.nix') || contains(github.event.head_commit.message, 'flake.lock')
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +36,22 @@ jobs:
           name: alyraffauf
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build default package
-        run: nix build --accept-flake-config .#packages.x86_64-linux.default
+        run: nix build --accept-flake-config .#packages.x86_64-linux.clean-install
+  hd-ui-build:
+    if: contains(github.event.head_commit.message, 'pkgs/') || contains(github.event.head_commit.message, 'flake.nix') || contains(github.event.head_commit.message, 'flake.lock')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build default package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.hhd-ui
   fallarbor-build:
     runs-on: ubuntu-latest
     steps:
