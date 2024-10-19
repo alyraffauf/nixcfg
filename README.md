@@ -30,13 +30,15 @@ This flake takes a variety of upstream and third party flakes as inputs:
 
 ## Outputs
 
-- homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
 - homeManagerModules.aly: my home-manager config.
-- homeManagerModules.aly-nox: my home-manager config, but for headless systems.
+- homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
 - homeManagerModules.dustin: my husband's home-manager config.
 - nixosModules.common: various common modules specific to my hosts.
 - nixosModules.nixos: opinionated desktop, app, and service options.
 - nixosModules.users: basic user configuration options.
+- overlays.default: adds every package output to nixpkgs.
+- overlays.rofi-bluetooth: overlays rofi-bluetooth with custom patches.
+- overlays.tablet: tablet optimizations, mainly for electron apps.
 
 In addition, this flake outputs NixOS configurations, home-manager configurations, and various hardware modules for all of my hosts and users.
 
