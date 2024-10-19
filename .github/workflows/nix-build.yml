@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   adjustor-build:
+    if: contains(github.event.head_commit.message, 'pkgs/') || contains(github.event.head_commit.message, 'flake.nix') || contains(github.event.head_commit.message, 'flake.lock')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -22,6 +23,7 @@ jobs:
       - name: Build default package
         run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
   clean-install-build:
+    if: contains(github.event.head_commit.message, 'flake/') || contains(github.event.head_commit.message, 'flake.nix') || contains(github.event.head_commit.message, 'flake.lock')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -36,6 +38,7 @@ jobs:
       - name: Build default package
         run: nix build --accept-flake-config .#packages.x86_64-linux.clean-install
   hd-ui-build:
+    if: contains(github.event.head_commit.message, 'pkgs/') || contains(github.event.head_commit.message, 'flake.nix') || contains(github.event.head_commit.message, 'flake.lock')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
