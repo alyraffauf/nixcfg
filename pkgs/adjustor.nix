@@ -29,7 +29,7 @@ python3.pkgs.buildPythonApplication rec {
 
   meta = with lib; {
     homepage = "https://github.com/hhd-dev/adjustor/";
-    description = "Allows for TDP control of AMD Handhelds under handheld-daemon support";
+    description = "Allows for TDP control of AMD Handhelds with handheld-daemon support";
     platforms = platforms.linux;
     license = licenses.mit;
   };

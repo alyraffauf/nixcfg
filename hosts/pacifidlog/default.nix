@@ -5,10 +5,7 @@
   lib,
   self,
   ...
-}: let
-  adjustor = pkgs.callPackage ./../../pkgs/adjustor.nix {};
-  hhd-ui = pkgs.callPackage ./../../pkgs/hhd-ui.nix {};
-in {
+}: {
   imports = [
     ./home.nix
     ./secrets.nix
@@ -48,7 +45,7 @@ in {
 
   environment = {
     systemPackages = [
-      hhd-ui
+      self.packages.${pkgs.system}.hhd-ui
       pkgs.heroic
       pkgs.lutris
     ];
@@ -90,7 +87,7 @@ in {
           propagatedBuildInputs =
             oldAttrs.propagatedBuildInputs
             ++ [
-              adjustor
+              self.packages.${pkgs.system}.adjustor
             ];
         });
 
@@ -105,7 +102,7 @@ in {
   };
 
   system.stateVersion = "24.11";
-  systemd.services.handheld-daemon.path = [hhd-ui pkgs.lsof];
+  systemd.services.handheld-daemon.path = [self.packages.${pkgs.system}.hhd-ui pkgs.lsof];
   zramSwap.memoryPercent = 100;
 
   ar = {

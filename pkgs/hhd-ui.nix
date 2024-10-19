@@ -13,7 +13,7 @@ appimageTools.wrapType2 rec {
 
   meta = with lib; {
     homepage = "https://github.com/hhd-dev/hhd-ui/";
-    description = "A UI app that can manage Handheld Daemon settings from Steam, the Desktop, and the Web.";
+    description = "Graphical user interfance for Handheld Daemon settings from Steam, the Desktop, and the Web.";
     platforms = platforms.linux;
     license = licenses.mit;
     mainProgram = "hhd-ui";
