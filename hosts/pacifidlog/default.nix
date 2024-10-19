@@ -68,13 +68,9 @@ in {
 
     steam = {
       enable = true;
-
-      environment = {
-        STEAM_GAMESCOPE_COLOR_MANAGED = "0";
-      };
-
       autoStart = true;
       desktopSession = "hyprland";
+      environment.STEAM_GAMESCOPE_COLOR_MANAGED = "0";
       user = "aly";
     };
 
@@ -88,7 +84,6 @@ in {
   services = {
     handheld-daemon = {
       enable = true;
-      user = "aly";
 
       package = with pkgs;
         handheld-daemon.overrideAttrs (oldAttrs: {
@@ -98,6 +93,8 @@ in {
               adjustor
             ];
         });
+
+      user = "aly";
     };
 
     pipewire.lowLatency = {
