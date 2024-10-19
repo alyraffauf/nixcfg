@@ -188,7 +188,10 @@
         }
     );
 
-    overlays.tablet = import ./overlays/tablet.nix;
+    overlays = {
+      rofi-bluetooth = import ./overlays/rofi-bluetooth.nix;
+      tablet = import ./overlays/tablet.nix;
+    };
 
     packages = forAllLinuxSystems ({pkgs}: {
       default = pkgs.writeShellApplication {
