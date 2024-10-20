@@ -1,6 +1,7 @@
 {self, ...}: {
   imports = [
     ../common.nix
+    self.nixosModules.hw-common
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-intel-cpu
     self.nixosModules.hw-common-intel-gpu

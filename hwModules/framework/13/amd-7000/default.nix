@@ -7,6 +7,7 @@
   imports = [
     ../../common.nix
     ../common.nix
+    self.nixosModules.hw-common
     self.nixosModules.hw-common-amd-cpu
     self.nixosModules.hw-common-amd-gpu
     self.nixosModules.hw-common-bluetooth

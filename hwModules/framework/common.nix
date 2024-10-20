@@ -18,10 +18,7 @@
 
   environment.systemPackages = [pkgs.framework-tool] ++ lib.optional (pkgs ? "fw-ectool") pkgs.fw-ectool;
 
-  hardware = {
-    enableAllFirmware = true;
-    sensor.iio.enable = true;
-  };
+  hardware.sensor.iio.enable = true;
 
   services = {
     fprintd.enable = true;
