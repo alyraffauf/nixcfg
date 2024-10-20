@@ -44,6 +44,8 @@ in {
   hardware.sensor.iio.enable = true;
 
   services = {
+    logind.killUserProcesses = true;
+
     pipewire.wireplumber.configPackages = [
       (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/10-legion-go-convolver.conf" ''
         # Convolver Configuration for Pipewire
