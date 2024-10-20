@@ -46,7 +46,7 @@ in {
       "fs.inotify.max_user_instances" = 8192;
       "fs.inotify.max_user_watches" = 524288;
 
-      # Disable wtachdogs for maximum performance at the cost of resiliency
+      # Disable watchdogs for maximum performance at the cost of resiliency
       "kernel.nmi_watchdog" = 0;
       "kernel.soft_watchdog" = 0;
       "kernel.split_lock_mitigate" = 0;
