@@ -22,24 +22,18 @@ in {
   ];
 
   boot = {
-    initrd = {
-      availableKernelModules = [
-        "amdgpu"
-        "nvme"
-        "rtsx_pci_sdmmc"
-        "sd_mod"
-        "sdhci_pci"
-        "thunderbolt"
-        "usb_storage"
-        "usbhid"
-        "xhci_pci"
-      ];
+    initrd.availableKernelModules = [
+      "nvme"
+      "rtsx_pci_sdmmc"
+      "sd_mod"
+      "sdhci_pci"
+      "thunderbolt"
+      "usb_storage"
+      "usbhid"
+      "xhci_pci"
+    ];
 
-      kernelModules = ["amdgpu"];
-    };
-
-    blacklistedKernelModules = ["k10temp"]; # Conflicts with zenpower
-    extraModulePackages = with config.boot.kernelPackages; [acpi_call zenpower];
+    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
 
     kernel.sysctl = {
       # Improved file monitoring
@@ -66,8 +60,6 @@ in {
       "vm.watermark_boost_factor" = 0;
       "vm.watermark_scale_factor" = 125;
     };
-
-    kernelModules = ["zenpower"]; # Improved temperature monitoring
 
     # Xanmod seems more responsive under load
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
