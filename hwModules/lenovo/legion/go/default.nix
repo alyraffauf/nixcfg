@@ -116,12 +116,18 @@ in {
     ];
 
     udev.extraRules = ''
+      # Lenovo Legion Go Controller
+      ACTION=="add", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6182", RUN+="${pkgs.kmod}/bin/modprobe xpad" RUN+="/bin/sh -c 'echo 17ef 6182 > /sys/bus/usb/drivers/xpad/new_id'"
+
       # SSD
       ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
+
       # NVME
       ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
+
       # MicroSD
       ACTION=="add|change", KERNEL=="mmcblk[0-9]p[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
+
       # HDD
       ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
     '';
