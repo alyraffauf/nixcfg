@@ -16,15 +16,20 @@
 
   boot = {
     initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
+
     extraModprobeConfig = ''
       options snd_hda_intel power_save=1
     '';
+
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   };
 
   networking.networkmanager = {
     enable = true;
-    wifi.powersave = true;
-    wifi.backend = "iwd";
+
+    wifi = {
+      backend = "iwd";
+      powersave = true;
+    };
   };
 }
