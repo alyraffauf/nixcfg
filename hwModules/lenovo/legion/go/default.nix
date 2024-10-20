@@ -42,6 +42,13 @@ in {
     extraModulePackages = with config.boot.kernelPackages; [acpi_call zenpower];
     kernelModules = ["zenpower"];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+
+    kernelParams = [
+      "kernel.split_lock_mitigate=0"
+      "kernel.nmi_watchdog=0"
+      "kernel.soft_watchdog=0"
+      "kernel.watchdog=0"
+    ];
   };
 
   hardware = {
