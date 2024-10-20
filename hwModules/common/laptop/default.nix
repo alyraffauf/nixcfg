@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  boot.kernel.sysctl = {
+    "kernel.nmi_watchdog" = 0;
+  };
+
   services = {
     pipewire.wireplumber.extraConfig = {
       # Pipewire eats battery by never disabling the camera.
