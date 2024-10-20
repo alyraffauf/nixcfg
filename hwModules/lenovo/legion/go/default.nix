@@ -40,15 +40,28 @@ in {
 
     blacklistedKernelModules = ["k10temp"];
     extraModulePackages = with config.boot.kernelPackages; [acpi_call zenpower];
+
+    kernel.sysctl = {
+      "fs.inotify.max_user_instances" = 8192;
+      "fs.inotify.max_user_watches" = 524288;
+      "kernel.nmi_watchdog" = 0;
+      "kernel.soft_watchdog" = 0;
+      "kernel.split_lock_mitigate" = 0;
+      "kernel.watchdog" = 0;
+      "net.core.default_qdisc" = "fq";
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.ipv4.tcp_mtu_probing" = 1;
+      "vm.dirty_background_bytes" = 134217728;
+      "vm.dirty_bytes" = 268435456;
+      "vm.max_map_count" = 2147483642;
+      "vm.page-cluster" = 0;
+      "vm.swappiness" = 180;
+      "vm.watermark_boost_factor" = 0;
+      "vm.watermark_scale_factor" = 125;
+    };
+
     kernelModules = ["zenpower"];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-
-    kernelParams = [
-      "kernel.split_lock_mitigate=0"
-      "kernel.nmi_watchdog=0"
-      "kernel.soft_watchdog=0"
-      "kernel.watchdog=0"
-    ];
   };
 
   hardware = {
