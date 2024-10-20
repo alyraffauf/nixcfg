@@ -50,10 +50,10 @@ in {
       "kernel.watchdog" = 0;
       "net.core.default_qdisc" = "fq";
       "net.ipv4.tcp_congestion_control" = "bbr";
-      "net.ipv4.tcp_mtu_probing" = 1;
+      "net.ipv4.tcp_mtu_probing" = lib.mkForce 1;
       "vm.dirty_background_bytes" = 134217728;
       "vm.dirty_bytes" = 268435456;
-      "vm.max_map_count" = 2147483642;
+      "vm.max_map_count" = lib.mkForce 2147483642;
       "vm.page-cluster" = 0;
       "vm.swappiness" = 180;
       "vm.watermark_boost_factor" = 0;
