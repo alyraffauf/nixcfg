@@ -21,10 +21,12 @@ in {
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-common
     self.nixosModules.hw-common-amd-cpu
     self.nixosModules.hw-common-amd-gpu
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-ssd
+    self.nixosModules.hw-common-gaming
   ];
 
   boot = {
@@ -44,7 +46,6 @@ in {
     };
   };
 
-  hardware.enableAllFirmware = true;
   networking.hostName = "mauville";
 
   services = {

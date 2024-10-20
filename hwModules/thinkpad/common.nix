@@ -1,10 +1,6 @@
 {...}: {
-  hardware = {
-    enableAllFirmware = true;
-
-    trackpoint = {
-      enable = true;
-      emulateWheel = true;
-    };
+  hardware.trackpoint = {
+    enable = true;
+    emulateWheel = true;
   };
 }

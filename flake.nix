@@ -146,9 +146,11 @@
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
 
+      hw-common = import ./hwModules/common;
       hw-common-amd-cpu = import ./hwModules/common/gpu/amd;
       hw-common-amd-gpu = import ./hwModules/common/cpu/amd;
       hw-common-bluetooth = import ./hwModules/common/bluetooth;
+      hw-common-gaming = import ./hwModules/common/gaming;
       hw-common-intel-cpu = import ./hwModules/common/cpu/intel;
       hw-common-intel-gpu = import ./hwModules/common/gpu/intel;
       hw-common-laptop = import ./hwModules/common/laptop;

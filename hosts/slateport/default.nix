@@ -16,6 +16,7 @@
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-common
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-intel-cpu
     self.nixosModules.hw-common-intel-gpu
@@ -31,7 +32,6 @@
     };
   };
 
-  hardware.enableAllFirmware = true;
   networking.hostName = "slateport";
 
   services = {
