@@ -5,8 +5,8 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    image = "${self.inputs.wallpapers}/wallhaven-3lyrvy.png";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
+    image = "${self.inputs.wallpapers}/Legion_Go_Meteorite_Wallpaper.jpg";
     imageScalingMode = "fill";
     polarity = "dark";
 

@@ -789,11 +789,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1728177558,
-        "narHash": "sha256-jD8GijFjpcjKb2O0g73utSoNkk/J8XLK4jFqhjboN44=",
+        "lastModified": 1729483172,
+        "narHash": "sha256-aXYgx0DdFGVHscztbmr//bnzB9N4NX1l9agyfbt3Kas=",
         "owner": "alyraffauf",
         "repo": "wallpapers",
-        "rev": "767fa4a1faa166ed2f18297c013aefbd062432b8",
+        "rev": "5e2a0ae70fa8c84918d6f1f6909456e4e57346bb",
         "type": "github"
       },
       "original": {
