@@ -297,6 +297,7 @@ in {
           #custom-app-close,
           #custom-logout,
           #custom-menu,
+          #custom-virtual-keyboard,
           #idle_inhibitor,
           #mode,
           #network,
