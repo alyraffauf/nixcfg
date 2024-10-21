@@ -105,6 +105,25 @@ in {
             tooltip-format = "Close the focused window.";
           };
 
+          "custom/virtual-keyboard" = let
+            toggle-virtual-keyboard = pkgs.writeShellScript "toggle-virtual-keyboard" ''
+              STATE=`${lib.getExe pkgs.dconf} read /org/gnome/desktop/a11y/applications/screen-keyboard-enabled`
+
+              if [ $STATE -z ] || [ $STATE == "false" ]; then
+                if ! [ `pgrep -f ${lib.getExe' pkgs.squeekboard "squeekboard"}` ]; then
+                  ${lib.getExe' pkgs.squeekboard "squeekboard"} &
+                fi
+                ${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled true
+              elif [ $STATE == "true" ]; then
+                ${lib.getExe pkgs.dconf} write /org/gnome/desktop/a11y/applications/screen-keyboard-enabled false
+              fi
+            '';
+          in {
+            on-click = ''${toggle-virtual-keyboard}'';
+            format = "󰌌";
+            tooltip-format = "Toggle the virtual keyboard.";
+          };
+
           clock = {
             format = "{:%I:%M%p}";
             interval = 60;
@@ -235,7 +254,9 @@ in {
             modules =
               ["custom/menu"]
               ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
-              "custom/app-close";
+              "custom/app-close"
+              ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
+              "custom/virtual-keyboard";
 
             orientation = "horizontal";
           };
