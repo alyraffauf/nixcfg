@@ -109,6 +109,7 @@
     };
 
     desktop.hyprland.enable = true;
+    laptopMode = true;
     services.flatpak.enable = true;
 
     users.aly = {
