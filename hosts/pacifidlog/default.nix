@@ -66,7 +66,12 @@
       enable = true;
       autoStart = true;
       desktopSession = "hyprland";
-      environment.STEAM_GAMESCOPE_COLOR_MANAGED = "0";
+
+      environment = {
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${pkgs.proton-ge-bin.steamcompattool}";
+        STEAM_GAMESCOPE_COLOR_MANAGED = "0";
+      };
+
       user = "aly";
     };
 
