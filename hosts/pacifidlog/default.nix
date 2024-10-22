@@ -68,7 +68,7 @@
       desktopSession = "hyprland";
 
       environment = {
-        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${pkgs.proton-ge-bin.steamcompattool}";
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS = lib.makeSearchPathOutput "steamcompattool" "" config.programs.steam.extraCompatPackages;
         STEAM_GAMESCOPE_COLOR_MANAGED = "0";
       };
 
