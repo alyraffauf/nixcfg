@@ -43,13 +43,13 @@
         "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
         "javapatron" = mkOpenWiFi "javapatron";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
+        "norman" = mkWPA2WiFi "norman" "$normanPSK";
         "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
         "PERC COFFEE 5 Guest" = mkWPA2WiFi "PERC COFFEE 5 Guest" "$PERCguestPSK";
         "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
         "Stargate-Discovery" = mkWPA2WiFi "Stargate-Discovery" "$StargateDiscoveryPSK";
         "Taproom Public WiFi" = mkOpenWiFi "Taproom Public WiFi";
         "VINATL-Guest" = mkWPA2WiFi "VINATL-Guest" "$VINATLGuestPSK";
-        "wallace" = mkWPA2WiFi "wallace" "$wallacePSK";
         "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
       };
     };
