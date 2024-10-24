@@ -12,7 +12,7 @@ stdenv.mkDerivation {
 
   src = fetchFromGitHub {
     owner = "alyraffauf";
-    repo = "rofi-blueooth";
+    repo = "rofi-bluetooth";
     rev = "50252e4a9aebe4899a6ef2f7bc11d91b7e4aa8ae";
     sha256 = "sha256-o0Sr3/888L/2KzZZP/EcXx+8ZUzdHB/I/VIeVuJvJks=";
   };
