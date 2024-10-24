@@ -84,9 +84,11 @@ in {
 
       desktopEntries = let
         mkDefaultEntry = name: package: {
-          name = "Default ${name}";
           exec = "${lib.getExe package} %U";
+          icon = "${builtins.baseNameOf (lib.getExe package)}";
+          name = "Default ${name}";
           terminal = false;
+
           settings = {
             NoDisplay = "true";
           };
