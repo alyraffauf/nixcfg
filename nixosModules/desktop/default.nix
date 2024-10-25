@@ -8,6 +8,7 @@
     ./greetd
     ./gnome
     ./hyprland
+    ./kde
     ./sway
     ./waylandComp.nix
   ];
@@ -16,6 +17,7 @@
     lib.mkIf (
       config.ar.desktop.gnome.enable
       || config.ar.desktop.hyprland.enable
+      || config.ar.desktop.kde.enable
       || config.ar.desktop.steam.enable
       || config.ar.desktop.sway.enable
     ) {
