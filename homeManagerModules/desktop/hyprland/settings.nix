@@ -129,6 +129,11 @@ in {
 
   dwindle.preserve_split = true;
 
+  env = [
+    "QT_QPA_PLATFORMTHEME,kde"
+    "QT_STYLE_OVERRIDE,Breeze"
+  ];
+
   exec-once = [
     "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
   ];
