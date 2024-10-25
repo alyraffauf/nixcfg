@@ -1,7 +1,7 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: let
   cfg = config.ar.home;
@@ -23,16 +23,8 @@ in {
 
     qt = {
       enable = true;
-      platformTheme.name = "qtct";
-
-      style = {
-        name =
-          if config.stylix.polarity == "dark"
-          then "Adwaita-Dark"
-          else "Adwaita";
-
-        package = pkgs.adwaita-qt;
-      };
+      platformTheme.name = "kde";
+      style.name = "Breeze";
     };
 
     stylix.targets.gtk.extraCss = builtins.concatStringsSep "\n" [
