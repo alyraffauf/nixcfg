@@ -136,6 +136,12 @@ in {
         };
       };
 
+      kde.enable = lib.mkOption {
+        description = "KDE Plasma with sane defaults.";
+        default = osConfig.ar.desktop.kde.enable;
+        type = lib.types.bool;
+      };
+
       sway = {
         enable = lib.mkOption {
           description = "Sway with full desktop session components.";

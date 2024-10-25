@@ -21,7 +21,7 @@ in {
       package = pkgs.papirus-icon-theme.override {color = "adwaita";};
     };
 
-    qt = {
+    qt = lib.mkIf (!config.ar.home.desktop.kde.enable) {
       enable = true;
       platformTheme.name = "kde";
       style.name = "Breeze";
