@@ -65,7 +65,7 @@
     steam = {
       enable = true;
       autoStart = true;
-      desktopSession = "plasmawayland";
+      desktopSession = "plasma";
 
       environment = {
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = lib.makeSearchPathOutput "steamcompattool" "" config.programs.steam.extraCompatPackages;
