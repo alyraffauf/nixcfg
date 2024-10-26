@@ -65,7 +65,7 @@
     steam = {
       enable = true;
       autoStart = true;
-      desktopSession = "hyprland";
+      desktopSession = "plasma";
 
       environment = {
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = lib.makeSearchPathOutput "steamcompattool" "" config.programs.steam.extraCompatPackages;
@@ -113,7 +113,7 @@
       steam.enable = true;
     };
 
-    desktop.hyprland.enable = true;
+    desktop.kde.enable = true;
     laptopMode = true;
     services.flatpak.enable = true;
 
