@@ -55,7 +55,7 @@
     # Enable GNOME and GDM.
     services = {
       gnome.tracker-miners.enable = true;
-      udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+      udev.packages = with pkgs; [gnome-settings-daemon];
 
       xserver = {
         desktopManager.gnome.enable = true;
