@@ -10,6 +10,7 @@
 
       settings = {
         "org/gnome/desktop/datetime".automatic-timezone = true;
+        "org/gnome/desktop/input-sources".xkb-options = ["ctrl:nocaps"];
 
         "org/gnome/desktop/interface" = {
           clock-format = "12h";
