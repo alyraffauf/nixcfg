@@ -24,8 +24,10 @@
         enable = true;
         settings = {
           "org/gnome/desktop/wm/preferences".button-layout =
-            if (config.ar.home.desktop.gnome.enable || config.ar.home.desktop.kde.enable)
+            if config.ar.home.desktop.kde.enable
             then "appmenu:minimize,maximize,close"
+            else if config.ar.home.desktop.gnome.enable
+            then "appmenu:close"
             else "";
 
           "org/gnome/nm-applet".disable-connected-notifications = true;
