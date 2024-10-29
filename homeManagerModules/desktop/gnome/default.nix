@@ -30,10 +30,10 @@
         "org/gnome/shell".enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "blur-my-shell@aunetx"
-          "noannoyance-fork@vrba.dev"
+          "dash-to-dock@micxgx.gmail.com"
+          "drive-menu@gnome-shell-extensions.gcampax.github.com"
           "tailscale-status@maxgallup.github.com"
           "tiling-assistant@leleat-on-github"
-          "drive-menu@gnome-shell-extensions.gcampax.github.com"
         ];
 
         "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
@@ -47,6 +47,12 @@
           unblur-in-overview = true;
         };
 
+        "org/gnome/shell/extensions/dash-to-dock" = {
+          background-color = config.lib.stylix.colors.withHashtag.base01;
+          click-action = "minimize";
+          custom-background-color = true;
+        };
+
         "org/gnome/system/location".enabled = true;
       };
     };
@@ -57,7 +63,7 @@
       extensions = [
         {package = pkgs.gnomeExtensions.appindicator;}
         {package = pkgs.gnomeExtensions.blur-my-shell;}
-        {package = pkgs.gnomeExtensions.noannoyance-fork;}
+        {package = pkgs.gnomeExtensions.dash-to-dock;}
         {package = pkgs.gnomeExtensions.tailscale-status;}
         {package = pkgs.gnomeExtensions.tiling-assistant;}
       ];
