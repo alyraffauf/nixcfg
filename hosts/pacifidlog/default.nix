@@ -68,6 +68,8 @@
       desktopSession = "plasma";
 
       environment = {
+        ENABLE_GAMESCOPE_WSI = "1";
+        STEAM_DISPLAY_REFRESH_LIMITS = "60,144";
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = lib.makeSearchPathOutput "steamcompattool" "" config.programs.steam.extraCompatPackages;
         STEAM_GAMESCOPE_COLOR_MANAGED = "0";
       };
