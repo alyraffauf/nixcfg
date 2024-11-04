@@ -65,7 +65,6 @@ in {
 
     thunderbird = {
       enable = true;
-      package = pkgs.betterbird;
 
       profiles.default = {
         isDefault = true;
