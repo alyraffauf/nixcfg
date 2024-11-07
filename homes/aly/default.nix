@@ -1,4 +1,8 @@
-self: {pkgs, ...}: {
+self: {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./firefox
     ./mail
@@ -72,7 +76,11 @@ self: {pkgs, ...}: {
       yazi.enable = true;
     };
 
-    defaultApps.enable = true;
+    defaultApps = {
+      enable = true;
+      webBrowser = config.ar.home.apps.chromium.package;
+    };
+
     theme.enable = true;
   };
 }
