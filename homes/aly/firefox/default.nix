@@ -149,6 +149,7 @@
 
       work = {
         extensions = with config.nur.repos.rycee.firefox-addons; [
+          bitwarden
           clearurls
           consent-o-matic
           ublock-origin
