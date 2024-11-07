@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.desktop.greetd.enable {
@@ -10,29 +11,25 @@
       kwallet.enable = true;
     };
 
-    programs.regreet = {
-      enable = true;
-
-      settings = {
-        background.fit =
-          if config.stylix.imageScalingMode == "fill"
-          then "Fill"
-          else "ScaleDown";
-
-        GTK.application_prefer_dark_theme =
-          if config.stylix.polarity == "dark"
-          then true
-          else false;
-      };
-    };
-
     services.greetd = {
       enable = true;
 
-      settings.initial_session = lib.mkIf (config.ar.desktop.greetd.autologin != null) {
-        command = config.ar.desktop.greetd.session;
-        user = config.ar.desktop.greetd.autologin;
-      };
+      settings =
+        if config.ar.desktop.greetd.autologin != null
+        then {
+          default_session = {
+            command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.ar.desktop.greetd.session}";
+          };
+          initial_session = {
+            command = config.ar.desktop.greetd.session;
+            user = config.ar.desktop.greetd.autologin;
+          };
+        }
+        else {
+          default_session = {
+            command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.ar.desktop.greetd.session}";
+          };
+        };
     };
   };
 }
