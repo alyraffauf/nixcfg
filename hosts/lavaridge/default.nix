@@ -61,8 +61,8 @@
       done
     '';
   in ''
-    SUBSYSTEM=="power_supply", ATTR{online}=="1", ACTION=="change", RUN+="${hyprlandDynamicRes} 120 1"
-    SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", RUN+="${hyprlandDynamicRes} 60 0"
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="ACAD", ATTR{online}=="1", ACTION=="change", RUN+="${hyprlandDynamicRes} 120 1"
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="ACAD", ATTR{online}=="0", ACTION=="change", RUN+="${hyprlandDynamicRes} 60 0"
   '';
 
   system.stateVersion = "24.05";
