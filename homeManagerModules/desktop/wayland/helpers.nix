@@ -6,8 +6,8 @@
 }: {
   brightness = rec {
     bin = lib.getExe' pkgs.swayosd "swayosd-client";
-    up = "${bin} --brightness=raise";
-    down = "${bin} --brightness=lower";
+    up = "${bin} --brightness=raise || ${lib.getExe pkgs.brightnessctl} s +10%";
+    down = "${bin} --brightness=lower || ${lib.getExe pkgs.brightnessctl} s 10%-";
   };
 
   media = rec {
@@ -43,9 +43,9 @@
 
   volume = rec {
     bin = lib.getExe' pkgs.swayosd "swayosd-client";
-    up = "${bin} --output-volume=raise";
-    down = "${bin} --output-volume=lower";
-    mute = "${bin} --output-volume=mute-toggle";
-    micMute = "${bin} --input-volume=mute-toggle";
+    up = "${bin} --output-volume=raise || ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+    down = "${bin} --output-volume=lower || ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+    mute = "${bin} --output-volume=mute-toggle || ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    micMute = "${bin} --input-volume=mute-toggle || ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
   };
 }
