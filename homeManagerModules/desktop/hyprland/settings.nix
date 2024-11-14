@@ -105,7 +105,6 @@ in {
     };
 
     dim_special = 0.5;
-    drop_shadow = true;
 
     layerrule = [
       "blur,gtk-layer-shell"
@@ -123,8 +122,12 @@ in {
     ];
 
     rounding = cfg.theme.borders.radius;
-    shadow_range = 4;
-    shadow_render_power = 3;
+
+    shadow = {
+      enabled = true;
+      range = 4;
+      render_power = 3;
+    };
   };
 
   dwindle.preserve_split = true;
