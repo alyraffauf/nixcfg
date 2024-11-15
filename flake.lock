@@ -345,11 +345,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731535640,
-        "narHash": "sha256-2EckCJn4wxran/TsRiCOFcmVpep2m9EBKl99NBh2GnM=",
+        "lastModified": 1731604581,
+        "narHash": "sha256-Qq2YZZaDTB3FZLWU/Hgh1uuWlUBl3cMLGB99bm7rFUM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "35b055009afd0107b69c286fca34d2ad98940d57",
+        "rev": "1d0862ee2d7c6f6cd720d6f32213fa425004be10",
         "type": "github"
       },
       "original": {
@@ -539,11 +539,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1731581363,
-        "narHash": "sha256-xZrqREw7Fc+lgIMcMvyKiepSPBBy+HkopHvrkL1H/DI=",
+        "lastModified": 1731643669,
+        "narHash": "sha256-W0FXB6ErqWHW7LFhph+IAGrSlteOfL5yzmc1GOOS+bs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "0b52d5e4307c0b9bed8c438a2a0300356cede857",
+        "rev": "a8697e4c4ea67d9d98d6d99716823c3346be8462",
         "type": "github"
       },
       "original": {
@@ -638,17 +638,17 @@
         "tinted-tmux": "tinted-tmux"
       },
       "locked": {
-        "lastModified": 1730924223,
-        "narHash": "sha256-tGvmW0qih+dCAH9L4BEMYMiHcBoJVZtESbC9WH0EEuw=",
+        "lastModified": 1731657386,
+        "narHash": "sha256-Mm/JL8tFUS1SOmmZDPcswExUxzw0VpHcEyZI1h58CGA=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "762c07ee10b381bc8e085be5b6c2ec43139f13b0",
+        "rev": "5ab1207b2fdeb5a022f2dd7cccf6be760f1b150f",
         "type": "github"
       },
       "original": {
         "owner": "danth",
+        "ref": "master",
         "repo": "stylix",
-        "rev": "762c07ee10b381bc8e085be5b6c2ec43139f13b0",
         "type": "github"
       }
     },
@@ -715,16 +715,17 @@
     "tinted-foot": {
       "flake": false,
       "locked": {
-        "lastModified": 1727574105,
-        "narHash": "sha256-ByMVgH0rZ1by2YIVJ47gE8/ZHWcG8yqsErQ4tKLbm7Q=",
+        "lastModified": 1726913040,
+        "narHash": "sha256-+eDZPkw7efMNUf3/Pv0EmsidqdwNJ1TaOum6k7lngDQ=",
         "owner": "tinted-theming",
         "repo": "tinted-foot",
-        "rev": "e558fe47e187093313f19fa6a9eea61940ffbd6b",
+        "rev": "fd1b924b6c45c3e4465e8a849e67ea82933fcbe4",
         "type": "github"
       },
       "original": {
         "owner": "tinted-theming",
         "repo": "tinted-foot",
+        "rev": "fd1b924b6c45c3e4465e8a849e67ea82933fcbe4",
         "type": "github"
       }
     },
