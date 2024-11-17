@@ -75,7 +75,10 @@
       user = "aly";
     };
 
-    steamos.useSteamOSConfig = true;
+    steamos = {
+      enableMesaPatches = lib.mkForce false;
+      useSteamOSConfig = true;
+    };
   };
 
   networking.hostName = "pacifidlog";
