@@ -30,18 +30,7 @@ in {
     stylix.targets.gtk.extraCss = builtins.concatStringsSep "\n" [
       (lib.optionalString ((cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && !cfg.desktop.gnome.enable) ''
         window.background { border-radius: ${toString cfg.theme.borders.radius}; }
-
-        tooltip {
-          background-color: alpha(${config.lib.stylix.colors.withHashtag.base00}, ${builtins.toString config.stylix.opacity.popups});
-          border-radius: ${toString cfg.theme.borders.radius};
-          border: 1px solid ${config.lib.stylix.colors.withHashtag.base0D};
-          color: white;
-        }
-
-        tooltip.background {
-          background-color: alpha(${config.lib.stylix.colors.withHashtag.base00}, ${builtins.toString config.stylix.opacity.popups});
-          border: 1px solid ${config.lib.stylix.colors.withHashtag.base0D};
-        }'')
+      '')
 
       (lib.optionalString (
           (cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && (config.stylix.polarity == "light") && !cfg.desktop.gnome.enable
