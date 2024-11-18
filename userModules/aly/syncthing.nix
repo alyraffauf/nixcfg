@@ -30,7 +30,7 @@ in {
           "lavaridge" = {id = "TMMSCVA-MDJTDPC-PC47NUA-2VPLAIB-6S6MEU7-KALIGUJ-AWDUOUU-XD73MAY";}; # Framework 13 AMD
           "mauville" = {id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";}; # Desktop/homelab
           "norman" = {id = "IVFUFD4-LUQMX5V-FMUZQD2-EP6GOGQ-LPGYF5M-GFQDTNL-DVNQEA7-WWSWEQL";}; # Pixel 8a
-          "pacifidlog" = {id = "6EBVXYI-HZW4LQI-T6L3TTI-DZEBXJM-RP3DW7N-BCAG6FC-G2654DN-XJFSLQD";}; # Lenovo Legion Go
+          "pacifidlog" = {id = "ZYYTOHY-47O26FT-4LZRX55-T54I3XQ-4VQAFTJ-RGI66XJ-YVO42QA-DYJERAE";}; # Lenovo Legion Go
           "rustboro" = {id = "7CXGPQN-7DYDYJN-DKELOR3-RD4HZUW-SSUDGLZ-WVXYFUT-DPT2MGD-6PO5BQF";}; # Thinkpad t440p
           "slateport" = {id = "MDJFDUG-UJAXQXI-AMEF2AR-PBMD5QK-Z5ZG6AA-RCJCU3M-GZHQQEA-X2JGOAK";}; # homelab
           "winona" = {id = "IGAW5SS-WY2QN6J-5TF74YZ-6XPNPTC-RCH3HIT-ZZQKCAI-6L54IS2-SNRIMA2";}; # Pixel Tablet
@@ -63,9 +63,16 @@ in {
           }
           // lib.attrsets.optionalAttrs (config.ar.users.aly.syncthing.syncMusic) {
             "music" = {
+              devices = ["lavaridge" "mauville" "rustboro"];
               id = "6nzmu-z9der";
               path = config.ar.users.aly.syncthing.musicPath;
-              devices = ["lavaridge" "mauville" "rustboro"];
+            };
+          }
+          // lib.attrsets.optionalAttrs (config.ar.users.aly.syncthing.syncROMs) {
+            "roms" = {
+              devices = ["lavaridge" "mauville" "pacifidlog"];
+              id = "emudeck";
+              path = "/home/aly/roms";
             };
           };
       };

@@ -55,6 +55,12 @@
             default = config.ar.users.aly.syncthing.enable;
             type = lib.types.bool;
           };
+
+          syncROMs = lib.mkOption {
+            description = "Whether to sync ROMs folder.";
+            default = false;
+            type = lib.types.bool;
+          };
         };
       };
 
