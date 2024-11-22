@@ -12,13 +12,13 @@
           "file:///mnt/Archive"
         ];
 
-        wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.25";};
+        wayland.windowManager.sway.config.output = {"LG Electronics LG ULTRAWIDE 311NTAB5M720".scale = "1.0";};
         xdg.userDirs.music = "/mnt/Media/Music";
 
         ar.home = {
           desktop = {
             autoSuspend = false;
-            hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"];
+            hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"];
           };
 
           services = {
