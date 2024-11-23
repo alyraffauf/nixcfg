@@ -2,6 +2,7 @@
   imports = [
     ./easyeffects
     ./gammastep
+    ./hypridle
     ./mako
     ./mpd
     ./pipewire-inhibit

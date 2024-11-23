@@ -29,7 +29,7 @@ in {
     [
       ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
       ",PRINT,exec,${helpers.screenshot}"
-      "$mod CTRL,L,exec,${lib.getExe pkgs.swaylock}"
+      "$mod CTRL,L,exec,${lib.getExe' pkgs.systemd "loginctl"} lock-session"
       "$mod SHIFT,backslash,togglesplit"
       "$mod SHIFT,comma,exec,${lib.getExe pkgs.hyprnome} --previous --move"
       "$mod SHIFT,G,togglegroup"

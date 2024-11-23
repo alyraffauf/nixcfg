@@ -13,10 +13,6 @@ in {
       events = [
         {
           event = "before-sleep";
-          command = "playerctl pause";
-        }
-        {
-          event = "before-sleep";
           command = "swaylock && sleep 2";
         }
         {
@@ -27,6 +23,11 @@ in {
 
       timeouts =
         [
+          {
+            timeout = 30;
+            command = "brightnessctl -sd chromeos::kbd_backlight set 0";
+            resumeCommand = "brightnessctl -rd chromeos::kbd_backlight";
+          }
           {
             timeout = 120;
             command = "brightnessctl -s set 10";
@@ -42,12 +43,6 @@ in {
           timeout = 600;
           command = "swaylock";
         }
-        ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.hyprland.enable)
-        {
-          timeout = 630;
-          command = "hyprctl dispatch dpms off";
-          resumeCommand = "hyprctl dispatch dpms on";
-        }
         ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.sway.enable)
         {
           timeout = 630;
@@ -57,7 +52,7 @@ in {
     };
 
     systemd.user.services.swayidle = {
-      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
+      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.sway.enable) "sway-session.target");
 
       Service = {
         Environment = lib.mkForce [
@@ -66,18 +61,16 @@ in {
                 bash
                 brightnessctl
                 coreutils
-                playerctl
                 swaylock
                 systemd
               ])
-              ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package
               ++ lib.optional (cfg.desktop.sway.enable) config.wayland.windowManager.sway.package)
           }"
         ];
         Restart = lib.mkForce "no";
       };
 
-      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
+      Unit.BindsTo = lib.optional (cfg.desktop.sway.enable) "sway-session.target";
     };
   };
 }
