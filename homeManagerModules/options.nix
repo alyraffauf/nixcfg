@@ -186,6 +186,7 @@ in {
       };
 
       gammastep.enable = lib.mkEnableOption "Gammastep redshift daemon.";
+      hypridle.enable = lib.mkEnableOption "Hypridle idle daemon.";
       mako.enable = lib.mkEnableOption "Mako notification daemon.";
 
       mpd = {

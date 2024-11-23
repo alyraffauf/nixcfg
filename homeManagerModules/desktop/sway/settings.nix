@@ -87,7 +87,7 @@ in {
         "${modifier}+B" = "exec ${lib.getExe cfg.defaultApps.webBrowser}";
         "${modifier}+C" = "kill";
         "${modifier}+Comma" = "workspace prev";
-        "${modifier}+Control+L" = "exec ${lib.getExe pkgs.swaylock}";
+        "${modifier}+Control+L" = "exec ${lib.getExe' pkgs.systemd "loginctl"} lock-session";
         "${modifier}+E" = "exec ${lib.getExe cfg.defaultApps.editor}";
         "${modifier}+F" = "exec ${lib.getExe cfg.defaultApps.fileManager}";
         "${modifier}+F11" = "exec pkill -SIGUSR1 waybar"; # Show/hide waybar
