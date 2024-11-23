@@ -2,7 +2,8 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     agenix = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,11 +17,11 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-24.11";
     };
 
     iio-hyprland = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       url = "github:JeanSchoeller/iio-hyprland";
     };
 
