@@ -1,6 +1,6 @@
 {lib, ...}: {
   boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
-  environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
+  environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg/release-24.11";
 
   programs = {
     dconf.enable = true; # Needed for home-manager
