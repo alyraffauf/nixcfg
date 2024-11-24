@@ -42,8 +42,8 @@ in {
           }
           ++ lib.optional
           (!cfg.desktop.autoSuspend) {
-            timeout = 600;
-            on-timeout = "hyprlock";
+            timeout = 630;
+            on-timeout = "hyprctl dispatch dpms off";
           }
           ++ lib.optional (!cfg.desktop.autoSuspend && cfg.desktop.hyprland.enable)
           {
