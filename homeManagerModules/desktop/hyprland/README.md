@@ -48,9 +48,10 @@
 
 - SUPER + {1..9}: Switch to numbered workspace.
 - SUPER + Comma: Switch to previous numbered workspace.
-- SUPER + Period: Switch to next numbered workspace.
-- SUPER + Mouse Scroll Up: Switch to previous numbered workspace.
 - SUPER + Mouse Scroll Down: Switch to next numbered workspace.
+- SUPER + Mouse Scroll Up: Switch to previous numbered workspace.
+- SUPER + Period: Switch to next numbered workspace.
+- SUPER SHIFT + Tab: Toggle workspace overview.
 - TOUCHPAD: 3 Finger Swipe Left/Right.
 
 #### Multi-Monitor Workspace Management
@@ -71,11 +72,11 @@ ______________________________________________________________________
 
 - SUPER + C: Kill focused window.
 - SUPER + F11: Show/hide top panel.
-- SUPER + TAB: Open Window list.
 - SUPER + V: Toggle floating window.
 - SUPER SHIFT + Backslash: Toggle vertical/horizontal splits (dwindle layout only).
 - SUPER SHIFT + G: Toggle groupbar.
 - SUPER SHIFT + M: Swap window for master (master layout only).
+- SUPER SHIFT + TAB: Open Window list.
 - SUPER SHIFT + W: Toggle fullscreen.
 
 #### Focus

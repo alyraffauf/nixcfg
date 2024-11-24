@@ -65,10 +65,10 @@ ______________________________________________________________________
 
 - SUPER + C: Kill focused window.
 - SUPER + F11: Show/hide top panel.
-- SUPER + TAB: Open Window list.
 - SUPER + V: Toggle floating window.
 - SUPER SHIFT + Backslash: Toggle vertical/horizontal splits.
 - SUPER SHIFT + G: Toggle tabbed layout.
+- SUPER SHIFT + TAB: Open Window list.
 - SUPER SHIFT + W: Toggle fullscreen.
 
 #### Focus

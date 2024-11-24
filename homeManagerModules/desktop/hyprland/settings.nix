@@ -37,6 +37,7 @@ in {
       "$mod SHIFT,period,exec,${lib.getExe pkgs.hyprnome} --move"
       "$mod SHIFT,R,exec,${lib.getExe config.programs.rofi.package} -show run"
       "$mod SHIFT,S,movetoworkspace,special:magic"
+      "$mod SHIFT,Tab,exec,${lib.getExe config.programs.rofi.package} -show window"
       "$mod SHIFT,V,togglefloating"
       "$mod SHIFT,W,fullscreen"
       "$mod,B,exec,${lib.getExe cfg.defaultApps.webBrowser}"
@@ -55,7 +56,7 @@ in {
       "$mod,Right,changegroupactive,f"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
-      "$mod,Tab,exec,${lib.getExe config.programs.rofi.package} -show window"
+      "$mod,Tab,overview:toggle"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
       "CTRL,F12,exec,${helpers.screenshot}"
@@ -189,6 +190,22 @@ in {
     [",preferred,auto,auto"]
     ++ cfg.desktop.hyprland.laptopMonitors
     ++ cfg.desktop.hyprland.monitors;
+
+  plugin = {
+    overview = {
+      exitOnSwitch = true;
+      gaps_in = 5;
+      gaps_out = 6;
+      onBottom = true;
+      overrideGaps = true;
+      showEmptyWorkspace = true;
+      showNewWorkspace = true;
+      workspaceActiveBorder = "rgb(${config.lib.stylix.colors.base0D})";
+      workspaceBorderSize = 4;
+      workspaceInactiveBorder = "rgb(${config.lib.stylix.colors.base03})";
+      workspaceMargin = 40;
+    };
+  };
 
   windowrulev2 = [
     "center(1),class:(.blueman-manager-wrapped)"
