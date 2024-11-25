@@ -37,12 +37,12 @@
     };
   };
 
-  environment.variables.GDK_SCALE = "1";
+  environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "petalburg";
 
   services.udev.extraRules = let
     hyprlandDynamicRes = pkgs.writeShellScript "hyprland-dynamic-resolution" ''
-      MON="eDP-1"
+      MON="desc:China Star Optoelectronics Technology Co. Ltd MNG007QA1-1"
       RES="1920x1200"
 
       for dir in /run/user/*; do
@@ -52,7 +52,7 @@
             monitor_info=$(echo -e "monitors" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket")
 
             if echo "$monitor_info" | grep -q "$MON"; then
-              echo -e "keyword monitor $MON, $RES@$1, 0x0, 1, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
+              echo -e "keyword monitor $MON, $RES@$1, 0x0, 1.25, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
             fi
 
           fi
