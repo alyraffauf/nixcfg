@@ -19,7 +19,7 @@ jobs:
         with:
           name: alyraffauf
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - name: Build default package
+      - name: Build adjustor package
         run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
   clean-install-build:
     runs-on: ubuntu-latest
@@ -33,8 +33,22 @@ jobs:
         with:
           name: alyraffauf
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - name: Build default package
+      - name: Build clean-install package
         run: nix build --accept-flake-config .#packages.x86_64-linux.clean-install
+  emudeck-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build emudeck package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.emudeck
   hhd-ui-build:
     runs-on: ubuntu-latest
     steps:
@@ -47,7 +61,7 @@ jobs:
         with:
           name: alyraffauf
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - name: Build default package
+      - name: Build hhd-ui package
         run: nix build --accept-flake-config .#packages.x86_64-linux.hhd-ui
   rofi-bluetooth-build:
     runs-on: ubuntu-latest
@@ -61,7 +75,7 @@ jobs:
         with:
           name: alyraffauf
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - name: Build default package
+      - name: Build rofi-bluetooth package
         run: nix build --accept-flake-config .#packages.x86_64-linux.rofi-bluetooth
   fallarbor-build:
     runs-on: ubuntu-latest
