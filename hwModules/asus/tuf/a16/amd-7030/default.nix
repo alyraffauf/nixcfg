@@ -19,6 +19,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    asusctl
     supergfxctl
   ];
 
@@ -31,5 +32,10 @@
     };
   };
 
-  services.supergfxd.enable = true;
+  programs.rog-control-center.enable = true;
+
+  services = {
+    asusd.enable = true;
+    supergfxd.enable = true;
+  };
 }
