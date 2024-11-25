@@ -4,7 +4,7 @@
   ...
 }: {
   boot.kernel.sysctl = {
-    "kernel.nmi_watchdog" = 0;
+    "kernel.nmi_watchdog" = lib.mkDefault 0;
   };
 
   services = {
