@@ -6,11 +6,7 @@ Host-specific configuration + common modules that aren't better expressed as opt
 
 ## Automatic Updates
 
-These hosts update themselves automatically, once a day, by rebuilding from one of two sources: directly from this repository's master branch or from [FlakeHub](https://flakehub.com/). This can be adjusted by overriding the value of `config.environment.variables.FLAKE`.
-
-FlakeHub allows [semantic versioning](https://flakehub.com/docs/features/semver), which means that these hosts build from the lattest tag published to FlakeHub with format `v0.0.0`. I try to follow the [semantic versioning 2.0](https://github.com/semver/semver/blob/master/semver.md) standard, though this may not always be the case.
-
-You can access the latest tagged commit from this repository with this url: [https://flakehub.com/f/alyraffauf/nixcfg/\*.tar.gz](https://flakehub.com/f/alyraffauf/nixcfg/*.tar.gz).
+These hosts update themselves automatically, once a day, by rebuilding directly from one of this repository's branches, typically master.
 
 ## Declarative WiFi Connections
 
