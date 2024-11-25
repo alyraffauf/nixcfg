@@ -8,17 +8,6 @@
   };
 
   services = {
-    pipewire.wireplumber.extraConfig = {
-      # Pipewire eats battery by never disabling the camera.
-      "10-disable-camera" = {
-        "wireplumber.profiles" = {
-          main = {
-            "monitor.libcamera" = "disabled";
-          };
-        };
-      };
-    };
-
     power-profiles-daemon.enable = lib.mkDefault true;
 
     udev.extraRules = ''
