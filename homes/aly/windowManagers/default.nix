@@ -15,8 +15,8 @@
       floating.criteria = [{app_id = "Bitwarden";} {app_id = "org.keepassxc.KeePassXC";}];
 
       gaps = {
-        smartBorders = "on";
-        smartGaps = true;
+        # smartBorders = "on";
+        # smartGaps = true;
       };
 
       input."type:keyboard".xkb_options = "caps:ctrl_modifier";
@@ -75,14 +75,14 @@
       input.kb_options = "ctrl:nocaps";
 
       windowrulev2 = [
-        "bordersize 0,floating:0,onworkspace:f[1]"
-        "bordersize 0,floating:0,onworkspace:w[tv1]"
+        # "bordersize 0,floating:0,onworkspace:f[1]"
+        # "bordersize 0,floating:0,onworkspace:w[tv1]"
         "center(1),class:(Bitwarden)"
         "center(1),class:(org.keepassxc.KeePassXC)"
         "float,class:(Bitwarden)"
         "float,class:(org.keepassxc.KeePassXC)"
-        "rounding 0,floating:0,onworkspace:f[1]"
-        "rounding 0,floating:0,onworkspace:w[tv1]"
+        # "rounding 0,floating:0,onworkspace:f[1]"
+        # "rounding 0,floating:0,onworkspace:w[tv1]"
         "size 80% 80%,class:(Bitwarden)"
         "size 80% 80%,class:(org.keepassxc.KeePassXC)"
         "workspace special:magic,class:(org.gnome.Fractal)"
@@ -90,9 +90,9 @@
       ];
 
       workspace = [
-        "f[1],gapsout:0,gapsin:0"
+        # "f[1],gapsout:0,gapsin:0"
         "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
-        "w[tv1],gapsout:0,gapsin:0"
+        # "w[tv1],gapsout:0,gapsin:0"
       ];
     };
   };
