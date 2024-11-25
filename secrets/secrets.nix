@@ -31,6 +31,8 @@ in {
   "aly/syncthing/mauville/key.age".publicKeys = keys;
   "aly/syncthing/pacifidlog/cert.age".publicKeys = keys;
   "aly/syncthing/pacifidlog/key.age".publicKeys = keys;
+  "aly/syncthing/petalburg/cert.age".publicKeys = keys;
+  "aly/syncthing/petalburg/key.age".publicKeys = keys;
   "aly/syncthing/rustboro/cert.age".publicKeys = keys;
   "aly/syncthing/rustboro/key.age".publicKeys = keys;
   "aly/syncthing/slateport/cert.age".publicKeys = keys;

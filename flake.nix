@@ -95,6 +95,7 @@
       "fallarbor"
       "lavaridge"
       "mauville"
+      "petalburg"
       "rustboro"
       "slateport"
     ];
@@ -151,6 +152,8 @@
       hw-common-laptop = import ./hwModules/common/laptop;
       hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./hwModules/common/ssd;
+
+      hw-asus-tuf-a16-amd-7030 = import ./hwModules/asus/tuf/a16/amd-7030/default.nix;
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
       hw-lenovo-legion-go = import ./hwModules/lenovo/legion/go;
