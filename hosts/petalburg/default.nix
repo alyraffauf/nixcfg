@@ -52,7 +52,7 @@
             monitor_info=$(echo -e "monitors" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket")
 
             if echo "$monitor_info" | grep -q "$MON"; then
-              echo -e "keyword monitor $MON, $RES@$1, 0x0, 2, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
+              echo -e "keyword monitor $MON, $RES@$1, 0x0, 1, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
             fi
 
           fi

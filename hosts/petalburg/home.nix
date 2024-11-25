@@ -9,7 +9,7 @@
           };
         };
 
-        ar.home.desktop.hyprland.laptopMonitors = ["eDP-1,1920x1200@165, 0x0, 2, vrr, 0"];
+        ar.home.desktop.hyprland.laptopMonitors = ["eDP-1,1920x1200@165, 0x0, 1, vrr, 0"];
       }
     ];
 
