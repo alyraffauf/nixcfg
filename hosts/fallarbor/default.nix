@@ -37,10 +37,10 @@
     desktop = {
       greetd = {
         enable = true;
-        session = lib.getExe config.programs.sway.package;
+        session = lib.getExe config.programs.hyprland.package;
       };
 
-      sway.enable = true;
+      hyprland.enable = true;
     };
 
     laptopMode = true;
