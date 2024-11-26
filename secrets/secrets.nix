@@ -13,6 +13,7 @@ let
     "aly_lavaridge"
     "aly_mauville"
     "aly_pacifidlog"
+    "aly_petalburg"
     "aly_rustboro"
     "aly_slateport"
   ];
