@@ -13,7 +13,7 @@ self: {
 
     packages = with pkgs; [
       fractal
-      libreoffice-fresh
+      libreoffice-still
       plexamp
       teams-for-linux
       trayscale
