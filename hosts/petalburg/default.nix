@@ -77,7 +77,7 @@
     desktop = {
       greetd.enable = true;
       hyprland.enable = true;
-      sway.enable = true;
+      steam.enable = true;
     };
 
     laptopMode = true;
