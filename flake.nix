@@ -2,8 +2,7 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     agenix = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,12 +16,17 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/master";
     };
 
     iio-hyprland = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:JeanSchoeller/iio-hyprland";
+    };
+
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote = {
@@ -95,6 +99,7 @@
       "fallarbor"
       "lavaridge"
       "mauville"
+      "pacifidlog"
       "petalburg"
       "rustboro"
       "slateport"
