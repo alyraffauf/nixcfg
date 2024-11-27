@@ -38,7 +38,7 @@ in {
           }
           ++ lib.optional cfg.desktop.autoSuspend {
             timeout = 600;
-            command = "systemctl suspend";
+            on-timeout = "systemctl suspend";
           }
           ++ lib.optional
           (!cfg.desktop.autoSuspend) {
