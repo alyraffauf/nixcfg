@@ -2,7 +2,7 @@
   description = "Aly's NixOS flake.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
 
     agenix = {
       inputs.nixpkgs.follows = "nixpkgs";
