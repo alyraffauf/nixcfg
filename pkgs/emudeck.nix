@@ -1,3 +1,4 @@
+# This is extremely limited and largely proof-of-concept. Many things will simply not work, including Steam ROM Manager. Expect issues.
 {
   appimageTools,
   fetchurl,
@@ -24,6 +25,18 @@ appimageTools.wrapType2 rec {
       unzip
       zenity
     ];
+
+  extraInstallCommands = let
+    appimageContents = appimageTools.extractType2 {
+      inherit pname version src;
+    };
+  in ''
+    install -m 444 -D ${appimageContents}/emudeck.desktop $out/share/applications/emudeck.desktop
+    install -m 444 -D ${appimageContents}/emudeck.png \
+      $out/share/icons/hicolor/scalable/apps/emudeck.png
+    substituteInPlace $out/share/applications/${pname}.desktop \
+      --replace 'Exec=AppRun' 'Exec=${pname}'
+  '';
 
   meta = with lib; {
     description = "EmuDeck utility to manage ROMs on handheld PCs";
