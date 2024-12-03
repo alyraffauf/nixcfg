@@ -21,6 +21,6 @@
 
   zramSwap = {
     enable = lib.mkDefault true;
-    memoryPercent = lib.mkDefault 50;
+    memoryPercent = lib.mkDefault 25;
   };
 }
