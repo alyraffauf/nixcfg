@@ -38,7 +38,11 @@
   environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "rustboro";
   system.stateVersion = "24.05";
-  zramSwap.memoryPercent = 100;
+
+  zramSwap = {
+    algorithm = "lz4";
+    memoryPercent = 50;
+  };
 
   ar = {
     apps.firefox.enable = true;
