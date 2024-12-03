@@ -10,9 +10,18 @@
     # "kernel.split_lock_mitigate" = lib.mkOverride 100 0;
     "kernel.watchdog" = lib.mkDefault 0;
 
+    "kernel.sched_cfs_bandwidth_slice_u" = lib.mkDefault 3000;
+    "kernel.sched_latency_ns" = lib.mkDefault 3000000;
+    "kernel.sched_min_granularity_ns" = lib.mkDefault 300000;
+    "kernel.sched_wakeup_granularity_ns" = lib.mkDefault 500000;
+    "kernel.sched_migration_cost_ns" = lib.mkDefault 50000;
+    "kernel.sched_nr_migrate" = lib.mkDefault 128;
+    "kernel.split_lock_mitigate" = lib.mkDefault 0;
+
     # Network optimizations
     "net.core.default_qdisc" = lib.mkDefault "fq";
     "net.ipv4.tcp_congestion_control" = lib.mkDefault "bbr";
+    "net.ipv4.tcp_fin_timeout" = lib.mkDefault 5;
     "net.ipv4.tcp_mtu_probing" = lib.mkForce 1;
 
     # Memory management
@@ -25,20 +34,30 @@
     "vm.watermark_scale_factor" = lib.mkDefault 125;
   };
 
-  services.udev.extraRules = ''
-    # Significantly improved I/O performance
-    ## SSD
-    ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
+  services = {
+    earlyoom = {
+      enable = lib.mkDefault true;
+      extraArgs = lib.mkDefault ["-M" "409600,307200" "-S" "409600,307200"];
+    };
 
-    ## NVME
-    ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
+    udev.extraRules = ''
+      # Significantly improved I/O performance
+      ## SSD
+      ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
 
-    ## MicroSD
-    ACTION=="add|change", KERNEL=="mmcblk[0-9]p[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
+      ## NVME
+      ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
 
-    ## HDD
-    ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
-  '';
+      ## MicroSD
+      ACTION=="add|change", KERNEL=="mmcblk[0-9]p[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
 
-  zramSwap.algorithm = "lz4";
+      ## HDD
+      ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+    '';
+  };
+
+  zramSwap = {
+    algorithm = lib.mkDefault "lz4";
+    priority = lib.mkDefault 100;
+  };
 }
