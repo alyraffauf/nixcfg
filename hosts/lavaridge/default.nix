@@ -19,6 +19,7 @@
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-common-gaming
     self.nixosModules.hw-framework-13-amd-7000
   ];
 
