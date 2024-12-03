@@ -76,8 +76,11 @@
     };
 
     steamos = {
-      enableMesaPatches = lib.mkForce false;
-      useSteamOSConfig = true;
+      enableAutoMountUdevRules = true;
+      enableBluetoothConfig = true;
+      enableDefaultCmdlineConfig = true;
+      enableProductSerialAccess = true;
+      enableVendorRadv = true;
     };
   };
 
