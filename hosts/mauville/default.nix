@@ -119,7 +119,6 @@ in {
 
       steam.enable = true;
       hyprland.enable = true;
-      sway.enable = true;
     };
 
     users = {
