@@ -81,6 +81,7 @@
       enableDefaultCmdlineConfig = true;
       enableProductSerialAccess = true;
       enableVendorRadv = true;
+      useSteamOSConfig = false;
     };
   };
 
