@@ -108,7 +108,6 @@
 
   system.stateVersion = "24.11";
   systemd.services.handheld-daemon.path = with pkgs; [hhd-ui lsof];
-  zramSwap.memoryPercent = 100;
 
   ar = {
     apps = {
