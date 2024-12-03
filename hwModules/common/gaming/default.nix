@@ -39,4 +39,6 @@
     ## HDD
     ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
   '';
+
+  zramSwap.algorithm = "lz4";
 }
