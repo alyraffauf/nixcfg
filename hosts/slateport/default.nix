@@ -45,7 +45,6 @@
   };
 
   system.stateVersion = "24.05";
-  zramSwap.memoryPercent = 100;
 
   ar = {
     apps.podman.enable = true;
