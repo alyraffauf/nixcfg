@@ -647,7 +647,7 @@
       },
       "original": {
         "owner": "danth",
-        "ref": "master",
+        "ref": "release-24.11",
         "repo": "stylix",
         "type": "github"
       }
