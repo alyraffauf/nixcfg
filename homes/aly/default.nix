@@ -17,15 +17,12 @@ self: {
     homeDirectory = "/home/aly";
 
     packages = with pkgs; [
-      bitwarden-desktop
       curl
       fractal
       nicotine-plus
       obsidian
-      picard
       tauon
       transmission-remote-gtk
-      tuba
       vesktop
     ];
 
