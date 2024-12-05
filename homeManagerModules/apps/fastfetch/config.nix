@@ -47,6 +47,12 @@
       type = "cpu";
     }
     {
+      format = "{2}";
+      key = "gpu   ";
+      keyColor = "33";
+      type = "gpu";
+    }
+    {
       key = "memory";
       keyColor = "33";
       type = "memory";
