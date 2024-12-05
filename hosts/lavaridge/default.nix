@@ -70,7 +70,6 @@
       firefox.enable = true;
       podman.enable = true;
       steam.enable = true;
-      virt-manager.enable = true;
     };
 
     desktop = {
