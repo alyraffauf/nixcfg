@@ -76,7 +76,6 @@
     desktop = {
       greetd.enable = true;
       hyprland.enable = true;
-      sway.enable = true;
     };
 
     laptopMode = true;
@@ -84,6 +83,7 @@
     users.aly = {
       enable = true;
       password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";
+
       syncthing = {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;
