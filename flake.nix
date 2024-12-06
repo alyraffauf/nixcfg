@@ -192,15 +192,11 @@
     packages = forAllLinuxSystems ({pkgs}: rec {
       default = clean-install;
 
-      adjustor = pkgs.callPackage ./pkgs/adjustor.nix {};
-
       clean-install = pkgs.writeShellApplication {
         name = "clean-install";
         text = ./flake/clean-install.sh;
       };
 
-      emudeck = pkgs.callPackage ./pkgs/emudeck.nix {};
-      hhd-ui = pkgs.callPackage ./pkgs/hhd-ui.nix {};
       rofi-bluetooth = pkgs.callPackage ./pkgs/rofi-bluetooth.nix {};
     });
   };
