@@ -1,6 +1,6 @@
 # nixcfg
 
-My comprehensive NixOS flake for managing my laptop, desktop, gaming handheld, and home lab environments.
+My comprehensive NixOS flake for managing my laptop, desktop, and home lab environments.
 
 ![](./_img/rosepinemoon.png)
 ![](./_img/rosepinedawn.png)
@@ -8,7 +8,6 @@ My comprehensive NixOS flake for managing my laptop, desktop, gaming handheld, a
 ## Features
 
 - **Hyprland:** Dynamic tiling Wayland compositor and window manager.
-- **SteamOS UI:** Steam Big Picture Mode + gaming optimizations for Lenovo Legion Go.
 - **Stylix:** Auto-gnerated base16 themes for the whole desktop.
 - **Encryption:** Encrypted boot drives with Secure Boot and LUKS with TPM decryption.
 - **Home Lab:** Media, file sharing, and more, split between two PCs with efficient routing via reverse proxy.
@@ -22,7 +21,6 @@ This flake takes a variety of upstream and third party flakes as inputs:
 - [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
-- [jovian](https://github.com/Jovian-Experiments/Jovian-NixOS): steam deck UI + optimizations.
 - [lanzaboote](https://github.com/nix-community/lanzaboote): secure boot for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
