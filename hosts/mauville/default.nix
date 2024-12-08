@@ -2,6 +2,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: let
@@ -97,7 +98,11 @@ in {
     };
   };
 
-  environment.variables.GDK_SCALE = "1.25";
+  environment = {
+    systemPackages = with pkgs; [heroic];
+    variables.GDK_SCALE = "1.25";
+  };
+
   system.stateVersion = "24.05";
 
   ar = {
