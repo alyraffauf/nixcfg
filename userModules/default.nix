@@ -1,4 +1,4 @@
-self: {
+self: {pkgs, ...}: {
   imports = [
     ./aly
     ./dustin
@@ -8,6 +8,7 @@ self: {
   programs.zsh.enable = true;
 
   users = {
+    defaultUserShell = pkgs.zsh;
     mutableUsers = false;
 
     users.root.openssh.authorizedKeys.keys = [
