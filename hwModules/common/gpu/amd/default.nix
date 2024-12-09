@@ -1,5 +1,8 @@
 {...}: {
-  environment.variables.VDPAU_DRIVER = "radeonsi";
+  environment.variables = {
+    DPAU_DRIVER = "radeonsi";
+    GSK_RENDERER = "ngl";
+  };
 
   hardware = {
     amdgpu = {
