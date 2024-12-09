@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable) {
+  config = lib.mkIf (config.ar.home.desktop.hyprland.enable) {
     ar.home = {
       apps = {
         kitty.enable = lib.mkDefault true;
@@ -16,7 +16,6 @@
         hypridle.enable = lib.mkDefault config.ar.home.desktop.hyprland.enable;
         mako.enable = lib.mkDefault true;
         pipewire-inhibit.enable = lib.mkDefault true;
-        swayidle.enable = lib.mkDefault config.ar.home.desktop.sway.enable;
         swayosd.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
       };

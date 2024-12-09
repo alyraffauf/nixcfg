@@ -2,13 +2,6 @@
   home-manager = {
     sharedModules = [
       {
-        wayland.windowManager.sway.config.output = {
-          "eDP-1" = {
-            adaptive_sync = "on";
-            scale = "2.0";
-          };
-        };
-
         ar.home = {
           desktop.hyprland.laptopMonitors = ["desc:BOE NE135A1M-NY1,2880x1920@60, 0x0, 2, vrr, 0"];
 

@@ -7,7 +7,6 @@
     ./mpd
     ./pipewire-inhibit
     ./randomWallpaper
-    ./swayidle
     ./swayosd
     ./waybar
   ];

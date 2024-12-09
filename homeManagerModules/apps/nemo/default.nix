@@ -23,14 +23,14 @@
 
         "org/nemo/preferences/menu-config" = {
           background-menu-open-as-root =
-            !(config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable);
+            !(config.ar.home.desktop.hyprland.enable);
           selection-menu-open-as-root =
-            !(config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable);
+            !(config.ar.home.desktop.hyprland.enable);
         };
 
         "org/nemo/plugins".disabled-actions =
           lib.optionals
-          (config.ar.home.desktop.hyprland.enable || config.ar.home.desktop.sway.enable) [
+          (config.ar.home.desktop.hyprland.enable) [
             "90_new-launcher.nemo_action"
             "add-desklets.nemo_action"
             "change-background.nemo_action"

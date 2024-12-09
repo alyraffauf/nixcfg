@@ -26,7 +26,6 @@ This flake takes a variety of upstream and third party flakes as inputs:
 - [lanzaboote](https://github.com/nix-community/lanzaboote): secure boot for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
-- [sway](https://github.com/swaywm/sway): fantastic, rock-solid tiling compositor for wayland.
 
 ## Outputs
 
@@ -37,7 +36,6 @@ This flake takes a variety of upstream and third party flakes as inputs:
 - nixosModules.nixos: opinionated desktop, app, and service options.
 - nixosModules.users: basic user configuration options.
 - overlays.default: adds every package output to nixpkgs.
-- overlays.rofi-bluetooth: overlays rofi-bluetooth with custom patches.
 - overlays.tablet: tablet optimizations, mainly for electron apps.
 
 In addition, this flake outputs NixOS configurations, home-manager configurations, and various hardware modules for all of my hosts and users.
