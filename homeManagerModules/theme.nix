@@ -28,10 +28,6 @@ in {
       };
 
       targets.gtk.extraCss = builtins.concatStringsSep "\n" [
-        (lib.optionalString ((cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && !cfg.desktop.gnome.enable) ''
-          window.background { border-radius: ${toString cfg.theme.borders.radius}; }
-        '')
-
         (lib.optionalString (
             (cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && (config.stylix.polarity == "light") && !cfg.desktop.gnome.enable
           ) ''
