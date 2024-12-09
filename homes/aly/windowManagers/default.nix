@@ -6,10 +6,6 @@
 }: {
   imports = [./laptop.nix];
 
-  programs.waybar.settings.mainBar."bluetooth" = {
-    "on-click" = lib.mkForce "${lib.getExe pkgs.rofi-bluetooth} -i";
-  };
-
   wayland.windowManager = {
     sway.config = {
       floating.criteria = [{app_id = "Bitwarden";} {app_id = "org.keepassxc.KeePassXC";}];
