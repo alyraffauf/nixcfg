@@ -96,7 +96,7 @@ in {
     desktop = {
       autoSuspend = lib.mkOption {
         description = "Whether to autosuspend on idle.";
-        default = cfg.desktop.hyprland.enable || cfg.desktop.sway.enable;
+        default = cfg.desktop.hyprland.enable;
         type = lib.types.bool;
       };
 
@@ -140,14 +140,6 @@ in {
         description = "KDE Plasma with sane defaults.";
         default = osConfig.ar.desktop.kde.enable;
         type = lib.types.bool;
-      };
-
-      sway = {
-        enable = lib.mkOption {
-          description = "Sway with full desktop session components.";
-          default = osConfig.ar.desktop.sway.enable;
-          type = lib.types.bool;
-        };
       };
 
       windowManagerBinds = lib.mkOption {
@@ -201,7 +193,6 @@ in {
 
       pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
       randomWallpaper.enable = lib.mkEnableOption "Lightweight swaybg-based random wallpaper daemon.";
-      swayidle.enable = lib.mkEnableOption "Swayidle idle daemon.";
       swayosd.enable = lib.mkEnableOption "OSD for brightness and volume keys.";
       waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
     };

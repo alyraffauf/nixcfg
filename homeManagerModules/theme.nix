@@ -29,7 +29,7 @@ in {
 
       targets.gtk.extraCss = builtins.concatStringsSep "\n" [
         (lib.optionalString (
-            (cfg.desktop.hyprland.enable || cfg.desktop.sway.enable) && (config.stylix.polarity == "light") && !cfg.desktop.gnome.enable
+            (cfg.desktop.hyprland.enable) && (config.stylix.polarity == "light") && !cfg.desktop.gnome.enable
           ) ''
             tooltip {
               &.background { background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups}); }

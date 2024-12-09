@@ -24,8 +24,7 @@ in {
         rofi-power-menu
         systemd
       ])
-      ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package
-      ++ lib.optional (cfg.desktop.sway.enable) config.wayland.windowManager.sway.package;
+      ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package;
 
     programs.waybar = {
       enable = true;
@@ -39,15 +38,11 @@ in {
           modules-left =
             ["group/tablet"]
             ++ lib.optionals (cfg.desktop.hyprland.enable)
-            ["hyprland/submap"]
-            ++ lib.optionals (cfg.desktop.sway.enable)
-            ["sway/scratchpad" "sway/mode"];
+            ["hyprland/submap"];
 
           modules-center =
             lib.optionals (cfg.desktop.hyprland.enable)
-            ["hyprland/workspaces"]
-            ++ lib.optionals (cfg.desktop.sway.enable)
-            ["sway/workspaces"];
+            ["hyprland/workspaces"];
 
           modules-right = [
             "tray"
@@ -73,34 +68,8 @@ in {
             on-click = ''hyprctl dispatch submap reset'';
           };
 
-          "sway/workspaces" = {
-            all-outputs = true;
-            format = "{icon} {name}";
-
-            format-icons = {
-              default = "󰝥";
-              focused = "󰪥";
-              urgent = "";
-            };
-
-            sort-by = "id";
-          };
-
-          "sway/mode" = {
-            on-click = ''swaymsg mode default'';
-          };
-
-          "sway/scratchpad" = {
-            format = "{icon}　{count}";
-            format-icons = ["" ""];
-            on-click = "swaymsg scratchpad show";
-            show-empty = false;
-            tooltip = true;
-            tooltip-format = "{app}: {title}";
-          };
-
           "custom/app-close" = {
-            on-click = ''hyprctl dispatch killactive || swaymsg kill'';
+            on-click = ''hyprctl dispatch killactive'';
             format = "󰅗";
             tooltip-format = "Close the focused window.";
           };
@@ -364,11 +333,11 @@ in {
     };
 
     systemd.user.services.waybar = {
-      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target");
+      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target");
 
       Service.Restart = lib.mkForce "no";
 
-      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target" ++ lib.optional (cfg.desktop.sway.enable) "sway-session.target";
+      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
     };
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''

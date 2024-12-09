@@ -9,7 +9,6 @@
     ./gnome
     ./hyprland
     ./kde
-    ./sway
     ./wayland
   ];
 
@@ -18,7 +17,6 @@
       config.ar.home.desktop.gnome.enable
       || config.ar.home.desktop.hyprland.enable
       || config.ar.home.desktop.kde.enable
-      || config.ar.home.desktop.sway.enable
     ) {
       dconf = {
         enable = true;
