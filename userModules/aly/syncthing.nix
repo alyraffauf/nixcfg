@@ -30,7 +30,6 @@ in {
           "lavaridge" = {id = "TMMSCVA-MDJTDPC-PC47NUA-2VPLAIB-6S6MEU7-KALIGUJ-AWDUOUU-XD73MAY";}; # Framework 13 AMD
           "mauville" = {id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";}; # Desktop/homelab
           "norman" = {id = "IVFUFD4-LUQMX5V-FMUZQD2-EP6GOGQ-LPGYF5M-GFQDTNL-DVNQEA7-WWSWEQL";}; # Pixel 8a
-          "pacifidlog" = {id = "ZYYTOHY-47O26FT-4LZRX55-T54I3XQ-4VQAFTJ-RGI66XJ-YVO42QA-DYJERAE";}; # Lenovo Legion Go
           "petalburg" = {id = "ECTD3LW-YZTJIXX-HLQYXT7-UGZSGST-3DDKF72-DJPMDHE-SUYDWIT-ASTKTAE";}; # Asus A16
           "rustboro" = {id = "7CXGPQN-7DYDYJN-DKELOR3-RD4HZUW-SSUDGLZ-WVXYFUT-DPT2MGD-6PO5BQF";}; # Thinkpad t440p
           "slateport" = {id = "MDJFDUG-UJAXQXI-AMEF2AR-PBMD5QK-Z5ZG6AA-RCJCU3M-GZHQQEA-X2JGOAK";}; # homelab
@@ -42,7 +41,7 @@ in {
             "sync" = {
               id = "default";
               path = "/home/aly/sync";
-              devices = ["fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
+              devices = ["fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
               versioning = {
                 type = "staggered";
                 params = {
@@ -71,7 +70,7 @@ in {
           }
           // lib.attrsets.optionalAttrs (config.ar.users.aly.syncthing.syncROMs) {
             "roms" = {
-              devices = ["lavaridge" "mauville" "pacifidlog" "petalburg"];
+              devices = ["lavaridge" "mauville" "petalburg"];
               id = "emudeck";
               path = "/home/aly/roms";
             };
