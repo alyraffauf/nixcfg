@@ -10,7 +10,6 @@ in {
     home.packages = [
       pkgs.adwaita-icon-theme
       pkgs.liberation_ttf
-      pkgs.libsForQt5.kio
     ];
 
     qt = lib.mkIf (!config.ar.home.desktop.kde.enable) {
