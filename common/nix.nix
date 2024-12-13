@@ -39,6 +39,9 @@
 
   nixpkgs = {
     config.allowUnfree = true; # Allow unfree packages
-    overlays = [self.overlays.default];
+    overlays = [
+      self.inputs.nur.overlays.default
+      self.overlays.default
+    ];
   };
 }
