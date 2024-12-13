@@ -10,7 +10,6 @@ self: {
     ./windowManagers
     self.homeManagerModules.default
     self.inputs.agenix.homeManagerModules.default
-    self.inputs.nur.hmModules.nur
   ];
 
   home = {
