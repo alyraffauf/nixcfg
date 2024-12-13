@@ -1,6 +1,5 @@
 {
   imports = [
-    ./emudeck
     ./firefox
     ./nicotine-plus
     ./steam

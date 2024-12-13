@@ -5,7 +5,6 @@
 }: {
   options.ar = {
     apps = {
-      emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";
       firefox.enable = lib.mkEnableOption "Firefox Web Browser.";
       nicotine-plus.enable = lib.mkEnableOption "Nicotine+ Soulseek client.";
       podman.enable = lib.mkEnableOption "Podman for OCI container support.";
