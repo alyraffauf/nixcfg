@@ -4,8 +4,7 @@ My comprehensive NixOS flake for managing my laptop, desktop, and home lab envir
 
 NOTE: Some hosts and configuration options have migrated to [alyraffauf/bazznix](https://github.com/alyraffauf/bazznix), my project to create a [bazzite-like](https://bazzite.gg) experience on NixOS.
 
-![](./_img/rosepinemoon.png)
-![](./_img/rosepinedawn.png)
+![](./_img/catppuccin.png)
 
 ## Features
 
