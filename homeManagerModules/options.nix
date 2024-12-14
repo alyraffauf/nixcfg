@@ -96,20 +96,20 @@ in {
     desktop = {
       autoSuspend = lib.mkOption {
         description = "Whether to autosuspend on idle.";
-        default = cfg.desktop.hyprland.enable;
+        default = cfg.desktop.hyprland.enable or false;
         type = lib.types.bool;
       };
 
       gnome.enable = lib.mkOption {
         description = "GNOME with sane defaults.";
-        default = osConfig.ar.desktop.gnome.enable;
+        default = osConfig.ar.desktop.gnome.enable or false;
         type = lib.types.bool;
       };
 
       hyprland = {
         enable = lib.mkOption {
           description = "Hyprland with full desktop session components.";
-          default = osConfig.ar.desktop.hyprland.enable;
+          default = osConfig.ar.desktop.hyprland.enable or false;
           type = lib.types.bool;
         };
 
@@ -138,7 +138,7 @@ in {
 
       kde.enable = lib.mkOption {
         description = "KDE Plasma with sane defaults.";
-        default = osConfig.ar.desktop.kde.enable;
+        default = osConfig.ar.desktop.kde.enable or false;
         type = lib.types.bool;
       };
 
@@ -162,7 +162,7 @@ in {
 
     laptopMode = lib.mkOption {
       description = "Enable laptop configuration.";
-      default = osConfig.ar.laptopMode;
+      default = osConfig.ar.laptopMode or false;
       type = lib.types.bool;
     };
 

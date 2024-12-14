@@ -49,7 +49,7 @@
           "file://${config.home.homeDirectory}/src"
         ]
         ++ lib.optional (
-          osConfig.ar.users.aly.syncthing.enable
+          (osConfig.ar.users.aly.syncthing.enable or false)
           && (config.home.username == "aly")
         ) "file://${config.home.homeDirectory}/sync";
 
