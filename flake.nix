@@ -123,6 +123,18 @@
 
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
+    homeConfigurations = {
+      "aly@petalburg" = self.inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import self.inputs.nixpkgs {system = "x86_64-linux";};
+
+        modules = [
+          self.inputs.stylix.homeManagerModules.stylix
+          self.homeManagerModules.default
+          ./homes/aly/petalburg.nix
+        ];
+      };
+    };
+
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
