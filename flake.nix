@@ -125,12 +125,13 @@
 
     homeConfigurations = {
       "aly@petalburg" = self.inputs.home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit self;};
         pkgs = import self.inputs.nixpkgs {system = "x86_64-linux";};
 
         modules = [
-          self.inputs.stylix.homeManagerModules.stylix
+          self.homeManagerModules.aly-petalburg
           self.homeManagerModules.default
-          ./homes/aly/petalburg.nix
+          self.inputs.stylix.homeManagerModules.stylix
         ];
       };
     };
@@ -138,6 +139,7 @@
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
+      aly-petalburg = import ./homes/aly/petalburg.nix self;
       dustin = import ./homes/dustin self;
     };
 
