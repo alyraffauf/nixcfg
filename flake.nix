@@ -98,7 +98,6 @@
       "fallarbor"
       "lavaridge"
       "mauville"
-      "petalburg"
       "rustboro"
       "slateport"
     ];
