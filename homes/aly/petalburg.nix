@@ -64,6 +64,7 @@ self: {
     targets.gtk.enable = true;
   };
 
+  systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
   targets.genericLinux.enable = true;
 
   xdg = {
@@ -84,5 +85,10 @@ self: {
     };
 
     desktop.kde.enable = true;
+
+    services.easyeffects = {
+      enable = true;
+      preset = "AdvancedAutoGain";
+    };
   };
 }
