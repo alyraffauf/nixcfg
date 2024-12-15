@@ -79,13 +79,19 @@
     forAllLinuxSystems = f:
       self.inputs.nixpkgs.lib.genAttrs allLinuxSystems (system:
         f {
-          pkgs = import self.inputs.nixpkgs {inherit system;};
+          pkgs = import self.inputs.nixpkgs {
+            inherit overlays system;
+            config.allowUnfree = true;
+          };
         });
 
     forAllSystems = f:
       self.inputs.nixpkgs.lib.genAttrs allSystems (system:
         f {
-          pkgs = import self.inputs.nixpkgs {inherit system;};
+          pkgs = import self.inputs.nixpkgs {
+            inherit overlays system;
+            config.allowUnfree = true;
+          };
         });
 
     forAllHosts = self.inputs.nixpkgs.lib.genAttrs [
@@ -95,6 +101,11 @@
       "petalburg"
       "rustboro"
       "slateport"
+    ];
+
+    overlays = [
+      self.inputs.nur.overlays.default
+      self.overlays.default
     ];
   in {
     devShells = forAllLinuxSystems ({pkgs}: {
@@ -127,11 +138,8 @@
       "aly@petalburg" = self.inputs.home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit self;};
         pkgs = import self.inputs.nixpkgs {
-          overlays = [
-            self.inputs.nur.overlays.default
-            self.overlays.default
-          ];
-
+          inherit overlays;
+          config.allowUnfree = true; # Allow unfree packages
           system = "x86_64-linux";
         };
 
@@ -184,6 +192,7 @@
       host:
         self.inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {inherit self;};
+
           modules = [
             ./hosts/${host}
             self.inputs.agenix.nixosModules.default
@@ -199,6 +208,11 @@
                 extraSpecialArgs = {inherit self;};
                 useGlobalPkgs = true;
                 useUserPackages = true;
+              };
+
+              nixpkgs = {
+                inherit overlays;
+                config.allowUnfree = true;
               };
             }
           ];

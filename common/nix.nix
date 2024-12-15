@@ -1,4 +1,4 @@
-{self, ...}: {
+{...}: {
   nix = {
     gc = {
       automatic = true;
@@ -35,13 +35,5 @@
 
       trusted-users = ["aly"];
     };
-  };
-
-  nixpkgs = {
-    config.allowUnfree = true; # Allow unfree packages
-    overlays = [
-      self.inputs.nur.overlays.default
-      self.overlays.default
-    ];
   };
 }
