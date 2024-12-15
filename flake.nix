@@ -126,7 +126,14 @@
     homeConfigurations = {
       "aly@petalburg" = self.inputs.home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit self;};
-        pkgs = import self.inputs.nixpkgs {system = "x86_64-linux";};
+        pkgs = import self.inputs.nixpkgs {
+          overlays = [
+            self.inputs.nur.overlays.default
+            self.overlays.default
+          ];
+
+          system = "x86_64-linux";
+        };
 
         modules = [
           self.homeManagerModules.aly-petalburg

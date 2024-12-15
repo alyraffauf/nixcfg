@@ -3,6 +3,10 @@ self: {
   pkgs,
   ...
 }: {
+  imports = [
+    ./firefox
+  ];
+
   home = {
     homeDirectory = "/var/home/aly";
 
