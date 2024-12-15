@@ -131,3 +131,19 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build slateport
         run: nix build --accept-flake-config .#nixosConfigurations.slateport.config.system.build.toplevel
+  aly_petalburg-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build slateport
+        run: nix build --accept-flake-config .#homeConfigurations."aly@petalburg".activationPackage
