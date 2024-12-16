@@ -12,6 +12,8 @@ self: {
 
     packages = with pkgs; [
       fractal
+      gamescope
+      heroic
       vesktop
     ];
 
