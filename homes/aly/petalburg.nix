@@ -14,6 +14,7 @@ self: {
       fractal
       gamescope
       heroic
+      obsidian
       vesktop
     ];
 
