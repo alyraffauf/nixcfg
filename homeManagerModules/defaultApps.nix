@@ -42,7 +42,7 @@ in {
         WebBrowser=${builtins.baseNameOf (lib.getExe cfg.webBrowser)}
       '';
 
-      mimeApps = {
+      mimeApps = lib.mkIf cfg.forceMimeAssociations {
         enable = true;
 
         defaultApplications = let
@@ -93,15 +93,16 @@ in {
             NoDisplay = "true";
           };
         };
-      in {
-        defaultAudioPlayer = mkDefaultEntry "Audio Player" cfg.audioPlayer;
-        defaultEditor = mkDefaultEntry "Editor" cfg.editor;
-        defaultFileManager = mkDefaultEntry "File Manager" cfg.fileManager;
-        defaultImageViewer = mkDefaultEntry "Image Viewer" cfg.imageViewer;
-        defaultPdfViewer = mkDefaultEntry "PDF Viewer" cfg.pdfViewer;
-        defaultVideoPlayer = mkDefaultEntry "Video Player" cfg.videoPlayer;
-        defaultWebBrowser = mkDefaultEntry "Web Browser" cfg.webBrowser;
-      };
+      in
+        lib.mkIf cfg.forceMimeAssociations {
+          defaultAudioPlayer = mkDefaultEntry "Audio Player" cfg.audioPlayer;
+          defaultEditor = mkDefaultEntry "Editor" cfg.editor;
+          defaultFileManager = mkDefaultEntry "File Manager" cfg.fileManager;
+          defaultImageViewer = mkDefaultEntry "Image Viewer" cfg.imageViewer;
+          defaultPdfViewer = mkDefaultEntry "PDF Viewer" cfg.pdfViewer;
+          defaultVideoPlayer = mkDefaultEntry "Video Player" cfg.videoPlayer;
+          defaultWebBrowser = mkDefaultEntry "Web Browser" cfg.webBrowser;
+        };
     };
   };
 }

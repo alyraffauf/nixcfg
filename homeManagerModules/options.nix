@@ -77,6 +77,8 @@ in {
 
     defaultApps = {
       enable = lib.mkEnableOption "Declaratively set default apps and file associations.";
+      forceMimeAssociations = lib.mkEnableOption "Force mime associations for defaultApps.";
+
       audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
       editor = lib.mkPackageOption pkgs "text editor" {default = ["vscodium"];};
       fileManager = lib.mkPackageOption pkgs "file manager" {default = ["nemo"];};
