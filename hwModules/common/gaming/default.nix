@@ -39,7 +39,7 @@
       "vm.watermark_scale_factor" = lib.mkDefault 125;
     };
 
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos;
   };
 
   services = {
