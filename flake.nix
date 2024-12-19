@@ -144,8 +144,6 @@
 
         modules = [
           self.homeManagerModules.aly-petalburg
-          self.homeManagerModules.default
-          self.inputs.stylix.homeManagerModules.stylix
         ];
       };
     };

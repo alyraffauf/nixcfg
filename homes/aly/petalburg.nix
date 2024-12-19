@@ -5,6 +5,11 @@ self: {
 }: {
   imports = [
     ./firefox
+    ./mail
+    ./secrets.nix
+    self.homeManagerModules.default
+    self.inputs.agenix.homeManagerModules.default
+    self.inputs.stylix.homeManagerModules.stylix
   ];
 
   home = {
@@ -14,7 +19,10 @@ self: {
       fractal
       gamescope
       heroic
+      nicotine-plus
       obsidian
+      tauon
+      transmission-remote-gtk
       vesktop
     ];
 
