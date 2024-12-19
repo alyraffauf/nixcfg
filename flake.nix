@@ -29,11 +29,6 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
     };
 
-    nix-gaming = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:fufexan/nix-gaming";
-    };
-
     nur.url = "github:nix-community/NUR";
 
     stylix = {
