@@ -9,6 +9,11 @@
       url = "github:ryantm/agenix";
     };
 
+    chaotic = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";
@@ -47,12 +52,14 @@
 
     extra-substituters = [
       "https://alyraffauf.cachix.org"
+      "https://chaotic-nyx.cachix.org/"
       "https://nix-community.cachix.org"
       "https://nix-gaming.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
@@ -188,6 +195,7 @@
           modules = [
             ./hosts/${host}
             self.inputs.agenix.nixosModules.default
+            self.inputs.chaotic.homeManagerModules.default
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.lanzaboote.nixosModules.lanzaboote
