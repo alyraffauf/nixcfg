@@ -51,6 +51,11 @@
   };
 
   services = {
+    ananicy = {
+      enable = true; # Incompatible/not recommended with gamemode.
+      rulesProvider = pkgs.ananicy-rules-cachyos;
+    };
+
     earlyoom = {
       enable = lib.mkDefault true;
       extraArgs = lib.mkDefault ["-M" "409600,307200" "-S" "409600,307200"];
