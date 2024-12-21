@@ -221,10 +221,7 @@
         }
     );
 
-    overlays = {
-      tablet = import ./overlays/tablet.nix;
-      default = import ./overlays/default.nix {inherit self;};
-    };
+    overlays.default = import ./overlays/default.nix {inherit self;};
 
     packages = forAllLinuxSystems ({pkgs}: rec {
       default = clean-install;
