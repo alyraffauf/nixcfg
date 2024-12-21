@@ -2,7 +2,6 @@
   imports = [
     ./alacritty
     ./chromium
-    ./emacs
     ./fastfetch
     ./firefox
     ./fuzzel

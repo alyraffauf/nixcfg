@@ -16,7 +16,6 @@ in {
         package = lib.mkPackageOption pkgs "brave" {};
       };
 
-      emacs.enable = lib.mkEnableOption "Emacs text editor.";
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
       fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
