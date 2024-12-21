@@ -15,7 +15,6 @@
     ./shell
     ./swaylock
     ./thunar
-    ./tmux
     ./vsCodium
     ./wlogout
     ./yazi

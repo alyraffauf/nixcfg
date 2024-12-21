@@ -52,7 +52,6 @@ in {
         type = lib.types.bool;
       };
 
-      tmux.enable = lib.mkEnableOption "Tmux shell session manager.";
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";

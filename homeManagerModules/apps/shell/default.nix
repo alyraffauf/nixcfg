@@ -42,10 +42,7 @@
         icons = "auto";
       };
 
-      fzf = {
-        enable = true;
-        tmux.enableShellIntegration = true;
-      };
+      fzf.enable = true;
 
       oh-my-posh = {
         enable = true;
