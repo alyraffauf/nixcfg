@@ -13,6 +13,7 @@
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
+    self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
@@ -22,20 +23,6 @@
     self.nixosModules.hw-common-gaming
     self.nixosModules.hw-framework-13-amd-7000
   ];
-
-  boot = {
-    initrd.systemd.enable = true;
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
-    };
-  };
 
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";

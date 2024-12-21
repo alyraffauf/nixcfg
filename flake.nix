@@ -160,10 +160,12 @@
     nixosModules = {
       common-auto-upgrade = import ./common/autoUpgrade.nix;
       common-base = import ./common/base.nix;
+      common-lanzaboote = import ./common/lanzaboote.nix;
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
       common-nix = import ./common/nix.nix;
       common-pkgs = import ./common/pkgs.nix;
+      common-systemd-boot = import ./common/systemd-boot.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
 
