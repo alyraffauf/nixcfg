@@ -17,6 +17,7 @@ in {
     ./stylix.nix
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
+    self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-nix
     self.nixosModules.common-pkgs
@@ -26,27 +27,11 @@ in {
     self.nixosModules.hw-common-amd-cpu
     self.nixosModules.hw-common-amd-gpu
     self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-ssd
     self.nixosModules.hw-common-gaming
+    self.nixosModules.hw-common-ssd
   ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
-      systemd.enable = true;
-    };
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
-    };
-  };
-
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "mauville";
 
   services = {

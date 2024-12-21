@@ -16,7 +16,6 @@ in {
         package = lib.mkPackageOption pkgs "brave" {};
       };
 
-      emacs.enable = lib.mkEnableOption "Emacs text editor.";
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
       fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
@@ -52,7 +51,6 @@ in {
         type = lib.types.bool;
       };
 
-      tmux.enable = lib.mkEnableOption "Tmux shell session manager.";
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
       wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";

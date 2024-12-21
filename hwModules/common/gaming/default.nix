@@ -51,6 +51,19 @@
   };
 
   services = {
+    ananicy = {
+      enable = true; # Incompatible/not recommended with gamemode.
+
+      extraRules = [
+        {
+          name = ".easyeffects-wr";
+          type = "LowLatency_RT";
+        }
+      ];
+
+      rulesProvider = pkgs.ananicy-rules-cachyos;
+    };
+
     earlyoom = {
       enable = lib.mkDefault true;
       extraArgs = lib.mkDefault ["-M" "409600,307200" "-S" "409600,307200"];

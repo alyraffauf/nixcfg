@@ -15,14 +15,10 @@
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
     self.nixosModules.common-pkgs
+    self.nixosModules.common-systemd-boot
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th
   ];
-
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-  };
 
   environment.variables.GDK_SCALE = "1.5";
   networking.hostName = "fallarbor";

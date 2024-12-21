@@ -2,7 +2,6 @@
   imports = [
     ./alacritty
     ./chromium
-    ./emacs
     ./fastfetch
     ./firefox
     ./fuzzel
@@ -15,7 +14,6 @@
     ./shell
     ./swaylock
     ./thunar
-    ./tmux
     ./vsCodium
     ./wlogout
     ./yazi
