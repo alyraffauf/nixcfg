@@ -12,6 +12,7 @@
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
+    self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
@@ -20,20 +21,6 @@
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-thinkpad-t440p
   ];
-
-  boot = {
-    initrd.systemd.enable = true;
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
-    };
-  };
 
   environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "rustboro";
