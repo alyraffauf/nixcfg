@@ -27,7 +27,7 @@
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";
 
-  services.udev.extraRules = let
+  services.udev.extraRules = lib.mkIf config.programs.hyprland.enable (let
     hyprlandDynamicRes = pkgs.writeShellScript "hyprland-dynamic-resolution" ''
       MON="eDP-1"
       RES="2880x1920"
@@ -49,7 +49,7 @@
   in ''
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="ACAD", ATTR{online}=="1", ACTION=="change", RUN+="${hyprlandDynamicRes} 120 1"
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="ACAD", ATTR{online}=="0", ACTION=="change", RUN+="${hyprlandDynamicRes} 60 0"
-  '';
+  '');
 
   system.stateVersion = "24.05";
 
