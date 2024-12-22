@@ -1,8 +1,16 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
+  assertions = [
+    {
+      assertion = !(config.programs.gamemode.enable && config.services.ananicy.enable);
+      message = "Ananicy and GameModee cannot be enabled at the same time.";
+    }
+  ];
+
   boot = {
     kernel.sysctl = {
       # Improved file monitoring
