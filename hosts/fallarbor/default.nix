@@ -12,7 +12,6 @@
     ./stylix.nix
     self.nixosModules.common-base
     self.nixosModules.common-locale
-    self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
     self.nixosModules.common-pkgs
     self.nixosModules.common-systemd-boot

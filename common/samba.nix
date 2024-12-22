@@ -1,4 +1,11 @@
 {config, ...}: {
+  assertions = [
+    {
+      assertion = config.services.tailscale.enable;
+      message = "Samba connects to mauville shares over tailscale, but services.tailscale.enable != true.";
+    }
+  ];
+
   fileSystems = let
     fsType = "cifs";
     options = [
