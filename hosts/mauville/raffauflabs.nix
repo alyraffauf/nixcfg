@@ -41,55 +41,55 @@ in {
       port = audiobookshelf.port;
     };
 
-    forgejo = {
-      enable = true;
-      lfs.enable = true;
+    # forgejo = {
+    #   enable = true;
+    #   lfs.enable = true;
 
-      settings = {
-        actions = {
-          ENABLED = true;
-          DEFAULT_ACTIONS_URL = "https://github.com";
-        };
+    #   settings = {
+    #     actions = {
+    #       ENABLED = true;
+    #       DEFAULT_ACTIONS_URL = "https://github.com";
+    #     };
 
-        cron = {
-          ENABLED = true;
-          RUN_AT_START = false;
-        };
+    #     cron = {
+    #       ENABLED = true;
+    #       RUN_AT_START = false;
+    #     };
 
-        DEFAULT.APP_NAME = "Forĝejo";
+    #     DEFAULT.APP_NAME = "Forĝejo";
 
-        repository = {
-          DEFAULT_BRANCH = "master";
-          ENABLE_PUSH_CREATE_ORG = true;
-          ENABLE_PUSH_CREATE_USER = true;
-          PREFERRED_LICENSES = "GPL-3.0";
-        };
+    #     repository = {
+    #       DEFAULT_BRANCH = "master";
+    #       ENABLE_PUSH_CREATE_ORG = true;
+    #       ENABLE_PUSH_CREATE_USER = true;
+    #       PREFERRED_LICENSES = "GPL-3.0";
+    #     };
 
-        federation.ENABLED = true;
-        picture.ENABLE_FEDERATED_AVATAR = true;
-        security.PASSWORD_CHECK_PWN = true;
+    #     federation.ENABLED = true;
+    #     picture.ENABLE_FEDERATED_AVATAR = true;
+    #     security.PASSWORD_CHECK_PWN = true;
 
-        server = {
-          LANDING_PAGE = "explore";
-          ROOT_URL = "https://git.${domain}/";
-        };
+    #     server = {
+    #       LANDING_PAGE = "explore";
+    #       ROOT_URL = "https://git.${domain}/";
+    #     };
 
-        service = {
-          ALLOW_ONLY_INTERNAL_REGISTRATION = true;
-          DISABLE_REGISTRATION = true;
-          ENABLE_NOTIFY_MAIL = true;
-        };
+    #     service = {
+    #       ALLOW_ONLY_INTERNAL_REGISTRATION = true;
+    #       DISABLE_REGISTRATION = true;
+    #       ENABLE_NOTIFY_MAIL = true;
+    #     };
 
-        session.COOKIE_SECURE = true;
+    #     session.COOKIE_SECURE = true;
 
-        ui.DEFAULT_THEME = "forgejo-auto";
-        "ui.meta" = {
-          AUTHOR = "Forĝejo @ ${domain}";
-          DESCRIPTION = "Self-hosted git forge for projects + toys.";
-          KEYWORDS = "git,source code,forge,forĝejo,aly raffauf";
-        };
-      };
-    };
+    #     ui.DEFAULT_THEME = "forgejo-auto";
+    #     "ui.meta" = {
+    #       AUTHOR = "Forĝejo @ ${domain}";
+    #       DESCRIPTION = "Self-hosted git forge for projects + toys.";
+    #       KEYWORDS = "git,source code,forge,forĝejo,aly raffauf";
+    #     };
+    #   };
+    # };
 
     immich = {
       enable = true;

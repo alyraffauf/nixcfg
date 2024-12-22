@@ -19,7 +19,7 @@ in {
 
       domains = [
         "bt.${domain}"
-        "git.${domain}"
+        # "git.${domain}"
         "music.${domain}"
         "passwords.${domain}"
         "pics.${domain}"
@@ -204,18 +204,18 @@ in {
           };
         };
 
-        "git.${domain}" = {
-          enableACME = true;
-          forceSSL = true;
+        # "git.${domain}" = {
+        #   enableACME = true;
+        #   forceSSL = true;
 
-          locations."/" = {
-            proxyPass = "http://${ip}:${toString 3000}";
+        #   locations."/" = {
+        #     proxyPass = "http://${ip}:${toString 3000}";
 
-            extraConfig = ''
-              client_max_body_size 512M;
-            '';
-          };
-        };
+        #     extraConfig = ''
+        #       client_max_body_size 512M;
+        #     '';
+        #   };
+        # };
 
         "music.${domain}" = {
           enableACME = true;
