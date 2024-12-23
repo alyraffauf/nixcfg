@@ -61,12 +61,8 @@
     };
 
     desktop = {
-      greetd = {
-        enable = true;
-        session = lib.getExe' pkgs.kdePackages.plasma-workspace "startplasma-wayland";
-      };
-
       kde.enable = true;
+      sddm.enable = true;
     };
 
     laptopMode = true;
