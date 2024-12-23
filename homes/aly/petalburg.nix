@@ -3,21 +3,7 @@ self: {
   lib,
   pkgs,
   ...
-}: let
-  devices = import ../../syncthing/devices.nix;
-
-  folders = lib.mkMerge [
-    (import ../../syncthing/folders.nix)
-    {
-      "music" = {
-        enable = false;
-        path = "~/music";
-      };
-
-      "roms".enable = true;
-    }
-  ];
-in {
+}: {
   imports = [
     ./firefox
     ./mail
@@ -119,7 +105,21 @@ in {
     cert = config.age.secrets.syncthingCert.path;
     key = config.age.secrets.syncthingKey.path;
 
-    settings = {
+    settings = let
+      devices = import ../../syncthing/devices.nix;
+
+      folders = lib.mkMerge [
+        (import ../../syncthing/folders.nix)
+        {
+          "music" = {
+            enable = false;
+            path = "~/music";
+          };
+
+          "roms".enable = true;
+        }
+      ];
+    in {
       options = {
         localAnnounceEnabled = true;
         relaysEnabled = true;
@@ -131,8 +131,8 @@ in {
   };
 
   systemd.user = {
-    startServices = true; # Needed for auto-mounting agenix secrets.
     services.syncthing.environment.STNODEFAULTFOLDER = "true";
+    startServices = true; # Needed for auto-mounting agenix secrets.
   };
 
   targets.genericLinux.enable = true;
