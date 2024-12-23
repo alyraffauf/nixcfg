@@ -16,7 +16,7 @@
       # Improved file monitoring
       "fs.file-max" = lib.mkDefault 2097152; # Set size of file handles and inode cache
       "fs.inotify.max_user_instances" = lib.mkOverride 100 8192; # Re-use the default from Bazzite even though the default NixOS value is higher.
-      # "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
+      "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
 
       "kernel.nmi_watchdog" = lib.mkOverride 100 0; # Disable watchdogs for maximum performance at the cost of resiliency
       "kernel.sched_cfs_bandwidth_slice_u" = lib.mkDefault 3000;
