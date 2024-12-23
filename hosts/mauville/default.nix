@@ -1,7 +1,6 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
-  lib,
   pkgs,
   self,
   ...
@@ -35,6 +34,22 @@ in {
   networking.hostName = "mauville";
 
   services = {
+    displayManager.sddm = {
+      enable = true;
+
+      settings = {
+        Autologin = {
+          Session = "plasma";
+          User = "aly";
+        };
+      };
+
+      wayland = {
+        enable = true;
+        compositor = "kwin";
+      };
+    };
+
     samba = {
       enable = true;
       openFirewall = true;
@@ -84,7 +99,11 @@ in {
   };
 
   environment = {
-    systemPackages = with pkgs; [heroic];
+    systemPackages = with pkgs; [
+      heroic
+      kdePackages.sddm-kcm
+    ];
+
     variables.GDK_SCALE = "1.25";
   };
 
@@ -99,11 +118,11 @@ in {
     };
 
     desktop = {
-      greetd = {
-        enable = true;
-        autologin = "aly";
-        session = lib.getExe' pkgs.kdePackages.plasma-workspace "startplasma-wayland";
-      };
+      # greetd = {
+      #   enable = true;
+      #   autologin = "aly";
+      #   session = lib.getExe' pkgs.kdePackages.plasma-workspace "startplasma-wayland";
+      # };
 
       kde.enable = true;
     };
