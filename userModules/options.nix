@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   options.ar.users = let
     mkUser = user: {
       enable = lib.mkEnableOption "${user}.";
@@ -52,7 +48,7 @@
 
           syncMusic = lib.mkOption {
             description = "Whether to sync music folder.";
-            default = config.ar.users.aly.syncthing.enable;
+            default = false;
             type = lib.types.bool;
           };
 

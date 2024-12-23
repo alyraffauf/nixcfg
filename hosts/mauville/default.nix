@@ -138,6 +138,7 @@ in {
           certFile = config.age.secrets.syncthingCert.path;
           keyFile = config.age.secrets.syncthingKey.path;
           musicPath = "${mediaDirectory}/Music";
+          syncMusic = true;
           syncROMs = true;
         };
       };
