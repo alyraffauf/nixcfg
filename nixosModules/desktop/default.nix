@@ -5,10 +5,11 @@
   ...
 }: {
   imports = [
-    ./greetd
     ./gnome
+    ./greetd
     ./hyprland
     ./kde
+    ./sddm
     ./waylandComp.nix
   ];
 
@@ -25,9 +26,7 @@
         plymouth.enable = true;
       };
 
-      environment = {
-        sessionVariables.NIXOS_OZONE_WL = "1";
-      };
+      environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
       hardware.logitech.wireless = {
         enable = true;
@@ -39,7 +38,6 @@
       services = {
         gnome.gnome-keyring.enable = true;
         gvfs.enable = true; # Mount, trash, etc.
-
         libinput.enable = true;
 
         pipewire = {

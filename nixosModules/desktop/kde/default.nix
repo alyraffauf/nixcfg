@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.desktop.kde.enable {
@@ -15,6 +16,7 @@
     #     ;
     # };
 
+    environment.systemPackages = [pkgs.kdePackages.sddm-kcm];
     services.desktopManager.plasma6.enable = true;
   };
 }

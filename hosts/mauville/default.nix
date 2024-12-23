@@ -32,25 +32,8 @@ in {
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "mauville";
-  security.pam.services.sddm.enableGnomeKeyring = true;
 
   services = {
-    displayManager.sddm = {
-      enable = true;
-
-      settings = {
-        Autologin = {
-          Session = "plasma";
-          User = "aly";
-        };
-      };
-
-      wayland = {
-        enable = true;
-        compositor = "kwin";
-      };
-    };
-
     samba = {
       enable = true;
       openFirewall = true;
@@ -100,11 +83,7 @@ in {
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      heroic
-      kdePackages.sddm-kcm
-    ];
-
+    systemPackages = with pkgs; [heroic];
     variables.GDK_SCALE = "1.25";
   };
 
@@ -119,13 +98,13 @@ in {
     };
 
     desktop = {
-      # greetd = {
-      #   enable = true;
-      #   autologin = "aly";
-      #   session = lib.getExe' pkgs.kdePackages.plasma-workspace "startplasma-wayland";
-      # };
-
       kde.enable = true;
+
+      sddm = {
+        enable = true;
+        autologin = "aly";
+        session = "plasma";
+      };
     };
 
     users = {
