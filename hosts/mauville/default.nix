@@ -102,11 +102,10 @@ in {
       greetd = {
         enable = true;
         autologin = "aly";
-        session = lib.getExe config.programs.hyprland.package;
+        session = lib.getExe' pkgs.kdePackages.plasma-workspace "startplasma-wayland";
       };
 
-      steam.enable = true;
-      hyprland.enable = true;
+      kde.enable = true;
     };
 
     users = {
