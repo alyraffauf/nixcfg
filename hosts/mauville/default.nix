@@ -32,6 +32,7 @@ in {
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "mauville";
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   services = {
     displayManager.sddm = {
