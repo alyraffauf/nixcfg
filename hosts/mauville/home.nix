@@ -98,7 +98,7 @@
         };
       };
 
-      dustin = self.homeManagerModules.dustin;
+      # dustin = self.homeManagerModules.dustin;
     };
   };
 }

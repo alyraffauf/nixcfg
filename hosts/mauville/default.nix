@@ -142,7 +142,7 @@ in {
       };
 
       dustin = {
-        enable = true;
+        enable = false;
         password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
       };
     };
