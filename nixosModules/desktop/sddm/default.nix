@@ -18,11 +18,11 @@
           Session = config.ar.desktop.sddm.session;
           User = config.ar.desktop.sddm.autologin;
         };
+      };
 
-        wayland = {
-          enable = true;
-          compositor = "kwin";
-        };
+      wayland = {
+        enable = true;
+        compositor = "kwin";
       };
     };
   };
