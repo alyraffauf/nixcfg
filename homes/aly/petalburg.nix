@@ -1,8 +1,23 @@
 self: {
   config,
+  lib,
   pkgs,
   ...
-}: {
+}: let
+  devices = import ../../syncthing/devices.nix;
+
+  folders = lib.mkMerge [
+    (import ../../syncthing/folders.nix)
+    {
+      "music" = {
+        enable = false;
+        path = "~/music";
+      };
+
+      "roms".enable = true;
+    }
+  ];
+in {
   imports = [
     ./firefox
     ./mail
@@ -11,6 +26,11 @@ self: {
     self.inputs.agenix.homeManagerModules.default
     self.inputs.stylix.homeManagerModules.stylix
   ];
+
+  age.secrets = {
+    syncthingCert.file = ../../secrets/aly/syncthing/petalburg/cert.age;
+    syncthingKey.file = ../../secrets/aly/syncthing/petalburg/key.age;
+  };
 
   home = {
     homeDirectory = "/var/home/aly";
@@ -79,7 +99,27 @@ self: {
     targets.gtk.enable = true;
   };
 
-  systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
+  services.syncthing = {
+    enable = true;
+    cert = config.age.secrets.syncthingCert.path;
+    key = config.age.secrets.syncthingKey.path;
+
+    settings = {
+      options = {
+        localAnnounceEnabled = true;
+        relaysEnabled = true;
+        urAccepted = -1;
+      };
+
+      inherit devices folders;
+    };
+  };
+
+  systemd.user = {
+    startServices = true; # Needed for auto-mounting agenix secrets.
+    services.syncthing.environment.STNODEFAULTFOLDER = "true";
+  };
+
   targets.genericLinux.enable = true;
 
   xdg = {
