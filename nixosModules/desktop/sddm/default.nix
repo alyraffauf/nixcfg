@@ -10,19 +10,19 @@
       kwallet.enable = true;
     };
 
-    services.displayManager.sddm = {
-      enable = true;
-
-      settings = {
-        Autologin = lib.mkIf (config.ar.desktop.sddm.autologin != null) {
-          Session = config.ar.desktop.sddm.session;
-          User = config.ar.desktop.sddm.autologin;
-        };
+    services.displayManager = {
+      autoLogin = lib.mkIf (config.ar.desktop.sddm.autologin != null) {
+        enable = true;
+        user = config.ar.desktop.sddm.autologin;
       };
 
-      wayland = {
+      sddm = {
         enable = true;
-        compositor = "kwin";
+
+        wayland = {
+          enable = true;
+          compositor = "kwin";
+        };
       };
     };
   };

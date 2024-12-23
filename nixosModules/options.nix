@@ -41,12 +41,6 @@
           default = null;
           type = lib.types.nullOr lib.types.str;
         };
-
-        session = lib.mkOption {
-          description = "Default commasessionnd to execute on login.";
-          default = "plasma";
-          type = lib.types.str;
-        };
       };
 
       steam.enable = lib.mkEnableOption "Steam + Gamescope session.";

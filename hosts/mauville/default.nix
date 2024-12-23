@@ -103,7 +103,6 @@ in {
       sddm = {
         enable = true;
         autologin = "aly";
-        session = "plasma";
       };
     };
 
