@@ -60,11 +60,7 @@
       steam.enable = true;
     };
 
-    desktop = {
-      kde.enable = true;
-      sddm.enable = true;
-    };
-
+    desktop.gnome.enable = true;
     laptopMode = true;
 
     users.aly = {
