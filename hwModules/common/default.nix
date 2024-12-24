@@ -19,8 +19,5 @@
     '';
   };
 
-  zramSwap = {
-    enable = lib.mkDefault true;
-    memoryPercent = lib.mkDefault 25;
-  };
+  zramSwap.enable = lib.mkDefault true;
 }

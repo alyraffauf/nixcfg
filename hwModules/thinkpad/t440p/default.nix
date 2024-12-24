@@ -29,4 +29,5 @@
 
   powerManagement.cpuFreqGovernor = "ondemand";
   services.fwupd.enable = true;
+  zramSwap.algorithm = "lz4";
 }

@@ -26,11 +26,6 @@
   networking.hostName = "rustboro";
   system.stateVersion = "24.05";
 
-  zramSwap = {
-    algorithm = "lz4";
-    memoryPercent = 50;
-  };
-
   ar = {
     apps.firefox.enable = true;
 
