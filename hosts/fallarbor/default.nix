@@ -1,7 +1,6 @@
 # Framework 13 with 11th gen Intel Core i5, 16GB RAM, 512GB SSD.
 {
   config,
-  lib,
   self,
   ...
 }: {
@@ -31,13 +30,8 @@
 
     desktop = {
       desktopOptimizations.enable = true;
-
-      greetd = {
-        enable = true;
-        session = lib.getExe config.programs.hyprland.package;
-      };
-
-      hyprland.enable = true;
+      kde.enable = true;
+      sddm.enable = true;
     };
 
     laptopMode = true;
