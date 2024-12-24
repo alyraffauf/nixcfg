@@ -20,7 +20,7 @@
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
-    self.nixosModules.hw-common-gaming
+    # self.nixosModules.hw-common-gaming
     self.nixosModules.hw-framework-13-amd-7000
   ];
 
@@ -60,7 +60,11 @@
       steam.enable = true;
     };
 
-    desktop.gnome.enable = true;
+    desktop = {
+      desktopOptimizations.enable = true;
+      gnome.enable = true;
+    };
+
     laptopMode = true;
 
     users.aly = {

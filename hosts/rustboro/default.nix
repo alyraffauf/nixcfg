@@ -30,6 +30,8 @@
     apps.firefox.enable = true;
 
     desktop = {
+      desktopOptimizations.enable = true;
+
       greetd = {
         enable = true;
         autologin = "aly";

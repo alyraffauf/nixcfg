@@ -30,6 +30,8 @@
     };
 
     desktop = {
+      desktopOptimizations.enable = true;
+
       greetd = {
         enable = true;
         session = lib.getExe config.programs.hyprland.package;

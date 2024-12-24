@@ -26,7 +26,6 @@ in {
     self.nixosModules.hw-common-amd-cpu
     self.nixosModules.hw-common-amd-gpu
     self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-gaming
     self.nixosModules.hw-common-ssd
   ];
 
@@ -98,6 +97,7 @@ in {
     };
 
     desktop = {
+      desktopOptimizations.enable = true;
       kde.enable = true;
 
       sddm = {

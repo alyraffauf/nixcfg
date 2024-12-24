@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./desktopOptimizations.nix
     ./gnome
     ./greetd
     ./hyprland

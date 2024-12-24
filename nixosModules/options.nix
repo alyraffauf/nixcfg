@@ -13,6 +13,8 @@
     };
 
     desktop = {
+      desktopOptimizations.enable = lib.mkEnableOption "Optimizations for desktop, gaming, and multimedia workloads.";
+
       greetd = {
         enable = lib.mkEnableOption "Greetd display manager.";
 
