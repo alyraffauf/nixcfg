@@ -28,6 +28,10 @@
       networkmanagerapplet
     ];
 
+    programs.hyprlock.settings = {
+      auth.fingerprint.enabled = true;
+    };
+
     services.playerctld.enable = lib.mkDefault true;
 
     xdg.portal = {
