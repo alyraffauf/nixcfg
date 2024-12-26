@@ -1,15 +1,12 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.desktop.hyprland.enable {
     programs = {
-      hyprland = {
-        enable = true;
-        package = pkgs.hyprland;
-      };
+      hyprland.enable = true;
+      hyprlock.enable = true;
     };
   };
 }
