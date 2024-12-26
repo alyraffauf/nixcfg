@@ -74,6 +74,7 @@ self: {
 
     defaultApps = {
       enable = true;
+      terminal = pkgs.ghostty;
       webBrowser = config.ar.home.apps.chromium.package;
     };
 
