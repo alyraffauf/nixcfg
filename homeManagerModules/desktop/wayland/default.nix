@@ -29,7 +29,49 @@
     ];
 
     programs.hyprlock.settings = {
-      auth.fingerprint.enabled = true;
+      auth.fingerprint = {
+        enabled = true;
+        present_message = "Scanning fingerprint...";
+        ready_message = "Scan fingerprint to unlock.";
+      };
+
+      input-field = {
+        font_family = config.stylix.fonts.sansSerif.name;
+        rounding = config.ar.home.theme.borders.radius;
+      };
+
+      label = [
+        {
+          color = "rgb(${config.lib.stylix.colors.base05})";
+          font_family = config.stylix.fonts.sansSerif.name;
+          font_size = 40;
+          halign = "center";
+          position = "0, 400";
+          shadow_passes = 2;
+          text = "Hi, $DESC.";
+          valign = "center";
+        }
+        {
+          color = "rgb(${config.lib.stylix.colors.base05})";
+          font_family = config.stylix.fonts.sansSerif.name;
+          font_size = 40;
+          halign = "center";
+          position = "0, 100";
+          shadow_passes = 2;
+          text = "$TIME12";
+          valign = "bottom";
+        }
+        {
+          color = "rgb(${config.lib.stylix.colors.base05})";
+          font_family = config.stylix.fonts.sansSerif.name;
+          font_size = 24;
+          halign = "center";
+          position = "0, -200";
+          shadow_passes = 2;
+          text = "$FPRINTMESSAGE";
+          valign = "center";
+        }
+      ];
     };
 
     services.playerctld.enable = lib.mkDefault true;
