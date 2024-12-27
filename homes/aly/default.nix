@@ -20,6 +20,7 @@ self: {
       fractal
       nicotine-plus
       obsidian
+      protonvpn-gui
       tauon
       transmission-remote-gtk
       vesktop
