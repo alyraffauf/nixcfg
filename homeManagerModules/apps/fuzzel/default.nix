@@ -16,9 +16,9 @@ in {
 
         main = {
           layer = "overlay";
-          lines = 3;
+          lines = 10;
           terminal = lib.getExe cfg.defaultApps.terminal;
-          width = 36;
+          width = 24;
         };
       };
     };
