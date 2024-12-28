@@ -2,7 +2,7 @@
   "sync" = {
     id = "default";
     path = "/home/aly/sync";
-    devices = ["fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
+    devices = ["fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
     versioning = {
       type = "staggered";
       params = {
@@ -28,7 +28,7 @@
   };
 
   "roms" = {
-    devices = ["lavaridge" "mauville" "petalburg"];
+    devices = ["lavaridge" "mauville" "pacifidlog" "petalburg"];
     id = "emudeck";
     path = "/home/aly/roms";
   };
