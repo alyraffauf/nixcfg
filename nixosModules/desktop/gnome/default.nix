@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf config.ar.desktop.gnome.enable {
@@ -12,14 +11,9 @@
     };
 
     # Enable GNOME and GDM.
-    services = {
-      gnome.localsearch.enable = true;
-      udev.packages = with pkgs; [gnome-settings-daemon];
-
-      xserver = {
-        desktopManager.gnome.enable = true;
-        displayManager.gdm.enable = true;
-      };
+    services.xserver = {
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
     };
   };
 }
