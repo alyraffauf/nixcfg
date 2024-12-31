@@ -231,8 +231,6 @@
         name = "clean-install";
         text = ./flake/clean-install.sh;
       };
-
-      rofi-bluetooth = pkgs.callPackage ./pkgs/rofi-bluetooth.nix {};
     });
   };
 }
