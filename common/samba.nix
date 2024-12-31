@@ -21,11 +21,6 @@
       "x-systemd.mount-timeout=5s"
     ];
   in {
-    "/mnt/Archive" = {
-      inherit options fsType;
-      device = "//mauville/Archive";
-    };
-
     "/mnt/Media" = {
       inherit options fsType;
       device = "//mauville/Media";
