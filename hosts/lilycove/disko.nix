@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      media = {
+      archive = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/sda";
 
         content = {
           type = "gpt";
@@ -15,7 +15,7 @@
               content = {
                 type = "btrfs";
                 # extraArgs = ["-f"]; # Override existing partition
-                mountpoint = "/mnt/Media";
+                mountpoint = "/mnt/Archive";
                 mountOptions = ["compress=zstd" "noatime"];
               };
             };
@@ -25,7 +25,7 @@
 
       vdb = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/nvme0n1";
 
         content = {
           type = "gpt";
@@ -34,13 +34,12 @@
             ESP = {
               size = "1024M";
               type = "EF00";
+
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = ["defaults"];
               };
             };
 
