@@ -24,6 +24,7 @@ in {
     self.nixosModules.hw-common-intel-gpu
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-ssd
+    self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-programs-podman
   ];
 

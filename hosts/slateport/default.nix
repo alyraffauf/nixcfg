@@ -21,6 +21,7 @@
     self.nixosModules.hw-common-intel-cpu
     self.nixosModules.hw-common-intel-gpu
     self.nixosModules.hw-common-ssd
+    self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-programs-podman
   ];
 

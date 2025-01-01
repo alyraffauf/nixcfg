@@ -21,7 +21,6 @@ in {
   config = lib.mkIf cfg.apps.rofi.enable {
     home.packages = [
       pkgs.networkmanager_dmenu
-      pkgs.rofi-bluetooth
       pkgs.rofi-rbw-wayland
     ];
 
@@ -35,7 +34,6 @@ in {
 
       plugins = [
         pkgs.rofi-power-menu
-        pkgs.rofi-file-browser
       ];
 
       terminal = lib.getExe cfg.defaultApps.terminal;

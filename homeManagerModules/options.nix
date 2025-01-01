@@ -17,7 +17,6 @@ in {
 
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
-      fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
       helix.enable = lib.mkEnableOption "Helix text editor.";
 
       keepassxc = {
@@ -32,7 +31,6 @@ in {
       };
 
       kitty.enable = lib.mkEnableOption "Kitty terminal.";
-      librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
 
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
@@ -44,14 +42,7 @@ in {
       shell.enable = lib.mkEnableOption "Shell with defaults.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
 
-      thunar.enable = lib.mkOption {
-        description = "Thunar file manager.";
-        default = cfg.defaultApps.fileManager == pkgs.xfce.thunar;
-        type = lib.types.bool;
-      };
-
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
-      wlogout.enable = lib.mkEnableOption "Wlogout session prompt.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
 
       zed = {
