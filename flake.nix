@@ -160,7 +160,6 @@
     };
 
     nixosModules = {
-      common-auto-upgrade = import ./common/autoUpgrade.nix;
       common-base = import ./common/base.nix;
       common-lanzaboote = import ./common/lanzaboote.nix;
       common-locale = import ./common/locale.nix;
@@ -191,6 +190,7 @@
       nixos-desktop-hyprland = import ./nixosModules/desktop/hyprland.nix;
       nixos-desktop-kde = import ./nixosModules/desktop/kde.nix;
 
+      nixos-profiles-autoUpgrade = import ./nixosModules/profiles/autoUpgrade.nix;
       nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
       nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
 

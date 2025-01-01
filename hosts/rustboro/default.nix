@@ -10,7 +10,6 @@
     ./secrets.nix
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
-    self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
@@ -21,6 +20,7 @@
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-thinkpad-t440p
     self.nixosModules.nixos-desktop-hyprland
+    self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox
