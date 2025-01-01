@@ -186,7 +186,23 @@
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 
-      nixos = import ./nixosModules self;
+      nixos-desktop-gnome = import ./nixosModules/desktop/gnome.nix;
+      nixos-desktop-gui = import ./nixosModules/desktop/gui.nix;
+      nixos-desktop-hyprland = import ./nixosModules/desktop/hyprland.nix;
+      nixos-desktop-kde = import ./nixosModules/desktop/kde.nix;
+
+      nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
+
+      nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
+      nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;
+      nixos-programs-podman = import ./nixosModules/programs/podman.nix;
+      nixos-programs-steam = import ./nixosModules/programs/steam.nix;
+      nixos-programs-virt-manager = import ./nixosModules/programs/virt-manager.nix;
+
+      nixos-services-flatpak = import ./nixosModules/services/flatpak.nix;
+      nixos-services-greetd = import ./nixosModules/services/greetd.nix;
+      nixos-services-sddm = import ./nixosModules/services/sddm.nix;
+
       users = import ./userModules self;
     };
 
@@ -203,7 +219,6 @@
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.lanzaboote.nixosModules.lanzaboote
             self.inputs.stylix.nixosModules.stylix
-            self.nixosModules.nixos
             self.nixosModules.users
             {
               home-manager = {

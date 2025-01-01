@@ -20,38 +20,30 @@
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-thinkpad-t440p
+    self.nixosModules.nixos-desktop-hyprland
+    self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-programs-firefox
+    self.nixosModules.nixos-services-greetd
   ];
 
   environment.variables.GDK_SCALE = "1.25";
+
+  greetd = {
+    autologin = "aly";
+    session = lib.getExe config.programs.hyprland.package;
+  };
+
   networking.hostName = "rustboro";
   system.stateVersion = "24.05";
 
-  ar = {
-    apps.firefox.enable = true;
-
-    desktop = {
-      desktopOptimizations.enable = true;
-
-      greetd = {
-        enable = true;
-        autologin = "aly";
-        session = lib.getExe config.programs.hyprland.package;
-      };
-
-      hyprland.enable = true;
-    };
-
-    laptopMode = true;
-
-    users.aly = {
+  ar.users.aly = {
+    enable = true;
+    password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
+    syncthing = {
       enable = true;
-      password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-        syncMusic = true;
-      };
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
     };
   };
 }

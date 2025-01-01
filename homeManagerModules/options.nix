@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  osConfig,
   pkgs,
   ...
 }: let
@@ -100,18 +99,10 @@ in {
         type = lib.types.bool;
       };
 
-      gnome.enable = lib.mkOption {
-        description = "GNOME with sane defaults.";
-        default = osConfig.ar.desktop.gnome.enable or false;
-        type = lib.types.bool;
-      };
+      gnome.enable = lib.mkEnableOption "GNOME with sane defaults.";
 
       hyprland = {
-        enable = lib.mkOption {
-          description = "Hyprland with full desktop session components.";
-          default = osConfig.ar.desktop.hyprland.enable or false;
-          type = lib.types.bool;
-        };
+        enable = lib.mkEnableOption "Hyprland with full desktop session components.";
 
         laptopMonitors = lib.mkOption {
           description = "List of internal laptop monitors.";
@@ -136,11 +127,7 @@ in {
         };
       };
 
-      kde.enable = lib.mkOption {
-        description = "KDE Plasma with sane defaults.";
-        default = osConfig.ar.desktop.kde.enable or false;
-        type = lib.types.bool;
-      };
+      kde.enable = lib.mkEnableOption "KDE Plasma with sane defaults.";
 
       windowManagerBinds = lib.mkOption {
         description = "Default binds for window management.";
@@ -160,11 +147,7 @@ in {
       };
     };
 
-    laptopMode = lib.mkOption {
-      description = "Enable laptop configuration.";
-      default = osConfig.ar.laptopMode or false;
-      type = lib.types.bool;
-    };
+    laptopMode = lib.mkEnableOption "Enable laptop configuration.";
 
     services = {
       easyeffects = {

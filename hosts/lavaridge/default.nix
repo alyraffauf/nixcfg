@@ -20,8 +20,12 @@
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
-    # self.nixosModules.hw-common-gaming
     self.nixosModules.hw-framework-13-amd-7000
+    self.nixosModules.nixos-desktop-gnome
+    self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-programs-firefox
+    self.nixosModules.nixos-programs-podman
+    self.nixosModules.nixos-programs-steam
   ];
 
   environment.variables.GDK_SCALE = "2";
@@ -53,31 +57,16 @@
 
   system.stateVersion = "24.05";
 
-  ar = {
-    apps = {
-      firefox.enable = true;
-      podman.enable = true;
-      steam.enable = true;
-    };
+  ar.users.aly = {
+    enable = true;
+    password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";
 
-    desktop = {
-      desktopOptimizations.enable = true;
-      gnome.enable = true;
-    };
-
-    laptopMode = true;
-
-    users.aly = {
+    syncthing = {
       enable = true;
-      password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";
-
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-        syncMusic = true;
-        syncROMs = true;
-      };
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
+      syncROMs = true;
     };
   };
 }

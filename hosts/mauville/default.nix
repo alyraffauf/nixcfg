@@ -27,10 +27,19 @@ in {
     self.nixosModules.hw-common-amd-gpu
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-ssd
+    self.nixosModules.nixos-desktop-kde
+    self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-programs-firefox
+    self.nixosModules.nixos-programs-nicotine-plus
+    self.nixosModules.nixos-programs-podman
+    self.nixosModules.nixos-programs-steam
+    self.nixosModules.nixos-services-sddm
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "mauville";
+
+  sddm.autologin = "aly";
 
   services = {
     samba = {
@@ -88,43 +97,24 @@ in {
 
   system.stateVersion = "24.05";
 
-  ar = {
-    apps = {
-      firefox.enable = true;
-      nicotine-plus.enable = true;
-      podman.enable = true;
-      steam.enable = true;
-    };
+  ar.users = {
+    aly = {
+      enable = true;
+      password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
 
-    desktop = {
-      desktopOptimizations.enable = true;
-      kde.enable = true;
-
-      sddm = {
+      syncthing = {
         enable = true;
-        autologin = "aly";
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        musicPath = "${mediaDirectory}/Music";
+        syncMusic = true;
+        syncROMs = true;
       };
     };
 
-    users = {
-      aly = {
-        enable = true;
-        password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
-
-        syncthing = {
-          enable = true;
-          certFile = config.age.secrets.syncthingCert.path;
-          keyFile = config.age.secrets.syncthingKey.path;
-          musicPath = "${mediaDirectory}/Music";
-          syncMusic = true;
-          syncROMs = true;
-        };
-      };
-
-      dustin = {
-        enable = false;
-        password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
-      };
+    dustin = {
+      enable = false;
+      password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
     };
   };
 }
