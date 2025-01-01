@@ -42,12 +42,6 @@ in {
       shell.enable = lib.mkEnableOption "Shell with defaults.";
       swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
 
-      thunar.enable = lib.mkOption {
-        description = "Thunar file manager.";
-        default = cfg.defaultApps.fileManager == pkgs.xfce.thunar;
-        type = lib.types.bool;
-      };
-
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
 

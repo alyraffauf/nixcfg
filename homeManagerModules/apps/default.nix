@@ -11,7 +11,6 @@
     ./rofi
     ./shell
     ./swaylock
-    ./thunar
     ./vsCodium
     ./yazi
     ./zed
