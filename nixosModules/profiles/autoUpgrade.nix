@@ -1,11 +1,15 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   system.autoUpgrade = {
     enable = true;
-    allowReboot = true;
+    allowReboot = lib.mkDefault true;
     dates = "02:00";
     flags = ["--accept-flake-config"];
-    flake = config.environment.variables.FLAKE;
-    operation = "switch";
+    flake = config.environment.variables.FLAKE or "github:alyraffauf/nixcfg";
+    operation = "boot";
     persistent = true;
     randomizedDelaySec = "60min";
 

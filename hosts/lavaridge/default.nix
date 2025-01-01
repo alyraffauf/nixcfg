@@ -11,7 +11,6 @@
     ./secrets.nix
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
-    self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
@@ -22,6 +21,7 @@
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-amd-7000
     self.nixosModules.nixos-desktop-gnome
+    self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox

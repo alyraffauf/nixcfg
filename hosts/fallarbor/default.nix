@@ -17,6 +17,7 @@
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th
     self.nixosModules.nixos-desktop-kde
+    self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox
