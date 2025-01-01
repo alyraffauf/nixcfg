@@ -183,6 +183,7 @@
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 
+      nixos-desktop-cinnamon = import ./nixosModules/desktop/cinnamon.nix;
       nixos-desktop-gnome = import ./nixosModules/desktop/gnome.nix;
       nixos-desktop-gui = import ./nixosModules/desktop/gui.nix;
       nixos-desktop-hyprland = import ./nixosModules/desktop/hyprland.nix;
@@ -203,6 +204,7 @@
       nixos-services-flatpak = import ./nixosModules/services/flatpak.nix;
       nixos-services-gdm = import ./nixosModules/services/gdm.nix;
       nixos-services-greetd = import ./nixosModules/services/greetd.nix;
+      nixos-services-lightdm = import ./nixosModules/services/lightdm.nix;
       nixos-services-sddm = import ./nixosModules/services/sddm.nix;
 
       users = import ./userModules self;
