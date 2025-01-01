@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [./gui.nix];
 
   # environment.plasma6.excludePackages = lib.attrsets.attrValues {
@@ -13,5 +17,12 @@
   # };
 
   environment.systemPackages = [pkgs.kdePackages.sddm-kcm];
+
+  home-manager.sharedModules = [
+    {
+      ar.home.desktop.kde.enable = lib.mkDefault true;
+    }
+  ];
+
   services.desktopManager.plasma6.enable = true;
 }
