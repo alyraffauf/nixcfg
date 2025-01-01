@@ -7,7 +7,6 @@
     ./helix
     ./keepassxc
     ./kitty
-    ./librewolf
     ./nemo
     ./rofi
     ./shell

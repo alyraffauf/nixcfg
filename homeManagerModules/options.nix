@@ -31,7 +31,6 @@ in {
       };
 
       kitty.enable = lib.mkEnableOption "Kitty terminal.";
-      librewolf.enable = lib.mkEnableOption "Librewolf web browser.";
 
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
