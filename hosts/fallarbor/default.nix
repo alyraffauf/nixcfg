@@ -20,6 +20,7 @@
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-steam
+    self.nixosModules.nixos-services-flatpak
     self.nixosModules.nixos-services-sddm
   ];
 
