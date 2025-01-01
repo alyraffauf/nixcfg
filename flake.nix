@@ -162,12 +162,10 @@
 
     nixosModules = {
       common-base = import ./common/base.nix;
-      common-lanzaboote = import ./common/lanzaboote.nix;
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
       common-nix = import ./common/nix.nix;
       common-pkgs = import ./common/pkgs.nix;
-      common-systemd-boot = import ./common/systemd-boot.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
 
@@ -194,6 +192,8 @@
       nixos-profiles-autoUpgrade = import ./nixosModules/profiles/autoUpgrade.nix;
       nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
       nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
+      nixos-profiles-lanzaboote = import ./nixosModules/profiles/lanzaboote.nix;
+      nixos-profiles-systemd-boot = import ./nixosModules/profiles/systemd-boot.nix;
 
       nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
       nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;

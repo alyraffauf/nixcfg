@@ -13,13 +13,13 @@
     self.nixosModules.common-locale
     self.nixosModules.common-nix
     self.nixosModules.common-pkgs
-    self.nixosModules.common-systemd-boot
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-profiles-systemd-boot
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-flatpak

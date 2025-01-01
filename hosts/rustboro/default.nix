@@ -11,7 +11,6 @@
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-base
-    self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
@@ -23,6 +22,7 @@
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-services-greetd
   ];

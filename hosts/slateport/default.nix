@@ -22,17 +22,11 @@
     self.nixosModules.hw-common-ssd
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
+    self.nixosModules.nixos-profiles-systemd-boot
     self.nixosModules.nixos-programs-podman
   ];
 
-  boot = {
-    initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-    };
-  };
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
 
   networking.hostName = "slateport";
 
