@@ -21,6 +21,7 @@
     self.nixosModules.hw-common-intel-cpu
     self.nixosModules.hw-common-intel-gpu
     self.nixosModules.hw-common-ssd
+    self.nixosModules.nixos-programs-podman
   ];
 
   boot = {
@@ -46,18 +47,14 @@
 
   system.stateVersion = "24.05";
 
-  ar = {
-    apps.podman.enable = true;
+  ar.users.aly = {
+    enable = true;
+    password = "$y$j9T$Lit66g43.Zn60mwGig7cx1$L.aLzGvy0q.b1E40/XSIkhj2tkJbigpXFrxR/D/FVB4";
 
-    users.aly = {
+    syncthing = {
       enable = true;
-      password = "$y$j9T$Lit66g43.Zn60mwGig7cx1$L.aLzGvy0q.b1E40/XSIkhj2tkJbigpXFrxR/D/FVB4";
-
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-      };
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
     };
   };
 }

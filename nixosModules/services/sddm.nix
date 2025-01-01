@@ -3,7 +3,13 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.ar.desktop.sddm.enable {
+  options.sddm.autologin = lib.mkOption {
+    description = "User to autologin.";
+    default = null;
+    type = lib.types.nullOr lib.types.str;
+  };
+
+  config = {
     security.pam.services.sddm = {
       enableGnomeKeyring = true;
       gnupg.enable = true;
@@ -11,9 +17,9 @@
     };
 
     services.displayManager = {
-      autoLogin = lib.mkIf (config.ar.desktop.sddm.autologin != null) {
+      autoLogin = lib.mkIf (config.sddm.autologin != null) {
         enable = true;
-        user = config.ar.desktop.sddm.autologin;
+        user = config.sddm.autologin;
       };
 
       sddm = {
