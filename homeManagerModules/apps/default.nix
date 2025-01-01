@@ -13,7 +13,6 @@
     ./swaylock
     ./thunar
     ./vsCodium
-    ./wlogout
     ./yazi
     ./zed
   ];
