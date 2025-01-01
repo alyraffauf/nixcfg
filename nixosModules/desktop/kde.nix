@@ -16,11 +16,25 @@
   #     ;
   # };
 
-  environment.systemPackages = [pkgs.kdePackages.sddm-kcm];
+  environment.systemPackages = with pkgs; [
+    kdePackages.sddm-kcm
+    maliit-keyboard
+  ];
 
   home-manager.sharedModules = [
     {
       ar.home.desktop.kde.enable = lib.mkDefault true;
+    }
+  ];
+
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org.maliit.keyboard.maliit" = {
+          key-press-haptic-feedback = true;
+          theme = "BreezeDark";
+        };
+      };
     }
   ];
 
