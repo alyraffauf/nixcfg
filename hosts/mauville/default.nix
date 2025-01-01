@@ -30,8 +30,6 @@ in {
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "mauville";
 
-  sddm.autologin = "aly";
-
   services = {
     samba = {
       enable = true;
@@ -72,16 +70,16 @@ in {
   system.stateVersion = "25.05";
 
   ar.users.aly = {
-      enable = true;
-      password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
+    enable = true;
+    password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
 
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-        musicPath = "${mediaDirectory}/Music";
-        syncMusic = true;
-        syncROMs = true;
-      };
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      musicPath = "${mediaDirectory}/Music";
+      syncMusic = true;
+      syncROMs = true;
+    };
   };
 }
