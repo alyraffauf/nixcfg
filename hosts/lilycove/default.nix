@@ -41,11 +41,7 @@ in {
   };
 
   networking.hostName = "lilycove";
-
-  sddm = {
-    enable = true;
-    autologin = "aly";
-  };
+  sddm.autologin = "aly";
 
   services = {
     samba = {
