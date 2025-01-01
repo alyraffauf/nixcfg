@@ -76,11 +76,6 @@
         rulesProvider = pkgs.ananicy-rules-cachyos;
       };
 
-      earlyoom = {
-        enable = lib.mkDefault true;
-        extraArgs = lib.mkDefault ["-M" "409600,307200" "-S" "409600,307200"];
-      };
-
       pipewire = let
         rate = 48000;
         quantum = 64;
@@ -168,6 +163,13 @@
         DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root", GROUP="audio", MODE="0660" # cpu_dma_latency writeable by audio group
         KERNEL=="ntsync", MODE="0644" # /dev/ntsync user writeable
       '';
+    };
+
+    systemd.oomd = {
+      enable = true;
+      enableUserSlices = true;
+      enableSystemSlice = true;
+      enableRootSlice = true;
     };
 
     zramSwap = {
