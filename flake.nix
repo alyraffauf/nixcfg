@@ -200,7 +200,8 @@
       nixos-programs-virt-manager = import ./nixosModules/programs/virt-manager.nix;
 
       nixos-services-flatpak = import ./nixosModules/services/flatpak.nix;
-      nixos-services-greetd = import ./nixosModules/services/greetd.nix;nixos-services-sddm = import ./nixosModules/services/sddm.nix;
+      nixos-services-greetd = import ./nixosModules/services/greetd.nix;
+      nixos-services-sddm = import ./nixosModules/services/sddm.nix;
 
       users = import ./userModules self;
     };
