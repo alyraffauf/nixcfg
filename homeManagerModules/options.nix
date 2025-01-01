@@ -17,7 +17,6 @@ in {
 
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
-      fuzzel.enable = lib.mkEnableOption "Fuzzel app launcher.";
       helix.enable = lib.mkEnableOption "Helix text editor.";
 
       keepassxc = {

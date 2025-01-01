@@ -4,7 +4,6 @@
     ./chromium
     ./fastfetch
     ./firefox
-    ./fuzzel
     ./helix
     ./keepassxc
     ./kitty
