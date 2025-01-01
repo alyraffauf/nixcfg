@@ -28,6 +28,7 @@ in {
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-ssd
     self.nixosModules.nixos-desktop-kde
+    self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nicotine-plus

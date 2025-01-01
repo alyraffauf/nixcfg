@@ -191,6 +191,7 @@
       nixos-desktop-hyprland = import ./nixosModules/desktop/hyprland.nix;
       nixos-desktop-kde = import ./nixosModules/desktop/kde.nix;
 
+      nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
       nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
 
       nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;

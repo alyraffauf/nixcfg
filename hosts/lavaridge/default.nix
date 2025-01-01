@@ -22,6 +22,7 @@
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-amd-7000
     self.nixosModules.nixos-desktop-gnome
+    self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-podman
