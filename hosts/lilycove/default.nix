@@ -12,7 +12,6 @@ in {
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-auto-upgrade
     self.nixosModules.common-base
     self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
@@ -26,6 +25,7 @@ in {
     self.nixosModules.hw-common-bluetooth
     self.nixosModules.hw-common-ssd
     self.nixosModules.nixos-desktop-kde
+    self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-programs-firefox
