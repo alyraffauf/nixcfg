@@ -76,6 +76,8 @@
         rulesProvider = pkgs.ananicy-rules-cachyos;
       };
 
+      bpftune.enable = true;
+
       pipewire = let
         rate = 48000;
         quantum = 64;
@@ -167,9 +169,9 @@
 
     systemd.oomd = {
       enable = true;
-      enableUserSlices = true;
-      enableSystemSlice = true;
       enableRootSlice = true;
+      enableSystemSlice = true;
+      enableUserSlices = true;
     };
 
     zramSwap = {
