@@ -26,6 +26,7 @@
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-programs-steam
+    self.nixosModules.nixos-services-gdm
   ];
 
   environment.variables.GDK_SCALE = "2";
