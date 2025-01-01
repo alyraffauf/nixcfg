@@ -15,7 +15,6 @@ in {
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.common-base
-    self.nixosModules.common-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-nix
     self.nixosModules.common-pkgs
@@ -30,6 +29,7 @@ in {
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nicotine-plus
     self.nixosModules.nixos-programs-podman

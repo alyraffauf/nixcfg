@@ -12,7 +12,7 @@
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.nixosModules.common-base
-    self.nixosModules.common-lanzaboote
+    self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-nix
