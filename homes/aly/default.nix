@@ -71,6 +71,7 @@ self: {
       shell.enable = true;
       vsCodium.enable = true;
       yazi.enable = true;
+      rofi.enable = true;
     };
 
     defaultApps = {
