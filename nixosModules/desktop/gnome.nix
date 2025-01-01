@@ -1,5 +1,11 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [./gui.nix];
+
+  programs.firefox.policies.Preferences."browser.tabs.inTitlebar" = lib.mkIf (config.programs.firefox.enable) 1;
 
   security.pam.services.gdm = {
     enableGnomeKeyring = true;
