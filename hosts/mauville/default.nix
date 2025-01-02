@@ -16,7 +16,6 @@ in {
     ./stylix.nix
     self.nixosModules.common-base
     self.nixosModules.common-locale
-    self.nixosModules.common-nix
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
@@ -32,6 +31,7 @@ in {
     self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nicotine-plus
+    self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-sddm

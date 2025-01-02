@@ -163,7 +163,6 @@
       common-base = import ./common/base.nix;
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
-      common-nix = import ./common/nix.nix;
       common-pkgs = import ./common/pkgs.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
@@ -196,6 +195,7 @@
 
       nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
       nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;
+      nixos-programs-nix = import ./nixosModules/programs/nix.nix;
       nixos-programs-podman = import ./nixosModules/programs/podman.nix;
       nixos-programs-steam = import ./nixosModules/programs/steam.nix;
       nixos-programs-virt-manager = import ./nixosModules/programs/virt-manager.nix;
