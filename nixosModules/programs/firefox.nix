@@ -1,6 +1,7 @@
 {...}: {
   programs.firefox = {
     enable = true;
+    
     policies = {
       Cookies.Behavior = "reject-foreign";
       DisableAppUpdate = true;
