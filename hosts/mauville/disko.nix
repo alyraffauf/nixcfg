@@ -34,6 +34,7 @@
             ESP = {
               size = "1024M";
               type = "EF00";
+
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -57,23 +58,28 @@
 
                   subvolumes = {
                     "/root" = {
-                      mountpoint = "/";
                       mountOptions = ["compress=zstd" "noatime"];
+                      mountpoint = "/";
                     };
 
                     "persist" = {
-                      mountpoint = "/persist";
                       mountOptions = ["compress=zstd" "noatime"];
+                      mountpoint = "/persist";
                     };
 
                     "/home" = {
-                      mountpoint = "/home";
                       mountOptions = ["compress=zstd" "noatime"];
+                      mountpoint = "/home";
+                    };
+
+                    "/home/.snapshots" = {
+                      mountOptions = ["compress=zstd" "noatime"];
+                      mountpoint = "/home/.snapshots";
                     };
 
                     "/nix" = {
-                      mountpoint = "/nix";
                       mountOptions = ["compress=zstd" "noatime"];
+                      mountpoint = "/nix";
                     };
                   };
                 };
