@@ -197,6 +197,7 @@
       nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;
       nixos-programs-nix = import ./nixosModules/programs/nix.nix;
       nixos-programs-podman = import ./nixosModules/programs/podman.nix;
+      nixos-programs-retroarch = import ./nixosModules/programs/retroarch.nix;
       nixos-programs-steam = import ./nixosModules/programs/steam.nix;
       nixos-programs-virt-manager = import ./nixosModules/programs/virt-manager.nix;
 
