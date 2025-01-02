@@ -38,4 +38,6 @@
       trusted-users = ["@wheel"];
     };
   };
+
+  programs.nix-ld.enable = true;
 }
