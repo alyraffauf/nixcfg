@@ -13,7 +13,6 @@
     self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-nix
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
@@ -24,6 +23,7 @@
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
+    self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-services-greetd
   ];
 
