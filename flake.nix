@@ -191,6 +191,7 @@
       nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
       nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
       nixos-profiles-lanzaboote = import ./nixosModules/profiles/lanzaboote.nix;
+      nixos-profiles-server = import ./nixosModules/profiles/server.nix;
       nixos-profiles-systemd-boot = import ./nixosModules/profiles/systemd-boot.nix;
 
       nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
