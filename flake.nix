@@ -192,12 +192,14 @@
       nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
       nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
       nixos-profiles-lanzaboote = import ./nixosModules/profiles/lanzaboote.nix;
+      nixos-profiles-server = import ./nixosModules/profiles/server.nix;
       nixos-profiles-systemd-boot = import ./nixosModules/profiles/systemd-boot.nix;
 
       nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
       nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;
       nixos-programs-nix = import ./nixosModules/programs/nix.nix;
       nixos-programs-podman = import ./nixosModules/programs/podman.nix;
+      nixos-programs-retroarch = import ./nixosModules/programs/retroarch.nix;
       nixos-programs-steam = import ./nixosModules/programs/steam.nix;
       nixos-programs-virt-manager = import ./nixosModules/programs/virt-manager.nix;
 

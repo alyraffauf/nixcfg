@@ -1,17 +1,30 @@
-{pkgs, ...}: {
-  hardware.steam-hardware.enable = true;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  options.steam.session.enable = lib.mkEnableOption "Steam + Gamescope desktop session.";
 
-  programs = {
-    gamescope.enable = true;
+  config = {
+    environment.sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+    };
 
-    steam = {
-      enable = true;
-      dedicatedServer.openFirewall = true;
-      extest.enable = true;
-      extraCompatPackages = with pkgs; [proton-ge-bin];
-      gamescopeSession.enable = true;
-      localNetworkGameTransfers.openFirewall = true;
-      remotePlay.openFirewall = true;
+    hardware.steam-hardware.enable = true;
+
+    programs = {
+      gamescope.enable = true;
+
+      steam = {
+        enable = true;
+        dedicatedServer.openFirewall = true;
+        extest.enable = true;
+        extraCompatPackages = with pkgs; [proton-ge-bin];
+        gamescopeSession.enable = config.steam.session.enable;
+        localNetworkGameTransfers.openFirewall = true;
+        remotePlay.openFirewall = true;
+      };
     };
   };
 }
