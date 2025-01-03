@@ -1,27 +1,27 @@
 {
   disko.devices = {
     disk = {
-      # media = {
-      #   type = "disk";
-      #   device = "/dev/sdb";
+      media = {
+        type = "disk";
+        device = "/dev/sdb";
 
-      #   content = {
-      #     type = "gpt";
+        content = {
+          type = "gpt";
 
-      #     partitions = {
-      #       root = {
-      #         size = "100%";
+          partitions = {
+            root = {
+              size = "100%";
 
-      #         content = {
-      #           type = "btrfs";
-      #           # extraArgs = ["-f"]; # Override existing partition
-      #           mountpoint = "/mnt/Media";
-      #           mountOptions = ["compress=zstd" "noatime"];
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
+              content = {
+                type = "btrfs";
+                # extraArgs = ["-f"]; # Override existing partition
+                mountpoint = "/mnt/Media";
+                mountOptions = ["compress=zstd" "noatime"];
+              };
+            };
+          };
+        };
+      };
 
       vdb = {
         type = "disk";
