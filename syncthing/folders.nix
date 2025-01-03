@@ -2,7 +2,7 @@
   "sync" = {
     id = "default";
     path = "/home/aly/sync";
-    devices = ["dewford" "fallarbor" "gsgmba" "iphone12" "lavaridge" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
+    devices = ["dewford" "fallarbor" "gsgmba" "iphone12" "lavaridge" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
 
     versioning = {
       type = "staggered";
@@ -14,7 +14,7 @@
   };
 
   "screenshots" = {
-    devices = ["fallarbor" "lavaridge" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
+    devices = ["fallarbor" "lavaridge" "lilycove" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
     id = "screenshots";
     path = "/home/aly/pics/screenshots";
 
@@ -25,12 +25,12 @@
   };
 
   "music" = {
-    devices = ["lavaridge" "mauville" "rustboro"];
+    devices = ["lavaridge" "lilycove" "mauville" "rustboro"];
     id = "6nzmu-z9der";
   };
 
   "roms" = {
-    devices = ["dewford" "lavaridge" "mauville" "pacifidlog" "petalburg"];
+    devices = ["dewford" "lavaridge" "lilycove" "mauville" "pacifidlog" "petalburg"];
     id = "emudeck";
     path = "/home/aly/roms";
   };
