@@ -14,6 +14,7 @@ in {
     ./stylix.nix
     self.nixosModules.common-base
     self.nixosModules.common-locale
+    self.nixosModules.common-mauville-share
     self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
