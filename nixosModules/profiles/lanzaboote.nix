@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
     initrd.systemd.enable = true;
 
@@ -12,4 +16,6 @@
       systemd-boot.enable = lib.mkForce false;
     };
   };
+
+  environment.systemPackages = [pkgs.sbctl];
 }
