@@ -101,6 +101,7 @@
     forAllHosts = self.inputs.nixpkgs.lib.genAttrs [
       "fallarbor"
       "lavaridge"
+      "lilycove"
       "mauville"
       "rustboro"
       "slateport"

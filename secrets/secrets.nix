@@ -2,7 +2,7 @@ let
   hosts = [
     "fallarbor"
     "lavaridge"
-    "mauville"
+    "lilycove"
     "petalburg"
     "rustboro"
     "slateport"
@@ -10,7 +10,7 @@ let
   users = [
     "aly_fallarbor"
     "aly_lavaridge"
-    "aly_mauville"
+    "aly_lilycove"
     "aly_petalburg"
     "aly_rustboro"
     "aly_slateport"
@@ -27,6 +27,8 @@ in {
   "aly/syncthing/fallarbor/key.age".publicKeys = keys;
   "aly/syncthing/lavaridge/cert.age".publicKeys = keys;
   "aly/syncthing/lavaridge/key.age".publicKeys = keys;
+  "aly/syncthing/lilycove/cert.age".publicKeys = keys;
+  "aly/syncthing/lilycove/key.age".publicKeys = keys;
   "aly/syncthing/mauville/cert.age".publicKeys = keys;
   "aly/syncthing/mauville/key.age".publicKeys = keys;
   "aly/syncthing/petalburg/cert.age".publicKeys = keys;

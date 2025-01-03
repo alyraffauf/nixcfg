@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      media = {
+      archive = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/sda";
 
         content = {
           type = "gpt";
@@ -15,7 +15,7 @@
               content = {
                 type = "btrfs";
                 # extraArgs = ["-f"]; # Override existing partition
-                mountpoint = "/mnt/Media";
+                mountpoint = "/mnt/Archive";
                 mountOptions = ["compress=zstd" "noatime"];
               };
             };
@@ -25,7 +25,7 @@
 
       vdb = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/nvme0n1";
 
         content = {
           type = "gpt";
@@ -39,9 +39,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = ["defaults"];
               };
             };
 
@@ -58,28 +56,23 @@
 
                   subvolumes = {
                     "/root" = {
-                      mountOptions = ["compress=zstd" "noatime"];
                       mountpoint = "/";
+                      mountOptions = ["compress=zstd" "noatime"];
                     };
 
                     "persist" = {
-                      mountOptions = ["compress=zstd" "noatime"];
                       mountpoint = "/persist";
+                      mountOptions = ["compress=zstd" "noatime"];
                     };
 
                     "/home" = {
-                      mountOptions = ["compress=zstd" "noatime"];
                       mountpoint = "/home";
-                    };
-
-                    "/home/.snapshots" = {
                       mountOptions = ["compress=zstd" "noatime"];
-                      mountpoint = "/home/.snapshots";
                     };
 
                     "/nix" = {
-                      mountOptions = ["compress=zstd" "noatime"];
                       mountpoint = "/nix";
+                      mountOptions = ["compress=zstd" "noatime"];
                     };
                   };
                 };
