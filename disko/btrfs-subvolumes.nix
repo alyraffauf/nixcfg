@@ -10,17 +10,18 @@
 
           partitions = {
             ESP = {
-              priority = 1;
-              name = "ESP";
-              start = "1M";
-              end = "1024M";
-              type = "EF00";
-
               content = {
-                type = "filesystem";
                 format = "vfat";
+                mountOptions = ["umask=0077"];
                 mountpoint = "/boot";
+                type = "filesystem";
               };
+
+              end = "1024M";
+              name = "ESP";
+              priority = 1;
+              start = "1M";
+              type = "EF00";
             };
 
             root = {

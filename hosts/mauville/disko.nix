@@ -32,17 +32,20 @@
 
           partitions = {
             ESP = {
-              size = "1024M";
-              type = "EF00";
-
               content = {
-                type = "filesystem";
                 format = "vfat";
-                mountpoint = "/boot";
+
                 mountOptions = [
                   "defaults"
+                  "umask=0077"
                 ];
+
+                mountpoint = "/boot";
+                type = "filesystem";
               };
+
+              size = "1024M";
+              type = "EF00";
             };
 
             luks = {
