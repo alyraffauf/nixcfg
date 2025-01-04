@@ -29,7 +29,8 @@ in {
     self.nixosModules.nixos-programs-podman
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "sd_mod" "r8169"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
+
   networking.hostName = "mauville";
 
   services = {
