@@ -6,7 +6,6 @@ Lenovo ThinkCentre M700.
 
 ## Todo
 
-- \[ \] configure reverse proxy.
 - \[ \] upgrade SSD.
 
 ## Specs
@@ -14,9 +13,10 @@ Lenovo ThinkCentre M700.
 | Model | Lenovo ThinkCentre M700 Tiny |
 |-------|------------------------------|
 | CPU   | Intel Core i5-6400T          |
-| RAM   | 8GB DDR4-2133Mhz             |
-| GPU   | Intel HD Graphics 530        |
 | Disks | 128GB SSD                    |
+| GPU   | Intel HD Graphics 530        |
+| RAM   | 8GB DDR4-2133Mhz             |
+| TPM2  | No                           |
 
 ## Filesystems
 

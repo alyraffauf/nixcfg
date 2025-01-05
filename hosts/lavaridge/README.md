@@ -26,4 +26,4 @@ Encrypted LUKS btrfs volume.
 
 ## Display
 
-First-gen glossy Framework Laptop 13 screen. Typically used at 1.566667 scaling with Hyprland (1.6 causes strange blurryness).
+2.8k 120Hz Matte Screen from Framework. Scales perfectly to 2x.

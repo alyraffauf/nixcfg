@@ -8,11 +8,12 @@ Thinkpad T440p. Older workhorse, not used very much these days but often used fo
 
 | Model   | ThinkPad T440p             |
 |---------|----------------------------|
-| Display | 14" 1920x1080 60hz         |
 | CPU     | Intel Core i5-4210M        |
-| RAM     | 16GB (8GBx2) DDR3L-1600Mhz |
-| GPU     | Intel HD Graphics 4600     |
 | Disks   | 512GB SATA SSD             |
+| Display | 14" 1920x1080 60hz         |
+| GPU     | Intel HD Graphics 4600     |
+| RAM     | 16GB (8GBx2) DDR3L-1600Mhz |
+| TPM2    | No                         |
 
 ## Filesystems
 
