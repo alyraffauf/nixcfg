@@ -66,6 +66,7 @@ self: {
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
+      ghostty.enable = true;
       helix.enable = true;
       kitty.enable = true;
       shell.enable = true;

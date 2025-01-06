@@ -17,6 +17,7 @@ in {
 
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
+      ghostty.enable = lib.mkEnableOption "Ghostty terminal emulator.";
       helix.enable = lib.mkEnableOption "Helix text editor.";
 
       keepassxc = {
