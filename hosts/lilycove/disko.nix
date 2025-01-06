@@ -14,9 +14,18 @@
 
               content = {
                 type = "btrfs";
-                # extraArgs = ["-f"]; # Override existing partition
-                mountpoint = "/mnt/Archive";
-                mountOptions = ["compress=zstd" "noatime"];
+
+                subvolumes = {
+                  "/root" = {
+                    mountpoint = "/mnt/Archive";
+                    mountOptions = ["compress=zstd" "noatime"];
+                  };
+
+                  "/.snapshots" = {
+                    mountOptions = ["compress=zstd" "noatime"];
+                    mountpoint = "/mnt/Archive/.snapshots";
+                  };
+                };
               };
             };
           };
@@ -60,6 +69,21 @@
                   extraArgs = ["-f"];
 
                   subvolumes = {
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = ["compress=zstd" "noatime"];
+                    };
+
+                    "/home/.snapshots" = {
+                      mountOptions = ["compress=zstd" "noatime"];
+                      mountpoint = "/home/.snapshots";
+                    };
+
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = ["compress=zstd" "noatime"];
+                    };
+
                     "/root" = {
                       mountpoint = "/";
                       mountOptions = ["compress=zstd" "noatime"];
@@ -67,16 +91,6 @@
 
                     "persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["compress=zstd" "noatime"];
-                    };
-
-                    "/home" = {
-                      mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
-                    };
-
-                    "/nix" = {
-                      mountpoint = "/nix";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
                   };

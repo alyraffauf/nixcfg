@@ -80,6 +80,14 @@ in {
       enable = true;
       openFirewall = true;
     };
+
+    snapper.configs.archive = {
+      ALLOW_GROUPS = ["users"];
+      FSTYPE = "btrfs";
+      SUBVOLUME = "/mnt/Archive";
+      TIMELINE_CLEANUP = true;
+      TIMELINE_CREATE = true;
+    };
   };
 
   system.stateVersion = "24.05";
