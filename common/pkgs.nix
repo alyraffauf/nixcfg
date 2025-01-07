@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     git
     htop
-    inxi
+    (inxi.override {withRecommends = true;})
     python3
   ];
 }
