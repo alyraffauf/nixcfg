@@ -12,10 +12,8 @@ in {
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-common
@@ -25,6 +23,7 @@ in {
     self.nixosModules.hw-common-ssd
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
+    self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-profiles-lanzaboote

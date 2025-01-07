@@ -10,15 +10,14 @@
     ./secrets.nix
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
-    self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-thinkpad-t440p
     self.nixosModules.nixos-desktop-hyprland
     self.nixosModules.nixos-profiles-autoUpgrade
+    self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-profiles-lanzaboote

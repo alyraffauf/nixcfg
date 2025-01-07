@@ -9,13 +9,12 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-base
     self.nixosModules.common-locale
-    self.nixosModules.common-pkgs
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
+    self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-profiles-systemd-boot

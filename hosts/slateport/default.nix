@@ -8,10 +8,8 @@
     ./raffauflabs.nix
     ./secrets.nix
     (import ./../../disko/btrfs-subvolumes.nix {disks = ["/dev/sda"];})
-    self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-common
@@ -20,6 +18,7 @@
     self.nixosModules.hw-common-intel-gpu
     self.nixosModules.hw-common-ssd
     self.nixosModules.nixos-profiles-autoUpgrade
+    self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-server
     self.nixosModules.nixos-profiles-systemd-boot

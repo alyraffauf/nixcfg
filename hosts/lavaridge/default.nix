@@ -11,18 +11,17 @@
     ./secrets.nix
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
-    self.nixosModules.common-base
-    self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-amd-7000
     self.nixosModules.nixos-desktop-gnome
     self.nixosModules.nixos-profiles-autoUpgrade
+    self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
