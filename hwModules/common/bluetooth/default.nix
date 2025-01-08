@@ -3,7 +3,14 @@
   pkgs,
   ...
 }: {
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+
+    settings.General = {
+      AutoEnable = true;
+      ControllerMode = "bredr";
+    };
+  };
 
   services.pulseaudio = {
     enable = lib.mkForce false;
