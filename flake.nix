@@ -203,6 +203,7 @@
       nixos-services-gdm = import ./nixosModules/services/gdm.nix;
       nixos-services-greetd = import ./nixosModules/services/greetd.nix;
       nixos-services-sddm = import ./nixosModules/services/sddm.nix;
+      nixos-services-sunshine = import ./nixosModules/services/sunshine.nix;
 
       users = import ./userModules self;
     };
