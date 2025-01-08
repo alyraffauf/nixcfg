@@ -1,4 +1,10 @@
-{...}: {
+{lib, ...}: {
+  home-manager.sharedModules = [
+    {
+      ar.home.apps.firefox.enable = lib.mkDefault true;
+    }
+  ];
+
   programs.firefox = {
     enable = true;
 
