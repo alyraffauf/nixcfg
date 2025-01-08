@@ -1,9 +1,18 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   console.useXkbConfig = true;
 
   hardware = {
     enableAllFirmware = true;
     keyboard.qmk.enable = true;
+
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = lib.mkDefault config.services.xserver.enable;
+    };
   };
 
   services = {

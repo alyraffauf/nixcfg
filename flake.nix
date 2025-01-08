@@ -187,10 +187,9 @@
       nixos-profiles-autoUpgrade = import ./nixosModules/profiles/autoUpgrade.nix;
       nixos-profiles-base = import ./nixosModules/profiles/base.nix;
       nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
-      nixos-profiles-desktop = import ./nixosModules/profiles/desktop.nix;
+      nixos-profiles-desktopOptimizations = import ./nixosModules/profiles/desktopOptimizations.nix;
       nixos-profiles-lanzaboote = import ./nixosModules/profiles/lanzaboote.nix;
-      nixos-profiles-server = import ./nixosModules/profiles/server.nix;
-      nixos-profiles-systemd-boot = import ./nixosModules/profiles/systemd-boot.nix;
+      nixos-profiles-serverOptimizations = import ./nixosModules/profiles/serverOptimizations.nix;
 
       nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
       nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;

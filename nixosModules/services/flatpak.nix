@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [gnome-software];
+  environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.gnome-software];
 
   fileSystems = let
     mkRoSymBind = path: {

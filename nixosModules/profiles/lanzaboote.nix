@@ -8,13 +8,10 @@
 
     lanzaboote = {
       enable = true;
-      pkiBundle = "/var/lib/sbctl";
+      pkiBundle = lib.mkDefault "/var/lib/sbctl";
     };
 
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
-    };
+    loader.systemd-boot.enable = lib.mkForce false;
   };
 
   environment.systemPackages = [pkgs.sbctl];

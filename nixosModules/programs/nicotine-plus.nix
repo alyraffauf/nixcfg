@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = [pkgs.nicotine-plus];
+
   networking = {
     firewall.allowedTCPPortRanges = [
       # Soulseek

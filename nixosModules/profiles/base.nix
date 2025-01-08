@@ -3,7 +3,18 @@
   pkgs,
   ...
 }: {
-  boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
+  boot = {
+    initrd.systemd.enable = lib.mkDefault true;
+
+    loader = {
+      efi.canTouchEfiVariables = lib.mkDefault true;
+
+      systemd-boot = {
+        enable = lib.mkDefault true;
+        configurationLimit = lib.mkDefault 10;
+      };
+    };
+  };
 
   environment = {
     systemPackages = with pkgs; [

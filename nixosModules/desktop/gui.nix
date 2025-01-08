@@ -6,12 +6,6 @@
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
-  };
-
   programs.system-config-printer.enable = true;
 
   services = {

@@ -25,7 +25,7 @@ in {
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-desktop
+    self.nixosModules.nixos-profiles-desktopOptimizations
     self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
