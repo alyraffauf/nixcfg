@@ -58,8 +58,6 @@
     kernelPackages = pkgs.linuxPackages_cachyos;
   };
 
-  environment.systemPackages = with pkgs; [joystickwake];
-
   services = {
     ananicy = {
       enable = true; # Incompatible/not recommended with gamemode.

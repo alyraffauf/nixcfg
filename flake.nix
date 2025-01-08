@@ -188,6 +188,7 @@
       nixos-profiles-base = import ./nixosModules/profiles/base.nix;
       nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
       nixos-profiles-desktopOptimizations = import ./nixosModules/profiles/desktopOptimizations.nix;
+      nixos-profiles-gaming = import ./nixosModules/profiles/gaming.nix;
       nixos-profiles-lanzaboote = import ./nixosModules/profiles/lanzaboote.nix;
       nixos-profiles-serverOptimizations = import ./nixosModules/profiles/serverOptimizations.nix;
 

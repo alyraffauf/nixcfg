@@ -26,12 +26,14 @@ in {
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
+    self.nixosModules.nixos-profiles-gaming
     self.nixosModules.nixos-profiles-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-sddm
+    self.nixosModules.nixos-services-sunshine
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];

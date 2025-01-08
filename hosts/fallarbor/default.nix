@@ -17,6 +17,7 @@
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
+    self.nixosModules.nixos-profiles-gaming
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-steam
