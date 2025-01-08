@@ -17,6 +17,7 @@
         "libvirtd"
         "lp"
         "networkmanager"
+        "plugdev"
         "scanner"
         "transmission"
         "video"
