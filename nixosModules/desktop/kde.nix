@@ -1,9 +1,10 @@
 {
   lib,
   pkgs,
+  self,
   ...
 }: {
-  imports = [./gui.nix];
+  imports = [self.nixosModules.nixos-desktop-gui];
 
   # environment.plasma6.excludePackages = lib.attrsets.attrValues {
   #   inherit

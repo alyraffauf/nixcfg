@@ -1,9 +1,10 @@
 {
   config,
   lib,
+  self,
   ...
 }: {
-  imports = [./gui.nix];
+  imports = [self.nixosModules.nixos-desktop-gui];
 
   home-manager.sharedModules = [
     {

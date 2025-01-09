@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   steam-run-url = pkgs.writeShellApplication {
     name = "steam-run-url";
     runtimeInputs = [pkgs.coreutils];
@@ -8,6 +12,13 @@
     '';
   };
 in {
+  assertions = [
+    {
+      assertion = config.programs.steam.enable;
+      message = "Sunshine requires programs.steam.enable == true.";
+    }
+  ];
+
   environment.systemPackages = with pkgs; [
     moonlight-qt
     steam-run-url
@@ -45,7 +56,7 @@ in {
       after = ["graphical-session.target"];
       description = "Listen and starts steam games by id.";
       partOf = ["graphical-session.target"];
-      path = [pkgs.steam];
+      path = [config.programs.steam.package];
 
       script = toString (pkgs.writers.writePython3 "steam-run-url-service" {} ''
         import os

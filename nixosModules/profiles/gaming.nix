@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  # imports = [
-  #   ../programs/steam.nix
-  # ];
-
   environment.systemPackages = with pkgs; [
     dualsensectl
     heroic
