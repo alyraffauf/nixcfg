@@ -31,6 +31,10 @@ in {
       applications = {
         apps = [
           {
+            name = "Desktop";
+            image-path = "desktop.png";
+          }
+          {
             auto-detach = "true";
             detached = ["${steam-run-url}/bin/steam-run-url steam://open/bigpicture"];
             image-path = "steam.png";
