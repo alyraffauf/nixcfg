@@ -16,7 +16,7 @@
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-amd-7000
-    self.nixosModules.nixos-desktop-gnome
+    self.nixosModules.nixos-desktop-hyprland
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
@@ -27,7 +27,7 @@
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-programs-steam
-    self.nixosModules.nixos-services-gdm
+    self.nixosModules.nixos-services-greetd
   ];
 
   environment.variables.GDK_SCALE = "2";
