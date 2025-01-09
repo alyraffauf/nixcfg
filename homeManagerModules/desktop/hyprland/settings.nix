@@ -163,6 +163,7 @@ in {
     gaps_in = 5;
     gaps_out = 6;
     layout = "dwindle";
+    "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0D}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
   };
 
   gestures = {
@@ -171,10 +172,13 @@ in {
   };
 
   group = {
+    "col.border_active" = lib.mkForce "rgb(${config.lib.stylix.colors.base0D}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
+
     groupbar = {
       height = 24;
       text_color = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
       font_size = config.stylix.fonts.sizes.desktop;
+      "col.active" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
     };
   };
 
