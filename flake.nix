@@ -101,6 +101,7 @@
       "lavaridge"
       "lilycove"
       "mauville"
+      "petalburg"
       "rustboro"
       "slateport"
     ];
