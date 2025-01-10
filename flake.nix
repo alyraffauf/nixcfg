@@ -206,7 +206,6 @@
       nixos-services-sunshine = import ./nixosModules/services/sunshine.nix;
       nixos-services-tailscale = import ./nixosModules/services/tailscale.nix;
 
-
       users = import ./userModules self;
     };
 
