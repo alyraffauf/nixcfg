@@ -192,6 +192,11 @@
     };
   };
 
+  stylix.targets.firefox = {
+    firefoxGnomeTheme.enable = true;
+    profileNames = ["default" "work"];
+  };
+
   xdg.desktopEntries.firework = {
     categories = ["Application" "Network" "WebBrowser"];
     exec = "firefox -p work --name firework %U";
