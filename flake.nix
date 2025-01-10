@@ -161,7 +161,6 @@
     nixosModules = {
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
-      common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
 
       hw-common = import ./hwModules/common;
@@ -205,6 +204,8 @@
       nixos-services-greetd = import ./nixosModules/services/greetd.nix;
       nixos-services-sddm = import ./nixosModules/services/sddm.nix;
       nixos-services-sunshine = import ./nixosModules/services/sunshine.nix;
+      nixos-services-tailscale = import ./nixosModules/services/tailscale.nix;
+
 
       users = import ./userModules self;
     };

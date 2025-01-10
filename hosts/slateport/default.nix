@@ -10,7 +10,6 @@
     (import ./../../disko/btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-common
     self.nixosModules.hw-common-bluetooth
@@ -23,10 +22,10 @@
     self.nixosModules.nixos-profiles-serverOptimizations
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
+    self.nixosModules.nixos-services-tailscale
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
-
   networking.hostName = "slateport";
 
   services = {

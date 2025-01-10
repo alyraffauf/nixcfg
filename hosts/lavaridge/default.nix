@@ -13,7 +13,6 @@
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-amd-7000
     self.nixosModules.nixos-desktop-hyprland
@@ -28,6 +27,7 @@
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-greetd
+    self.nixosModules.nixos-services-tailscale
   ];
 
   environment.variables.GDK_SCALE = "2";

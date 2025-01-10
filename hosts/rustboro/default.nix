@@ -12,7 +12,6 @@
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-thinkpad-t440p
     self.nixosModules.nixos-desktop-hyprland
@@ -24,6 +23,7 @@
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-services-greetd
+    self.nixosModules.nixos-services-tailscale
   ];
 
   environment.variables.GDK_SCALE = "1.25";

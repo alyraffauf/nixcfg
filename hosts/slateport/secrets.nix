@@ -1,5 +1,6 @@
 {
   age.secrets = {
+    tailscaleAuthKey.file = ../../secrets/tailscale/authKeyFile.age;
     cloudflare.file = ../../secrets/cloudflare.age;
     homepage.file = ../../secrets/homepage.age;
     k3s.file = ../../secrets/k3s.age;

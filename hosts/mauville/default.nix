@@ -12,7 +12,6 @@ in {
     ./raffauflabs.nix
     ./secrets.nix
     self.nixosModules.common-locale
-    self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-common
     self.nixosModules.hw-common-bluetooth
@@ -26,6 +25,7 @@ in {
     self.nixosModules.nixos-profiles-serverOptimizations
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
+    self.nixosModules.nixos-services-tailscale
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];

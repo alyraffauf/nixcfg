@@ -14,7 +14,6 @@ in {
     ./stylix.nix
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-common
     self.nixosModules.hw-common-amd-cpu
@@ -34,6 +33,7 @@ in {
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-sddm
     self.nixosModules.nixos-services-sunshine
+    self.nixosModules.nixos-services-tailscale
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
