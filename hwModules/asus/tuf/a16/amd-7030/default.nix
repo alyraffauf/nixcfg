@@ -16,7 +16,7 @@
   boot = {
     initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    kernelParams = ["amdgpu.dcdebugmask=0x200"];
+    kernelParams = ["amdgpu.dcdebugmask=0x10"];
   };
 
   environment.systemPackages = with pkgs; [
