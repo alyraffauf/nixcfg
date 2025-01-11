@@ -99,7 +99,7 @@ jobs:
         with:
           name: alyraffauf
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - name: Build mauville
+      - name: Build petalburg
         run: nix build --accept-flake-config .#nixosConfigurations.petalburg.config.system.build.toplevel
   rustboro-build:
     runs-on: ubuntu-latest
