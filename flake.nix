@@ -101,6 +101,7 @@
       "lavaridge"
       "lilycove"
       "mauville"
+      "petalburg"
       "rustboro"
       "slateport"
     ];
@@ -154,12 +155,14 @@
       hw-common-bluetooth = import ./hwModules/common/bluetooth;
       hw-common-intel-cpu = import ./hwModules/common/cpu/intel;
       hw-common-intel-gpu = import ./hwModules/common/gpu/intel;
+      hw-common-nvidia-gpu = import ./hwModules/common/gpu/nvidia;
       hw-common-laptop = import ./hwModules/common/laptop;
       hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./hwModules/common/ssd;
 
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
+      hw-lenovo-yoga-16IMH9 = import ./hwModules/lenovo/yoga/16IMH9;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 
       nixos-desktop-gnome = import ./nixosModules/desktop/gnome.nix;
