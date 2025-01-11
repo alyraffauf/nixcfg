@@ -158,7 +158,6 @@
       hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./hwModules/common/ssd;
 
-      hw-asus-tuf-a16-amd-7030 = import ./hwModules/asus/tuf/a16/amd-7030/default.nix;
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
       hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
