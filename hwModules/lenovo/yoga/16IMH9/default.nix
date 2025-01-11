@@ -16,7 +16,7 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+    initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   };
 
