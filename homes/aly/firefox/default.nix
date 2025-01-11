@@ -8,7 +8,7 @@
           augmented-steam
           bitwarden
           raindropio
-          sidebery
+          simple-tab-groups
           ublock-origin
           zoom-redirector
         ];
@@ -136,6 +136,8 @@
             "privacy.trackingprotection.global-checkbox.enabled" = true;
             "privacy.trackingprotection.socialtracking.enabled" = true;
             "services.sync.prefs.sync.browser.uiCustomization.state" = true;
+            "sidebar.revamp" = true;
+            "sidebar.verticalTabs" = true;
             "svg.context-properties.content.enabled" = true;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
@@ -164,6 +166,8 @@
             "privacy.trackingprotection.enabled" = true;
             "privacy.trackingprotection.global-checkbox.enabled" = true;
             "privacy.trackingprotection.socialtracking.enabled" = true;
+            "sidebar.revamp" = true;
+            "sidebar.verticalTabs" = true;
             "signon.rememberSignons" = false;
             "svg.context-properties.content.enabled" = true;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -190,10 +194,10 @@
     };
   };
 
-  stylix.targets.firefox = {
-    firefoxGnomeTheme.enable = true;
-    profileNames = ["default" "work"];
-  };
+  # stylix.targets.firefox = {
+  #   firefoxGnomeTheme.enable = true;
+  #   profileNames = ["default" "work"];
+  # };
 
   xdg.desktopEntries.firework = {
     categories = ["Application" "Network" "WebBrowser"];
