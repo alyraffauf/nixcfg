@@ -7,10 +7,8 @@
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
           bitwarden
-          omnivore
           raindropio
           sidebery
-          sponsorblock
           ublock-origin
           zoom-redirector
         ];
