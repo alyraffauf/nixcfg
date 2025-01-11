@@ -136,21 +136,6 @@
 
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
-    homeConfigurations = {
-      "aly@petalburg" = self.inputs.home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit self;};
-        pkgs = import self.inputs.nixpkgs {
-          inherit overlays;
-          config.allowUnfree = true; # Allow unfree packages
-          system = "x86_64-linux";
-        };
-
-        modules = [
-          self.homeManagerModules.aly-petalburg
-        ];
-      };
-    };
-
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
