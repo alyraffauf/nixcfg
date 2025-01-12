@@ -29,4 +29,6 @@
       enableOffloadCmd = true;
     };
   };
+
+  powerManagement.powertop.enable = lib.mkForce false;
 }
