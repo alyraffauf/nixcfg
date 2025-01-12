@@ -4,10 +4,10 @@
   self,
   ...
 }: let
-  yoga9i-speaker-fix = pkgs.writeShellApplication {
+  yoga-turn-on-speakers = pkgs.writeShellApplication {
     # Compliments to the chef: https://github.com/maximmaxim345/yoga_pro_9i_gen9_linux/blob/b7f0fb294c010ba424fb577532091a5daa7fbae4/README.md
 
-    name = "yoga9i-speaker-fix";
+    name = "yoga-turn-on-speakers";
     runtimeInputs = with pkgs; [
       coreutils
       gawk
@@ -105,13 +105,12 @@ in {
   ];
 
   boot = {
-    initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
-
     extraModprobeConfig = ''
       options snd_hda_intel power_save_controller=N
       options snd_hda_intel power_save=0
     '';
 
+    initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
     kernelModules = ["i2c-dev"];
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   };
@@ -140,53 +139,57 @@ in {
     ];
   };
 
-  environment.systemPackages = [yoga9i-speaker-fix];
+  environment.systemPackages = [yoga-turn-on-speakers];
   powerManagement.powertop.enable = lib.mkForce false;
 
   services.udev.extraRules = ''
-    ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
-    ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", RUN+="${lib.getExe yoga9i-speaker-fix}"
+    SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="enabled"
+    SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
+    ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", TAG+="systemd", ENV{SYSTEMD_WANTS}="yoga-turn-on-speakers.service"
 
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${lib.getExe yoga9i-speaker-fix}"
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${lib.getExe yoga9i-speaker-fix}"
+    # SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${lib.getExe yoga-turn-on-speakers}"
+    # SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${lib.getExe yoga-turn-on-speakers}"
   '';
 
   systemd = {
-    services.yoga9i-speaker-fix = {
+    services.yoga-turn-on-speakers = {
       enable = true;
 
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${lib.getExe yoga9i-speaker-fix}";
+        ExecStart = "${lib.getExe yoga-turn-on-speakers}";
       };
 
-      wantedBy = [
-        "hibernate.target"
-        "hybrid-sleep.target"
-        "graphical.target"
-        "suspend.target"
-      ];
-
+      wantedBy = ["graphical.target"];
       requires = ["sound.target"];
 
       after = [
-        "hibernate.target"
-        "hybrid-sleep.target"
         "graphical.target"
         "sound.target"
-        "suspend.target"
       ];
     };
 
-    timers.yoga9i-speaker-fix = {
-      enable = true;
-
-      timerConfig = {
-        OnBootSec = "30s"; # Runs 30 seconds after boot
-        OnUnitActiveSec = "10m"; # Repeats every 10 minutes after the service finishes
+    timers = {
+      yoga-turn-on-speakers = {
+        enable = true;
+        timerConfig.OnBootSec = "30s"; # Runs 30 seconds after boot
+        wantedBy = ["timers.target"];
       };
 
-      wantedBy = ["timers.target"];
+      yoga-turn-on-speakers-resume = {
+        enable = true;
+
+        timerConfig = {
+          OnUnitActiveSec = "5s";
+          Unit = "yoga-turn-on-speakers.service";
+        };
+
+        wantedBy = [
+          "hibernate.target"
+          "hybrid-sleep.target"
+          "suspend.target"
+        ];
+      };
     };
   };
 }
