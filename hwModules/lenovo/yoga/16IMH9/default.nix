@@ -5,7 +5,8 @@
   ...
 }: let
   yoga9i-speaker-fix = pkgs.writeShellApplication {
-    # Compliments to the chef: https://github.com/maximmaxim345/yoga_pro_9i_gen9_linux/blob/main/README.md
+    # Compliments to the chef: https://github.com/maximmaxim345/yoga_pro_9i_gen9_linux/blob/b7f0fb294c010ba424fb577532091a5daa7fbae4/README.md
+
     name = "yoga9i-speaker-fix";
     runtimeInputs = with pkgs; [
       coreutils
@@ -122,6 +123,20 @@ in {
       enable = true;
       enableOffloadCmd = true;
     };
+  };
+
+  home-manager = {
+    sharedModules = [
+      {
+        services.easyeffects = {
+          enable = true;
+          preset = "16IMH9.json";
+          # https://github.com/maximmaxim345/yoga_pro_9i_gen9_linux/blob/b7f0fb294c010ba424fb577532091a5daa7fbae4/Yoga%20Pro%209i%20gen%209%20v2.json
+        };
+
+        xdg.configFile."easyeffects/output/16IMH9.json".source = ./easyeffects.json;
+      }
+    ];
   };
 
   environment.systemPackages = [yoga9i-speaker-fix];
