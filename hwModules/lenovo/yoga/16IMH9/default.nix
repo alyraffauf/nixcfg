@@ -22,6 +22,7 @@
       # Some distros don't have i2c-dev module loaded by default, so we load it manually
 
       modprobe i2c-dev
+      sleep 10
       # Function to find the correct I2C bus (third DesignWare adapter)
       find_i2c_bus() {
           adapter_description="Synopsys DesignWare I2C adapter"
@@ -144,7 +145,49 @@ in {
   powerManagement.powertop.enable = lib.mkForce false;
 
   services.udev.extraRules = ''
-    ACTION=="add|change", ATTR{name}=="Synopsys DesignWare I2C adapter", SUBSYSTEM=="i2c-dev", RUN+="${lib.getExe yoga9i-speaker-fix}"
-    SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
+    ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
+    ACTION=="add|change", ATTR{name}=="Synopsys DesignWare I2C adapter", RUN+="${lib.getExe yoga9i-speaker-fix}", SUBSYSTEM=="i2c-dev"
+
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${lib.getExe yoga9i-speaker-fix}"
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${lib.getExe yoga9i-speaker-fix}"
   '';
+
+  systemd = {
+    services.yoga9i-speaker-fix = {
+      enable = true;
+
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${lib.getExe yoga9i-speaker-fix}";
+      };
+
+      wantedBy = [
+        "hibernate.target"
+        "hybrid-sleep.target"
+        "graphical.target"
+        "suspend.target"
+      ];
+
+      requires = ["sound.target"];
+
+      after = [
+        "hibernate.target"
+        "hybrid-sleep.target"
+        "graphical.target"
+        "sound.target"
+        "suspend.target"
+      ];
+    };
+
+    timers.yoga9i-speaker-fix = {
+      enable = true;
+
+      timerConfig = {
+        OnBootSec = "20s"; # Runs 20 seconds after boot
+        OnUnitActiveSec = "1h"; # Repeats every 1 hour after the service finishes
+      };
+
+      wantedBy = ["timers.target"];
+    };
+  };
 }
