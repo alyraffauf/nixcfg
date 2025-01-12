@@ -151,6 +151,24 @@ in {
     # SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${lib.getExe yoga-turn-on-speakers}"
   '';
 
+  specialisation.nvidia-sync.configuration = {
+    hardware.nvidia = {
+      powerManagement = {
+        enable = lib.mkForce false;
+        finegrained = lib.mkForce false;
+      };
+
+      prime = {
+        offload = {
+          enable = lib.mkForce false;
+          enableOffloadCmd = lib.mkForce false;
+        };
+
+        sync.enable = lib.mkForce true;
+      };
+    };
+  };
+
   systemd = {
     services.yoga-turn-on-speakers = {
       enable = true;
