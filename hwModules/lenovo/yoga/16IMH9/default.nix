@@ -113,7 +113,7 @@ in {
     '';
 
     kernelModules = ["i2c-dev"];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   };
 
   hardware.nvidia.prime = {
@@ -145,7 +145,7 @@ in {
 
   services.udev.extraRules = ''
     ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
-    ACTION=="add|change", ATTR{name}=="Synopsys DesignWare I2C adapter", RUN+="${lib.getExe yoga9i-speaker-fix}", SUBSYSTEM=="i2c-dev"
+    ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", RUN+="${lib.getExe yoga9i-speaker-fix}"
 
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${lib.getExe yoga9i-speaker-fix}"
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${lib.getExe yoga9i-speaker-fix}"
