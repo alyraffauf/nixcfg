@@ -108,6 +108,7 @@ in {
     initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
 
     extraModprobeConfig = ''
+      options snd_hda_intel power_save_controller=N
       options snd_hda_intel power_save=0
     '';
 
