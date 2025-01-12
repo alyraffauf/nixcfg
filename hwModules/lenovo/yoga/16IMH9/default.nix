@@ -22,7 +22,6 @@
       # Some distros don't have i2c-dev module loaded by default, so we load it manually
 
       modprobe i2c-dev
-      sleep 10
       # Function to find the correct I2C bus (third DesignWare adapter)
       find_i2c_bus() {
           adapter_description="Synopsys DesignWare I2C adapter"
@@ -183,8 +182,8 @@ in {
       enable = true;
 
       timerConfig = {
-        OnBootSec = "20s"; # Runs 20 seconds after boot
-        OnUnitActiveSec = "1h"; # Repeats every 1 hour after the service finishes
+        OnBootSec = "30s"; # Runs 30 seconds after boot
+        OnUnitActiveSec = "10m"; # Repeats every 10 minutes after the service finishes
       };
 
       wantedBy = ["timers.target"];
