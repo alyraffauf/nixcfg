@@ -8,7 +8,14 @@
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
-      powerManagement.finegrained = true;
+      open = false;
+
+      powerManagement = {
+        enable = true;
+        finegrained = true;
+      };
     };
   };
+
+  services.xserver.videoDrivers = ["nvidia"];
 }
