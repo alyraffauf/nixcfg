@@ -44,6 +44,7 @@
         "javapatron" = mkOpenWiFi "javapatron";
         "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
         "norman" = mkWPA2WiFi "norman" "$normanPSK";
+        "Oakview Coffee Wi-Fi" = mkWPA2WiFi "Oakview Coffee Wi-Fi" "$OakviewCoffeeWiFiPSK";
         "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
         "PERC COFFEE 5 Guest" = mkWPA2WiFi "PERC COFFEE 5 Guest" "$PERCguestPSK";
         "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
