@@ -25,7 +25,7 @@
   };
 
   "music" = {
-    devices = ["lavaridge" "lilycove" "mauville" "rustboro"];
+    devices = ["lavaridge" "lilycove" "mauville" "petalburg" "rustboro"];
     id = "6nzmu-z9der";
   };
 
