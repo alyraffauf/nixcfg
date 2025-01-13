@@ -143,7 +143,7 @@ in {
   powerManagement.powertop.enable = lib.mkForce false;
 
   services.udev.extraRules = ''
-    SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="enabled"
+    # SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="enabled"
     SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
     ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", TAG+="systemd", ENV{SYSTEMD_WANTS}="yoga-turn-on-speakers.service"
 
