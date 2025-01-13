@@ -30,6 +30,7 @@
 
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "petalburg";
+  pipewire.lowLatency = false;
 
   services.ollama = {
     enable = true;
