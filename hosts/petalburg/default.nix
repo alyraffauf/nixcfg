@@ -31,6 +31,11 @@
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "petalburg";
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
+
   system.stateVersion = "25.05";
 
   ar.users.aly = {
