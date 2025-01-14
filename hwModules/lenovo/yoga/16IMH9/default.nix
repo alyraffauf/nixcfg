@@ -140,7 +140,6 @@ in {
   };
 
   environment.systemPackages = [yoga-turn-on-speakers];
-  powerManagement.powertop.enable = lib.mkForce false;
 
   services.udev.extraRules = ''
     # SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="enabled"
