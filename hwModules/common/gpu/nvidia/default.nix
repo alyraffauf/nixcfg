@@ -1,4 +1,6 @@
 {...}: {
+  boot.initrd.kernelModules = ["nvidia"];
+
   hardware = {
     graphics = {
       enable = true;
