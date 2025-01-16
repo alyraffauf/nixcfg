@@ -4,10 +4,9 @@
   self,
   ...
 }: let
-  yoga-turn-on-speakers = pkgs.writeShellApplication {
+  yoga-speakers = pkgs.writeShellApplication {
     # Compliments to the chef: https://github.com/maximmaxim345/yoga_pro_9i_gen9_linux/blob/b7f0fb294c010ba424fb577532091a5daa7fbae4/README.md
-
-    name = "yoga-turn-on-speakers";
+    name = "yoga-speakers";
     runtimeInputs = with pkgs; [
       coreutils
       gawk
@@ -16,11 +15,9 @@
       i2c-tools
       kmod
     ];
-
     text = ''
       export TERM=linux
       # Some distros don't have i2c-dev module loaded by default, so we load it manually
-
       modprobe i2c-dev
       # Function to find the correct I2C bus (third DesignWare adapter)
       find_i2c_bus() {
@@ -40,7 +37,6 @@
       fi
       echo "Using I2C bus: $i2c_bus"
       i2c_addr=(0x3f 0x38)
-
       count=0
       for value in "''${i2c_addr[@]}"; do
           val=$((count % 2))
@@ -65,7 +61,6 @@
           i2cset -f -y "$i2c_bus" "$value" 0x31 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x32 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x33 0x01
-
           i2cset -f -y "$i2c_bus" "$value" 0x00 0x08
           i2cset -f -y "$i2c_bus" "$value" 0x18 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x19 0x00
@@ -75,7 +70,6 @@
           i2cset -f -y "$i2c_bus" "$value" 0x29 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x2a 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x2b 0x00
-
           i2cset -f -y "$i2c_bus" "$value" 0x00 0x0a
           i2cset -f -y "$i2c_bus" "$value" 0x48 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x49 0x00
@@ -85,13 +79,22 @@
           i2cset -f -y "$i2c_bus" "$value" 0x59 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x5a 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x5b 0x00
-
           i2cset -f -y "$i2c_bus" "$value" 0x00 0x00
           i2cset -f -y "$i2c_bus" "$value" 0x02 0x00
           count=$((count + 1))
       done
     '';
   };
+  # yoga-speakers = pkgs.writeShellApplication {
+  #   name = "yoga-reload-speakers";
+  #   runtimeInputs = with pkgs; [
+  #     kmod
+  #   ];
+  #   text = ''
+  #     modprobe -r snd_hda_scodec_tas2781_i2c
+  #     modprobe snd_hda_scodec_tas2781_i2c
+  #   '';
+  # };
 in {
   imports = [
     self.nixosModules.hw-common
@@ -106,22 +109,34 @@ in {
 
   boot = {
     extraModprobeConfig = ''
-      options snd_hda_intel power_save_controller=N
-      options snd_hda_intel power_save=0
+      # options snd_hda_intel power_save_controller=N
+      # options snd_hda_intel power_save=0
+      blacklist snd_hda_scodec_tas2781_i2c # Works initially, but then bass speakers stop working.
     '';
 
     initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
     kernelModules = ["i2c-dev"];
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+
+    # kernelPatches = [
+    #   {
+    #     name = "hda-realtek-fixup-Lenovo-16IMH9";
+    #     patch = ./0001-ALSA-hda-realtek-fixup-Lenovo-16IMH9.patch;
+    #   }
+    # ];
   };
 
-  hardware.nvidia.prime = {
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+  hardware = {
+    i2c.enable = true;
 
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
+    nvidia.prime = {
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
     };
   };
 
@@ -139,18 +154,16 @@ in {
     ];
   };
 
-  environment.systemPackages = [yoga-turn-on-speakers];
+  environment.systemPackages = [yoga-speakers];
 
-  services.udev.extraRules = ''
-    # SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="enabled"
-    SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
-    ACTION=="add|change", SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", TAG+="systemd", ENV{SYSTEMD_WANTS}="yoga-turn-on-speakers.service"
-
-    # SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${lib.getExe yoga-turn-on-speakers}"
-    # SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${lib.getExe yoga-turn-on-speakers}"
-  '';
+  # services.udev.extraRules = ''
+  #   SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="disabled"
+  #   SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
+  # '';
 
   specialisation.nvidia-sync.configuration = {
+    environment.etc."specialisation".text = "nvidia-sync";
+
     hardware.nvidia = {
       powerManagement = {
         enable = lib.mkForce false;
@@ -169,44 +182,45 @@ in {
   };
 
   systemd = {
-    services.yoga-turn-on-speakers = {
+    services.yoga-speakers = {
       enable = true;
-
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${lib.getExe yoga-turn-on-speakers}";
-      };
-
-      wantedBy = ["graphical.target"];
-      requires = ["sound.target"];
 
       after = [
         "graphical.target"
         "sound.target"
       ];
+
+      requires = ["sound.target"];
+
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${lib.getExe yoga-speakers}";
+      };
+
+      wantedBy = ["graphical.target"];
     };
 
     timers = {
-      yoga-turn-on-speakers = {
+      yoga-speakers = {
         enable = true;
         timerConfig.OnBootSec = "30s"; # Runs 30 seconds after boot
         wantedBy = ["timers.target"];
       };
 
-      yoga-turn-on-speakers-resume = {
-        enable = true;
+      # yoga-speakers-resume = {
+      #   enable = true;
 
-        timerConfig = {
-          OnUnitActiveSec = "5s";
-          Unit = "yoga-turn-on-speakers.service";
-        };
+      #   timerConfig = {
+      #     OnStartupSec = "5s";
+      #     Unit = "yoga-speakers.service";
+      #   };
 
-        wantedBy = [
-          "hibernate.target"
-          "hybrid-sleep.target"
-          "suspend.target"
-        ];
-      };
+      #   wantedBy = [
+      #     "hibernate.target"
+      #     "hybrid-sleep.target"
+      #     "suspend.target"
+      #   ];
+      # };
     };
   };
 }
