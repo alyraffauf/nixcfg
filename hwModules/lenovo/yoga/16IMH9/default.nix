@@ -8,6 +8,7 @@
     # Compliments to the chef: https://github.com/maximmaxim345/yoga_pro_9i_gen9_linux/blob/b7f0fb294c010ba424fb577532091a5daa7fbae4/README.md
     name = "yoga-speakers";
     runtimeInputs = with pkgs; [
+      alsa-utils
       coreutils
       gawk
       gnugrep
@@ -83,6 +84,8 @@
           i2cset -f -y "$i2c_bus" "$value" 0x02 0x00
           count=$((count + 1))
       done
+
+      amixer -c 0 sset Headphone unmute # Unmute Headphones, otherwise they are not unmuted when speakers are turned off.
     '';
   };
   # yoga-speakers = pkgs.writeShellApplication {
