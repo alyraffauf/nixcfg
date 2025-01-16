@@ -116,7 +116,7 @@ in {
 
     initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
     kernelModules = ["i2c-dev"];
-    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     # kernelPatches = [
     #   {
