@@ -32,9 +32,12 @@
   networking.hostName = "petalburg";
   pipewire.lowLatency = false;
 
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
+  specialisation.jarvis.configuration = {
+    services.ollama = {
+      enable = true;
+      acceleration = "cuda";
+      loadModels = ["phi4"];
+    };
   };
 
   system.stateVersion = "25.05";
