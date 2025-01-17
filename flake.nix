@@ -120,11 +120,9 @@
             mdformat
             nh
             nix-update
-            ruby
             sbctl
           ])
           ++ [
-            self.formatter.${pkgs.system}
             self.inputs.agenix.packages.${pkgs.system}.default
             self.packages.${pkgs.system}.default
           ];
