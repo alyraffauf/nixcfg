@@ -131,6 +131,7 @@ in {
 
   hardware = {
     i2c.enable = true;
+    sensor.iio.enable = true;
 
     nvidia.prime = {
       intelBusId = "PCI:0:2:0";
