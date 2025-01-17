@@ -5,11 +5,7 @@
 }: {
   hardware.bluetooth = {
     enable = true;
-
-    settings.General = {
-      AutoEnable = true;
-      ControllerMode = "bredr";
-    };
+    settings.General.AutoEnable = true;
   };
 
   services.pulseaudio = {
