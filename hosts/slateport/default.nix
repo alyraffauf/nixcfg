@@ -11,11 +11,7 @@
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles
     self.nixosModules.disko-btrfs-subvolumes
-    self.nixosModules.hw-common
-    self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-intel-cpu
-    self.nixosModules.hw-common-intel-gpu
-    self.nixosModules.hw-common-ssd
+    self.nixosModules.hw-lenovo-thinkcentre-m700
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
@@ -25,14 +21,10 @@
     self.nixosModules.nixos-services-tailscale
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
   networking.hostName = "slateport";
   nixos.installDrive = "/dev/sda";
 
-  services = {
-    fwupd.enable = true;
-    syncthing.guiAddress = "0.0.0.0:8384";
-  };
+  services.syncthing.guiAddress = "0.0.0.0:8384";
 
   stylix = {
     enable = false;

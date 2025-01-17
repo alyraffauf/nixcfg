@@ -162,10 +162,12 @@
       hw-common-laptop-intel-cpu = import ./modules/hardware/common/laptop/intel-cpu.nix;
       hw-common-ssd = import ./modules/hardware/common/ssd;
 
+      hw-beelink-mini-s12pro = import ./modules/hardware/beelink/mini/s12pro;
       hw-framework-13-amd-7000 = import ./modules/hardware/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./modules/hardware/framework/13/intel-11th;
+      hw-lenovo-thinkcentre-m700 = import ./modules/hardware/lenovo/thinkcentre/m700;
+      hw-lenovo-thinkpad-t440p = import ./modules/hardware/lenovo/thinkpad/t440p;
       hw-lenovo-yoga-16IMH9 = import ./modules/hardware/lenovo/yoga/16IMH9;
-      hw-thinkpad-t440p = import ./modules/hardware/thinkpad/t440p;
 
       nixos-desktop-gnome = import ./modules/nixos/desktop/gnome.nix;
       nixos-desktop-gui = import ./modules/nixos/desktop/gui.nix;

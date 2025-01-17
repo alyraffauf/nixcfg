@@ -13,11 +13,7 @@ in {
     ./secrets.nix
     self.nixosModules.common-locale
     self.nixosModules.common-wifi-profiles
-    self.nixosModules.hw-common
-    self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-intel-cpu
-    self.nixosModules.hw-common-intel-gpu
-    self.nixosModules.hw-common-ssd
+    self.nixosModules.hw-beelink-mini-s12pro
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
@@ -27,8 +23,6 @@ in {
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-services-tailscale
   ];
-
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
 
   networking.hostName = "mauville";
 
