@@ -8,10 +8,10 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    (import ./../../modules/disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hw-lenovo-yoga-16IMH9
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade

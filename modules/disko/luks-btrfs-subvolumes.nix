@@ -1,65 +1,84 @@
-{disks ? ["/dev/nvme0n1"], ...}: {
-  disko.devices = {
-    disk = {
-      vdb = {
-        type = "disk";
-        device = builtins.elemAt disks 0;
+{
+  config,
+  lib,
+  ...
+}: {
+  options.nixos.installDrive = lib.mkOption {
+    description = "Disk to install NixOS to.";
+    default = "/dev/nvme0n1";
+    type = lib.types.str;
+  };
 
-        content = {
-          type = "gpt";
+  config = {
+    assertions = [
+      {
+        assertion = config.nixos.installDrive != "";
+        message = "config.nixos.installDrive cannot be empty.";
+      }
+    ];
 
-          partitions = {
-            ESP = {
-              content = {
-                format = "vfat";
+    disko.devices = {
+      disk = {
+        vdb = {
+          type = "disk";
+          device = config.nixos.installDrive;
 
-                mountOptions = [
-                  "defaults"
-                  "umask=0077"
-                ];
+          content = {
+            type = "gpt";
 
-                mountpoint = "/boot";
-                type = "filesystem";
+            partitions = {
+              ESP = {
+                content = {
+                  format = "vfat";
+
+                  mountOptions = [
+                    "defaults"
+                    "umask=0077"
+                  ];
+
+                  mountpoint = "/boot";
+                  type = "filesystem";
+                };
+
+                size = "1024M";
+                type = "EF00";
               };
 
-              size = "1024M";
-              type = "EF00";
-            };
-
-            luks = {
-              size = "100%";
-              content = {
-                type = "luks";
-                name = "crypted";
-
+              luks = {
+                size = "100%";
                 content = {
-                  type = "btrfs";
-                  extraArgs = ["-f"];
+                  type = "luks";
+                  name = "crypted";
 
-                  subvolumes = {
-                    "/home" = {
-                      mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
-                    };
+                  content = {
+                    type = "btrfs";
+                    extraArgs = ["-f"];
 
-                    "/home/.snapshots" = {
-                      mountOptions = ["compress=zstd" "noatime"];
-                      mountpoint = "/home/.snapshots";
-                    };
+                    subvolumes = {
+                      "/home" = {
+                        mountpoint = "/home";
+                        mountOptions = ["compress=zstd" "noatime"];
+                      };
 
-                    "/nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
-                    };
+                      "/home/.snapshots" = {
+                        mountOptions = ["compress=zstd" "noatime"];
+                        mountpoint = "/home/.snapshots";
+                      };
 
-                    "persist" = {
-                      mountpoint = "/persist";
-                      mountOptions = ["compress=zstd" "noatime"];
-                    };
+                      "/nix" = {
+                        mountpoint = "/nix";
+                        mountOptions = ["compress=zstd" "noatime"];
+                      };
 
-                    "/root" = {
-                      mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      "persist" = {
+                        mountpoint = "/persist";
+                        mountOptions = ["compress=zstd" "noatime"];
+                      };
+
+                      "/root" = {
+                        mountpoint = "/";
+                        mountOptions = ["compress=zstd" "noatime"];
+                      };
                     };
                   };
                 };

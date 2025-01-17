@@ -148,6 +148,9 @@
       common-mauville-share = import ./modules/common/samba.nix;
       common-wifi-profiles = import ./modules/common/wifi.nix;
 
+      disko-btrfs-subvolumes = import ./modules/disko/btrfs-subvolumes.nix;
+      disko-luks-btrfs-subvolumes = import ./modules/disko/luks-btrfs-subvolumes.nix;
+
       hw-common = import ./modules/hardware/common;
       hw-common-amd-cpu = import ./modules/hardware/common/gpu/amd;
       hw-common-amd-gpu = import ./modules/hardware/common/cpu/amd;

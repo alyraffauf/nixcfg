@@ -9,10 +9,10 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    (import ./../../modules/disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hw-thinkpad-t440p
     self.nixosModules.nixos-desktop-hyprland
     self.nixosModules.nixos-profiles-autoUpgrade
@@ -34,6 +34,7 @@
   };
 
   networking.hostName = "rustboro";
+  nixos.installDrive = "/dev/sda";
   system.stateVersion = "24.05";
 
   ar.users.aly = {
