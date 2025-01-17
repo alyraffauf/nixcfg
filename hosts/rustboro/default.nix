@@ -9,7 +9,7 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
+    (import ./../../modules/disko/luks-btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles

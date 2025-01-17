@@ -8,7 +8,7 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
+    (import ./../../modules/disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles

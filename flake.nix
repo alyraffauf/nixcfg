@@ -138,62 +138,61 @@
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
     homeManagerModules = {
-      default = import ./homeManagerModules self;
+      default = import ./modules/home-manager self;
       aly = import ./homes/aly self;
-      aly-petalburg = import ./homes/aly/petalburg.nix self;
       dustin = import ./homes/dustin self;
     };
 
     nixosModules = {
-      common-locale = import ./common/locale.nix;
-      common-mauville-share = import ./common/samba.nix;
-      common-wifi-profiles = import ./common/wifi.nix;
+      common-locale = import ./modules/common/locale.nix;
+      common-mauville-share = import ./modules/common/samba.nix;
+      common-wifi-profiles = import ./modules/common/wifi.nix;
 
-      hw-common = import ./hwModules/common;
-      hw-common-amd-cpu = import ./hwModules/common/gpu/amd;
-      hw-common-amd-gpu = import ./hwModules/common/cpu/amd;
-      hw-common-bluetooth = import ./hwModules/common/bluetooth;
-      hw-common-intel-cpu = import ./hwModules/common/cpu/intel;
-      hw-common-intel-gpu = import ./hwModules/common/gpu/intel;
-      hw-common-nvidia-gpu = import ./hwModules/common/gpu/nvidia;
-      hw-common-laptop = import ./hwModules/common/laptop;
-      hw-common-laptop-intel-cpu = import ./hwModules/common/laptop/intel-cpu.nix;
-      hw-common-ssd = import ./hwModules/common/ssd;
+      hw-common = import ./modules/hardware/common;
+      hw-common-amd-cpu = import ./modules/hardware/common/gpu/amd;
+      hw-common-amd-gpu = import ./modules/hardware/common/cpu/amd;
+      hw-common-bluetooth = import ./modules/hardware/common/bluetooth;
+      hw-common-intel-cpu = import ./modules/hardware/common/cpu/intel;
+      hw-common-intel-gpu = import ./modules/hardware/common/gpu/intel;
+      hw-common-nvidia-gpu = import ./modules/hardware/common/gpu/nvidia;
+      hw-common-laptop = import ./modules/hardware/common/laptop;
+      hw-common-laptop-intel-cpu = import ./modules/hardware/common/laptop/intel-cpu.nix;
+      hw-common-ssd = import ./modules/hardware/common/ssd;
 
-      hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
-      hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
-      hw-lenovo-yoga-16IMH9 = import ./hwModules/lenovo/yoga/16IMH9;
-      hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
+      hw-framework-13-amd-7000 = import ./modules/hardware/framework/13/amd-7000;
+      hw-framework-13-intel-11th = import ./modules/hardware/framework/13/intel-11th;
+      hw-lenovo-yoga-16IMH9 = import ./modules/hardware/lenovo/yoga/16IMH9;
+      hw-thinkpad-t440p = import ./modules/hardware/thinkpad/t440p;
 
-      nixos-desktop-gnome = import ./nixosModules/desktop/gnome.nix;
-      nixos-desktop-gui = import ./nixosModules/desktop/gui.nix;
-      nixos-desktop-hyprland = import ./nixosModules/desktop/hyprland.nix;
-      nixos-desktop-kde = import ./nixosModules/desktop/kde.nix;
+      nixos-desktop-gnome = import ./modules/nixos/desktop/gnome.nix;
+      nixos-desktop-gui = import ./modules/nixos/desktop/gui.nix;
+      nixos-desktop-hyprland = import ./modules/nixos/desktop/hyprland.nix;
+      nixos-desktop-kde = import ./modules/nixos/desktop/kde.nix;
 
-      nixos-profiles-autoUpgrade = import ./nixosModules/profiles/autoUpgrade.nix;
-      nixos-profiles-base = import ./nixosModules/profiles/base.nix;
-      nixos-profiles-btrfs = import ./nixosModules/profiles/btrfs.nix;
-      nixos-profiles-desktopOptimizations = import ./nixosModules/profiles/desktopOptimizations.nix;
-      nixos-profiles-gaming = import ./nixosModules/profiles/gaming.nix;
-      nixos-profiles-lanzaboote = import ./nixosModules/profiles/lanzaboote.nix;
-      nixos-profiles-serverOptimizations = import ./nixosModules/profiles/serverOptimizations.nix;
+      nixos-profiles-autoUpgrade = import ./modules/nixos/profiles/autoUpgrade.nix;
+      nixos-profiles-base = import ./modules/nixos/profiles/base.nix;
+      nixos-profiles-btrfs = import ./modules/nixos/profiles/btrfs.nix;
+      nixos-profiles-desktopOptimizations = import ./modules/nixos/profiles/desktopOptimizations.nix;
+      nixos-profiles-gaming = import ./modules/nixos/profiles/gaming.nix;
+      nixos-profiles-lanzaboote = import ./modules/nixos/profiles/lanzaboote.nix;
+      nixos-profiles-serverOptimizations = import ./modules/nixos/profiles/serverOptimizations.nix;
 
-      nixos-programs-firefox = import ./nixosModules/programs/firefox.nix;
-      nixos-programs-nicotine-plus = import ./nixosModules/programs/nicotine-plus.nix;
-      nixos-programs-nix = import ./nixosModules/programs/nix.nix;
-      nixos-programs-podman = import ./nixosModules/programs/podman.nix;
-      nixos-programs-retroarch = import ./nixosModules/programs/retroarch.nix;
-      nixos-programs-steam = import ./nixosModules/programs/steam.nix;
-      nixos-programs-virt-manager = import ./nixosModules/programs/virt-manager.nix;
+      nixos-programs-firefox = import ./modules/nixos/programs/firefox.nix;
+      nixos-programs-nicotine-plus = import ./modules/nixos/programs/nicotine-plus.nix;
+      nixos-programs-nix = import ./modules/nixos/programs/nix.nix;
+      nixos-programs-podman = import ./modules/nixos/programs/podman.nix;
+      nixos-programs-retroarch = import ./modules/nixos/programs/retroarch.nix;
+      nixos-programs-steam = import ./modules/nixos/programs/steam.nix;
+      nixos-programs-virt-manager = import ./modules/nixos/programs/virt-manager.nix;
 
-      nixos-services-flatpak = import ./nixosModules/services/flatpak.nix;
-      nixos-services-gdm = import ./nixosModules/services/gdm.nix;
-      nixos-services-greetd = import ./nixosModules/services/greetd.nix;
-      nixos-services-sddm = import ./nixosModules/services/sddm.nix;
-      nixos-services-sunshine = import ./nixosModules/services/sunshine.nix;
-      nixos-services-tailscale = import ./nixosModules/services/tailscale.nix;
+      nixos-services-flatpak = import ./modules/nixos/services/flatpak.nix;
+      nixos-services-gdm = import ./modules/nixos/services/gdm.nix;
+      nixos-services-greetd = import ./modules/nixos/services/greetd.nix;
+      nixos-services-sddm = import ./modules/nixos/services/sddm.nix;
+      nixos-services-sunshine = import ./modules/nixos/services/sunshine.nix;
+      nixos-services-tailscale = import ./modules/nixos/services/tailscale.nix;
 
-      users = import ./userModules self;
+      users = import ./modules/users self;
     };
 
     nixosConfigurations = forAllHosts (

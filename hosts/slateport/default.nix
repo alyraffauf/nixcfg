@@ -7,7 +7,7 @@
     ./home.nix
     ./raffauflabs.nix
     ./secrets.nix
-    (import ./../../disko/btrfs-subvolumes.nix {disks = ["/dev/sda"];})
+    (import ./../../modules/disko/btrfs-subvolumes.nix {disks = ["/dev/sda"];})
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles
