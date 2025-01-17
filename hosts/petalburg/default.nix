@@ -35,7 +35,6 @@
   specialisation.jarvis.configuration = {
     services.ollama = {
       enable = true;
-      acceleration = "cuda";
       loadModels = ["phi4"];
     };
   };

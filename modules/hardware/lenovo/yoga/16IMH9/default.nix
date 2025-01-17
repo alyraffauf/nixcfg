@@ -159,6 +159,7 @@ in {
   };
 
   environment.systemPackages = [yoga-speakers];
+  nixpkgs.config.cudaSupport = true;
 
   # services.udev.extraRules = ''
   #   SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="disabled"
