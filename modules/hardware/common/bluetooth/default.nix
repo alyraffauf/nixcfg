@@ -1,15 +1,10 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   hardware.bluetooth = {
     enable = true;
     settings.General.AutoEnable = true;
   };
 
   services.pulseaudio = {
-    enable = lib.mkForce false;
     package = pkgs.pulseaudioFull; # Use extra Bluetooth codecs like aptX
 
     extraConfig = ''
