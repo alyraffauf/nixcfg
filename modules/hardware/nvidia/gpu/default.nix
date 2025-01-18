@@ -1,5 +1,8 @@
 {...}: {
-  boot.initrd.kernelModules = ["nvidia"];
+  boot = {
+    initrd.kernelModules = ["nvidia"];
+    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+  };
 
   hardware = {
     graphics = {
