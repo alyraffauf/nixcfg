@@ -24,6 +24,19 @@
     ];
   };
 
+  home-manager = {
+    sharedModules = [
+      {
+        services.easyeffects = {
+          enable = true;
+          preset = "T440p.json";
+        };
+
+        xdg.configFile."easyeffects/output/T440p.json".source = ./easyeffects.json;
+      }
+    ];
+  };
+
   powerManagement.cpuFreqGovernor = "ondemand";
   services.fwupd.enable = true;
   zramSwap.algorithm = "lz4";
