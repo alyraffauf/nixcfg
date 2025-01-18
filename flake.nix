@@ -190,7 +190,7 @@
       nixos-services-sunshine = import ./modules/nixos/services/sunshine.nix;
       nixos-services-tailscale = import ./modules/nixos/services/tailscale.nix;
 
-      users = import ./modules/users self;
+      users = import ./modules/users;
     };
 
     nixosConfigurations = forAllHosts (
