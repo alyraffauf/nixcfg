@@ -30,6 +30,8 @@
 
     (lib.mkIf (lib.elem "nvidia" config.services.xserver.videoDrivers) {
       hardware.nvidia = {
+        dynamicBoost.enable = lib.mkDefault true;
+
         powerManagement = {
           enable = true;
           finegrained = true;
