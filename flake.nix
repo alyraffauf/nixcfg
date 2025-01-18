@@ -150,21 +150,21 @@
       disko-luks-btrfs-subvolumes = import ./modules/disko/luks-btrfs-subvolumes.nix;
 
       hw-common = import ./modules/hardware/common;
-      hw-common-amd-cpu = import ./modules/hardware/common/gpu/amd;
-      hw-common-amd-gpu = import ./modules/hardware/common/cpu/amd;
-      hw-common-bluetooth = import ./modules/hardware/common/bluetooth;
-      hw-common-intel-cpu = import ./modules/hardware/common/cpu/intel;
-      hw-common-intel-gpu = import ./modules/hardware/common/gpu/intel;
-      hw-common-nvidia-gpu = import ./modules/hardware/common/gpu/nvidia;
-      hw-common-laptop = import ./modules/hardware/common/laptop;
-      hw-common-laptop-intel-cpu = import ./modules/hardware/common/laptop/intel-cpu.nix;
-      hw-common-ssd = import ./modules/hardware/common/ssd;
+
+      hw-amd-cpu = import ./modules/hardware/amd/cpu;
+      hw-amd-gpu = import ./modules/hardware/amd/gpu;
+      hw-intel-cpu = import ./modules/hardware/intel/cpu;
+      hw-intel-gpu = import ./modules/hardware/intel/gpu;
+      hw-nvidia-gpu = import ./modules/hardware/nvidia/gpu;
+
+      hw-profiles-laptop = import ./modules/hardware/profiles/laptop.nix;
 
       hw-beelink-mini-s12pro = import ./modules/hardware/beelink/mini/s12pro;
       hw-framework-13-amd-7000 = import ./modules/hardware/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./modules/hardware/framework/13/intel-11th;
       hw-lenovo-thinkcentre-m700 = import ./modules/hardware/lenovo/thinkcentre/m700;
-      hw-lenovo-thinkpad-t440p = import ./modules/hardware/lenovo/thinkpad/t440p;
+      hw-lenovo-thinkpad-T440p = import ./modules/hardware/lenovo/thinkpad/T440p;
+      hw-lenovo-thinkpad-5D50X = import ./modules/hardware/lenovo/thinkpad/5D50X;
       hw-lenovo-yoga-16IMH9 = import ./modules/hardware/lenovo/yoga/16IMH9;
 
       nixos-desktop-gnome = import ./modules/nixos/desktop/gnome.nix;

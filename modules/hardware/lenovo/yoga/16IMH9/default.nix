@@ -101,13 +101,10 @@
 in {
   imports = [
     self.nixosModules.hw-common
-    self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-intel-cpu
-    self.nixosModules.hw-common-intel-gpu
-    self.nixosModules.hw-common-laptop
-    self.nixosModules.hw-common-laptop-intel-cpu
-    self.nixosModules.hw-common-nvidia-gpu
-    self.nixosModules.hw-common-ssd
+    self.nixosModules.hw-intel-cpu
+    self.nixosModules.hw-intel-gpu
+    self.nixosModules.hw-nvidia-gpu
+    self.nixosModules.hw-profiles-laptop
   ];
 
   boot = {
@@ -136,11 +133,6 @@ in {
     nvidia.prime = {
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
     };
   };
 
@@ -165,26 +157,6 @@ in {
   #   SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/async}="disabled"
   #   SUBSYSTEM=="i2c-dev", ATTR{name}=="Synopsys DesignWare I2C adapter", ATTR{power/control}="on"
   # '';
-
-  specialisation.nvidia-sync.configuration = {
-    environment.etc."specialisation".text = "nvidia-sync";
-
-    hardware.nvidia = {
-      powerManagement = {
-        enable = lib.mkForce false;
-        finegrained = lib.mkForce false;
-      };
-
-      prime = {
-        offload = {
-          enable = lib.mkForce false;
-          enableOffloadCmd = lib.mkForce false;
-        };
-
-        sync.enable = lib.mkForce true;
-      };
-    };
-  };
 
   systemd = {
     services.yoga-speakers = {

@@ -25,7 +25,7 @@
     fwupd.enable = true;
 
     udev.extraRules = ''
-      # Ethernet expansion card support
+      ## Framework ethernet expansion card support
       ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
     '';
   };

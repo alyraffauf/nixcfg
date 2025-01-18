@@ -15,11 +15,9 @@ in {
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles
+    self.nixosModules.hw-amd-cpu
+    self.nixosModules.hw-amd-gpu
     self.nixosModules.hw-common
-    self.nixosModules.hw-common-amd-cpu
-    self.nixosModules.hw-common-amd-gpu
-    self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-ssd
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base

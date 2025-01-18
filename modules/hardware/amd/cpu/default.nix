@@ -1,4 +1,3 @@
-# Best for Ryzen CPUs
 {
   config,
   lib,

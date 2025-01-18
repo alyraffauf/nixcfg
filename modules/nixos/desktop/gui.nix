@@ -25,6 +25,19 @@
     };
 
     printing.enable = true;
+
+    pulseaudio = {
+      package = pkgs.pulseaudioFull; # Use extra Bluetooth codecs like aptX
+
+      extraConfig = ''
+        load-module module-bluetooth-discover
+        load-module module-bluetooth-policy
+        load-module module-switch-on-connect
+      '';
+
+      support32Bit = true;
+    };
+
     system-config-printer.enable = true;
 
     xserver = {

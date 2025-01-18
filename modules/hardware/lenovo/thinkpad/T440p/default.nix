@@ -2,12 +2,9 @@
   imports = [
     ../common.nix
     self.nixosModules.hw-common
-    self.nixosModules.hw-common-bluetooth
-    self.nixosModules.hw-common-intel-cpu
-    self.nixosModules.hw-common-intel-gpu
-    self.nixosModules.hw-common-laptop
-    self.nixosModules.hw-common-laptop-intel-cpu
-    self.nixosModules.hw-common-ssd
+    self.nixosModules.hw-intel-cpu
+    self.nixosModules.hw-intel-gpu
+    self.nixosModules.hw-profiles-laptop
   ];
 
   boot = {
