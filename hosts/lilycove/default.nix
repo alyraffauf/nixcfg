@@ -12,12 +12,12 @@ in {
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-amd-cpu
     self.nixosModules.hw-amd-gpu
     self.nixosModules.hw-common
+    self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base

@@ -9,9 +9,9 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-locale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th
+    self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base

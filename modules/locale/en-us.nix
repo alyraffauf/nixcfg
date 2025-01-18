@@ -18,11 +18,4 @@
       LC_TIME = config.i18n.defaultLocale;
     };
   };
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "altgr-intl";
-  };
-
-  time.timeZone = "America/New_York";
 }

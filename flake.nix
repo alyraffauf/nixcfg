@@ -137,7 +137,6 @@
     };
 
     nixosModules = {
-      common-locale = import ./modules/common/locale.nix;
       common-mauville-share = import ./modules/common/samba.nix;
       common-wifi-profiles = import ./modules/common/wifi.nix;
 
@@ -161,6 +160,8 @@
       hw-lenovo-thinkpad-T440p = import ./modules/hardware/lenovo/thinkpad/T440p;
       hw-lenovo-thinkpad-5D50X = import ./modules/hardware/lenovo/thinkpad/5D50X;
       hw-lenovo-yoga-16IMH9 = import ./modules/hardware/lenovo/yoga/16IMH9;
+
+      locale-en-us = import ./modules/locale/en-us.nix;
 
       nixos-desktop-gnome = import ./modules/nixos/desktop/gnome.nix;
       nixos-desktop-gui = import ./modules/nixos/desktop/gui.nix;

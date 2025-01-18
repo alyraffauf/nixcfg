@@ -33,6 +33,11 @@
       powerKey = "suspend";
       powerKeyLongPress = "poweroff";
     };
+
+    xserver.xkb = {
+      layout = "us";
+      variant = "altgr-intl";
+    };
   };
 
   zramSwap.enable = lib.mkDefault true;
