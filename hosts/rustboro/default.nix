@@ -35,6 +35,7 @@
 
   networking.hostName = "rustboro";
   nixos.installDrive = "/dev/sda";
+  services.pipewire.lowLatency = true;
   system.stateVersion = "24.05";
 
   ar.users.aly = {
