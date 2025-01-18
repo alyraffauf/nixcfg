@@ -24,11 +24,6 @@
       url = "github:nix-community/home-manager/master";
     };
 
-    iio-hyprland = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:JeanSchoeller/iio-hyprland";
-    };
-
     lanzaboote = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote/v0.4.1";
