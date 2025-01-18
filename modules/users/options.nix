@@ -1,5 +1,5 @@
 {lib, ...}: {
-  options.ar.users = let
+  options.myUsers = let
     mkUser = user: {
       enable = lib.mkEnableOption "${user}.";
 

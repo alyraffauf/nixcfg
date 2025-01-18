@@ -23,7 +23,6 @@
 
   networking.hostName = "slateport";
   nixos.installDrive = "/dev/sda";
-
   services.syncthing.guiAddress = "0.0.0.0:8384";
 
   stylix = {
@@ -33,7 +32,7 @@
 
   system.stateVersion = "24.05";
 
-  ar.users.aly = {
+  myUsers.aly = {
     enable = true;
     password = "$y$j9T$Lit66g43.Zn60mwGig7cx1$L.aLzGvy0q.b1E40/XSIkhj2tkJbigpXFrxR/D/FVB4";
 

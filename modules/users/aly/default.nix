@@ -6,11 +6,11 @@
 }: {
   imports = [./syncthing.nix];
 
-  config = lib.mkIf config.ar.users.aly.enable {
+  config = lib.mkIf config.myUsers.aly.enable {
     users.users.aly = {
       description = "Aly Raffauf";
-      extraGroups = config.ar.users.defaultGroups;
-      hashedPassword = config.ar.users.aly.password;
+      extraGroups = config.myUsers.defaultGroups;
+      hashedPassword = config.myUsers.aly.password;
       isNormalUser = true;
 
       openssh.authorizedKeys = {

@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.ar.users.aly.syncthing;
+  cfg = config.myUsers.aly.syncthing;
   devices = import ../../syncthing/devices.nix;
 
   folders = lib.mkMerge [

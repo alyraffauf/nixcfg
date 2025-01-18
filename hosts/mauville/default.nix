@@ -65,7 +65,7 @@ in {
 
   system.stateVersion = "25.05";
 
-  ar.users.aly = {
+  myUsers.aly = {
     enable = true;
     password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
 
