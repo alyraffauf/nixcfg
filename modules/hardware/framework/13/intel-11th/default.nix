@@ -23,4 +23,10 @@
   };
 
   hardware.acpilight.enable = true;
+
+  services.udev.extraRules = ''
+    ## Framework 13 -- Fix headphone noise when on powersave
+    ## https://community.frame.work/t/headphone-jack-intermittent-noise/5246/55
+    SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
+  '';
 }
