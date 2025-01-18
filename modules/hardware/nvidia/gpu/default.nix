@@ -1,5 +1,6 @@
-{...}: {
+{config, ...}: {
   boot = {
+    extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
     initrd.kernelModules = ["nvidia"];
     kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   };
