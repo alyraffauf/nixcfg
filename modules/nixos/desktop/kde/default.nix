@@ -6,38 +6,40 @@
 }: {
   imports = [self.nixosModules.nixos-desktop];
 
-  # environment.plasma6.excludePackages = lib.attrsets.attrValues {
-  #   inherit
-  #     (pkgs.kdePackages)
-  #     elisa
-  #     gwenview
-  #     krdp
-  #     okular
-  #     oxygen
-  #     ;
-  # };
+  config = {
+    # environment.plasma6.excludePackages = lib.attrsets.attrValues {
+    #   inherit
+    #     (pkgs.kdePackages)
+    #     elisa
+    #     gwenview
+    #     krdp
+    #     okular
+    #     oxygen
+    #     ;
+    # };
 
-  environment.systemPackages = with pkgs; [
-    kdePackages.sddm-kcm
-    maliit-keyboard
-  ];
+    environment.systemPackages = with pkgs; [
+      kdePackages.sddm-kcm
+      maliit-keyboard
+    ];
 
-  home-manager.sharedModules = [
-    {
-      ar.home.desktop.kde.enable = lib.mkDefault true;
-    }
-  ];
+    home-manager.sharedModules = [
+      {
+        ar.home.desktop.kde.enable = lib.mkDefault true;
+      }
+    ];
 
-  programs.dconf.profiles.user.databases = [
-    {
-      settings = {
-        "org.maliit.keyboard.maliit" = {
-          key-press-haptic-feedback = true;
-          theme = "BreezeDark";
+    programs.dconf.profiles.user.databases = [
+      {
+        settings = {
+          "org.maliit.keyboard.maliit" = {
+            key-press-haptic-feedback = true;
+            theme = "BreezeDark";
+          };
         };
-      };
-    }
-  ];
+      }
+    ];
 
-  services.desktopManager.plasma6.enable = true;
+    services.desktopManager.plasma6.enable = true;
+  };
 }
