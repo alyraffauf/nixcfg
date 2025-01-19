@@ -19,10 +19,11 @@
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
-    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-firefox
+    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-services-greetd
+    self.nixosModules.nixos-services-syncthing
     self.nixosModules.nixos-services-tailscale
   ];
 
@@ -38,14 +39,16 @@
   services.pipewire.lowLatency = true;
   system.stateVersion = "24.05";
 
+  myNixOS.syncthing = {
+    enable = true;
+    certFile = config.age.secrets.syncthingCert.path;
+    keyFile = config.age.secrets.syncthingKey.path;
+    syncMusic = true;
+    user = "aly";
+  };
+
   myUsers.aly = {
     enable = true;
     password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
-    syncthing = {
-      enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-      syncMusic = true;
-    };
   };
 }

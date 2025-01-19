@@ -23,6 +23,7 @@
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-flatpak
     self.nixosModules.nixos-services-sddm
+    self.nixosModules.nixos-services-syncthing
   ];
 
   environment.variables.GDK_SCALE = "1.5";
@@ -30,16 +31,17 @@
   services.pipewire.lowLatency = true;
   system.stateVersion = "24.05";
 
+  myNixOS.syncthing = {
+    enable = true;
+    certFile = config.age.secrets.syncthingCert.path;
+    keyFile = config.age.secrets.syncthingKey.path;
+    user = "aly";
+  };
+
   myUsers = {
     aly = {
       enable = true;
       password = "$y$j9T$0p6rc4p5sn0LJ/6XyAGP7.$.wmTafwMMscdW1o8kqqoHJP7U8kF.4WBmzzcPYielR3";
-
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-      };
     };
 
     dustin = {

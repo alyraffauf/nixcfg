@@ -25,42 +25,7 @@
       ];
     };
 
-    aly =
-      mkUser "aly"
-      // {
-        syncthing = {
-          enable = lib.mkEnableOption "Syncthing sync service.";
-
-          certFile = lib.mkOption {
-            description = "Syncthing cert file.";
-            type = lib.types.nonEmptyStr;
-          };
-
-          keyFile = lib.mkOption {
-            description = "Syncthing key file.";
-            type = lib.types.nonEmptyStr;
-          };
-
-          musicPath = lib.mkOption {
-            description = "Whether to sync music folder.";
-            default = "/home/aly/music";
-            type = lib.types.str;
-          };
-
-          syncMusic = lib.mkOption {
-            description = "Whether to sync music folder.";
-            default = false;
-            type = lib.types.bool;
-          };
-
-          syncROMs = lib.mkOption {
-            description = "Whether to sync ROMs folder.";
-            default = false;
-            type = lib.types.bool;
-          };
-        };
-      };
-
+    aly = mkUser "aly";
     dustin = mkUser "dustin";
   };
 }

@@ -17,10 +17,11 @@ in {
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-profiles-serverOptimizations
+    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
+    self.nixosModules.nixos-services-syncthing
     self.nixosModules.nixos-services-tailscale
   ];
 
@@ -65,17 +66,18 @@ in {
 
   system.stateVersion = "25.05";
 
+  myNixOS.syncthing = {
+    certFile = config.age.secrets.syncthingCert.path;
+    enable = true;
+    keyFile = config.age.secrets.syncthingKey.path;
+    musicPath = "${mediaDirectory}/Music";
+    syncMusic = true;
+    syncROMs = true;
+    user = "aly";
+  };
+
   myUsers.aly = {
     enable = true;
     password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
-
-    syncthing = {
-      enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-      musicPath = "${mediaDirectory}/Music";
-      syncMusic = true;
-      syncROMs = true;
-    };
   };
 }

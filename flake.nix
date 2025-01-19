@@ -179,6 +179,7 @@
       nixos-services-greetd = import ./modules/nixos/services/greetd;
       nixos-services-sddm = import ./modules/nixos/services/sddm;
       nixos-services-sunshine = import ./modules/nixos/services/sunshine;
+      nixos-services-syncthing = import ./modules/nixos/services/syncthing;
       nixos-services-tailscale = import ./modules/nixos/services/tailscale;
       users = import ./modules/users;
     };

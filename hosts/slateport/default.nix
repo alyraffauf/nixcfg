@@ -18,6 +18,7 @@
     self.nixosModules.nixos-profiles-serverOptimizations
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
+    self.nixosModules.nixos-services-syncthing
     self.nixosModules.nixos-services-tailscale
   ];
 
@@ -32,14 +33,15 @@
 
   system.stateVersion = "24.05";
 
+  myNixOS.syncthing = {
+    enable = true;
+    certFile = config.age.secrets.syncthingCert.path;
+    keyFile = config.age.secrets.syncthingKey.path;
+    user = "aly";
+  };
+
   myUsers.aly = {
     enable = true;
     password = "$y$j9T$Lit66g43.Zn60mwGig7cx1$L.aLzGvy0q.b1E40/XSIkhj2tkJbigpXFrxR/D/FVB4";
-
-    syncthing = {
-      enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-    };
   };
 }

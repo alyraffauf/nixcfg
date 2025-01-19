@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [./syncthing.nix];
-
   config = lib.mkIf config.myUsers.aly.enable {
     users.users.aly = {
       description = "Aly Raffauf";

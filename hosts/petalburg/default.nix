@@ -19,12 +19,13 @@
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
     self.nixosModules.nixos-profiles-gaming
-    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-firefox
+    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-programs-steam
     self.nixosModules.nixos-services-sddm
+    self.nixosModules.nixos-services-syncthing
     self.nixosModules.nixos-services-tailscale
   ];
 
@@ -40,16 +41,17 @@
 
   system.stateVersion = "25.05";
 
+  myNixOS.syncthing = {
+    enable = true;
+    certFile = config.age.secrets.syncthingCert.path;
+    keyFile = config.age.secrets.syncthingKey.path;
+    syncMusic = true;
+    syncROMs = true;
+    user = "aly";
+  };
+
   myUsers.aly = {
     enable = true;
     password = "$y$j9T$NSS7QcEtN4yiigPyofwlI/$nxdgz0lpySa0heDMjGlHe1gX3BWf48jK6Tkfg4xMEs6";
-
-    syncthing = {
-      enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-      syncMusic = true;
-      syncROMs = true;
-    };
   };
 }
