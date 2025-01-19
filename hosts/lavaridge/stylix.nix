@@ -5,10 +5,10 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-9dqyy8.png";
     imageScalingMode = "fill";
-    polarity = "light";
+    polarity = "dark";
 
     cursor = {
       name = "Adwaita";
