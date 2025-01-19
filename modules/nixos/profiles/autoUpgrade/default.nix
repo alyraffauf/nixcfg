@@ -9,7 +9,7 @@
     dates = "02:00";
     flags = ["--accept-flake-config"];
     flake = config.environment.variables.FLAKE or "github:alyraffauf/nixcfg";
-    operation = "boot";
+    operation = lib.mkDefault "boot";
     persistent = true;
     randomizedDelaySec = "60min";
 

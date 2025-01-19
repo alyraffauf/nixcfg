@@ -31,7 +31,10 @@
     image = "${self.inputs.wallpapers}/wallhaven-mp886k.jpg";
   };
 
-  system.stateVersion = "24.05";
+  system = {
+    autoUpgrade.operation = "switch";
+    stateVersion = "24.05";
+  };
 
   myNixOS.syncthing = {
     enable = true;

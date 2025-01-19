@@ -64,7 +64,10 @@ in {
     };
   };
 
-  system.stateVersion = "25.05";
+  system = {
+    autoUpgrade.operation = "switch";
+    stateVersion = "25.05";
+  };
 
   myNixOS.syncthing = {
     certFile = config.age.secrets.syncthingCert.path;
