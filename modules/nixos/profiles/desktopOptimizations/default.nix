@@ -187,7 +187,7 @@
 
         ## SSDs use kyber scheduler.
         ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
-        
+
         ## HHDs use BFW scheduler.
         ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
 
@@ -195,7 +195,7 @@
         DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root",GROUP="audio", MODE="0660"
 
         ## Allow users to write to /dev/ntsync.
-        KERNEL=="ntsync", MODE="0644" 
+        KERNEL=="ntsync", MODE="0644"
       '';
     };
 

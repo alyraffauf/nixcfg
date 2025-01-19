@@ -1,72 +1,107 @@
-# nixcfg
+# 🐧 nixcfg
 
-My comprehensive NixOS flake for managing my laptop, desktop, and home lab environments.
+Welcome to my **nixcfg**!
 
-NOTE: Some hosts and configuration options have migrated to [alyraffauf/bazznix](https://github.com/alyraffauf/bazznix), my project to create a [bazzite-like](https://bazzite.gg) experience on NixOS.
+This repository contains my NixOS and Home-Manager configurations, along with custom modules and packages. It is modular, declarative, and tailored for multi-device setups.
 
-![](./_img/catppuccin.png)
+______________________________________________________________________
 
-## Features
+![](./_img/hyprland.png)
 
+______________________________________________________________________
+
+## ✨ Features
+
+- **Encryption:** Encrypted boot drives with Secure Boot, LUKS, and TPM decryption.
+- **Hardware Configuration**: Robust hardware support for all hosts.
+- **Home-Manager**: Unified management of user environments.
 - **Hyprland:** Dynamic tiling Wayland compositor and window manager.
+- **Modular Configuration**: Organized and reusable modules for simplicity.
+- **Multi-Device Support**: Written with multiple hosts in mind.
 - **Stylix:** Auto-gnerated base16 themes for the whole desktop.
-- **Encryption:** Encrypted boot drives with Secure Boot and LUKS with TPM decryption.
-- **Home Lab:** Media, file sharing, and more, split between two PCs with efficient routing via reverse proxy.
 
-## Inputs
+______________________________________________________________________
 
-This flake takes a variety of upstream and third party flakes as inputs:
+## 📂 Repository Structure
 
+```plaintext
+.
+├── flake.nix          # Main entry point
+├── home/              # home-manager configurations
+├── hosts/             # NixOS host configurations
+├── modules/           # Modules for NixOS and home-manager
+├── overlays/          # Custom Nixpkgs overlays
+├── pkgs/              # Custom packages
+├── secrets/           # Encrypted secrets
+└── README.md          # This README
+```
+
+### Key Files and Directories
+
+- **`flake.nix`**: Central file linking all configurations using Nix Flakes.
+- **`home/`**: User-specific home-manager configurations.
+- **`hosts/`**: Host configurations for NixOS.
+- **`modules/`**: Modules for NixOS and home-manager.
+- **`overlays/`**: Defines custom overlays to extend or override Nixpkgs.
+- **`pkgs/`**: Houses custom or patched package definitions.
+- **`secrets/`**: Securely stores encrypted credentials or sensitive data.
+
+______________________________________________________________________
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- A working Nix installation with Flakes enabled.
+- Familiarity with NixOS, Home-Manager, and declarative configurations.
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/alyraffauf/nixcfg.git
+cd nixcfg
+```
+
+### Apply the Configuration
+
+For **NixOS** systems:
+
+```bash
+sudo nixos-rebuild switch --flake .#<hostname>
+```
+
+For **Home-Manager** setups:
+
+```bash
+home-manager switch --flake .
+```
+
+> Replace `<hostname>` with the desired system configuration from your modules.
+
+______________________________________________________________________
+
+## 🤝 Contributing
+
+While this is a personal project, I’m open to feedback or suggestions.\
+Feel free to open an issue or share ideas that could improve this setup!
+
+______________________________________________________________________
+
+## 📜 License
+
+This repository is licensed under the **[GNU General Public License](LICENSE.md)**.
+
+______________________________________________________________________
+
+## 🙌 Acknowledgments
+
+- [nixpkgs](github.com/nixos/nixpkgs): 'nough said.
 - [agenix](https://github.com/ryantm/agenix): secrets storage and orchestration.
 - [disko](https://github.com/nix-community/disko): declarative partitions and disk configuration.
 - [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
-- [iio-hyprland](https://github.com/JeanSchoeller/iio-hyprland): autorotate daemon for Hyprland.
 - [lanzaboote](https://github.com/nix-community/lanzaboote): secure boot for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
 
-## Outputs
-
-- homeManagerModules.aly: my home-manager config.
-- homeManagerModules.default: app modules + everything you need for a competent Hyprland desktop (and a few others).
-- homeManagerModules.dustin: my husband's home-manager config.
-- nixosModules.common: various common modules specific to my hosts.
-- nixosModules.nixos: opinionated desktop, app, and service options.
-- nixosModules.users: basic user configuration options.
-- overlays.default: adds every package output to nixpkgs.
-- overlays.tablet: tablet optimizations, mainly for electron apps.
-
-In addition, this flake outputs NixOS configurations, home-manager configurations, and various hardware modules for all of my hosts and users.
-
-## Deploying to NixOS
-
-Each hardware configuration is host-specific. If you fork this repository, add a host configuration for your own hardware. Secrets are encrypted with [agenix](https://github.com/ryantm/agenix) and will not be available without the private decryption keys.
-
-### Enabling Flakes
-
-While widely used and considered stable, [flakes](https://wiki.nixos.org/wiki/Flakes) are still considered experimental. To enable Flakes, add the following lines to your `configuration.nix` and rebuild.
-
-```nix
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
-```
-
-Alternatively, pass `--experimental-features "nix-command flakes"` to `nix` to temporarily use flakes.
-
-### Building Flake
-
-In order to deploy this Flake on your host, run the following command:
-
-```console
-sudo nixos-rebuild boot --flake github:alyraffauf/nixcfg#$HOSTNAME
-```
-
-Substitute `$HOSTNAME` for whichever hostname you have chosen. Reboot to apply the flake's configuration for the chosen host.
-
-### Installing from Live USB
-
-If you want to install NixOS from this flake, run the following commands, ideally from a NixOS live environment, providing the hostname associated with a NixOS configuration specified in `flake.nix` when prompted.
-
-```console
-sudo nix --experimental-features "nix-command flakes" run github:alyraffauf/nixcfg
-```
+______________________________________________________________________
