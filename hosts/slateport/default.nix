@@ -8,7 +8,6 @@
     ./raffauflabs.nix
     ./secrets.nix
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-wifi-profiles
     self.nixosModules.disko-btrfs-subvolumes
     self.nixosModules.hw-lenovo-thinkcentre-m700
     self.nixosModules.locale-en-us
@@ -16,6 +15,7 @@
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-serverOptimizations
+    self.nixosModules.nixos-profiles-wifi
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman
     self.nixosModules.nixos-services-syncthing

@@ -9,7 +9,6 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-framework-13-intel-11th
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-kde
@@ -18,6 +17,7 @@
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
     self.nixosModules.nixos-profiles-gaming
+    self.nixosModules.nixos-profiles-wifi
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-steam

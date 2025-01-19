@@ -138,7 +138,6 @@
 
     nixosModules = {
       common-mauville-share = import ./modules/common/samba.nix;
-      common-wifi-profiles = import ./modules/common/wifi.nix;
       disko-btrfs-subvolumes = import ./modules/disko/btrfs-subvolumes;
       disko-luks-btrfs-subvolumes = import ./modules/disko/luks-btrfs-subvolumes;
       hw-amd-cpu = import ./modules/hardware/amd/cpu;
@@ -166,6 +165,7 @@
       nixos-profiles-desktopOptimizations = import ./modules/nixos/profiles/desktopOptimizations;
       nixos-profiles-gaming = import ./modules/nixos/profiles/gaming;
       nixos-profiles-serverOptimizations = import ./modules/nixos/profiles/serverOptimizations;
+      nixos-profiles-wifi = import ./modules/nixos/profiles/wifi;
       nixos-programs-firefox = import ./modules/nixos/programs/firefox;
       nixos-programs-lanzaboote = import ./modules/nixos/programs/lanzaboote;
       nixos-programs-nicotine-plus = import ./modules/nixos/programs/nicotine-plus;

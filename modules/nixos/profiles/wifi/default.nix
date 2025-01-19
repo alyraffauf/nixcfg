@@ -1,11 +1,12 @@
 {config, ...}: {
-  age.secrets.wifi.file = ../../secrets/wifi.age;
+  age.secrets.wifi.file = ../../../../secrets/wifi.age;
 
   networking.networkmanager = {
     enable = true;
 
     ensureProfiles = {
       environmentFiles = [config.age.secrets.wifi.path];
+
       profiles = let
         mkOpenWiFi = ssid: {
           connection.id = "${ssid}";

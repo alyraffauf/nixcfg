@@ -10,7 +10,6 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-wifi-profiles
     self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hw-lenovo-thinkpad-T440p
     self.nixosModules.locale-en-us
@@ -19,6 +18,7 @@
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
+    self.nixosModules.nixos-profiles-wifi
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-nix
