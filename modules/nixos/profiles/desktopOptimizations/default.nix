@@ -4,7 +4,27 @@
   pkgs,
   ...
 }: {
-  options.services.pipewire.lowLatency = lib.mkEnableOption "Low latency PipeWire support.";
+  options.services.pipewire.lowLatency = {
+    enable = lib.mkOption {
+      default = true;
+      description = "Whether to enable lower latency configuration for PipeWire.";
+      type = lib.types.bool;
+    };
+
+    quantum = lib.mkOption {
+      default = 64;
+      description = "Minimum quantum to set.";
+      example = 32;
+      type = lib.types.int;
+    };
+
+    rate = lib.mkOption {
+      default = 48000;
+      description = "Rate to set.";
+      example = 96000;
+      type = lib.types.int;
+    };
+  };
 
   config = {
     assertions = [
@@ -79,11 +99,11 @@
       bpftune.enable = true;
 
       pipewire = let
-        rate = 48000;
-        quantum = 64;
+        rate = config.services.pipewire.lowLatency.rate;
+        quantum = config.services.pipewire.lowLatency.quantum;
         qr = "${toString quantum}/${toString rate}";
       in
-        lib.mkIf config.services.pipewire.lowLatency {
+        lib.mkIf config.services.pipewire.lowLatency.enable {
           # Make sure PipeWire is enabled.
           enable = true;
 

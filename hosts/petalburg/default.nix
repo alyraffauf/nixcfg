@@ -39,6 +39,7 @@
     };
   };
 
+  services.pipewire.lowLatency.enable = false;
   system.stateVersion = "25.05";
 
   myNixOS.syncthing = {

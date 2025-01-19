@@ -28,7 +28,6 @@
 
   environment.variables.GDK_SCALE = "1.5";
   networking.hostName = "fallarbor";
-  services.pipewire.lowLatency = true;
   system.stateVersion = "24.05";
 
   myNixOS.syncthing = {

@@ -52,8 +52,6 @@ in {
       rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700 XT.
     };
 
-    pipewire.lowLatency = true;
-
     samba = {
       enable = true;
       openFirewall = true;
