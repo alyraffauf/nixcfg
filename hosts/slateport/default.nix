@@ -25,6 +25,7 @@
   networking.hostName = "slateport";
   nixos.installDrive = "/dev/sda";
   services.syncthing.guiAddress = "0.0.0.0:8384";
+  time.timeZone = "America/New_York";
 
   stylix = {
     enable = false;

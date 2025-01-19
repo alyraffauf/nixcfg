@@ -64,7 +64,5 @@
       openFirewall = true;
       settings.PasswordAuthentication = false;
     };
-
-    tzupdate.enable = true;
   };
 }

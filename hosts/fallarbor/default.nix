@@ -29,6 +29,7 @@
   environment.variables.GDK_SCALE = "1.5";
   networking.hostName = "fallarbor";
   system.stateVersion = "24.05";
+  time.timeZone = "America/New_York";
 
   myNixOS.syncthing = {
     enable = true;

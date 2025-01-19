@@ -69,6 +69,8 @@ in {
     stateVersion = "25.05";
   };
 
+  time.timeZone = "America/New_York";
+
   myNixOS.syncthing = {
     certFile = config.age.secrets.syncthingCert.path;
     enable = true;
