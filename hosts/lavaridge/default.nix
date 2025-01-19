@@ -54,8 +54,9 @@
       done
     '';
   in ''
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="ACAD", ATTR{online}=="1", ACTION=="change", RUN+="${hyprlandDynamicRes} 120 1"
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="ACAD", ATTR{online}=="0", ACTION=="change", RUN+="${hyprlandDynamicRes} 60 0"
+    ## Dynamic refresh rate for Hyprland
+    ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${hyprlandDynamicRes} 60 0"
+    ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${hyprlandDynamicRes} 120 1"
   '');
 
   system.stateVersion = "24.05";
