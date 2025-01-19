@@ -50,6 +50,7 @@ in {
     };
 
     udev.extraRules = ''
+      ## Controller support for Sunshine.
       KERNEL=="uinput", GROUP="input", MODE="0660" OPTIONS+="static_node=uinput"
     '';
   };

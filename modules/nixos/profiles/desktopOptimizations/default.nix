@@ -179,12 +179,23 @@
         };
 
       udev.extraRules = ''
-        ACTION=="add|change", KERNEL=="mmcblk[0-9]p[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq" # SD cards use BFQ scheduler.
-        ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber" # NVMe use kyber scheduler.
-        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber" # SSD use kyber scheduler.
-        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq" # HHDs use BFW scheduler.
-        DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root", GROUP="audio", MODE="0660" # cpu_dma_latency writeable by audio group
-        KERNEL=="ntsync", MODE="0644" # /dev/ntsync user writeable
+        ## SD cards use BFQ scheduler.
+        ACTION=="add|change", KERNEL=="mmcblk[0-9]p[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
+
+        ## NVMe SSDs use kyber scheduler.
+        ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
+
+        ## SSDs use kyber scheduler.
+        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
+        
+        ## HHDs use BFW scheduler.
+        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+
+        ## Allow @audio to write to /dev/cpu_dma_latency.
+        DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root",GROUP="audio", MODE="0660"
+
+        ## Allow users to write to /dev/ntsync.
+        KERNEL=="ntsync", MODE="0644" 
       '';
     };
 

@@ -11,16 +11,16 @@
     joycond.enable = true; # For Nintendo Switch Joycons
 
     udev.extraRules = ''
-      ## Gyro access for Pro controllers.
+      ## Gyro access for Switch Pro controllers.
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="plugdev"
 
-      ## Disable DualShock 4 touchpad as mouse
+      ## Disable DualShock 4 touchpad as mouse.
       # USB
       ATTRS{name}=="Sony Interactive Entertainment Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
       # Bluetooth
       ATTRS{name}=="Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
 
-      ## Disable DualSense touchpad as mouse
+      ## Disable DualSense touchpad as mouse.
       # USB
       ATTRS{name}=="Sony Interactive Entertainment DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
       # Bluetooth
