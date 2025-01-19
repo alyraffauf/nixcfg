@@ -4,7 +4,7 @@
   self,
   ...
 }: {
-  imports = [self.nixosModules.nixos-desktop-gui];
+  imports = [self.nixosModules.nixos-desktop];
 
   home-manager.sharedModules = [
     {

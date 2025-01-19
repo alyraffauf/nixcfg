@@ -163,33 +163,33 @@
 
       locale-en-us = import ./modules/locale/en-us.nix;
 
-      nixos-desktop-gnome = import ./modules/nixos/desktop/gnome.nix;
-      nixos-desktop-gui = import ./modules/nixos/desktop/gui.nix;
-      nixos-desktop-hyprland = import ./modules/nixos/desktop/hyprland.nix;
-      nixos-desktop-kde = import ./modules/nixos/desktop/kde.nix;
+      nixos-desktop = import ./modules/nixos/desktop;
+      nixos-desktop-gnome = import ./modules/nixos/desktop/gnome;
+      nixos-desktop-hyprland = import ./modules/nixos/desktop/hyprland;
+      nixos-desktop-kde = import ./modules/nixos/desktop/kde;
 
-      nixos-profiles-autoUpgrade = import ./modules/nixos/profiles/autoUpgrade.nix;
-      nixos-profiles-base = import ./modules/nixos/profiles/base.nix;
-      nixos-profiles-btrfs = import ./modules/nixos/profiles/btrfs.nix;
-      nixos-profiles-desktopOptimizations = import ./modules/nixos/profiles/desktopOptimizations.nix;
-      nixos-profiles-gaming = import ./modules/nixos/profiles/gaming.nix;
-      nixos-profiles-lanzaboote = import ./modules/nixos/profiles/lanzaboote.nix;
-      nixos-profiles-serverOptimizations = import ./modules/nixos/profiles/serverOptimizations.nix;
+      nixos-profiles-autoUpgrade = import ./modules/nixos/profiles/autoUpgrade;
+      nixos-profiles-base = import ./modules/nixos/profiles/base;
+      nixos-profiles-btrfs = import ./modules/nixos/profiles/btrfs;
+      nixos-profiles-desktopOptimizations = import ./modules/nixos/profiles/desktopOptimizations;
+      nixos-profiles-gaming = import ./modules/nixos/profiles/gaming;
+      nixos-profiles-lanzaboote = import ./modules/nixos/profiles/lanzaboote;
+      nixos-profiles-serverOptimizations = import ./modules/nixos/profiles/serverOptimizations;
 
-      nixos-programs-firefox = import ./modules/nixos/programs/firefox.nix;
-      nixos-programs-nicotine-plus = import ./modules/nixos/programs/nicotine-plus.nix;
-      nixos-programs-nix = import ./modules/nixos/programs/nix.nix;
-      nixos-programs-podman = import ./modules/nixos/programs/podman.nix;
-      nixos-programs-retroarch = import ./modules/nixos/programs/retroarch.nix;
-      nixos-programs-steam = import ./modules/nixos/programs/steam.nix;
-      nixos-programs-virt-manager = import ./modules/nixos/programs/virt-manager.nix;
+      nixos-programs-firefox = import ./modules/nixos/programs/firefox;
+      nixos-programs-nicotine-plus = import ./modules/nixos/programs/nicotine-plus;
+      nixos-programs-nix = import ./modules/nixos/programs/nix;
+      nixos-programs-podman = import ./modules/nixos/programs/podman;
+      nixos-programs-retroarch = import ./modules/nixos/programs/retroarch;
+      nixos-programs-steam = import ./modules/nixos/programs/steam;
+      nixos-programs-virt-manager = import ./modules/nixos/programs/virt-manager;
 
-      nixos-services-flatpak = import ./modules/nixos/services/flatpak.nix;
-      nixos-services-gdm = import ./modules/nixos/services/gdm.nix;
-      nixos-services-greetd = import ./modules/nixos/services/greetd.nix;
-      nixos-services-sddm = import ./modules/nixos/services/sddm.nix;
-      nixos-services-sunshine = import ./modules/nixos/services/sunshine.nix;
-      nixos-services-tailscale = import ./modules/nixos/services/tailscale.nix;
+      nixos-services-flatpak = import ./modules/nixos/services/flatpak;
+      nixos-services-gdm = import ./modules/nixos/services/gdm;
+      nixos-services-greetd = import ./modules/nixos/services/greetd;
+      nixos-services-sddm = import ./modules/nixos/services/sddm;
+      nixos-services-sunshine = import ./modules/nixos/services/sunshine;
+      nixos-services-tailscale = import ./modules/nixos/services/tailscale;
 
       users = import ./modules/users;
     };
