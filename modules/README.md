@@ -7,7 +7,6 @@ ______________________________________________________________________
 ## 📂 Directory Structure
 
 ```plaintext
-.
 modules/
 ├── disko/             # Modules for automated disk partitioning with Disko
 ├── hardware/          # Host-specific and accessory hardware configurations
