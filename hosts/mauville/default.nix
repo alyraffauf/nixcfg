@@ -17,7 +17,7 @@ in {
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-lanzaboote
+    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-profiles-serverOptimizations
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman

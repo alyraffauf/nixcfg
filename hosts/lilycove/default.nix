@@ -24,7 +24,7 @@ in {
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
     self.nixosModules.nixos-profiles-gaming
-    self.nixosModules.nixos-profiles-lanzaboote
+    self.nixosModules.nixos-programs-lanzaboote
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman

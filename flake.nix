@@ -165,9 +165,9 @@
       nixos-profiles-btrfs = import ./modules/nixos/profiles/btrfs;
       nixos-profiles-desktopOptimizations = import ./modules/nixos/profiles/desktopOptimizations;
       nixos-profiles-gaming = import ./modules/nixos/profiles/gaming;
-      nixos-profiles-lanzaboote = import ./modules/nixos/profiles/lanzaboote;
       nixos-profiles-serverOptimizations = import ./modules/nixos/profiles/serverOptimizations;
       nixos-programs-firefox = import ./modules/nixos/programs/firefox;
+      nixos-programs-lanzaboote = import ./modules/nixos/programs/lanzaboote;
       nixos-programs-nicotine-plus = import ./modules/nixos/programs/nicotine-plus;
       nixos-programs-nix = import ./modules/nixos/programs/nix;
       nixos-programs-podman = import ./modules/nixos/programs/podman;

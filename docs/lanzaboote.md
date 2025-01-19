@@ -6,7 +6,7 @@
    sudo nix run nixpkgs#sbctl create-keys
    ```
 
-1. Include `nixos-profiles-lanzaboote` or manually enable lanzaboote in NixOS host configuration:
+1. Include `nixos-programs-lanzaboote` or manually enable lanzaboote in NixOS host configuration:
 
    ```nix
    boot = {
