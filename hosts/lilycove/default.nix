@@ -12,7 +12,6 @@ in {
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.common-mauville-share
     self.nixosModules.hw-amd-cpu
     self.nixosModules.hw-amd-gpu
     self.nixosModules.hw-common
@@ -23,6 +22,7 @@ in {
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-desktopOptimizations
     self.nixosModules.nixos-profiles-gaming
+    self.nixosModules.nixos-profiles-media-share
     self.nixosModules.nixos-profiles-wifi
     self.nixosModules.nixos-programs-firefox
     self.nixosModules.nixos-programs-lanzaboote
