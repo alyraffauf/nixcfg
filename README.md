@@ -18,7 +18,7 @@ ______________________________________________________________________
 - **Hyprland:** Dynamic tiling Wayland compositor and window manager.
 - **Modular Configuration**: Organized and reusable modules for simplicity.
 - **Multi-Device Support**: Written with multiple hosts in mind.
-- **Stylix:** Auto-gnerated base16 themes for the whole desktop.
+- **Stylix:** Auto-generated base16 themes for the whole desktop.
 
 ______________________________________________________________________
 
