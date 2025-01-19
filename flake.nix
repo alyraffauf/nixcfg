@@ -128,7 +128,33 @@
       };
     });
 
-    formatter = forAllSystems ({pkgs}: pkgs.alejandra);
+    formatter = forAllSystems ({pkgs}:
+      pkgs.writeShellScriptBin "formatter" ''
+        set -euo pipefail
+
+        FIND=${pkgs.findutils}/bin/find
+        MDFORMAT=${pkgs.mdformat}/bin/mdformat
+        ALEJANDRA=${pkgs.alejandra}/bin/alejandra
+
+        # Initialize variables
+        MDFORMAT_ARGS=()
+        ALEJANDRA_ARGS=()
+
+        # Parse arguments
+        for arg in "$@"; do
+          if [ "$arg" = "-c" ]; then
+            MDFORMAT_ARGS+=(--check)
+          else
+            ALEJANDRA_ARGS+=("$arg")
+          fi
+        done
+
+        # Format all markdown files
+        "$FIND" . -type f -name "*.md" -exec "$MDFORMAT" "''${MDFORMAT_ARGS[@]}" {} +
+
+        # Forward remaining arguments to Alejandra
+        "$ALEJANDRA" "''${ALEJANDRA_ARGS[@]}"
+      '');
 
     homeManagerModules = {
       default = import ./modules/home-manager self;
