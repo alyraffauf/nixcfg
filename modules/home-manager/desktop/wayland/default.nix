@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.ar.home.desktop.hyprland.enable) {
-    ar.home = {
+  config = lib.mkIf (config.myHome.desktop.hyprland.enable) {
+    myHome = {
       apps = {
         kitty.enable = lib.mkDefault true;
         rofi.enable = lib.mkDefault true;
@@ -13,7 +13,7 @@
       };
 
       services = {
-        hypridle.enable = lib.mkDefault config.ar.home.desktop.hyprland.enable;
+        hypridle.enable = lib.mkDefault config.myHome.desktop.hyprland.enable;
         mako.enable = lib.mkDefault true;
         pipewire-inhibit.enable = lib.mkDefault true;
         swayosd.enable = lib.mkDefault true;
@@ -37,7 +37,7 @@
 
       input-field = {
         font_family = config.stylix.fonts.sansSerif.name;
-        rounding = config.ar.home.theme.borders.radius;
+        rounding = config.myHome.theme.borders.radius;
       };
 
       shape = [
@@ -48,7 +48,7 @@
           halign = "center";
           position = "-33%, 0";
           rotate = 0;
-          rounding = config.ar.home.theme.borders.radius;
+          rounding = config.myHome.theme.borders.radius;
           shadow_color = "rgb(${config.lib.stylix.colors.base01})";
           shadow_passes = 3;
           size = "600, 600";
@@ -96,10 +96,10 @@
     xdg.portal = {
       enable = true;
       configPackages =
-        lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
+        lib.optional (config.myHome.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
       extraPortals =
         [pkgs.xdg-desktop-portal-gtk]
-        ++ lib.optional (config.ar.home.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
+        ++ lib.optional (config.myHome.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
     };
   };
 }

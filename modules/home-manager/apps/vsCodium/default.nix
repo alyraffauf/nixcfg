@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
 in {
   config = lib.mkIf cfg.apps.vsCodium.enable {
     programs.vscode = {
@@ -82,7 +82,7 @@ in {
         "window.menuBarVisibility" = "hidden";
 
         "window.titleBarStyle" =
-          if config.ar.home.desktop.gnome.enable
+          if config.myHome.desktop.gnome.enable
           then "custom"
           else "native";
 

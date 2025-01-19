@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.yazi.enable {
+  config = lib.mkIf config.myHome.apps.yazi.enable {
     programs.yazi = {
       enable = true;
       enableBashIntegration = true;

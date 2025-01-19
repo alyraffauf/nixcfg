@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
 
   inherit (config.lib.formats.rasi) mkLiteral;
   mkRgba = opacity: color: let

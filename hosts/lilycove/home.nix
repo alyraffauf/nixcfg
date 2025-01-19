@@ -19,7 +19,7 @@
           };
         };
 
-        ar.home = {
+        myHome = {
           desktop = {
             autoSuspend = false;
             hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"];

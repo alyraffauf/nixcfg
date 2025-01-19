@@ -9,7 +9,7 @@
   config = {
     home-manager.sharedModules = [
       {
-        ar.home.desktop.hyprland.enable = lib.mkDefault true;
+        myHome.desktop.hyprland.enable = lib.mkDefault true;
       }
     ];
 

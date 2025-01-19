@@ -9,7 +9,7 @@
   config = {
     home-manager.sharedModules = [
       {
-        ar.home.desktop.gnome.enable = lib.mkDefault true;
+        myHome.desktop.gnome.enable = lib.mkDefault true;
       }
     ];
 

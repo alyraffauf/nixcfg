@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.ar.home.services.easyeffects.enable {
+  config = lib.mkIf config.myHome.services.easyeffects.enable {
     xdg.configFile = {
       "easyeffects/output/framework13.json".source = ./framework13.json;
       "easyeffects/output/fw13-autogain.json".source = ./fw13-autogain.json;
@@ -14,7 +14,7 @@
 
     services.easyeffects = {
       enable = true;
-      preset = config.ar.home.services.easyeffects.preset;
+      preset = config.myHome.services.easyeffects.preset;
     };
   };
 }

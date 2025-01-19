@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.chromium.enable {
+  config = lib.mkIf config.myHome.apps.chromium.enable {
     programs.chromium = {
       enable = true;
 
@@ -28,7 +28,7 @@
         }
       ];
 
-      package = config.ar.home.apps.chromium.package;
+      package = config.myHome.apps.chromium.package;
     };
   };
 }

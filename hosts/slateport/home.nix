@@ -23,7 +23,7 @@
         home-manager.enable = true;
       };
 
-      ar.home.apps = {
+      myHome.apps = {
         fastfetch.enable = true;
         helix.enable = true;
         shell.enable = true;

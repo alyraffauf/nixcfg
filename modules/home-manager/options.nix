@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
 in {
-  options.ar.home = {
+  options.myHome = {
     apps = {
       alacritty.enable = lib.mkEnableOption "Alacritty terminal.";
 

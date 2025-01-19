@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.nemo.enable {
+  config = lib.mkIf config.myHome.apps.nemo.enable {
     home.packages = [pkgs.nemo];
 
     dconf = {
@@ -23,14 +23,14 @@
 
         "org/nemo/preferences/menu-config" = {
           background-menu-open-as-root =
-            !(config.ar.home.desktop.hyprland.enable);
+            !(config.myHome.desktop.hyprland.enable);
           selection-menu-open-as-root =
-            !(config.ar.home.desktop.hyprland.enable);
+            !(config.myHome.desktop.hyprland.enable);
         };
 
         "org/nemo/plugins".disabled-actions =
           lib.optionals
-          (config.ar.home.desktop.hyprland.enable) [
+          (config.myHome.desktop.hyprland.enable) [
             "90_new-launcher.nemo_action"
             "add-desklets.nemo_action"
             "change-background.nemo_action"

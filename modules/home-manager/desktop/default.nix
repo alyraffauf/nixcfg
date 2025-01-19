@@ -14,18 +14,18 @@
 
   config =
     lib.mkIf (
-      config.ar.home.desktop.gnome.enable
-      || config.ar.home.desktop.hyprland.enable
-      || config.ar.home.desktop.kde.enable
+      config.myHome.desktop.gnome.enable
+      || config.myHome.desktop.hyprland.enable
+      || config.myHome.desktop.kde.enable
     ) {
       dconf = {
         enable = true;
 
         settings = {
           "org/gnome/desktop/wm/preferences".button-layout =
-            if config.ar.home.desktop.kde.enable
+            if config.myHome.desktop.kde.enable
             then "appmenu:minimize,maximize,close"
-            else if config.ar.home.desktop.gnome.enable
+            else if config.myHome.desktop.gnome.enable
             then "appmenu:close"
             else "";
 

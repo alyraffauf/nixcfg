@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.shell.enable {
+  config = lib.mkIf config.myHome.apps.shell.enable {
     home.shellAliases = {
       cat = lib.getExe pkgs.bat;
       grep = lib.getExe config.programs.ripgrep.package;

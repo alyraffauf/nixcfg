@@ -2,7 +2,7 @@
   home-manager = {
     sharedModules = [
       {
-        ar.home = {
+        myHome = {
           desktop.hyprland.laptopMonitors = ["desc:LG Display 0x0569,preferred,auto,1.25"];
           laptopMode = true;
         };

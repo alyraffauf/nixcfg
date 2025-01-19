@@ -47,7 +47,7 @@ self: {
     defaultApplications."application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
   };
 
-  ar.home = {
+  myHome = {
     apps = {
       chromium.enable = true;
       firefox.enable = true;

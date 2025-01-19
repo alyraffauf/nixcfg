@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.ar.home.defaultApps;
+  cfg = config.myHome.defaultApps;
   mimeTypes = import ./mimeTypes.nix;
 in {
   config = lib.mkIf cfg.enable {

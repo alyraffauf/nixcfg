@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   virtKeyboard = lib.getExe' pkgs.squeekboard "squeekboard";
 in {

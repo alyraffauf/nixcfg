@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.desktop.gnome.enable {
+  config = lib.mkIf config.myHome.desktop.gnome.enable {
     dconf = {
       enable = true;
 

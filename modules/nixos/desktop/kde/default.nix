@@ -25,7 +25,7 @@
 
     home-manager.sharedModules = [
       {
-        ar.home.desktop.kde.enable = lib.mkDefault true;
+        myHome.desktop.kde.enable = lib.mkDefault true;
       }
     ];
 

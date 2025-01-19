@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.laptopMode {
+  config = lib.mkIf config.myHome.laptopMode {
     wayland.windowManager = {
       hyprland.settings = {
         windowrulev2 = [
@@ -13,9 +13,9 @@
         ];
 
         workspace = [
-          "1,defaultName:web,on-created-empty:${lib.getExe config.ar.home.defaultApps.webBrowser}"
+          "1,defaultName:web,on-created-empty:${lib.getExe config.myHome.defaultApps.webBrowser}"
           "2,defaultName:note,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
-          "3,defaultName:code,on-created-empty:${lib.getExe config.ar.home.defaultApps.editor}"
+          "3,defaultName:code,on-created-empty:${lib.getExe config.myHome.defaultApps.editor}"
           "4,defaultName:mail,on-created-empty:${lib.getExe config.programs.thunderbird.package}"
           "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
         ];

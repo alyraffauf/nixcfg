@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
   scripts = import ./scripts.nix {inherit config lib pkgs;};
   helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
 in {

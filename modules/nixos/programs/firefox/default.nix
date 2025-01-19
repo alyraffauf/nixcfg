@@ -2,7 +2,7 @@
   config = {
     home-manager.sharedModules = [
       {
-        ar.home.apps.firefox.enable = lib.mkDefault true;
+        myHome.apps.firefox.enable = lib.mkDefault true;
       }
     ];
 

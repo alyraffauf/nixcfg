@@ -4,6 +4,6 @@
   ...
 }: {
   config =
-    lib.mkIf config.ar.home.desktop.kde.enable {
+    lib.mkIf config.myHome.desktop.kde.enable {
     };
 }

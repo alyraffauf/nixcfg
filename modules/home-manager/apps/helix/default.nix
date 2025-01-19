@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.helix.enable {
+  config = lib.mkIf config.myHome.apps.helix.enable {
     programs.helix = {
       enable = true;
 

@@ -61,7 +61,7 @@ self: {
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
-  ar.home = {
+  myHome = {
     apps = {
       chromium.enable = true;
       fastfetch.enable = true;
@@ -77,7 +77,7 @@ self: {
     defaultApps = {
       enable = true;
       terminal = pkgs.ghostty;
-      webBrowser = config.ar.home.apps.chromium.package;
+      webBrowser = config.myHome.apps.chromium.package;
     };
 
     theme.enable = true;

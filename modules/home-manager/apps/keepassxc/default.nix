@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.keepassxc.enable {
-    home.packages = [config.ar.home.apps.keepassxc.package];
+  config = lib.mkIf config.myHome.apps.keepassxc.enable {
+    home.packages = [config.myHome.apps.keepassxc.package];
 
     xdg.configFile."keepassxc/keepassxc.ini".text = let
       defaults = {
@@ -43,7 +43,7 @@
         SSHAgent.Enabled = true;
       };
 
-      settings = defaults // config.ar.home.apps.keepassxc.settings;
+      settings = defaults // config.myHome.apps.keepassxc.settings;
     in
       lib.generators.toINI {} settings;
   };

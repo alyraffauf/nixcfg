@@ -6,7 +6,7 @@
 }: let
   wallpaperD = pkgs.writers.writeRuby "randomWallpaperD" {} (builtins.readFile ./script.rb);
 in {
-  config = lib.mkIf config.ar.home.services.randomWallpaper.enable {
+  config = lib.mkIf config.myHome.services.randomWallpaper.enable {
     services.hyprpaper.enable = lib.mkForce false;
     # stylix.targets.hyprpaper.enable = lib.mkForce false;
     wayland.windowManager.sway.config.output."*" = lib.mkForce {}; # Dirty. TODO: make more elegant.
@@ -14,7 +14,7 @@ in {
     systemd.user.services.randomWallpaper = {
       Unit = {
         After = "graphical-session.target";
-        BindsTo = lib.optional (config.ar.home.desktop.hyprland.enable) "hyprland-session.target";
+        BindsTo = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
         Description = "Lightweight swaybg-based random wallpaper daemon.";
         PartOf = "graphical-session.target";
       };
@@ -36,7 +36,7 @@ in {
         TasksMax = "infinity";
       };
 
-      Install.WantedBy = lib.optional (config.ar.home.desktop.hyprland.enable) "hyprland-session.target";
+      Install.WantedBy = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
     };
   };
 }

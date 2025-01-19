@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
 in {
   config = lib.mkIf cfg.services.pipewire-inhibit.enable {
     systemd.user.services.pipewire-inhibit-idle = {

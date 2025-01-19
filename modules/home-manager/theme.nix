@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.myHome;
 in {
   config = lib.mkIf cfg.theme.enable {
     home.packages = [
@@ -12,7 +12,7 @@ in {
       pkgs.liberation_ttf
     ];
 
-    qt = lib.mkIf (!config.ar.home.desktop.kde.enable) {
+    qt = lib.mkIf (!config.myHome.desktop.kde.enable) {
       enable = true;
       platformTheme.name = "kde";
       style.name = "Breeze";

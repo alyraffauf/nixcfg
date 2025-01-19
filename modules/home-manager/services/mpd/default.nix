@@ -3,10 +3,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.ar.home.services.mpd.enable {
+  config = lib.mkIf config.myHome.services.mpd.enable {
     services.mpd = {
       enable = true;
-      musicDirectory = config.ar.home.services.mpd.musicDirectory;
+      musicDirectory = config.myHome.services.mpd.musicDirectory;
     };
     services.mpd-mpris = {
       enable = true;
