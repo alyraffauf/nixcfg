@@ -81,6 +81,7 @@ in {
 
   systemd = {
     services.turn-on-speakers = {
+      # Due to bugs in the snd_hda_scodec_tas2781_i2c module, the best way to have functional speakers is to run a small script to turn the bass speakers on via i2c.
       enable = true;
 
       after = [
