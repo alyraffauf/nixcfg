@@ -125,33 +125,7 @@
       };
     });
 
-    formatter = forAllSystems ({pkgs}:
-      pkgs.writeShellScriptBin "formatter" ''
-        set -euo pipefail
-
-        FIND=${pkgs.findutils}/bin/find
-        MDFORMAT=${pkgs.mdformat}/bin/mdformat
-        ALEJANDRA=${pkgs.alejandra}/bin/alejandra
-
-        # Initialize variables
-        MDFORMAT_ARGS=()
-        ALEJANDRA_ARGS=()
-
-        # Parse arguments
-        for arg in "$@"; do
-          if [ "$arg" = "-c" ]; then
-            MDFORMAT_ARGS+=(--check)
-          else
-            ALEJANDRA_ARGS+=("$arg")
-          fi
-        done
-
-        # Format all markdown files
-        "$FIND" . -type f -name "*.md" -exec "$MDFORMAT" "''${MDFORMAT_ARGS[@]}" {} +
-
-        # Forward remaining arguments to Alejandra
-        "$ALEJANDRA" "''${ALEJANDRA_ARGS[@]}"
-      '');
+    formatter = self.inputs.nixpkgs.lib.genAttrs allSystems (system: self.packages.${system}.formatter);
 
     homeManagerModules = {
       default = import ./modules/home-manager self;
@@ -240,12 +214,18 @@
 
     overlays.default = import ./overlays/default.nix {inherit self;};
 
-    packages = forAllLinuxSystems ({pkgs}: rec {
+    packages = forAllSystems ({pkgs}: rec {
       default = clean-install;
 
       clean-install = pkgs.writeShellApplication {
         name = "clean-install";
-        text = ./flake/clean-install.sh;
+        text = builtins.readFile ./utils/clean-install.sh;
+      };
+
+      formatter = pkgs.writeShellApplication {
+        name = "formatter";
+        runtimeInputs = with pkgs; [alejandra findutils mdformat shfmt];
+        text = builtins.readFile ./utils/formatter.sh;
       };
     });
   };
