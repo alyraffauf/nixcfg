@@ -1,29 +1,42 @@
-# lavaridge
+# 🔥 Lavaridge
 
 ## Overview
 
-Framework Laptop 13 with AMD 7000 series mainboard. My primary machine used for work, productivity, development work, media, you name it.
+Framework Laptop 13 with the AMD Ryzen 7000 series mainboard — my primary machine for work, development, productivity, media, and more. It’s built to handle anything I throw at it.
 
-## Todo
+______________________________________________________________________
 
-- \[x\] upgrade to [2.8k 120Hz Framework screen](https://frame.work/products/display-kit?v=FRANJF0001).
+## ✅ Todo
 
-## Specs
+- \[x\] Upgraded to the [2.8K 120Hz Matte Framework Screen](https://frame.work/products/display-kit?v=FRANJF0001).
 
-| Model   | Framework Laptop 13       |
-|---------|---------------------------|
-| Display | 13.5" 2880x1920 120Hz     |
-| CPU     | AMD Ryzen 7640U           |
-| RAM     | 32GB 16GBx2  DDR5-5600Mhz |
-| GPU     | AMD Radeon 760M           |
-| Disks   | 1TB Sk hynix P41          |
+______________________________________________________________________
 
-## Filesystems
+## 💻 Specifications
 
-### /
+| Component   | Details                       |
+|-------------|-------------------------------|
+| **Model**   | Framework Laptop 13           |
+| **Display** | 13.5" 2880x1920, 120Hz, matte |
+| **CPU**     | AMD Ryzen 7640U               |
+| **RAM**     | 32GB (2x16GB) DDR5-5600MHz    |
+| **GPU**     | AMD Radeon 760M               |
+| **Disk**    | 1TB SK hynix P41 SSD          |
 
-Encrypted LUKS btrfs volume.
+______________________________________________________________________
 
-## Display
+## 🗂 Filesystems
 
-2.8k 120Hz Matte Screen from Framework. Scales perfectly to 2x.
+### `/` (Root)
+
+- **Format**: Btrfs.
+- **Encryption**: Encrypted with LUKS for security.
+
+______________________________________________________________________
+
+## 🖥 Display
+
+- **Panel**: 2.8K 120Hz Matte Screen from Framework.
+- **Scaling**: Integer scales at **2x** without compromise.
+
+______________________________________________________________________

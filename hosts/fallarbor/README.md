@@ -1,29 +1,43 @@
-# fallarbor
+# 🌿 Fallarbor
 
 ## Overview
 
-Framework Laptop 13 with 11th Gen Intel processor. My husband's primary computer, mainly used for productivity.
+Framework Laptop 13 (11th Gen Intel) — primarily used by my husband for productivity tasks. This setup focuses on reliability and efficiency for daily use.
 
-## Todo
+______________________________________________________________________
 
-- \[ \] add encryption with LUKS.
+## 🔧 Todo
 
-## Specs
+- \[ \] Add LUKS encryption for enhanced security.
 
-| Model   | Framework Laptop 13       |
-|---------|---------------------------|
-| Display | 13.5" 2256x1504 60Hz      |
-| CPU     | Intel Core i5-1135G7      |
-| RAM     | 16GB (8GBx2) DDR4-3200Mhz |
-| GPU     | Intel Iris Xe Graphics    |
-| Disks   | 512GB M.2 PCIe 3.0        |
+______________________________________________________________________
 
-## Filesystems
+## 💻 Specifications
 
-### /
+| Component   | Details                       |
+|-------------|-------------------------------|
+| **Model**   | Framework Laptop 13           |
+| **Display** | 13.5" 2256x1504, 60Hz, glossy |
+| **CPU**     | Intel Core i5-1135G7          |
+| **RAM**     | 16GB (2x8GB) DDR4-3200MHz     |
+| **GPU**     | Intel Iris Xe Graphics        |
+| **Disk**    | 512GB M.2 PCIe 3.0 SSD        |
 
-Btrfs volume, not encrypted.
+______________________________________________________________________
 
-## Display
+## 🗂 Filesystems
 
-First-gen glossy Framework Laptop 13 screen. Typically used at 1.566667 scaling with Hyprland (1.6 causes strange blurryness).
+### `/` (Root)
+
+- **Format**: Btrfs.
+- **Encryption**: None (planned upgrade to LUKS).
+
+______________________________________________________________________
+
+## 🖥 Display
+
+- **Panel**: First-generation glossy Framework Laptop 13 screen.
+- **Scaling**: Typically set to **1.566667** with Hyprland for optimal clarity.
+  - Note: **1.6 scaling** causes minor blurriness.
+
+______________________________________________________________________

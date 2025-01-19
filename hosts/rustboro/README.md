@@ -1,26 +1,37 @@
-# rustboro
+# 🛠️ Rustboro
 
 ## Overview
 
-Thinkpad T440p. Older workhorse, not used very much these days but often used for testing or as a backup.
+ThinkPad T440p — an older but reliable workhorse. Mostly used for testing or as a backup system.
+
+______________________________________________________________________
 
 ## Specs
 
-| Model   | ThinkPad T440p             |
-|---------|----------------------------|
-| CPU     | Intel Core i5-4210M        |
-| Disks   | 512GB SATA SSD             |
-| Display | 14" 1920x1080 60hz         |
-| GPU     | Intel HD Graphics 4600     |
-| RAM     | 16GB (8GBx2) DDR3L-1600Mhz |
-| TPM2    | No                         |
+| Component  | Details                    |
+|------------|----------------------------|
+| **Model**  | ThinkPad T440p             |
+| **CPU**    | Intel Core i5-4210M        |
+| **Disk**   | 512GB SATA SSD             |
+| **Display**| 14" 1920x1080, 60Hz, IPS   |
+| **GPU**    | Intel HD Graphics 4600     |
+| **RAM**    | 16GB (2x8GB) DDR3L-1600MHz |
+| **TPM2**   | No                         |
 
-## Filesystems
+______________________________________________________________________
 
-### /
+## 🗂 Filesystems
 
-Encrypted LUKS btrfs volume.
+### `/` (Root)
 
-## Display
+- **Format**: Btrfs.
+- **Encryption**: Encrypted with LUKS for security.
 
-Aftermarket LG 1080p panel. Unscaled, but I crank up the fonts to 14pt.
+______________________________________________________________________
+
+## 🖥 Display
+
+- **Panel**: Aftermarket LG 1080p screen.
+- **Scaling**: Unscaled, with fonts increased to **14pt** for better readability.
+
+______________________________________________________________________
