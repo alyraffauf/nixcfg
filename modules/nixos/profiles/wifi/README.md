@@ -1,6 +1,6 @@
 # Declarative WiFi Connections
 
-WiFi networks can be configured declaratiely in `common-wifi-profiles` using `config.networking.networkmanager.ensureProfiles.profiles`, provided by nixpkgs. I also provide helper functions for common wifi security types.
+WiFi networks can be configured declaratiely in `nixos-profiles-wifi` using `config.networking.networkmanager.ensureProfiles.profiles`, provided by nixpkgs. I also provide helper functions for common wifi security types.
 
 Additionally, [nm2nix](https://github.com/janik-haag/nm2nix) can generate nix expressions for all WiFi networks currently configured in `/etc/NetworkManager/system-connections/` and `/run/NetworkManager/system-connections` with the following command:
 
