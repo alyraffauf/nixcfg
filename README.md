@@ -105,3 +105,9 @@ ______________________________________________________________________
 - [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
 
 ______________________________________________________________________
+
+## ⭐ Stargazers Over Time
+
+[![Stargazers over time](https://starchart.cc/alyraffauf/nixcfg.svg?variant=adaptive)](https://starchart.cc/alyraffauf/nixcfg)
+
+______________________________________________________________________
