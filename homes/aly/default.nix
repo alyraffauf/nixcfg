@@ -1,5 +1,6 @@
 self: {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -31,6 +32,13 @@ self: {
   };
 
   programs = {
+    ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      installVimSyntax = true;
+      settings.gtk-titlebar = lib.mkIf config.wayland.windowManager.hyprland.enable false;
+    };
+
     git = {
       enable = true;
       lfs.enable = true;
@@ -75,7 +83,7 @@ self: {
 
     defaultApps = {
       enable = true;
-      terminal = pkgs.ghostty;
+      terminal = config.programs.ghostty.package;
       webBrowser = config.programs.firefox.finalPackage;
     };
 
