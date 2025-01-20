@@ -7,6 +7,7 @@
   imports = [
     ../../common.nix
     ../common.nix
+    ./equalizer.nix
     self.nixosModules.hw-amd-cpu
     self.nixosModules.hw-amd-gpu
     self.nixosModules.hw-common
