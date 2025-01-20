@@ -13,7 +13,7 @@
 
         manager = {
           show_hidden = false;
-          sort_by = "modified";
+          sort_by = "mtime";
           sort_dir_first = true;
           sort_reverse = true;
           sort_sensitive = true;
