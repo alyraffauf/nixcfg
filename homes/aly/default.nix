@@ -68,7 +68,6 @@ self: {
       firefox.enable = true;
       ghostty.enable = true;
       helix.enable = true;
-      kitty.enable = true;
       shell.enable = true;
       vsCodium.enable = true;
       yazi.enable = true;
@@ -77,7 +76,7 @@ self: {
     defaultApps = {
       enable = true;
       terminal = pkgs.ghostty;
-      webBrowser = config.myHome.apps.chromium.package;
+      webBrowser = config.programs.firefox.finalPackage;
     };
 
     theme.enable = true;
