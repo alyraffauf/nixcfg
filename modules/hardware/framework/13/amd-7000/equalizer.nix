@@ -24,6 +24,7 @@
     filter-chain = json.generate "filter-chain.json" {
       "node.description" = prettyName;
       "media.name" = prettyName;
+
       "filter.graph" = {
         nodes = [
           # Psychoacoustic bass extension,
@@ -48,6 +49,7 @@
             type = "lv2";
             plugin = "http://lsp-plug.in/plugins/lv2/loud_comp_stereo";
             name = "el";
+
             control = {
               enabled = 1;
               input = 1.0;
@@ -64,6 +66,7 @@
             type = "lv2";
             plugin = "http://lsp-plug.in/plugins/lv2/para_equalizer_x8_lr";
             name = "fw13eq";
+
             control = {
               mode = 0;
               react = 0.2;
@@ -147,6 +150,7 @@
             type = "lv2";
             plugin = "http://lsp-plug.in/plugins/lv2/mb_compressor_stereo";
             name = "woofer_bp";
+
             control = {
               mode = 0;
               ce_0 = 1;
@@ -175,6 +179,7 @@
             type = "lv2";
             plugin = "http://lsp-plug.in/plugins/lv2/compressor_stereo";
             name = "woofer_lim";
+
             control = {
               sla = 5.0;
               al = 1.0;
@@ -229,6 +234,7 @@
           }
         ];
       };
+
       "capture.props" = {
         "node.name" = "audio_effect.laptop-convolver";
         "media.class" = "Audio/Sink";
@@ -290,6 +296,7 @@
         monitor.alsa.rules = [
           {
             matches = [{ node.name = "${outputName}" }]
+
             actions = {
               update-props = {
                 audio.allowed-rates = [44100, 48000, 88200, 96000, 176400, 192000]
@@ -301,6 +308,7 @@
         node.software-dsp.rules = [
           {
             matches = [{ node.name = "${outputName}" }]
+
             actions = {
               create-filter = {
                 filter-path = "${filter-chain}"
