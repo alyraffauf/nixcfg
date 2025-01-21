@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-read -pr "Which host are you installing? " HOST
+read -rp "Which host are you installing? " HOST
 
 FLAKE=github:alyraffauf/nixcfg#$HOST
 echo "Installing from $FLAKE"
 
 echo "Warning: Running this script will wipe the currently installed system."
-read -pr "Do you want to continue? (y/n): " answer
+read -rp "Do you want to continue? (y/n): " answer
 
 if [ "$answer" != "y" ]; then
     echo "Aborted."

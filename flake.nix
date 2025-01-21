@@ -215,11 +215,11 @@
     overlays.default = import ./overlays/default.nix {inherit self;};
 
     packages = forAllSystems ({pkgs}: rec {
-      default = clean-install;
+      default = installer;
 
-      clean-install = pkgs.writeShellApplication {
-        name = "clean-install";
-        text = builtins.readFile ./utils/clean-install.sh;
+      installer = pkgs.writeShellApplication {
+        name = "installer";
+        text = builtins.readFile ./utils/installer.sh;
       };
 
       formatter = pkgs.writeShellApplication {
