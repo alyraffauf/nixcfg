@@ -15,7 +15,6 @@
       services = {
         hypridle.enable = lib.mkDefault config.myHome.desktop.hyprland.enable;
         mako.enable = lib.mkDefault true;
-        pipewire-inhibit.enable = lib.mkDefault true;
         swayosd.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
       };
