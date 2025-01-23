@@ -16,7 +16,6 @@ jobs:
           git config --local user.name  "github-actions[bot]"
           git config --local user.email  "github-actions[bot]@users.noreply.github.com"
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/update-flake-lock@main
         with:
           token: ${{ secrets.FLAKE_UPDATE_PAT }}
