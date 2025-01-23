@@ -7,18 +7,6 @@
   cfg = config.myHome;
 in {
   config = lib.mkIf cfg.desktop.hyprland.enable {
-    services.hyprpaper =
-      lib.mkIf
-      (config.stylix.enable && !cfg.services.randomWallpaper.enable)
-      {
-        enable = true;
-
-        settings = {
-          preload = ["${config.stylix.image}"];
-          wallpaper = [",${config.stylix.image}"];
-        };
-      };
-
     wayland.windowManager.hyprland = {
       enable = true;
 
