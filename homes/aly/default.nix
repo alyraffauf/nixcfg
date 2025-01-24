@@ -26,6 +26,7 @@ self: {
       nicotine-plus
       obsidian
       protonvpn-gui
+      signal-desktop
       tauon
       transmission-remote-gtk
       vesktop
