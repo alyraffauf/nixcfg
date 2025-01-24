@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  osConfig,
   self,
   ...
 }: {
@@ -35,19 +34,14 @@
         };
       };
 
-      gtk.gtk3.bookmarks =
-        [
-          "file://${config.xdg.userDirs.documents}"
-          "file://${config.xdg.userDirs.download}"
-          "file://${config.xdg.userDirs.music}"
-          "file://${config.xdg.userDirs.videos}"
-          "file://${config.xdg.userDirs.pictures}"
-          "file://${config.home.homeDirectory}/src"
-        ]
-        ++ lib.optional (
-          (osConfig.ar.users.aly.syncthing.enable or false)
-          && (config.home.username == "aly")
-        ) "file://${config.home.homeDirectory}/sync";
+      gtk.gtk3.bookmarks = [
+        "file://${config.xdg.userDirs.documents}"
+        "file://${config.xdg.userDirs.download}"
+        "file://${config.xdg.userDirs.music}"
+        "file://${config.xdg.userDirs.videos}"
+        "file://${config.xdg.userDirs.pictures}"
+        "file://${config.home.homeDirectory}/src"
+      ];
 
       xdg = {
         dataFile."backgrounds".source = self.inputs.wallpapers;
