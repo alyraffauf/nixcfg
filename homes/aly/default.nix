@@ -13,6 +13,10 @@ self: {
     self.inputs.agenix.homeManagerModules.default
   ];
 
+  gtk.gtk3.bookmarks = lib.mkAfter [
+    "file://${config.home.homeDirectory}/sync"
+  ];
+
   home = {
     homeDirectory = "/home/aly";
 
