@@ -11,7 +11,7 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hw-lenovo-yoga-16IMH9
+    self.nixosModules.hardware-lenovo-yoga-16IMH9
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-hyprland
     self.nixosModules.nixos-profiles-autoUpgrade

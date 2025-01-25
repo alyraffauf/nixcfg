@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    self.nixosModules.hw-lenovo-thinkpad-5D50X
+    self.nixosModules.hardware-lenovo-thinkpad-5D50X
   ];
 
   console.useXkbConfig = true;

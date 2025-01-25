@@ -8,9 +8,9 @@
     ../../common.nix
     ../common.nix
     ./equalizer.nix
-    self.nixosModules.hw-amd-cpu
-    self.nixosModules.hw-amd-gpu
-    self.nixosModules.hw-common
+    self.nixosModules.hardware-amd-cpu
+    self.nixosModules.hardware-amd-gpu
+    self.nixosModules.hardware-common
   ];
 
   boot = {

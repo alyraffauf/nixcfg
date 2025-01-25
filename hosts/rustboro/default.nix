@@ -10,7 +10,7 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hw-lenovo-thinkpad-T440p
+    self.nixosModules.hardware-lenovo-thinkpad-T440p
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-hyprland
     self.nixosModules.nixos-profiles-autoUpgrade

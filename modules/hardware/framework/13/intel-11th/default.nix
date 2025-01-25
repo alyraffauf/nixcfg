@@ -7,9 +7,9 @@
   imports = [
     ../../common.nix
     ../common.nix
-    self.nixosModules.hw-common
-    self.nixosModules.hw-intel-cpu
-    self.nixosModules.hw-intel-gpu
+    self.nixosModules.hardware-common
+    self.nixosModules.hardware-intel-cpu
+    self.nixosModules.hardware-intel-gpu
   ];
 
   boot = {

@@ -11,7 +11,7 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hw-framework-13-amd-7000
+    self.nixosModules.hardware-framework-13-amd-7000
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-hyprland
     self.nixosModules.nixos-profiles-autoUpgrade

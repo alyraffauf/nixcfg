@@ -1,5 +1,5 @@
 {self, ...}: {
   imports = [
-    self.nixosModules.hw-profiles-laptop
+    self.nixosModules.hardware-profiles-laptop
   ];
 }

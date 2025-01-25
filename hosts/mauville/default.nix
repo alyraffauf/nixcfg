@@ -11,7 +11,7 @@ in {
     ./home.nix
     ./raffauflabs.nix
     ./secrets.nix
-    self.nixosModules.hw-beelink-mini-s12pro
+    self.nixosModules.hardware-beelink-mini-s12pro
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base

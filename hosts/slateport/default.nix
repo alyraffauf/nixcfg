@@ -8,7 +8,7 @@
     ./raffauflabs.nix
     ./secrets.nix
     self.nixosModules.disko-btrfs-subvolumes
-    self.nixosModules.hw-lenovo-thinkcentre-m700
+    self.nixosModules.hardware-lenovo-thinkcentre-m700
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base

@@ -12,9 +12,9 @@ in {
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.hw-amd-cpu
-    self.nixosModules.hw-amd-gpu
-    self.nixosModules.hw-common
+    self.nixosModules.hardware-amd-cpu
+    self.nixosModules.hardware-amd-gpu
+    self.nixosModules.hardware-common
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-autoUpgrade
