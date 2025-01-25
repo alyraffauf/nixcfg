@@ -14,7 +14,7 @@
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
     self.nixosModules.nixos-profiles-media-share
-    self.nixosModules.nixos-profiles-serverOptimizations
+    self.nixosModules.nixos-profiles-server
     self.nixosModules.nixos-profiles-wifi
     self.nixosModules.nixos-programs-nix
     self.nixosModules.nixos-programs-podman

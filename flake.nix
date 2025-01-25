@@ -158,10 +158,10 @@
       nixos-profiles-autoUpgrade = import ./modules/nixos/profiles/autoUpgrade;
       nixos-profiles-base = import ./modules/nixos/profiles/base;
       nixos-profiles-btrfs = import ./modules/nixos/profiles/btrfs;
-      nixos-profiles-desktopOptimizations = import ./modules/nixos/profiles/desktopOptimizations;
+      nixos-profiles-desktop = import ./modules/nixos/profiles/desktop;
       nixos-profiles-gaming = import ./modules/nixos/profiles/gaming;
       nixos-profiles-media-share = import ./modules/nixos/profiles/media-share;
-      nixos-profiles-serverOptimizations = import ./modules/nixos/profiles/serverOptimizations;
+      nixos-profiles-server = import ./modules/nixos/profiles/server;
       nixos-profiles-wifi = import ./modules/nixos/profiles/wifi;
       nixos-programs-firefox = import ./modules/nixos/programs/firefox;
       nixos-programs-lanzaboote = import ./modules/nixos/programs/lanzaboote;

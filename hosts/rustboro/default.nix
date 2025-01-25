@@ -16,7 +16,7 @@
     self.nixosModules.nixos-profiles-autoUpgrade
     self.nixosModules.nixos-profiles-base
     self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-desktopOptimizations
+    self.nixosModules.nixos-profiles-desktop
     self.nixosModules.nixos-profiles-media-share
     self.nixosModules.nixos-profiles-wifi
     self.nixosModules.nixos-programs-firefox
