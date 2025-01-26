@@ -222,16 +222,14 @@ in {
           "group/tablet" = {
             modules =
               ["custom/menu"]
-              ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
-              "custom/app-close"
-              ++ lib.optional (cfg.desktop.hyprland.tabletMode.enable)
-              "custom/virtual-keyboard";
+              ++ lib.optionals (cfg.desktop.hyprland.tabletMode.enable) ["custom/app-close" "custom/virtual-keyboard"];
 
             orientation = "horizontal";
           };
 
           "group/hardware" = {
-            modules = ["pulseaudio" "bluetooth" "network" "power-profiles-daemon" "battery"];
+            modules =
+              ["pulseaudio" "bluetooth" "network"] ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitor != null) ["power-profiles-daemon" "battery"];
 
             orientation = "horizontal";
           };
