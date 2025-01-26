@@ -10,7 +10,7 @@
 in {
   clamshell = pkgs.writeShellScript "hyprland-clamshell" ''
     NUM_MONITORS=$(${hyprctl} monitors all | grep Monitor | wc --lines)
-    EDP_STATUS=$(${hyprctl} monitors all | grep -A 15 "Monitor eDP-1" | grep "disabled:")
+    EDP_STATUS=$(${hyprctl} monitors all | grep -A 17 "Monitor eDP-1" | grep "disabled:")
     if [ "$1" == "on" ]; then
       if [ $NUM_MONITORS -gt 1 ]; then
         ${hyprctl} keyword monitor "eDP-1, disable"
