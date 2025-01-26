@@ -83,7 +83,7 @@ in {
       ",xf86audionext,exec,${helpers.media.next}"
     ]
     ++ builtins.map (switch: ",switch:${switch},exec,${scripts.tablet}") cfg.desktop.hyprland.tabletMode.switches
-    ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitors != [])
+    ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitor != null)
     [
       ",switch:on:Lid Switch,exec,${scripts.clamshell} on"
       ",switch:off:Lid Switch,exec,${scripts.clamshell} off"
@@ -193,7 +193,7 @@ in {
 
   monitor =
     [",preferred,auto,auto"]
-    ++ cfg.desktop.hyprland.laptopMonitors
+    ++ [cfg.desktop.hyprland.laptopMonitor]
     ++ cfg.desktop.hyprland.monitors;
 
   plugin = {

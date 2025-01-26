@@ -96,10 +96,10 @@ in {
       hyprland = {
         enable = lib.mkEnableOption "Hyprland with full desktop session components.";
 
-        laptopMonitors = lib.mkOption {
-          description = "List of internal laptop monitors.";
-          default = [];
-          type = lib.types.listOf lib.types.str;
+        laptopMonitor = lib.mkOption {
+          description = "Internal laptop monitor.";
+          default = null;
+          type = lib.types.nullOr lib.types.str;
         };
 
         monitors = lib.mkOption {

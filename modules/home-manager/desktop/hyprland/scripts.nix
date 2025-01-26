@@ -18,11 +18,7 @@ in {
     elif [ "$1" == "off" ]; then
       # Check if the monitor is disabled
       if echo "$EDP_STATUS" | grep -q "disabled: true"; then
-        ${
-      lib.strings.concatMapStringsSep "${hyprctl}\n"
-      (monitor: ''${hyprctl} keyword monitor "${monitor}"'')
-      cfg.desktop.hyprland.laptopMonitors
-    }
+        ${hyprctl} keyword monitor "${cfg.desktop.hyprland.laptopMonitor}"
       fi
     fi
   '';

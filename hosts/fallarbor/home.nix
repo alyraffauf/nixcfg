@@ -3,7 +3,7 @@
     sharedModules = [
       {
         myHome = {
-          desktop.hyprland.laptopMonitors = ["desc:BOE 0x095F,preferred,auto,1.566667"];
+          desktop.hyprland.laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
 
           services = {
             easyeffects = {
