@@ -4,7 +4,6 @@
       {
         myHome = {
           desktop.hyprland.laptopMonitors = ["desc:BOE 0x095F,preferred,auto,1.566667"];
-          laptopMode = true;
 
           services = {
             easyeffects = {

@@ -139,8 +139,6 @@ in {
       };
     };
 
-    laptopMode = lib.mkEnableOption "Enable laptop configuration.";
-
     services = {
       easyeffects = {
         enable = lib.mkEnableOption "EasyEffects user service.";
