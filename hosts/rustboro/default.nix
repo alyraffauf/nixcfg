@@ -35,10 +35,11 @@
   };
 
   networking.hostName = "rustboro";
-  nixos.installDrive = "/dev/sda";
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
+
+  myDisko.installDrive = "/dev/sda";
 
   myNixOS.syncthing = {
     enable = true;

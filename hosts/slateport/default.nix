@@ -23,7 +23,6 @@
   ];
 
   networking.hostName = "slateport";
-  nixos.installDrive = "/dev/sda";
   services.syncthing.guiAddress = "0.0.0.0:8384";
   time.timeZone = "America/New_York";
 
@@ -36,6 +35,8 @@
     autoUpgrade.operation = "switch";
     stateVersion = "24.05";
   };
+
+  myDisko.installDrive = "/dev/sda";
 
   myNixOS.syncthing = {
     enable = true;

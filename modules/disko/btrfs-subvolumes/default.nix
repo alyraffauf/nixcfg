@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.nixos.installDrive = lib.mkOption {
+  options.myDisko.installDrive = lib.mkOption {
     description = "Disk to install NixOS to.";
     default = "/dev/nvme0n1";
     type = lib.types.str;
@@ -12,8 +12,8 @@
   config = {
     assertions = [
       {
-        assertion = config.nixos.installDrive != "";
-        message = "config.nixos.installDrive cannot be empty.";
+        assertion = config.myDisko.installDrive != "";
+        message = "config.myDisko.installDrive cannot be empty.";
       }
     ];
 
@@ -21,7 +21,7 @@
       disk = {
         main = {
           type = "disk";
-          device = config.nixos.installDrive;
+          device = config.myDisko.installDrive;
 
           content = {
             type = "gpt";
