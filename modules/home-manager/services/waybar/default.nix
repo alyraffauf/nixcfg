@@ -281,7 +281,6 @@ in {
           #scratchpad,
           #session,
           #submap,
-          #tray,
           #workspaces {
             margin: 0px 5px;
             padding: 0px 2.5px;
@@ -317,6 +316,11 @@ in {
             border-radius: ${toString cfg.theme.borders.radius}px;
             color: ${config.lib.stylix.colors.withHashtag.base00};
             font-weight: bold;
+          }
+
+          #tray {
+            margin: 0px 5px 2px 5px;
+            padding: 0px 2.5px;
           }
 
           #waybar {
