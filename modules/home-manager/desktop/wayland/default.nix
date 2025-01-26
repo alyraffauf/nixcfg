@@ -28,7 +28,10 @@
       networkmanagerapplet
     ];
 
-    services.playerctld.enable = lib.mkDefault true;
+    services = {
+      gnome-keyring.enable = true;
+      playerctld.enable = lib.mkDefault true;
+    };
 
     systemd.user.services.polkit-gnome-authentication-agent = {
       Unit = {
