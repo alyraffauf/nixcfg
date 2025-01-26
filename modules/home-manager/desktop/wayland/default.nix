@@ -30,6 +30,22 @@
 
     services.playerctld.enable = lib.mkDefault true;
 
+    systemd.user.services.polkit-gnome-authentication-agent = {
+      Unit = {
+        After = "graphical-session.target";
+        BindsTo = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
+        Description = "PolicyKit authentication agent from GNOME.";
+        PartOf = "graphical-session.target";
+      };
+
+      Service = {
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "no";
+      };
+
+      Install.WantedBy = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
+    };
+
     xdg.portal = {
       enable = true;
       configPackages =

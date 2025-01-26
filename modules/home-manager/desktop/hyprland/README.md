@@ -19,8 +19,8 @@
 - Launcher [rofi-wayland](https://github.com/lbonn/rofi).
 - Notifications: [mako](https://github.com/emersion/mako).
 - Panel: [waybar](https://github.com/Alexays/Waybar).
-- Polkit: [mate-polkit](https://github.com/mate-desktop/mate-polkit).
-- Wallpapers: [swaybg](https://github.com/swaywm/swaybg).
+- Polkit: [policykit-gnome](https://gitlab.gnome.org/Archive/policykit-gnome).
+- Wallpapers: [hyprpaper](https://github.com/hyprwm/hyprpaper).
 - WiFi: [networkmanager-dmenu](https://github.com/firecat53/networkmanager-dmenu).
 
 ## Keybindings

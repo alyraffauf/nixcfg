@@ -140,10 +140,6 @@ in {
     "QT_STYLE_OVERRIDE,Breeze"
   ];
 
-  exec-once = [
-    "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-  ];
-
   input = {
     follow_mouse = 1;
     kb_layout = "us";
