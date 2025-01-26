@@ -37,13 +37,6 @@ self: {
   };
 
   programs = {
-    ghostty = {
-      enable = true;
-      enableZshIntegration = true;
-      installVimSyntax = true;
-      settings.gtk-titlebar = lib.mkIf config.wayland.windowManager.hyprland.enable false;
-    };
-
     git = {
       enable = true;
       lfs.enable = true;

@@ -11,6 +11,8 @@ in {
       enableBashIntegration = true;
       enableFishIntegration = true;
       enableZshIntegration = true;
+      installVimSyntax = true;
+      settings.gtk-titlebar = lib.mkIf config.wayland.windowManager.hyprland.enable false;
     };
   };
 }

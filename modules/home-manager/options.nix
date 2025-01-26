@@ -73,7 +73,7 @@ in {
       fileManager = lib.mkPackageOption pkgs "file manager" {default = ["nemo"];};
       imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["eog"];};
       pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
-      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["kitty"];};
+      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["ghostty"];};
       terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
       videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
 

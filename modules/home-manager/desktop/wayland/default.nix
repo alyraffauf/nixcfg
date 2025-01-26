@@ -7,7 +7,7 @@
   config = lib.mkIf (config.myHome.desktop.hyprland.enable) {
     myHome = {
       apps = {
-        kitty.enable = lib.mkDefault true;
+        ghostty.enable = lib.mkDefault true;
         rofi.enable = lib.mkDefault true;
         swaylock.enable = lib.mkDefault true;
       };
