@@ -34,30 +34,34 @@
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "lavaridge";
 
-  services.udev.extraRules = lib.mkIf config.programs.hyprland.enable (let
-    hyprlandDynamicRes = pkgs.writeShellScript "hyprland-dynamic-resolution" ''
-      MON="eDP-1"
-      RES="2880x1920"
+  services = {
+    udev.extraRules = lib.mkIf config.programs.hyprland.enable (let
+      hyprlandDynamicRes = pkgs.writeShellScript "hyprland-dynamic-resolution" ''
+        MON="eDP-1"
+        RES="2880x1920"
 
-      for dir in /run/user/*; do
-        for hypr_dir in "$dir/hypr/"*/; do
-          socket="''${hypr_dir}.socket.sock"
-          if [[ -S $socket ]]; then
-            monitor_info=$(echo -e "monitors" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket")
+        for dir in /run/user/*; do
+          for hypr_dir in "$dir/hypr/"*/; do
+            socket="''${hypr_dir}.socket.sock"
+            if [[ -S $socket ]]; then
+              monitor_info=$(echo -e "monitors" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket")
 
-            if echo "$monitor_info" | grep -q "$MON"; then
-              echo -e "keyword monitor $MON, $RES@$1, 0x0, 2, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
+              if echo "$monitor_info" | grep -q "$MON"; then
+                echo -e "keyword monitor $MON, $RES@$1, 0x0, 2, vrr, $2" | ${lib.getExe pkgs.socat} - UNIX-CONNECT:"$socket"
+              fi
+
             fi
-
-          fi
+          done
         done
-      done
-    '';
-  in ''
-    ## Dynamic refresh rate for Hyprland
-    ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${hyprlandDynamicRes} 60 0"
-    ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${hyprlandDynamicRes} 120 1"
-  '');
+      '';
+    in ''
+      ## Dynamic refresh rate for Hyprland
+      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${hyprlandDynamicRes} 60 0"
+      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${hyprlandDynamicRes} 120 1"
+    '');
+
+    xserver.xkb.options = "ctrl:nocaps";
+  };
 
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";

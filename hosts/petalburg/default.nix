@@ -68,6 +68,8 @@
       ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${hyprlandDynamicRes} 60 0"
       ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${hyprlandDynamicRes} 165 1"
     '');
+
+    xserver.xkb.options = "ctrl:nocaps";
   };
 
   system.stateVersion = "25.05";

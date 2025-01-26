@@ -12,8 +12,6 @@
         "SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
       ];
 
-      input.kb_options = "ctrl:nocaps";
-
       windowrulev2 = [
         # "bordersize 0,floating:0,onworkspace:f[1]"
         # "bordersize 0,floating:0,onworkspace:w[tv1]"

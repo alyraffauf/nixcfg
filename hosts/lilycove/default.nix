@@ -94,6 +94,8 @@ in {
       TIMELINE_CLEANUP = true;
       TIMELINE_CREATE = true;
     };
+
+    xserver.xkb.options = "ctrl:nocaps";
   };
 
   system.stateVersion = "24.05";
