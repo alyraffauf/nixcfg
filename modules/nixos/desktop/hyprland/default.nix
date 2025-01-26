@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   self,
@@ -9,6 +10,12 @@
   config = {
     home-manager.sharedModules = [
       {
+        wayland.windowManager.hyprland.settings.input = {
+          kb_layout = lib.mkDefault config.services.xserver.xkb.layout;
+          kb_options = lib.mkDefault config.services.xserver.xkb.options;
+          kb_variant = lib.mkDefault config.services.xserver.xkb.variant;
+        };
+
         myHome.desktop.hyprland.enable = lib.mkDefault true;
       }
     ];
