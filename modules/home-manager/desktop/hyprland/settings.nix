@@ -141,9 +141,10 @@ in {
   ];
 
   input = {
+    focus_on_close = 1;
     follow_mouse = 1;
-    kb_layout = "us";
-    kb_variant = "altgr-intl";
+    kb_layout = lib.mkDefault "us";
+    kb_variant = lib.mkDefault "altgr-intl";
     sensitivity = 0; # -1.0 to 1.0, 0 means no modification.
 
     touchpad = {
