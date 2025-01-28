@@ -1,13 +1,12 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf config.myHome.apps.shell.enable {
     home.shellAliases = {
-      cat = lib.getExe pkgs.bat;
-      grep = lib.getExe config.programs.ripgrep.package;
+      cat = "bat";
+      grep = "rg";
     };
 
     programs = {
@@ -33,6 +32,7 @@
         '';
       };
 
+      bat.enable = true;
       direnv.enable = true;
 
       eza = {
