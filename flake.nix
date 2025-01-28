@@ -9,10 +9,7 @@
       url = "github:ryantm/agenix";
     };
 
-    chaotic = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
