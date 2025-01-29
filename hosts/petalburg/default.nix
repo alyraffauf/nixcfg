@@ -37,7 +37,11 @@
   specialisation.jarvis.configuration = {
     services.ollama = {
       enable = true;
-      loadModels = ["phi4"];
+
+      loadModels = [
+        "deepseek-r1:14b"
+        "llama3.1:8b"
+      ];
     };
   };
 
