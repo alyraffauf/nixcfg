@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    self.inputs.jovian.nixosModules.default
     self.nixosModules.nixos-desktop
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-gaming
