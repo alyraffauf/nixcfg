@@ -11,6 +11,34 @@
     services = {
       joycond.enable = true; # For Nintendo Switch Joycons
 
+      pipewire.wireplumber.configPackages = [
+        pkgs.writeTextDir
+        "share/wireplumber/wireplumber.conf.d/alsa-ps-controller.conf"
+        # From https://github.com/ublue-os/bazzite/blob/13d4a51aae79e7f78bc7c26e9f8953f140d959f7/system_files/deck/shared/usr/share/wireplumber/wireplumber.conf.d/alsa-ps-controller.conf
+        ''
+          monitor.alsa.rules = [
+            {
+              matches = [
+                {
+                  node.name = "~alsa_input.*"
+                  alsa.card_name = "Wireless Controller"
+                }
+                {
+                  node.name = "~alsa_output.*"
+                  alsa.card_name = "Wireless Controller"
+                }
+              ]
+              actions = {
+                update-props = {
+                  priority.driver        = 90
+                  priority.session       = 90
+                }
+              }
+            }
+          ]
+        ''
+      ];
+
       udev.extraRules = ''
         ## Gyro access for Switch Pro controllers.
         KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="plugdev"
