@@ -21,6 +21,11 @@
       url = "github:nix-community/home-manager/master";
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote/master";
@@ -155,6 +160,7 @@
       nixos-desktop-gnome = import ./modules/nixos/desktop/gnome;
       nixos-desktop-hyprland = import ./modules/nixos/desktop/hyprland;
       nixos-desktop-kde = import ./modules/nixos/desktop/kde;
+      nixos-desktop-steamos = import ./modules/nixos/desktop/steamos;
       nixos-profiles-autoUpgrade = import ./modules/nixos/profiles/autoUpgrade;
       nixos-profiles-base = import ./modules/nixos/profiles/base;
       nixos-profiles-btrfs = import ./modules/nixos/profiles/btrfs;
