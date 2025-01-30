@@ -217,6 +217,8 @@
     packages = forAllSystems ({pkgs}: rec {
       default = installer;
 
+      adjustor = pkgs.callPackage ./pkgs/adjustor.nix {};
+
       installer = pkgs.writeShellApplication {
         name = "installer";
         text = builtins.readFile ./utils/installer.sh;

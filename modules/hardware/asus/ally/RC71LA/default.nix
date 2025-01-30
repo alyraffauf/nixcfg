@@ -16,6 +16,14 @@
     services = {
       handheld-daemon = {
         enable = lib.mkDefault true;
+
+        package = with pkgs;
+          handheld-daemon.overrideAttrs (oldAttrs: {
+            propagatedBuildInputs =
+              oldAttrs.propagatedBuildInputs
+              ++ [pkgs.adjustor];
+          });
+
         ui.enable = lib.mkDefault true;
       };
 
