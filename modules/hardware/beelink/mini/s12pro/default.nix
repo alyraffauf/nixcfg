@@ -5,9 +5,11 @@
     self.nixosModules.hardware-intel-gpu
   ];
 
-  boot.initrd.availableKernelModules = [
-    "ahci"
-    "sd_mod"
-    "xhci_pci"
-  ];
+  config = {
+    boot.initrd.availableKernelModules = [
+      "ahci"
+      "sd_mod"
+      "xhci_pci"
+    ];
+  };
 }

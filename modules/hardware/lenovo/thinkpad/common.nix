@@ -1,8 +1,10 @@
 {...}: {
-  hardware.trackpoint = {
-    enable = true;
-    emulateWheel = true;
-    sensitivity = 64;
-    speed = 40;
+  config = {
+    hardware.trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      sensitivity = 64;
+      speed = 40;
+    };
   };
 }

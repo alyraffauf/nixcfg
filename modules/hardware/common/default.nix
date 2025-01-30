@@ -8,37 +8,39 @@
     self.nixosModules.hardware-lenovo-thinkpad-5D50X
   ];
 
-  console.useXkbConfig = true;
+  config = {
+    console.useXkbConfig = true;
 
-  hardware = {
-    enableAllFirmware = true;
+    hardware = {
+      enableAllFirmware = true;
 
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
+      bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+      };
+
+      keyboard.qmk.enable = true;
+
+      logitech.wireless = {
+        enable = true;
+        enableGraphical = lib.mkDefault config.services.xserver.enable;
+      };
     };
 
-    keyboard.qmk.enable = true;
+    services = {
+      fstrim.enable = true;
 
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = lib.mkDefault config.services.xserver.enable;
+      logind = {
+        powerKey = "suspend";
+        powerKeyLongPress = "poweroff";
+      };
+
+      xserver.xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+      };
     };
+
+    zramSwap.enable = lib.mkDefault true;
   };
-
-  services = {
-    fstrim.enable = true;
-
-    logind = {
-      powerKey = "suspend";
-      powerKeyLongPress = "poweroff";
-    };
-
-    xserver.xkb = {
-      layout = "us";
-      variant = "altgr-intl";
-    };
-  };
-
-  zramSwap.enable = lib.mkDefault true;
 }

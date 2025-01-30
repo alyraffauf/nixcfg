@@ -1,23 +1,25 @@
 {config, ...}: {
-  boot = {
-    extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
-    initrd.kernelModules = ["nvidia"];
-    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
+  config = {
+    boot = {
+      extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
+      initrd.kernelModules = ["nvidia"];
+      kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
     };
 
-    nvidia = {
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      open = false;
-      powerManagement.enable = true;
-    };
-  };
+    hardware = {
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
 
-  services.xserver.videoDrivers = ["nvidia"];
+      nvidia = {
+        modesetting.enable = true;
+        nvidiaSettings = true;
+        open = false;
+        powerManagement.enable = true;
+      };
+    };
+
+    services.xserver.videoDrivers = ["nvidia"];
+  };
 }
