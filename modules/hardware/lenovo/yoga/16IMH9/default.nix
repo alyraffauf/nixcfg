@@ -33,6 +33,8 @@
       # ];
     };
 
+    environment.variables.PULSE_LATENCY_MSEC = 60; # Fixes audio dying or stuttering in certain conditions.
+
     hardware = {
       i2c.enable = true;
       sensor.iio.enable = true;
