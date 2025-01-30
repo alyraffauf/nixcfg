@@ -9,7 +9,6 @@
     self.nixosModules.nixos-desktop-kde
     self.nixosModules.nixos-profiles-gaming
     self.nixosModules.nixos-programs-steam
-
   ];
 
   options.myNixOS.steamos.user = lib.mkOption {

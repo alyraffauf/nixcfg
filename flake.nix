@@ -98,6 +98,7 @@
       "lavaridge"
       "lilycove"
       "mauville"
+      "pacifidlog"
       "petalburg"
       "rustboro"
       "slateport"
