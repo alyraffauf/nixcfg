@@ -39,6 +39,8 @@ in {
   "aly/syncthing/rustboro/key.age".publicKeys = keys;
   "aly/syncthing/slateport/cert.age".publicKeys = keys;
   "aly/syncthing/slateport/key.age".publicKeys = keys;
+  "aly/syncthing/sootopolis/cert.age".publicKeys = keys;
+  "aly/syncthing/sootopolis/key.age".publicKeys = keys;
   "aly/transmissionRemote.age".publicKeys = keys;
   "cloudflare.age".publicKeys = keys;
   "homepage.age".publicKeys = keys;

@@ -96,6 +96,7 @@
       "petalburg"
       "rustboro"
       "slateport"
+      "sootopolis"
     ];
 
     overlays = [

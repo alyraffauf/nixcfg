@@ -2,7 +2,7 @@
   "sync" = {
     id = "default";
     path = "/home/aly/sync";
-    devices = ["dewford" "fallarbor" "gsgmba" "iphone12" "lavaridge" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "winona"];
+    devices = ["dewford" "fallarbor" "gsgmba" "iphone12" "lavaridge" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
 
     versioning = {
       type = "staggered";
@@ -14,7 +14,7 @@
   };
 
   "screenshots" = {
-    devices = ["fallarbor" "lavaridge" "lilycove" "mauville" "norman" "petalburg" "rustboro" "slateport" "winona"];
+    devices = ["fallarbor" "lavaridge" "lilycove" "mauville" "norman" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
     id = "screenshots";
     path = "/home/aly/pics/screenshots";
 
@@ -25,7 +25,7 @@
   };
 
   "music" = {
-    devices = ["lavaridge" "lilycove" "mauville" "petalburg" "rustboro"];
+    devices = ["lavaridge" "lilycove" "mauville" "petalburg" "rustboro" "sootopolis"];
     id = "6nzmu-z9der";
   };
 
