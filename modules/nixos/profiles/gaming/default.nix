@@ -56,7 +56,7 @@
         ATTRS{name}=="DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
       '';
 
-      switcherooControl.enable = true; # For dual GPU configs
+      # switcherooControl.enable = true; # For dual GPU configs
     };
   };
 }
