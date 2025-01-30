@@ -29,6 +29,68 @@
 
       pipewire.wireplumber.configPackages = [
         (
+          pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/alsa-card0.conf" ''
+            monitor.alsa.rules = [
+              {
+                matches = [
+                  {
+                    node.name = "alsa_output.pci-0000_64_00.6.analog-stereo"
+                  }
+                ]
+                actions = {
+                  update-props = {
+                    priority.driver        = 900
+                    priority.session       = 900
+                    api.alsa.period-size   = 256
+                    api.alsa.headroom      = 1024
+                    session.suspend-timeout-seconds = 0
+                  }
+                }
+              }
+            ]
+          ''
+        )
+        (
+          pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/alsa-card1.conf" ''
+            monitor.alsa.rules = [
+              {
+                matches = [
+                  {
+                    node.name = "~alsa_input.*"
+                    alsa.card_name = "acp5x"
+                  }
+                  {
+                    node.name = "~alsa_input.*"
+                    alsa.card_name = "acp6x"
+                  }
+                  {
+                    node.name = "~alsa_input.*"
+                    alsa.card_name = "sof-nau8821-max"
+                  }
+                  {
+                    node.name = "~alsa_output.*"
+                    alsa.card_name = "acp5x"
+                  }
+                  {
+                    node.name = "~alsa_output.*"
+                    alsa.card_name = "acp6x"
+                  }
+                  {
+                    node.name = "~alsa_output.*"
+                    alsa.card_name = "sof-nau8821-max"
+                  }
+                ]
+                actions = {
+                  update-props = {
+                    session.suspend-timeout-seconds   = 0
+                    api.alsa.headroom      = 1024
+                  }
+                }
+              }
+            ]
+          ''
+        )
+        (
           pkgs.writeTextDir
           "share/wireplumber/wireplumber.conf.d/51-preferHDMI.conf"
           ''
