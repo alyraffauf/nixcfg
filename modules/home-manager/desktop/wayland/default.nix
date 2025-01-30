@@ -29,6 +29,18 @@
     ];
 
     services = {
+      batsignal = {
+        enable = true;
+
+        extraArgs = [
+          "-D ${pkgs.systemd}/bin/systemctl suspend"
+          "-e"
+          "-i"
+          "-m 7"
+          "-p"
+        ];
+      };
+
       gnome-keyring.enable = true;
       playerctld.enable = lib.mkDefault true;
     };
