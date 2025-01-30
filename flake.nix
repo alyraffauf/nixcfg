@@ -136,6 +136,7 @@
       disko-luks-btrfs-subvolumes = import ./modules/disko/luks-btrfs-subvolumes;
       hardware-amd-cpu = import ./modules/hardware/amd/cpu;
       hardware-amd-gpu = import ./modules/hardware/amd/gpu;
+      hardware-asus-ally-RC71LA = import ./modules/hardware/asus/ally/RC71LA;
       hardware-beelink-mini-s12pro = import ./modules/hardware/beelink/mini/s12pro;
       hardware-common = import ./modules/hardware/common;
       hardware-framework-13-amd-7000 = import ./modules/hardware/framework/13/amd-7000;

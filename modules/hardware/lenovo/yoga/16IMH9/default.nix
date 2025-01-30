@@ -37,7 +37,7 @@ in {
 
     initrd.availableKernelModules = ["thunderbolt" "nvme" "sdhci_pci"];
     kernelModules = ["i2c-dev"];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.11") (lib.mkDefault pkgs.linuxPackages_latest);
 
     # This may be needed longterm, but for now tas2781 runtime power management is the main issue.
     # kernelPatches = [

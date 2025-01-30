@@ -15,7 +15,7 @@
   boot = {
     blacklistedKernelModules = ["cros-usbpd-charger"];
     initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.11") (lib.mkDefault pkgs.linuxPackages_latest);
 
     kernelParams = [
       "nvme.noacpi=1" # https://community.frame.work/t/linux-battery-life-tuning/6665/156

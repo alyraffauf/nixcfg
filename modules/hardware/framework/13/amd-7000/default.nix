@@ -20,7 +20,7 @@
       options snd_hda_intel power_save=1
     '';
 
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.11") (lib.mkDefault pkgs.linuxPackages_latest);
   };
 
   networking.networkmanager = {
