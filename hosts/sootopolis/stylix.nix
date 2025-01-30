@@ -5,9 +5,10 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";
-    image = "${self.inputs.wallpapers}/wallhaven-9dqyy8.png";    imageScalingMode = "fill";
-    polarity = "light";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
+    image = "${self.inputs.wallpapers}/wallhaven-9dqyy8.png";
+    imageScalingMode = "fill";
+    polarity = "dark";
 
     cursor = {
       name = "Adwaita";
@@ -32,10 +33,10 @@
       };
 
       sizes = {
-        applications = 11;
-        desktop = 10;
-        popups = 11;
-        terminal = 12;
+        applications = 14;
+        desktop = 12;
+        popups = 12;
+        terminal = 13;
       };
     };
 
