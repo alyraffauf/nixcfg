@@ -8,7 +8,7 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hardware-asus-ally-RC71LA
+    self.nixosModules.hardware-asus-ally-RC72LA
     self.nixosModules.locale-en-us
     self.nixosModules.nixos-desktop-steamos
     self.nixosModules.nixos-profiles-autoUpgrade
