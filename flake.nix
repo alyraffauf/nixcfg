@@ -144,6 +144,7 @@
       hardware-lenovo-thinkcentre-m700 = import ./modules/hardware/lenovo/thinkcentre/m700;
       hardware-lenovo-thinkpad-5D50X = import ./modules/hardware/lenovo/thinkpad/5D50X;
       hardware-lenovo-thinkpad-T440p = import ./modules/hardware/lenovo/thinkpad/T440p;
+      hardware-lenovo-thinkpad-X1-gen-9 = import ./modules/hardware/lenovo/thinkpad/X1/gen-9;
       hardware-lenovo-yoga-16IMH9 = import ./modules/hardware/lenovo/yoga/16IMH9;
       hardware-nvidia-gpu = import ./modules/hardware/nvidia/gpu;
       hardware-profiles-laptop = import ./modules/hardware/profiles/laptop.nix;
