@@ -10,9 +10,9 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
 
-      plugins = [
-        pkgs.hyprlandPlugins.hyprspace
-      ];
+      # plugins = [
+      #   pkgs.hyprlandPlugins.hyprspace
+      # ];
 
       settings = import ./settings.nix {inherit config lib pkgs;};
 
