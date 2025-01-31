@@ -56,7 +56,7 @@ in {
       "$mod,Right,changegroupactive,f"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
-      "$mod,Tab,overview:toggle"
+      # "$mod,Tab,overview:toggle"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
       "CTRL,F12,exec,${helpers.screenshot}"
@@ -196,21 +196,21 @@ in {
     ++ [cfg.desktop.hyprland.laptopMonitor]
     ++ cfg.desktop.hyprland.monitors;
 
-  plugin = {
-    overview = {
-      exitOnSwitch = true;
-      gaps_in = 5;
-      gaps_out = 6;
-      onBottom = true;
-      overrideGaps = true;
-      showEmptyWorkspace = true;
-      showNewWorkspace = true;
-      workspaceActiveBorder = "rgb(${config.lib.stylix.colors.base0D})";
-      workspaceBorderSize = 4;
-      workspaceInactiveBorder = "rgb(${config.lib.stylix.colors.base03})";
-      workspaceMargin = 40;
-    };
-  };
+  # plugin = {
+  #   overview = {
+  #     exitOnSwitch = true;
+  #     gaps_in = 5;
+  #     gaps_out = 6;
+  #     onBottom = true;
+  #     overrideGaps = true;
+  #     showEmptyWorkspace = true;
+  #     showNewWorkspace = true;
+  #     workspaceActiveBorder = "rgb(${config.lib.stylix.colors.base0D})";
+  #     workspaceBorderSize = 4;
+  #     workspaceInactiveBorder = "rgb(${config.lib.stylix.colors.base03})";
+  #     workspaceMargin = 40;
+  #   };
+  # };
 
   windowrulev2 = [
     "center(1),class:(.blueman-manager-wrapped)"
