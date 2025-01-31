@@ -233,7 +233,15 @@
 
       formatter = pkgs.writeShellApplication {
         name = "formatter";
-        runtimeInputs = with pkgs; [alejandra findutils mdformat rubocop shfmt];
+
+        runtimeInputs = with pkgs; [
+          alejandra
+          findutils
+          mdformat
+          rubocop
+          shfmt
+        ];
+
         text = builtins.readFile ./utils/formatter.sh;
       };
     });
