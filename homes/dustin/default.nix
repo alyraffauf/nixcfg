@@ -1,6 +1,7 @@
-self: {
+{
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [self.homeManagerModules.default];

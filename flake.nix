@@ -132,9 +132,9 @@
     formatter = self.inputs.nixpkgs.lib.genAttrs allSystems (system: self.packages.${system}.formatter);
 
     homeManagerModules = {
-      default = import ./modules/home-manager self;
-      aly = import ./homes/aly self;
-      dustin = import ./homes/dustin self;
+      default = ./modules/home-manager;
+      aly = ./homes/aly;
+      dustin = ./homes/dustin;
     };
 
     nixosModules = {
