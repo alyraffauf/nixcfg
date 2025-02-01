@@ -7,7 +7,6 @@
     ./keepassxc
     ./nemo
     ./rofi
-    ./shell
     ./vsCodium
     ./wezterm
     ./yazi

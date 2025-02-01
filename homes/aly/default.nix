@@ -75,12 +75,13 @@
       webBrowser = config.programs.firefox.finalPackage;
     };
 
+    profiles.shell.enable = true;
+
     programs = {
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
       helix.enable = true;
-      shell.enable = true;
       vsCodium.enable = true;
       wezterm.enable = true;
       yazi.enable = true;

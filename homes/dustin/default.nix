@@ -59,10 +59,11 @@
       ];
     };
 
+    profiles.shell.enable = true;
+
     programs = {
       chromium.enable = true;
       firefox.enable = true;
-      shell.enable = true;
       vsCodium.enable = true;
       wezterm.enable = true;
     };

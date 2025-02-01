@@ -80,11 +80,14 @@
         };
       };
 
-      myHome.programs = {
-        fastfetch.enable = true;
-        helix.enable = true;
-        shell.enable = true;
-        yazi.enable = true;
+      myHome = {
+        profiles.shell.enable = true;
+
+        programs = {
+          fastfetch.enable = true;
+          helix.enable = true;
+          yazi.enable = true;
+        };
       };
     }
   );
