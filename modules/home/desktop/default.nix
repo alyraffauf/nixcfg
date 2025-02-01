@@ -9,7 +9,6 @@
     ./gnome
     ./hyprland
     ./kde
-    ./wayland
   ];
 
   options.myHome.desktop = {

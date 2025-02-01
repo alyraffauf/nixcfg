@@ -6,7 +6,7 @@
 }: let
   cfg = config.myHome;
   scripts = import ./scripts.nix {inherit config lib pkgs;};
-  helpers = import ../wayland/helpers.nix {inherit config lib pkgs;};
+  helpers = import ./helpers.nix {inherit config lib pkgs;};
 in {
   "$mod" = "SUPER";
 
