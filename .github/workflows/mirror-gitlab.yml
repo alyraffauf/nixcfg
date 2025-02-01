@@ -1,11 +1,11 @@
-name: "git-mirror"
-on: 
+name: mirror-gitlab
+on:
   push:
     branches:
       - master
   workflow_dispatch:
 jobs:
-  gitlab-sync:
+  mirror-gitlab:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main

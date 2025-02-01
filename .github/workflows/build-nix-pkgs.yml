@@ -1,0 +1,53 @@
+name: build-nix-pkgs
+on:
+  push:
+    paths:
+      - 'pkgs/**'
+      - 'flake.nix'
+      - 'flake.lock'
+  pull_request:
+    paths:
+      - 'pkgs/**'
+      - 'flake.nix'
+      - 'flake.lock'
+  workflow_dispatch:
+jobs:
+  build-adjustor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build adjustor package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
+  build-formatter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build formatter package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.formatter
+  build-installer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build installer package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.installer

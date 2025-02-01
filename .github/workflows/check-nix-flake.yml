@@ -1,4 +1,4 @@
-name: "nix-check"
+name: "check-nix-flake"
 on:
   push:
     paths-ignore:
@@ -7,7 +7,7 @@ on:
       - '_img/**'
   workflow_dispatch:
 jobs:
-  fmt-check:
+  check-fmt:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -16,7 +16,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Check formatting
         run: nix fmt -- -c .
-  eval-check:
+  check-eval:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
