@@ -1,18 +1,15 @@
 {
   imports = [
-    ./alacritty
     ./chromium
     ./fastfetch
     ./firefox
-    ./ghostty
     ./helix
     ./keepassxc
-    ./kitty
     ./nemo
     ./rofi
     ./shell
-    ./swaylock
     ./vsCodium
+    ./wezterm
     ./yazi
     ./zed
   ];

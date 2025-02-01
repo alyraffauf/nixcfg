@@ -8,8 +8,6 @@
 in {
   options.myHome = {
     apps = {
-      alacritty.enable = lib.mkEnableOption "Alacritty terminal.";
-
       chromium = {
         enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
         package = lib.mkPackageOption pkgs "brave" {};
@@ -17,7 +15,6 @@ in {
 
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
-      ghostty.enable = lib.mkEnableOption "Ghostty terminal emulator.";
       helix.enable = lib.mkEnableOption "Helix text editor.";
 
       keepassxc = {
@@ -31,8 +28,6 @@ in {
         };
       };
 
-      kitty.enable = lib.mkEnableOption "Kitty terminal.";
-
       nemo.enable = lib.mkOption {
         description = "Cinnamon Nemo file manager.";
         default = cfg.defaultApps.fileManager == pkgs.nemo;
@@ -41,27 +36,10 @@ in {
 
       rofi.enable = lib.mkEnableOption "Rofi launcher.";
       shell.enable = lib.mkEnableOption "Shell with defaults.";
-      swaylock.enable = lib.mkEnableOption "Swaylock screen locker.";
-
       vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
+      wezterm.enable = lib.mkEnableOption "Wezterm terminal.";
       yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
-
-      zed = {
-        enable = lib.mkEnableOption "Zed text editor.";
-        package = lib.mkPackageOption pkgs "zed-editor" {};
-
-        keymaps = lib.mkOption {
-          description = "Zed keymaps.";
-          default = [];
-          type = lib.types.listOf lib.types.attrs;
-        };
-
-        settings = lib.mkOption {
-          description = "Zed settings.";
-          default = {};
-          type = lib.types.attrs;
-        };
-      };
+      zed.enable = lib.mkEnableOption "Zed text editor.";
     };
 
     defaultApps = {
@@ -73,7 +51,7 @@ in {
       fileManager = lib.mkPackageOption pkgs "file manager" {default = ["nemo"];};
       imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["eog"];};
       pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
-      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["ghostty"];};
+      terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["wezterm"];};
       terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
       videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
 

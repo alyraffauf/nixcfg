@@ -73,16 +73,16 @@
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
-      ghostty.enable = true;
       helix.enable = true;
       shell.enable = true;
       vsCodium.enable = true;
+      wezterm.enable = true;
       yazi.enable = true;
     };
 
     defaultApps = {
       enable = true;
-      terminal = config.programs.ghostty.package;
+      terminal = config.programs.wezterm.package;
       webBrowser = config.programs.firefox.finalPackage;
     };
 
