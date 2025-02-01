@@ -6,6 +6,24 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.theme = {
+    enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
+
+    borders = {
+      radius = lib.mkOption {
+        description = "Global border radius.";
+        default = 10;
+        type = lib.types.int;
+      };
+    };
+
+    gtk.hideTitleBar = lib.mkOption {
+      description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
+      default = false;
+      type = lib.types.bool;
+    };
+  };
+
   config = lib.mkIf cfg.theme.enable {
     home.packages = [
       pkgs.adwaita-icon-theme

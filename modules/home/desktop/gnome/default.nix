@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  options.myHome.desktop.gnome.enable = lib.mkEnableOption "GNOME with sane defaults.";
+
   config = lib.mkIf config.myHome.desktop.gnome.enable {
     dconf = {
       enable = true;

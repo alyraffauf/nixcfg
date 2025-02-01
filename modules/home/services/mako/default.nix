@@ -6,6 +6,8 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.services.mako.enable = lib.mkEnableOption "Mako notification daemon.";
+
   config = lib.mkIf cfg.services.mako.enable {
     services.mako = {
       actions = true;

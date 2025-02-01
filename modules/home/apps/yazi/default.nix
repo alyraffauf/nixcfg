@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  options.myHome.apps.yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
+
   config = lib.mkIf config.myHome.apps.yazi.enable {
     programs.yazi = {
       enable = true;

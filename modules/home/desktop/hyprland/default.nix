@@ -6,6 +6,32 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.desktop.hyprland = {
+    enable = lib.mkEnableOption "Hyprland with full desktop session components.";
+
+    laptopMonitor = lib.mkOption {
+      description = "Internal laptop monitor.";
+      default = null;
+      type = lib.types.nullOr lib.types.str;
+    };
+
+    monitors = lib.mkOption {
+      description = "List of external monitors.";
+      default = [];
+      type = lib.types.listOf lib.types.str;
+    };
+
+    tabletMode = {
+      enable = lib.mkEnableOption "Tablet mode for hyprland.";
+
+      switches = lib.mkOption {
+        description = "Switches to activate tablet mode when toggled.";
+        default = [];
+        type = lib.types.listOf lib.types.str;
+      };
+    };
+  };
+
   config = lib.mkIf cfg.desktop.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;

@@ -4,6 +4,12 @@
   pkgs,
   ...
 }: {
+  options.myHome.apps.nemo.enable = lib.mkOption {
+    description = "Cinnamon Nemo file manager.";
+    default = config.myHome.defaultApps.fileManager == pkgs.nemo;
+    type = lib.types.bool;
+  };
+
   config = lib.mkIf config.myHome.apps.nemo.enable {
     home.packages = [pkgs.nemo];
 

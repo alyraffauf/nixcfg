@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  options.myHome.apps.helix.enable = lib.mkEnableOption "Helix text editor.";
+
   config = lib.mkIf config.myHome.apps.helix.enable {
     programs.helix = {
       enable = true;

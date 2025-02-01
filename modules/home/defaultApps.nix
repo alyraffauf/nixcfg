@@ -1,11 +1,32 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.myHome.defaultApps;
   mimeTypes = import ./mimeTypes.nix;
 in {
+  options.myHome.defaultApps = {
+    enable = lib.mkEnableOption "Declaratively set default apps and file associations.";
+    forceMimeAssociations = lib.mkEnableOption "Force mime associations for defaultApps.";
+
+    audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
+    editor = lib.mkPackageOption pkgs "text editor" {default = ["vscodium"];};
+    fileManager = lib.mkPackageOption pkgs "file manager" {default = ["nemo"];};
+    imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["eog"];};
+    pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
+    terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["wezterm"];};
+    terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
+    videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
+
+    webBrowser = lib.mkOption {
+      description = "web browser";
+      default = config.programs.firefox.finalPackage;
+      type = lib.types.package;
+    };
+  };
+
   config = lib.mkIf cfg.enable {
     dconf = {
       enable = true;

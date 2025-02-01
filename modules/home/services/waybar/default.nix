@@ -6,6 +6,8 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.services.waybar.enable = lib.mkEnableOption "Waybar wayland panel.";
+
   config = lib.mkIf cfg.services.waybar.enable {
     home.packages =
       (with pkgs; [

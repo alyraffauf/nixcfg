@@ -6,6 +6,8 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.services.pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
+
   config = lib.mkIf cfg.services.pipewire-inhibit.enable {
     systemd.user.services.pipewire-inhibit-idle = {
       Unit = {

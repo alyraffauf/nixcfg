@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  options.myHome.apps.shell.enable = lib.mkEnableOption "Shell with defaults.";
+
   config = lib.mkIf config.myHome.apps.shell.enable {
     home.shellAliases = {
       cat = "bat";

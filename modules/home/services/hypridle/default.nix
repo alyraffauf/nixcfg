@@ -6,6 +6,8 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.services.hypridle.enable = lib.mkEnableOption "Hypridle idle daemon.";
+
   config = lib.mkIf cfg.services.hypridle.enable {
     programs.hyprlock = {
       enable = true;

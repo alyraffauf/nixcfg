@@ -6,6 +6,8 @@
 }: let
   cfg = config.myHome;
 in {
+  options.myHome.services.swayosd.enable = lib.mkEnableOption "OSD for brightness and volume keys.";
+
   config = lib.mkIf cfg.services.swayosd.enable {
     home.packages = with pkgs; [
       swayosd

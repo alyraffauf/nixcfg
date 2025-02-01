@@ -1,8 +1,20 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
+  options.myHome.apps.keepassxc = {
+    enable = lib.mkEnableOption "KeePassXC password manager.";
+    package = lib.mkPackageOption pkgs "keepassxc" {};
+
+    settings = lib.mkOption {
+      description = "KeePassXC settings.";
+      default = {};
+      type = lib.types.attrs;
+    };
+  };
+
   config = lib.mkIf config.myHome.apps.keepassxc.enable {
     home.packages = [config.myHome.apps.keepassxc.package];
 

@@ -6,6 +6,8 @@
 }: let
   wallpaperD = pkgs.writers.writeRuby "randomWallpaperD" {} (builtins.readFile ./script.rb);
 in {
+  options.myHome.services.randomWallpaper.enable = lib.mkEnableOption "Lightweight swaybg-based random wallpaper daemon.";
+
   config = lib.mkIf config.myHome.services.randomWallpaper.enable {
     services.hyprpaper.enable = lib.mkForce false;
     # stylix.targets.hyprpaper.enable = lib.mkForce false;
