@@ -17,7 +17,7 @@ in {
     imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["eog"];};
     pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
     terminal = lib.mkPackageOption pkgs "terminal emulator" {default = ["wezterm"];};
-    terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["vim"];};
+    terminalEditor = lib.mkPackageOption pkgs "terminal text editor" {default = ["neovim"];};
     videoPlayer = lib.mkPackageOption pkgs "video player" {default = ["celluloid"];};
 
     webBrowser = lib.mkOption {
