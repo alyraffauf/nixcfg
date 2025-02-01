@@ -1,6 +1,6 @@
 name: "check-nix-flake"
 concurrency:
-  group: ${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on:
   push:
