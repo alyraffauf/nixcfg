@@ -6,7 +6,15 @@
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.services.hypridle.enable = lib.mkEnableOption "Hypridle idle daemon.";
+  options.myHome.services.hypridle = {
+    enable = lib.mkEnableOption "Hypridle idle daemon.";
+
+    autoSuspend = lib.mkOption {
+      description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
+  };
 
   config = lib.mkIf cfg.services.hypridle.enable {
     programs.hyprlock = {
@@ -113,7 +121,7 @@ in {
               on-resume = "hyprctl dispatch dpms on";
             }
           ]
-          ++ lib.optional cfg.desktop.autoSuspend {
+          ++ lib.optional cfg.services.hypridle.autoSuspend {
             timeout = 600;
             on-timeout = "systemctl suspend";
           };

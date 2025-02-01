@@ -12,12 +12,6 @@
   ];
 
   options.myHome.desktop = {
-    autoSuspend = lib.mkOption {
-      description = "Whether to autosuspend on idle.";
-      default = config.myHome.desktop.hyprland.enable or false;
-      type = lib.types.bool;
-    };
-
     windowManagerBinds = lib.mkOption {
       description = "Default binds for window management.";
 
