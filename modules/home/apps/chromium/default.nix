@@ -4,12 +4,12 @@
   pkgs,
   ...
 }: {
-  options.myHome.apps.chromium = {
+  options.myHome.programs.chromium = {
     enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
     package = lib.mkPackageOption pkgs "brave" {};
   };
 
-  config = lib.mkIf config.myHome.apps.chromium.enable {
+  config = lib.mkIf config.myHome.programs.chromium.enable {
     programs.chromium = {
       enable = true;
 
@@ -33,7 +33,7 @@
         }
       ];
 
-      package = config.myHome.apps.chromium.package;
+      package = config.myHome.programs.chromium.package;
     };
   };
 }

@@ -23,7 +23,7 @@
         home-manager.enable = true;
       };
 
-      myHome.apps = {
+      myHome.programs = {
         fastfetch.enable = true;
         helix.enable = true;
         shell.enable = true;

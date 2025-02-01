@@ -49,14 +49,6 @@
   };
 
   myHome = {
-    apps = {
-      chromium.enable = true;
-      firefox.enable = true;
-      shell.enable = true;
-      vsCodium.enable = true;
-      wezterm.enable = true;
-    };
-
     defaultApps.enable = true;
 
     desktop = {
@@ -65,6 +57,14 @@
         "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
         "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
       ];
+    };
+
+    programs = {
+      chromium.enable = true;
+      firefox.enable = true;
+      shell.enable = true;
+      vsCodium.enable = true;
+      wezterm.enable = true;
     };
 
     theme.enable = true;

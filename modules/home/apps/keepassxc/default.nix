@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  options.myHome.apps.keepassxc = {
+  options.myHome.programs.keepassxc = {
     enable = lib.mkEnableOption "KeePassXC password manager.";
     package = lib.mkPackageOption pkgs "keepassxc" {};
 
@@ -15,8 +15,8 @@
     };
   };
 
-  config = lib.mkIf config.myHome.apps.keepassxc.enable {
-    home.packages = [config.myHome.apps.keepassxc.package];
+  config = lib.mkIf config.myHome.programs.keepassxc.enable {
+    home.packages = [config.myHome.programs.keepassxc.package];
 
     xdg.configFile."keepassxc/keepassxc.ini".text = let
       defaults = {
@@ -55,7 +55,7 @@
         SSHAgent.Enabled = true;
       };
 
-      settings = defaults // config.myHome.apps.keepassxc.settings;
+      settings = defaults // config.myHome.programs.keepassxc.settings;
     in
       lib.generators.toINI {} settings;
   };

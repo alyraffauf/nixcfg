@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: {
-  options.myHome.apps.fastfetch.enable = lib.mkEnableOption "Fastfetch.";
+  options.myHome.programs.fastfetch.enable = lib.mkEnableOption "Fastfetch.";
 
-  config = lib.mkIf config.myHome.apps.fastfetch.enable {
+  config = lib.mkIf config.myHome.programs.fastfetch.enable {
     home.packages = [pkgs.fastfetch];
     xdg.configFile."fastfetch/config.jsonc".text = lib.generators.toJSON {} (import ./config.nix);
   };

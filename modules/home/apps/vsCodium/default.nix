@@ -6,9 +6,9 @@
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.apps.vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
+  options.myHome.programs.vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
 
-  config = lib.mkIf config.myHome.apps.vsCodium.enable {
+  config = lib.mkIf config.myHome.programs.vsCodium.enable {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;

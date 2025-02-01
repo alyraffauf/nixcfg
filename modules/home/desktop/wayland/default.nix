@@ -6,7 +6,7 @@
 }: {
   config = lib.mkIf (config.myHome.desktop.hyprland.enable) {
     myHome = {
-      apps = {
+      programs = {
         rofi.enable = lib.mkDefault true;
         wezterm.enable = lib.mkDefault true;
       };

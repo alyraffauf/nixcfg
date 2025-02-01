@@ -2,7 +2,7 @@
   config = {
     home-manager.sharedModules = [
       {
-        myHome.apps.firefox.enable = lib.mkDefault true;
+        myHome.programs.firefox.enable = lib.mkDefault true;
       }
     ];
 

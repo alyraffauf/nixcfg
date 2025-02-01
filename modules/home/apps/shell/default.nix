@@ -3,9 +3,9 @@
   lib,
   ...
 }: {
-  options.myHome.apps.shell.enable = lib.mkEnableOption "Shell with defaults.";
+  options.myHome.programs.shell.enable = lib.mkEnableOption "Shell with defaults.";
 
-  config = lib.mkIf config.myHome.apps.shell.enable {
+  config = lib.mkIf config.myHome.programs.shell.enable {
     home.shellAliases = {
       cat = "bat";
       grep = "rg";

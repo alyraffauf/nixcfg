@@ -69,7 +69,13 @@
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
   myHome = {
-    apps = {
+    defaultApps = {
+      enable = true;
+      terminal = config.programs.wezterm.package;
+      webBrowser = config.programs.firefox.finalPackage;
+    };
+
+    programs = {
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
@@ -78,12 +84,6 @@
       vsCodium.enable = true;
       wezterm.enable = true;
       yazi.enable = true;
-    };
-
-    defaultApps = {
-      enable = true;
-      terminal = config.programs.wezterm.package;
-      webBrowser = config.programs.firefox.finalPackage;
     };
 
     theme.enable = true;

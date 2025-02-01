@@ -6,9 +6,9 @@
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.apps.zed.enable = lib.mkEnableOption "Zed text editor.";
+  options.myHome.programs.zed.enable = lib.mkEnableOption "Zed text editor.";
 
-  config = lib.mkIf cfg.apps.zed.enable {
+  config = lib.mkIf cfg.programs.zed.enable {
     home.packages = [
       pkgs.nixd
     ];
