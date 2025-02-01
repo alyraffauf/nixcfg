@@ -28,7 +28,7 @@ in {
   bind =
     [
       ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
-      ",PRINT,exec,${helpers.screenshot}"
+      ",PRINT,exec,${lib.getExe helpers.screenshot}"
       "$mod CTRL,L,exec,${lib.getExe' pkgs.systemd "loginctl"} lock-session"
       "$mod SHIFT,backslash,togglesplit"
       "$mod SHIFT,comma,exec,${lib.getExe pkgs.hyprnome} --previous --move"
@@ -59,7 +59,7 @@ in {
       # "$mod,Tab,overview:toggle"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
-      "CTRL,F12,exec,${helpers.screenshot}"
+      "CTRL,F12,exec,${lib.getExe helpers.screenshot}"
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]
