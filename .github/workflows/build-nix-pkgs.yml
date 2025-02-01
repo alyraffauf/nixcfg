@@ -13,6 +13,9 @@ on:
   workflow_dispatch:
 jobs:
   build-adjustor:
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -26,6 +29,9 @@ jobs:
       - name: Build adjustor package
         run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
   build-formatter:
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -39,6 +45,9 @@ jobs:
       - name: Build formatter package
         run: nix build --accept-flake-config .#packages.x86_64-linux.formatter
   build-installer:
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
