@@ -141,6 +141,7 @@
       desktop-hyprland = ./modules/home/desktop/hyprland;
       desktop-kde = ./modules/home/desktop/kde;
       profiles-defaultApps = ./modules/home/profiles/defaultApps;
+      profiles-shell = ./modules/home/profiles/shell;
       programs-chromium = ./modules/home/programs/chromium;
       programs-fastfetch = ./modules/home/programs/fastfetch;
       programs-firefox = ./modules/home/programs/firefox;
@@ -148,7 +149,6 @@
       programs-keepassxc = ./modules/home/programs/keepassxc;
       programs-nemo = ./modules/home/programs/nemo;
       programs-rofi = ./modules/home/programs/rofi;
-      programs-shell = ./modules/home/programs/shell;
       programs-vsCodium = ./modules/home/programs/vsCodium;
       programs-wezterm = ./modules/home/programs/wezterm;
       programs-yazi = ./modules/home/programs/yazi;
@@ -156,7 +156,6 @@
       services-easyeffects = ./modules/home/services/easyeffects;
       services-hypridle = ./modules/home/services/hypridle;
       services-mako = ./modules/home/services/mako;
-      services-pipewire-inhibit = ./modules/home/services/pipewire-inhibit;
       services-randomWallpaper = ./modules/home/services/randomWallpaper;
       services-swayosd = ./modules/home/services/swayosd;
       services-waybar = ./modules/home/services/waybar;

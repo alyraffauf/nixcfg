@@ -128,29 +128,47 @@ in {
       };
     };
 
-    systemd.user.services.hypridle = {
-      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target");
+    systemd.user.services = {
+      hypridle = {
+        Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target");
 
-      Service = {
-        Environment = lib.mkForce [
-          "PATH=${
-            lib.makeBinPath (
-              (with pkgs; [
-                bash
-                brightnessctl # Not working as of 2025-01-25, needs nixpkgs interpolation to work.
-                coreutils
-                hyprlock
-                systemd
-              ])
-              ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package
-            )
-          }"
-        ];
+        Service = {
+          Environment = lib.mkForce [
+            "PATH=${
+              lib.makeBinPath (
+                (with pkgs; [
+                  bash
+                  brightnessctl # Not working as of 2025-01-25, needs nixpkgs interpolation to work.
+                  coreutils
+                  hyprlock
+                  systemd
+                ])
+                ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package
+              )
+            }"
+          ];
 
-        Restart = lib.mkForce "no";
+          Restart = lib.mkForce "no";
+        };
+
+        Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
       };
 
-      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+      pipewire-inhibit-idle = {
+        Unit = {
+          After = "graphical-session.target";
+          BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+          Description = "inhibit idle when audio is playing with Pipewire.";
+          PartOf = "graphical-session.target";
+        };
+
+        Service = {
+          ExecStart = lib.getExe pkgs.wayland-pipewire-idle-inhibit;
+          Restart = "no";
+        };
+
+        Install.WantedBy = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+      };
     };
   };
 }
