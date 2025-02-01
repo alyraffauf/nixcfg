@@ -4,7 +4,6 @@
     ./gammastep
     ./hypridle
     ./mako
-    ./mpd
     ./pipewire-inhibit
     ./randomWallpaper
     ./swayosd

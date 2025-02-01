@@ -132,16 +132,6 @@ in {
       hypridle.enable = lib.mkEnableOption "Hypridle idle daemon.";
       mako.enable = lib.mkEnableOption "Mako notification daemon.";
 
-      mpd = {
-        enable = lib.mkEnableOption "MPD user service.";
-
-        musicDirectory = lib.mkOption {
-          description = "Name of music directory";
-          default = config.xdg.userDirs.music;
-          type = lib.types.str;
-        };
-      };
-
       pipewire-inhibit.enable = lib.mkEnableOption "Inhibit idle when audio is playing with Pipewire.";
       randomWallpaper.enable = lib.mkEnableOption "Lightweight swaybg-based random wallpaper daemon.";
       swayosd.enable = lib.mkEnableOption "OSD for brightness and volume keys.";
