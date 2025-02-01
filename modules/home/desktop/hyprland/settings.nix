@@ -63,9 +63,9 @@ in {
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CTRL SHIFT,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT,${key},movewindow,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod,${key},movefocus,${builtins.substring 0 1 direction}") cfg.desktop.windowManagerBinds;
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CTRL SHIFT,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}") cfg.desktop.hyprland.windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT,${key},movewindow,${builtins.substring 0 1 direction}") cfg.desktop.hyprland.windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod,${key},movefocus,${builtins.substring 0 1 direction}") cfg.desktop.hyprland.windowManagerBinds;
 
   bindm = [
     # Move/resize windows with mainMod + LMB/RMB and dragging

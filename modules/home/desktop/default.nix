@@ -11,25 +11,6 @@
     ./kde
   ];
 
-  options.myHome.desktop = {
-    windowManagerBinds = lib.mkOption {
-      description = "Default binds for window management.";
-
-      default = {
-        Down = "down";
-        Left = "left";
-        Right = "right";
-        Up = "up";
-        H = "left";
-        J = "down";
-        K = "up";
-        L = "right";
-      };
-
-      type = lib.types.attrs;
-    };
-  };
-
   config =
     lib.mkIf (
       config.myHome.desktop.gnome.enable
