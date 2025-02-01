@@ -6,17 +6,7 @@
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.theme = {
-    enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
-
-    borders = {
-      radius = lib.mkOption {
-        description = "Global border radius.";
-        default = 10;
-        type = lib.types.int;
-      };
-    };
-  };
+  options.myHome.theme.enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
 
   config = lib.mkIf cfg.theme.enable {
     home.packages = [

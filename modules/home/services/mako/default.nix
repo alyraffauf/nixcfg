@@ -12,7 +12,7 @@ in {
     services.mako = {
       actions = true;
       anchor = "bottom-right";
-      borderRadius = cfg.theme.borders.radius;
+      borderRadius = 10;
       borderSize = 4;
       defaultTimeout = 10000;
       enable = true;

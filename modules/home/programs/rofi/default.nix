@@ -90,7 +90,7 @@ in {
           background-color = mkLiteral "@background";
           border = 4;
           border-color = mkLiteral "@blue";
-          border-radius = mkLiteral "${toString cfg.theme.borders.radius}";
+          border-radius = mkLiteral "${toString 10}";
         };
 
         message = {
@@ -104,7 +104,7 @@ in {
         listview = {
           border = mkLiteral "2px solid 0px 0px";
           border-color = mkLiteral "@separatorcolor";
-          # border-radius = cfg.theme.borders.radius;
+          # border-radius = 10;
           padding = 5;
           scrollbar = false;
           spacing = 4;
@@ -112,7 +112,7 @@ in {
 
         element = {
           border = 0;
-          border-radius = cfg.theme.borders.radius;
+          border-radius = 10;
           padding = 5;
         };
 

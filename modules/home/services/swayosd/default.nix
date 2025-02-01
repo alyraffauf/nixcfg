@@ -28,7 +28,7 @@ in {
       text = ''
         window#osd {
           padding: 12px 20px;
-          border-radius: ${toString cfg.theme.borders.radius}px;
+          border-radius: ${toString 10}px;
           border: 4px solid alpha(${config.lib.stylix.colors.withHashtag."base0D"}, ${toString config.stylix.opacity.popups});
           background: alpha(${config.lib.stylix.colors.withHashtag."base01"}, ${toString config.stylix.opacity.popups});
         }

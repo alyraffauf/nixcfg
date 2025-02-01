@@ -253,7 +253,7 @@ in {
         }
 
           tooltip {
-            border-radius: ${toString cfg.theme.borders.radius}px;
+            border-radius: ${toString 10}px;
           }
 
           #battery,
@@ -315,7 +315,7 @@ in {
           #submap,
           #mode {
             background-color: ${config.lib.stylix.colors.withHashtag.base08};
-            border-radius: ${toString cfg.theme.borders.radius}px;
+            border-radius: ${toString 10}px;
             color: ${config.lib.stylix.colors.withHashtag.base00};
             font-weight: bold;
           }
@@ -351,25 +351,25 @@ in {
       entry {
         background-color: rgba (0, 0, 0, 0.2);
         border: alpha(${config.lib.stylix.colors.withHashtag.base07}, ${toString config.stylix.opacity.popups});
-        border-radius: ${toString cfg.theme.borders.radius}px
+        border-radius: ${toString 10}px
       }
 
       button, image {
         background: none;
         border: none;
-        border-radius: ${toString cfg.theme.borders.radius}px
+        border-radius: ${toString 10}px
       }
 
       button:active, button:hover, button:focused {
         background-color: alpha (${config.lib.stylix.colors.withHashtag.base05}, 0.2);
         border: none;
-        border-radius: ${toString cfg.theme.borders.radius}px;
+        border-radius: ${toString 10}px;
         color: ${config.lib.stylix.colors.withHashtag.base0D}
       }
 
       #category-button {
         margin: 0 10px 0 10px;
-        border-radius: ${toString cfg.theme.borders.radius}px
+        border-radius: ${toString 10}px
       }
 
       #pinned-box {
@@ -380,7 +380,7 @@ in {
       #files-box {
         padding: 5px;
         border: 1px dotted gray;
-        border-radius: ${toString cfg.theme.borders.radius}px
+        border-radius: ${toString 10}px
       }
     '';
   };

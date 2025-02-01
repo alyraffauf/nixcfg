@@ -1,7 +1,7 @@
 {
   imports = [
-    ./defaultApps.nix
     ./desktop
+    ./profiles
     ./programs
     ./services
     ./theme.nix

@@ -21,7 +21,7 @@ in {
 
         input-field = {
           font_family = config.stylix.fonts.sansSerif.name;
-          rounding = config.myHome.theme.borders.radius;
+          rounding = 10;
         };
 
         shape = [
@@ -32,7 +32,7 @@ in {
             halign = "center";
             position = "-33%, 0";
             rotate = 0;
-            rounding = config.myHome.theme.borders.radius;
+            rounding = 10;
             shadow_color = "rgb(${config.lib.stylix.colors.base01})";
             shadow_passes = 3;
             size = "600, 600";
