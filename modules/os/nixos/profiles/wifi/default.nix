@@ -1,6 +1,6 @@
 {config, ...}: {
   config = {
-    age.secrets.wifi.file = ../../../../secrets/wifi.age;
+    age.secrets.wifi.file = ../../../../../secrets/wifi.age;
 
     networking.networkmanager = {
       enable = true;
