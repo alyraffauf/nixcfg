@@ -52,9 +52,9 @@
     apps = {
       chromium.enable = true;
       firefox.enable = true;
-      kitty.enable = true;
       shell.enable = true;
       vsCodium.enable = true;
+      wezterm.enable = true;
     };
 
     defaultApps.enable = true;
@@ -65,11 +65,6 @@
         "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
         "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
       ];
-    };
-
-    services = {
-      gammastep.enable = true;
-      randomWallpaper.enable = false;
     };
 
     theme.enable = true;
