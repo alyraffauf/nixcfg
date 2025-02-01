@@ -5,6 +5,14 @@
   ...
 }: let
   cfg = config.myHome;
+
+  defaultApps = {
+    terminal = cfg.defaultApps.terminal or pkgs.wezterm;
+    webBrowser = cfg.defaultApps.webBrowser or config.programs.firefox.finalPackage;
+    fileManager = cfg.defaultApps.fileManager or pkgs.nemo;
+    editor = cfg.defaultApps.editor or pkgs.codium;
+  };
+
   scripts = import ./scripts.nix {inherit config lib pkgs;};
   helpers = import ./helpers.nix {inherit config lib pkgs;};
 in {
@@ -40,11 +48,11 @@ in {
       "$mod SHIFT,Tab,exec,${lib.getExe config.programs.rofi.package} -show window"
       "$mod SHIFT,V,togglefloating"
       "$mod SHIFT,W,fullscreen"
-      "$mod,B,exec,${lib.getExe cfg.defaultApps.webBrowser}"
+      "$mod,B,exec,${lib.getExe defaultApps.webBrowser}"
       "$mod,C,killactive"
       "$mod,comma,exec,${lib.getExe pkgs.hyprnome} --previous"
-      "$mod,E,exec,${lib.getExe cfg.defaultApps.editor}"
-      "$mod,F,exec,${lib.getExe cfg.defaultApps.fileManager}"
+      "$mod,E,exec,${lib.getExe defaultApps.editor}"
+      "$mod,F,exec,${lib.getExe defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
       "$mod,H,changegroupactive,b"
       "$mod,L,changegroupactive,f"
@@ -55,7 +63,7 @@ in {
       "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "$mod,Right,changegroupactive,f"
       "$mod,S,togglespecialworkspace,magic"
-      "$mod,T,exec,${lib.getExe cfg.defaultApps.terminal}"
+      "$mod,T,exec,${lib.getExe defaultApps.terminal}"
       # "$mod,Tab,overview:toggle"
       "CTRL ALT,M,submap,move"
       "CTRL ALT,R,submap,resize"
