@@ -1,4 +1,4 @@
-# 🐧 nixcfg
+# ❄️ nixcfg
 
 Welcome to my **nixcfg**!
 
