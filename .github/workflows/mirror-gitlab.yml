@@ -11,11 +11,7 @@ jobs:
       cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 0
-      - uses: yesolutions/mirror-action@master
-        with:
-          REMOTE: 'https://gitlab.com/alyraffauf/nixcfg.git'
-          GIT_USERNAME: alyraffauf
-          GIT_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
+      - run: git clone --bare "https://github.com/alyraffauf/nixcfg.git" .
+      - run: git push --mirror "https://x:$GITLAB_PASSWORD@gitlab.com/alyraffauf/nixcfg.git"
+        env:
+          GITLAB_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
