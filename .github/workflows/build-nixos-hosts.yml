@@ -1,4 +1,7 @@
 name: build-nixos-hosts
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 on:
   push:
     paths-ignore:
@@ -8,9 +11,6 @@ on:
   workflow_dispatch:
 jobs:
   build-fallarbor:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -26,9 +26,6 @@ jobs:
       - name: Build fallarbor
         run: nix build --accept-flake-config .#nixosConfigurations.fallarbor.config.system.build.toplevel
   build-lavaridge:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -44,9 +41,6 @@ jobs:
       - name: Build lavaridge
         run: nix build --accept-flake-config .#nixosConfigurations.lavaridge.config.system.build.toplevel
   build-lilycove:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -62,9 +56,6 @@ jobs:
       - name: Build lilycove
         run: nix build --accept-flake-config .#nixosConfigurations.lilycove.config.system.build.toplevel
   build-mauville:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -80,9 +71,6 @@ jobs:
       - name: Build mauville
         run: nix build --accept-flake-config .#nixosConfigurations.mauville.config.system.build.toplevel
   build-pacifidlog:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -98,9 +86,6 @@ jobs:
       - name: Build pacifidlog
         run: nix build --accept-flake-config .#nixosConfigurations.pacifidlog.config.system.build.toplevel
   build-petalburg:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -116,9 +101,6 @@ jobs:
       - name: Build petalburg
         run: nix build --accept-flake-config .#nixosConfigurations.petalburg.config.system.build.toplevel
   build-rustboro:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -134,9 +116,6 @@ jobs:
       - name: Build rustboro
         run: nix build --accept-flake-config .#nixosConfigurations.rustboro.config.system.build.toplevel
   build-slateport:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -152,9 +131,6 @@ jobs:
       - name: Build slateport
         run: nix build --accept-flake-config .#nixosConfigurations.slateport.config.system.build.toplevel
   build-sootopolis:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)

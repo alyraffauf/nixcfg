@@ -6,9 +6,6 @@ on:
   workflow_dispatch:
 jobs:
   mirror-gitlab:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - run: git clone --bare "${{ github.server_url }}/${{ github.repository }}.git" .
