@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
@@ -42,6 +43,11 @@
       || config.myHome.desktop.hyprland.enable
       || config.myHome.desktop.kde.enable
     ) {
+      home.packages = [
+        pkgs.adwaita-icon-theme
+        pkgs.liberation_ttf
+      ];
+
       dconf = {
         enable = true;
 

@@ -66,7 +66,5 @@
       vsCodium.enable = true;
       wezterm.enable = true;
     };
-
-    theme.enable = true;
   };
 }

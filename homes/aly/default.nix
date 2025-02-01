@@ -85,7 +85,5 @@
       wezterm.enable = true;
       yazi.enable = true;
     };
-
-    theme.enable = true;
   };
 }
