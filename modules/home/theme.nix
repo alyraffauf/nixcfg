@@ -16,12 +16,6 @@ in {
         type = lib.types.int;
       };
     };
-
-    gtk.hideTitleBar = lib.mkOption {
-      description = "Whether to hide GTK3/4 titlebars (useful for some window managers).";
-      default = false;
-      type = lib.types.bool;
-    };
   };
 
   config = lib.mkIf cfg.theme.enable {
@@ -52,33 +46,6 @@ in {
               &.background { background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups}); }
               background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups});
             }'')
-
-        (lib.optionalString (cfg.theme.gtk.hideTitleBar && !cfg.desktop.gnome.enable) ''
-          /* No (default) title bar on wayland */
-          headerbar.default-decoration {
-            /* You may need to tweak these values depending on your GTK theme */
-            border-radius: 0;
-            border: 0;
-            box-shadow: none;
-            font-size: 0;
-            margin-bottom: 50px;
-            margin-top: -100px;
-            min-height: 0;
-            padding: 0;
-          }
-
-          .titlebar,
-          .titlebar .background
-          {
-            border-radius: 0;
-          }
-
-          /* rm -rf window shadows */
-          window.csd,             /* gtk4? */
-          window.csd decoration { /* gtk3 */
-            border-radius: 0;
-            box-shadow: none;
-          }'')
       ];
     };
   };
