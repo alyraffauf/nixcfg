@@ -132,9 +132,35 @@
     formatter = self.inputs.nixpkgs.lib.genAttrs allSystems (system: self.packages.${system}.formatter);
 
     homeManagerModules = {
-      default = ./modules/home;
       aly = ./homes/aly;
       dustin = ./homes/dustin;
+
+      default = ./modules/home;
+      desktop = ./modules/home/desktop;
+      desktop-gnome = ./modules/home/desktop/gnome;
+      desktop-hyprland = ./modules/home/desktop/hyprland;
+      desktop-kde = ./modules/home/desktop/kde;
+      profiles-defaultApps = ./modules/home/profiles/defaultApps;
+      programs-chromium = ./modules/home/programs/chromium;
+      programs-fastfetch = ./modules/home/programs/fastfetch;
+      programs-firefox = ./modules/home/programs/firefox;
+      programs-helix = ./modules/home/programs/helix;
+      programs-keepassxc = ./modules/home/programs/keepassxc;
+      programs-nemo = ./modules/home/programs/nemo;
+      programs-rofi = ./modules/home/programs/rofi;
+      programs-shell = ./modules/home/programs/shell;
+      programs-vsCodium = ./modules/home/programs/vsCodium;
+      programs-wezterm = ./modules/home/programs/wezterm;
+      programs-yazi = ./modules/home/programs/yazi;
+      programs-zed = ./modules/home/programs/zed;
+      services-easyeffects = ./modules/home/services/easyeffects;
+      services-hypridle = ./modules/home/services/hypridle;
+      services-mako = ./modules/home/services/mako;
+      services-pipewire-inhibit = ./modules/home/services/pipewire-inhibit;
+      services-randomWallpaper = ./modules/home/services/randomWallpaper;
+      services-swayosd = ./modules/home/services/swayosd;
+      services-waybar = ./modules/home/services/waybar;
+      servies-gammastep = ./modules/home/services/gammastep;
     };
 
     nixosModules = {
