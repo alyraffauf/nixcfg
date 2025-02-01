@@ -102,12 +102,16 @@ in {
           };
 
           battery = let
-            checkBattery = pkgs.writeShellScript "check-battery" (builtins.readFile ./scripts/check-battery.sh);
+            checkBattery = pkgs.writeShellApplication {
+              name = "check-battery";
+              runtimeInputs = [pkgs.coreutils];
+              text = builtins.readFile ./scripts/check-battery.sh;
+            };
           in {
             format = "{icon}";
             format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
 
-            on-update = "${checkBattery}";
+            on-update = lib.mkIf (!config.services.batsignal.enable) "${lib.getExe checkBattery}";
             tooltip-format = ''
               {capacity}%: {timeTo}.
               Draw: {power} watts.'';
@@ -182,12 +186,15 @@ in {
           tray = {spacing = 15;};
 
           "custom/dnd" = let
-            mako-dnd =
-              pkgs.writeShellScript "mako-dnd" (builtins.readFile ./scripts/mako-dnd.sh);
+            mako-dnd = pkgs.writeShellApplication {
+              name = "mako-dnd";
+              runtimeInputs = [pkgs.mako pkgs.procps];
+              text = builtins.readFile ./scripts/mako-dnd.sh;
+            };
           in {
-            exec = "${mako-dnd}";
+            exec = "${lib.getExe mako-dnd}";
             interval = "once";
-            on-click = "${mako-dnd} toggle";
+            on-click = "${lib.getExe mako-dnd} toggle";
             return-type = "json";
             signal = 2;
           };

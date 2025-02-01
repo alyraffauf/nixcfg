@@ -14,4 +14,8 @@ toggle() {
     pkill -SIGRTMIN+2 .waybar-wrapped
 }
 
-[ $# -gt 0 ] && toggle || show
+if [ $# -gt 0 ]; then
+    toggle
+else
+    show
+fi
