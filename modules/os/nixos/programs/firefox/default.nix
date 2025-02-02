@@ -1,11 +1,5 @@
-{self, ...}: {
+{...}: {
   config = {
-    home-manager.sharedModules = [
-      {
-        imports = [self.homeManagerModules.programs-firefox];
-      }
-    ];
-
     programs.firefox = {
       enable = true;
 

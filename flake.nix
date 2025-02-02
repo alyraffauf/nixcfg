@@ -142,7 +142,6 @@
       profiles-defaultApps = ./modules/home/profiles/defaultApps;
       profiles-shell = ./modules/home/profiles/shell;
       programs-fastfetch = ./modules/home/programs/fastfetch;
-      programs-firefox = ./modules/home/programs/firefox;
       programs-helix = ./modules/home/programs/helix;
       programs-rofi = ./modules/home/programs/rofi;
       programs-vsCodium = ./modules/home/programs/vsCodium;

@@ -7,7 +7,6 @@
   imports = [
     self.homeManagerModules.profiles-defaultApps
     self.homeManagerModules.profiles-shell
-    self.homeManagerModules.programs-firefox
     self.homeManagerModules.programs-vsCodium
     self.homeManagerModules.programs-wezterm
   ];
@@ -43,6 +42,7 @@
       package = pkgs.brave;
     };
 
+    firefox.enable = true;
     home-manager.enable = true;
 
     rbw = {

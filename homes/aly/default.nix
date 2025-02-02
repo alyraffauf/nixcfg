@@ -13,7 +13,6 @@
     self.homeManagerModules.profiles-defaultApps
     self.homeManagerModules.profiles-shell
     self.homeManagerModules.programs-fastfetch
-    self.homeManagerModules.programs-firefox
     self.homeManagerModules.programs-helix
     self.homeManagerModules.programs-vsCodium
     self.homeManagerModules.programs-wezterm
