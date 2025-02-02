@@ -19,7 +19,9 @@
   mkRgb = mkRgba "100";
   rofiOpacity = builtins.toString (builtins.ceil (config.stylix.opacity.popups * 100));
 in {
-  config = {
+  options.myHome.programs.rofi.enable = lib.mkEnableOption "rofi application launcher";
+
+  config = lib.mkIf config.myHome.programs.rofi.enable {
     home.packages = [
       pkgs.networkmanager_dmenu
       pkgs.rofi-rbw-wayland

@@ -1,0 +1,6 @@
+{...}: {
+  imports = [
+    ./fastfetch
+    ./rofi
+  ];
+}

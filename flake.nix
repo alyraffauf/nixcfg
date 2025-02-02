@@ -134,20 +134,7 @@
     homeManagerModules = {
       aly = ./homes/aly;
       dustin = ./homes/dustin;
-
-      desktop = ./modules/home/desktop;
-      desktop-gnome = ./modules/home/desktop/gnome;
-      desktop-hyprland = ./modules/home/desktop/hyprland;
-      desktop-kde = ./modules/home/desktop/kde;
-      profiles-defaultApps = ./modules/home/profiles/defaultApps;
-      profiles-shell = ./modules/home/profiles/shell;
-      programs-fastfetch = ./modules/home/programs/fastfetch;
-      programs-rofi = ./modules/home/programs/rofi;
-      services-gammastep = ./modules/home/services/gammastep;
-      services-hypridle = ./modules/home/services/hypridle;
-      services-mako = ./modules/home/services/mako;
-      services-swayosd = ./modules/home/services/swayosd;
-      services-waybar = ./modules/home/services/waybar;
+      default = ./modules/home;
     };
 
     nixosModules = {

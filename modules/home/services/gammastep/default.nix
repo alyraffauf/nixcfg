@@ -3,7 +3,9 @@
   lib,
   ...
 }: {
-  config = {
+  options.myHome.services.gammastep.enable = lib.mkEnableOption "gammastep redshift daemon";
+
+  config = lib.mkIf config.myHome.services.gammastep.enable {
     services.gammastep = {
       enable = true;
       latitude = lib.mkDefault "33.74";

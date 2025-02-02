@@ -9,7 +9,7 @@
   config = {
     home-manager.sharedModules = [
       {
-        imports = [self.homeManagerModules.desktop-gnome];
+        config.myHome.desktop.gnome.enable = true;
       }
     ];
 

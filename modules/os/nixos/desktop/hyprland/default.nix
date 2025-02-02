@@ -24,9 +24,8 @@
   config = {
     home-manager.sharedModules = [
       {
-        imports = [self.homeManagerModules.desktop-hyprland];
-
         myHome.desktop.hyprland = {
+          enable = true;
           laptopMonitor = config.myNixOS.desktop.hyprland.laptopMonitor;
           monitors = config.myNixOS.desktop.hyprland.monitors;
         };

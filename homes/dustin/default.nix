@@ -5,8 +5,7 @@
   ...
 }: {
   imports = [
-    self.homeManagerModules.profiles-defaultApps
-    self.homeManagerModules.profiles-shell
+    self.homeManagerModules.default
   ];
 
   home = {
@@ -63,5 +62,14 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications."application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
+  };
+
+  myHome = {
+    profiles = {
+      defaultApps.enable = true;
+      shell.enable = true;
+    };
+
+    programs.fastfetch.enable = true;
   };
 }

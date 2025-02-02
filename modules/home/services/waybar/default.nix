@@ -6,7 +6,9 @@
 }: let
   cfg = config.myHome;
 in {
-  config = {
+  options.myHome.services.waybar.enable = lib.mkEnableOption "waybar";
+
+  config = lib.mkIf cfg.services.waybar.enable {
     home.packages =
       (with pkgs; [
         blueberry

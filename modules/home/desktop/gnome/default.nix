@@ -1,12 +1,12 @@
 {
   config,
+  lib,
   pkgs,
-  self,
   ...
 }: {
-  imports = [self.homeManagerModules.desktop];
+  options.myHome.desktop.gnome.enable = lib.mkEnableOption "GNOME desktop environment";
 
-  config = {
+  config = lib.mkIf config.myHome.desktop.gnome.enable {
     dconf = {
       enable = true;
 

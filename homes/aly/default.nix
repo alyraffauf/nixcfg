@@ -12,9 +12,7 @@
     ./secrets.nix
     ./vsCode
     ./windowManagers
-    self.homeManagerModules.profiles-defaultApps
-    self.homeManagerModules.profiles-shell
-    self.homeManagerModules.programs-fastfetch
+    self.homeManagerModules.default
     self.inputs.agenix.homeManagerModules.default
   ];
 
@@ -99,4 +97,13 @@
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
+
+  myHome = {
+    profiles = {
+      defaultApps.enable = true;
+      shell.enable = true;
+    };
+
+    programs.fastfetch.enable = true;
+  };
 }

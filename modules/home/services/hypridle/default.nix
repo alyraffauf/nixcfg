@@ -6,13 +6,17 @@
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.services.hypridle.autoSuspend = lib.mkOption {
-    description = "Whether to autosuspend on idle.";
-    default = true;
-    type = lib.types.bool;
+  options.myHome.services.hypridle = {
+    enable = lib.mkEnableOption "hypridle idle/lock manager";
+
+    autoSuspend = lib.mkOption {
+      description = "Whether to autosuspend on idle.";
+      default = true;
+      type = lib.types.bool;
+    };
   };
 
-  config = {
+  config = lib.mkIf cfg.services.hypridle.enable {
     programs.hyprlock = {
       enable = true;
 

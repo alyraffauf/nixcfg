@@ -24,7 +24,7 @@
 
     home-manager.sharedModules = [
       {
-        imports = [self.homeManagerModules.desktop-kde];
+        config.myHome.desktop.kde.enable = true;
       }
     ];
 

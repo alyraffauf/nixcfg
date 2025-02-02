@@ -1,7 +1,11 @@
-{self, ...}: {
-  imports = [self.homeManagerModules.desktop];
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myHome.desktop.kde.enable = lib.mkEnableOption "KDE desktop environment";
 
-  config = {
+  config = lib.mkIf config.myHome.desktop.kde.enable {
     dconf = {
       enable = true;
 

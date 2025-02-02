@@ -2,19 +2,11 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
-  imports = [
-    self.homeManagerModules.desktop
-    self.homeManagerModules.programs-rofi
-    self.homeManagerModules.services-hypridle
-    self.homeManagerModules.services-mako
-    self.homeManagerModules.services-swayosd
-    self.homeManagerModules.services-waybar
-  ];
-
   options.myHome.desktop.hyprland = {
+    enable = lib.mkEnableOption "hyprland desktop environment";
+
     laptopMonitor = lib.mkOption {
       description = "Internal laptop monitor.";
       default = null;
@@ -44,7 +36,7 @@
     };
   };
 
-  config = {
+  config = lib.mkIf config.myHome.desktop.hyprland.enable {
     home.packages = with pkgs; [
       blueberry
       file-roller
@@ -171,6 +163,18 @@
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
       ];
+    };
+
+    myHome = {
+      desktop.enable = true;
+      programs.rofi.enable = true;
+
+      services = {
+        hypridle.enable = true;
+        mako.enable = true;
+        swayosd.enable = true;
+        waybar.enable = true;
+      };
     };
   };
 }

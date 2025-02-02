@@ -1,8 +1,4 @@
-{
-  pkgs,
-  self,
-  ...
-}: {
+{pkgs, ...}: {
   config = {
     boot = {
       consoleLogLevel = 0;
@@ -14,7 +10,7 @@
 
     home-manager.sharedModules = [
       {
-        imports = [self.homeManagerModules.desktop];
+        config.myHome.desktop.enable = true;
       }
     ];
 

@@ -1,5 +1,7 @@
-{...}: {
-  config = {
+{config, lib, ...}: {
+  options.myHome.profiles.shell.enable = lib.mkEnableOption "basic shell environment";
+
+  config = lib.mkIf config.myHome.profiles.shell.enable {
     home.shellAliases = {
       cat = "bat";
       grep = "rg";

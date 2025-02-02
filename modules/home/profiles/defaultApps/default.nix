@@ -8,7 +8,8 @@
   mimeTypes = import ./mimeTypes.nix;
 in {
   options.myHome.profiles.defaultApps = {
-    forceMimeAssociations = lib.mkEnableOption "Force mime associations for defaultApps.";
+    enable = lib.mkEnableOption "enforce default applications";
+    forceMimeAssociations = lib.mkEnableOption "force mime associations for defaultApps";
 
     audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
     editor = lib.mkPackageOption pkgs "text editor" {default = ["vscodium"];};
@@ -26,7 +27,7 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     dconf = {
       enable = true;
 
