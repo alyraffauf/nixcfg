@@ -78,6 +78,8 @@ in {
     };
 
     dconf.settings = {
+      "org/gnome/desktop/wm/preferences".button-layout = "";
+
       "org/nemo/preferences/menu-config" = {
         background-menu-open-as-root = false;
         selection-menu-open-as-root = false;

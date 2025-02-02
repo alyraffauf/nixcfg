@@ -21,7 +21,11 @@
 
         "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
         "org/gnome/desktop/search-providers".enabled = "['org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']";
-        "org/gnome/desktop/wm/preferences".auto-raise = true;
+
+        "org/gnome/desktop/wm/preferences" = {
+          auto-raise = true;
+          button-layout = "appmenu:close";
+        };
 
         "org/gnome/mutter" = {
           dynamic-workspaces = true;

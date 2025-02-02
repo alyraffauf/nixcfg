@@ -25,13 +25,6 @@
         enable = true;
 
         settings = {
-          "org/gnome/desktop/wm/preferences".button-layout =
-            if config.myHome.desktop.kde.enable
-            then "appmenu:minimize,maximize,close"
-            else if config.myHome.desktop.gnome.enable
-            then "appmenu:close"
-            else "";
-
           "org/gnome/nm-applet".disable-connected-notifications = true;
           "org/gtk/gtk4/settings/file-chooser".sort-directories-first = true;
           "org/gtk/settings/file-chooser".sort-directories-first = true;
