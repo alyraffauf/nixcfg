@@ -27,6 +27,17 @@
       };
     };
 
+    home-manager.sharedModules = [
+      (
+        {config, ...}: {
+          xdg.configFile = lib.mkIf config.services.easyeffects.enable {
+            "easyeffects/output/LoudnessEqualizer.json".source = ./LoudnessEqualizer.json;
+            "easyeffects/output/AdvancedAutoGain.json".source = ./AdvancedAutoGain.json;
+          };
+        }
+      )
+    ];
+
     services = {
       fstrim.enable = true;
 

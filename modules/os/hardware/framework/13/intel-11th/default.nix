@@ -25,6 +25,17 @@
 
     hardware.acpilight.enable = true;
 
+    home-manager.sharedModules = [
+      {
+        services.easyeffects = {
+          enable = true;
+          preset = "fw13-11thgen.json";
+        };
+
+        xdg.configFile."easyeffects/output/fw13-11thgen.json".source = ./easyeffects.json;
+      }
+    ];
+
     services.udev.extraRules = ''
       ## Framework 13 -- Fix headphone noise when on powersave
       ## https://community.frame.work/t/headphone-jack-intermittent-noise/5246/55

@@ -152,7 +152,6 @@
       programs-wezterm = ./modules/home/programs/wezterm;
       programs-yazi = ./modules/home/programs/yazi;
       programs-zed = ./modules/home/programs/zed;
-      services-easyeffects = ./modules/home/services/easyeffects;
       services-gammastep = ./modules/home/services/gammastep;
       services-hypridle = ./modules/home/services/hypridle;
       services-mako = ./modules/home/services/mako;
