@@ -19,13 +19,20 @@
   networking.hostName = "petalburg";
 
   specialisation.jarvis.configuration = {
-    services.ollama = {
-      enable = true;
+    services = {
+      nextjs-ollama-llm-ui.enable = true;
 
-      loadModels = [
-        "deepseek-r1:14b"
-        "llama3.1:8b"
-      ];
+      ollama = {
+        enable = true;
+
+        loadModels = [
+          "deepseek-r1:14b"
+          "deepseek-r1:8b"
+          "gemmma2:9b"
+          "llama3.1:8b"
+          "llama3.2:3b"
+        ];
+      };
     };
   };
 
