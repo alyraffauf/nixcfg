@@ -1,9 +1,12 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
-  config = {
+  options.myNixOS.programs.lanzaboote.enable = lib.mkEnableOption "secure boot with lanzaboote";
+
+  config = lib.mkIf config.myNixOS.programs.lanzaboote.enable {
     boot = {
       initrd.systemd.enable = true;
 

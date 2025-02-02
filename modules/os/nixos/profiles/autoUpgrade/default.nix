@@ -3,7 +3,9 @@
   lib,
   ...
 }: {
-  config = {
+  options.myNixOS.profiles.autoUpgrade.enable = lib.mkEnableOption "auto-upgrade system";
+
+  config = lib.mkIf config.myNixOS.profiles.autoUpgrade.enable {
     system.autoUpgrade = {
       enable = true;
       allowReboot = lib.mkDefault true;

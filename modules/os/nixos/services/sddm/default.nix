@@ -3,13 +3,17 @@
   lib,
   ...
 }: {
-  options.sddm.autologin = lib.mkOption {
-    description = "User to autologin.";
-    default = null;
-    type = lib.types.nullOr lib.types.str;
+  options.myNixOS.services.sddm = {
+    enable = lib.mkEnableOption "sddm display manager";
+
+    autologin = lib.mkOption {
+      description = "User to autologin.";
+      default = null;
+      type = lib.types.nullOr lib.types.str;
+    };
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.services.sddm.enable {
     security.pam.services.sddm = {
       enableGnomeKeyring = true;
       gnupg.enable = true;
@@ -17,9 +21,9 @@
     };
 
     services.displayManager = {
-      autoLogin = lib.mkIf (config.sddm.autologin != null) {
+      autoLogin = lib.mkIf (config.myNixOS.services.sddm.autologin != null) {
         enable = true;
-        user = config.sddm.autologin;
+        user = config.myNixOS.services.sddm.autologin;
       };
 
       sddm = {

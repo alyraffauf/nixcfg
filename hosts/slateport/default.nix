@@ -10,16 +10,6 @@
     self.nixosModules.disko-btrfs-subvolumes
     self.nixosModules.hardware-lenovo-thinkcentre-m700
     self.nixosModules.locale-en-us
-    self.nixosModules.nixos-profiles-autoUpgrade
-    self.nixosModules.nixos-profiles-base
-    self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-media-share
-    self.nixosModules.nixos-profiles-server
-    self.nixosModules.nixos-profiles-wifi
-    self.nixosModules.nixos-programs-nix
-    self.nixosModules.nixos-programs-podman
-    self.nixosModules.nixos-services-syncthing
-    self.nixosModules.nixos-services-tailscale
   ];
 
   networking.hostName = "slateport";
@@ -38,11 +28,31 @@
 
   myDisko.installDrive = "/dev/sda";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    user = "aly";
+  myNixOS = {
+    profiles = {
+      autoUpgrade.enable = true;
+      base.enable = true;
+      btrfs.enable = true;
+      media-share.enable = true;
+      server.enable = true;
+      wifi.enable = true;
+    };
+
+    programs = {
+      nix.enable = true;
+      podman.enable = true;
+    };
+
+    services = {
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        user = "aly";
+      };
+
+      tailscale.enable = true;
+    };
   };
 
   myUsers.aly = {

@@ -157,34 +157,7 @@
       hardware-nvidia-gpu = ./modules/os/hardware/nvidia/gpu;
       hardware-profiles-laptop = ./modules/os/hardware/profiles/laptop.nix;
       locale-en-us = ./modules/os/locale/en-us;
-      nixos-desktop = ./modules/os/nixos/desktop;
-      nixos-desktop-gnome = ./modules/os/nixos/desktop/gnome;
-      nixos-desktop-hyprland = ./modules/os/nixos/desktop/hyprland;
-      nixos-desktop-kde = ./modules/os/nixos/desktop/kde;
-      nixos-desktop-steamos = ./modules/os/nixos/desktop/steamos;
-      nixos-profiles-autoUpgrade = ./modules/os/nixos/profiles/autoUpgrade;
-      nixos-profiles-base = ./modules/os/nixos/profiles/base;
-      nixos-profiles-btrfs = ./modules/os/nixos/profiles/btrfs;
-      nixos-profiles-desktop = ./modules/os/nixos/profiles/desktop;
-      nixos-profiles-gaming = ./modules/os/nixos/profiles/gaming;
-      nixos-profiles-media-share = ./modules/os/nixos/profiles/media-share;
-      nixos-profiles-server = ./modules/os/nixos/profiles/server;
-      nixos-profiles-wifi = ./modules/os/nixos/profiles/wifi;
-      nixos-programs-firefox = ./modules/os/nixos/programs/firefox;
-      nixos-programs-lanzaboote = ./modules/os/nixos/programs/lanzaboote;
-      nixos-programs-nicotine-plus = ./modules/os/nixos/programs/nicotine-plus;
-      nixos-programs-nix = ./modules/os/nixos/programs/nix;
-      nixos-programs-podman = ./modules/os/nixos/programs/podman;
-      nixos-programs-retroarch = ./modules/os/nixos/programs/retroarch;
-      nixos-programs-steam = ./modules/os/nixos/programs/steam;
-      nixos-programs-virt-manager = ./modules/os/nixos/programs/virt-manager;
-      nixos-services-flatpak = ./modules/os/nixos/services/flatpak;
-      nixos-services-gdm = ./modules/os/nixos/services/gdm;
-      nixos-services-greetd = ./modules/os/nixos/services/greetd;
-      nixos-services-sddm = ./modules/os/nixos/services/sddm;
-      nixos-services-sunshine = ./modules/os/nixos/services/sunshine;
-      nixos-services-syncthing = ./modules/os/nixos/services/syncthing;
-      nixos-services-tailscale = ./modules/os/nixos/services/tailscale;
+      nixos = ./modules/os/nixos;
       users = ./modules/os/users;
     };
 
@@ -201,6 +174,7 @@
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.lanzaboote.nixosModules.lanzaboote
             self.inputs.stylix.nixosModules.stylix
+            self.nixosModules.nixos
             self.nixosModules.users
             {
               home-manager = {

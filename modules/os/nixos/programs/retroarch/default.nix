@@ -4,7 +4,9 @@
   pkgs,
   ...
 }: {
-  options.retroarch = {
+  options.myNixOS.programs.retroarch = {
+    enable = lib.mkEnableOption "RetroArch emulator";
+
     cores = lib.mkOption {
       description = "RetroArch cores to install.";
       default = [];
@@ -14,7 +16,7 @@
     session.enable = lib.mkEnableOption "RetroArch desktop session.";
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.programs.retroarch.enable {
     environment.systemPackages =
       if config.retroarch.cores != []
       then

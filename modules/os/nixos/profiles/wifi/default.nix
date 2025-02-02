@@ -1,5 +1,11 @@
-{config, ...}: {
-  config = {
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myNixOS.profiles.wifi.enable = lib.mkEnableOption "wifi configuration";
+
+  config = lib.mkIf config.myNixOS.profiles.wifi.enable {
     age.secrets.wifi.file = ../../../../../secrets/wifi.age;
 
     networking.networkmanager = {

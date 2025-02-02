@@ -1,5 +1,10 @@
-{config, ...}: {
-  config = {
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myNixOS.profiles.media-share.enable = lib.mkEnableOption "media share";
+  config = lib.mkIf config.myNixOS.profiles.media-share.enable {
     assertions = [
       {
         assertion = config.services.tailscale.enable;

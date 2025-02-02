@@ -4,7 +4,9 @@
   pkgs,
   ...
 }: {
-  config = {
+  options.myNixOS.programs.podman.enable = lib.mkEnableOption "podman container runtime";
+
+  config = lib.mkIf config.myNixOS.programs.podman.enable {
     environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.pods];
 
     virtualisation = {

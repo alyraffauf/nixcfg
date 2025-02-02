@@ -4,7 +4,10 @@
   pkgs,
   ...
 }: {
-  config = {
+  options.myNixOS.profiles.btrfs.enable = lib.mkEnableOption "btrfs filesystem configuration";
+
+  config = lib.mkIf config.myNixOS.profiles.btrfs.enable {
+    boot.supportedFilesystems = ["btrfs"];
     environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.snapper-gui];
 
     services = {

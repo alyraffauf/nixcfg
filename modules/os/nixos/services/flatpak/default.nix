@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: {
-  config = {
+  options.myNixOS.services.flatpak.enable = lib.mkEnableOption "flatpak package manager";
+  config = lib.mkIf config.myNixOS.services.flatpak.enable {
     environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.gnome-software];
 
     fileSystems = let

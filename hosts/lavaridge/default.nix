@@ -13,22 +13,6 @@
     self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hardware-framework-13-amd-7000
     self.nixosModules.locale-en-us
-    self.nixosModules.nixos-desktop-hyprland
-    self.nixosModules.nixos-profiles-autoUpgrade
-    self.nixosModules.nixos-profiles-base
-    self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-desktop
-    self.nixosModules.nixos-profiles-gaming
-    self.nixosModules.nixos-profiles-media-share
-    self.nixosModules.nixos-profiles-wifi
-    self.nixosModules.nixos-programs-firefox
-    self.nixosModules.nixos-programs-lanzaboote
-    self.nixosModules.nixos-programs-nix
-    self.nixosModules.nixos-programs-podman
-    self.nixosModules.nixos-programs-steam
-    self.nixosModules.nixos-services-greetd
-    self.nixosModules.nixos-services-syncthing
-    self.nixosModules.nixos-services-tailscale
   ];
 
   environment.variables.GDK_SCALE = "2";
@@ -67,15 +51,41 @@
   time.timeZone = "America/New_York";
 
   myNixOS = {
-    desktop.hyprland.laptopMonitor = "desc:BOE NE135A1M-NY1,2880x1920@60, 0x0, 2, vrr, 0";
-
-    syncthing = {
+    desktop.hyprland = {
       enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-      syncMusic = true;
-      syncROMs = true;
-      user = "aly";
+      laptopMonitor = "desc:BOE NE135A1M-NY1,2880x1920@60, 0x0, 2, vrr, 0";
+    };
+
+    profiles = {
+      autoUpgrade.enable = true;
+      base.enable = true;
+      btrfs.enable = true;
+      desktop.enable = true;
+      gaming.enable = true;
+      media-share.enable = true;
+      wifi.enable = true;
+    };
+
+    programs = {
+      firefox.enable = true;
+      nix.enable = true;
+      steam.enable = true;
+      lanzaboote.enable = true;
+    };
+
+    services = {
+      greetd.enable = true;
+
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        syncMusic = true;
+        syncROMs = true;
+        user = "aly";
+      };
+
+      tailscale.enable = true;
     };
   };
 

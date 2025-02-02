@@ -1,9 +1,11 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
-  config = {
+  options.myNixOS.profiles.server.enable = lib.mkEnableOption "server optimizations";
+  config = lib.mkIf config.myNixOS.profiles.server.enable {
     boot = {
       kernel.sysctl = {
         # Improved file monitoring

@@ -1,5 +1,12 @@
-{pkgs, ...}: {
-  config = {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  options.myNixOS.profiles.gaming.enable = lib.mkEnableOption "gaming optimizations";
+
+  config = lib.mkIf config.myNixOS.profiles.gaming.enable {
     environment.systemPackages = with pkgs; [
       dualsensectl
       heroic

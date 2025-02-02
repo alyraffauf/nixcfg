@@ -5,10 +5,7 @@
 }: {
   home-manager.users.aly = lib.mkForce (
     {pkgs, ...}: {
-      imports = [
-        self.homeManagerModules.profiles-shell
-        self.homeManagerModules.programs-fastfetch
-      ];
+      imports = [self.homeManagerModules.default];
 
       home = {
         homeDirectory = "/home/aly";
@@ -28,6 +25,11 @@
         };
 
         home-manager.enable = true;
+      };
+
+      myHome = {
+        profiles.shell.enable = true;
+        programs.fastfetch.enable = true;
       };
     }
   );

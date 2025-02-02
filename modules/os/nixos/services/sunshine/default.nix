@@ -1,18 +1,21 @@
 {
   config,
+  lib,
   pkgs,
   ...
-}: {
-  config = let
-    steam-run-url = pkgs.writeShellApplication {
-      name = "steam-run-url";
-      runtimeInputs = [pkgs.coreutils];
+}: let
+  steam-run-url = pkgs.writeShellApplication {
+    name = "steam-run-url";
+    runtimeInputs = [pkgs.coreutils];
 
-      text = ''
-        echo "$1" > "/run/user/$(id --user)/steam-run-url.fifo"
-      '';
-    };
-  in {
+    text = ''
+      echo "$1" > "/run/user/$(id --user)/steam-run-url.fifo"
+    '';
+  };
+in {
+  options.myNixOS.services.sunshine.enable = lib.mkEnableOption "sunshine game streaming";
+
+  config = lib.mkIf config.myNixOS.services.sunshine.enable {
     assertions = [
       {
         assertion = config.programs.steam.enable;

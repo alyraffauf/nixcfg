@@ -4,29 +4,33 @@
   pkgs,
   ...
 }: {
-  options.services.pipewire.lowLatency = {
-    enable = lib.mkOption {
-      default = true;
-      description = "Whether to enable lower latency configuration for PipeWire.";
-      type = lib.types.bool;
-    };
+  options = {
+    myNixOS.profiles.desktop.enable = lib.mkEnableOption "desktop workstation optimizations";
 
-    quantum = lib.mkOption {
-      default = 64;
-      description = "Minimum quantum to set.";
-      example = 32;
-      type = lib.types.int;
-    };
+    services.pipewire.lowLatency = {
+      enable = lib.mkOption {
+        default = config.myNixOS.profiles.desktop.enable;
+        description = "Whether to enable lower latency configuration for PipeWire.";
+        type = lib.types.bool;
+      };
 
-    rate = lib.mkOption {
-      default = 48000;
-      description = "Rate to set.";
-      example = 96000;
-      type = lib.types.int;
+      quantum = lib.mkOption {
+        default = 64;
+        description = "Minimum quantum to set.";
+        example = 32;
+        type = lib.types.int;
+      };
+
+      rate = lib.mkOption {
+        default = 48000;
+        description = "Rate to set.";
+        example = 96000;
+        type = lib.types.int;
+      };
     };
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.profiles.desktop.enable {
     assertions = [
       {
         assertion = !(config.programs.gamemode.enable && config.services.ananicy.enable);

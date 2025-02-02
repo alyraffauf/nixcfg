@@ -4,7 +4,9 @@
   pkgs,
   ...
 }: {
-  options.greetd = {
+  options.myNixOS.services.greetd = {
+    enable = lib.mkEnableOption "greetd display manager";
+
     autologin = lib.mkOption {
       description = "User to autologin.";
       default = null;
@@ -18,7 +20,7 @@
     };
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.services.greetd.enable {
     security.pam.services.greetd = {
       enableGnomeKeyring = true;
       gnupg.enable = true;
@@ -29,19 +31,20 @@
       enable = true;
 
       settings =
-        if config.greetd.autologin != null
+        if config.myNixOS.services.greetd.autologin != null
         then {
           default_session = {
-            command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.greetd.session}";
+            command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.myNixOS.services.greetd.session}";
           };
+
           initial_session = {
-            command = config.greetd.session;
-            user = config.greetd.autologin;
+            command = config.myNixOS.services.greetd.session;
+            user = config.myNixOS.services.greetd.autologin;
           };
         }
         else {
           default_session = {
-            command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.greetd.session}";
+            command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.myNixOS.services.greetd.session}";
           };
         };
     };

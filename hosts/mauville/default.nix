@@ -13,16 +13,6 @@ in {
     ./secrets.nix
     self.nixosModules.hardware-beelink-mini-s12pro
     self.nixosModules.locale-en-us
-    self.nixosModules.nixos-profiles-autoUpgrade
-    self.nixosModules.nixos-profiles-base
-    self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-server
-    self.nixosModules.nixos-profiles-wifi
-    self.nixosModules.nixos-programs-lanzaboote
-    self.nixosModules.nixos-programs-nix
-    self.nixosModules.nixos-programs-podman
-    self.nixosModules.nixos-services-syncthing
-    self.nixosModules.nixos-services-tailscale
   ];
 
   networking.hostName = "mauville";
@@ -71,14 +61,34 @@ in {
 
   time.timeZone = "America/New_York";
 
-  myNixOS.syncthing = {
-    certFile = config.age.secrets.syncthingCert.path;
-    enable = true;
-    keyFile = config.age.secrets.syncthingKey.path;
-    musicPath = "${mediaDirectory}/Music";
-    syncMusic = true;
-    syncROMs = true;
-    user = "aly";
+  myNixOS = {
+    profiles = {
+      autoUpgrade.enable = true;
+      base.enable = true;
+      btrfs.enable = true;
+      server.enable = true;
+      wifi.enable = true;
+    };
+
+    programs = {
+      lanzaboote.enable = true;
+      nix.enable = true;
+      podman.enable = true;
+    };
+
+    services = {
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        musicPath = "${mediaDirectory}/Music";
+        syncMusic = true;
+        syncROMs = true;
+        user = "aly";
+      };
+
+      tailscale.enable = true;
+    };
   };
 
   myUsers.aly = {

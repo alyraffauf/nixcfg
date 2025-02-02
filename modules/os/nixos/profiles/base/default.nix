@@ -1,9 +1,12 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
-  config = {
+  options.myNixOS.profiles.base.enable = lib.mkEnableOption "base system configuration";
+
+  config = lib.mkIf config.myNixOS.profiles.base.enable {
     boot = {
       initrd.systemd.enable = lib.mkDefault true;
 

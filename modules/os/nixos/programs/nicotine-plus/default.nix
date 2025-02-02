@@ -1,5 +1,12 @@
-{pkgs, ...}: {
-  config = {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  options.myNixOS.programs.nicotine-plus.enable = lib.mkEnableOption "nicotine-plus";
+
+  config = lib.mkIf config.myNixOS.programs.nicotine-plus.enable {
     environment.systemPackages = [pkgs.nicotine-plus];
 
     networking = {

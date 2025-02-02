@@ -2,12 +2,11 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
-  imports = [self.nixosModules.nixos-desktop];
-
   options.myNixOS.desktop.hyprland = {
+    enable = lib.mkEnableOption "hyprland desktop environment";
+
     laptopMonitor = lib.mkOption {
       description = "Internal laptop monitor.";
       default = null;
@@ -21,7 +20,7 @@
     };
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.desktop.hyprland.enable {
     home-manager.sharedModules = [
       {
         myHome.desktop.hyprland = {
@@ -48,5 +47,7 @@
       dbus.packages = [pkgs.gcr];
       udev.packages = [pkgs.swayosd];
     };
+
+    myNixOS.desktop.enable = true;
   };
 }

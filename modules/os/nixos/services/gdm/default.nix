@@ -3,13 +3,17 @@
   lib,
   ...
 }: {
-  options.gdm.autologin = lib.mkOption {
-    description = "User to autologin.";
-    default = null;
-    type = lib.types.nullOr lib.types.str;
+  options.myNixOS.services.gdm = {
+    enable = lib.mkEnableOption "gdm display manager";
+
+    autologin = lib.mkOption {
+      description = "User to autologin.";
+      default = null;
+      type = lib.types.nullOr lib.types.str;
+    };
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.services.gdm.enable {
     programs.dconf.profiles.gdm.databases = [
       {
         settings = {

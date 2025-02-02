@@ -16,23 +16,6 @@ in {
     self.nixosModules.hardware-amd-gpu
     self.nixosModules.hardware-common
     self.nixosModules.locale-en-us
-    self.nixosModules.nixos-desktop-kde
-    self.nixosModules.nixos-profiles-autoUpgrade
-    self.nixosModules.nixos-profiles-base
-    self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-desktop
-    self.nixosModules.nixos-profiles-gaming
-    self.nixosModules.nixos-profiles-media-share
-    self.nixosModules.nixos-profiles-wifi
-    self.nixosModules.nixos-programs-firefox
-    self.nixosModules.nixos-programs-lanzaboote
-    self.nixosModules.nixos-programs-nix
-    self.nixosModules.nixos-programs-podman
-    self.nixosModules.nixos-programs-steam
-    self.nixosModules.nixos-services-sddm
-    self.nixosModules.nixos-services-sunshine
-    self.nixosModules.nixos-services-syncthing
-    self.nixosModules.nixos-services-tailscale
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
@@ -43,7 +26,6 @@ in {
   };
 
   networking.hostName = "lilycove";
-  sddm.autologin = "aly";
 
   services = {
     # ollama = {
@@ -102,15 +84,49 @@ in {
   time.timeZone = "America/New_York";
 
   myNixOS = {
-    # desktop.hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"]
+    desktop = {
+      hyprland = {
+        enable = false;
+        monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"];
+      };
 
-    syncthing = {
-      enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-      syncMusic = true;
-      syncROMs = true;
-      user = "aly";
+      kde.enable = true;
+    };
+
+    profiles = {
+      autoUpgrade.enable = true;
+      base.enable = true;
+      btrfs.enable = true;
+      desktop.enable = true;
+      gaming.enable = true;
+      media-share.enable = true;
+      wifi.enable = true;
+    };
+
+    programs = {
+      firefox.enable = true;
+      nix.enable = true;
+      steam.enable = true;
+    };
+
+    services = {
+      sddm = {
+        enable = true;
+        autologin = "aly";
+      };
+
+      sunshine.enable = true;
+
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        syncMusic = true;
+        syncROMs = true;
+        user = "aly";
+      };
+
+      tailscale.enable = true;
     };
   };
 

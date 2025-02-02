@@ -3,7 +3,9 @@
   lib,
   ...
 }: {
-  config = {
+  options.myNixOS.programs.virt-manager.enable = lib.mkEnableOption "virt-manager virtualization manager";
+
+  config = lib.mkIf config.myNixOS.programs.virt-manager.enable {
     programs = {
       dconf.profiles.user.databases = lib.optionals (config.services.xserver.enable) [
         {

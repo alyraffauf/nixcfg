@@ -10,8 +10,7 @@
       ...
     }: {
       imports = [
-        self.homeManagerModules.profiles-shell
-        self.homeManagerModules.programs-fastfetch
+        self.homeManagerModules.default
         self.inputs.agenix.homeManagerModules.default
       ];
 
@@ -83,6 +82,11 @@
           Timer.OnCalendar = "*-*-* 03:00:00";
           Unit.Description = "Daily backups to Backblaze.";
         };
+      };
+
+      myHome = {
+        profiles.shell.enable = true;
+        programs.fastfetch.enable = true;
       };
     }
   );

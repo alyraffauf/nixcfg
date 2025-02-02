@@ -5,7 +5,7 @@
   ...
 }: {
   options.myHome.services.swayosd.enable = lib.mkEnableOption "swayosd brightness/sound controls";
-  
+
   config = lib.mkIf config.myHome.services.swayosd.enable {
     home.packages = with pkgs; [
       swayosd

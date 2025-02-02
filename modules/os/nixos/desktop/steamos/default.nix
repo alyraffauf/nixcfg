@@ -6,31 +6,32 @@
 }: {
   imports = [
     self.inputs.jovian.nixosModules.default
-    self.nixosModules.nixos-desktop
-    self.nixosModules.nixos-desktop-kde
-    self.nixosModules.nixos-profiles-gaming
   ];
 
-  options.myNixOS.steamos.user = lib.mkOption {
-    type = lib.types.str;
-    default = "steam";
-    description = "User to run SteamOS as.";
+  options.myNixOS.desktop.steamos = {
+    enable = lib.mkEnableOption "SteamOS desktop environment";
+
+    user = lib.mkOption {
+      type = lib.types.str;
+      default = "steam";
+      description = "User to run SteamOS as.";
+    };
   };
 
-  config = {
-    services.handheld-daemon.user = lib.mkDefault config.myNixOS.steamos.user;
+  config = lib.mkIf config.myNixOS.desktop.steamos.enable {
+    services.handheld-daemon.user = lib.mkDefault config.myNixOS.desktop.steamos.user;
 
     jovian = {
       decky-loader = {
         enable = true;
-        user = config.myNixOS.steamos.user;
+        user = config.myNixOS.desktop.steamos.user;
       };
 
       steam = {
         enable = true;
         autoStart = true;
         desktopSession = lib.mkDefault "plasma";
-        user = config.myNixOS.steamos.user;
+        user = config.myNixOS.desktop.steamos.user;
       };
 
       steamos = {
@@ -40,6 +41,18 @@
         enableProductSerialAccess = true;
         enableVendorRadv = true;
         useSteamOSConfig = false;
+      };
+    };
+
+    myNixOS = {
+      desktop = {
+        enable = true;
+        kde.enable = true;
+      };
+
+      profiles = {
+        desktop.enable = true;
+        gaming.enable = true;
       };
     };
   };

@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.myNixOS.syncthing = {
+  options.myNixOS.services.syncthing = {
     enable = lib.mkEnableOption "Syncthing file syncing service.";
 
     certFile = lib.mkOption {
@@ -17,7 +17,7 @@
     };
 
     musicPath = lib.mkOption {
-      default = "/home/${config.myNixOS.syncthing.user}/music";
+      default = "/home/${config.myNixOS.services.syncthing.user}/music";
       description = "Path to the music folder.";
       type = lib.types.path;
     };
@@ -31,11 +31,11 @@
     };
   };
 
-  config = {
+  config = lib.mkIf config.myNixOS.services.syncthing.enable {
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
 
     services.syncthing = let
-      cfg = config.myNixOS.syncthing;
+      cfg = config.myNixOS.services.syncthing;
       devices = import ./devices.nix;
 
       folders = lib.mkMerge [

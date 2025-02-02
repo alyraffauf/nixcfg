@@ -1,5 +1,23 @@
-{pkgs, ...}: {
-  config = {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./gnome
+    ./hyprland
+    ./kde
+    ./steamos
+  ];
+
+  options.myNixOS.desktop.enable = lib.mkOption {
+    default = config.myNixOS.desktop.gnome.enable or config.myNixOS.desktop.hyprland.enable or config.myNixOS.desktop.kde.enable;
+    description = "Desktop environment configuration.";
+    type = lib.types.bool;
+  };
+
+  config = lib.mkIf config.myNixOS.desktop.enable {
     boot = {
       consoleLogLevel = 0;
       initrd.verbose = false;

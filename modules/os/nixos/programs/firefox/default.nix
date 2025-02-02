@@ -1,5 +1,11 @@
-{...}: {
-  config = {
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myNixOS.programs.firefox.enable = lib.mkEnableOption "firefox browser";
+
+  config = lib.mkIf config.myNixOS.programs.firefox.enable {
     programs.firefox = {
       enable = true;
 

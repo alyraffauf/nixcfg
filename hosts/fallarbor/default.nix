@@ -11,19 +11,6 @@
     ./stylix.nix
     self.nixosModules.hardware-framework-13-intel-11th
     self.nixosModules.locale-en-us
-    self.nixosModules.nixos-desktop-kde
-    self.nixosModules.nixos-profiles-autoUpgrade
-    self.nixosModules.nixos-profiles-base
-    self.nixosModules.nixos-profiles-btrfs
-    self.nixosModules.nixos-profiles-desktop
-    self.nixosModules.nixos-profiles-gaming
-    self.nixosModules.nixos-profiles-wifi
-    self.nixosModules.nixos-programs-firefox
-    self.nixosModules.nixos-programs-nix
-    self.nixosModules.nixos-programs-steam
-    self.nixosModules.nixos-services-flatpak
-    self.nixosModules.nixos-services-sddm
-    self.nixosModules.nixos-services-syncthing
   ];
 
   environment.variables.GDK_SCALE = "1.5";
@@ -32,13 +19,40 @@
   time.timeZone = "America/New_York";
 
   myNixOS = {
-    # desktop.hyprland.laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
+    desktop = {
+      hyprland = {
+        # enable = true;
+        laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
+      };
 
-    syncthing = {
-      enable = true;
-      certFile = config.age.secrets.syncthingCert.path;
-      keyFile = config.age.secrets.syncthingKey.path;
-      user = "aly";
+      kde.enable = true;
+    };
+
+    profiles = {
+      autoUpgrade.enable = true;
+      base.enable = true;
+      btrfs.enable = true;
+      desktop.enable = true;
+      gaming.enable = true;
+      wifi.enable = true;
+    };
+
+    programs = {
+      firefox.enable = true;
+      nix.enable = true;
+      steam.enable = true;
+    };
+
+    services = {
+      flatpak.enable = true;
+      sddm.enable = true;
+
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        user = "aly";
+      };
     };
   };
 
