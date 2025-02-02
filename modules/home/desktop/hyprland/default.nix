@@ -8,7 +8,6 @@
   imports = [
     self.homeManagerModules.desktop
     self.homeManagerModules.programs-rofi
-    self.homeManagerModules.programs-wezterm
     self.homeManagerModules.services-hypridle
     self.homeManagerModules.services-mako
     self.homeManagerModules.services-swayosd
@@ -86,6 +85,16 @@
         "set-as-background.nemo_action"
         "set-resolution.nemo_action"
       ];
+    };
+
+    programs.wezterm = {
+      enable = true;
+
+      extraConfig = ''
+        return {
+          hide_tab_bar_if_only_one_tab = true
+        }
+      '';
     };
 
     services = {

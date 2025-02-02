@@ -8,7 +8,6 @@
     self.homeManagerModules.profiles-defaultApps
     self.homeManagerModules.profiles-shell
     self.homeManagerModules.programs-vsCodium
-    self.homeManagerModules.programs-wezterm
   ];
 
   home = {

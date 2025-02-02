@@ -15,7 +15,6 @@
     self.homeManagerModules.programs-fastfetch
     self.homeManagerModules.programs-helix
     self.homeManagerModules.programs-vsCodium
-    self.homeManagerModules.programs-wezterm
     self.homeManagerModules.programs-yazi
     self.inputs.agenix.homeManagerModules.default
   ];
@@ -96,6 +95,8 @@
         pinentry = pkgs.pinentry-gnome3;
       };
     };
+
+    wezterm.enable = true;
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
