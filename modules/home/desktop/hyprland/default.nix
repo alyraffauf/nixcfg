@@ -77,6 +77,22 @@ in {
       style.name = "Breeze";
     };
 
+    dconf.settings = {
+      "org/nemo/preferences/menu-config" = {
+        background-menu-open-as-root = false;
+        selection-menu-open-as-root = false;
+      };
+
+      "org/nemo/plugins".disabled-actions = [
+        "90_new-launcher.nemo_action"
+        "add-desklets.nemo_action"
+        "change-background.nemo_action"
+        "mount-archive.nemo_action"
+        "set-as-background.nemo_action"
+        "set-resolution.nemo_action"
+      ];
+    };
+
     services = {
       batsignal = {
         enable = true;

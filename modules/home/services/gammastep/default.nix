@@ -15,9 +15,9 @@ in {
     };
 
     systemd.user.services.gammastep = {
-      Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target");
+      Install.WantedBy = lib.mkForce (lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target");
       Service.Restart = lib.mkForce "no";
-      Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+      Unit.BindsTo = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
     };
   };
 }

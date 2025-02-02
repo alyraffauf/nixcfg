@@ -130,7 +130,7 @@ in {
 
     systemd.user.services = {
       hypridle = {
-        Install.WantedBy = lib.mkForce (lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target");
+        Install.WantedBy = lib.mkForce (lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target");
 
         Service = {
           Environment = lib.mkForce [
@@ -143,7 +143,7 @@ in {
                   hyprlock
                   systemd
                 ])
-                ++ lib.optional (cfg.desktop.hyprland.enable) config.wayland.windowManager.hyprland.package
+                ++ lib.optional (config.wayland.windowManager.hyprland.enable) config.wayland.windowManager.hyprland.package
               )
             }"
           ];
@@ -151,13 +151,13 @@ in {
           Restart = lib.mkForce "no";
         };
 
-        Unit.BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+        Unit.BindsTo = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
       };
 
       pipewire-inhibit-idle = {
         Unit = {
           After = "graphical-session.target";
-          BindsTo = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+          BindsTo = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
           Description = "inhibit idle when audio is playing with Pipewire.";
           PartOf = "graphical-session.target";
         };
@@ -167,7 +167,7 @@ in {
           Restart = "no";
         };
 
-        Install.WantedBy = lib.optional (cfg.desktop.hyprland.enable) "hyprland-session.target";
+        Install.WantedBy = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
       };
     };
   };

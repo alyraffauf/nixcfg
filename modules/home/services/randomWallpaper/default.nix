@@ -38,7 +38,7 @@ in {
         TasksMax = "infinity";
       };
 
-      Install.WantedBy = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
+      Install.WantedBy = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
     };
   };
 }

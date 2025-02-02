@@ -18,6 +18,8 @@
   config = lib.mkIf config.myHome.programs.keepassxc.enable {
     home.packages = [config.myHome.programs.keepassxc.package];
 
+    programs.firefox.nativeMessagingHosts = [pkgs.keepassxc];
+
     xdg.configFile."keepassxc/keepassxc.ini".text = let
       defaults = {
         Browser = {

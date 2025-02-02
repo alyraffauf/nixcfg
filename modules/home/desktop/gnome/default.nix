@@ -59,16 +59,24 @@
       };
     };
 
-    programs.gnome-shell = {
-      enable = true;
+    programs = {
+      firefox.nativeMessagingHosts = [pkgs.gnome-browser-connector];
 
-      extensions = [
-        {package = pkgs.gnomeExtensions.appindicator;}
-        {package = pkgs.gnomeExtensions.blur-my-shell;}
-        {package = pkgs.gnomeExtensions.dash-to-dock;}
-        {package = pkgs.gnomeExtensions.tailscale-status;}
-        {package = pkgs.gnomeExtensions.tiling-assistant;}
-      ];
+      gnome-shell = {
+        enable = true;
+
+        extensions = [
+          {package = pkgs.gnomeExtensions.appindicator;}
+          {package = pkgs.gnomeExtensions.blur-my-shell;}
+          {package = pkgs.gnomeExtensions.dash-to-dock;}
+          {package = pkgs.gnomeExtensions.tailscale-status;}
+          {package = pkgs.gnomeExtensions.tiling-assistant;}
+        ];
+      };
+
+      vscode.userSettings = lib.mkIf config.programs.vscode.enable {
+        "window.titleBarStyle" = "custom";
+      };
     };
   };
 }

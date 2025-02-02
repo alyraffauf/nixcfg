@@ -26,24 +26,6 @@
           tooltips-show-file-type = true;
           tooltips-show-mod-date = true;
         };
-
-        "org/nemo/preferences/menu-config" = {
-          background-menu-open-as-root =
-            !(config.myHome.desktop.hyprland.enable);
-          selection-menu-open-as-root =
-            !(config.myHome.desktop.hyprland.enable);
-        };
-
-        "org/nemo/plugins".disabled-actions =
-          lib.optionals
-          (config.myHome.desktop.hyprland.enable) [
-            "90_new-launcher.nemo_action"
-            "add-desklets.nemo_action"
-            "change-background.nemo_action"
-            "mount-archive.nemo_action"
-            "set-as-background.nemo_action"
-            "set-resolution.nemo_action"
-          ];
       };
     };
   };
