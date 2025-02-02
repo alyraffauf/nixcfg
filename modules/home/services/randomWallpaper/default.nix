@@ -16,7 +16,7 @@ in {
     systemd.user.services.randomWallpaper = {
       Unit = {
         After = "graphical-session.target";
-        BindsTo = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
+        BindsTo = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
         Description = "Lightweight swaybg-based random wallpaper daemon.";
         PartOf = "graphical-session.target";
       };

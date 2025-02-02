@@ -57,7 +57,7 @@ in {
       };
 
       services = {
-        hypridle.enable = lib.mkDefault config.myHome.desktop.hyprland.enable;
+        hypridle.enable = lib.mkDefault true;
         mako.enable = lib.mkDefault true;
         swayosd.enable = lib.mkDefault true;
         waybar.enable = lib.mkDefault true;
@@ -133,7 +133,7 @@ in {
     systemd.user.services.polkit-gnome-authentication-agent = {
       Unit = {
         After = "graphical-session.target";
-        BindsTo = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
+        BindsTo = ["hyprland-session.target"];
         Description = "PolicyKit authentication agent from GNOME.";
         PartOf = "graphical-session.target";
       };
@@ -143,7 +143,7 @@ in {
         Restart = "no";
       };
 
-      Install.WantedBy = lib.optional (config.myHome.desktop.hyprland.enable) "hyprland-session.target";
+      Install.WantedBy = ["hyprland-session.target"];
     };
 
     wayland.windowManager.hyprland = {
@@ -200,11 +200,12 @@ in {
 
     xdg.portal = {
       enable = true;
-      configPackages =
-        lib.optional (config.myHome.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
-      extraPortals =
-        [pkgs.xdg-desktop-portal-gtk]
-        ++ lib.optional (config.myHome.desktop.hyprland.enable) pkgs.xdg-desktop-portal-hyprland;
+      configPackages = [pkgs.xdg-desktop-portal-hyprland];
+
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+      ];
     };
   };
 }
