@@ -3,10 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  cfg = config.myHome;
-  defaultApps.terminal = cfg.profiles.defaultApps.terminal or pkgs.wezterm;
-in {
+}: {
   config = {
     programs.vscode = {
       enable = true;
@@ -76,7 +73,6 @@ in {
         };
 
         "shellformat.flag" = "-i 4";
-        "terminal.external.linuxExec" = lib.getExe defaultApps.terminal;
         "terminal.integrated.fontSize" = lib.mkForce (config.stylix.fonts.sizes.terminal + 3);
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
