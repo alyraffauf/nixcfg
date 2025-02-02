@@ -7,7 +7,6 @@
   imports = [
     self.homeManagerModules.profiles-defaultApps
     self.homeManagerModules.profiles-shell
-    self.homeManagerModules.programs-chromium
     self.homeManagerModules.programs-firefox
     self.homeManagerModules.programs-vsCodium
     self.homeManagerModules.programs-wezterm
@@ -31,6 +30,19 @@
   };
 
   programs = {
+    chromium = {
+      enable = true;
+
+      extensions = [
+        {id = "dnhpnfgdlenaccegplpojghhmaamnnfp";} # augmented steam
+        {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist
+        {id = "nngceckbapebfimnlniiiahkandclblb";} # bitwarden
+        {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
+      ];
+
+      package = pkgs.brave;
+    };
+
     home-manager.enable = true;
 
     rbw = {

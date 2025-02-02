@@ -141,7 +141,6 @@
       desktop-kde = ./modules/home/desktop/kde;
       profiles-defaultApps = ./modules/home/profiles/defaultApps;
       profiles-shell = ./modules/home/profiles/shell;
-      programs-chromium = ./modules/home/programs/chromium;
       programs-fastfetch = ./modules/home/programs/fastfetch;
       programs-firefox = ./modules/home/programs/firefox;
       programs-helix = ./modules/home/programs/helix;
