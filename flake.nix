@@ -147,7 +147,6 @@
       services-gammastep = ./modules/home/services/gammastep;
       services-hypridle = ./modules/home/services/hypridle;
       services-mako = ./modules/home/services/mako;
-      services-randomWallpaper = ./modules/home/services/randomWallpaper;
       services-swayosd = ./modules/home/services/swayosd;
       services-waybar = ./modules/home/services/waybar;
     };

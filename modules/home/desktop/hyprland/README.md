@@ -4,7 +4,6 @@
 
 - Clamshell mode for laptops
 - Default apps + theme integration
-- Random wallpapers that cycle every 15 minutes
 - Slick looks
 - Tablet mode
   - Auto rotate
