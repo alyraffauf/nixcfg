@@ -15,6 +15,17 @@
 
   scripts = import ./scripts.nix {inherit config lib pkgs;};
   helpers = import ./helpers.nix {inherit config lib pkgs;};
+
+  windowManagerBinds = {
+    Down = "down";
+    Left = "left";
+    Right = "right";
+    Up = "up";
+    H = "left";
+    J = "down";
+    K = "up";
+    L = "right";
+  };
 in {
   "$mod" = "SUPER";
 
@@ -65,15 +76,13 @@ in {
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${lib.getExe defaultApps.terminal}"
       # "$mod,Tab,overview:toggle"
-      "CTRL ALT,M,submap,move"
-      "CTRL ALT,R,submap,resize"
       "CTRL,F12,exec,${lib.getExe helpers.screenshot}"
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CTRL SHIFT,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}") cfg.desktop.hyprland.windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT,${key},movewindow,${builtins.substring 0 1 direction}") cfg.desktop.hyprland.windowManagerBinds
-    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod,${key},movefocus,${builtins.substring 0 1 direction}") cfg.desktop.hyprland.windowManagerBinds;
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod CTRL SHIFT,${key},movecurrentworkspacetomonitor,${builtins.substring 0 1 direction}") windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod SHIFT,${key},movewindow,${builtins.substring 0 1 direction}") windowManagerBinds
+    ++ lib.attrsets.mapAttrsToList (key: direction: "$mod,${key},movefocus,${builtins.substring 0 1 direction}") windowManagerBinds;
 
   bindm = [
     # Move/resize windows with mainMod + LMB/RMB and dragging
