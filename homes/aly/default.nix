@@ -10,11 +10,11 @@
     ./helix
     ./mail
     ./secrets.nix
+    ./vsCode
     ./windowManagers
     self.homeManagerModules.profiles-defaultApps
     self.homeManagerModules.profiles-shell
     self.homeManagerModules.programs-fastfetch
-    self.homeManagerModules.programs-vsCodium
     self.inputs.agenix.homeManagerModules.default
   ];
 

@@ -7,7 +7,6 @@
   imports = [
     self.homeManagerModules.profiles-defaultApps
     self.homeManagerModules.profiles-shell
-    self.homeManagerModules.programs-vsCodium
   ];
 
   home = {
