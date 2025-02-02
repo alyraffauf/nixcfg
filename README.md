@@ -27,7 +27,7 @@ ______________________________________________________________________
 ```plaintext
 .
 ├── flake.nix          # Main entry point
-├── home/              # home-manager configurations
+├── homes/              # home-manager configurations
 ├── hosts/             # NixOS host configurations
 ├── modules/           # Modules for NixOS and home-manager
 ├── overlays/          # Custom Nixpkgs overlays
@@ -39,7 +39,7 @@ ______________________________________________________________________
 ### Key Files and Directories
 
 - **`flake.nix`**: Central file linking all configurations using Nix Flakes.
-- **`home/`**: User-specific home-manager configurations.
+- **`homes/`**: User-specific home-manager configurations.
 - **`hosts/`**: Host configurations for NixOS.
 - **`modules/`**: Modules for NixOS and home-manager.
 - **`overlays/`**: Defines custom overlays to extend or override Nixpkgs.
