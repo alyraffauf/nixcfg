@@ -3,12 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
-  cfg = config.myHome;
-in {
-  options.myHome.services.mako.enable = lib.mkEnableOption "Mako notification daemon.";
-
-  config = lib.mkIf cfg.services.mako.enable {
+}: {
+  config = {
     services.mako = {
       actions = true;
       anchor = "bottom-right";

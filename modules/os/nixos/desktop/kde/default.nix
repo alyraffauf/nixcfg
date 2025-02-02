@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   self,
   ...
@@ -25,7 +24,7 @@
 
     home-manager.sharedModules = [
       {
-        myHome.desktop.kde.enable = lib.mkDefault true;
+        imports = [self.homeManagerModules.desktop-kde];
       }
     ];
 

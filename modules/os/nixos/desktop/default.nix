@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  self,
+  ...
+}: {
   config = {
     boot = {
       consoleLogLevel = 0;
@@ -7,6 +11,13 @@
     };
 
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+    home-manager.sharedModules = [
+      {
+        imports = [self.homeManagerModules.desktop];
+      }
+    ];
+
     programs.system-config-printer.enable = true;
 
     services = {

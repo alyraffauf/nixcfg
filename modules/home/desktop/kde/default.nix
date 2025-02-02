@@ -1,11 +1,7 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  options.myHome.desktop.kde.enable = lib.mkEnableOption "KDE Plasma with sane defaults.";
+{self, ...}: {
+  imports = [self.homeManagerModules.desktop];
 
-  config = lib.mkIf config.myHome.desktop.kde.enable {
+  config = {
     dconf = {
       enable = true;
 

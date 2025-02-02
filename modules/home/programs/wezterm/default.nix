@@ -1,11 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  options.myHome.programs.wezterm.enable = lib.mkEnableOption "Wezterm terminal.";
-
-  config = lib.mkIf config.myHome.programs.wezterm.enable {
+{...}: {
+  config = {
     programs.wezterm = {
       enable = true;
 

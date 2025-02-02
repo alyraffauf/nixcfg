@@ -41,12 +41,16 @@
 
   myDisko.installDrive = "/dev/sda";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    syncMusic = true;
-    user = "aly";
+  myNixOS = {
+    desktop.hyprland.laptopMonitor = "desc:LG Display 0x0569,preferred,auto,1.20";
+
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
+      user = "aly";
+    };
   };
 
   myUsers.aly = {

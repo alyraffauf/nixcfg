@@ -75,7 +75,7 @@ in {
           "force user" = "aly";
           "guest ok" = "yes";
           "read only" = "no";
-          browseable = "yes";
+          browsable = "yes";
           comment = "Archive @ ${config.networking.hostName}";
           path = archiveDirectory;
         };
@@ -101,13 +101,17 @@ in {
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    syncMusic = true;
-    syncROMs = true;
-    user = "aly";
+  myNixOS = {
+    # desktop.hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"]
+
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
+      syncROMs = true;
+      user = "aly";
+    };
   };
 
   myUsers = {

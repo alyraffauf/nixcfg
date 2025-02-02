@@ -1,11 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  options.myHome.programs.firefox.enable = lib.mkEnableOption "Firefox web browser.";
-
-  config = lib.mkIf config.myHome.programs.firefox.enable {
+{...}: {
+  config = {
     programs.firefox.enable = true;
   };
 }

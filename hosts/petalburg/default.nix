@@ -79,13 +79,17 @@
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    syncMusic = true;
-    syncROMs = true;
-    user = "aly";
+  myNixOS = {
+    desktop.hyprland.laptopMonitor = "desc:Lenovo Group Limited 0x8BA1 0x00006003,3200x2000@165, 0x0, 2, vrr, 1";
+
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
+      syncROMs = true;
+      user = "aly";
+    };
   };
 
   myUsers.aly = {

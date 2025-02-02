@@ -10,8 +10,11 @@
       ...
     }: {
       imports = [
+        self.homeManagerModules.profiles-shell
+        self.homeManagerModules.programs-fastfetch
+        self.homeManagerModules.programs-helix
+        self.homeManagerModules.programs-yazi
         self.inputs.agenix.homeManagerModules.default
-        self.homeManagerModules.default
       ];
 
       age.secrets = {
@@ -77,16 +80,6 @@
           Install.WantedBy = ["timers.target"];
           Timer.OnCalendar = "*-*-* 03:00:00";
           Unit.Description = "Daily backups to Backblaze.";
-        };
-      };
-
-      myHome = {
-        profiles.shell.enable = true;
-
-        programs = {
-          fastfetch.enable = true;
-          helix.enable = true;
-          yazi.enable = true;
         };
       };
     }

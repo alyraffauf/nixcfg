@@ -7,10 +7,10 @@
   cfg = config.myHome;
 
   defaultApps = {
-    terminal = cfg.defaultApps.terminal or pkgs.wezterm;
-    webBrowser = cfg.defaultApps.webBrowser or config.programs.firefox.finalPackage;
-    fileManager = cfg.defaultApps.fileManager or pkgs.nemo;
-    editor = cfg.defaultApps.editor or pkgs.codium;
+    terminal = cfg.profiles.defaultApps.terminal or pkgs.wezterm;
+    webBrowser = cfg.profiles.defaultApps.webBrowser or config.programs.firefox.finalPackage;
+    fileManager = cfg.profiles.defaultApps.fileManager or pkgs.nemo;
+    editor = cfg.profiles.defaultApps.editor or pkgs.vscodium;
   };
 
   scripts = import ./scripts.nix {inherit config lib pkgs;};

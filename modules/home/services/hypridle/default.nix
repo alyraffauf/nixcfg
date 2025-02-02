@@ -6,17 +6,13 @@
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.services.hypridle = {
-    enable = lib.mkEnableOption "Hypridle idle daemon.";
-
-    autoSuspend = lib.mkOption {
-      description = "Whether to autosuspend on idle.";
-      default = true;
-      type = lib.types.bool;
-    };
+  options.myHome.services.hypridle.autoSuspend = lib.mkOption {
+    description = "Whether to autosuspend on idle.";
+    default = true;
+    type = lib.types.bool;
   };
 
-  config = lib.mkIf cfg.services.hypridle.enable {
+  config = {
     programs.hyprlock = {
       enable = true;
 

@@ -2,12 +2,8 @@
   config,
   lib,
   ...
-}: let
-  cfg = config.myHome;
-in {
-  options.myHome.services.gammastep.enable = lib.mkEnableOption "Gammastep redshift daemon.";
-
-  config = lib.mkIf cfg.services.gammastep.enable {
+}: {
+  config = {
     services.gammastep = {
       enable = true;
       latitude = lib.mkDefault "33.74";

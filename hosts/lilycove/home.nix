@@ -6,6 +6,8 @@
   home-manager = {
     sharedModules = [
       {
+        imports = [self.homeManagerModules.services-easyeffects];
+
         gtk.gtk3.bookmarks = [
           "file:///mnt/Archive"
         ];
@@ -19,19 +21,9 @@
           };
         };
 
-        myHome = {
-          desktop = {
-            hyprland.monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"];
-          };
-
-          services = {
-            easyeffects = {
-              enable = true;
-              preset = "LoudnessEqualizer";
-            };
-
-            hypridle.autoSuspend = false;
-          };
+        myHome.services = {
+          easyeffects.preset = "LoudnessEqualizer";
+          # hypridle.autoSuspend = false;
         };
       }
     ];

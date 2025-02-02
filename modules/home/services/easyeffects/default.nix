@@ -3,17 +3,13 @@
   config,
   ...
 }: {
-  options.myHome.services.easyeffects = {
-    enable = lib.mkEnableOption "EasyEffects user service.";
-
-    preset = lib.mkOption {
-      description = "Name of preset to start with.";
-      default = "";
-      type = lib.types.str;
-    };
+  options.myHome.services.easyeffects.preset = lib.mkOption {
+    description = "Name of preset to start with.";
+    default = "";
+    type = lib.types.str;
   };
 
-  config = lib.mkIf config.myHome.services.easyeffects.enable {
+  config = {
     xdg.configFile = {
       "easyeffects/output/framework13.json".source = ./framework13.json;
       "easyeffects/output/fw13-autogain.json".source = ./fw13-autogain.json;

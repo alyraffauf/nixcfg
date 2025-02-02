@@ -1,11 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  options.myHome.programs.yazi.enable = lib.mkEnableOption "Yazi terminal file manager.";
-
-  config = lib.mkIf config.myHome.programs.yazi.enable {
+{...}: {
+  config = {
     programs.yazi = {
       enable = true;
       enableBashIntegration = true;

@@ -66,13 +66,17 @@
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    syncMusic = true;
-    syncROMs = true;
-    user = "aly";
+  myNixOS = {
+    desktop.hyprland.laptopMonitor = "desc:BOE NE135A1M-NY1,2880x1920@60, 0x0, 2, vrr, 0";
+
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
+      syncROMs = true;
+      user = "aly";
+    };
   };
 
   myUsers.aly = {

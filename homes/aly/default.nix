@@ -10,7 +10,15 @@
     ./mail
     ./secrets.nix
     ./windowManagers
-    self.homeManagerModules.default
+    self.homeManagerModules.profiles-defaultApps
+    self.homeManagerModules.profiles-shell
+    self.homeManagerModules.programs-chromium
+    self.homeManagerModules.programs-fastfetch
+    self.homeManagerModules.programs-firefox
+    self.homeManagerModules.programs-helix
+    self.homeManagerModules.programs-vsCodium
+    self.homeManagerModules.programs-wezterm
+    self.homeManagerModules.programs-yazi
     self.inputs.agenix.homeManagerModules.default
   ];
 
@@ -67,19 +75,4 @@
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
-
-  myHome = {
-    defaultApps.enable = true;
-    profiles.shell.enable = true;
-
-    programs = {
-      chromium.enable = true;
-      fastfetch.enable = true;
-      firefox.enable = true;
-      helix.enable = true;
-      vsCodium.enable = true;
-      wezterm.enable = true;
-      yazi.enable = true;
-    };
-  };
 }

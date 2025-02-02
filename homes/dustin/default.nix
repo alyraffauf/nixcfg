@@ -4,7 +4,14 @@
   self,
   ...
 }: {
-  imports = [self.homeManagerModules.default];
+  imports = [
+    self.homeManagerModules.profiles-defaultApps
+    self.homeManagerModules.profiles-shell
+    self.homeManagerModules.programs-chromium
+    self.homeManagerModules.programs-firefox
+    self.homeManagerModules.programs-vsCodium
+    self.homeManagerModules.programs-wezterm
+  ];
 
   home = {
     username = "dustin";
@@ -46,26 +53,5 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications."application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
-  };
-
-  myHome = {
-    defaultApps.enable = true;
-
-    desktop = {
-      hyprland.monitors = [
-        "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-2400x0,1.6"
-        "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
-        "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
-      ];
-    };
-
-    profiles.shell.enable = true;
-
-    programs = {
-      chromium.enable = true;
-      firefox.enable = true;
-      vsCodium.enable = true;
-      wezterm.enable = true;
-    };
   };
 }

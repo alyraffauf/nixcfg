@@ -1,12 +1,12 @@
 {
   config,
-  lib,
   pkgs,
+  self,
   ...
 }: {
-  options.myHome.desktop.gnome.enable = lib.mkEnableOption "GNOME with sane defaults.";
+  imports = [self.homeManagerModules.desktop];
 
-  config = lib.mkIf config.myHome.desktop.gnome.enable {
+  config = {
     dconf = {
       enable = true;
 

@@ -31,11 +31,15 @@
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    user = "aly";
+  myNixOS = {
+    # desktop.hyprland.laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
+
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      user = "aly";
+    };
   };
 
   myUsers = {

@@ -38,12 +38,16 @@
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
-  myNixOS.syncthing = {
-    enable = true;
-    certFile = config.age.secrets.syncthingCert.path;
-    keyFile = config.age.secrets.syncthingKey.path;
-    syncMusic = true;
-    user = "aly";
+  myNixOS = {
+    # desktop.hyprland.laptopMonitor = "eDP-1,preferred,auto,1.20";
+
+    syncthing = {
+      enable = true;
+      certFile = config.age.secrets.syncthingCert.path;
+      keyFile = config.age.secrets.syncthingKey.path;
+      syncMusic = true;
+      user = "aly";
+    };
   };
 
   myUsers.aly = {

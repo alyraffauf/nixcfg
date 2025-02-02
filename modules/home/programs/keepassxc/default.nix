@@ -5,7 +5,6 @@
   ...
 }: {
   options.myHome.programs.keepassxc = {
-    enable = lib.mkEnableOption "KeePassXC password manager.";
     package = lib.mkPackageOption pkgs "keepassxc" {};
 
     settings = lib.mkOption {
@@ -15,7 +14,7 @@
     };
   };
 
-  config = lib.mkIf config.myHome.programs.keepassxc.enable {
+  config = {
     home.packages = [config.myHome.programs.keepassxc.package];
 
     programs.firefox.nativeMessagingHosts = [pkgs.keepassxc];

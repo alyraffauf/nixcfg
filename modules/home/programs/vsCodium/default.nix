@@ -5,11 +5,9 @@
   ...
 }: let
   cfg = config.myHome;
-  defaultApps.terminal = cfg.defaultApps.terminal or pkgs.wezterm;
+  defaultApps.terminal = cfg.profiles.defaultApps.terminal or pkgs.wezterm;
 in {
-  options.myHome.programs.vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
-
-  config = lib.mkIf config.myHome.programs.vsCodium.enable {
+  config = {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;

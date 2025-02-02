@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.myHome;
-  defaultApps.terminal = cfg.defaultApps.terminal or pkgs.wezterm;
+  defaultApps.terminal = cfg.profiles.defaultApps.terminal or pkgs.wezterm;
   inherit (config.lib.formats.rasi) mkLiteral;
 
   mkRgba = opacity: color: let
@@ -19,9 +19,7 @@
   mkRgb = mkRgba "100";
   rofiOpacity = builtins.toString (builtins.ceil (config.stylix.opacity.popups * 100));
 in {
-  options.myHome.programs.rofi.enable = lib.mkEnableOption "Rofi launcher.";
-
-  config = lib.mkIf cfg.programs.rofi.enable {
+  config = {
     home.packages = [
       pkgs.networkmanager_dmenu
       pkgs.rofi-rbw-wayland

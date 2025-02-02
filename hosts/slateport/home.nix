@@ -5,7 +5,12 @@
 }: {
   home-manager.users.aly = lib.mkForce (
     {pkgs, ...}: {
-      imports = [self.homeManagerModules.default];
+      imports = [
+        self.homeManagerModules.profiles-shell
+        self.homeManagerModules.programs-fastfetch
+        self.homeManagerModules.programs-helix
+        self.homeManagerModules.programs-yazi
+      ];
 
       home = {
         homeDirectory = "/home/aly";
@@ -21,16 +26,6 @@
       programs = {
         helix.defaultEditor = true;
         home-manager.enable = true;
-      };
-
-      myHome = {
-        profiles.shell.enable = true;
-
-        programs = {
-          fastfetch.enable = true;
-          helix.enable = true;
-          yazi.enable = true;
-        };
       };
     }
   );

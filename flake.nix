@@ -135,7 +135,6 @@
       aly = ./homes/aly;
       dustin = ./homes/dustin;
 
-      default = ./modules/home;
       desktop = ./modules/home/desktop;
       desktop-gnome = ./modules/home/desktop/gnome;
       desktop-hyprland = ./modules/home/desktop/hyprland;
@@ -154,12 +153,12 @@
       programs-yazi = ./modules/home/programs/yazi;
       programs-zed = ./modules/home/programs/zed;
       services-easyeffects = ./modules/home/services/easyeffects;
+      services-gammastep = ./modules/home/services/gammastep;
       services-hypridle = ./modules/home/services/hypridle;
       services-mako = ./modules/home/services/mako;
       services-randomWallpaper = ./modules/home/services/randomWallpaper;
       services-swayosd = ./modules/home/services/swayosd;
       services-waybar = ./modules/home/services/waybar;
-      servies-gammastep = ./modules/home/services/gammastep;
     };
 
     nixosModules = {

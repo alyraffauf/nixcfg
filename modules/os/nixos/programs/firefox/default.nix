@@ -1,8 +1,8 @@
-{lib, ...}: {
+{self, ...}: {
   config = {
     home-manager.sharedModules = [
       {
-        myHome.programs.firefox.enable = lib.mkDefault true;
+        imports = [self.homeManagerModules.programs-firefox];
       }
     ];
 

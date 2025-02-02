@@ -4,11 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.myHome.defaultApps;
+  cfg = config.myHome.profiles.defaultApps;
   mimeTypes = import ./mimeTypes.nix;
 in {
-  options.myHome.defaultApps = {
-    enable = lib.mkEnableOption "Declaratively set default apps and file associations.";
+  options.myHome.profiles.defaultApps = {
     forceMimeAssociations = lib.mkEnableOption "Force mime associations for defaultApps.";
 
     audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
@@ -27,9 +26,10 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
     dconf = {
       enable = true;
+
       settings = {
         "org/cinnamon/desktop/applications/terminal".exec = "${lib.getExe cfg.terminal}";
         "org/cinnamon/desktop/default-applications/terminal".exec = "${lib.getExe cfg.terminal}";

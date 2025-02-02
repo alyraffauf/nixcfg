@@ -2,13 +2,22 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: let
   cfg = config.myHome;
 in {
-  options.myHome.desktop.hyprland = {
-    enable = lib.mkEnableOption "Hyprland with full desktop session components.";
+  imports = [
+    self.homeManagerModules.desktop
+    self.homeManagerModules.programs-rofi
+    self.homeManagerModules.programs-wezterm
+    self.homeManagerModules.services-hypridle
+    self.homeManagerModules.services-mako
+    self.homeManagerModules.services-swayosd
+    self.homeManagerModules.services-waybar
+  ];
 
+  options.myHome.desktop.hyprland = {
     laptopMonitor = lib.mkOption {
       description = "Internal laptop monitor.";
       default = null;
@@ -17,7 +26,13 @@ in {
 
     monitors = lib.mkOption {
       description = "List of external monitors.";
-      default = [];
+
+      default = [
+        "desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,-1920x0,2.0"
+        "desc:HP Inc. HP 24mh 3CM037248S,preferred,-1920x0,auto"
+        "desc:LG Electronics LG IPS QHD 109NTWG4Y865,preferred,-2560x0,auto"
+      ];
+
       type = lib.types.listOf lib.types.str;
     };
 
@@ -49,21 +64,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.desktop.hyprland.enable {
-    myHome = {
-      programs = {
-        rofi.enable = lib.mkDefault true;
-        wezterm.enable = lib.mkDefault true;
-      };
-
-      services = {
-        hypridle.enable = lib.mkDefault true;
-        mako.enable = lib.mkDefault true;
-        swayosd.enable = lib.mkDefault true;
-        waybar.enable = lib.mkDefault true;
-      };
-    };
-
+  config = {
     home.packages = with pkgs; [
       blueberry
       file-roller
