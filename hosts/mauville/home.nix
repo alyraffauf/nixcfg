@@ -12,7 +12,6 @@
       imports = [
         self.homeManagerModules.profiles-shell
         self.homeManagerModules.programs-fastfetch
-        self.homeManagerModules.programs-helix
         self.homeManagerModules.programs-yazi
         self.inputs.agenix.homeManagerModules.default
       ];
@@ -34,7 +33,11 @@
       };
 
       programs = {
-        helix.defaultEditor = true;
+        helix = {
+          enable = true;
+          defaultEditor = true;
+        };
+
         home-manager.enable = true;
       };
 

@@ -142,10 +142,8 @@
       profiles-defaultApps = ./modules/home/profiles/defaultApps;
       profiles-shell = ./modules/home/profiles/shell;
       programs-fastfetch = ./modules/home/programs/fastfetch;
-      programs-helix = ./modules/home/programs/helix;
       programs-rofi = ./modules/home/programs/rofi;
       programs-vsCodium = ./modules/home/programs/vsCodium;
-      programs-wezterm = ./modules/home/programs/wezterm;
       programs-yazi = ./modules/home/programs/yazi;
       programs-zed = ./modules/home/programs/zed;
       services-gammastep = ./modules/home/services/gammastep;
