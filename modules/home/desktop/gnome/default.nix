@@ -78,7 +78,7 @@
         ];
       };
 
-      vscode.userSettings = lib.mkIf config.programs.vscode.enable {
+      vscode.userSettings = {
         "window.titleBarStyle" = "custom";
       };
     };
