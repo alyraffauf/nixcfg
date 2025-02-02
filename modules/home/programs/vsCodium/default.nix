@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.myHome;
+  defaultApps.terminal = cfg.defaultApps.terminal or pkgs.wezterm;
 in {
   options.myHome.programs.vsCodium.enable = lib.mkEnableOption "VSCodium text editor.";
 
@@ -77,7 +78,7 @@ in {
         };
 
         "shellformat.flag" = "-i 4";
-        "terminal.external.linuxExec" = lib.getExe cfg.defaultApps.terminal;
+        "terminal.external.linuxExec" = lib.getExe defaultApps.terminal;
         "terminal.integrated.fontSize" = lib.mkForce (config.stylix.fonts.sizes.terminal + 3);
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";

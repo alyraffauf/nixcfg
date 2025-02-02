@@ -5,8 +5,9 @@
   ...
 }: let
   cfg = config.myHome;
-
+  defaultApps.terminal = cfg.defaultApps.terminal or pkgs.wezterm;
   inherit (config.lib.formats.rasi) mkLiteral;
+
   mkRgba = opacity: color: let
     c = config.lib.stylix.colors;
     r = c."${color}-rgb-r";
@@ -38,7 +39,7 @@ in {
         pkgs.rofi-power-menu
       ];
 
-      terminal = lib.getExe cfg.defaultApps.terminal;
+      terminal = lib.getExe defaultApps.terminal;
       theme = {
         "*" = {
           background = mkRgba rofiOpacity "base00";
@@ -264,7 +265,7 @@ in {
         [editor]
         gui = ${pkgs.networkmanagerapplet}/bin/nm-connection-editor
         gui_if_available = True
-        terminal = ${lib.getExe cfg.defaultApps.terminal}
+        terminal = ${lib.getExe defaultApps.terminal}
       '';
     };
   };
