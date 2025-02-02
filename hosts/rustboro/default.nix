@@ -40,8 +40,8 @@
 
     programs = {
       firefox.enable = true;
-      nix.enable = true;
       lanzaboote.enable = true;
+      nix.enable = true;
     };
 
     services = {

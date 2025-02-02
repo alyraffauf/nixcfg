@@ -116,6 +116,7 @@ in {
 
     programs = {
       firefox.enable = true;
+      lanzaboote.enable = true;
       nix.enable = true;
       steam.enable = true;
     };
