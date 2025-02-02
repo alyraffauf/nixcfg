@@ -97,6 +97,7 @@
         oderwat.indent-rainbow
         rubymaniac.vscode-paste-and-indent
         rust-lang.rust-analyzer
+        supermaven.supermaven
         tomoki1207.pdf
       ];
     };
