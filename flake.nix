@@ -144,7 +144,6 @@
       programs-fastfetch = ./modules/home/programs/fastfetch;
       programs-rofi = ./modules/home/programs/rofi;
       programs-vsCodium = ./modules/home/programs/vsCodium;
-      programs-yazi = ./modules/home/programs/yazi;
       services-gammastep = ./modules/home/services/gammastep;
       services-hypridle = ./modules/home/services/hypridle;
       services-mako = ./modules/home/services/mako;

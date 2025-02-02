@@ -8,7 +8,6 @@
       imports = [
         self.homeManagerModules.profiles-shell
         self.homeManagerModules.programs-fastfetch
-        self.homeManagerModules.programs-yazi
       ];
 
       home = {

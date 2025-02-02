@@ -15,7 +15,6 @@
     self.homeManagerModules.profiles-shell
     self.homeManagerModules.programs-fastfetch
     self.homeManagerModules.programs-vsCodium
-    self.homeManagerModules.programs-yazi
     self.inputs.agenix.homeManagerModules.default
   ];
 

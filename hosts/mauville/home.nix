@@ -12,7 +12,6 @@
       imports = [
         self.homeManagerModules.profiles-shell
         self.homeManagerModules.programs-fastfetch
-        self.homeManagerModules.programs-yazi
         self.inputs.agenix.homeManagerModules.default
       ];
 
