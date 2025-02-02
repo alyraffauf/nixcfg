@@ -81,9 +81,9 @@
           if config.myHome.desktop.gnome.enable
           then "custom"
           else "native";
-      };
 
-      "window.zoomPerWindow" = false;
+        "window.zoomPerWindow" = false;
+      };
 
       extensions = with pkgs.vscode-extensions; [
         coolbear.systemd-unit-file
