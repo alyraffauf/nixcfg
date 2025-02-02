@@ -50,6 +50,7 @@
       blueberry
       file-roller
       libnotify
+      nemo
       networkmanagerapplet
     ];
 
@@ -61,6 +62,16 @@
 
     dconf.settings = {
       "org/gnome/desktop/wm/preferences".button-layout = "";
+
+      "org/nemo/preferences" = {
+        show-image-thumbnails = "always";
+        thumbnail-limit = lib.hm.gvariant.mkUint64 (100 * 1024 * 1024);
+        tooltips-in-icon-view = true;
+        tooltips-show-access-date = true;
+        tooltips-show-birth-date = true;
+        tooltips-show-file-type = true;
+        tooltips-show-mod-date = true;
+      };
 
       "org/nemo/preferences/menu-config" = {
         background-menu-open-as-root = false;
