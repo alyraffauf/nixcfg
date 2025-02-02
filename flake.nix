@@ -144,7 +144,6 @@
       programs-fastfetch = ./modules/home/programs/fastfetch;
       programs-firefox = ./modules/home/programs/firefox;
       programs-helix = ./modules/home/programs/helix;
-      programs-keepassxc = ./modules/home/programs/keepassxc;
       programs-nemo = ./modules/home/programs/nemo;
       programs-rofi = ./modules/home/programs/rofi;
       programs-vsCodium = ./modules/home/programs/vsCodium;
