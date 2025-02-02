@@ -28,11 +28,11 @@ in {
   networking.hostName = "lilycove";
 
   services = {
-    # ollama = {
-    #   enable = true;
-    #   acceleration = "rocm";
-    #   rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700 XT.
-    # };
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+      rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700 XT.
+    };
 
     samba = {
       enable = true;
