@@ -37,7 +37,7 @@ in {
       loadModels = [
         "deepseek-r1:14b"
         "deepseek-r1:8b"
-        "gemmma2:9b"
+        "gemma2:9b"
         "llama3.1:8b"
         "llama3.2:3b"
       ];
