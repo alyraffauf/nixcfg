@@ -71,6 +71,5 @@ for value in "${i2c_addr[@]}"; do
     count=$((count + 1))
 done
 
-# Unmute Headphones, otherwise they are not unmuted when speakers are turned off.
-# On kernels < 6.13.0, sound card is 0. Since 6.13.0, sound card is 1.
-amixer -c 1 sset Headphone unmute
+# Unmute Headphones, otherwise they are not unmuted when speakers are turned off. Sometimes card number changes, so we account for that.
+amixer -c 0 sset Headphone unmute || amixer -c 1 sset Headphone unmute
