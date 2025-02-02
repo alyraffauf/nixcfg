@@ -76,9 +76,14 @@
         "terminal.integrated.fontSize" = lib.mkForce (config.stylix.fonts.sizes.terminal + 3);
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
-        "window.titleBarStyle" = lib.mkDefault "native";
-        "window.zoomPerWindow" = false;
+
+        "window.titleBarStyle" =
+          if config.myHome.desktop.gnome.enable
+          then "custom"
+          else "native";
       };
+
+      "window.zoomPerWindow" = false;
 
       extensions = with pkgs.vscode-extensions; [
         coolbear.systemd-unit-file

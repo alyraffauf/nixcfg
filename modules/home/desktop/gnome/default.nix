@@ -77,10 +77,6 @@
           {package = pkgs.gnomeExtensions.tiling-assistant;}
         ];
       };
-
-      vscode.userSettings = {
-        "window.titleBarStyle" = "custom";
-      };
     };
   };
 }
