@@ -22,7 +22,7 @@
     },
     "shellformat": {
         "path": "shfmt",
-        "flag": "-i 4"
+        "flag": "-i 2"
     },
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",

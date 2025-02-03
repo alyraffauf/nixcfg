@@ -6,26 +6,26 @@ set -euo pipefail
 ALEJANDRA_ARGS=()
 PRETTIER_ARGS=()
 RUBOCOP_ARGS=()
-SHFMT_ARGS=("-i" "4")
+SHFMT_ARGS=("-i" "2")
 
 # Check if "-c" is present in any argument
 CHECK_MODE=false
 for arg in "$@"; do
-    if [ "$arg" = "-c" ]; then
-        CHECK_MODE=true
-        break
-    fi
+  if [ "$arg" = "-c" ]; then
+    CHECK_MODE=true
+    break
+  fi
 done
 
 # Adjust arguments based on CHECK_MODE
 if $CHECK_MODE; then
-    ALEJANDRA_ARGS+=("-c")
-    PRETTIER_ARGS+=("--check")
-    SHFMT_ARGS+=("-d") # Use diff mode (don't write changes)
+  ALEJANDRA_ARGS+=("-c")
+  PRETTIER_ARGS+=("--check")
+  SHFMT_ARGS+=("-d") # Use diff mode (don't write changes)
 else
-    RUBOCOP_ARGS+=("-A" "--disable-uncorrectable")
-    PRETTIER_ARGS+=("--write")
-    SHFMT_ARGS+=("-w") # Write changes
+  RUBOCOP_ARGS+=("-A" "--disable-uncorrectable")
+  PRETTIER_ARGS+=("--write")
+  SHFMT_ARGS+=("-w") # Write changes
 fi
 
 # Format all nix files

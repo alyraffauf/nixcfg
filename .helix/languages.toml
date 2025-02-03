@@ -7,7 +7,7 @@ name = "nix"
 [[language]]
 auto-format = true
 file-types = ["sh", "bash", "dash", "ksh", "mksh"]
-formatter = { command = "shfmt", args = ["-i", "4"] }
+formatter = { command = "shfmt", args = ["-i", "2"] }
 language-servers = [ "bash-language-server" ]
 name = "bash"
 
