@@ -68,7 +68,7 @@ in {
           "force user" = "aly";
           "guest ok" = "yes";
           "read only" = "no";
-          browsable = "yes";
+          browseable = "yes";
           comment = "Archive @ ${config.networking.hostName}";
           path = archiveDirectory;
         };

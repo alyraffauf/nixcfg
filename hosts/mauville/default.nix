@@ -41,7 +41,7 @@ in {
           "force user" = "aly";
           "guest ok" = "yes";
           "read only" = "no";
-          browseble = "yes";
+          browseable = "yes";
           comment = "Media @ ${config.networking.hostName}";
           path = mediaDirectory;
         };
