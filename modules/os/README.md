@@ -2,7 +2,7 @@
 
 This directory contains modular, declarative configurations for NixOS, designed for multi-device setups.
 
-______________________________________________________________________
+---
 
 ## 📂 Directory Structure
 
@@ -16,4 +16,4 @@ modules/
 └── README.md          # Documentation for the modules directory
 ```
 
-______________________________________________________________________
+---

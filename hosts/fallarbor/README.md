@@ -4,18 +4,18 @@
 
 Framework Laptop 13 (11th Gen Intel) — primarily used by my husband for productivity tasks. This setup focuses on reliability and efficiency for daily use.
 
-______________________________________________________________________
+---
 
 ## 🔧 Todo
 
 - \[ \] Add LUKS encryption for enhanced security.
 
-______________________________________________________________________
+---
 
 ## 💻 Specifications
 
 | Component   | Details                       |
-|-------------|-------------------------------|
+| ----------- | ----------------------------- |
 | **Model**   | Framework Laptop 13           |
 | **Display** | 13.5" 2256x1504, 60Hz, glossy |
 | **CPU**     | Intel Core i5-1135G7          |
@@ -23,7 +23,7 @@ ______________________________________________________________________
 | **GPU**     | Intel Iris Xe Graphics        |
 | **Disk**    | 512GB M.2 PCIe 3.0 SSD        |
 
-______________________________________________________________________
+---
 
 ## 🗂 Filesystems
 
@@ -32,7 +32,7 @@ ______________________________________________________________________
 - **Format**: Btrfs.
 - **Encryption**: None (planned upgrade to LUKS).
 
-______________________________________________________________________
+---
 
 ## 🖥 Display
 
@@ -40,4 +40,4 @@ ______________________________________________________________________
 - **Scaling**: Typically set to **1.566667** with Hyprland for optimal clarity.
   - Note: **1.6 scaling** causes minor blurriness.
 
-______________________________________________________________________
+---

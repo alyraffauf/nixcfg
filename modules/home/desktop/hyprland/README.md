@@ -60,7 +60,7 @@
 - SUPER CTRL SHIFT + Left: Move current workspace to monitor left.
 - SUPER CTRL SHIFT + Right: Move current workspace to monitor right.
 
-______________________________________________________________________
+---
 
 - SUPER CTRL SHIFT + J: Move current workspace to monitor below.
 - SUPER CTRL SHIFT + K: Move current workspace to monitor above.
@@ -85,7 +85,7 @@ ______________________________________________________________________
 - SUPER + Left: Change focus left.
 - SUPER + Right: Change focus right.
 
-______________________________________________________________________
+---
 
 - SUPER + J: Change focus down.
 - SUPER + K: Change focus up.
@@ -100,7 +100,7 @@ ______________________________________________________________________
 - SUPER SHIFT + Right: Move window right.
 - SUPER + Left Mouse Button: Move window.
 
-______________________________________________________________________
+---
 
 - SUPER SHIFT + J: Move window down.
 - SUPER SHIFT + K: Move window up.

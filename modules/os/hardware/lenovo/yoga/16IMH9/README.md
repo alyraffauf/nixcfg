@@ -2,7 +2,7 @@
 
 Optimized hardware configuration for Lenovo Yoga Pro 9i (16IMH9).
 
-______________________________________________________________________
+---
 
 ## Audio
 
@@ -12,7 +12,7 @@ ______________________________________________________________________
   - Unmutes headphones with `amixer`.
 - Further enhances sound quality with EasyEffects preset: [`16IMH9.json`](./16IMH9.json).
 
-______________________________________________________________________
+---
 
 ## Graphics
 
@@ -24,4 +24,4 @@ ______________________________________________________________________
   - Disables `hardware.nvidia.videoAcceleration` to allow NVIDIA GPU to sleep during video playback.
   - Uses integrated Intel Arc GPU for WebRender.
 
-______________________________________________________________________
+---

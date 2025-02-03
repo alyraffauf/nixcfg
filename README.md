@@ -4,11 +4,11 @@ Welcome to my **nixcfg**!
 
 This repository contains my NixOS and Home-Manager configurations, along with custom modules and packages. It is modular, declarative, and tailored for multi-device setups.
 
-______________________________________________________________________
+---
 
 ![](./_img/hyprland.png)
 
-______________________________________________________________________
+---
 
 ## ✨ Features
 
@@ -20,7 +20,7 @@ ______________________________________________________________________
 - **Multi-Device Support**: Written with multiple hosts in mind.
 - **Stylix:** Auto-generated base16 themes for the whole desktop.
 
-______________________________________________________________________
+---
 
 ## 📂 Repository Structure
 
@@ -46,7 +46,7 @@ ______________________________________________________________________
 - **`pkgs/`**: Houses custom or patched package definitions.
 - **`secrets/`**: Securely stores encrypted credentials or sensitive data.
 
-______________________________________________________________________
+---
 
 ## 🚀 Getting Started
 
@@ -78,20 +78,20 @@ home-manager switch --flake .
 
 > Replace `<hostname>` with the desired system configuration from your modules.
 
-______________________________________________________________________
+---
 
 ## 🤝 Contributing
 
 While this is a personal project, I’m open to feedback or suggestions.\
 Feel free to open an issue or share ideas that could improve this setup!
 
-______________________________________________________________________
+---
 
 ## 📜 License
 
 This repository is licensed under the **[GNU General Public License](LICENSE.md)**.
 
-______________________________________________________________________
+---
 
 ## 🙌 Acknowledgments
 
@@ -104,10 +104,10 @@ ______________________________________________________________________
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
 - [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
 
-______________________________________________________________________
+---
 
 ## ⭐ Stargazers Over Time
 
 [![Stargazers over time](https://starchart.cc/alyraffauf/nixcfg.svg?variant=adaptive)](https://starchart.cc/alyraffauf/nixcfg)
 
-______________________________________________________________________
+---

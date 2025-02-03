@@ -14,9 +14,9 @@ name = "bash"
 [[language]]
 auto-format = true
 file-types = ["md", "markdown", "mdx"]
-formatter = { command = "mdformat", args = ["-"] }
+formatter = { command = "prettier", args = ["--stdin-filepath", "%val{filename}", "--parser", "markdown"] }
 name = "markdown"
 
 [language-server.bash-language-server]
-args = ["start"]
 command = "bash-language-server"
+args = ["start"]

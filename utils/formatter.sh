@@ -4,7 +4,7 @@ set -euo pipefail
 
 # Initialize variables
 ALEJANDRA_ARGS=()
-MDFORMAT_ARGS=()
+PRETTIER_ARGS=()
 RUBOCOP_ARGS=()
 SHFMT_ARGS=("-i" "4")
 
@@ -20,18 +20,19 @@ done
 # Adjust arguments based on CHECK_MODE
 if $CHECK_MODE; then
     ALEJANDRA_ARGS+=("-c")
-    MDFORMAT_ARGS+=(--check)
-    SHFMT_ARGS+=("-d") # Add -d for diff mode (no -w)
+    PRETTIER_ARGS+=("--check")
+    SHFMT_ARGS+=("-d") # Use diff mode (don't write changes)
 else
     RUBOCOP_ARGS+=("-A" "--disable-uncorrectable")
-    SHFMT_ARGS+=("-w") # Add -w for writing changes
+    PRETTIER_ARGS+=("--write")
+    SHFMT_ARGS+=("-w") # Write changes
 fi
 
 # Format all nix files
 find . -type f -name "*.nix" -exec alejandra "${ALEJANDRA_ARGS[@]}" {} +
 
-# Format all markdown files
-find . -type f -name "*.md" -exec mdformat "${MDFORMAT_ARGS[@]}" {} +
+# Format all markdown files using Prettier
+find . -type f -name "*.md" -exec prettier "${PRETTIER_ARGS[@]}" {} +
 
 # Format all ruby files
 find . -type f -name "*.rb" -exec rubocop "${RUBOCOP_ARGS[@]}" {} +

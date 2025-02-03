@@ -2,7 +2,7 @@
 
 This directory contains the NixOS configurations for each of my devices. Each subdirectory corresponds to a specific host, encapsulating its unique setup and specifications.
 
-______________________________________________________________________
+---
 
 ## 📂 Directory Structure
 
@@ -21,7 +21,7 @@ hosts/
 ├── sootopolis/    # ThinkPad X1 Carbon Gen 9
 ```
 
-______________________________________________________________________
+---
 
 ## 🛠️ Provisioning New Devices
 
@@ -70,4 +70,4 @@ To add a new device to this configuration, follow these steps:
 
    - Generate a new user SSH key and copy it to `secrets/publicKeys/$USER_$HOSTNAME.pub` to enable passwordless logins to other hosts.
 
-______________________________________________________________________
+---

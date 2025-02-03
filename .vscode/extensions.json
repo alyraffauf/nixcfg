@@ -1,5 +1,6 @@
 {
     "recommendations": [
+        "esbenp.prettier-vscode",
         "foxundermoon.shell-format",
         "jnoortheen.nix-ide",
         "mads-hartmann.bash-ide-vscode",

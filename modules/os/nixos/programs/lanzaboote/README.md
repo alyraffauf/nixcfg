@@ -28,7 +28,7 @@
    sudo nix run nixpkgs#sbctl -- enroll-keys --microsoft
    ```
 
-1. Reboot,  make sure secure boot is enabled in UEFI.
+1. Reboot, make sure secure boot is enabled in UEFI.
 
 1. Check secure boot status with `bootctl status`:
 

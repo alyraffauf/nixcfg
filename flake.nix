@@ -117,10 +117,10 @@
             alejandra
             bash-language-server
             git
-            mdformat
             nh
             nix-update
             nixd
+            nodePackages.prettier
             rubocop
             shellcheck
             shfmt
@@ -218,7 +218,7 @@
         runtimeInputs = with pkgs; [
           alejandra
           findutils
-          mdformat
+          nodePackages.prettier
           rubocop
           shfmt
         ];
