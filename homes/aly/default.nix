@@ -100,7 +100,11 @@
 
   myHome = {
     profiles = {
-      defaultApps.enable = true;
+      defaultApps = {
+        enable = true;
+        editor = config.programs.vscode.package;
+      };
+
       shell.enable = true;
     };
 
