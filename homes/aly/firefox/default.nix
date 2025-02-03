@@ -6,6 +6,31 @@ in {
 
     profiles = {
       default = {
+        containersForce = true;
+
+        containers = {
+          personal = {
+            color = "purple";
+            icon = "circle";
+            id = 1;
+            name = "Personal";
+          };
+
+          private = {
+            color = "red";
+            icon = "fingerprint";
+            id = 2;
+            name = "Private";
+          };
+
+          atolls = {
+            color = "blue";
+            icon = "briefcase";
+            id = 3;
+            name = "Atolls";
+          };
+        };
+
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
           bitwarden
