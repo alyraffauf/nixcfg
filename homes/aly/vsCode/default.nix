@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -41,7 +40,6 @@
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
         "direnv.restart.automatic" = true;
-        "editor.fontSize" = lib.mkForce (config.stylix.fonts.sizes.applications + 3);
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnType" = true;
@@ -60,7 +58,6 @@
         };
 
         "shellformat.flag" = "-i 4";
-        "terminal.integrated.fontSize" = lib.mkForce (config.stylix.fonts.sizes.terminal + 3);
         "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
 
