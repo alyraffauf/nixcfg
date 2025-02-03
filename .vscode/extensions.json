@@ -2,6 +2,7 @@
     "recommendations": [
         "foxundermoon.shell-format",
         "jnoortheen.nix-ide",
-        "mkhl.direnv"
+        "mads-hartmann.bash-ide-vscode",
+        "mkhl.direnv",
     ]
 }

@@ -7,19 +7,6 @@
         "formatterPath": "alejandra",
         "serverPath": "nixd",
         "serverSettings": {
-            "nil": {
-                "diagnostics": {
-                    "ignored": [
-                        "unused_binding",
-                        "unused_with"
-                    ]
-                },
-                "formatting": {
-                    "command": [
-                        "alejandra"
-                    ]
-                }
-            },
             "nixd": {
                 "formatting": {
                     "command": [
@@ -33,6 +20,8 @@
         "editor.defaultFormatter": "foxundermoon.shell-format",
         "editor.formatOnSave": true
     },
-    "shellformat.path": "shfmt",
-    "shellformat.flag": "-i 4",
+    "shellformat": {
+        "path": "shfmt",
+        "flag": "-i 4"
+    }
 }
