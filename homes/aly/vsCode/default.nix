@@ -32,6 +32,7 @@
 
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
+        "direnv.restart.automatic" = true;
         "editor.fontSize" = lib.mkForce (config.stylix.fonts.sizes.applications + 3);
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
@@ -41,8 +42,10 @@
         "editor.wordWrapColumn" = 80;
         "explorer.confirmDelete" = false;
         "files.autoSave" = "afterDelay";
+        "git.autoStash" = true;
         "git.autofetch" = true;
         "git.confirmSync" = false;
+        "github.gitProtocol" = "ssh";
 
         "nix" = {
           "enableLanguageServer" = true;
