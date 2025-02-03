@@ -25,6 +25,14 @@
           "command" = "workbench.action.showCommands";
         }
         {
+          "key" = "ctrl+shift+t";
+          "command" = "-workbench.action.reopenClosedEditor";
+        }
+        {
+          "key" = "ctrl+shift+t";
+          "command" = "workbench.action.tasks.runTask";
+        }
+        {
           "key" = "ctrl+shift+p";
           "command" = "-workbench.action.showCommands";
         }
