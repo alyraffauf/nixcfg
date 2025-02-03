@@ -114,9 +114,14 @@
       default = pkgs.mkShell {
         packages =
           (with pkgs; [
+            alejandra
             git
+            mdformat
             nh
             nix-update
+            nixd
+            rubocop
+            shfmt
           ])
           ++ [
             self.inputs.agenix.packages.${pkgs.system}.default

@@ -47,30 +47,6 @@
         "git.confirmSync" = false;
         "github.gitProtocol" = "ssh";
 
-        "nix" = {
-          "enableLanguageServer" = true;
-          "formatterPath" = lib.getExe pkgs.alejandra;
-          "serverPath" = lib.getExe pkgs.nixd;
-
-          "serverSettings" = {
-            "nil" = {
-              "diagnostics" = {
-                "ignored" = ["unused_binding" "unused_with"];
-              };
-
-              "formatting" = {
-                "command" = ["${lib.getExe pkgs.alejandra}"];
-              };
-            };
-
-            "nixd" = {
-              "formatting" = {
-                "command" = ["${lib.getExe pkgs.alejandra}"];
-              };
-            };
-          };
-        };
-
         "[shellscript]" = {
           "editor.defaultFormatter" = "foxundermoon.shell-format";
         };
