@@ -9,7 +9,6 @@
     nix = {
       gc = {
         automatic = true;
-        dates = "daily";
         options = "--delete-older-than 7d";
         persistent = true;
         randomizedDelaySec = "60min";
@@ -21,10 +20,13 @@
         max-free = ${toString (5 * 1024 * 1024 * 1024)}   # 5 GiB
       '';
 
-      optimise.automatic = true;
+      optimise = {
+        automatic = true;
+        persistent = true;
+        randomizedDelaySec = "60min";
+      };
 
       settings = {
-        auto-optimise-store = true;
         experimental-features = ["nix-command" "flakes"];
 
         substituters = [
