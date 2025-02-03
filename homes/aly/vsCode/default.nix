@@ -61,20 +61,12 @@
       };
 
       extensions = with pkgs.vscode-extensions; [
-        foxundermoon.shell-format
         github.vscode-github-actions
         github.vscode-pull-request-github
-        jnoortheen.nix-ide
-        justusadam.language-haskell
-        mads-hartmann.bash-ide-vscode
-        mkhl.direnv
         ms-python.python
-        ms-vscode.cpptools-extension-pack
         oderwat.indent-rainbow
         rubymaniac.vscode-paste-and-indent
-        rust-lang.rust-analyzer
         supermaven.supermaven
-        tomoki1207.pdf
       ];
     };
   };
