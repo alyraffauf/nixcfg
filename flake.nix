@@ -115,12 +115,14 @@
         packages =
           (with pkgs; [
             alejandra
+            bash-language-server
             git
             mdformat
             nh
             nix-update
             nixd
             rubocop
+            shellcheck
             shfmt
           ])
           ++ [
