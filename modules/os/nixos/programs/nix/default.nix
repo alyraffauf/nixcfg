@@ -15,10 +15,10 @@
         randomizedDelaySec = "60min";
       };
 
-      # Run GC when there is less than 100MiB left.
+      # Run GC when there is less than 1GiB left.
       extraOptions = ''
-        min-free = ${toString (100 * 1024 * 1024)}
-        max-free = ${toString (1024 * 1024 * 1024)}
+        min-free = ${toString (1 * 1024 * 1024 * 1024)}   # 1 GiB
+        max-free = ${toString (5 * 1024 * 1024 * 1024)}   # 5 GiB
       '';
 
       optimise.automatic = true;
