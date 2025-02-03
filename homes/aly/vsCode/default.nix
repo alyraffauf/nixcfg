@@ -91,6 +91,7 @@
         github.vscode-pull-request-github
         jnoortheen.nix-ide
         justusadam.language-haskell
+        mkhl.direnv
         ms-python.python
         ms-vscode.cpptools-extension-pack
         oderwat.indent-rainbow
