@@ -12,7 +12,7 @@ in {
     forceMimeAssociations = lib.mkEnableOption "force mime associations for defaultApps";
 
     audioPlayer = lib.mkPackageOption pkgs "audio player" {default = ["celluloid"];};
-    editor = lib.mkPackageOption pkgs "text editor" {default = ["vscodium"];};
+    editor = lib.mkPackageOption pkgs "text editor" {default = ["gnome-text-editor"];};
     fileManager = lib.mkPackageOption pkgs "file manager" {default = ["nemo"];};
     imageViewer = lib.mkPackageOption pkgs "image viewer" {default = ["eog"];};
     pdfViewer = lib.mkPackageOption pkgs "pdf viewer" {default = ["evince"];};
