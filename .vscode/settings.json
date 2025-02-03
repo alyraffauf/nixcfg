@@ -1,4 +1,7 @@
 {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
     "nix": {
         "enableLanguageServer": true,
         "formatterPath": "alejandra",
@@ -26,4 +29,10 @@
             }
         }
     },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.formatOnSave": true
+    },
+    "shellformat.path": "shfmt",
+    "shellformat.flag": "-i 4",
 }

@@ -1,5 +1,6 @@
 {
     "recommendations": [
+        "foxundermoon.shell-format",
         "jnoortheen.nix-ide",
         "mkhl.direnv"
     ]

@@ -52,21 +52,12 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "github.gitProtocol" = "ssh";
-
-        "[shellscript]" = {
-          "editor.defaultFormatter" = "foxundermoon.shell-format";
-        };
-
-        "shellformat.flag" = "-i 4";
-        "update.mode" = "none";
         "window.menuBarVisibility" = "hidden";
 
         "window.titleBarStyle" =
           if config.myHome.desktop.gnome.enable
           then "custom"
           else "native";
-
-        "window.zoomPerWindow" = false;
       };
 
       extensions = with pkgs.vscode-extensions; [
