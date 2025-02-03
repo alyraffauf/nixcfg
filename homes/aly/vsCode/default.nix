@@ -86,7 +86,6 @@
       };
 
       extensions = with pkgs.vscode-extensions; [
-        coolbear.systemd-unit-file
         foxundermoon.shell-format
         github.vscode-github-actions
         github.vscode-pull-request-github
