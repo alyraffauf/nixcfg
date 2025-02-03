@@ -66,6 +66,7 @@
         github.vscode-pull-request-github
         jnoortheen.nix-ide
         justusadam.language-haskell
+        mads-hartmann.bash-ide-vscode
         mkhl.direnv
         ms-python.python
         ms-vscode.cpptools-extension-pack
