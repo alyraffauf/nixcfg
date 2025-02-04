@@ -10,7 +10,6 @@
   config = {
     boot.initrd.availableKernelModules = [
       "nvme"
-      "sdhci_pci"
       "thunderbolt"
     ];
 
