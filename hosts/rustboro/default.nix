@@ -1,7 +1,6 @@
 # Lenovo Thinkpad T440p with a Core i5 4210M, 16GB RAM, 512GB SSD.
 {
   config,
-  lib,
   self,
   ...
 }: {
@@ -47,8 +46,8 @@
     services = {
       greetd = {
         enable = true;
-        autologin = "aly";
-        session = lib.getExe config.programs.hyprland.package;
+        # autologin = "aly";
+        # session = lib.getExe config.programs.hyprland.package;
       };
 
       syncthing = {
@@ -63,8 +62,15 @@
     };
   };
 
-  myUsers.aly = {
-    enable = true;
-    password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
+  myUsers = {
+    aly = {
+      enable = true;
+      password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
+    };
+
+    dustin = {
+      enable = true;
+      password = "$y$j9T$Dj0ydy3mkzZApRRMy5Af.1$tvYnEZWgvdAVExGOuLoLXGDBUueEPosgcBDnJzak1R9";
+    };
   };
 }
