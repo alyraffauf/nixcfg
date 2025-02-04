@@ -8,14 +8,14 @@ ThinkPad X1 Carbon Gen 9.
 
 ## Specs
 
-| Component   | Details                  |
-| ----------- | ------------------------ |
-| **Model**   | ThinkPad X1 Carbon Gen 9 |
-| **CPU**     | Intel Core i7-1185G7     |
-| **Disk**    | 512GB NVMe SSD           |
-| **Display** | 14" 1920x1200, 60Hz, IPS |
-| **GPU**     | Intel Iris Xe Graphics   |
-| **RAM**     | 16GB LPDDR4x-4266        |
+| Component   | Details                         |
+| ----------- | ------------------------------- |
+| **Model**   | ThinkPad X1 Carbon Gen 9        |
+| **CPU**     | Intel Core i7-1165G7            |
+| **Disk**    | 512GB NVMe SSD                  |
+| **Display** | 14" 1920x1200, 60Hz, IPS, Touch |
+| **GPU**     | Intel Iris Xe Graphics          |
+| **RAM**     | 132GB LPDDR4x-4266              |
 
 ---
 
