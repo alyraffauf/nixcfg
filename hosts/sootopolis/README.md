@@ -15,7 +15,7 @@ ThinkPad X1 Carbon Gen 9.
 | **Disk**    | 512GB NVMe SSD                  |
 | **Display** | 14" 1920x1200, 60Hz, IPS, Touch |
 | **GPU**     | Intel Iris Xe Graphics          |
-| **RAM**     | 132GB LPDDR4x-4266              |
+| **RAM**     | 32GB LPDDR4x-4266               |
 
 ---
 
