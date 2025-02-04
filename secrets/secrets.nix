@@ -7,6 +7,7 @@ let
     "petalburg"
     "rustboro"
     "slateport"
+    "sootopolis"
   ];
   users = [
     "aly_fallarbor"
@@ -16,6 +17,7 @@ let
     "aly_petalburg"
     "aly_rustboro"
     "aly_slateport"
+    "aly_sootopolis"
   ];
   systemKeys = builtins.map (host: builtins.readFile ./publicKeys/root_${host}.pub) hosts;
   userKeys = builtins.map (user: builtins.readFile ./publicKeys/${user}.pub) users;
