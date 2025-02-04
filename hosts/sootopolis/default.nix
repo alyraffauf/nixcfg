@@ -12,7 +12,7 @@
     self.nixosModules.locale-en-us
   ];
 
-  environment.variables.GDK_SCALE = "1.2";
+  environment.variables.GDK_SCALE = "1.2.5";
   networking.hostName = "sootopolis";
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "25.05";
@@ -22,7 +22,7 @@
     desktop = {
       hyprland = {
         enable = true;
-        laptopMonitor = "eDP-1,preferred,auto,1.20";
+        laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
       };
     };
 
