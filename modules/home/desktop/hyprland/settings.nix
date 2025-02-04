@@ -93,6 +93,9 @@ in {
   bindl =
     [
       # Volume, microphone, and media keys.
+      "$mod,xf86audiomute,exec,${helpers.media.play}"
+      "$mod,xf86audioprev,exec,${helpers.media.prev}"
+      "$mod,xf86audionext,exec,${helpers.media.next}"
       ",xf86audiomute,exec,${helpers.volume.mute}"
       ",xf86audiomicmute,exec,${helpers.volume.micMute}"
       ",xf86audioplay,exec,${helpers.media.play}"
