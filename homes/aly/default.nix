@@ -51,15 +51,14 @@
         {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
         {id = "mdjildafknihdffpkfmmpnpoiajfjnjd";} # consent-o-matic
 
-        {
+        rec {
           id = "lkbebcjgcmobigpeffafkodonchffocl"; # bypass-paywalls-clean
+          version = "4.0.3.0";
 
           crxPath = pkgs.fetchurl {
-            url = "https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass-paywalls-chrome-clean-4.0.1.0.crx";
-            sha256 = "sha256-n1vt+JKjXQnmA9Ytj2Tfu29yWgfc4EFnzaQ+X+CVqOw=";
+            url = "https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass-paywalls-chrome-clean-${version}.crx";
+            sha256 = "sha256-S1mOGbCBinQyf5XyIXVpL13GSVaIxhNlVflwlBAsf1s=";
           };
-
-          version = "4.0.1.0";
         }
       ];
 
