@@ -14,7 +14,12 @@
 
   environment.variables.GDK_SCALE = "2";
   networking.hostName = "pacifidlog";
-  services.xserver.xkb.options = "ctrl:nocaps";
+
+  services = {
+    pipewire.lowLatency.enable = true;
+    xserver.xkb.options = "ctrl:nocaps";
+  };
+
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 

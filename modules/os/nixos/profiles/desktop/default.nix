@@ -8,11 +8,7 @@
     myNixOS.profiles.desktop.enable = lib.mkEnableOption "desktop workstation optimizations";
 
     services.pipewire.lowLatency = {
-      enable = lib.mkOption {
-        default = config.myNixOS.profiles.desktop.enable;
-        description = "Whether to enable lower latency configuration for PipeWire.";
-        type = lib.types.bool;
-      };
+      enable = lib.mkEnableOption "lower latency configuration for PipeWire";
 
       quantum = lib.mkOption {
         default = 64;
