@@ -98,13 +98,8 @@ in {
           [
             {
               timeout = 30;
-              on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd chromeos::kbd_backlight set 0";
-              on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd chromeos::kbd_backlight";
-            }
-            {
-              timeout = 30;
-              on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd platform::kbd_backlight set 0";
-              on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd platform::kbd_backlight";
+              on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd *::kbd_backlight set 0";
+              on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd *::kbd_backlight";
             }
             {
               timeout = 60;
