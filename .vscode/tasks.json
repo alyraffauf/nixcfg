@@ -27,7 +27,7 @@
             "command": "nh",
             "args": [
                 "os",
-                "switch"
+                "test"
             ],
             "group": {
                 "kind": "build",
