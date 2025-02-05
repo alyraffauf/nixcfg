@@ -100,24 +100,6 @@
       playerctld.enable = lib.mkDefault true;
     };
 
-    stylix = {
-      iconTheme = {
-        enable = true;
-        dark = "Papirus-Dark";
-        light = "Papirus";
-        package = pkgs.papirus-icon-theme.override {color = "adwaita";};
-      };
-
-      targets.gtk.extraCss = builtins.concatStringsSep "\n" [
-        (lib.optionalString (config.stylix.polarity == "light")
-          ''
-            tooltip {
-              &.background { background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups}); }
-              background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups});
-            }'')
-      ];
-    };
-
     systemd.user.services.polkit-gnome-authentication-agent = {
       Unit = {
         After = "graphical-session.target";
