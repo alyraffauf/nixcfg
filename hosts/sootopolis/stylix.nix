@@ -6,7 +6,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
-    image = "${self.inputs.wallpapers}/wallhaven-9dqyy8.png";
+    image = "${self.inputs.wallpapers}/wallhaven-4oyd2m.jpg";
     imageScalingMode = "fill";
     polarity = "dark";
 
