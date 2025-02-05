@@ -16,10 +16,10 @@
     home-manager = {
       sharedModules = [
         {
-          services.easyeffects = {
-            enable = true;
-            preset = "X1.json";
-          };
+          # services.easyeffects = {
+          #   enable = true;
+          #   preset = "X1.json";
+          # };
 
           xdg.configFile."easyeffects/output/X1.json".source = ./easyeffects.json;
         }
