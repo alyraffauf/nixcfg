@@ -80,13 +80,13 @@
     };
 
     myHome.profiles.defaultApps = {
-      audioPlayer = lib.mkDefault pkgs.rhythmbox;
-      editor = lib.mkDefault pkgs.gnome-text-editor;
-      fileManager = lib.mkDefault pkgs.nautilus;
-      imageViewer = lib.mkDefault pkgs.loupe;
-      pdfViewer = lib.mkDefault pkgs.evince;
-      terminal = lib.mkDefault pkgs.ptyxis;
-      videoPlayer = lib.mkDefault pkgs.celluloid;
+      audioPlayer.package = lib.mkDefault pkgs.rhythmbox;
+      editor.package = lib.mkDefault pkgs.gnome-text-editor;
+      fileManager.package = lib.mkDefault pkgs.nautilus;
+      imageViewer.package = lib.mkDefault pkgs.loupe;
+      pdfViewer.package = lib.mkDefault pkgs.evince;
+      terminal.package = lib.mkDefault pkgs.ptyxis;
+      videoPlayer.package = lib.mkDefault pkgs.celluloid;
     };
   };
 }

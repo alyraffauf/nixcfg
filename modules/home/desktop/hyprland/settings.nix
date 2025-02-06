@@ -7,10 +7,10 @@
   cfg = config.myHome;
 
   defaultApps = {
-    terminal = cfg.profiles.defaultApps.terminal or pkgs.wezterm;
-    webBrowser = cfg.profiles.defaultApps.webBrowser or config.programs.firefox.finalPackage;
-    fileManager = cfg.profiles.defaultApps.fileManager or pkgs.nemo;
-    editor = cfg.profiles.defaultApps.editor or pkgs.vscodium;
+    terminal = cfg.profiles.defaultApps.terminal.exec or (lib.getExe pkgs.wezterm);
+    webBrowser = cfg.profiles.defaultApps.webBrowser.exec or (lib.getExe config.programs.firefox.finalPackage);
+    fileManager = cfg.profiles.defaultApps.fileManager.exec or (lib.getExe pkgs.nemo);
+    editor = cfg.profiles.defaultApps.editor.exec or (lib.getExe pkgs.gnome-text-editor);
   };
 
   scripts = import ./scripts.nix {inherit config lib pkgs;};
@@ -59,11 +59,11 @@ in {
       "$mod SHIFT,Tab,exec,${lib.getExe config.programs.rofi.package} -show window"
       "$mod SHIFT,V,togglefloating"
       "$mod SHIFT,W,fullscreen"
-      "$mod,B,exec,${lib.getExe defaultApps.webBrowser}"
+      "$mod,B,exec,${defaultApps.webBrowser}"
       "$mod,C,killactive"
       "$mod,comma,exec,${lib.getExe pkgs.hyprnome} --previous"
-      "$mod,E,exec,${lib.getExe defaultApps.editor}"
-      "$mod,F,exec,${lib.getExe defaultApps.fileManager}"
+      "$mod,E,exec,${defaultApps.editor}"
+      "$mod,F,exec,${defaultApps.fileManager}"
       "$mod,F11,exec,pkill -SIGUSR1 waybar"
       "$mod,H,changegroupactive,b"
       "$mod,L,changegroupactive,f"
@@ -74,7 +74,7 @@ in {
       "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "$mod,Right,changegroupactive,f"
       "$mod,S,togglespecialworkspace,magic"
-      "$mod,T,exec,${lib.getExe defaultApps.terminal}"
+      "$mod,T,exec,${defaultApps.terminal}"
       # "$mod,Tab,overview:toggle"
       "CTRL,F12,exec,${lib.getExe helpers.screenshot}"
     ]

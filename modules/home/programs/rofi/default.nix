@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.myHome;
-  defaultApps.terminal = cfg.profiles.defaultApps.terminal or pkgs.wezterm;
+  defaultApps.terminal = cfg.profiles.defaultApps.terminal.exec or (lib.getExe pkgs.wezterm);
   inherit (config.lib.formats.rasi) mkLiteral;
 
   mkRgba = opacity: color: let
@@ -39,7 +39,7 @@ in {
         pkgs.rofi-power-menu
       ];
 
-      terminal = lib.getExe defaultApps.terminal;
+      terminal = defaultApps.terminal;
       theme = {
         "*" = {
           background = mkRgba rofiOpacity "base00";
@@ -265,7 +265,7 @@ in {
         [editor]
         gui = ${pkgs.networkmanagerapplet}/bin/nm-connection-editor
         gui_if_available = True
-        terminal = ${lib.getExe defaultApps.terminal}
+        terminal = ${defaultApps.terminal}
       '';
     };
   };

@@ -16,13 +16,22 @@
     };
 
     myHome.profiles.defaultApps = {
-      audioPlayer = lib.mkDefault pkgs.kdePackages.dragon;
-      editor = lib.mkDefault pkgs.kdePackages.kate;
-      fileManager = lib.mkDefault pkgs.kdePackages.dolphin;
-      imageViewer = lib.mkDefault pkgs.kdePackages.gwenview;
-      pdfViewer = lib.mkDefault pkgs.kdePackages.okular;
-      terminal = lib.mkDefault pkgs.kdePackages.konsole;
-      videoPlayer = lib.mkDefault pkgs.kdePackages.dragon;
+      audioPlayer.package = lib.mkDefault pkgs.kdePackages.dragon;
+      editor.package = lib.mkDefault pkgs.kdePackages.kate;
+
+      fileManager = {
+        package = lib.mkDefault pkgs.kdePackages.dolphin;
+        exec = lib.mkDefault (
+          if config.myHome.profiles.defaultApps.fileManager.package == pkgs.kdePackages.dolphin
+          then "dolphin"
+          else (lib.getExe config.myHome.profiles.defaultApps.fileManager.package)
+        );
+      };
+
+      imageViewer.package = lib.mkDefault pkgs.kdePackages.gwenview;
+      pdfViewer.package = lib.mkDefault pkgs.kdePackages.okular;
+      terminal.package = lib.mkDefault pkgs.kdePackages.konsole;
+      videoPlayer.package = lib.mkDefault pkgs.kdePackages.dragon;
     };
   };
 }

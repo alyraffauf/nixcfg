@@ -101,7 +101,7 @@
     profiles = {
       defaultApps = {
         enable = true;
-        editor = config.programs.vscode.package;
+        editor.package = config.programs.vscode.package;
       };
 
       shell.enable = true;
