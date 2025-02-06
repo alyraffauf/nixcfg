@@ -46,19 +46,19 @@ in {
 
         search = {
           inherit engines;
-          default = "Brave";
+          default = "DuckDuckGo";
           force = true;
 
           order = [
-            "Brave"
             "Bing"
-            "Kagi"
-            "Google"
-            "nixpkgs"
-            "Home Manager Options"
-            "NixOS Wiki"
-            "Noogle"
+            "Brave"
             "DuckDuckGo"
+            "Google"
+            "Home Manager Options"
+            "Kagi"
+            "NixOS Wiki"
+            "nixpkgs"
+            "Noogle"
             "Wikipedia"
             "Wiktionary"
           ];
