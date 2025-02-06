@@ -20,7 +20,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.celluloid;
+        default = lib.getExe cfg.audioPlayer.package;
         description = "The executable path for the default audio player.";
       };
     };
@@ -34,7 +34,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.gnome-text-editor;
+        default = lib.getExe cfg.editor.package;
         description = "The executable path for the default text editor.";
       };
     };
@@ -48,7 +48,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.nemo;
+        default = lib.getExe cfg.fileManager.package;
         description = "The executable path for the default file manager.";
       };
     };
@@ -62,7 +62,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.eog;
+        default = lib.getExe cfg.imageViewer.package;
         description = "The executable path for the default image viewer.";
       };
     };
@@ -76,7 +76,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.evince;
+        default = lib.getExe cfg.pdfViewer.package;
         description = "The executable path for the default PDF viewer.";
       };
     };
@@ -90,7 +90,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.wezterm;
+        default = lib.getExe cfg.terminal.package;
         description = "The executable path for the default terminal emulator.";
       };
     };
@@ -104,7 +104,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.neovim;
+        default = lib.getExe cfg.terminalEditor.package;
         description = "The executable path for the default terminal text editor.";
       };
     };
@@ -118,7 +118,7 @@ in {
 
       exec = lib.mkOption {
         type = lib.types.str;
-        default = lib.getExe pkgs.celluloid;
+        default = lib.getExe cfg.videoPlayer.package;
         description = "The executable path for the default video player.";
       };
     };
