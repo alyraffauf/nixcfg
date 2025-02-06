@@ -24,6 +24,13 @@
     ];
   };
 
+  "DuckDuckGo" = {
+    metaData = {
+      hidden = false;
+      alias = "!ddg";
+    };
+  };
+
   "Google" = {
     metaData = {
       hidden = false;
