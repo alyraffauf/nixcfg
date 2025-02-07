@@ -39,6 +39,12 @@
       networkmanagerapplet
     ];
 
+    qt = {
+      enable = true;
+      platformTheme.name = "kde";
+      style.name = "Breeze";
+    };
+
     dconf.settings = {
       "org/gnome/desktop/wm/preferences".button-layout = "";
 
