@@ -12,7 +12,6 @@ The `hosts/` directory is organized as follows:
 hosts/
 └── slateport/     # Lenovo ThinkCentre M700 Tiny
 ├── fallarbor/     # Framework Laptop 13 (11th Gen Intel)
-├── lavaridge/     # Framework Laptop 13 (AMD 7000 Series)
 ├── lilycove/      # Custom Mini-ITX Gaming Desktop
 ├── mauville/      # Beelink Mini S12 Pro Home Server
 ├── pacifidlog/    # Asus ROG Ally X
