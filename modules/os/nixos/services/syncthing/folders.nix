@@ -30,7 +30,7 @@
   };
 
   "roms" = {
-    devices = ["dewford" "lilycove" "mauville" "pacifidlog" "petalburg"];
+    devices = ["dewford" "lilycove" "mauville" "pacifidlog" "petalburg" "sootopolis"];
     id = "emudeck";
     path = "/home/aly/roms";
   };
