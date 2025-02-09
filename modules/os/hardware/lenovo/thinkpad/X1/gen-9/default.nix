@@ -1,6 +1,7 @@
 {self, ...}: {
   imports = [
     ../../common.nix
+    ./equalizer.nix
     self.nixosModules.hardware-common
     self.nixosModules.hardware-intel-cpu
     self.nixosModules.hardware-intel-gpu
@@ -12,19 +13,6 @@
       "nvme"
       "thunderbolt"
     ];
-
-    home-manager = {
-      sharedModules = [
-        {
-          # services.easyeffects = {
-          #   enable = true;
-          #   preset = "X1.json";
-          # };
-
-          xdg.configFile."easyeffects/output/X1.json".source = ./easyeffects.json;
-        }
-      ];
-    };
 
     services = {
       fprintd.enable = true;
