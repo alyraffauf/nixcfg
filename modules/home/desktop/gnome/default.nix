@@ -30,17 +30,22 @@
         "org/gnome/mutter" = {
           dynamic-workspaces = true;
           edge-tiling = true;
+          experimental-features = ["scale-monitor-framebuffer"];
           workspaces-only-on-primary = true;
         };
 
-        "org/gnome/shell".enabled-extensions = [
-          "appindicatorsupport@rgcjonas.gmail.com"
-          "blur-my-shell@aunetx"
-          "dash-to-dock@micxgx.gmail.com"
-          "drive-menu@gnome-shell-extensions.gcampax.github.com"
-          "tailscale-status@maxgallup.github.com"
-          "tiling-assistant@leleat-on-github"
-        ];
+        "org/gnome/shell" = {
+          enabled-extensions = [
+            "appindicatorsupport@rgcjonas.gmail.com"
+            "blur-my-shell@aunetx"
+            "dash-to-dock@micxgx.gmail.com"
+            "drive-menu@gnome-shell-extensions.gcampax.github.com"
+            "tailscale-status@maxgallup.github.com"
+            "tiling-assistant@leleat-on-github"
+          ];
+
+          welcome-dialog-last-shown-version = "9999999999"; # No welcome dialog.
+        };
 
         "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
 
