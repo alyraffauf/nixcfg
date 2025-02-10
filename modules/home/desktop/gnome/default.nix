@@ -35,14 +35,6 @@
         };
 
         "org/gnome/shell" = {
-          enabled-extensions = [
-            "appindicatorsupport@rgcjonas.gmail.com"
-            "blur-my-shell@aunetx"
-            "dash-to-dock@micxgx.gmail.com"
-            "drive-menu@gnome-shell-extensions.gcampax.github.com"
-            "tailscale-status@maxgallup.github.com"
-          ];
-
           welcome-dialog-last-shown-version = "9999999999"; # No welcome dialog.
         };
 
@@ -77,7 +69,6 @@
           {package = pkgs.gnomeExtensions.appindicator;}
           {package = pkgs.gnomeExtensions.blur-my-shell;}
           {package = pkgs.gnomeExtensions.dash-to-dock;}
-          {package = pkgs.gnomeExtensions.tailscale-status;}
           {package = pkgs.gnomeExtensions.tiling-shell;}
         ];
       };
