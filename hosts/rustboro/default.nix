@@ -26,6 +26,10 @@
       };
     };
 
+    kernel.sysctl = {
+      "kernel.unprivileged_userns_clone" = 1; # Required for most browsers, disabled by default in hardened kernels.
+    };
+
     kernelPackages = pkgs.linuxPackages_cachyos-hardened;
   };
 
