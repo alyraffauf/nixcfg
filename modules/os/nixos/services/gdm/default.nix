@@ -36,7 +36,7 @@
     };
 
     services.xserver.displayManager = {
-      autoLogin = lib.mkIf (config.gdm.autologin != null) {
+      autoLogin = lib.mkIf (config.myNixOS.services.gdm.autologin != null) {
         enable = true;
         user = config.gdm.autologin;
       };
