@@ -30,8 +30,6 @@
   };
 
   environment = {
-    memoryAllocator.provider = "graphene-hardened";
-
     systemPackages = with pkgs; [
       protonvpn-gui
       tor-browser
