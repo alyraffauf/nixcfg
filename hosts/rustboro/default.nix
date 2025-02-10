@@ -1,6 +1,7 @@
 # Lenovo Thinkpad T440p with a Core i5 4210M, 16GB RAM, 512GB SSD.
 {
-  config,
+  lib,
+  pkgs,
   self,
   ...
 }: {
@@ -13,64 +14,95 @@
     self.nixosModules.locale-en-us
   ];
 
-  environment.variables.GDK_SCALE = "1.25";
+  boot = {
+    initrd.systemd.enable = lib.mkDefault true;
+
+    loader = {
+      efi.canTouchEfiVariables = lib.mkDefault true;
+
+      systemd-boot = {
+        enable = lib.mkDefault true;
+        configurationLimit = lib.mkDefault 10;
+      };
+    };
+
+    kernel.sysctl = {
+      "kernel.unprivileged_userns_clone" = 1; # Required for most browsers, disabled by default in hardened kernels.
+    };
+
+    kernelPackages = pkgs.linuxPackages_cachyos-hardened;
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      protonvpn-gui
+      tor-browser
+    ];
+
+    variables.GDK_SCALE = "1.25";
+  };
+
   networking.hostName = "rustboro";
-  services.xserver.xkb.options = "ctrl:nocaps";
-  system.stateVersion = "24.05";
+
+  programs = {
+    firefox = {
+      enable = true;
+      package = pkgs.librewolf;
+    };
+
+    zsh.enable = true;
+  };
+
+  services = {
+    avahi.enable = lib.mkForce false;
+    openssh.enable = lib.mkForce false;
+    xserver.xkb.options = "ctrl:nocaps";
+  };
+
+  system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
+
+  users = {
+    defaultUserShell = pkgs.zsh;
+    mutableUsers = false;
+
+    users.aly = {
+      description = "Aly Raffauf";
+
+      extraGroups = [
+        "dialout"
+        "lp"
+        "networkmanager"
+        "plugdev"
+        "scanner"
+        "video"
+        "wheel"
+      ];
+
+      hashedPassword = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
+      isNormalUser = true;
+
+      shell = pkgs.zsh;
+      uid = 1000;
+    };
+  };
+
   myDisko.installDrive = "/dev/sda";
 
   myNixOS = {
-    desktop = {
-      hyprland = {
-        enable = true;
-        laptopMonitor = "desc:LG Display 0x0569,preferred,auto,1.20";
-      };
-    };
+    desktop.gnome.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
-      desktop.enable = true;
-      media-share.enable = true;
-      wifi.enable = true;
     };
 
     programs = {
-      firefox.enable = true;
       lanzaboote.enable = true;
       nix.enable = true;
     };
 
-    services = {
-      greetd = {
-        enable = true;
-        # autologin = "aly";
-        # session = lib.getExe config.programs.hyprland.package;
-      };
-
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-        syncMusic = true;
-        user = "aly";
-      };
-
-      tailscale.enable = true;
-    };
-  };
-
-  myUsers = {
-    aly = {
-      enable = true;
-      password = "$y$j9T$VMCXwk0X5m6xW6FGLc39F/$r9gmyeB70RCq3k4oLPHFZyy7wng6WyX2xYMKLO/A.rB";
-    };
-
-    dustin = {
-      enable = true;
-      password = "$y$j9T$Dj0ydy3mkzZApRRMy5Af.1$tvYnEZWgvdAVExGOuLoLXGDBUueEPosgcBDnJzak1R9";
-    };
+    services.gdm.enable = true;
   };
 }
