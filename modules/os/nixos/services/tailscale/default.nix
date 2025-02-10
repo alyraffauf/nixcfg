@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myNixOS.services.tailscale = {
@@ -18,6 +19,14 @@
       {
         assertion = config.myNixOS.services.tailscale.authKeyFile != null;
         message = "config.tailscale.authKeyFile cannot be null.";
+      }
+    ];
+
+    home-manager.sharedModules = [
+      {
+        programs.gnome-shell.extensions = [
+          {package = pkgs.gnomeExtensions.tailscale-status;}
+        ];
       }
     ];
 
