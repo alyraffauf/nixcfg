@@ -42,7 +42,10 @@
       nh.enable = true;
     };
 
-    networking.networkmanager.enable = true;
+    networking = {
+      networkmanager.enable = true;
+      nftables.enable = true;
+    };
 
     security = {
       polkit.enable = true;
