@@ -6,12 +6,6 @@
         self.homeManagerModules.default
       ];
 
-      dconf.settings = {
-        "org/gnome/mutter" = {
-          experimental-features = ["scale-monitor-framebuffer"];
-        };
-      };
-
       home = {
         homeDirectory = "/home/aly";
 
