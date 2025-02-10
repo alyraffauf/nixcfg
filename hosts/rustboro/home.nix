@@ -2,6 +2,7 @@
   home-manager.users.aly = (
     {pkgs, ...}: {
       imports = [
+        ../../homes/aly/vsCode
         self.homeManagerModules.default
       ];
 
