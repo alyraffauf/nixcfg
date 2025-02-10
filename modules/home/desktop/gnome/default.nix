@@ -41,7 +41,6 @@
             "dash-to-dock@micxgx.gmail.com"
             "drive-menu@gnome-shell-extensions.gcampax.github.com"
             "tailscale-status@maxgallup.github.com"
-            "tiling-assistant@leleat-on-github"
           ];
 
           welcome-dialog-last-shown-version = "9999999999"; # No welcome dialog.
@@ -79,7 +78,7 @@
           {package = pkgs.gnomeExtensions.blur-my-shell;}
           {package = pkgs.gnomeExtensions.dash-to-dock;}
           {package = pkgs.gnomeExtensions.tailscale-status;}
-          {package = pkgs.gnomeExtensions.tiling-assistant;}
+          {package = pkgs.gnomeExtensions.tiling-shell;}
         ];
       };
     };
