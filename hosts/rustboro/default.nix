@@ -13,7 +13,22 @@
     self.nixosModules.locale-en-us
   ];
 
-  environment.variables.GDK_SCALE = "1.25";
+  environment = {
+    gnome.excludePackages = with pkgs; [
+      epiphany
+      geary
+      gnome-calendar
+      gnome-clocks
+      gnome-contacts
+      gnome-maps
+      gnome-tour
+      gnome-weather
+      snapshot
+    ];
+
+    variables.GDK_SCALE = "1.25";
+  };
+
   networking.hostName = "rustboro";
 
   programs = {
@@ -25,7 +40,15 @@
     zsh.enable = true;
   };
 
-  services.xserver.xkb.options = "ctrl:nocaps";
+  services.xserver = {
+    desktopManager.gnome.favoriteAppsOverride = ''
+      [org.gnome.shell]
+      favorite-apps=[ 'librewolf.desktop', 'torbrowser.desktop', 'nautilus.desktop' ]
+    '';
+
+    xkb.options = "ctrl:nocaps";
+  };
+
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
