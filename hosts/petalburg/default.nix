@@ -37,8 +37,6 @@
   };
 
   services = {
-    pipewire.lowLatency.enable = false;
-
     udev.extraRules = lib.mkIf config.programs.hyprland.enable (let
       hyprlandDynamicRes = pkgs.writeShellScript "hyprland-dynamic-resolution" ''
         MON="eDP-1"
