@@ -1,6 +1,5 @@
 # Lenovo Thinkpad T440p with a Core i5 4210M, 16GB RAM, 512GB SSD.
 {
-  lib,
   pkgs,
   self,
   ...
@@ -14,34 +13,7 @@
     self.nixosModules.locale-en-us
   ];
 
-  boot = {
-    initrd.systemd.enable = lib.mkDefault true;
-
-    loader = {
-      efi.canTouchEfiVariables = lib.mkDefault true;
-
-      systemd-boot = {
-        enable = lib.mkDefault true;
-        configurationLimit = lib.mkDefault 10;
-      };
-    };
-
-    kernel.sysctl = {
-      "kernel.unprivileged_userns_clone" = 1; # Required for most browsers, disabled by default in hardened kernels.
-    };
-
-    kernelPackages = pkgs.linuxPackages_cachyos-hardened;
-  };
-
-  environment = {
-    systemPackages = with pkgs; [
-      protonvpn-gui
-      tor-browser
-    ];
-
-    variables.GDK_SCALE = "1.25";
-  };
-
+  environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "rustboro";
 
   programs = {
@@ -53,12 +25,7 @@
     zsh.enable = true;
   };
 
-  services = {
-    avahi.enable = lib.mkForce false;
-    openssh.enable = lib.mkForce false;
-    xserver.xkb.options = "ctrl:nocaps";
-  };
-
+  services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
@@ -96,6 +63,7 @@
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
+      hardened.enable = true;
     };
 
     programs = {
