@@ -32,9 +32,9 @@
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
-      desktop.enable = true;
       gaming.enable = true;
       wifi.enable = true;
+      workstation.enable = true;
     };
 
     programs = {

@@ -51,8 +51,8 @@
       };
 
       profiles = {
-        desktop.enable = true;
         gaming.enable = true;
+        workstation.enable = true;
       };
     };
   };

@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    myNixOS.profiles.desktop.enable = lib.mkEnableOption "desktop workstation optimizations";
+    myNixOS.profiles.workstation.enable = lib.mkEnableOption "workstation optimizations for gaming, media, and desktop use.";
 
     services.pipewire.lowLatency = {
       enable = lib.mkEnableOption "lower latency configuration for PipeWire";
@@ -23,10 +23,10 @@
         example = 96000;
         type = lib.types.int;
       };
-    };
+    };  
   };
 
-  config = lib.mkIf config.myNixOS.profiles.desktop.enable {
+  config = lib.mkIf config.myNixOS.profiles.workstation.enable {
     assertions = [
       {
         assertion = !(config.programs.gamemode.enable && config.services.ananicy.enable);
