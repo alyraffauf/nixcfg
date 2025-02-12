@@ -19,6 +19,8 @@
       veracrypt
     ]);
 
+    programs.system-config-printer.enable = lib.mkForce false;
+
     services = {
       avahi.enable = lib.mkForce false;
 
@@ -29,6 +31,8 @@
       };
 
       openssh.enable = lib.mkForce false;
+      printing.enable = lib.mkForce false;
+      system-config-printer.enable = lib.mkForce false;
     };
 
     zramSwap = {

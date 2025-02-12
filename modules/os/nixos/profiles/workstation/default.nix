@@ -23,7 +23,7 @@
         example = 96000;
         type = lib.types.int;
       };
-    };  
+    };
   };
 
   config = lib.mkIf config.myNixOS.profiles.workstation.enable {
