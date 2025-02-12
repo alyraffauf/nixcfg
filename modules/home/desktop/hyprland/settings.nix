@@ -207,7 +207,7 @@ in {
     font_family = config.stylix.fonts.sansSerif.name;
     key_press_enables_dpms = true;
     mouse_move_enables_dpms = true;
-    swallow_regex = "^(Alacritty|kitty|footclient|foot|com\.mitchellh\.ghostty|org\.wezfurlong\.wezterm)$";
+    swallow_regex = "^(Alacritty|kitty|footclient|foot|com\.mitchellh\.ghostty|org\.wezfurlong\.wezterm|codium)$";
     vfr = true;
   };
 
