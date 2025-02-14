@@ -81,7 +81,12 @@
         };
       };
 
-      zellij.enable = true;
+      zellij = {
+        enable = true;
+        enableBashIntegration = false;
+        enableZshIntegration = false;
+        enableFishIntegration = false;
+      };
 
       zsh = {
         enable = true;
