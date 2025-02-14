@@ -15,6 +15,22 @@
       };
     };
 
+    qt = {
+      enable = true;
+
+      platformTheme.package = with pkgs.kdePackages; [
+        plasma-integration
+        systemsettings
+      ];
+
+      style = lib.mkForce {
+        package = pkgs.kdePackages.breeze;
+        name = "Breeze";
+      };
+    };
+
+    systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME = lib.mkForce "kde";
+
     myHome.profiles.defaultApps = {
       audioPlayer.package = lib.mkDefault pkgs.kdePackages.dragon;
       editor.package = lib.mkDefault pkgs.kdePackages.kate;
