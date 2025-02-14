@@ -21,7 +21,6 @@ let
   userKeys = builtins.map (user: builtins.readFile ./publicKeys/${user}.pub) users;
   keys = systemKeys ++ userKeys;
 in {
-  "aly/rclone.age".publicKeys = keys;
   "aly/mail/achacega_gmail.age".publicKeys = keys;
   "aly/mail/alyraffauf_fastmail.age".publicKeys = keys;
   "aly/syncthing/fallarbor/cert.age".publicKeys = keys;
@@ -46,6 +45,7 @@ in {
   "k3s.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
   "lastFM/secret.age".publicKeys = keys;
+  "rclone/b2.age".publicKeys = keys;
   "spotify/clientId.age".publicKeys = keys;
   "spotify/clientSecret.age".publicKeys = keys;
   "tailscale/authKeyFile.age".publicKeys = keys;

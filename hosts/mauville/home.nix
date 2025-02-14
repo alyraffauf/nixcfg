@@ -14,12 +14,7 @@
         self.inputs.agenix.homeManagerModules.default
       ];
 
-      age.secrets = {
-        rclone = {
-          file = ../../secrets/aly/rclone.age;
-          path = "${config.home.homeDirectory}/.config/rclone/rclone.conf";
-        };
-      };
+      age.secrets.rclone-b2.file = ../../secrets/rclone/b2.age;
 
       home = {
         homeDirectory = "/home/aly";
@@ -68,7 +63,7 @@
               # Recursively backup folders to B2 with sanity checks.
               for folder in "''${!backups[@]}"; do
                 if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
-                  rclone sync --metadata --track-renames --transfers 10 --progress $folder b2:''${backups[$folder]}
+                  rclone --config=${config.age.secrets.rclone-b2.path} \
                 else
                   echo "$folder does not exist or is empty."
                   exit 1
