@@ -155,11 +155,6 @@ in {
 
   dwindle.preserve_split = true;
 
-  env = [
-    "QT_QPA_PLATFORMTHEME,kde"
-    "QT_STYLE_OVERRIDE,Breeze"
-  ];
-
   input = {
     focus_on_close = 1;
     follow_mouse = 1;
