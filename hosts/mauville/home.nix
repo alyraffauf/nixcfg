@@ -15,8 +15,10 @@
       ];
 
       age.secrets = {
-        backblazeKeyId.file = ../../secrets/aly/backblaze/keyId.age;
-        backblazeKey.file = ../../secrets/aly/backblaze/key.age;
+        rclone = {
+          file = ../../secrets/aly/rclone.age;
+          path = "${config.home.homeDirectory}/.config/rclone/rclone.conf";
+        };
       };
 
       home = {
@@ -24,6 +26,7 @@
 
         packages = with pkgs; [
           curl
+          rclone
         ];
 
         stateVersion = "25.05";
@@ -48,7 +51,7 @@
               "PATH=${
                 lib.makeBinPath (with pkgs; [
                   coreutils
-                  backblaze-b2
+                  rclone
                 ])
               }"
             ];
@@ -62,12 +65,10 @@
                 ['/mnt/Media/Pictures']="b2://aly-pictures"
               )
 
-              backblaze-b2 authorize_account `cat ${config.age.secrets.backblazeKeyId.path}` `cat ${config.age.secrets.backblazeKey.path}`
-
               # Recursively backup folders to B2 with sanity checks.
               for folder in "''${!backups[@]}"; do
                 if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
-                  backblaze-b2 sync --delete $folder ''${backups[$folder]}
+                  rclone sync --metadata --track-renames --transfers 10 --progress $folder b2:''${backups[$folder]}
                 else
                   echo "$folder does not exist or is empty."
                   exit 1

@@ -21,8 +21,7 @@ let
   userKeys = builtins.map (user: builtins.readFile ./publicKeys/${user}.pub) users;
   keys = systemKeys ++ userKeys;
 in {
-  "aly/backblaze/key.age".publicKeys = keys;
-  "aly/backblaze/keyId.age".publicKeys = keys;
+  "aly/rclone.age".publicKeys = keys;
   "aly/mail/achacega_gmail.age".publicKeys = keys;
   "aly/mail/alyraffauf_fastmail.age".publicKeys = keys;
   "aly/syncthing/fallarbor/cert.age".publicKeys = keys;
