@@ -43,17 +43,6 @@
           welcome-dialog-last-shown-version = "9999999999"; # No welcome dialog.
         };
 
-        "org/gnome/shell/extensions/blur-my-shell/overview".style-components = 3;
-
-        "org/gnome/shell/extensions/blur-my-shell/panel" = {
-          blur = false;
-          customize = true;
-          override-background = false;
-          override-background-dynamically = false;
-          style-panel = 0;
-          unblur-in-overview = true;
-        };
-
         "org/gnome/shell/extensions/dash-to-dock" = {
           background-color = config.lib.stylix.colors.withHashtag.base01;
           click-action = "minimize";
@@ -72,7 +61,6 @@
 
         extensions = [
           {package = pkgs.gnomeExtensions.appindicator;}
-          {package = pkgs.gnomeExtensions.blur-my-shell;}
           {package = pkgs.gnomeExtensions.dash-to-dock;}
           {package = pkgs.gnomeExtensions.tiling-shell;}
         ];
