@@ -29,6 +29,7 @@
       nicotine-plus
       obsidian
       protonvpn-gui
+      rclone
       signal-desktop
       tauon
       transmission-remote-gtk
