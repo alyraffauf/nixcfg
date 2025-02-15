@@ -63,7 +63,7 @@
               # Recursively backup folders to B2 with sanity checks.
               for folder in "''${!backups[@]}"; do
                 if [ -d "$folder" ] && [ "$(ls -A "$folder")" ]; then
-                  rclone --config=${config.age.secrets.rclone-b2.path} \
+                  rclone --config=${config.age.secrets.rclone-b2.path} sync --metadata --track-renames --transfers 10 --progress $folder b2:''${backups[$folder]}
                 else
                   echo "$folder does not exist or is empty."
                   exit 1
