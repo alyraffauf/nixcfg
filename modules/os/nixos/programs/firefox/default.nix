@@ -77,13 +77,22 @@
         };
 
         Preferences = {
-          "browser.aboutConfig.showWarning" = false;
+          # Do not add the extra "Import Bookmarks" button in the bookmarks interface
           "browser.bookmarks.addedImportButton" = false;
+
+          # Mark that the user has accepted the data reporting (telemetry) policy
           "datareporting.policy.dataSubmissionPolicyAccepted" = true;
-          "dom.security.https_only_mode" = true;
+
+          # Allow extensions from all scopes (profile, system, etc.) without auto-disabling them
           "extensions.autoDisableScopes" = 0;
+
+          # Enable VA-API hardware video decoding via FFmpeg (useful on Linux systems)
           "media.ffmpeg.vaapi.enabled" = true;
+
+          # Enable the VP8/VP9 media data decoder, used in WebRTC and video playback
           "media.navigator.mediadatadecoder_vpx_enabled" = true;
+
+          # Enable the Remote Data Decoder (RDD) process for FFmpeg to isolate media decoding tasks
           "media.rdd-ffmpeg.enabled" = true;
         };
 
