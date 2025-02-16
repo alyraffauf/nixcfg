@@ -68,17 +68,10 @@ in {
           (import ./betterfox.nix)
           // {
             "browser.toolbars.bookmarks.visibility" = "newtab";
-            "network.cookie.cookieBehavior" = 1;
-            "privacy.fingerprintingProtection" = true;
-            "privacy.trackingprotection.emailtracking.enabled" = true;
-            "privacy.trackingprotection.enabled" = true;
-            "privacy.trackingprotection.global-checkbox.enabled" = true;
-            "privacy.trackingprotection.socialtracking.enabled" = true;
-            "services.sync.prefs.sync.browser.uiCustomization.state" = true;
+            # "services.sync.prefs.sync.browser.uiCustomization.state" = true;
             "sidebar.revamp" = true;
             "sidebar.verticalTabs" = true;
             "svg.context-properties.content.enabled" = true;
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
       };
 
