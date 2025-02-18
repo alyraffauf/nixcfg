@@ -2,7 +2,7 @@
   "sync" = {
     id = "default";
     path = "/home/aly/sync";
-    devices = ["dewford" "fallarbor" "gsgmba" "iphone12" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
+    devices = ["dewford" "fallarbor" "groudon" "gsgmba" "iphone12" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
 
     versioning = {
       type = "staggered";
