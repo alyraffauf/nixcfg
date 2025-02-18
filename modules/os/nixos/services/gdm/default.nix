@@ -35,13 +35,13 @@
       kwallet.enable = true;
     };
 
-    services.xserver.displayManager = {
-      autoLogin = lib.mkIf (config.myNixOS.services.gdm.autologin != null) {
+    services = {
+      displayManager.autoLogin = lib.mkIf (config.myNixOS.services.gdm.autologin != null) {
         enable = true;
         user = config.myNixOS.services.gdm.autologin;
       };
 
-      gdm.enable = true;
+      xserver.displayManager.gdm.enable = true;
     };
   };
 }
