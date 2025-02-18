@@ -937,11 +937,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1738713127,
-        "narHash": "sha256-mNay7UZKqYomzOvBE+7NGzu0fLqgnMg+4af6Efsb/G8=",
+        "lastModified": 1739746511,
+        "narHash": "sha256-FZO1h1BK6A2A43DmxhhTBnhWNaZApRLEyDKaHY5i+64=",
         "owner": "alyraffauf",
         "repo": "wallpapers",
-        "rev": "e00ade1755ef81c9a9a0001557af9ca5361f3463",
+        "rev": "48bcff23d5efd65d0b57970c89b8ba0229ae4db1",
         "type": "github"
       },
       "original": {
