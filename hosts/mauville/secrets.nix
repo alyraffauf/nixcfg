@@ -1,5 +1,6 @@
 {
   age.secrets = {
+    rclone-b2.file = ../../secrets/rclone/b2.age;
     tailscaleAuthKey.file = ../../secrets/tailscale/authKeyFile.age;
     k3s.file = ../../secrets/k3s.age;
 
