@@ -35,6 +35,8 @@ in {
         "vfs-cache-mode=full" # Enables full read/write caching
         "vfs-read-ahead=512M" # Preload 512MB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
+        "x-systemd.after=network.target"
+        "x-systemd.automount"
       ];
     };
 
@@ -54,6 +56,8 @@ in {
         "vfs-cache-mode=full" # Enables full read/write caching
         "vfs-read-ahead=512M" # Preload 512MB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
+        "x-systemd.after=network.target"
+        "x-systemd.automount"
       ];
     };
   };
