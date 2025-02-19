@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./cloud
     ./firefox
     ./helix
     ./mail
