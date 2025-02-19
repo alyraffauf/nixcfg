@@ -22,7 +22,7 @@
 
       workspace =
         [
-          "special:magic,on-created-empty:${lib.getExe pkgs.fractal}"
+          "special:magic,on-created-empty:${lib.getExe pkgs.signal-desktop}"
           # "f[1],gapsout:0,gapsin:0"
           # "w[tv1],gapsout:0,gapsin:0"
         ]
