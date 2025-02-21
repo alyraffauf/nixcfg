@@ -1,8 +1,22 @@
 {
+  "obsidian" = {
+    devices = ["dewford" "fallarbor" "groudon" "gsgmba" "iphone12" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
+    id = "obsidian";
+    path = "/home/aly/obsidian";
+
+    versioning = {
+      type = "staggered";
+      params = {
+        cleanInterval = "3600";
+        maxAge = "1";
+      };
+    };
+  };
+
   "sync" = {
+    devices = ["dewford" "fallarbor" "groudon" "gsgmba" "iphone12" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
     id = "default";
     path = "/home/aly/sync";
-    devices = ["dewford" "fallarbor" "groudon" "gsgmba" "iphone12" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
 
     versioning = {
       type = "staggered";
