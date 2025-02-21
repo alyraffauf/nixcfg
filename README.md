@@ -27,7 +27,7 @@ This repository contains my NixOS and Home-Manager configurations, along with cu
 ```plaintext
 .
 ├── flake.nix          # Main entry point
-├── homes/              # home-manager configurations
+├── homes/             # home-manager configurations
 ├── hosts/             # NixOS host configurations
 ├── modules/           # Modules for NixOS and home-manager
 ├── overlays/          # Custom Nixpkgs overlays
