@@ -5,11 +5,11 @@
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "adjustor";
-  version = "3.7.5";
+  version = "3.8.0";
   pyproject = true;
 
   src = fetchFromGitHub {
-    hash = "sha256-9jRF6vE9N3JVv06rtFybJkFs/BXHWYz8rnUe8KawuBg=";
+    hash = "sha256-2vyWAVYBB0kDKDMVNeexPRks3PnwREIq17mlVhwShew=";
     owner = "hhd-dev";
     repo = "adjustor";
     rev = "v${version}";
