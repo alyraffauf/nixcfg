@@ -19,6 +19,27 @@ in {
   environment.systemPackages = [pkgs.rclone];
 
   fileSystems = {
+    "${mediaDirectory}/Audiobooks" = {
+      device = "b2:aly-audiobooks";
+      fsType = "rclone";
+
+      options = [
+        "allow_other"
+        "args2env"
+        "cache-dir=${mediaDirectory}/.rclone-cache"
+        "config=${config.age.secrets.rclone-b2.path}"
+        "nodev"
+        "nofail"
+        "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
+        "vfs-cache-max-size=10G" # Cache up to 100GB
+        "vfs-cache-mode=full" # Enables full read/write caching
+        "vfs-read-ahead=512M" # Preload 512MB of data for smoother playback
+        "vfs-write-back=10s" # Delay write operations by 10 seconds
+        "x-systemd.after=network.target"
+        "x-systemd.automount"
+      ];
+    };
+
     "${mediaDirectory}/Movies" = {
       device = "b2:aly-movies";
       fsType = "rclone";

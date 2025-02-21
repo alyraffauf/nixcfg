@@ -55,7 +55,6 @@
               declare -A backups
               backups=(
                 ['/home/aly/sync']="b2://aly-sync"
-                ['/mnt/Media/Audiobooks']="b2://aly-audiobooks"
                 ['/mnt/Media/Music']="b2://aly-music"
                 ['/mnt/Media/Pictures']="b2://aly-pictures"
               )
