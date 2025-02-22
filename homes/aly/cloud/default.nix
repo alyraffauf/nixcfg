@@ -15,6 +15,7 @@
 
       Service = {
         Type = "notify";
+        Environment = ["PATH=/run/wrappers/bin/:$PATH"];
         ExecStartPre = "${lib.getExe' pkgs.coreutils "mkdir"} -p ${mountdir}";
 
         ExecStart = ''
