@@ -95,6 +95,7 @@
 
     forAllHosts = self.inputs.nixpkgs.lib.genAttrs [
       "fallarbor"
+      "fortree"
       "lilycove"
       "mauville"
       "pacifidlog"
