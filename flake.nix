@@ -158,6 +158,7 @@
       hardware-lenovo-thinkcentre-m700 = ./modules/os/hardware/lenovo/thinkcentre/m700;
       hardware-lenovo-thinkpad-5D50X = ./modules/os/hardware/lenovo/thinkpad/5D50X;
       hardware-lenovo-thinkpad-T440p = ./modules/os/hardware/lenovo/thinkpad/T440p;
+      hardware-lenovo-thinkpad-T480 = ./modules/os/hardware/lenovo/thinkpad/T480;
       hardware-lenovo-thinkpad-X1-gen-9 = ./modules/os/hardware/lenovo/thinkpad/X1/gen-9;
       hardware-lenovo-yoga-16IMH9 = ./modules/os/hardware/lenovo/yoga/16IMH9;
       hardware-nvidia-gpu = ./modules/os/hardware/nvidia/gpu;
