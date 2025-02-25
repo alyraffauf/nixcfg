@@ -113,6 +113,8 @@ in {
         ROCKET_PORT = 8222;
         SIGNUPS_ALLOWED = false;
       };
+
+      environmentFile = config.age.secrets.vaultwarden.path;
     };
   };
 

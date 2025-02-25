@@ -52,5 +52,6 @@ in {
   "spotify/clientSecret.age".publicKeys = keys;
   "tailscale/authKeyFile.age".publicKeys = keys;
   "transmission.age".publicKeys = keys;
+  "vaultwarden.age".publicKeys = keys;
   "wifi.age".publicKeys = keys;
 }
