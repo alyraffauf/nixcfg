@@ -2,29 +2,7 @@
   ip = "mauville";
   domain = "raffauflabs.com";
 in {
-  environment.etc = {
-    "fail2ban/filter.d/vaultwarden.conf".text = ''
-      [INCLUDES]
-      before = common.conf
-
-      [Definition]
-      failregex = ^.*Username or password is incorrect\. Try again\. IP: <ADDR>\. Username:.*$
-      ignoreregex =
-      journalmatch = _SYSTEMD_UNIT=vaultwarden.service
-    '';
-    "fail2ban/filter.d/vaultwarden-admin.conf".text = ''
-      [INCLUDES]
-      before = common.conf
-
-      [Definition]
-      failregex = ^.*Invalid admin token\. IP: <ADDR>.*$
-      ignoreregex =
-      journalmatch = _SYSTEMD_UNIT=vaultwarden.service
-    '';
-  };
-
   networking = {
-    hosts."127.0.0.1" = ["passwords.${domain}"];
     firewall.allowedTCPPorts = [80 443 2379 2380 6443];
     firewall.allowedUDPPorts = [8472];
   };
@@ -62,23 +40,6 @@ in {
       enable = true;
       bantime = "24h";
       bantime-increment.enable = true;
-
-      jails = {
-        vaultwarden = ''
-          enabled = true
-          filter = vaultwarden
-          port = 80,443,8000
-          maxretry = 5
-        '';
-        vaultwarden-admin = ''
-          enabled = true
-          port = 80,443
-          filter = vaultwarden-admin
-          maxretry = 3
-          bantime = 14400
-          findtime = 14400
-        '';
-      };
     };
 
     # homepage-dashboard = {
@@ -273,7 +234,7 @@ in {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+            proxyPass = "http://verdanturf:8222";
           };
         };
 
@@ -329,18 +290,6 @@ in {
             '';
           };
         };
-      };
-    };
-
-    vaultwarden = {
-      enable = true;
-
-      config = {
-        DOMAIN = "https://passwords.raffauflabs.com";
-        ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_LOG = "critical";
-        ROCKET_PORT = 8222;
-        SIGNUPS_ALLOWED = false;
       };
     };
   };

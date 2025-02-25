@@ -102,6 +102,7 @@
       "rustboro"
       "slateport"
       "sootopolis"
+      "verdanturf"
     ];
 
     overlays = [

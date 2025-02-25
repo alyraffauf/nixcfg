@@ -7,6 +7,7 @@ let
     "rustboro"
     "slateport"
     "sootopolis"
+    "verdanturf"
   ];
   users = [
     "aly_fallarbor"
