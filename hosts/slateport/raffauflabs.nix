@@ -20,7 +20,6 @@ in {
         "bt.${domain}"
         # "git.${domain}"
         "music.${domain}"
-        "passwords.${domain}"
         "pics.${domain}"
         "plex.${domain}"
         "podcasts.${domain}"
@@ -227,14 +226,6 @@ in {
             extraConfig = ''
               proxy_buffering off;
             '';
-          };
-        };
-
-        "passwords.${domain}" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://verdanturf:8222";
           };
         };
 

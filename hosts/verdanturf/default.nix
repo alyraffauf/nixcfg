@@ -1,9 +1,12 @@
 {
+  config,
   lib,
   modulesPath,
   pkgs,
   ...
-}: {
+}: let
+  domain = "raffauflabs.com";
+in {
   imports = [
     ./secrets.nix
     "${modulesPath}/virtualisation/amazon-image.nix"
@@ -34,10 +37,31 @@
     systemPackages = with pkgs; [htop zellij];
   };
 
-  networking.hostName = "verdanturf";
+  networking = {
+    firewall.allowedTCPPorts = [80 443];
+    hostName = "verdanturf";
+  };
+
   nixpkgs.hostPlatform = "x86_64-linux";
 
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "alyraffauf@fastmail.com";
+  };
+
   services = {
+    ddclient = {
+      enable = true;
+      domains = ["passwords.${domain}"];
+      interval = "10min";
+      passwordFile = config.age.secrets.cloudflare.path;
+      protocol = "cloudflare";
+      ssl = true;
+      usev4 = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
+      username = "token";
+      zone = domain;
+    };
+
     fail2ban = {
       enable = true;
       bantime = "24h";
@@ -62,12 +86,29 @@
       };
     };
 
+    nginx = {
+      enable = true;
+      recommendedGzipSettings = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+
+      virtualHosts = {
+        "passwords.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8222";
+          };
+        };
+      };
+    };
+
     vaultwarden = {
       enable = true;
 
       config = {
         DOMAIN = "https://passwords.raffauflabs.com";
-        ROCKET_ADDRESS = "0.0.0.0";
+        ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_LOG = "critical";
         ROCKET_PORT = 8222;
         SIGNUPS_ALLOWED = false;
