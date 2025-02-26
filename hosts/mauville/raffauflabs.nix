@@ -71,7 +71,7 @@ in {
           backend = systemd
           filter = audiobookshelf
           maxretry = 5
-          port = 13378,80,443
+          port = 80,443,${toString audiobookshelf.port}
         '';
 
         navidrome = ''
@@ -79,7 +79,7 @@ in {
           backend = systemd
           filter = navidrome
           maxretry = 5
-          port = 4533,80,443
+          port = 0,443,${toString navidrome.port}
         '';
       };
     };
