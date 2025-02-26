@@ -174,6 +174,11 @@ in {
     };
   };
 
+  stylix = {
+    enable = false;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
+  };
+
   system = {
     autoUpgrade.operation = "switch";
     stateVersion = "25.05";
