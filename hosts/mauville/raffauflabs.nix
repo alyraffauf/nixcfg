@@ -28,6 +28,18 @@
     bitTorrentPort = 5143;
   };
 in {
+  environment.etc = {
+    "fail2ban/filter.d/navidrome.conf".text = ''
+      [INCLUDES]
+      before = common.conf
+
+      [Definition]
+      failregex = msg="Unsuccessful login".*X-Real-Ip:\[<HOST>\]
+      ignoreregex =
+      journalmatch = _SYSTEMD_UNIT=navidrome.service
+    '';
+  };
+
   networking = {
     firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443 61208];
     firewall.allowedUDPPorts = [8472];
@@ -39,6 +51,22 @@ in {
       host = "0.0.0.0";
       openFirewall = true;
       port = audiobookshelf.port;
+    };
+
+    fail2ban = {
+      enable = true;
+      bantime = "24h";
+      bantime-increment.enable = true;
+
+      jails = {
+        navidrome = ''
+          enabled = true
+          backend = systemd
+          filter = navidrome
+          maxretry = 5
+          port = 4533,80,443
+        '';
+      };
     };
 
     # forgejo = {
