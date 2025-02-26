@@ -24,6 +24,8 @@ let
 in {
   "aly/mail/achacega_gmail.age".publicKeys = keys;
   "aly/mail/alyraffauf_fastmail.age".publicKeys = keys;
+  "aly/rclone/b2.age".publicKeys = keys;
+  "aly/rclone/icloud.age".publicKeys = keys;
   "aly/syncthing/fallarbor/cert.age".publicKeys = keys;
   "aly/syncthing/fallarbor/key.age".publicKeys = keys;
   "aly/syncthing/lilycove/cert.age".publicKeys = keys;
@@ -40,14 +42,13 @@ in {
   "aly/syncthing/slateport/key.age".publicKeys = keys;
   "aly/syncthing/sootopolis/cert.age".publicKeys = keys;
   "aly/syncthing/sootopolis/key.age".publicKeys = keys;
-  "aly/rclone/b2.age".publicKeys = keys;
-  "aly/rclone/icloud.age".publicKeys = keys;
   "cloudflare.age".publicKeys = keys;
   "homepage.age".publicKeys = keys;
   "k3s.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
   "lastFM/secret.age".publicKeys = keys;
   "rclone/b2.age".publicKeys = keys;
+  "restic.age".publicKeys = keys;
   "spotify/clientId.age".publicKeys = keys;
   "spotify/clientSecret.age".publicKeys = keys;
   "tailscale/authKeyFile.age".publicKeys = keys;

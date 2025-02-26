@@ -34,7 +34,7 @@ in {
       '';
     };
 
-    systemPackages = with pkgs; [htop zellij];
+    systemPackages = with pkgs; [htop rclone zellij];
   };
 
   networking = {
@@ -150,6 +150,40 @@ in {
           };
         };
       };
+    };
+
+    restic.backups = let
+      defaults = {
+        initialize = true;
+        passwordFile = config.age.secrets.restic-passwd.path;
+
+        pruneOpts = [
+          "--keep-daily 7"
+          "--keep-weekly 5"
+          "--keep-monthly 12"
+          "--compression max"
+        ];
+
+        rcloneConfigFile = config.age.secrets.rclone-b2.path;
+
+        timerConfig = {
+          OnCalendar = "daily";
+          Persistent = true;
+        };
+      };
+    in {
+      couchdb =
+        defaults
+        // {
+          paths = ["/var/lib/couchdb"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/couchdb";
+        };
+      vaultwarden =
+        defaults
+        // {
+          paths = ["/var/lib/vaultwarden"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/vaultwarden";
+        };
     };
 
     vaultwarden = {
