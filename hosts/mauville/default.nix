@@ -110,12 +110,28 @@ in {
       audiobookshelf =
         defaults
         // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start audiobookshelf
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop audiobookshelf
+          '';
+
           paths = ["/var/lib/audiobookshelf"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/audiobookshelf";
         };
       plex =
         defaults
         // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start plex
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop plex
+          '';
+
           paths = ["/var/lib/plex"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
         };

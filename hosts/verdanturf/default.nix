@@ -176,12 +176,28 @@ in {
       couchdb =
         defaults
         // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start couchdb
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop couchdb
+          '';
+
           paths = ["/var/lib/couchdb"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/couchdb";
         };
       vaultwarden =
         defaults
         // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start vaultwarden
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop vaultwarden
+          '';
+
           paths = ["/var/lib/vaultwarden"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/vaultwarden";
         };
