@@ -29,6 +29,13 @@
   };
 in {
   environment.etc = {
+    "fail2ban/filter.d/audiobookshelf.conf".text = ''
+      [Definition]
+      failregex = \[.*\] ERROR: \[Auth\] Failed login attempt for username \".*\" from ip <HOST> \(User not found\)
+      ignoreregex =
+      journalmatch = _SYSTEMD_UNIT=audiobookshelf.service
+    '';
+
     "fail2ban/filter.d/navidrome.conf".text = ''
       [INCLUDES]
       before = common.conf
@@ -59,6 +66,14 @@ in {
       bantime-increment.enable = true;
 
       jails = {
+        audiobookshelf = ''
+          enabled = true
+          backend = systemd
+          filter = audiobookshelf
+          maxretry = 5
+          port = 13378,80,443
+        '';
+
         navidrome = ''
           enabled = true
           backend = systemd
