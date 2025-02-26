@@ -86,6 +86,41 @@ in {
   networking.hostName = "mauville";
 
   services = {
+    restic.backups = let
+      defaults = {
+        inhibitsSleep = true;
+        initialize = true;
+        passwordFile = config.age.secrets.restic-passwd.path;
+
+        pruneOpts = [
+          "--keep-daily 7"
+          "--keep-weekly 5"
+          "--keep-monthly 12"
+          "--compression max"
+        ];
+
+        rcloneConfigFile = config.age.secrets.rclone-b2.path;
+
+        timerConfig = {
+          OnCalendar = "daily";
+          Persistent = true;
+        };
+      };
+    in {
+      audiobookshelf =
+        defaults
+        // {
+          paths = ["/var/lib/audiobookshelf"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/audiobookshelf";
+        };
+      plex =
+        defaults
+        // {
+          paths = ["/var/lib/plex"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
+        };
+    };
+
     samba = {
       enable = true;
       openFirewall = true;

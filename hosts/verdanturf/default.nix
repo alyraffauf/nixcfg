@@ -154,6 +154,7 @@ in {
 
     restic.backups = let
       defaults = {
+        inhibitsSleep = true;
         initialize = true;
         passwordFile = config.age.secrets.restic-passwd.path;
 
