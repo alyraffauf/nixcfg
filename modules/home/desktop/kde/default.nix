@@ -15,6 +15,8 @@
       };
     };
 
+    stylix.targets.qt.enable = lib.mkForce false;
+
     myHome.profiles.defaultApps = {
       audioPlayer.package = lib.mkDefault pkgs.kdePackages.dragon;
       editor.package = lib.mkDefault pkgs.kdePackages.kate;
