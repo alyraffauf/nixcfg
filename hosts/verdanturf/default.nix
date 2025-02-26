@@ -24,6 +24,16 @@ in {
         journalmatch = _SYSTEMD_UNIT=vaultwarden.service
       '';
 
+      "fail2ban/filter.d/couchdb.conf".text = ''
+        [INCLUDES]
+        before = common.conf
+
+        [Definition]
+        failregex = \[warning\] \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z couchdb@\d+\.\d+\.\d+\.\d+ .* couch_httpd_auth: Authentication failed for user .* from <HOST>
+        ignoreregex =
+        journalmatch = _SYSTEMD_UNIT=couchdb.service
+      '';
+
       "fail2ban/filter.d/vaultwarden-admin.conf".text = ''
         [INCLUDES]
         before = common.conf
@@ -110,16 +120,23 @@ in {
       bantime-increment.enable = true;
 
       jails = {
+        couchdb = ''
+          enabled = true
+          filter = couchdb
+          port = 80,443,${toString config.services.couchdb.port}
+          maxretry = 5
+        '';
+
         vaultwarden = ''
           enabled = true
           filter = vaultwarden
-          port = 80,443,8222
+          port = 80,443,${toString config.services.vaultwarden.config.ROCKET_PORT}
           maxretry = 5
         '';
 
         vaultwarden-admin = ''
           enabled = true
-          port = 80,443
+          port = 80,443,${toString config.services.vaultwarden.config.ROCKET_PORT}
           filter = vaultwarden-admin
           maxretry = 3
           bantime = 14400
