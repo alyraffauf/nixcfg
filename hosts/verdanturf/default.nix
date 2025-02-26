@@ -23,6 +23,7 @@ in {
         ignoreregex =
         journalmatch = _SYSTEMD_UNIT=vaultwarden.service
       '';
+
       "fail2ban/filter.d/vaultwarden-admin.conf".text = ''
         [INCLUDES]
         before = common.conf
@@ -112,7 +113,7 @@ in {
         vaultwarden = ''
           enabled = true
           filter = vaultwarden
-          port = 80,443,8000
+          port = 80,443,8222
           maxretry = 5
         '';
 
