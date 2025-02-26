@@ -96,12 +96,12 @@ in {
 
   myNixOS = {
     desktop = {
-      gnome.enable = true;
-
       hyprland = {
         enable = false;
         monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"];
       };
+
+      kde.enable = true;
     };
 
     profiles = {
@@ -122,7 +122,7 @@ in {
     };
 
     services = {
-      gdm = {
+      sddm = {
         enable = true;
         autologin = "aly";
       };
