@@ -3,6 +3,7 @@
   lib,
   modulesPath,
   pkgs,
+  self,
   ...
 }: let
   domain = "raffauflabs.com";
@@ -10,6 +11,7 @@ in {
   imports = [
     ./secrets.nix
     "${modulesPath}/virtualisation/amazon-image.nix"
+    self.nixosModules.locale-en-us
   ];
 
   environment = {
@@ -253,6 +255,8 @@ in {
     autoUpgrade.operation = "switch";
     stateVersion = "24.11";
   };
+
+  time.timeZone = "America/New_York";
 
   users.users.root.openssh.authorizedKeys.keyFiles =
     lib.map (file: ../../secrets/publicKeys + "/${file}")
