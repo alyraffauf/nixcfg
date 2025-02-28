@@ -47,6 +47,7 @@ in {
   "k3s.age".publicKeys = keys;
   "lastFM/apiKey.age".publicKeys = keys;
   "lastFM/secret.age".publicKeys = keys;
+  "pds.age".publicKeys = keys;
   "rclone/b2.age".publicKeys = keys;
   "restic.age".publicKeys = keys;
   "spotify/clientId.age".publicKeys = keys;

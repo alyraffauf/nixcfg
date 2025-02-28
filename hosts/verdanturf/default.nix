@@ -105,13 +105,15 @@ in {
       domains = [
         "couch.${domain}"
         "passwords.${domain}"
+        "aly.social"
+        "*.aly.social"
       ];
 
       interval = "10min";
       passwordFile = config.age.secrets.cloudflare.path;
       protocol = "cloudflare";
       ssl = true;
-      usev4 = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
+      usev4 = "webv4, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
       username = "token";
       zone = domain;
     };
@@ -166,10 +168,26 @@ in {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://127.0.0.1:8222";
+            proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+          };
+        };
+
+        "aly.social" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:${toString config.services.pds.settings.PDS_PORT}";
+            proxyWebsockets = true;
           };
         };
       };
+    };
+
+    pds = {
+      enable = true;
+      environmentFiles = [config.age.secrets.pds.path];
+      pdsadmin.enable = true;
+      settings.PDS_HOSTNAME = "aly.social";
     };
 
     restic.backups = let
