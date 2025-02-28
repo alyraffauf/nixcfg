@@ -93,8 +93,8 @@ in {
         passwordFile = config.age.secrets.restic-passwd.path;
 
         pruneOpts = [
-          "--keep-daily 7"
-          "--keep-weekly 5"
+          "--keep-daily 5"
+          "--keep-weekly 4"
           "--keep-monthly 12"
           "--compression max"
         ];
@@ -104,7 +104,7 @@ in {
         timerConfig = {
           OnCalendar = "daily";
           Persistent = true;
-          RandomizedDelaySec = "1h";
+          RandomizedDelaySec = "2h";
         };
       };
     in {
@@ -122,6 +122,20 @@ in {
           paths = ["/var/lib/audiobookshelf"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/audiobookshelf";
         };
+
+      immich =
+        defaults
+        // {
+          paths = [
+            "${mediaDirectory}/Pictures/library"
+            "${mediaDirectory}/Pictures/profile"
+            "${mediaDirectory}/Pictures/upload"
+            "${mediaDirectory}/Pictures/backups"
+          ];
+
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/immich";
+        };
+
       plex =
         defaults
         // {

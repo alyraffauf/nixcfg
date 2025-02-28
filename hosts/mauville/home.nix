@@ -56,7 +56,6 @@
               backups=(
                 ['/home/aly/sync']="b2://aly-sync"
                 ['/mnt/Media/Music']="b2://aly-music"
-                ['/mnt/Media/Pictures']="b2://aly-pictures"
               )
 
               # Recursively backup folders to B2 with sanity checks.
