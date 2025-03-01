@@ -55,6 +55,7 @@ in {
     hostName = "verdanturf";
   };
 
+  nix.gc.options = lib.mkForce "--delete-older-than 2d";
   nixpkgs.hostPlatform = "x86_64-linux";
 
   security.acme = {
