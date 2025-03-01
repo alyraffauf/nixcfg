@@ -212,7 +212,7 @@ in {
         };
       };
     in {
-      couchdb =
+      uptime-kuma =
         defaults
         // {
           backupCleanupCommand = ''

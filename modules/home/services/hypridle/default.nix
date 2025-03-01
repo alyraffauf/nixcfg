@@ -77,7 +77,7 @@ in {
             halign = "center";
             position = "-33%, 0";
             shadow_passes = 0;
-            text = "$FPRINTMESSAGE";
+            text = "$FPRINTPROMPT";
             valign = "center";
           }
         ];
