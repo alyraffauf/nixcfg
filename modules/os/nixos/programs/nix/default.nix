@@ -9,7 +9,7 @@
     nix = {
       gc = {
         automatic = true;
-        options = "--delete-older-than 7d";
+        options = "--delete-older-than 5d";
         persistent = true;
         randomizedDelaySec = "60min";
       };
