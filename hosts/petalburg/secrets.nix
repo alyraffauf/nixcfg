@@ -1,7 +1,7 @@
-{
+{self, ...}: {
   age.secrets = {
-    tailscaleAuthKey.file = ../../secrets/tailscale/authKeyFile.age;
-    syncthingCert.file = ../../secrets/aly/syncthing/petalburg/cert.age;
-    syncthingKey.file = ../../secrets/aly/syncthing/petalburg/key.age;
+    tailscaleAuthKey.file = "${self.inputs.secrets}/tailscale/authKeyFile.age";
+    syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/petalburg/cert.age";
+    syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/petalburg/key.age";
   };
 }
