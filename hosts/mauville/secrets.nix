@@ -1,28 +1,28 @@
 {self, ...}: {
   age.secrets = {
     rclone-b2.file = "${self.inputs.secrets}/rclone/b2.age";
-    restic-passwd.file = "${self.inputs.secrets}/restic.age";
-    tailscaleAuthKey.file = "${self.inputs.secrets}/tailscale/authKeyFile.age";
+    restic-passwd.file = "${self.inputs.secrets}/restic-password.age";
+    tailscaleAuthKey.file = "${self.inputs.secrets}/tailscale/auth.age";
     k3s.file = "${self.inputs.secrets}/k3s.age";
 
     lastfmId = {
       owner = "navidrome";
-      file = "${self.inputs.secrets}/lastFM/apiKey.age";
+      file = "${self.inputs.secrets}/lastfm/api.age";
     };
 
     lastfmSecret = {
       owner = "navidrome";
-      file = "${self.inputs.secrets}/lastFM/secret.age";
+      file = "${self.inputs.secrets}/lastfm/secret.age";
     };
 
     spotifyId = {
       owner = "navidrome";
-      file = "${self.inputs.secrets}/spotify/clientId.age";
+      file = "${self.inputs.secrets}/spotify/client-id.age";
     };
 
     spotifySecret = {
       owner = "navidrome";
-      file = "${self.inputs.secrets}/spotify/clientSecret.age";
+      file = "${self.inputs.secrets}/spotify/client-secret.age";
     };
 
     syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/mauville/cert.age";
