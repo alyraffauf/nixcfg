@@ -32,7 +32,6 @@ This repository contains my NixOS and Home-Manager configurations, along with cu
 ├── modules/           # Modules for NixOS and home-manager
 ├── overlays/          # Custom Nixpkgs overlays
 ├── pkgs/              # Custom packages
-├── secrets/           # Encrypted secrets
 └── README.md          # This README
 ```
 
