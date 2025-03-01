@@ -278,9 +278,9 @@ in {
   time.timeZone = "America/New_York";
 
   users.users.root.openssh.authorizedKeys.keyFiles =
-    lib.map (file: ../../secrets/publicKeys + "/${file}")
+    lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
     (lib.filter (file: lib.hasPrefix "aly_" file)
-      (builtins.attrNames (builtins.readDir ../../secrets/publicKeys)));
+      (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
 
   myNixOS = {
     profiles = {

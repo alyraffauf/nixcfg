@@ -1,10 +1,10 @@
-{
+{self, ...}: {
   age.secrets = {
-    tailscaleAuthKey.file = ../../secrets/tailscale/authKeyFile.age;
-    cloudflare.file = ../../secrets/cloudflare.age;
-    homepage.file = ../../secrets/homepage.age;
-    k3s.file = ../../secrets/k3s.age;
-    syncthingCert.file = ../../secrets/aly/syncthing/slateport/cert.age;
-    syncthingKey.file = ../../secrets/aly/syncthing/slateport/key.age;
+    tailscaleAuthKey.file = "${self.inputs.secrets}/tailscale/authKeyFile.age";
+    cloudflare.file = "${self.inputs.secrets}/cloudflare.age";
+    homepage.file = "${self.inputs.secrets}/homepage.age";
+    k3s.file = "${self.inputs.secrets}/k3s.age";
+    syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/slateport/cert.age";
+    syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/slateport/key.age";
   };
 }
