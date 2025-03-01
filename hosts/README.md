@@ -50,11 +50,11 @@ To add a new device to this configuration, follow these steps:
 
 1. **Authorize SSH Key**:
 
-   - On a separate machine, copy the new system's public SSH key (`/etc/ssh/ssh_host_ed25519_key.pub`) to the host configuration (`secrets/publicKeys/root_$HOSTNAME.pub`).
+   - On a separate machine, copy the new system's public SSH key (`/etc/ssh/ssh_host_ed25519_key.pub`) to the upstream secrets repository (`secrets/publicKeys/root_$HOSTNAME.pub`).
 
 1. **Rekey Secrets**:
 
-   - Add the new public key to `secrets/secrets.nix`.
+   - Add the new public key to upstream `secrets.nix`.
    - Rekey all secrets:
      ```bash
      agenix --rekey
