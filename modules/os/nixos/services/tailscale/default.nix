@@ -39,6 +39,7 @@
       enable = true;
       authKeyFile = config.myNixOS.services.tailscale.authKeyFile;
       openFirewall = true;
+      useRoutingFeatures = "both";
     };
   };
 }
