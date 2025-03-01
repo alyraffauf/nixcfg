@@ -14,7 +14,7 @@
         self.inputs.agenix.homeManagerModules.default
       ];
 
-      age.secrets.rclone-b2.file = ../../secrets/rclone/b2.age;
+      age.secrets.rclone-b2.file = "${self.inputs.secrets}/rclone/b2.age";
 
       home = {
         homeDirectory = "/home/aly";
