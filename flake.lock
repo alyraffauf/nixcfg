@@ -783,6 +783,7 @@
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
+        "secrets": "secrets",
         "stylix": "stylix",
         "wallpapers": "wallpapers"
       }
@@ -822,6 +823,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740839284,
+        "narHash": "sha256-NtOkMlfg31tipHvtolaxj5c79cmYvOUlKogNr2BAXDM=",
+        "owner": "alyraffauf",
+        "repo": "secrets",
+        "rev": "c84a4024db26a5a1c190b1e0f45f3489adb9db92",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "secrets",
         "type": "github"
       }
     },

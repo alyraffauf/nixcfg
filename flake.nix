@@ -33,6 +33,11 @@
 
     nur.url = "github:nix-community/NUR";
 
+    secrets = {
+      url = "github:alyraffauf/secrets";
+      flake = false;
+    };
+
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:danth/stylix";
