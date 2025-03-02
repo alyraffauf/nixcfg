@@ -22,10 +22,14 @@
 
     environment = {
       systemPackages = with pkgs; [
-        git
-        htop
         (inxi.override {withRecommends = true;})
+        curl
+        git
+        helix
+        htop
+        nodePackages.nodejs
         python3
+        wget
       ];
 
       variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
