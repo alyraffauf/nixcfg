@@ -44,6 +44,8 @@
       url = "github:danth/stylix";
     };
 
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+
     wallpapers = {
       url = "github:alyraffauf/wallpapers";
       flake = false; # This is important to specify that it's a non-flake
@@ -172,6 +174,7 @@
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.lanzaboote.nixosModules.lanzaboote
             self.inputs.stylix.nixosModules.stylix
+            self.inputs.vscode-server.nixosModules.default
             self.nixosModules.nixos
             self.nixosModules.users
             {

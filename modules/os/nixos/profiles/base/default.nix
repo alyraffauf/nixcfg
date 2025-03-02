@@ -57,6 +57,8 @@
         };
       };
 
+      vscode-server.enable = true;
+
       openssh = {
         enable = true;
         openFirewall = true;
