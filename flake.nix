@@ -68,26 +68,10 @@
   };
 
   outputs = {self, ...}: let
-    allLinuxSystems = [
+    allSystems = [
       "aarch64-linux"
       "x86_64-linux"
     ];
-
-    allMacSystems = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-
-    allSystems = allLinuxSystems ++ allMacSystems;
-
-    forAllLinuxSystems = f:
-      self.inputs.nixpkgs.lib.genAttrs allLinuxSystems (system:
-        f {
-          pkgs = import self.inputs.nixpkgs {
-            inherit overlays system;
-            config.allowUnfree = true;
-          };
-        });
 
     forAllSystems = f:
       self.inputs.nixpkgs.lib.genAttrs allSystems (system:
@@ -115,7 +99,7 @@
       self.overlays.default
     ];
   in {
-    devShells = forAllLinuxSystems ({pkgs}: {
+    devShells = forAllSystems ({pkgs}: {
       default = pkgs.mkShell {
         packages =
           (with pkgs; [
