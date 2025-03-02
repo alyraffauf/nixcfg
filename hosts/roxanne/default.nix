@@ -11,19 +11,6 @@
     self.inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];
 
-  boot = {
-    initrd.systemd.enable = lib.mkForce false;
-
-    loader = {
-      efi.canTouchEfiVariables = lib.mkForce false;
-
-      systemd-boot = {
-        enable = lib.mkForce false;
-        configurationLimit = lib.mkDefault 10;
-      };
-    };
-  };
-
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
     fsType = "ext4";

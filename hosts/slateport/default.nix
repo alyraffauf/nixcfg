@@ -41,6 +41,7 @@
     programs = {
       nix.enable = true;
       podman.enable = true;
+      systemd-boot.enable = true;
     };
 
     services = {

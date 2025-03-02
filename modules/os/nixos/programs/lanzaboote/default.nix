@@ -12,6 +12,7 @@
 
       lanzaboote = {
         enable = true;
+        configurationLimit = 10;
         pkiBundle = lib.mkDefault "/var/lib/sbctl";
       };
 

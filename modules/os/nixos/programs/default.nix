@@ -7,6 +7,7 @@
     ./podman
     ./retroarch
     ./steam
+    ./systemd-boot
     ./virt-manager
   ];
 }
