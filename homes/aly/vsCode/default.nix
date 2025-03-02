@@ -16,6 +16,7 @@
           github.vscode-github-actions
           github.vscode-pull-request-github
           ms-python.python
+          ms-vscode-remote.remote-ssh
           oderwat.indent-rainbow
           rubymaniac.vscode-paste-and-indent
           supermaven.supermaven
