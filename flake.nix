@@ -10,7 +10,6 @@
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    deploy-rs.url = "github:serokell/deploy-rs";
 
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -121,8 +120,8 @@
           ])
           ++ [
             self.inputs.agenix.packages.${pkgs.system}.default
-            self.inputs.deploy-rs.packages.${pkgs.system}.default
             self.packages.${pkgs.system}.default
+            self.packages.${pkgs.system}.deployer
           ];
 
         shellHook = ''
@@ -196,53 +195,23 @@
         }
     );
 
-    deploy.nodes = {
-      lilycove = {
-        hostname = "lilycove";
-
-        profiles.system = {
-          path = self.inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.lilycove;
-          sshUser = "root";
-        };
-      };
-
-      mauville = {
-        hostname = "mauville";
-
-        profiles.system = {
-          path = self.inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.mauville;
-          remoteBuild = false;
-          sshUser = "root";
-        };
-      };
-
-      slateport = {
-        hostname = "slateport";
-
-        profiles.system = {
-          path = self.inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.slateport;
-          remoteBuild = false;
-          sshUser = "root";
-        };
-      };
-
-      verdanturf = {
-        hostname = "verdanturf";
-
-        profiles.system = {
-          path = self.inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.verdanturf;
-          remoteBuild = false;
-          sshUser = "root";
-        };
-      };
-    };
-
     overlays.default = import ./overlays/default.nix {inherit self;};
 
     packages = forAllSystems ({pkgs}: rec {
       default = installer;
 
       adjustor = pkgs.callPackage ./pkgs/adjustor.nix {};
+
+      deployer = pkgs.writeShellApplication {
+        name = "deployer";
+
+        runtimeInputs = with pkgs; [
+          jq
+          nixos-rebuild
+        ];
+
+        text = builtins.readFile ./utils/deployer.sh;
+      };
 
       installer = pkgs.writeShellApplication {
         name = "installer";
