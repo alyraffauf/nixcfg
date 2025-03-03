@@ -10,14 +10,16 @@ The `hosts/` directory is organized as follows:
 
 ```plaintext
 hosts/
-└── slateport/     # Lenovo ThinkCentre M700 Tiny
 ├── fallarbor/     # Framework Laptop 13 (11th Gen Intel)
 ├── lilycove/      # Custom Mini-ITX Gaming Desktop
-├── mauville/      # Beelink Mini S12 Pro Home Server
+├── mauville/      # Beelink Mini S12 Pro
 ├── pacifidlog/    # Asus ROG Ally X
 ├── petalburg/     # Lenovo Yoga Pro 9i
+├── roxanne/       # Raspberry Pi 4 4GB
 ├── rustboro/      # ThinkPad T440p
+├── slateport/     # Lenovo ThinkCentre M700 Tiny
 ├── sootopolis/    # ThinkPad X1 Carbon Gen 9
+└── verdanturf/    # Amazon EC2 t2.micro
 ```
 
 ---
