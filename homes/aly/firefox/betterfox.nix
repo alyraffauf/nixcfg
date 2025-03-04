@@ -2,7 +2,7 @@
   # ***********************************************************************
   # Betterfox
   # "Ad meliora"
-  # version: 133
+  # version: 135
   # url: https://github.com/yokoffing/Betterfox
   # ***********************************************************************
 
@@ -14,12 +14,11 @@
   "content.notify.interval" = 100000;
 
   ## GFX
-  "gfx.canvas.accelerated.cache-items" = 4096;
   "gfx.canvas.accelerated.cache-size" = 512;
   "gfx.content.skia-font-cache-size" = 20;
 
   ## DISK CACHE
-  "browser.cache.disk.enable" = true;
+  "browser.cache.disk.enable" = false;
 
   ## MEDIA CACHE
   "media.memory_cache_max_size" = 65536;
@@ -46,7 +45,6 @@
 
   ## EXPERIMENTAL
   "layout.css.grid-template-masonry-value.enabled" = true;
-  "dom.enable_web_task_scheduling" = true;
 
   #############################################################
   # SECTION: SECUREFOX
@@ -212,31 +210,25 @@
   "layout.word_select.eat_space_to_next_word" = false;
 
   #############################################################
-  # START: MY OVERRIDES
-  #############################################################
-  # visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
-  # visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
-  # Enter your personal overrides below this line:
-
-  #############################################################
   # SECTION: SMOOTHFOX
   #############################################################
-  # visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-  # Enter your scrolling overrides below this line:
-  # DEFAULT NON-LINUX
-  "apz.overscroll.enabled" = true;
-
-  # DEFAULT
-  "general.smoothScroll" = true;
-
-  # 250-400; adjust this number to your liking
-  "mousewheel.default.delta_multiplier_y" = 275;
-
-  # Firefox Nightly only:
-  # [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1846935
-  "general.smoothScroll.msdPhysics.enabled" = false;
-
-  #############################################################
-  # END: BETTERFOX
-  #############################################################
+  # Smoothfox Customizations
+  # "Faber est suae quisque fortunae"
+  # priority: better scrolling
+  # version: 126.1
+  # url: https://github.com/yokoffing/Betterfox
+  #
+  # OPTION: NATURAL SMOOTH SCROLLING V3 [MODIFIED]
+  "apz.overscroll.enabled" = true; # DEFAULT NON-LINUX
+  "general.smoothScroll" = true; # DEFAULT
+  "general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS" = 12;
+  "general.smoothScroll.msdPhysics.enabled" = true;
+  "general.smoothScroll.msdPhysics.motionBeginSpringConstant" = 600;
+  "general.smoothScroll.msdPhysics.regularSpringConstant" = 650;
+  "general.smoothScroll.msdPhysics.slowdownMinDeltaMS" = 25;
+  "general.smoothScroll.msdPhysics.slowdownMinDeltaRatio" = "2";
+  "general.smoothScroll.msdPhysics.slowdownSpringConstant" = 250;
+  "general.smoothScroll.currentVelocityWeighting" = "1";
+  "general.smoothScroll.stopDecelerationWeighting" = "1";
+  "mousewheel.default.delta_multiplier_y" = 300; # (250-400; adjust as desired)
 }
