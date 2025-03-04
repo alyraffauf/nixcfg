@@ -126,6 +126,14 @@ in {
       immich =
         defaults
         // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start immich
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop immich
+          '';
+
           paths = [
             "${mediaDirectory}/Pictures/library"
             "${mediaDirectory}/Pictures/profile"
