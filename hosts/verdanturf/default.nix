@@ -42,11 +42,6 @@
 
   time.timeZone = "America/New_York";
 
-  users.users.root.openssh.authorizedKeys.keyFiles =
-    lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
-    (lib.filter (file: lib.hasPrefix "aly_" file)
-      (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
-
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
@@ -55,5 +50,10 @@
 
     programs.nix.enable = true;
     services.tailscale.enable = true;
+  };
+
+  myUsers.aly = {
+    enable = true;
+    password = "$y$j9T$Lit66g43.Zn60mwGig7cx1$L.aLzGvy0q.b1E40/XSIkhj2tkJbigpXFrxR/D/FVB4";
   };
 }
