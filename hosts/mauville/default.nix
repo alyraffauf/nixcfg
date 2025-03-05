@@ -127,11 +127,11 @@ in {
         defaults
         // {
           backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start immich
+            ${pkgs.systemd}/bin/systemctl start immich-server
           '';
 
           backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop immich
+            ${pkgs.systemd}/bin/systemctl stop immich-server
           '';
 
           paths = [
