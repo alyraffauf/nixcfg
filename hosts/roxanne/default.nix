@@ -92,12 +92,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    silent = true;
-  };
-
   services = {
     jellyfin = {
       enable = true;
