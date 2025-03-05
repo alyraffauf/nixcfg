@@ -20,6 +20,11 @@
     zellij
   ];
 
+  fileSystems."/storage" = {
+    device = "/dev/sdb";
+    fsType = "ext4";
+  };
+
   networking = {
     firewall.allowedTCPPorts = [80 443];
     hostName = "verdanturf";
@@ -30,8 +35,8 @@
 
   swapDevices = [
     {
-      device = "/swap";
-      size = 1024;
+      device = "/storage/swapfile";
+      size = 1540;
     }
   ];
 
