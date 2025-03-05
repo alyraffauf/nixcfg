@@ -41,9 +41,9 @@ Beelink Mini S12 Pro, serving as a reliable home server and lightweight NAS for 
 
 | Service            | Description                      | Domain                                                       |
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |
-| **Audiobookshelf** | Podcasts & audiobooks            | [podcasts.raffauflabs.com](https://podcasts.raffauflabs.com) |
-| **Navidrome**      | SubSonic-compatible music server | [music.raffauflabs.com](https://music.raffauflabs.com)       |
-| **Plex**           | Music, TV, and movie streaming   | [plex.raffauflabs.com](https://plex.raffauflabs.com)         |
+| **Audiobookshelf** | Podcasts & audiobooks            | [audiobookshelf.cute.haus](https://audiobookshelf.cute.haus) |
+| **Navidrome**      | SubSonic-compatible music server | [navidrome.cute.haus](https://navidrome.cute.haus)           |
+| **Plex**           | Music, TV, and movie streaming   | [plex.cute.haus](https://plex.cute.haus)                     |
 | **Transmission**   | BitTorrent                       | Tailnet/LAN                                                  |
 
 ---

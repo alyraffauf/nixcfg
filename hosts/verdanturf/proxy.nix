@@ -1,5 +1,6 @@
 {config, ...}: let
-  domain = "raffauflabs.com";
+  oldDomain = "raffauflabs.com";
+  newDomain = "cute.haus";
 in {
   security.acme = {
     acceptTerms = true;
@@ -11,19 +12,27 @@ in {
       enable = true;
 
       domains = [
-        "couch.${domain}"
-        "passwords.${domain}"
-        "aly.social"
-        "*.aly.social"
+        "v.${newDomain}"
+        "vault.${newDomain}"
+        "couchdb.${newDomain}"
       ];
 
       interval = "10min";
       passwordFile = config.age.secrets.cloudflare.path;
       protocol = "cloudflare";
       ssl = true;
-      usev4 = "webv4, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
       username = "token";
-      zone = domain;
+      zone = newDomain;
+
+      extraConfig = ''
+        zone=raffauflabs.com
+        couch.${oldDomain}
+        passwords.${oldDomain}
+
+        zone=aly.social
+        aly.social
+        *.aly.social
+      '';
     };
 
     nginx = {
@@ -33,20 +42,26 @@ in {
       recommendedTlsSettings = true;
 
       virtualHosts = {
-        "couch.${domain}" = {
+        "couchdb.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/" = {
             proxyPass = "http://127.0.0.1:5984";
           };
+
+          serverAliases = ["couch.${oldDomain}"];
         };
 
-        "passwords.${domain}" = {
+        "vault.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
+
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
           };
+
+          serverAliases = ["v.${newDomain}" "passwords.${oldDomain}"];
         };
 
         "aly.social" = {

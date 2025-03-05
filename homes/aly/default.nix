@@ -87,7 +87,7 @@
       enable = true;
 
       settings = {
-        base_url = "https://passwords.raffauflabs.com";
+        base_url = "https://vault.cute.haus";
         email = "alyraffauf@fastmail.com";
         lock_timeout = 14400;
         pinentry = pkgs.pinentry-gnome3;

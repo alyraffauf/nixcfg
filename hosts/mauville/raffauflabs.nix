@@ -5,7 +5,7 @@
   ...
 }: let
   audiobookshelf.port = 13378;
-  domain = "raffauflabs.com";
+  domain = "cute.haus";
   mediaDirectory = "/mnt/Media";
   musicDirectory = "${mediaDirectory}/Music";
 

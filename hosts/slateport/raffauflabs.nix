@@ -1,6 +1,7 @@
 {config, ...}: let
   ip = "mauville";
-  domain = "raffauflabs.com";
+  oldDomain = "raffauflabs.com";
+  newDomain = "cute.haus";
 in {
   networking = {
     firewall.allowedTCPPorts = [80 443 2379 2380 6443];
@@ -17,22 +18,32 @@ in {
       enable = true;
 
       domains = [
-        "bt.${domain}"
-        # "git.${domain}"
-        "music.${domain}"
-        "pics.${domain}"
-        "plex.${domain}"
-        "podcasts.${domain}"
-        domain
+        "a.${newDomain}"
+        "audiobookshelf.${newDomain}"
+        "i.${newDomain}"
+        "immich.${newDomain}"
+        "n.${newDomain}"
+        "navidrome.${newDomain}"
+        "p.${newDomain}"
+        "plex.${newDomain}"
+        newDomain
       ];
 
       interval = "10min";
       passwordFile = config.age.secrets.cloudflare.path;
       protocol = "cloudflare";
       ssl = true;
-      usev4 = "web, web=dynamicdns.park-your-domain.com/getip, web-skip='Current IP Address: '";
       username = "token";
-      zone = domain;
+      zone = newDomain;
+
+      extraConfig = ''
+        zone=raffauflabs.com
+        ${oldDomain}
+        music.${oldDomain}
+        pics.${oldDomain}
+        plex.${oldDomain}
+        podcasts.${oldDomain}
+      '';
     };
 
     fail2ban = {
@@ -54,7 +65,7 @@ in {
     #     #     {
     #     #       abbr = "AR";
     #     #       description = "Personal website and portfolio.";
-    #     #       href = "https://aly.raffauflabs.com/";
+    #     #       href = "https://aly.codes";
     #     #     }
     #     #   ];
     #     # }
@@ -69,7 +80,7 @@ in {
     #           "Aly Raffauf" = {
     #             abbr = "AR";
     #             description = "Personal website and portfolio.";
-    #             href = "https://aly.raffauflabs.com/";
+    #             href = "https://aly.codes/";
     #           };
     #         }
     #         {
@@ -86,7 +97,7 @@ in {
     #         {
     #           "Audiobookshelf" = {
     #             description = "Audiobooks & podcasts.";
-    #             href = "https://podcasts.raffauflabs.com";
+    #             href = "https://audiobookshelf.cute.haus";
     #             icon = "audiobookshelf";
     #             widget = {
     #               type = "audiobookshelf";
@@ -98,14 +109,14 @@ in {
     #         {
     #           "Plex" = {
     #             description = "TV Shows, movies & music.";
-    #             href = "https://plex.raffauflabs.com";
+    #             href = "https://plex.cute.haus";
     #             icon = "plex";
     #           };
     #         }
     #         {
     #           "Navidrome" = {
     #             description = "Subsonic-compatible music streaming.";
-    #             href = "https://music.raffauflabs.com";
+    #             href = "https://navidrome.cute.haus";
     #             icon = "navidrome";
     #           };
     #         }
@@ -116,7 +127,7 @@ in {
     #         {
     #           "Forĝejo" = {
     #             description = "Git forge for open source projects.";
-    #             href = "https://git.raffauflabs.com";
+    #             href = "https://git.cute.haus";
     #             icon = "forgejo";
     #           };
     #         }
@@ -137,7 +148,7 @@ in {
     #         {
     #           "Vaultwarden" = {
     #             description = "Secure password manager.";
-    #             href = "https://passwords.raffauflabs.com";
+    #             href = "https://vault.cute.haus";
     #             icon = "vaultwarden";
     #           };
     #         }
@@ -189,7 +200,7 @@ in {
       recommendedTlsSettings = true;
 
       virtualHosts = {
-        "${domain}" = {
+        "${oldDomain}" = {
           enableACME = true;
           forceSSL = true;
 
@@ -202,7 +213,7 @@ in {
           };
         };
 
-        # "git.${domain}" = {
+        # "git.${oldDomain}" = {
         #   enableACME = true;
         #   forceSSL = true;
 
@@ -215,7 +226,7 @@ in {
         #   };
         # };
 
-        "music.${domain}" = {
+        "navidrome.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
@@ -227,9 +238,11 @@ in {
               proxy_buffering off;
             '';
           };
+
+          serverAliases = ["n.${newDomain}" "music.${oldDomain}"];
         };
 
-        "pics.${domain}" = {
+        "immich.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
@@ -247,9 +260,11 @@ in {
               proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
             '';
           };
+
+          serverAliases = ["i.${newDomain}" "pics.${oldDomain}"];
         };
 
-        "plex.${domain}" = {
+        "plex.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
@@ -261,9 +276,11 @@ in {
               proxy_buffering off;
             '';
           };
+
+          serverAliases = ["p.${newDomain}" "plex.${oldDomain}"];
         };
 
-        "podcasts.${domain}" = {
+        "audiobookshelf.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
@@ -280,6 +297,8 @@ in {
               proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
             '';
           };
+
+          serverAliases = ["a.${newDomain}" "podcasts.${oldDomain}"];
         };
       };
     };

@@ -166,7 +166,7 @@
       enable = true;
 
       config = {
-        DOMAIN = "https://passwords.raffauflabs.com";
+        DOMAIN = "https://vault.cute.haus";
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_LOG = "critical";
         ROCKET_PORT = 8222;
