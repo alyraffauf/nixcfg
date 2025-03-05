@@ -182,7 +182,6 @@
     profiles = {
       autoUpgrade.enable = true;
       base.enable = true;
-      btrfs.enable = true;
       media-share.enable = true;
     };
 
