@@ -14,7 +14,6 @@
         git
         helix
         htop
-        nodePackages.nodejs
         python3
         wget
       ];
@@ -39,10 +38,7 @@
       nh.enable = true;
     };
 
-    networking = {
-      networkmanager.enable = true;
-      nftables.enable = true;
-    };
+    networking.networkmanager.enable = true;
 
     security = {
       polkit.enable = true;
