@@ -10,11 +10,9 @@
     environment = {
       systemPackages = with pkgs; [
         (inxi.override {withRecommends = true;})
-        curl
         git
         helix
         htop
-        python3
         wget
       ];
 
