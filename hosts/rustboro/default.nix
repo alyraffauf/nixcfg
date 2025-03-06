@@ -32,18 +32,14 @@
   networking.hostName = "rustboro";
 
   programs = {
-    firefox = {
-      enable = true;
-      package = pkgs.librewolf;
-    };
-
+    firefox.enable = true;
     zsh.enable = true;
   };
 
   services.xserver = {
     desktopManager.gnome.favoriteAppsOverride = ''
       [org.gnome.shell]
-      favorite-apps=[ 'librewolf.desktop', 'torbrowser.desktop', 'nautilus.desktop' ]
+      favorite-apps=[ 'firefox.desktop', 'torbrowser.desktop', 'nautilus.desktop' ]
     '';
 
     xkb.options = "ctrl:nocaps";
