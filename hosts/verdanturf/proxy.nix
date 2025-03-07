@@ -12,7 +12,6 @@ in {
       enable = true;
 
       domains = [
-        "v.${newDomain}"
         "vault.${newDomain}"
         "couchdb.${newDomain}"
       ];

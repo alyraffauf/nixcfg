@@ -18,13 +18,9 @@ in {
       enable = true;
 
       domains = [
-        "a.${newDomain}"
         "audiobookshelf.${newDomain}"
-        "i.${newDomain}"
         "immich.${newDomain}"
-        "n.${newDomain}"
         "navidrome.${newDomain}"
-        "p.${newDomain}"
         "plex.${newDomain}"
         newDomain
       ];
