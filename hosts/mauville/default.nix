@@ -159,6 +159,21 @@ in {
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
         };
 
+      radarr =
+        defaults
+        // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start radarr
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop radarr
+          '';
+
+          paths = ["/var/lib/radarr"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/radarr";
+        };
+
       sonarr =
         defaults
         // {
