@@ -158,6 +158,21 @@ in {
           paths = ["/var/lib/plex"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
         };
+
+      sonarr =
+        defaults
+        // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start sonarr
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop sonarr
+          '';
+
+          paths = ["/var/lib/sonarr"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/sonarr";
+        };
     };
 
     samba = {

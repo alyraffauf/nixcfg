@@ -158,6 +158,11 @@ in {
       openFirewall = true;
     };
 
+    sonarr = {
+      enable = true;
+      openFirewall = true;
+    };
+
     transmission = {
       enable = true;
       credentialsFile = config.age.secrets.transmission.path;
