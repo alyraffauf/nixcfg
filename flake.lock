@@ -879,11 +879,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1740845976,
-        "narHash": "sha256-GFuZx8LPolfcOiIoAgG4e74HI2jP+/fZxtmNSqmadms=",
+        "lastModified": 1741468880,
+        "narHash": "sha256-2iLMvd5sOBTFDTbUifXoc28dF9FdmiD/yGQ6wg3jx+8=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "c68f34edc53bf900caab4f2fa0eaea4e79e29880",
+        "rev": "641e43b99d957cb43e8c40c12dec3ee947cad428",
         "type": "github"
       },
       "original": {
