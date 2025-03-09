@@ -1,12 +1,64 @@
 {
   config,
   lib,
+  self,
   ...
 }: {
   options.myNixOS.programs.nix.enable = lib.mkEnableOption "sane nix configuration";
 
   config = lib.mkIf config.myNixOS.programs.nix.enable {
+    programs.ssh.knownHosts = {
+      lilycove = {
+        hostNames = ["lilycove" "lilycove.local"];
+        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_lilycove.pub";
+      };
+
+      mauville = {
+        hostNames = ["mauville" "mauville.local"];
+        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_mauville.pub";
+      };
+
+      roxanne = {
+        hostNames = ["roxanne" "roxanne.local"];
+        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_roxanne.pub";
+      };
+    };
+
     nix = {
+      buildMachines = let
+        sshUser = "root";
+        sshKey = "/home/aly/.ssh/id_ed25519";
+      in
+        lib.filter (m: m.hostName != "${config.networking.hostName}") [
+          {
+            inherit sshUser sshKey;
+            hostName = "lilycove";
+            maxJobs = 6;
+            speedFactor = 4;
+            supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+            system = "x86_64-linux";
+          }
+          {
+            inherit sshUser sshKey;
+            hostName = "mauville";
+            maxJobs = 4;
+            speedFactor = 1;
+            supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+            system = "x86_64-linux";
+          }
+
+          {
+            inherit sshUser sshKey;
+            hostName = "roxanne";
+            maxJobs = 4;
+            speedFactor = 1;
+            supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+            system = "aarch64-linux";
+          }
+        ];
+
+      distributedBuilds = true;
+
       gc = {
         automatic = true;
         options = "--delete-older-than 5d";
