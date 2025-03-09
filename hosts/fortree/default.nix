@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./home.nix
-    self.inputs.home-manager.darwinModules.default
+    ./stylix.nix
   ];
 
   environment.systemPackages = with pkgs; [

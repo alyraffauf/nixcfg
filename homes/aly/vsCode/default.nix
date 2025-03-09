@@ -71,7 +71,7 @@
           "window.menuBarVisibility" = lib.mkIf pkgs.stdenv.isLinux "default";
 
           "window.titleBarStyle" =
-            if (config.myHome.desktop.gnome.enable or pkgs.stdenv.isDarwin)
+            if config.myHome.desktop.gnome.enable
             then "custom"
             else "native";
         };
