@@ -68,7 +68,7 @@
           "git.autofetch" = true;
           "git.confirmSync" = false;
           "github.gitProtocol" = "ssh";
-          "window.menuBarVisibility" = lib.mkIf pkgs.stdenv.isLinux "default";
+          "window.menuBarVisibility" = "hidden";
 
           "window.titleBarStyle" =
             if config.myHome.desktop.gnome.enable
@@ -77,5 +77,7 @@
         };
       };
     };
+
+    stylix.targets.vscode.profileNames = ["default"];
   };
 }
