@@ -29,6 +29,12 @@
     };
 
     security.pam.services.sudo_local.touchIdAuth = true;
+
     services.openssh.enable = true;
+
+    system.defaults.alf = {
+      globalstate = 1;
+      loggingenabled = 1;
+    };
   };
 }
