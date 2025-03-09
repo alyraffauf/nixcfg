@@ -1,29 +1,11 @@
 {
   config,
   lib,
-  self,
   ...
 }: {
   options.myNixOS.programs.nix.enable = lib.mkEnableOption "sane nix configuration";
 
   config = lib.mkIf config.myNixOS.programs.nix.enable {
-    programs.ssh.knownHosts = {
-      lilycove = {
-        hostNames = ["lilycove" "lilycove.local"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_lilycove.pub";
-      };
-
-      mauville = {
-        hostNames = ["mauville" "mauville.local"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_mauville.pub";
-      };
-
-      roxanne = {
-        hostNames = ["roxanne" "roxanne.local"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_roxanne.pub";
-      };
-    };
-
     nix = {
       buildMachines = let
         sshUser = "root";
