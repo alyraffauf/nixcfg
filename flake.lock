@@ -901,11 +901,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1741505130,
-        "narHash": "sha256-czhE2TRWtnh2+5+G0C34rTDgasH92/TsfeD7ZI6RImg=",
+        "lastModified": 1741541715,
+        "narHash": "sha256-v7zDKpMax+XhXFkBy6DXd3+j1y2D44QFxUFZg8PThAg=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "fc66648eed8c95a3cf39840eceee9320b94f4b2c",
+        "rev": "01028a3dc7a4e0b9c488ad966e954b9f9cd3efdc",
         "type": "github"
       },
       "original": {
