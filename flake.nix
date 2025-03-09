@@ -112,6 +112,9 @@
     darwinConfigurations."fortree" = self.inputs.nix-darwin.lib.darwinSystem {
       modules = [
         ./hosts/fortree
+        self.inputs.agenix.darwinModules.default
+        self.inputs.home-manager.darwinModules.home-manager
+        self.inputs.stylix.darwinModules.stylix
 
         {
           home-manager = {
@@ -162,8 +165,9 @@
 
     homeManagerModules = {
       aly = ./homes/aly;
-      dustin = ./homes/dustin;
+      aly-darwin = ./homes/aly/darwin.nix;
       default = ./modules/home;
+      dustin = ./homes/dustin;
     };
 
     nixosModules = {
