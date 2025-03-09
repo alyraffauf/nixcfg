@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -14,36 +15,40 @@
         extensions = with pkgs.vscode-extensions; [
           github.vscode-github-actions
           github.vscode-pull-request-github
-          ms-python.python
           ms-vscode-remote.remote-ssh
           oderwat.indent-rainbow
           rubymaniac.vscode-paste-and-indent
           supermaven.supermaven
         ];
 
-        keybindings = [
+        keybindings = let
+          mod =
+            if pkgs.stdenv.isDarwin
+            then "cmd"
+            else "ctrl";
+        in [
           {
             "key" = "alt+e";
             "command" = "workbench.action.quickOpen";
           }
           {
-            "key" = "ctrl+p";
+            "key" = "${mod}+p";
             "command" = "-workbench.action.quickOpen";
           }
           {
-            "key" = "ctrl+p";
+            "key" = "${mod}+p";
             "command" = "workbench.action.showCommands";
           }
           {
-            "key" = "ctrl+shift+t";
+            "key" = "${mod}+shift+t";
             "command" = "-workbench.action.reopenClosedEditor";
           }
           {
-            "key" = "ctrl+shift+t";
+            "key" = "${mod}+shift+t";
             "command" = "workbench.action.tasks.runTask";
           }
           {
-            "key" = "ctrl+shift+p";
+            "key" = "${mod}+shift+p";
             "command" = "-workbench.action.showCommands";
           }
         ];
@@ -63,10 +68,10 @@
           "git.autofetch" = true;
           "git.confirmSync" = false;
           "github.gitProtocol" = "ssh";
-          "window.menuBarVisibility" = "hidden";
+          "window.menuBarVisibility" = lib.mkIf pkgs.stdenv.isLinux "default";
 
           "window.titleBarStyle" =
-            if config.myHome.desktop.gnome.enable
+            if (config.myHome.desktop.gnome.enable or pkgs.stdenv.isDarwin)
             then "custom"
             else "native";
         };
