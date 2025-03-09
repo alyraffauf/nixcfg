@@ -73,6 +73,7 @@
   outputs = {self, ...}: let
     allSystems = [
       "aarch64-linux"
+      "aarch64-darwin"
       "x86_64-linux"
     ];
 
@@ -199,8 +200,6 @@
 
     packages = forAllSystems ({pkgs}: rec {
       default = installer;
-
-      adjustor = pkgs.callPackage ./pkgs/adjustor.nix {};
 
       deployer = pkgs.writeShellApplication {
         name = "deployer";
