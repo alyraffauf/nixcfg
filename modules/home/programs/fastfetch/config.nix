@@ -19,7 +19,7 @@
       type = "host";
     }
     {
-      format = "{3}";
+      format = "{2}";
       key = "os    ";
       keyColor = "33";
       type = "os";
