@@ -1,8 +1,13 @@
-{pkgs, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   engines = import ./engines.nix;
 in {
   programs.firefox = {
     enable = true;
+    package = lib.mkIf pkgs.stdenv.isDarwin (pkgs.runCommand "firefox-0.0.0" {} "mkdir $out");
 
     profiles = {
       default = {

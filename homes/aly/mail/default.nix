@@ -65,6 +65,7 @@ in {
 
     thunderbird = {
       enable = true;
+      package = lib.mkIf pkgs.stdenv.isDarwin (pkgs.runCommand "thunderbird-0.0.0" {} "mkdir $out");
 
       profiles.default = {
         isDefault = true;
