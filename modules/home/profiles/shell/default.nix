@@ -39,10 +39,13 @@
       direnv = {
         enable = true;
         nix-direnv.enable = true;
+        silent = true;
       };
 
       eza = {
         enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
         extraOptions = ["--group-directories-first" "--header"];
         git = true;
         icons = "auto";
