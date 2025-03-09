@@ -31,6 +31,11 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
 
