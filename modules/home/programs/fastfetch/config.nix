@@ -6,7 +6,8 @@
       bottom = 3;
       top = 3;
     };
-    source = "NixOS_small";
+
+    type = "small";
   };
   modules = [
     "break"
