@@ -7,37 +7,8 @@
 
   config = lib.mkIf config.myNixOS.programs.nix.enable {
     nix = {
-      buildMachines = let
-        sshUser = "root";
-        sshKey = "/home/aly/.ssh/id_ed25519";
-      in
-        lib.filter (m: m.hostName != "${config.networking.hostName}") [
-          {
-            inherit sshUser sshKey;
-            hostName = "lilycove";
-            maxJobs = 6;
-            speedFactor = 4;
-            supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-            system = "x86_64-linux";
-          }
-          {
-            inherit sshUser sshKey;
-            hostName = "mauville";
-            maxJobs = 4;
-            speedFactor = 1;
-            supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-            system = "x86_64-linux";
-          }
-
-          {
-            inherit sshUser sshKey;
-            hostName = "roxanne";
-            maxJobs = 4;
-            speedFactor = 1;
-            supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-            system = "aarch64-linux";
-          }
-        ];
+      buildMachines =
+        lib.filter (m: m.hostName != "${config.networking.hostName}") (import ./buildMachines.nix);
 
       distributedBuilds = true;
 
