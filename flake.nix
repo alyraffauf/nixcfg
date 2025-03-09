@@ -112,6 +112,7 @@
     darwinConfigurations."fortree" = self.inputs.nix-darwin.lib.darwinSystem {
       modules = [
         ./hosts/fortree
+        self.darwinModules.default
         self.inputs.agenix.darwinModules.default
         self.inputs.home-manager.darwinModules.home-manager
         self.inputs.stylix.darwinModules.stylix
@@ -133,6 +134,8 @@
 
       specialArgs = {inherit self;};
     };
+
+    darwinModules.default = ./modules/darwin;
 
     devShells = forAllSystems ({pkgs}: {
       default = pkgs.mkShell {
