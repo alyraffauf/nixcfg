@@ -8,11 +8,6 @@ on:
       - "pkgs/**"
       - "flake.nix"
       - "flake.lock"
-  pull_request:
-    paths:
-      - "pkgs/**"
-      - "flake.nix"
-      - "flake.lock"
   workflow_dispatch:
 jobs:
   build-deployer:
