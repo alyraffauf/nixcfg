@@ -91,7 +91,7 @@
           };
         });
 
-    forAllHosts = self.inputs.nixpkgs.lib.genAttrs [
+    forAllLinuxHosts = self.inputs.nixpkgs.lib.genAttrs [
       "fallarbor"
       "lilycove"
       "mauville"
@@ -109,6 +109,28 @@
       self.overlays.default
     ];
   in {
+    darwinConfigurations."fortree" = self.inputs.nix-darwin.lib.darwinSystem {
+      modules = [
+        ./hosts/fortree
+
+        {
+          home-manager = {
+            backupFileExtension = "backup";
+            extraSpecialArgs = {inherit self;};
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
+
+          nixpkgs = {
+            inherit overlays;
+            config.allowUnfree = true;
+          };
+        }
+      ];
+
+      specialArgs = {inherit self;};
+    };
+
     devShells = forAllSystems ({pkgs}: {
       default = pkgs.mkShell {
         packages =
@@ -168,7 +190,7 @@
       users = ./modules/os/users;
     };
 
-    nixosConfigurations = forAllHosts (
+    nixosConfigurations = forAllLinuxHosts (
       host:
         self.inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {inherit self;};
