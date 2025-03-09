@@ -79,6 +79,7 @@
       };
 
       settings = {
+        builders-use-substitutes = true;
         experimental-features = ["nix-command" "flakes"];
 
         substituters = [
