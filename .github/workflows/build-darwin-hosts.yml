@@ -1,0 +1,21 @@
+name: build-darwin-hosts
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  push:
+    paths-ignore:
+      - "**/*.md"
+      - ".github/**"
+      - "_img/**"
+  workflow_dispatch:
+jobs:
+  build-fortree:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Build fortree
+        run: nix build --accept-flake-config .#darwinConfigurations.fortree.config.system.build.toplevel
