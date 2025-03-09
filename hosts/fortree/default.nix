@@ -25,6 +25,8 @@
   homebrew = {
     enable = true;
 
+    brews = ["mas"];
+
     casks = [
       "firefox"
       "ghostty"
@@ -34,6 +36,10 @@
       "submariner"
       "thunderbird"
     ];
+
+    masApps = {
+      "Photomator – Photo Editor" = 1444636541;
+    };
 
     onActivation = {
       cleanup = "uninstall"; # uninstall any not listed here
