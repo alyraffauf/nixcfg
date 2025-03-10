@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myDarwin.programs.nix.enable = lib.mkEnableOption "sane nix configuration";
@@ -37,6 +38,8 @@
 
         maxJobs = 4;
       };
+
+      package = pkgs.lix;
 
       settings = import ../../../nixos/os/programs/nix/settings.nix;
     };

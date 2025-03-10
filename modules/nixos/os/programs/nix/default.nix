@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myNixOS.programs.nix.enable = lib.mkEnableOption "sane nix configuration";
@@ -30,6 +31,8 @@
         persistent = true;
         randomizedDelaySec = "60min";
       };
+
+      package = pkgs.lix;
 
       settings = import ./settings.nix;
     };
