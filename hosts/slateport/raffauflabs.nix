@@ -21,6 +21,7 @@ in {
         "audiobookshelf.${newDomain}"
         "immich.${newDomain}"
         "navidrome.${newDomain}"
+        "ombi.${newDomain}"
         "plex.${newDomain}"
         newDomain
       ];
@@ -259,6 +260,20 @@ in {
           };
 
           serverAliases = ["i.${newDomain}" "pics.${oldDomain}"];
+        };
+
+        "ombi.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://${ip}:${toString 5000}";
+            proxyWebsockets = true;
+
+            extraConfig = ''
+              proxy_buffering off;
+            '';
+          };
         };
 
         "plex.${newDomain}" = {

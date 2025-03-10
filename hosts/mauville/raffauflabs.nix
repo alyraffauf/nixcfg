@@ -154,6 +154,11 @@ in {
       openFirewall = true;
     };
 
+    ombi = {
+      enable = true;
+      openFirewall = true;
+    };
+
     plex = {
       enable = true;
       openFirewall = true;

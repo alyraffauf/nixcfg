@@ -144,6 +144,21 @@ in {
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/immich";
         };
 
+      ombi =
+        defaults
+        // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start ombi
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop ombi
+          '';
+
+          paths = ["/var/lib/ombi"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
+        };
+
       plex =
         defaults
         // {
