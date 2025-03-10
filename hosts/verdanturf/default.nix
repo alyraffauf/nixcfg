@@ -47,8 +47,6 @@
 
   time.timeZone = "America/New_York";
 
-  users.users.aly.uid = lib.mkForce 1001;
-
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
