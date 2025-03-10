@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myNixOS.profiles.media-share.enable = lib.mkEnableOption "media share";
@@ -12,11 +13,13 @@
       }
     ];
 
+    environment.systemPackages = [pkgs.cifs-utils];
+
     fileSystems = let
       fsType = "cifs";
       options = [
         "gid=100"
-        "guest"
+        "user=guest"
         "nofail"
         "uid=${toString config.users.users.aly.uid}"
         "x-systemd.after=network.target"

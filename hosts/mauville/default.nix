@@ -197,6 +197,7 @@ in {
       settings = {
         global = {
           security = "user";
+          "map to guest" = "Bad User";
           "read raw" = "Yes";
           "write raw" = "Yes";
           "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072";
