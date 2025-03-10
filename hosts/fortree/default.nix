@@ -17,7 +17,10 @@
 
   homebrew = {
     enable = true;
-    brews = ["mas"];
+    brews = [
+      "mas"
+      "ollama"
+    ];
 
     casks = [
       "firefox"
