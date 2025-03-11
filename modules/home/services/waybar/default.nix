@@ -390,5 +390,7 @@ in {
         border-radius: ${toString 10}px
       }
     '';
+
+    stylix.targets.waybar.font = "sansSerif";
   };
 }
