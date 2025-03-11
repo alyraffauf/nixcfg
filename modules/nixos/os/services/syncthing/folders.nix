@@ -1,20 +1,44 @@
 {
   "sync" = {
-    devices = ["dewford" "fallarbor" "groudon" "gsgmba" "iphone12" "lilycove" "mauville" "norman" "pacifidlog" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
+    devices = [
+      "dewford"
+      "fallarbor"
+      "groudon"
+      "gsgmba"
+      "kyogre"
+      "lilycove"
+      "mauville"
+      "norman"
+      "pacifidlog"
+      "rustboro"
+      "slateport"
+      "sootopolis"
+    ];
+
     id = "default";
     path = "/home/aly/sync";
 
     versioning = {
-      type = "staggered";
       params = {
         cleanInterval = "3600";
         maxAge = "1";
       };
+
+      type = "staggered";
     };
   };
 
   "screenshots" = {
-    devices = ["fallarbor" "lilycove" "mauville" "norman" "petalburg" "rustboro" "slateport" "sootopolis" "winona"];
+    devices = [
+      "fallarbor"
+      "lilycove"
+      "mauville"
+      "norman"
+      "rustboro"
+      "slateport"
+      "sootopolis"
+    ];
+
     id = "screenshots";
     path = "/home/aly/pics/screenshots";
 
@@ -25,12 +49,25 @@
   };
 
   "music" = {
-    devices = ["lilycove" "mauville" "petalburg" "rustboro" "sootopolis"];
+    devices = [
+      "lilycove"
+      "mauville"
+      "rustboro"
+      "sootopolis"
+    ];
+
     id = "6nzmu-z9der";
   };
 
   "roms" = {
-    devices = ["dewford" "lilycove" "mauville" "pacifidlog" "petalburg" "sootopolis"];
+    devices = [
+      "dewford"
+      "lilycove"
+      "mauville"
+      "pacifidlog"
+      "sootopolis"
+    ];
+
     id = "emudeck";
     path = "/home/aly/roms";
   };

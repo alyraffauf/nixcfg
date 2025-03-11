@@ -96,7 +96,6 @@
       "lilycove"
       "mauville"
       "pacifidlog"
-      "petalburg"
       "roxanne"
       "rustboro"
       "slateport"
