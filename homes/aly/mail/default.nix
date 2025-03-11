@@ -78,7 +78,7 @@ in {
           "mailnews.default_sort_type" = 18; # sort by date
           "mailnews.message_display.disable_remote_image" = false;
           "mailnews.start_page.enabled" = false;
-          "network.cookie.cookieBehavior" = 2; # no cookies
+          "network.cookie.cookieBehavior" = 1;
           "pdfjs.enabledCache.state" = true;
           "privacy.donottrackheader.enabled" = true;
           "privacy.fingerprintingProtection" = true;
