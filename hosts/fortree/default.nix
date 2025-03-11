@@ -51,7 +51,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   services.aerospace = {
-    enable = true;
+    enable = false;
 
     settings = {
       enable-normalization-flatten-containers = false;
