@@ -123,6 +123,8 @@ in {
     };
   };
 
+  stylix.targets.firefox.profileNames = ["default"];
+
   # xdg.desktopEntries.firework = {
   #   categories = ["Application" "Network" "WebBrowser"];
   #   exec = "firefox -p work --name firework %U";
