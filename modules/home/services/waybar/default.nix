@@ -37,14 +37,8 @@ in {
           layer = "top";
           output = ["*"];
           position = "bottom";
-          modules-left =
-            ["group/tablet"]
-            ++ lib.optionals (config.wayland.windowManager.hyprland.enable)
-            ["hyprland/submap"];
-
-          modules-center =
-            lib.optionals (config.wayland.windowManager.hyprland.enable)
-            ["hyprland/workspaces"];
+          modules-left = ["group/tablet" "hyprland/submap"];
+          modules-center = ["hyprland/workspaces"];
 
           modules-right = [
             "tray"
