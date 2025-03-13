@@ -17,6 +17,7 @@
 
   homebrew = {
     enable = true;
+
     brews = [
       "mas"
       "ollama"
@@ -27,8 +28,8 @@
       "ghostty"
       "macfuse"
       "obsidian"
+      "plexamp"
       "signal"
-      "submariner"
       "thunderbird"
     ];
 
