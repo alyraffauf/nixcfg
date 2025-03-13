@@ -208,8 +208,8 @@ in {
 
   monitor =
     [",preferred,auto,auto"]
-    ++ [cfg.desktop.hyprland.laptopMonitor]
-    ++ cfg.desktop.hyprland.monitors;
+    ++ cfg.desktop.hyprland.monitors
+    ++ lib.lists.optional (cfg.desktop.hyprland.laptopMonitor != null) cfg.desktop.hyprland.laptopMonitor;
 
   # plugin = {
   #   overview = {
