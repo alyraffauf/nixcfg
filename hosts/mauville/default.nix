@@ -37,9 +37,9 @@ in {
         "nodev"
         "nofail"
         "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=10G" # Cache up to 100GB
+        "vfs-cache-max-size=50G" # Cache up to 50GB
         "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=512M" # Preload 512MB of data for smoother playback
+        "vfs-read-ahead=1024M" # Preload 1024MB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
         "x-systemd.after=network.target"
         "x-systemd.automount"
@@ -58,9 +58,9 @@ in {
         "nodev"
         "nofail"
         "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=100G" # Cache up to 100GB
+        "vfs-cache-max-size=200G" # Cache up to 200GB
         "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=512M" # Preload 512MB of data for smoother playback
+        "vfs-read-ahead=1024M" # Preload 1024MB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
         "x-systemd.after=network.target"
         "x-systemd.automount"
@@ -79,9 +79,9 @@ in {
         "nodev"
         "nofail"
         "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=100G" # Cache up to 100GB
+        "vfs-cache-max-size=200G" # Cache up to 200GB
         "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=512M" # Preload 512MB of data for smoother playback
+        "vfs-read-ahead=1024M" # Preload 1024MB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
         "x-systemd.after=network.target"
         "x-systemd.automount"
