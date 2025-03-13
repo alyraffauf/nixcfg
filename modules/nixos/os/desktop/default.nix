@@ -8,7 +8,6 @@
     ./gnome
     ./hyprland
     ./kde
-    ./steamos
   ];
 
   options.myNixOS.desktop.enable = lib.mkOption {
