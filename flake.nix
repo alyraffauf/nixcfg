@@ -31,13 +31,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
-
-    secrets = {
-      url = "github:alyraffauf/secrets";
-      flake = false;
-    };
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,9 +46,34 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
+    ############################################################################
+    # Non-flake inputs
+    ## Declarative tap management for homebrew
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+
+    ## All my age-encrypted secrets
+    secrets = {
+      url = "github:alyraffauf/secrets";
+      flake = false;
+    };
+
+    ## All my wallpapers
     wallpapers = {
       url = "github:alyraffauf/wallpapers";
-      flake = false; # This is important to specify that it's a non-flake
+      flake = false;
     };
   };
 
@@ -70,8 +95,8 @@
 
   outputs = {self, ...}: let
     allSystems = [
-      "aarch64-linux"
       "aarch64-darwin"
+      "aarch64-linux"
       "x86_64-linux"
     ];
 
@@ -106,6 +131,7 @@
         self.darwinModules.default
         self.inputs.agenix.darwinModules.default
         self.inputs.home-manager.darwinModules.home-manager
+        self.inputs.nix-homebrew.darwinModules.nix-homebrew
         self.inputs.stylix.darwinModules.stylix
 
         {

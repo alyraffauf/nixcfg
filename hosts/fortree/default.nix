@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   self,
@@ -17,6 +18,7 @@
 
   homebrew = {
     enable = true;
+    global.autoUpdate = false;
 
     brews = [
       "mas"
@@ -26,6 +28,7 @@
     casks = [
       "firefox"
       "ghostty"
+      "google-chrome"
       "macfuse"
       "obsidian"
       "plexamp"
@@ -38,15 +41,30 @@
     };
 
     onActivation = {
-      cleanup = "uninstall"; # uninstall any not listed here
-      upgrade = true; # not idempotent anymore
+      cleanup = "zap";
+      upgrade = true;
     };
+
+    taps = builtins.attrNames config.nix-homebrew.taps;
   };
 
   networking = {
     computerName = "fortree";
     hostName = "fortree";
     localHostName = "fortree";
+  };
+
+  nix-homebrew = {
+    enable = true;
+    mutableTaps = false;
+
+    taps = {
+      "homebrew/homebrew-core" = self.inputs.homebrew-core;
+      "homebrew/homebrew-cask" = self.inputs.homebrew-cask;
+      "homebrew/homebrew-bundle" = self.inputs.homebrew-bundle;
+    };
+
+    user = "aly";
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
