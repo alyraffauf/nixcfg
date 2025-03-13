@@ -19,6 +19,12 @@ in {
   environment.systemPackages = [pkgs.rclone];
 
   fileSystems = {
+    "${mediaDirectory}" = {
+      device = "/dev/sdb";
+      fsType = "btrfs";
+      options = ["compress=zstd" "noatime"];
+    };
+
     "${mediaDirectory}/Audiobooks" = {
       device = "b2:aly-audiobooks";
       fsType = "rclone";
