@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./firefox
+    ./git
     ./helix
     ./mail
     ./secrets.nix
@@ -23,10 +24,6 @@
     home-manager.enable = true;
 
     vscode.profiles.default.userSettings = {
-      "editor.fontFamily" = "CaskaydiaCove Nerd Font";
-      "editor.fontSize" = 14;
-      "terminal.integrated.fontFamily" = "CaskaydiaCove Nerd Font";
-      "terminal.integrated.fontSize" = 14;
       "window.titleBarStyle" = lib.mkForce "custom";
     };
   };
