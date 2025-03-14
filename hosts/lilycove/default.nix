@@ -95,13 +95,9 @@ in {
   time.timeZone = "America/New_York";
 
   myNixOS = {
-    desktop = {
-      hyprland = {
-        enable = false;
-        monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.0,vrr,2"];
-      };
-
-      kde.enable = true;
+    desktop.hyprland = {
+      enable = true;
+      monitors = ["desc:LG Electronics LG ULTRAWIDE 311NTAB5M720,preferred,auto,1.25,vrr,2"];
     };
 
     profiles = {
@@ -122,12 +118,10 @@ in {
     };
 
     services = {
-      sddm = {
+      greetd = {
         enable = true;
         autologin = "aly";
       };
-
-      sunshine.enable = true;
 
       syncthing = {
         enable = true;

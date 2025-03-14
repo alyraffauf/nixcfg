@@ -23,6 +23,8 @@
             orientation = "center";
           };
         };
+
+        myHome.services.hypridle.autoSuspend = false;
       }
     ];
 
