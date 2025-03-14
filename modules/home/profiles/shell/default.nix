@@ -100,6 +100,10 @@
 
         initExtra = ''
           [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+          if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+            export TERM=xterm-256color
+          fi
         '';
 
         historySubstringSearch.enable = true;
