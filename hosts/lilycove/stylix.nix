@@ -5,7 +5,7 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-rr9qzw.png";
     imageScalingMode = "fill";
     polarity = "light";
@@ -33,10 +33,10 @@
       };
 
       sizes = {
-        applications = 11;
-        desktop = 10;
-        popups = 11;
-        terminal = 12;
+        applications = 10;
+        desktop = 9;
+        popups = 10;
+        terminal = 10;
       };
     };
 
