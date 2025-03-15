@@ -10,6 +10,7 @@
   config = lib.mkIf config.myDarwin.profiles.base.enable {
     environment = {
       systemPackages = with pkgs; [
+        (lib.hiPrio uutils-coreutils-noprefix)
         eza
         git
         rclone

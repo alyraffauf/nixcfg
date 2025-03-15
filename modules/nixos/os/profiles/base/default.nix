@@ -11,6 +11,7 @@
     environment = {
       systemPackages = with pkgs; [
         (inxi.override {withRecommends = true;})
+        (lib.hiPrio uutils-coreutils-noprefix)
         git
         helix
         htop
