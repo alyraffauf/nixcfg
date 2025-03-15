@@ -55,6 +55,7 @@
       };
 
       fzf.enable = true;
+      htop.enable = true;
 
       oh-my-posh = {
         enable = true;
