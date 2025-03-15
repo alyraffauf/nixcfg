@@ -11,7 +11,7 @@
     ./options.nix
   ];
 
-  config = lib.mkIf (config.myUsers.aly.enable or config.myUsers.dustin.enable) {
+  config = lib.mkIf (config.myUsers.root.enable or config.myUsers.aly.enable or config.myUsers.dustin.enable) {
     programs.zsh.enable = true;
 
     users = {
