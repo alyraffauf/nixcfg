@@ -35,8 +35,8 @@
 
   swapDevices = [
     {
-      device = "/storage/swapfile";
-      size = 1540;
+      device = "/swapfile";
+      size = 2048;
     }
   ];
 
