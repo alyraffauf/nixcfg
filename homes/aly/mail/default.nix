@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  mkPassword = secret: "${lib.getExe' pkgs.coreutils "cat"} ${secret}";
+  mkPassword = secret: "${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${secret}";
 in {
   accounts.email.accounts = {
     "alyraffauf@fastmail.com" = {

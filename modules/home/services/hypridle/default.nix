@@ -134,9 +134,9 @@ in {
                 (with pkgs; [
                   bash
                   brightnessctl # Not working as of 2025-01-25, needs nixpkgs interpolation to work.
-                  coreutils
                   hyprlock
                   systemd
+                  uutils-coreutils-noprefix
                 ])
                 ++ lib.optional (config.wayland.windowManager.hyprland.enable) config.wayland.windowManager.hyprland.package
               )

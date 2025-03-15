@@ -15,6 +15,8 @@
       file = "${self.inputs.secrets}/lastfm/secret.age";
     };
 
+    slskd.file = "${self.inputs.secrets}/slskd.age";
+
     spotifyId = {
       owner = "navidrome";
       file = "${self.inputs.secrets}/spotify/client-id.age";

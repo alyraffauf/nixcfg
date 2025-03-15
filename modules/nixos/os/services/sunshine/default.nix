@@ -6,7 +6,7 @@
 }: let
   steam-run-url = pkgs.writeShellApplication {
     name = "steam-run-url";
-    runtimeInputs = [pkgs.coreutils];
+    runtimeInputs = [pkgs.uutils-coreutils-noprefix];
 
     text = ''
       echo "$1" > "/run/user/$(id --user)/steam-run-url.fifo"

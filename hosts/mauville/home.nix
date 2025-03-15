@@ -45,8 +45,8 @@
             Environment = [
               "PATH=${
                 lib.makeBinPath (with pkgs; [
-                  coreutils
                   rclone
+                  uutils-coreutils-noprefix
                 ])
               }"
             ];

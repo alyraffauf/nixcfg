@@ -21,12 +21,12 @@
     name = "screenshooter";
 
     runtimeInputs = with pkgs; [
-      coreutils
       gnugrep
       grim
       libnotify
       mako
       slurp
+      uutils-coreutils-noprefix
       wl-clipboard-rs
     ];
 

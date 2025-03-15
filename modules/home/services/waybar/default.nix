@@ -13,7 +13,6 @@ in {
       (with pkgs; [
         blueberry
         bluez
-        coreutils
         getopt
         gnugrep
         libnotify
@@ -25,6 +24,7 @@ in {
         procps
         rofi-power-menu
         systemd
+        uutils-coreutils-noprefix
       ])
       ++ lib.optional (config.wayland.windowManager.hyprland.enable) config.wayland.windowManager.hyprland.package;
 
@@ -98,7 +98,7 @@ in {
           battery = let
             checkBattery = pkgs.writeShellApplication {
               name = "check-battery";
-              runtimeInputs = [pkgs.coreutils];
+              runtimeInputs = [pkgs.uutils-coreutils-noprefix];
               text = builtins.readFile ./scripts/check-battery.sh;
             };
           in {

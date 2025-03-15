@@ -72,12 +72,12 @@
 
           runtimeInputs = with pkgs; [
             alsa-utils
-            coreutils
             gawk
             gnugrep
             gnused
             i2c-tools
             kmod
+            uutils-coreutils-noprefix
           ];
 
           text = builtins.readFile ./turn-on-speakers.sh;

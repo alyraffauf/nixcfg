@@ -16,7 +16,7 @@
       Service = {
         Type = "notify";
         Environment = ["PATH=/run/wrappers/bin/:$PATH"];
-        ExecStartPre = "${lib.getExe' pkgs.coreutils "mkdir"} -p ${mountdir}";
+        ExecStartPre = "${lib.getExe' pkgs.uutils-coreutils-noprefix "mkdir"} -p ${mountdir}";
 
         ExecStart = ''
           ${lib.getExe pkgs.rclone} mount icloud: ${mountdir} \
