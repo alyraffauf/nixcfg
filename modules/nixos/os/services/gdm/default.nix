@@ -6,7 +6,7 @@
   options.myNixOS.services.gdm = {
     enable = lib.mkEnableOption "gdm display manager";
 
-    autologin = lib.mkOption {
+    autoLogin = lib.mkOption {
       description = "User to autologin.";
       default = null;
       type = lib.types.nullOr lib.types.str;
@@ -36,9 +36,9 @@
     };
 
     services = {
-      displayManager.autoLogin = lib.mkIf (config.myNixOS.services.gdm.autologin != null) {
+      displayManager.autoLogin = lib.mkIf (config.myNixOS.services.gdm.autoLogin != null) {
         enable = true;
-        user = config.myNixOS.services.gdm.autologin;
+        user = config.myNixOS.services.gdm.autoLogin;
       };
 
       xserver.displayManager.gdm.enable = true;

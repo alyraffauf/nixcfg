@@ -1,6 +1,7 @@
 # Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
+  lib,
   pkgs,
   self,
   ...
@@ -26,6 +27,7 @@ in {
   };
 
   networking.hostName = "lilycove";
+  security.sudo.wheelNeedsPassword = lib.mkForce true;
 
   services = {
     nextjs-ollama-llm-ui.enable = true;
@@ -120,7 +122,7 @@ in {
     services = {
       greetd = {
         enable = true;
-        autologin = "aly";
+        autoLogin = "aly";
       };
 
       syncthing = {

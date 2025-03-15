@@ -6,7 +6,7 @@
   options.myNixOS.services.sddm = {
     enable = lib.mkEnableOption "sddm display manager";
 
-    autologin = lib.mkOption {
+    autoLogin = lib.mkOption {
       description = "User to autologin.";
       default = null;
       type = lib.types.nullOr lib.types.str;
@@ -21,9 +21,9 @@
     };
 
     services.displayManager = {
-      autoLogin = lib.mkIf (config.myNixOS.services.sddm.autologin != null) {
+      autoLogin = lib.mkIf (config.myNixOS.services.sddm.autoLogin != null) {
         enable = true;
-        user = config.myNixOS.services.sddm.autologin;
+        user = config.myNixOS.services.sddm.autoLogin;
       };
 
       sddm = {

@@ -7,7 +7,7 @@
   options.myNixOS.services.greetd = {
     enable = lib.mkEnableOption "greetd display manager";
 
-    autologin = lib.mkOption {
+    autoLogin = lib.mkOption {
       description = "User to autologin.";
       default = null;
       type = lib.types.nullOr lib.types.str;
@@ -31,7 +31,7 @@
       enable = true;
 
       settings =
-        if config.myNixOS.services.greetd.autologin != null
+        if config.myNixOS.services.greetd.autoLogin != null
         then {
           default_session = {
             command = lib.mkDefault "${lib.getExe pkgs.greetd.tuigreet} --asterisks --user-menu -g 'Welcome to NixOS ${config.system.nixos.release}' --time --remember --cmd ${config.myNixOS.services.greetd.session}";
@@ -39,7 +39,7 @@
 
           initial_session = {
             command = config.myNixOS.services.greetd.session;
-            user = config.myNixOS.services.greetd.autologin;
+            user = config.myNixOS.services.greetd.autoLogin;
           };
         }
         else {
