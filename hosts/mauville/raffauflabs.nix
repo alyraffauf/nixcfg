@@ -169,6 +169,27 @@ in {
       openFirewall = true;
     };
 
+    slskd = {
+      enable = true;
+      domain = "0.0.0.0";
+      environmentFile = config.age.secrets.slskd.path;
+      openFirewall = true;
+
+      settings = {
+        directories.downloads = "/mnt/Media/Inbox/Music";
+        shares.directories = ["/mnt/Media/Music"];
+        soulseek.connection.buffer.read = 4096;
+        soulseek.connection.buffer.write = 4096;
+        soulseek.connection.buffer.transfer = 81920;
+        soulseek.distributedNetwork.childLimit = 10;
+
+        global = {
+          upload.limit = 500; # Limit uploads to 500 KB/s
+          download.limit = 1000; # Limit downloads to 1 MB/s
+        };
+      };
+    };
+
     sonarr = {
       enable = true;
       openFirewall = true;
