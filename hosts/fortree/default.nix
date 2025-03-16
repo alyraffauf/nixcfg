@@ -10,6 +10,10 @@
     ./stylix.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    (lib.hiPrio uutils-coreutils-noprefix)
+  ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
     nerd-fonts.ubuntu-sans
