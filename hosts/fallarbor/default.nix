@@ -9,7 +9,7 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.hardware-framework-13-intel-11th
+    self.nixosModules.hardware-lenovo-thinkpad-X1-gen-9
     self.nixosModules.locale-en-us
   ];
 
