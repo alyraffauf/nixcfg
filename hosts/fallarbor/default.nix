@@ -22,7 +22,7 @@
     desktop = {
       hyprland = {
         # enable = true;
-        laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
+        laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
       };
 
       kde.enable = true;
