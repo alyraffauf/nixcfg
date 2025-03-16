@@ -13,7 +13,7 @@
     self.nixosModules.locale-en-us
   ];
 
-  environment.variables.GDK_SCALE = "1.5";
+  environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "fallarbor";
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
