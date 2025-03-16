@@ -5,10 +5,10 @@
   ...
 }: {
   imports = [
-    ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
+    self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hardware-lenovo-thinkpad-X1-gen-9
     self.nixosModules.locale-en-us
   ];
