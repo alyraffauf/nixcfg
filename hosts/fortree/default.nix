@@ -102,9 +102,15 @@
       };
     };
 
-    keyboard = {
+    system.keyboard = {
       enableKeyMapping = true;
-      remapCapsLockToControl = true;
+
+      userKeyMapping = [
+        {
+          HIDKeyboardModifierMappingSrc = 30064771129;
+          HIDKeyboardModifierMappingDst = 30064771299;
+        }
+      ];
     };
 
     stateVersion = 6;
