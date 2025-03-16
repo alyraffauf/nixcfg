@@ -102,7 +102,7 @@
       };
     };
 
-    system.keyboard = {
+    keyboard = {
       enableKeyMapping = true;
 
       userKeyMapping = [
