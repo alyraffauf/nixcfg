@@ -42,7 +42,7 @@
       firefox.enable = true;
       nix.enable = true;
       steam.enable = true;
-      systemd-boot.enable = true;
+      lanzaboote.enable = true;
     };
 
     services = {
