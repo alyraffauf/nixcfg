@@ -15,7 +15,7 @@
 
   environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "fallarbor";
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
   myNixOS = {
