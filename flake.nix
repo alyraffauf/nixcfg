@@ -158,6 +158,7 @@
       default = pkgs.mkShell {
         packages =
           (with pkgs; [
+            (lib.hiPrio uutils-coreutils-noprefix)
             alejandra
             bash-language-server
             git
