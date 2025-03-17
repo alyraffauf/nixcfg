@@ -75,8 +75,9 @@ in {
       "$mod,Right,changegroupactive,f"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${defaultApps.terminal}"
-      # "$mod,Tab,overview:toggle"
+      "ALT,space,exec,${lib.getExe config.programs.rofi.package} -show combi"
       "CTRL,F12,exec,${lib.getExe helpers.screenshot}"
+      # "$mod,Tab,overview:toggle"
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]
@@ -214,7 +215,7 @@ in {
   # plugin = {
   #   overview = {
   #     exitOnSwitch = true;
-  #     gaps_in = 5;
+  #     gapps_in = 5;
   #     gaps_out = 6;
   #     onBottom = true;
   #     overrideGaps = true;

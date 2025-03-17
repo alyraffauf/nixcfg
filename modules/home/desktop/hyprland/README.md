@@ -29,7 +29,7 @@
 - SUPER + B: Open Browser.
 - SUPER + E: Open Text Editor.
 - SUPER + F: Open File Manager.
-- SUPER + R: Open Launcher.
+- SUPER + R // ALT + SPACE: Open Launcher.
 - SUPER + T: Open Terminal.
 
 ### Screenshots
