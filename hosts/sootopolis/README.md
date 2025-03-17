@@ -30,6 +30,6 @@ ThinkPad X1 Carbon Gen 9.
 
 ## 🖥 Display
 
-- **Scaling**: Scaled to 1.2x, with fonts increased to **14pt** for better readability.
+- **Scaling**: Scaled to 1.25x.
 
 ---
