@@ -1,4 +1,3 @@
-# Framework 13 with 11th gen Intel Core i5, 16GB RAM, 512GB SSD.
 {
   config,
   self,
