@@ -5,7 +5,7 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-rr9qzw.png";
     imageScalingMode = "fill";
     polarity = "light";
