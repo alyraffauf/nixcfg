@@ -37,7 +37,9 @@
       "obsidian"
       "plexamp"
       "signal"
+      "slack"
       "thunderbird"
+      "todoist"
     ];
 
     masApps = {
