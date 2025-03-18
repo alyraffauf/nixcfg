@@ -13,8 +13,40 @@
   ];
 
   networking.hostName = "slateport";
-  services.syncthing.guiAddress = "0.0.0.0:8384";
-  time.timeZone = "America/New_York";
+
+  services = {
+    restic.backups = let
+      defaults = {
+        inhibitsSleep = true;
+        initialize = true;
+        passwordFile = config.age.secrets.restic-passwd.path;
+
+        pruneOpts = [
+          "--keep-daily 5"
+          "--keep-weekly 4"
+          "--keep-monthly 12"
+          "--compression max"
+        ];
+
+        rcloneConfigFile = config.age.secrets.rclone-b2.path;
+
+        timerConfig = {
+          OnCalendar = "daily";
+          Persistent = true;
+          RandomizedDelaySec = "2h";
+        };
+      };
+    in {
+      homebridge =
+        defaults
+        // {
+          paths = ["/var/lib/homebridge"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/homebridge";
+        };
+    };
+
+    syncthing.guiAddress = "0.0.0.0:8384";
+  };
 
   stylix = {
     enable = false;
@@ -26,6 +58,7 @@
     stateVersion = "24.05";
   };
 
+  time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
 
   myNixOS = {
