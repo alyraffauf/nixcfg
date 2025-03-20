@@ -8,6 +8,7 @@
   imports = [
     ./cloud
     ./firefox
+    ./ghostty
     ./git
     ./helix
     ./mail
@@ -67,8 +68,6 @@
 
       package = pkgs.chromium;
     };
-
-    ghostty.enable = true;
 
     git = {
       enable = true;

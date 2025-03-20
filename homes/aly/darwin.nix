@@ -1,11 +1,11 @@
 {
-  config,
   lib,
   self,
   ...
 }: {
   imports = [
     ./firefox
+    ./ghostty
     ./git
     ./helix
     ./mail
@@ -22,12 +22,6 @@
   };
 
   programs = {
-    ghostty = {
-      enable = true;
-      package = null;
-      settings.font-size = lib.mkForce (toString (config.stylix.fonts.sizes.terminal + 4));
-    };
-
     home-manager.enable = true;
 
     vscode.profiles.default.userSettings = {
