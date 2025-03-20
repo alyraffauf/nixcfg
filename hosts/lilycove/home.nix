@@ -1,8 +1,4 @@
-{
-  lib,
-  self,
-  ...
-}: {
+{self, ...}: {
   home-manager = {
     sharedModules = [
       {
@@ -15,14 +11,14 @@
           preset = "LoudnessEqualizer.json";
         };
 
-        wayland.windowManager.hyprland.settings = {
-          general.layout = lib.mkForce "master";
+        # wayland.windowManager.hyprland.settings = {
+        #   general.layout = lib.mkForce "master";
 
-          master = {
-            mfact = 0.40;
-            orientation = "center";
-          };
-        };
+        #   master = {
+        #     mfact = 0.40;
+        #     orientation = "center";
+        #   };
+        # };
 
         myHome.services.hypridle.autoSuspend = false;
       }
