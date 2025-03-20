@@ -22,6 +22,12 @@
   };
 
   programs = {
+    ghostty = {
+      enable = true;
+      package = null;
+      settings.font-size = lib.mkForce (toString (config.stylix.fonts.sizes.terminal + 4));
+    };
+
     home-manager.enable = true;
 
     vscode.profiles.default.userSettings = {
@@ -29,16 +35,7 @@
     };
   };
 
-  xdg = {
-    enable = true;
-
-    configFile."ghostty/config".text = ''
-      background-opacity = ${toString config.stylix.opacity.terminal}
-      font-family = ${config.stylix.fonts.monospace.name}
-      font-size = ${toString (config.stylix.fonts.sizes.terminal + 4)}
-      theme = catppuccin-macchiato
-    '';
-  };
+  xdg.enable = true;
 
   myHome = {
     profiles.shell.enable = true;
