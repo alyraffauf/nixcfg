@@ -68,6 +68,8 @@
       package = pkgs.chromium;
     };
 
+    ghostty.enable = true;
+
     git = {
       enable = true;
       lfs.enable = true;
@@ -94,8 +96,6 @@
         pinentry = pkgs.pinentry-gnome3;
       };
     };
-
-    wezterm.enable = true;
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
@@ -105,6 +105,7 @@
       defaultApps = {
         enable = true;
         editor.package = config.programs.vscode.package;
+        terminal.package = config.programs.ghostty.package;
       };
 
       shell.enable = true;
