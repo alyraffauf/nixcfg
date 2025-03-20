@@ -7,7 +7,7 @@
 in {
   programs.firefox = {
     enable = true;
-    package = lib.mkIf pkgs.stdenv.isDarwin (pkgs.runCommand "firefox-0.0.0" {} "mkdir $out");
+    package = lib.mkIf pkgs.stdenv.isDarwin null;
 
     profiles = {
       default = {
