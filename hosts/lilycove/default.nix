@@ -99,7 +99,7 @@ in {
   myNixOS = {
     desktop.hyprland = {
       enable = true;
-      monitors = ["desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,auto,2.0"];
+      monitors = ["desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,auto,1.875000"];
     };
 
     profiles = {
