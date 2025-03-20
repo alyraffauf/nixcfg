@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   self,
   ...
@@ -26,6 +27,17 @@
     vscode.profiles.default.userSettings = {
       "window.titleBarStyle" = lib.mkForce "custom";
     };
+  };
+
+  xdg = {
+    enable = true;
+
+    configFile."ghostty/config".text = ''
+      background-opacity = ${toString config.stylix.opacity.terminal}
+      font-family = ${config.stylix.fonts.monospace.name}
+      font-size = ${toString (config.stylix.fonts.sizes.terminal + 4)}
+      theme = catppuccin-macchiato
+    '';
   };
 
   myHome = {
