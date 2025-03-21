@@ -23,7 +23,7 @@ in {
 
   environment = {
     systemPackages = with pkgs; [heroic];
-    variables.GDK_SCALE = "1.0";
+    variables.GDK_SCALE = "2.0";
   };
 
   networking.hostName = "lilycove";
