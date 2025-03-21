@@ -10,6 +10,7 @@
       enable = true;
       latitude = lib.mkDefault "33.74";
       longitude = lib.mkDefault "-84.38";
+      temperature.night = lib.mkDefault 4700;
     };
 
     systemd.user.services.gammastep = {
