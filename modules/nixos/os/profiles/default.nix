@@ -7,6 +7,7 @@
     ./hardened
     ./media-share
     ./server
+    ./swap
     ./wifi
     ./workstation
   ];
