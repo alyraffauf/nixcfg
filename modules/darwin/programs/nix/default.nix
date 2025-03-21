@@ -23,21 +23,21 @@
         ];
       };
 
-      linux-builder = {
-        enable = true;
-        ephemeral = true;
+      # linux-builder = {
+      #   enable = true;
+      #   ephemeral = true;
 
-        config.virtualisation = {
-          cores = 6;
+      #   config.virtualisation = {
+      #     cores = 6;
 
-          darwin-builder = {
-            diskSize = 40 * 1024;
-            memorySize = 8 * 1024;
-          };
-        };
+      #     darwin-builder = {
+      #       diskSize = 40 * 1024;
+      #       memorySize = 8 * 1024;
+      #     };
+      #   };
 
-        maxJobs = 4;
-      };
+      #   maxJobs = 4;
+      # };
 
       package = pkgs.lix;
 
