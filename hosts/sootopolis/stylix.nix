@@ -5,7 +5,7 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-4oyd2m.jpg";
     imageScalingMode = "fill";
     polarity = "dark";
