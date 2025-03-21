@@ -95,6 +95,11 @@
         enableFishIntegration = false;
       };
 
+      zoxide = {
+        enable = true;
+        options = ["--cmd cd"];
+      };
+
       zsh = {
         enable = true;
         autocd = true;
