@@ -108,6 +108,7 @@ in {
       btrfs.enable = true;
       gaming.enable = true;
       media-share.enable = true;
+      swap.enable = true;
       wifi.enable = true;
       workstation.enable = true;
     };

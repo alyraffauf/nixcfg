@@ -261,6 +261,7 @@ in {
       base.enable = true;
       btrfs.enable = true;
       server.enable = true;
+      swap.enable = true;
       wifi.enable = true;
     };
 
