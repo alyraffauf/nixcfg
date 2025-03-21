@@ -57,11 +57,11 @@
 
         rec {
           id = "lkbebcjgcmobigpeffafkodonchffocl"; # bypass-paywalls-clean
-          version = "4.0.4.0";
+          version = "4.0.7.0";
 
           crxPath = pkgs.fetchurl {
             url = "https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass-paywalls-chrome-clean-${version}.crx";
-            sha256 = "sha256-bEjC58vCExU7vlXn1h0yn14jIrBUo/HtFuDlXa0DzC0=";
+            sha256 = "sha256-YJfkmvHJNvENWYCK3k4vYrJtCijnKOCmQsxGDNxaazQ=";
           };
         }
       ];
