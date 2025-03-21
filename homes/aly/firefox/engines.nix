@@ -1,5 +1,5 @@
 {
-  "Bing" = {
+  "bing" = {
     metaData = {
       hidden = false;
       alias = "!bing";
@@ -8,7 +8,7 @@
 
   "Brave" = {
     definedAliases = ["!brave"];
-    iconUpdateURL = "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/brave-search-icon.CsIFM2aN.svg";
+    icon = "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/brave-search-icon.CsIFM2aN.svg";
     updateInterval = 24 * 60 * 60 * 1000; # every day
 
     urls = [
@@ -24,14 +24,14 @@
     ];
   };
 
-  "DuckDuckGo" = {
+  "ddg" = {
     metaData = {
       hidden = false;
       alias = "!ddg";
     };
   };
 
-  "Google" = {
+  "google" = {
     metaData = {
       hidden = false;
       alias = "!google";
@@ -39,7 +39,7 @@
   };
 
   "Home Manager Options" = {
-    iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
+    icon = "https://home-manager-options.extranix.com/images/favicon.png";
     definedAliases = ["!hm"];
     metaData.hidden = true;
 
@@ -52,7 +52,7 @@
 
   "Kagi" = {
     definedAliases = ["!kagi"];
-    iconUpdateURL = "https://kagi.com/favicon.ico";
+    icon = "https://kagi.com/favicon.ico";
     updateInterval = 24 * 60 * 60 * 1000; # every day
 
     urls = [
@@ -70,7 +70,7 @@
 
   "NixOS Wiki" = {
     definedAliases = ["!nw" "!nixwiki"];
-    iconUpdateURL = "https://wiki.nixos.org/favicon.ico";
+    icon = "https://wiki.nixos.org/favicon.ico";
     updateInterval = 24 * 60 * 60 * 1000; # every day
     metaData.hidden = true;
 
@@ -104,7 +104,7 @@
 
   "Noogle" = {
     definedAliases = ["!noogle"];
-    iconUpdateURL = "https://noogle.dev/favicon.png";
+    icon = "https://noogle.dev/favicon.png";
     metaData.hidden = true;
 
     urls = [
@@ -116,7 +116,7 @@
 
   "Wiktionary" = {
     definedAliases = ["!wikt"];
-    iconUpdateURL = "https://en.wiktionary.org/favicon.ico";
+    icon = "https://en.wiktionary.org/favicon.ico";
     updateInterval = 24 * 60 * 60 * 1000; # every day
 
     urls = [

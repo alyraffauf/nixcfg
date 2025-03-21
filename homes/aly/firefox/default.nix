@@ -51,14 +51,14 @@ in {
 
         search = {
           inherit engines;
-          default = "DuckDuckGo";
+          default = "ddg";
           force = true;
 
           order = [
-            "Bing"
+            "bing"
             "Brave"
-            "DuckDuckGo"
-            "Google"
+            "ddg"
+            "google"
             "Home Manager Options"
             "Kagi"
             "NixOS Wiki"
