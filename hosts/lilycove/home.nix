@@ -20,7 +20,10 @@
         #   };
         # };
 
-        myHome.services.hypridle.autoSuspend = false;
+        myHome.services = {
+          gammastep.enable = true;
+          hypridle.autoSuspend = false;
+        };
       }
     ];
 
