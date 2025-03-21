@@ -11,8 +11,8 @@
     polarity = "dark";
 
     cursor = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "catppuccin-macchiato-dark-cursors";
+      package = pkgs.catppuccin-cursors.macchiatoDark;
       size = 24;
     };
 
