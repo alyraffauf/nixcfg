@@ -67,7 +67,6 @@
     taps = {
       "homebrew/homebrew-core" = self.inputs.homebrew-core;
       "homebrew/homebrew-cask" = self.inputs.homebrew-cask;
-      "homebrew/homebrew-bundle" = self.inputs.homebrew-bundle;
     };
 
     user = "aly";
