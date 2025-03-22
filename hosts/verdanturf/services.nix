@@ -147,6 +147,22 @@
           paths = ["/var/lib/couchdb"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/couchdb";
         };
+
+      pds =
+        defaults
+        // {
+          backupCleanupCommand = ''
+            ${pkgs.systemd}/bin/systemctl start pds
+          '';
+
+          backupPrepareCommand = ''
+            ${pkgs.systemd}/bin/systemctl stop pds
+          '';
+
+          paths = ["/var/lib/pds"];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/pds";
+        };
+
       vaultwarden =
         defaults
         // {
