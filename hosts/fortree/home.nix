@@ -1,3 +1,3 @@
 {self, ...}: {
-  home-manager.users.aly = self.homeManagerModules.aly-darwin;
+  home-manager.users.aly = self.homeManagerModules.aly-fortree;
 }

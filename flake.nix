@@ -182,6 +182,7 @@
     homeManagerModules = {
       aly = ./homes/aly;
       aly-darwin = ./homes/aly/darwin.nix;
+      aly-fortree = ./homes/aly/fortree.nix;
       default = ./modules/home;
       dustin = ./homes/dustin;
     };
