@@ -18,12 +18,8 @@
     path = "~/sync";
 
     versioning = {
-      params = {
-        cleanInterval = "3600";
-        maxAge = "1";
-      };
-
-      type = "staggered";
+      params.cleanoutDays = "5";
+      type = "trashcan";
     };
   };
 
