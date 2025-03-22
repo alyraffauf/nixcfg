@@ -15,7 +15,7 @@
     ];
 
     id = "default";
-    path = "/home/aly/sync";
+    path = "~/sync";
 
     versioning = {
       params = {
@@ -38,7 +38,7 @@
     ];
 
     id = "screenshots";
-    path = "/home/aly/pics/screenshots";
+    path = "~/pics/screenshots";
 
     versioning = {
       params.cleanoutDays = "5";
@@ -67,6 +67,6 @@
     ];
 
     id = "emudeck";
-    path = "/home/aly/roms";
+    path = "~/roms";
   };
 }
