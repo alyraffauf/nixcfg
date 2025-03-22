@@ -3,6 +3,7 @@
     devices = [
       "dewford"
       "fallarbor"
+      "fortree"
       "groudon"
       "gsgmba"
       "kyogre"
