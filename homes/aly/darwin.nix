@@ -17,6 +17,11 @@
 
   home = {
     homeDirectory = "/Users/aly";
+
+    shellAliases = {
+      "docker" = "podman";
+    };
+
     username = "aly";
   };
 
