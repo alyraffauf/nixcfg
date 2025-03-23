@@ -27,6 +27,7 @@
     brews = [
       "mas"
       "ollama"
+      "podman"
     ];
 
     casks = [
