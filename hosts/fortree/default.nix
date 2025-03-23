@@ -74,6 +74,7 @@
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
+  services.openssh.enable = true;
 
   system = {
     configurationRevision = self.rev or self.dirtyRev or null; # Set Git commit hash for darwin-version.
