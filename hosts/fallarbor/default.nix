@@ -1,28 +1,27 @@
-# Framework 13 with 11th gen Intel Core i5, 16GB RAM, 512GB SSD.
 {
   config,
   self,
   ...
 }: {
   imports = [
-    ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.hardware-framework-13-intel-11th
+    self.nixosModules.disko-luks-btrfs-subvolumes
+    self.nixosModules.hardware-lenovo-thinkpad-X1-gen-9
     self.nixosModules.locale-en-us
   ];
 
-  environment.variables.GDK_SCALE = "1.5";
+  environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "fallarbor";
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
   myNixOS = {
     desktop = {
       hyprland = {
         # enable = true;
-        laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
+        laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
       };
 
       kde.enable = true;
@@ -42,7 +41,7 @@
       firefox.enable = true;
       nix.enable = true;
       steam.enable = true;
-      systemd-boot.enable = true;
+      lanzaboote.enable = true;
     };
 
     services = {
