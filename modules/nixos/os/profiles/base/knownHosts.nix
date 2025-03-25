@@ -9,6 +9,11 @@
     publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_fortree.pub";
   };
 
+  lavaridge = {
+    hostNames = ["lavaridge" "lavaridge.local" "lavaridge.narwhal-snapper.ts.net"];
+    publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_lavaridge.pub";
+  };
+
   lilycove = {
     hostNames = ["lilycove" "lilycove.local" "lilycove.narwhal-snapper.ts.net"];
     publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_lilycove.pub";
