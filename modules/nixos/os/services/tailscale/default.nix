@@ -38,6 +38,7 @@
     services.tailscale = {
       enable = true;
       authKeyFile = config.myNixOS.services.tailscale.authKeyFile;
+      extraUpFlags = ["--ssh"];
       openFirewall = true;
       useRoutingFeatures = "both";
     };
