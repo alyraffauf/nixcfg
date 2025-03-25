@@ -1,7 +1,15 @@
 [
   {
+    hostName = "lavaridge";
+    maxJobs = 8;
+    speedFactor = 3;
+    sshUser = "aly";
+    supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+    system = "x86_64-linux";
+  }
+  {
     hostName = "lilycove";
-    maxJobs = 6;
+    maxJobs = 12;
     speedFactor = 4;
     sshUser = "aly";
     supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
