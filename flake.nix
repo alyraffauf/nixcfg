@@ -106,6 +106,7 @@
 
     forAllLinuxHosts = self.inputs.nixpkgs.lib.genAttrs [
       "fallarbor"
+      "lavaridge"
       "lilycove"
       "mauville"
       "roxanne"
