@@ -8,10 +8,11 @@
 
   config = lib.mkIf config.myNixOS.programs.nix.enable {
     nix = {
-      buildMachines =
-        lib.filter (m: m.hostName != "${config.networking.hostName}") (import ./buildMachines.nix);
+      buildMachines = lib.mkIf config.services.tailscale.enable (
+        lib.filter (m: m.hostName != "${config.networking.hostName}") (import ./buildMachines.nix)
+      );
 
-      distributedBuilds = true;
+      distributedBuilds = config.services.tailscale.enable;
 
       gc = {
         automatic = true;
