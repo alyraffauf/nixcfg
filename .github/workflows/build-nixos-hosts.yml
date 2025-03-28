@@ -39,7 +39,7 @@ jobs:
           name: alyraffauf
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build lavaridge
-        run: nix build --accept-flake-config .#nixosConfigurations.lilycove.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.lavaridge.config.system.build.toplevel
   build-lilycove:
     runs-on: ubuntu-latest
     steps:
