@@ -14,6 +14,7 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
+      calibre
       fractal
       libreoffice-still
       plexamp
