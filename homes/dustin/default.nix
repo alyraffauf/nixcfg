@@ -17,6 +17,7 @@
       fractal
       libreoffice-still
       plexamp
+      signal-desktop
       teams-for-linux
       trayscale
       webcord
