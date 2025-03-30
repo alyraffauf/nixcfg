@@ -26,13 +26,9 @@
 
     brews = [
       "mas"
+      "podman"
       {
         name = "ollama";
-        restart_service = "changed";
-        start_service = true;
-      }
-      {
-        name = "podman";
         restart_service = "changed";
         start_service = true;
       }
