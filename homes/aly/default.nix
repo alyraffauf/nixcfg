@@ -2,22 +2,13 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [
     ./chromium
     ./cloud
-    ./firefox
-    ./ghostty
-    ./git
-    ./helix
-    ./mail
-    ./secrets.nix
-    ./vsCode
+    ./common.nix
     ./windowManagers
-    self.homeManagerModules.default
-    self.inputs.agenix.homeManagerModules.default
   ];
 
   gtk.gtk3.bookmarks = lib.mkAfter [
@@ -28,50 +19,35 @@
     homeDirectory = "/home/aly";
 
     packages = with pkgs; [
-      curl
       fractal
       nicotine-plus
       obsidian
       protonvpn-gui
-      rclone
       signal-desktop
       tauon
       transmission-remote-gtk
-      vesktop
     ];
 
     stateVersion = "24.05";
     username = "aly";
   };
 
-  programs = {
-    home-manager.enable = true;
+  programs.rbw = {
+    enable = true;
 
-    rbw = {
-      enable = true;
-
-      settings = {
-        base_url = "https://vault.cute.haus";
-        email = "alyraffauf@fastmail.com";
-        lock_timeout = 14400;
-        pinentry = pkgs.pinentry-gnome3;
-      };
+    settings = {
+      base_url = "https://vault.cute.haus";
+      email = "alyraffauf@fastmail.com";
+      lock_timeout = 14400;
+      pinentry = pkgs.pinentry-gnome3;
     };
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
-  myHome = {
-    profiles = {
-      defaultApps = {
-        enable = true;
-        editor.package = config.programs.vscode.package;
-        terminal.package = config.programs.ghostty.package;
-      };
-
-      shell.enable = true;
-    };
-
-    programs.fastfetch.enable = true;
+  myHome.profiles.defaultApps = {
+    enable = true;
+    editor.package = config.programs.vscode.package;
+    terminal.package = config.programs.ghostty.package;
   };
 }
