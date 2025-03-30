@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   self,
   ...
@@ -17,7 +19,6 @@
 
   home = {
     packages = with pkgs; [
-      awscli2
       curl
       rclone
       vesktop
@@ -27,6 +28,16 @@
   };
 
   programs = {
+    awscli = {
+      enable = true;
+
+      credentials = {
+        "default" = {
+          "credential_process" = ''sh -c "${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.age.secrets.aws.path}"'';
+        };
+      };
+    };
+
     home-manager.enable = true;
   };
 
