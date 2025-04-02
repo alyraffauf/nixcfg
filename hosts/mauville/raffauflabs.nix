@@ -184,8 +184,20 @@ in {
         soulseek.distributedNetwork.childLimit = 10;
 
         global = {
-          upload.limit = 500; # Limit uploads to 500 KB/s
-          download.limit = 1000; # Limit downloads to 1 MB/s
+          download = {
+            limit = 500; # Limit downloads to 500 KB/s
+            slots = 4;
+          };
+
+          limits = {
+            daily.megabytes = 1024; # Limit daily uplolads to 1GB
+            weekly.megabytes = 10240; # Limit weekly uploads to 10GB
+          };
+
+          upload = {
+            limit = 320; # Limit uploads to 32 KB/s
+            slots = 4;
+          };
         };
       };
     };
