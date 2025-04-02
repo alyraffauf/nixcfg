@@ -1,14 +1,14 @@
 {
-  lilycove = {
-    output = "lilycove";
-    hostname = "lilycove";
-    remoteBuild = true;
+  lavaridge = {
+    output = "lavaridge";
+    hostname = "lavaridge";
+    remoteBuild = false;
     user = "root";
   };
 
-  roxanne = {
-    output = "roxanne";
-    hostname = "roxanne";
+  lilycove = {
+    output = "lilycove";
+    hostname = "lilycove";
     remoteBuild = true;
     user = "root";
   };
@@ -17,6 +17,13 @@
     output = "mauville";
     hostname = "mauville";
     remoteBuild = false;
+    user = "root";
+  };
+
+  roxanne = {
+    output = "roxanne";
+    hostname = "roxanne";
+    remoteBuild = true;
     user = "root";
   };
 
