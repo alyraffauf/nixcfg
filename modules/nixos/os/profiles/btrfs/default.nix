@@ -30,6 +30,11 @@
       };
     })
     btrfsFSDevices);
+
+  # Check if a btrfs /home entry exists
+  hasHomeSubvolume =
+    lib.hasAttr "/home" config.fileSystems
+    && config.fileSystems."/home".fsType == "btrfs";
 in {
   options.myNixOS.profiles.btrfs.enable = lib.mkEnableOption "btrfs filesystem configuration";
 
@@ -42,7 +47,7 @@ in {
       btrfs.autoScrub.enable = true;
 
       snapper = {
-        configs.home = {
+        configs.home = lib.mkIf hasHomeSubvolume {
           ALLOW_GROUPS = ["users"];
           FSTYPE = "btrfs";
           SUBVOLUME = "/home";
