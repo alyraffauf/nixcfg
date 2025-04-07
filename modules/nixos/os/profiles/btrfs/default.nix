@@ -22,11 +22,18 @@
   # Create beesd.filesystems attrset keyed by device basename, with spec = device path
   beesdConfig = lib.listToAttrs (map (fs: {
       name = lib.strings.sanitizeDerivationName (baseNameOf fs.device);
+
       value = {
+        hashTableSizeMB = 2048; # This may be too high for memory-constrained systems with small disks.
         spec = fs.device;
-        hashTableSizeMB = 2048;
-        verbosity = "crit";
-        extraOptions = ["--loadavg-target" "5.0"];
+        verbosity = "info";
+
+        extraOptions = [
+          "--loadavg-target"
+          "4.0"
+          "--thread-factor"
+          "0.75"
+        ];
       };
     })
     btrfsFSDevices);
