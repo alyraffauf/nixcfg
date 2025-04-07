@@ -9,7 +9,7 @@ in {
   accounts.email.accounts = {
     "alyraffauf@fastmail.com" = {
       address = "alyraffauf@fastmail.com";
-      aliases = ["aly@raffauflabs.com"];
+      aliases = ["aly@aly.codes" "aly@raffauflabs.com"];
       flavor = "fastmail.com";
       himalaya.enable = true;
       passwordCommand = mkPassword config.age.secrets.alyraffaufFastmail.path;
