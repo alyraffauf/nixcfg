@@ -9,7 +9,7 @@
   lilycove = {
     output = "lilycove";
     hostname = "lilycove";
-    remoteBuild = true;
+    remoteBuild = false;
     user = "root";
   };
 
