@@ -4,7 +4,7 @@
       enable = true;
       lfs.enable = true;
       userName = "Aly Raffauf";
-      userEmail = "aly@raffauflabs.com";
+      userEmail = "aly@aly.codes";
 
       extraConfig = {
         color.ui = true;
