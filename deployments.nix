@@ -23,7 +23,7 @@
   roxanne = {
     output = "roxanne";
     hostname = "roxanne";
-    remoteBuild = true;
+    remoteBuild = false;
     user = "root";
   };
 
