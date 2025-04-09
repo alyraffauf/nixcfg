@@ -54,7 +54,7 @@
             ExecStart = "${pkgs.writeShellScript "backblaze-sync" ''
               declare -A backups
               backups=(
-                ['/home/aly/sync']="b2://aly-sync"
+                ['/home/aly/roms']="b2://aly-roms"
                 ['/mnt/Media/Music']="b2://aly-music"
               )
 

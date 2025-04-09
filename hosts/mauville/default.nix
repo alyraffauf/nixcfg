@@ -209,6 +209,13 @@ in {
           paths = ["/var/lib/sonarr"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/sonarr";
         };
+
+      syncthing-sync =
+        defaults
+        // {
+          paths = ["/home/aly/sync"];
+          repository = "rclone:b2:aly-backups/syncthing/sync";
+        };
     };
 
     samba = {
