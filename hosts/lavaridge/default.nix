@@ -12,18 +12,12 @@
     self.nixosModules.locale-en-us
   ];
 
-  environment.variables.GDK_SCALE = "1.5";
   networking.hostName = "lavaridge";
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
   myNixOS = {
-    desktop.hyprland = {
-      enable = true;
-      laptopMonitor = "desc:BOE 0x095F,preferred,auto,1.566667";
-    };
-
     profiles = {
       autoUpgrade.enable = true;
       base.enable = true;
