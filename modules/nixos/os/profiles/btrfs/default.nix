@@ -30,9 +30,9 @@
 
         extraOptions = [
           "--loadavg-target"
-          "4.0"
+          "2.0"
           "--thread-factor"
-          "0.75"
+          "0.50"
         ];
       };
     })
