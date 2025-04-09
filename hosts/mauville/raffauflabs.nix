@@ -1,27 +1,27 @@
 {
   config,
-  lib,
-  pkgs,
+  # lib,
+  # pkgs,
   ...
 }: let
   audiobookshelf.port = 13378;
-  domain = "cute.haus";
+  # domain = "cute.haus";
   mediaDirectory = "/mnt/Media";
-  musicDirectory = "${mediaDirectory}/Music";
+  # musicDirectory = "${mediaDirectory}/Music";
 
-  navidrome = {
-    port = 4533;
+  # navidrome = {
+  #   port = 4533;
 
-    lastfm = {
-      idFile = config.age.secrets.lastfmId.path;
-      secretFile = config.age.secrets.lastfmSecret.path;
-    };
+  #   lastfm = {
+  #     idFile = config.age.secrets.lastfmId.path;
+  #     secretFile = config.age.secrets.lastfmSecret.path;
+  #   };
 
-    spotify = {
-      idFile = config.age.secrets.spotifyId.path;
-      secretFile = config.age.secrets.spotifySecret.path;
-    };
-  };
+  #   spotify = {
+  #     idFile = config.age.secrets.spotifyId.path;
+  #     secretFile = config.age.secrets.spotifySecret.path;
+  #   };
+  # };
 
   transmission = {
     port = 9091;
@@ -36,15 +36,15 @@ in {
       journalmatch = _SYSTEMD_UNIT=audiobookshelf.service
     '';
 
-    "fail2ban/filter.d/navidrome.conf".text = ''
-      [INCLUDES]
-      before = common.conf
+    # "fail2ban/filter.d/navidrome.conf".text = ''
+    #   [INCLUDES]
+    #   before = common.conf
 
-      [Definition]
-      failregex = msg="Unsuccessful login".*X-Real-Ip:\[<HOST>\]
-      ignoreregex =
-      journalmatch = _SYSTEMD_UNIT=navidrome.service
-    '';
+    #   [Definition]
+    #   failregex = msg="Unsuccessful login".*X-Real-Ip:\[<HOST>\]
+    #   ignoreregex =
+    #   journalmatch = _SYSTEMD_UNIT=navidrome.service
+    # '';
   };
 
   networking = {
@@ -75,13 +75,13 @@ in {
           port = 80,443,${toString audiobookshelf.port}
         '';
 
-        navidrome = ''
-          enabled = true
-          backend = systemd
-          filter = navidrome
-          maxretry = 5
-          port = 0,443,${toString navidrome.port}
-        '';
+        # navidrome = ''
+        #   enabled = true
+        #   backend = systemd
+        #   filter = navidrome
+        #   maxretry = 5
+        #   port = 0,443,${toString navidrome.port}
+        # '';
       };
     };
 
@@ -142,17 +142,10 @@ in {
       openFirewall = true;
     };
 
-    # k3s = {
+    # navidrome = {
     #   enable = true;
-    #   role = "server";
-    #   tokenFile = config.age.secrets.k3s.path;
-    #   serverAddr = "https://192.168.0.104:6443";
+    #   openFirewall = true;
     # };
-
-    navidrome = {
-      enable = true;
-      openFirewall = true;
-    };
 
     ombi = {
       enable = true;
@@ -224,53 +217,53 @@ in {
     };
   };
 
-  systemd.services = {
-    glances = {
-      wantedBy = ["multi-user.target"];
-      after = ["network.target"];
-      path = [pkgs.glances];
-      script = "glances --webserver --bind 0.0.0.0 --port 61208";
-    };
+  # systemd.services = {
+  #   glances = {
+  #     wantedBy = ["multi-user.target"];
+  #     after = ["network.target"];
+  #     path = [pkgs.glances];
+  #     script = "glances --webserver --bind 0.0.0.0 --port 61208";
+  #   };
 
-    navidrome.serviceConfig = let
-      navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
-        Address = "0.0.0.0";
-        DefaultTheme = "Auto";
-        MusicFolder = musicDirectory;
-        Port = navidrome.port;
-        SubsonicArtistParticipations = true;
-        UIWelcomeMessage = "Welcome to Navidrome @ ${domain}";
-        "Spotify.ID" = "@spotifyClientId@";
-        "Spotify.Secret" = "@spotifyClientSecret@";
-        "LastFM.Enabled" = true;
-        "LastFM.ApiKey" = "@lastFMApiKey@";
-        "LastFM.Secret" = "@lastFMSecret@";
-        "LastFM.Language" = "en";
-      });
+  #   navidrome.serviceConfig = let
+  #     navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
+  #       Address = "0.0.0.0";
+  #       DefaultTheme = "Auto";
+  #       MusicFolder = musicDirectory;
+  #       Port = navidrome.port;
+  #       SubsonicArtistParticipations = true;
+  #       UIWelcomeMessage = "Welcome to Navidrome @ ${domain}";
+  #       "Spotify.ID" = "@spotifyClientId@";
+  #       "Spotify.Secret" = "@spotifyClientSecret@";
+  #       "LastFM.Enabled" = true;
+  #       "LastFM.ApiKey" = "@lastFMApiKey@";
+  #       "LastFM.Secret" = "@lastFMSecret@";
+  #       "LastFM.Language" = "en";
+  #     });
 
-      navidrome-secrets = pkgs.writeShellScript "navidrome-secrets" ''
-        lastFMApiKey=$(cat "${navidrome.lastfm.idFile}")
-        lastFMSecret=$(cat "${navidrome.lastfm.secretFile}")
-        spotifyClientId=$(cat "${navidrome.spotify.idFile}")
-        spotifyClientSecret=$(cat "${navidrome.spotify.secretFile}")
-        ${pkgs.gnused}/bin/sed -e "s/@lastFMApiKey@/$lastFMApiKey/" -e "s/@lastFMSecret@/$lastFMSecret/" \
-          -e "s/@spotifyClientId@/$spotifyClientId/" -e "s/@spotifyClientSecret@/$spotifyClientSecret/" \
-          ${navidromeConfig} > /var/lib/navidrome/navidrome.json
-      '';
-    in {
-      BindReadOnlyPaths = [
-        navidrome.lastfm.idFile
-        navidrome.lastfm.secretFile
-        navidrome.spotify.idFile
-        navidrome.spotify.secretFile
-        musicDirectory
-      ];
+  #     navidrome-secrets = pkgs.writeShellScript "navidrome-secrets" ''
+  #       lastFMApiKey=$(cat "${navidrome.lastfm.idFile}")
+  #       lastFMSecret=$(cat "${navidrome.lastfm.secretFile}")
+  #       spotifyClientId=$(cat "${navidrome.spotify.idFile}")
+  #       spotifyClientSecret=$(cat "${navidrome.spotify.secretFile}")
+  #       ${pkgs.gnused}/bin/sed -e "s/@lastFMApiKey@/$lastFMApiKey/" -e "s/@lastFMSecret@/$lastFMSecret/" \
+  #         -e "s/@spotifyClientId@/$spotifyClientId/" -e "s/@spotifyClientSecret@/$spotifyClientSecret/" \
+  #         ${navidromeConfig} > /var/lib/navidrome/navidrome.json
+  #     '';
+  #   in {
+  #     BindReadOnlyPaths = [
+  #       navidrome.lastfm.idFile
+  #       navidrome.lastfm.secretFile
+  #       navidrome.spotify.idFile
+  #       navidrome.spotify.secretFile
+  #       musicDirectory
+  #     ];
 
-      ExecStartPre = navidrome-secrets;
-      ExecStart = lib.mkForce ''
-        ${config.services.navidrome.package}/bin/navidrome --configfile /var/lib/navidrome/navidrome.json \
-          --datafolder /var/lib/navidrome/
-      '';
-    };
-  };
+  #     ExecStartPre = navidrome-secrets;
+  #     ExecStart = lib.mkForce ''
+  #       ${config.services.navidrome.package}/bin/navidrome --configfile /var/lib/navidrome/navidrome.json \
+  #         --datafolder /var/lib/navidrome/
+  #     '';
+  #   };
+  # };
 }
