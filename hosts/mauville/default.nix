@@ -117,14 +117,8 @@ in {
       audiobookshelf =
         defaults
         // {
-          backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start audiobookshelf
-          '';
-
-          backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop audiobookshelf
-          '';
-
+          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start audiobookshelf";
+          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop audiobookshelf";
           paths = ["/var/lib/audiobookshelf"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/audiobookshelf";
         };
@@ -132,13 +126,8 @@ in {
       immich =
         defaults
         // {
-          backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start immich-server
-          '';
-
-          backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop immich-server
-          '';
+          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start immich-server";
+          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop immich-server";
 
           paths = [
             "${mediaDirectory}/Pictures/library"
@@ -153,14 +142,8 @@ in {
       ombi =
         defaults
         // {
-          backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start ombi
-          '';
-
-          backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop ombi
-          '';
-
+          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
+          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
           paths = ["/var/lib/ombi"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
         };
@@ -168,14 +151,8 @@ in {
       plex =
         defaults
         // {
-          backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start plex
-          '';
-
-          backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop plex
-          '';
-
+          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
+          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
           paths = ["/var/lib/plex"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
         };
@@ -183,14 +160,8 @@ in {
       radarr =
         defaults
         // {
-          backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start radarr
-          '';
-
-          backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop radarr
-          '';
-
+          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start radarr";
+          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop radarr";
           paths = ["/var/lib/radarr"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/radarr";
         };
@@ -198,14 +169,8 @@ in {
       sonarr =
         defaults
         // {
-          backupCleanupCommand = ''
-            ${pkgs.systemd}/bin/systemctl start sonarr
-          '';
-
-          backupPrepareCommand = ''
-            ${pkgs.systemd}/bin/systemctl stop sonarr
-          '';
-
+          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start sonarr";
+          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop sonarr";
           paths = ["/var/lib/sonarr"];
           repository = "rclone:b2:aly-backups/${config.networking.hostName}/sonarr";
         };
