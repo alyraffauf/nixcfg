@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  config,
+  self,
+  ...
+}: {
   imports = [
     ./home.nix
     ./secrets.nix
@@ -37,7 +41,15 @@
     };
 
     services = {
-      greetd.enable = true;
+      syncthing = {
+        enable = true;
+        certFile = config.age.secrets.syncthingCert.path;
+        keyFile = config.age.secrets.syncthingKey.path;
+        syncMusic = false;
+        syncROMs = true;
+        user = "aly";
+      };
+
       tailscale.enable = true;
     };
   };

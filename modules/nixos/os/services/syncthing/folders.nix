@@ -6,6 +6,7 @@
       "fortree"
       "groudon"
       "kyogre"
+      "lavaridge"
       "lilycove"
       "mauville"
       "pacifidlog"
@@ -26,6 +27,7 @@
   "screenshots" = {
     devices = [
       "fallarbor"
+      "lavaridge"
       "lilycove"
       "mauville"
       "rustboro"
@@ -56,6 +58,7 @@
   "roms" = {
     devices = [
       "dewford"
+      "lavaridge"
       "lilycove"
       "mauville"
       "pacifidlog"
