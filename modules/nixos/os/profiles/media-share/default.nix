@@ -18,10 +18,12 @@
     fileSystems = let
       fsType = "cifs";
       options = [
+        "cache=strict"
+        "fsc" # Enables FS-Cache
         "gid=100"
-        "user=guest"
         "nofail"
         "uid=${toString config.users.users.aly.uid}"
+        "user=guest"
         "x-systemd.after=network.target"
         "x-systemd.after=tailscaled.service"
         "x-systemd.automount"
@@ -43,5 +45,7 @@
         ];
       }
     ];
+
+    services.cachefilesd.enable = true;
   };
 }
