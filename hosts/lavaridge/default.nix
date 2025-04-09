@@ -1,10 +1,9 @@
 {self, ...}: {
   imports = [
-    ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    # self.nixosModules.disko-luks-btrfs-subvolumes
+    self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hardware-framework-13-intel-11th
     self.nixosModules.locale-en-us
   ];
@@ -26,13 +25,12 @@
       base.enable = true;
       btrfs.enable = true;
       media-share.enable = true;
+      workstation.enable = true;
       swap.enable = true;
       wifi.enable = true;
-      workstation.enable = true;
     };
 
     programs = {
-      firefox.enable = true;
       lanzaboote.enable = true;
       nix.enable = true;
       podman.enable = true;
