@@ -173,39 +173,6 @@ in {
         };
       };
     };
-
-    slskd = {
-      enable = true;
-      domain = "0.0.0.0";
-      environmentFile = config.age.secrets.slskd.path;
-      openFirewall = true;
-
-      settings = {
-        directories.downloads = "/mnt/Media/Inbox/Music";
-        shares.directories = ["/mnt/Media/Music"];
-        soulseek.connection.buffer.read = 4096;
-        soulseek.connection.buffer.write = 4096;
-        soulseek.connection.buffer.transfer = 81920;
-        soulseek.distributedNetwork.childLimit = 10;
-
-        global = {
-          download = {
-            limit = 500; # Limit downloads to 500 KB/s
-            slots = 4;
-          };
-
-          limits = {
-            daily.megabytes = 1024; # Limit daily uplolads to 1GB
-            weekly.megabytes = 10240; # Limit weekly uploads to 10GB
-          };
-
-          upload = {
-            limit = 320; # Limit uploads to 32 KB/s
-            slots = 4;
-          };
-        };
-      };
-    };
   };
 
   systemd.tmpfiles.rules = ["d /var/lib/homebridge 0755 root root"];
