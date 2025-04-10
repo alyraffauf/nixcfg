@@ -24,13 +24,13 @@
       name = lib.strings.sanitizeDerivationName (baseNameOf fs.device);
 
       value = {
-        hashTableSizeMB = 2048; # This may be too high for memory-constrained systems with small disks.
+        hashTableSizeMB = 2048;
         spec = fs.device;
         verbosity = "info";
 
         extraOptions = [
           "--loadavg-target"
-          "2.0"
+          "1.0"
           "--thread-factor"
           "0.50"
         ];
@@ -43,14 +43,17 @@
     lib.hasAttr "/home" config.fileSystems
     && config.fileSystems."/home".fsType == "btrfs";
 in {
-  options.myNixOS.profiles.btrfs.enable = lib.mkEnableOption "btrfs filesystem configuration";
+  options.myNixOS.profiles.btrfs = {
+    enable = lib.mkEnableOption "btrfs filesystem configuration";
+    deduplicate = lib.mkEnableOption "deduplicate btrfs filesystems";
+  };
 
   config = lib.mkIf config.myNixOS.profiles.btrfs.enable {
     boot.supportedFilesystems = ["btrfs"];
     environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.snapper-gui];
 
     services = lib.mkIf (btrfsFSDevices != []) {
-      beesd.filesystems = beesdConfig;
+      beesd.filesystems = lib.mkIf config.myNixOS.profiles.btrfs.deduplicate beesdConfig;
       btrfs.autoScrub.enable = true;
 
       snapper = {
