@@ -1,4 +1,3 @@
-# Custom desktop with AMD Ryzen 5 2600, 16GB RAM, AMD Rx 6700, and 1TB SSD + 2TB HDD.
 {
   config,
   lib,
@@ -6,13 +5,14 @@
   self,
   ...
 }: let
-  archiveDirectory = "/mnt/Archive";
+  filesDirectory = "/mnt/Files";
 in {
   imports = [
     ./disko.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
+    self.nixosModules.disko-luks-btrfs-subvolumes
     self.nixosModules.hardware-amd-cpu
     self.nixosModules.hardware-amd-gpu
     self.nixosModules.hardware-common
@@ -52,16 +52,27 @@ in {
       settings = {
         global = {
           security = "user";
-          "read raw" = "Yes";
-          "write raw" = "Yes";
-          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072";
-          "min receivefile size" = 16384;
-          "use sendfile" = true;
-          "aio read size" = 16384;
-          "aio write size" = 16384;
+          "map to guest" = "Bad User";
+
+          # Protocol tuning
+          "server min protocol" = "SMB3";
+          "server max protocol" = "SMB3_11";
+
+          # Performance options
+          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=262144 SO_SNDBUF=262144";
+          "use sendfile" = "no"; # Plex compatibility
+          "aio read size" = "1";
+          "aio write size" = "1";
+          "min receivefile size" = "131072"; # Bump slightly from 16K to 128K
+          "max xmit" = "65535"; # Samba's max recommended for best throughput
+
+          # Locking & latency
+          "strict locking" = "no";
+          "oplocks" = "yes";
+          "level2 oplocks" = "yes";
         };
 
-        Archive = {
+        Files = {
           "create mask" = "0755";
           "directory mask" = "0755";
           "force group" = "users";
@@ -69,8 +80,8 @@ in {
           "guest ok" = "yes";
           "read only" = "no";
           browseable = "yes";
-          comment = "Archive @ ${config.networking.hostName}";
-          path = archiveDirectory;
+          comment = "Files @ ${config.networking.hostName}";
+          path = filesDirectory;
         };
       };
     };
@@ -83,7 +94,7 @@ in {
     snapper.configs.archive = {
       ALLOW_GROUPS = ["users"];
       FSTYPE = "btrfs";
-      SUBVOLUME = "/mnt/Archive";
+      SUBVOLUME = "/mnt/Files";
       TIMELINE_CLEANUP = true;
       TIMELINE_CREATE = true;
     };
@@ -91,7 +102,7 @@ in {
     xserver.xkb.options = "ctrl:nocaps";
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
   myNixOS = {
@@ -129,6 +140,7 @@ in {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;
         keyFile = config.age.secrets.syncthingKey.path;
+        musicPath = "${filesDirectory}/Music";
         syncMusic = true;
         syncROMs = true;
         user = "aly";
