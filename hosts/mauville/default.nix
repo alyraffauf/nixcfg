@@ -191,13 +191,23 @@ in {
         global = {
           security = "user";
           "map to guest" = "Bad User";
-          "read raw" = "Yes";
-          "write raw" = "Yes";
-          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072";
-          "min receivefile size" = 16384;
-          "use sendfile" = true;
-          "aio read size" = 16384;
-          "aio write size" = 16384;
+
+          # Protocol tuning
+          "server min protocol" = "SMB3";
+          "server max protocol" = "SMB3_11";
+
+          # Performance options
+          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=262144 SO_SNDBUF=262144";
+          "use sendfile" = "no"; # Plex compatibility
+          "aio read size" = "1";
+          "aio write size" = "1";
+          "min receivefile size" = "131072"; # Bump slightly from 16K to 128K
+          "max xmit" = "65535"; # Samba's max recommended for best throughput
+
+          # Locking & latency
+          "strict locking" = "no";
+          "oplocks" = "yes";
+          "level2 oplocks" = "yes";
         };
 
         Media = {
