@@ -38,10 +38,8 @@ in {
 
       loadModels = [
         "deepseek-r1:14b"
-        "deepseek-r1:8b"
         "gemma2:9b"
         "llama3.1:8b"
-        "llama3.2:3b"
       ];
 
       rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700 XT.
