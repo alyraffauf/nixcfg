@@ -59,7 +59,7 @@
 
       oh-my-posh = {
         enable = true;
-        useTheme = "zash";
+        useTheme = "xtoys";
       };
 
       ripgrep = {
