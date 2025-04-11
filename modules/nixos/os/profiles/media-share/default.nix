@@ -9,29 +9,18 @@
     assertions = [
       {
         assertion = config.services.tailscale.enable;
-        message = "Samba connects to mauville shares over tailscale, but services.tailscale.enable != true.";
+        message = "NFS connects to mauville shares over tailscale, but services.tailscale.enable != true.";
       }
     ];
 
-    environment.systemPackages = [pkgs.cifs-utils];
+    environment.systemPackages = [pkgs.nfs-utils];
 
     fileSystems = let
-      fsType = "cifs";
+      fsType = "nfs";
       options = [
-        "actimeo=30" # Cache metadata (stat) for 30s
-        "cache=strict" # Accurate file metadata for Plex
-        "fsc" # Enable FS-Cache (persistent disk caching)
-        "gid=100"
-        "nofail" # Don’t break boot if share is unavailable
-        "noperm" # Skip permission checks on client side
-        "noserverino" # Avoid inode mismatch errors with Plex
-        "nounix" # Avoid Unix extensions; improve compatibility
-        "password="
-        "rsize=1048576" # Read buffer size (1MB)
-        "rw" # Explicitly enable read/write
-        "uid=${toString config.users.users.aly.uid}"
-        "user=guest"
-        "wsize=1048576" # Write buffer size (1MB)
+        "default"
+        "noatime"
+        "nofail"
         "x-systemd.after=network-online.target"
         "x-systemd.after=tailscaled.service"
         "x-systemd.automount"
@@ -42,7 +31,7 @@
     in {
       "/mnt/Media" = {
         inherit options fsType;
-        device = "//mauville/Media";
+        device = "mauville:/mnt/Media";
       };
     };
 

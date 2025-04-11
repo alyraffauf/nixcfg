@@ -32,14 +32,15 @@ in {
       options = [
         "allow_other"
         "args2env"
+        "buffer-size=256M"
         "cache-dir=${mediaDirectory}/.rclone-cache"
         "config=${config.age.secrets.rclone-b2.path}"
         "nodev"
         "nofail"
         "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=50G" # Cache up to 50GB
+        "vfs-cache-max-size=100G" # Cache up to 100GB
         "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=1024M" # Preload 1024MB of data for smoother playback
+        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
         "x-systemd.after=network.target"
         "x-systemd.automount"
@@ -53,14 +54,15 @@ in {
       options = [
         "allow_other"
         "args2env"
+        "buffer-size=256M"
         "cache-dir=${mediaDirectory}/.rclone-cache"
         "config=${config.age.secrets.rclone-b2.path}"
         "nodev"
         "nofail"
         "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=200G" # Cache up to 200GB
+        "vfs-cache-max-size=100G" # Cache up to 100GB
         "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=1024M" # Preload 1024MB of data for smoother playback
+        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
         "x-systemd.after=network.target"
         "x-systemd.automount"
@@ -74,14 +76,15 @@ in {
       options = [
         "allow_other"
         "args2env"
+        "buffer-size=256M"
         "cache-dir=${mediaDirectory}/.rclone-cache"
         "config=${config.age.secrets.rclone-b2.path}"
         "nodev"
         "nofail"
         "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=200G" # Cache up to 200GB
+        "vfs-cache-max-size=100G" # Cache up to 100GB
         "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=1024M" # Preload 1024MB of data for smoother playback
+        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
         "x-systemd.after=network.target"
         "x-systemd.automount"
@@ -89,9 +92,25 @@ in {
     };
   };
 
-  networking.hostName = "mauville";
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [2049]; # NFS
+      allowedUDPPorts = [2049];
+    };
+
+    hostName = "mauville";
+  };
 
   services = {
+    nfs.server = {
+      enable = true;
+
+      exports = ''
+        /mnt/Media 100.64.0.0/10(rw,sync,no_subtree_check,no_root_squash,fsid=0)
+      '';
+    };
+
     restic.backups = let
       defaults = {
         inhibitsSleep = true;
