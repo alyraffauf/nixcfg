@@ -142,6 +142,11 @@ in {
       openFirewall = true;
     };
 
+    lidarr = {
+      enable = true;
+      openFirewall = true;
+    };
+
     # navidrome = {
     #   enable = true;
     #   openFirewall = true;
