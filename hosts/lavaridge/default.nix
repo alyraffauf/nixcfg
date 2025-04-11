@@ -87,7 +87,7 @@
         certFile = config.age.secrets.syncthingCert.path;
         keyFile = config.age.secrets.syncthingKey.path;
         syncMusic = false;
-        syncROMs = true;
+        syncROMs = false;
         user = "aly";
       };
 
