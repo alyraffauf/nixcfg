@@ -34,19 +34,19 @@ A gaming desktop built in a compact NZXT mini-ITX case (not my favorite, but it 
 - **Format**: Btrfs
 - **Encryption**: Encrypted with LUKS
 
-### `/mnt/Archive`
+### `/mnt/Files`
 
 - **Format**: Btrfs.
 - **Purpose**: Archival volume.
-- **Access**: Shared over LAN via Samba as `Archive`.
+- **Access**: Shared over LAN via Samba as `Files`.
 
 ---
 
 ## 🖥 Display
 
-- **Model**: LG 34WP65C-B Curved Ultrawide.
-- **Resolution**: 3440x1440.
-- **Refresh Rate**: 160Hz.
-- **Scaling**: Set to **1.0x** for sharp visuals.
+- **Model**: INNOCN 27" 4K UHD IPS.
+- **Resolution**: 3840x2160.
+- **Refresh Rate**: 60Hz.
+- **Scaling**: Set to **1.875x** for best visuals.
 
 ---
