@@ -27,7 +27,7 @@
       "nodev"
       "nofail"
       "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-      "vfs-cache-max-size=100G" # Cache up to 100GB
+      "vfs-cache-max-size=25G" # Cache up to 25GB
       "vfs-cache-mode=full" # Enables full read/write caching
       "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
       "vfs-write-back=10s" # Delay write operations by 10 seconds
