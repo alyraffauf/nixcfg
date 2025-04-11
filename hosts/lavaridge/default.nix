@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   self,
   ...
 }: {
@@ -11,6 +12,47 @@
     self.nixosModules.hardware-framework-13-intel-11th
     self.nixosModules.locale-en-us
   ];
+
+  environment.systemPackages = [pkgs.rclone];
+
+  fileSystems = let
+    backblazeDirectory = "/mnt/Backblaze";
+
+    options = [
+      "allow_other"
+      "args2env"
+      "buffer-size=256M"
+      "cache-dir=${backblazeDirectory}/.rclone-cache"
+      "config=${config.age.secrets.rclone-b2.path}"
+      "nodev"
+      "nofail"
+      "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
+      "vfs-cache-max-size=100G" # Cache up to 100GB
+      "vfs-cache-mode=full" # Enables full read/write caching
+      "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
+      "vfs-write-back=10s" # Delay write operations by 10 seconds
+      "x-systemd.after=network.target"
+      "x-systemd.automount"
+    ];
+  in {
+    "${backblazeDirectory}/Audiobooks" = {
+      inherit options;
+      device = "b2:aly-audiobooks";
+      fsType = "rclone";
+    };
+
+    "${backblazeDirectory}/Movies" = {
+      inherit options;
+      device = "b2:aly-movies";
+      fsType = "rclone";
+    };
+
+    "${backblazeDirectory}/Shows" = {
+      inherit options;
+      device = "b2:aly-shows";
+      fsType = "rclone";
+    };
+  };
 
   networking.hostName = "lavaridge";
   services.xserver.xkb.options = "ctrl:nocaps";
