@@ -43,6 +43,19 @@
       }
     ];
 
-    services.cachefilesd.enable = true;
+    services.cachefilesd = {
+      enable = true;
+
+      extraConfig = ''
+        # Limit cache size
+        brun 25%     # Start cleaning when <10% space left
+        bcull 15%    # Aggressively clean if <7%
+        bstop 10%    # Stop caching if <3% space left
+
+        frun 95%     # Clean if >95% files used
+        fcull 90%    # Aggressively clean >90%
+        fstop 80%    # Stop caching if >80% inodes used
+      '';
+    };
   };
 }
