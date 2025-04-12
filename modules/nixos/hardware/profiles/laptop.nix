@@ -24,7 +24,7 @@
     }
 
     (lib.mkIf (lib.elem "kvm-intel" config.boot.kernelModules) {
-      # powerManagement.powertop.enable = true;
+      powerManagement.powertop.enable = true;
       services.thermald.enable = true;
     })
 

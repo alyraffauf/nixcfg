@@ -36,6 +36,8 @@
       }
     ];
 
+    powerManagement.powertop.enable = lib.mkForce false;
+
     services.udev.extraRules = ''
       ## Framework 13 -- Fix headphone noise when on powersave
       ## https://community.frame.work/t/headphone-jack-intermittent-noise/5246/55
