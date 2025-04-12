@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./backups.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix
