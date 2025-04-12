@@ -3,7 +3,7 @@
     sharedModules = [
       {
         gtk.gtk3.bookmarks = [
-          "file:///mnt/Archive"
+          "file:///mnt/Files"
         ];
 
         services.easyeffects = {
