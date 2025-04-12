@@ -7,15 +7,20 @@
 in {
   services.restic.backups = let
     defaults = {
+      extraBackupArgs = [
+        "--cleanup-cache"
+        "--compression max"
+        "--no-scan"
+      ];
+
       inhibitsSleep = true;
       initialize = true;
       passwordFile = config.age.secrets.restic-passwd.path;
 
       pruneOpts = [
-        "--keep-daily 5"
+        "--keep-daily 7"
         "--keep-weekly 4"
-        "--keep-monthly 12"
-        "--compression max"
+        "--keep-monthly 6"
       ];
 
       rcloneConfigFile = config.age.secrets.rclone-b2.path;
