@@ -1,4 +1,3 @@
-# Beelink S12 Pro mini PC with Intel N100, 16GB RAM, 500GB SSD + 2TB SSD.
 {
   config,
   pkgs,
@@ -8,6 +7,8 @@
   mediaDirectory = "/mnt/Media";
 in {
   imports = [
+    ./arr.nix
+    ./backups.nix
     ./disko.nix
     ./home.nix
     ./raffauflabs.nix
@@ -109,97 +110,6 @@ in {
       exports = ''
         /mnt/Media 100.64.0.0/10(rw,sync,no_subtree_check,no_root_squash,fsid=0)
       '';
-    };
-
-    restic.backups = let
-      defaults = {
-        inhibitsSleep = true;
-        initialize = true;
-        passwordFile = config.age.secrets.restic-passwd.path;
-
-        pruneOpts = [
-          "--keep-daily 5"
-          "--keep-weekly 4"
-          "--keep-monthly 12"
-          "--compression max"
-        ];
-
-        rcloneConfigFile = config.age.secrets.rclone-b2.path;
-
-        timerConfig = {
-          OnCalendar = "daily";
-          Persistent = true;
-          RandomizedDelaySec = "2h";
-        };
-      };
-    in {
-      audiobookshelf =
-        defaults
-        // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start audiobookshelf";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop audiobookshelf";
-          paths = ["/var/lib/audiobookshelf"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/audiobookshelf";
-        };
-
-      immich =
-        defaults
-        // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start immich-server";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop immich-server";
-
-          paths = [
-            "${mediaDirectory}/Pictures/library"
-            "${mediaDirectory}/Pictures/profile"
-            "${mediaDirectory}/Pictures/upload"
-            "${mediaDirectory}/Pictures/backups"
-          ];
-
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/immich";
-        };
-
-      ombi =
-        defaults
-        // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
-          paths = ["/var/lib/ombi"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
-        };
-
-      plex =
-        defaults
-        // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
-          paths = ["/var/lib/plex"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
-        };
-
-      radarr =
-        defaults
-        // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start radarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop radarr";
-          paths = ["/var/lib/radarr"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/radarr";
-        };
-
-      sonarr =
-        defaults
-        // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start sonarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop sonarr";
-          paths = ["/var/lib/sonarr"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/sonarr";
-        };
-
-      syncthing-sync =
-        defaults
-        // {
-          paths = ["/home/aly/sync"];
-          repository = "rclone:b2:aly-backups/syncthing/sync";
-        };
     };
 
     samba = {

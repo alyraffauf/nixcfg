@@ -1,32 +1,19 @@
-{
-  config,
-  # lib,
-  # pkgs,
-  ...
-}: let
+{...}: let
   audiobookshelf.port = 13378;
   # domain = "cute.haus";
   mediaDirectory = "/mnt/Media";
   # musicDirectory = "${mediaDirectory}/Music";
-
   # navidrome = {
   #   port = 4533;
-
   #   lastfm = {
   #     idFile = config.age.secrets.lastfmId.path;
   #     secretFile = config.age.secrets.lastfmSecret.path;
   #   };
-
   #   spotify = {
   #     idFile = config.age.secrets.spotifyId.path;
   #     secretFile = config.age.secrets.spotifySecret.path;
   #   };
   # };
-
-  transmission = {
-    port = 9091;
-    bitTorrentPort = 5143;
-  };
 in {
   environment.etc = {
     "fail2ban/filter.d/audiobookshelf.conf".text = ''
@@ -142,11 +129,6 @@ in {
       openFirewall = true;
     };
 
-    lidarr = {
-      enable = true;
-      openFirewall = true;
-    };
-
     # navidrome = {
     #   enable = true;
     #   openFirewall = true;
@@ -158,11 +140,6 @@ in {
     };
 
     plex = {
-      enable = true;
-      openFirewall = true;
-    };
-
-    radarr = {
       enable = true;
       openFirewall = true;
     };
@@ -199,27 +176,6 @@ in {
     #     };
     #   };
     # };
-
-    sonarr = {
-      enable = true;
-      openFirewall = true;
-    };
-
-    transmission = {
-      enable = true;
-      credentialsFile = config.age.secrets.transmission.path;
-      openFirewall = true;
-      openRPCPort = true;
-
-      settings = {
-        blocklist-enabled = true;
-        blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
-        download-dir = mediaDirectory;
-        peer-port = transmission.bitTorrentPort;
-        rpc-bind-address = "0.0.0.0";
-        rpc-port = transmission.port;
-      };
-    };
   };
 
   # systemd.services = {
