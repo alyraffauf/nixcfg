@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./backups.nix
     ./home.nix
     ./secrets.nix
     ./stylix.nix
