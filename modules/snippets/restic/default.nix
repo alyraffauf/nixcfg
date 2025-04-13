@@ -7,6 +7,7 @@
     mySnippets.resticDefaults = lib.mkOption {
       type = lib.types.attrs;
       description = "Default restic backup settings shared across backup jobs.";
+
       default = {
         extraBackupArgs = [
           "--cleanup-cache"

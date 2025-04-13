@@ -9,7 +9,7 @@
   config = lib.mkIf config.myDarwin.programs.nix.enable {
     nix = {
       buildMachines =
-        lib.filter (m: m.hostName != "${config.networking.hostName}") (import ../../../nixos/os/programs/nix/buildMachines.nix);
+        lib.filter (m: m.hostName != "${config.networking.hostName}") config.mySnippets.nix.defaultBuildMachines;
 
       distributedBuilds = true;
 
@@ -40,8 +40,7 @@
       # };
 
       package = pkgs.lix;
-
-      settings = import ../../../nixos/os/programs/nix/settings.nix;
+      settings = config.mySnippets.nix.defaultSettings;
     };
   };
 }
