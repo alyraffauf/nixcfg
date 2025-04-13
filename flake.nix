@@ -185,6 +185,7 @@
       aly-darwin = ./homes/aly/darwin.nix;
       default = ./modules/home;
       dustin = ./homes/dustin;
+      snippets = ./modules/snippets;
     };
 
     nixosModules = {

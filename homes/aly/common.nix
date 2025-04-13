@@ -14,6 +14,7 @@
     ./secrets.nix
     ./vsCode
     self.homeManagerModules.default
+    self.homeManagerModules.snippets
     self.inputs.agenix.homeManagerModules.default
   ];
 
