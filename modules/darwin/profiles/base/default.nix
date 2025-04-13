@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   options.myDarwin.profiles.base.enable = lib.mkEnableOption "base system configuration";
@@ -26,11 +25,10 @@
         silent = true;
       };
 
-      ssh.knownHosts = import ../../../nixos/os/profiles/base/knownHosts.nix {inherit self;};
+      ssh.knownHosts = config.mySnippets.ssh.knownHosts;
     };
 
     security.pam.services.sudo_local.touchIdAuth = true;
-
     services.openssh.enable = true;
 
     system.defaults.alf = {

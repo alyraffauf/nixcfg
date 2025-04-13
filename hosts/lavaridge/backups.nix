@@ -5,7 +5,7 @@
 }: {
   services.restic.backups = {
     jellyfin =
-      config.mySnippets.resticDefaults
+      config.mySnippets.restic
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start jellyfin";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop jellyfin";

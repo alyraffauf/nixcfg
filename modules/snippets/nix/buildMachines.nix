@@ -1,8 +1,8 @@
 {lib, ...}: {
   options = {
-    mySnippets.nix.defaultBuildMachines = lib.mkOption {
+    mySnippets.nix.buildMachines = lib.mkOption {
       type = lib.types.listOf lib.types.attrs;
-      description = "List of default nixbuild machines.";
+      description = "List of default nix build machines.";
 
       default = [
         {

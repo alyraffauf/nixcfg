@@ -4,7 +4,7 @@
   ...
 }: {
   options = {
-    mySnippets.resticDefaults = lib.mkOption {
+    mySnippets.restic = lib.mkOption {
       type = lib.types.attrs;
       description = "Default restic backup settings shared across backup jobs.";
 

@@ -9,7 +9,7 @@
   config = lib.mkIf config.myNixOS.programs.nix.enable {
     nix = {
       buildMachines = lib.mkIf config.services.tailscale.enable (
-        lib.filter (m: m.hostName != "${config.networking.hostName}") config.mySnippets.nix.defaultBuildMachines
+        lib.filter (m: m.hostName != "${config.networking.hostName}") config.mySnippets.nix.buildMachines
       );
 
       distributedBuilds = config.services.tailscale.enable;
@@ -35,7 +35,7 @@
 
       package = pkgs.lix;
 
-      settings = config.mySnippets.nix.defaultSettings;
+      settings = config.mySnippets.nix.settings;
     };
 
     programs.nix-ld.enable = true;

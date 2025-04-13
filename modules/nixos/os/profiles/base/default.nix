@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   options.myNixOS.profiles.base.enable = lib.mkEnableOption "base system configuration";
@@ -36,7 +35,7 @@
       };
 
       nh.enable = true;
-      ssh.knownHosts = import ./knownHosts.nix {inherit self;};
+      ssh.knownHosts = config.mySnippets.ssh.knownHosts;
     };
 
     networking.networkmanager.enable = true;

@@ -5,7 +5,7 @@
 }: {
   services.restic.backups = {
     couchdb =
-      config.mySnippets.resticDefaults
+      config.mySnippets.restic
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start couchdb";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop couchdb";
@@ -14,7 +14,7 @@
       };
 
     pds =
-      config.mySnippets.resticDefaults
+      config.mySnippets.restic
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start pds";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop pds";
@@ -23,7 +23,7 @@
       };
 
     vaultwarden =
-      config.mySnippets.resticDefaults
+      config.mySnippets.restic
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start vaultwarden";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop vaultwarden";
