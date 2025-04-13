@@ -5,35 +5,9 @@
 }: let
   mediaDirectory = "/mnt/Media";
 in {
-  services.restic.backups = let
-    defaults = {
-      extraBackupArgs = [
-        "--cleanup-cache"
-        "--compression max"
-        "--no-scan"
-      ];
-
-      inhibitsSleep = true;
-      initialize = true;
-      passwordFile = config.age.secrets.restic-passwd.path;
-
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 6"
-      ];
-
-      rcloneConfigFile = config.age.secrets.rclone-b2.path;
-
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-        RandomizedDelaySec = "2h";
-      };
-    };
-  in {
+  services.restic.backups = {
     audiobookshelf =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start audiobookshelf";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop audiobookshelf";
@@ -42,7 +16,7 @@ in {
       };
 
     immich =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start immich-server";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop immich-server";
@@ -58,7 +32,7 @@ in {
       };
 
     lidarr =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start lidarr";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop lidarr";
@@ -67,7 +41,7 @@ in {
       };
 
     ombi =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
@@ -76,7 +50,7 @@ in {
       };
 
     prowlarr =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start prowlarr";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop prowlarr";
@@ -85,7 +59,7 @@ in {
       };
 
     plex =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
@@ -94,7 +68,7 @@ in {
       };
 
     radarr =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start radarr";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop radarr";
@@ -103,7 +77,7 @@ in {
       };
 
     readarr =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start readarr";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop readarr";
@@ -112,7 +86,7 @@ in {
       };
 
     sonarr =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start sonarr";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop sonarr";
@@ -121,14 +95,14 @@ in {
       };
 
     syncthing-sync =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         paths = ["/home/aly/sync"];
         repository = "rclone:b2:aly-backups/syncthing/sync";
       };
 
     transmission =
-      defaults
+      config.mySnippets.resticDefaults
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start transmission";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop transmission";

@@ -208,6 +208,7 @@
       hardware-profiles-laptop = ./modules/nixos/hardware/profiles/laptop.nix;
       locale-en-us = ./modules/nixos/locale/en-us;
       nixos = ./modules/nixos/os;
+      snippets = ./modules/snippets;
       users = ./modules/nixos/users;
     };
 
@@ -226,6 +227,7 @@
             self.inputs.stylix.nixosModules.stylix
             self.inputs.vscode-server.nixosModules.default
             self.nixosModules.nixos
+            self.nixosModules.snippets
             self.nixosModules.users
             {
               home-manager = {
