@@ -130,7 +130,6 @@
         self.inputs.nix-homebrew.darwinModules.nix-homebrew
         self.inputs.stylix.darwinModules.stylix
         self.nixosModules.snippets
-
         {
           home-manager = {
             backupFileExtension = "backup";
