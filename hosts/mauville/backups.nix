@@ -126,5 +126,21 @@ in {
         paths = ["/home/aly/sync"];
         repository = "rclone:b2:aly-backups/syncthing/sync";
       };
+
+    transmission =
+      defaults
+      // {
+        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start transmission";
+        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop transmission";
+
+        exclude = [
+          "/var/lib/transmission/.incomplete"
+          "/var/lib/transmission/Downloads"
+          "/var/lib/transmission/watchdir"
+        ];
+
+        paths = ["/var/lib/transmission"];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/transmission";
+      };
   };
 }
