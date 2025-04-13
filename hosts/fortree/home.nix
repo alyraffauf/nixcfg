@@ -15,9 +15,10 @@
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
     services.syncthing = let
-      devices = import ../../modules/nixos/os/services/syncthing/devices.nix;
+      devices = config.mySnippets.syncthing.devices;
+
       folders = lib.mkMerge [
-        (import ../../modules/nixos/os/services/syncthing/folders.nix)
+        config.mySnippets.syncthing.folders
         {
           "music" = {
             enable = lib.mkForce false;

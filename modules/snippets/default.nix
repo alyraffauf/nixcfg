@@ -3,5 +3,6 @@
     ./nix
     ./restic
     ./ssh
+    ./syncthing
   ];
 }

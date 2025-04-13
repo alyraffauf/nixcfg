@@ -36,10 +36,10 @@
 
     services.syncthing = let
       cfg = config.myNixOS.services.syncthing;
-      devices = import ./devices.nix;
+      devices = config.mySnippets.syncthing.devices;
 
       folders = lib.mkMerge [
-        (import ./folders.nix)
+        config.mySnippets.syncthing.folders
         {
           "music" = {
             enable = cfg.syncMusic;
