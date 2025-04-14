@@ -11,6 +11,7 @@ The `hosts/` directory is organized as follows:
 ```plaintext
 hosts/
 ├── fallarbor/     # Framework Laptop 13 (11th Gen Intel)
+├── fortree/       # MacBook Air M2
 ├── lilycove/      # Custom Mini-ITX Gaming Desktop
 ├── mauville/      # Beelink Mini S12 Pro
 ├── pacifidlog/    # Asus ROG Ally X
