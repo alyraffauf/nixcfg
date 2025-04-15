@@ -22,6 +22,7 @@
       fractal
       nicotine-plus
       obsidian
+      plexamp
       protonvpn-gui
       signal-desktop
       tauon
