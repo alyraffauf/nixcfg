@@ -38,8 +38,8 @@ in {
         "config=${config.age.secrets.rclone-b2.path}"
         "nodev"
         "nofail"
-        "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=100G" # Cache up to 100GB
+        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
+        "vfs-cache-max-size=1G" # Cache up to 1GB
         "vfs-cache-mode=full" # Enables full read/write caching
         "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
@@ -60,8 +60,8 @@ in {
         "config=${config.age.secrets.rclone-b2.path}"
         "nodev"
         "nofail"
-        "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=100G" # Cache up to 100GB
+        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
+        "vfs-cache-max-size=40G" # Cache up to 40GB
         "vfs-cache-mode=full" # Enables full read/write caching
         "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
@@ -82,8 +82,8 @@ in {
         "config=${config.age.secrets.rclone-b2.path}"
         "nodev"
         "nofail"
-        "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-        "vfs-cache-max-size=100G" # Cache up to 100GB
+        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
+        "vfs-cache-max-size=60G" # Cache up to 60GB
         "vfs-cache-mode=full" # Enables full read/write caching
         "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
         "vfs-write-back=10s" # Delay write operations by 10 seconds
