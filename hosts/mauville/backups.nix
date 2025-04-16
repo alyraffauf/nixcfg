@@ -63,6 +63,7 @@ in {
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
+        exclude = ["/var/lib/plex/Plex Media Server/Plug-in Support/Databases"];
         paths = ["/var/lib/plex"];
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
       };
