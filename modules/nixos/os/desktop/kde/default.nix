@@ -41,7 +41,6 @@
     ];
 
     services.desktopManager.plasma6.enable = true;
-    stylix.targets.qt.enable = lib.mkForce false;
     myNixOS.desktop.enable = true;
   };
 }
