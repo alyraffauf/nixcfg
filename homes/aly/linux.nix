@@ -24,7 +24,7 @@
       obsidian
       plexamp
       protonvpn-gui
-      signal-desktop
+      signal-desktop-bin
       tauon
       transmission-remote-gtk
     ];

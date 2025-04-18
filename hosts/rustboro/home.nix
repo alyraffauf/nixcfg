@@ -11,7 +11,7 @@
 
         packages = with pkgs; [
           curl
-          signal-desktop
+          signal-desktop-bin
         ];
 
         stateVersion = "25.05";
