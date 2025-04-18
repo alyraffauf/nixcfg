@@ -65,6 +65,22 @@ in {
           TIMELINE_CREATE = true;
         };
 
+        filters = ''
+          -.bash_profile
+          -.bashrc
+          -.cache
+          -.config
+          -.librewolf
+          -.local
+          -.mozilla
+          -.nix-profile
+          -.pki
+          -.share
+          -.snapshots
+          -.thunderbird
+          -.zshrc
+        '';
+
         persistentTimer = true;
       };
     };
