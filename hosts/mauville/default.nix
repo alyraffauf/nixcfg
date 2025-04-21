@@ -26,6 +26,28 @@ in {
       options = ["compress=zstd" "noatime"];
     };
 
+    "${mediaDirectory}/Anime" = {
+      device = "b2:aly-anime";
+      fsType = "rclone";
+
+      options = [
+        "allow_other"
+        "args2env"
+        "buffer-size=256M"
+        "cache-dir=${mediaDirectory}/.rclone-cache"
+        "config=${config.age.secrets.rclone-b2.path}"
+        "nodev"
+        "nofail"
+        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
+        "vfs-cache-max-size=30G" # Cache up to 30GB
+        "vfs-cache-mode=full" # Enables full read/write caching
+        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
+        "vfs-write-back=10s" # Delay write operations by 10 seconds
+        "x-systemd.after=network.target"
+        "x-systemd.automount"
+      ];
+    };
+
     "${mediaDirectory}/Audiobooks" = {
       device = "b2:aly-audiobooks";
       fsType = "rclone";
