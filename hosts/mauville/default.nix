@@ -19,101 +19,56 @@ in {
 
   environment.systemPackages = [pkgs.rclone];
 
-  fileSystems = {
-    "${mediaDirectory}" = {
-      device = "/dev/sdb";
-      fsType = "btrfs";
-      options = ["compress=zstd" "noatime"];
-    };
+  fileSystems = let
+    b2Options = [
+      "allow_other"
+      "args2env"
+      "cache-dir=${mediaDirectory}/.rclone-cache"
+      "config=${config.age.secrets.rclone-b2.path}"
+      "dir-cache-time=1h"
+      "noatime"
+      "nodev"
+      "nofail"
+      "vfs-cache-mode=full"
+      "vfs-write-back=10s"
+      "x-systemd.after=network.target"
+      "x-systemd.automount"
+    ];
 
-    "${mediaDirectory}/Anime" = {
-      device = "b2:aly-anime";
-      fsType = "rclone";
-
-      options = [
-        "allow_other"
-        "args2env"
-        "buffer-size=256M"
-        "cache-dir=${mediaDirectory}/.rclone-cache"
-        "config=${config.age.secrets.rclone-b2.path}"
-        "nodev"
-        "nofail"
-        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
-        "vfs-cache-max-size=30G" # Cache up to 30GB
-        "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
-        "vfs-write-back=10s" # Delay write operations by 10 seconds
-        "x-systemd.after=network.target"
-        "x-systemd.automount"
+    b2ProfileOptions = {
+      audio = [
+        "buffer-size=128M"
+        "vfs-cache-max-age=168h"
+        "vfs-cache-max-size=10G"
+        "vfs-read-ahead=3G"
+      ];
+      video = [
+        "buffer-size=512M"
+        "vfs-cache-max-age=336h"
+        "vfs-cache-max-size=50G"
+        "vfs-read-ahead=5G"
       ];
     };
 
-    "${mediaDirectory}/Audiobooks" = {
-      device = "b2:aly-audiobooks";
-      fsType = "rclone";
-
-      options = [
-        "allow_other"
-        "args2env"
-        "buffer-size=256M"
-        "cache-dir=${mediaDirectory}/.rclone-cache"
-        "config=${config.age.secrets.rclone-b2.path}"
-        "nodev"
-        "nofail"
-        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
-        "vfs-cache-max-size=1G" # Cache up to 1GB
-        "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
-        "vfs-write-back=10s" # Delay write operations by 10 seconds
-        "x-systemd.after=network.target"
-        "x-systemd.automount"
-      ];
+    mkB2Mount = name: remote: profile: {
+      "${mediaDirectory}/${name}" = {
+        device = "b2:${remote}";
+        fsType = "rclone";
+        options = b2Options ++ b2ProfileOptions.${profile};
+      };
     };
-
-    "${mediaDirectory}/Movies" = {
-      device = "b2:aly-movies";
-      fsType = "rclone";
-
-      options = [
-        "allow_other"
-        "args2env"
-        "buffer-size=256M"
-        "cache-dir=${mediaDirectory}/.rclone-cache"
-        "config=${config.age.secrets.rclone-b2.path}"
-        "nodev"
-        "nofail"
-        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
-        "vfs-cache-max-size=40G" # Cache up to 40GB
-        "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
-        "vfs-write-back=10s" # Delay write operations by 10 seconds
-        "x-systemd.after=network.target"
-        "x-systemd.automount"
-      ];
+  in
+    mkB2Mount "Anime" "aly-anime" "video"
+    // mkB2Mount "Audiobooks" "aly-audiobooks" "audio"
+    // mkB2Mount "Movies" "aly-movies" "video"
+    // mkB2Mount "Shows" "aly-shows" "video"
+    // {
+      "${mediaDirectory}" = {
+        device = "/dev/sdb";
+        fsType = "btrfs";
+        options = ["compress=zstd" "noatime"];
+      };
     };
-
-    "${mediaDirectory}/Shows" = {
-      device = "b2:aly-shows";
-      fsType = "rclone";
-
-      options = [
-        "allow_other"
-        "args2env"
-        "buffer-size=256M"
-        "cache-dir=${mediaDirectory}/.rclone-cache"
-        "config=${config.age.secrets.rclone-b2.path}"
-        "nodev"
-        "nofail"
-        "vfs-cache-max-age=168h" # Cache files for up to 7 days (168 hours)
-        "vfs-cache-max-size=60G" # Cache up to 60GB
-        "vfs-cache-mode=full" # Enables full read/write caching
-        "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
-        "vfs-write-back=10s" # Delay write operations by 10 seconds
-        "x-systemd.after=network.target"
-        "x-systemd.automount"
-      ];
-    };
-  };
 
   networking = {
     firewall = {
