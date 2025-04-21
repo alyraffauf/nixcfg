@@ -45,6 +45,7 @@
       "slack"
       "thunderbird"
       "todoist"
+      "vlc"
     ];
 
     masApps = {
