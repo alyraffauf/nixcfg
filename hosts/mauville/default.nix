@@ -26,7 +26,6 @@ in {
       "cache-dir=${mediaDirectory}/.rclone-cache"
       "config=${config.age.secrets.rclone-b2.path}"
       "dir-cache-time=1h"
-      "noatime"
       "nodev"
       "nofail"
       "vfs-cache-mode=full"
