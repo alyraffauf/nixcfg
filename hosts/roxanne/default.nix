@@ -106,6 +106,8 @@
       SystemMaxUse=50M
     '';
 
+    tautulli.enable = true;
+
     uptime-kuma = {
       enable = true;
       appriseSupport = true;
