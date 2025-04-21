@@ -19,41 +19,47 @@
   fileSystems = let
     backblazeDirectory = "/mnt/Backblaze";
 
-    options = [
+    b2Options = [
       "allow_other"
       "args2env"
-      "buffer-size=256M"
       "cache-dir=${backblazeDirectory}/.rclone-cache"
       "config=${config.age.secrets.rclone-b2.path}"
+      "dir-cache-time=1h"
       "nodev"
       "nofail"
-      "vfs-cache-max-age=2160h" # Cache files for up to 3 months (2160 hours)
-      "vfs-cache-max-size=25G" # Cache up to 25GB
-      "vfs-cache-mode=full" # Enables full read/write caching
-      "vfs-read-ahead=3G" # Preload 3GB of data for smoother playback
-      "vfs-write-back=10s" # Delay write operations by 10 seconds
+      "vfs-cache-mode=full"
+      "vfs-write-back=10s"
       "x-systemd.after=network.target"
       "x-systemd.automount"
     ];
-  in {
-    "${backblazeDirectory}/Audiobooks" = {
-      inherit options;
-      device = "b2:aly-audiobooks";
-      fsType = "rclone";
+
+    b2ProfileOptions = {
+      audio = [
+        "buffer-size=128M"
+        "vfs-cache-max-age=168h"
+        "vfs-cache-max-size=10G"
+        "vfs-read-ahead=3G"
+      ];
+      video = [
+        "buffer-size=512M"
+        "vfs-cache-max-age=336h"
+        "vfs-cache-max-size=50G"
+        "vfs-read-ahead=5G"
+      ];
     };
 
-    "${backblazeDirectory}/Movies" = {
-      inherit options;
-      device = "b2:aly-movies";
-      fsType = "rclone";
+    mkB2Mount = name: remote: profile: {
+      "${backblazeDirectory}/${name}" = {
+        device = "b2:${remote}";
+        fsType = "rclone";
+        options = b2Options ++ b2ProfileOptions.${profile};
+      };
     };
-
-    "${backblazeDirectory}/Shows" = {
-      inherit options;
-      device = "b2:aly-shows";
-      fsType = "rclone";
-    };
-  };
+  in
+    mkB2Mount "Anime" "aly-anime" "video"
+    // mkB2Mount "Audiobooks" "aly-audiobooks" "audio"
+    // mkB2Mount "Movies" "aly-movies" "video"
+    // mkB2Mount "Shows" "aly-shows" "video";
 
   networking.hostName = "lavaridge";
   services.xserver.xkb.options = "ctrl:nocaps";
