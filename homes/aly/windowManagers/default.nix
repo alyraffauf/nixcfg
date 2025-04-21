@@ -21,7 +21,7 @@
       ];
 
       workspace = [
-        "special:magic,on-created-empty:${lib.getExe pkgs.signal-desktop}"
+        "special:magic,on-created-empty:${lib.getExe pkgs.signal-desktop-bin}"
         "1,defaultName:web,on-created-empty:${config.myHome.profiles.defaultApps.webBrowser.exec}"
         "2,defaultName:note,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
         "3,defaultName:code,on-created-empty:${config.myHome.profiles.defaultApps.editor.exec}"
