@@ -44,6 +44,11 @@
       url = "github:danth/stylix";
     };
 
+    tailscale-golink = {
+      url = "github:tailscale/golink";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     ############################################################################
