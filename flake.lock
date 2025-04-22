@@ -1033,15 +1033,16 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1745267573,
-        "narHash": "sha256-fSmjCxVoBv76TzAHK/wnJA+F8IWSlWj+FVZAk9r391o=",
-        "owner": "danth",
+        "lastModified": 1745321915,
+        "narHash": "sha256-03bxrdG3o2EaYUWdKcYDbw4s7yP438OsCDOKFU3vAEA=",
+        "owner": "alyraffauf",
         "repo": "stylix",
-        "rev": "45aa31f5a4975e6f28596fa3c49997b8a35c78a1",
+        "rev": "7b152705da4b2a2bbb356ea6b968e4625ab17f7d",
         "type": "github"
       },
       "original": {
-        "owner": "danth",
+        "owner": "alyraffauf",
+        "ref": "fix-gitui",
         "repo": "stylix",
         "type": "github"
       }

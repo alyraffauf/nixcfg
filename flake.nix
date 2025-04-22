@@ -41,7 +41,7 @@
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:danth/stylix";
+      url = "github:alyraffauf/stylix/fix-gitui";
     };
 
     tailscale-golink = {
