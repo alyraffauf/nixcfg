@@ -25,7 +25,6 @@
       plexamp
       protonvpn-gui
       signal-desktop-bin
-      tauon
       transmission-remote-gtk
     ];
 
