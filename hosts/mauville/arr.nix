@@ -42,6 +42,9 @@ in {
         blocklist-enabled = true;
         blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
         download-dir = mediaDirectory;
+        encryption = 1;
+        incomplete-dir = "${config.services.transmission.home}/.incomplete";
+        incomplete-dir-enabled = true;
         peer-port = 5143;
         rpc-bind-address = "0.0.0.0";
         rpc-port = 9091;
