@@ -86,8 +86,10 @@
 
     defaults = {
       dock = {
-        autohide = true; # autohide dock
+        autohide = false; # don't autohide dock
+        minimize-to-application = true;
         mru-spaces = false; # do not rearrange spaces based on most recent use
+        orientation = "left"; # left side of the screen
         show-recents = false; # do not show recently closed apps
 
         # # set hot corners
