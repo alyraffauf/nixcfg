@@ -2,6 +2,11 @@
   mediaDirectory = "/mnt/Media";
 in {
   services = {
+    bazarr = {
+      enable = true;
+      openFirewall = true; # Port: 6767
+    };
+
     lidarr = {
       enable = true;
       openFirewall = true; # Port: 8686
