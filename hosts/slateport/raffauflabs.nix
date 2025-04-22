@@ -1,8 +1,16 @@
-{config, ...}: let
+{
+  config,
+  self,
+  ...
+}: let
   ip = "mauville";
   oldDomain = "raffauflabs.com";
   newDomain = "cute.haus";
 in {
+  imports = [
+    self.inputs.tailscale-golink.nixosModules.default
+  ];
+
   networking = {
     firewall.allowedTCPPorts = [80 443 2379 2380 6443 8581];
     firewall.allowedUDPPorts = [8472];
@@ -48,6 +56,11 @@ in {
       ignoreIP = ["100.64.0.0/10"];
       bantime = "24h";
       bantime-increment.enable = true;
+    };
+
+    golink = {
+      enable = true;
+      tailscaleAuthKeyFile = config.age.secrets.tailscaleAuthKey.path;
     };
 
     nginx = {
