@@ -15,6 +15,15 @@ in {
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/audiobookshelf";
       };
 
+    bazarr =
+      config.mySnippets.restic
+      // {
+        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start bazarr";
+        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop bazarr";
+        paths = ["/var/lib/bazarr"];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/bazarr";
+      };
+
     immich =
       config.mySnippets.restic
       // {
