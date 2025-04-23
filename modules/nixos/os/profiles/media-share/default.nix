@@ -17,10 +17,14 @@
 
     fileSystems = let
       fsType = "nfs";
+
       options = [
         "default"
         "noatime"
         "nofail"
+        "retrans=2"
+        "rsize=1048576"
+        "wsize=1048576"
         "x-systemd.after=network-online.target"
         "x-systemd.after=tailscaled.service"
         "x-systemd.automount"
@@ -43,8 +47,14 @@
       }
     ];
 
-    # services.cachefilesd = {
-    #   enable = true;
-    # };
+    services.cachefilesd = {
+      enable = true;
+
+      extraConfig = ''
+        brun 20%
+        bcull 10%
+        bstop 5%
+      '';
+    };
   };
 }
