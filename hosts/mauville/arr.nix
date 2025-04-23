@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   mediaDirectory = "/mnt/Media";
 in {
   services = {
@@ -38,6 +42,18 @@ in {
       openFirewall = true;
       openRPCPort = true;
 
+      package = pkgs.transmission_4.overrideAttrs (old: rec {
+        src = pkgs.fetchFromGitHub {
+          owner = "transmission";
+          repo = "transmission";
+          rev = version;
+          hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
+          fetchSubmodules = true;
+        };
+
+        version = "4.0.5";
+      });
+
       settings = {
         blocklist-enabled = true;
         blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
@@ -49,6 +65,8 @@ in {
         rpc-bind-address = "0.0.0.0";
         rpc-port = 9091;
       };
+
+      webHome = pkgs.flood-for-transmission;
     };
   };
 }
