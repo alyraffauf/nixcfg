@@ -44,7 +44,7 @@ in {
       video = [
         "buffer-size=512M"
         "vfs-cache-max-age=336h"
-        "vfs-cache-max-size=50G"
+        "vfs-cache-max-size=200G"
         "vfs-read-ahead=5G"
       ];
     };
