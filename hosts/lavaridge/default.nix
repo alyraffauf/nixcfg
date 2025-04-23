@@ -22,7 +22,7 @@
     b2Options = [
       "allow_other"
       "args2env"
-      "cache-dir=/mnt/Media/.rclone-cache"
+      "cache-dir=${backblazeDirectory}/.rclone-cache"
       "config=${config.age.secrets.rclone-b2.path}"
       "dir-cache-time=1h"
       "nodev"
@@ -43,7 +43,7 @@
       video = [
         "buffer-size=512M"
         "vfs-cache-max-age=336h"
-        "vfs-cache-max-size=200G"
+        "vfs-cache-max-size=75G"
         "vfs-read-ahead=5G"
       ];
     };
