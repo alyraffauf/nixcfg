@@ -107,7 +107,7 @@
         enableCompletion = true;
         enableVteIntegration = true;
 
-        initExtra = ''
+        initContent = ''
           [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 
           if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
