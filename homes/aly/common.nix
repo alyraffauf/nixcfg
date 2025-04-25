@@ -22,7 +22,6 @@
     packages = with pkgs; [
       curl
       rclone
-      vesktop
     ];
 
     username = "aly";
@@ -40,6 +39,7 @@
     };
 
     home-manager.enable = true;
+    vesktop.enable = true;
   };
 
   myHome = {
