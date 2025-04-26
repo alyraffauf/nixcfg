@@ -14,7 +14,7 @@ in {
 
     lidarr = {
       enable = true;
-      dataDirectory = "${dataDirectory}/lidarr/.config/Lidarr";
+      dataDir = "${dataDirectory}/lidarr/.config/Lidarr";
       openFirewall = true; # Port: 8686
     };
 
@@ -25,19 +25,19 @@ in {
 
     radarr = {
       enable = true;
-      dataDirectory = "${dataDirectory}/radarr/.config/Radarr/";
+      dataDir = "${dataDirectory}/radarr/.config/Radarr/";
       openFirewall = true; # Port: 7878
     };
 
     readarr = {
       enable = true;
-      dataDirectory = "${dataDirectory}/readarr/";
+      dataDir = "${dataDirectory}/readarr/";
       openFirewall = true; # Port: 8787
     };
 
     sonarr = {
       enable = true;
-      dataDirectory = "${dataDirectory}/sonarr/.config/NzbDrone/";
+      dataDir = "${dataDirectory}/sonarr/.config/NzbDrone/";
       openFirewall = true; # Port: 8989
     };
 
