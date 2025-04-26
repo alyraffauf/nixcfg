@@ -6,6 +6,7 @@
   dataDirectory = "/mnt/Data";
 in {
   imports = [
+    ./arr.nix
     ./disko.nix
     ./home.nix
     ./secrets.nix
