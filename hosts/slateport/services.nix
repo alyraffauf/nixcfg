@@ -64,7 +64,7 @@
                 {
                   type = "monitor";
                   cache = "1m";
-                  title = "Tailnet Services";
+                  title = "Private Services";
 
                   sites = [
                     {
@@ -93,10 +93,26 @@
                       icon = "di:prowlarr";
                     }
                     {
+                      title = "Bazarr";
+                      url = "http://mauville:6767/";
+                      icon = "di:bazarr";
+                    }
+                    {
+                      title = "Tautulli";
+                      url = "http://roxanne:8181/";
+                      icon = "di:tautulli";
+                    }
+                    {
                       title = "Transmission";
                       url = "http://mauville:9091/transmission/web/";
                       icon = "di:transmission";
                       alt-status-codes = [401];
+                    }
+                    {
+                      title = "aly.social";
+                      url = "https://aly.social/";
+                      check-url = "http://verdanturf:3000/";
+                      icon = "di:bluesky";
                     }
                   ];
                 }
@@ -108,8 +124,19 @@
                       collapse-after = 4;
                     }
                     {
-                      type = "lobsters";
-                      collapse-after = 4;
+                      type = "rss";
+                      title = "The Verge";
+                      limit = 10;
+                      collapse-after = 5;
+                      cache = "12h";
+
+                      feeds = [
+                        {
+                          url = "https://www.theverge.com/rss/index.xml";
+                          title = "The Verge";
+                          limit = 4;
+                        }
+                      ];
                     }
                   ];
                 }
@@ -146,19 +173,8 @@
                       ];
                     }
                     {
-                      type = "rss";
-                      title = "The Verge";
-                      limit = 10;
-                      collapse-after = 5;
-                      cache = "12h";
-
-                      feeds = [
-                        {
-                          url = "https://www.theverge.com/rss/index.xml";
-                          title = "The Verge";
-                          limit = 4;
-                        }
-                      ];
+                      type = "lobsters";
+                      collapse-after = 4;
                     }
                   ];
                 }
