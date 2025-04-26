@@ -72,7 +72,6 @@
           ];
 
           id = "emudeck";
-          path = "~/roms";
         };
       };
     };

@@ -22,6 +22,12 @@
       type = lib.types.path;
     };
 
+    romsPath = lib.mkOption {
+      default = "/home/${config.myNixOS.services.syncthing.user}/roms";
+      description = "Path to the ROM folder.";
+      type = lib.types.path;
+    };
+
     syncMusic = lib.mkEnableOption "Whether to sync music.";
     syncROMs = lib.mkEnableOption "Whether to sync ROMs.";
 
@@ -46,7 +52,10 @@
             path = cfg.musicPath;
           };
 
-          "roms".enable = cfg.syncROMs;
+          "roms" = {
+            enable = cfg.syncROMs;
+            path = cfg.romsPath;
+          };
         }
       ];
     in {
