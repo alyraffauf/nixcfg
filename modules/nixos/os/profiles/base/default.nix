@@ -17,7 +17,10 @@
         wget
       ];
 
-      variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
+      variables = {
+        FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
+        NH_FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
+      };
     };
 
     programs = {

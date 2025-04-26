@@ -178,7 +178,7 @@
           ];
 
         shellHook = ''
-          export FLAKE="."
+          export FLAKE="." NH_FLAKE="."
         '';
       };
     });
