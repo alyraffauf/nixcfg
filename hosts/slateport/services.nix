@@ -101,62 +101,6 @@
                   ];
                 }
                 {
-                  type = "bookmarks";
-                  groups = [
-                    {
-                      title = "Aly Raffauf";
-                      links = [
-                        {
-                          title = "Website";
-                          url = "https://aly.codes/";
-                        }
-                        {
-                          title = "Github";
-                          url = "https://github.com/alyraffauf/";
-                        }
-                        {
-                          title = "Linkedin";
-                          url = "https://www.linkedin.com/in/alyraffauf/";
-                        }
-                      ];
-                    }
-                    {
-                      title = "General";
-                      links = [
-                        {
-                          title = "Fastmail";
-                          url = "https://fastmail.com/";
-                        }
-                        {
-                          title = "YouTube";
-                          url = "https://www.youtube.com/";
-                        }
-                        {
-                          title = "Github";
-                          url = "https://github.com/";
-                        }
-                      ];
-                    }
-                    {
-                      title = "Social";
-                      links = [
-                        {
-                          title = "Bluesky";
-                          url = "https://bsky.app/";
-                        }
-                        {
-                          title = "Reddit";
-                          url = "https://www.reddit.com/";
-                        }
-                        {
-                          title = "Instagram";
-                          url = "https://www.instagram.com/";
-                        }
-                      ];
-                    }
-                  ];
-                }
-                {
                   type = "split-column";
                   widgets = [
                     {
@@ -213,6 +157,62 @@
                           url = "https://www.theverge.com/rss/index.xml";
                           title = "The Verge";
                           limit = 4;
+                        }
+                      ];
+                    }
+                  ];
+                }
+                {
+                  type = "bookmarks";
+                  groups = [
+                    {
+                      title = "Aly Raffauf";
+                      links = [
+                        {
+                          title = "Website";
+                          url = "https://aly.codes/";
+                        }
+                        {
+                          title = "Github";
+                          url = "https://github.com/alyraffauf/";
+                        }
+                        {
+                          title = "Linkedin";
+                          url = "https://www.linkedin.com/in/alyraffauf/";
+                        }
+                      ];
+                    }
+                    {
+                      title = "General";
+                      links = [
+                        {
+                          title = "Fastmail";
+                          url = "https://fastmail.com/";
+                        }
+                        {
+                          title = "YouTube";
+                          url = "https://www.youtube.com/";
+                        }
+                        {
+                          title = "Github";
+                          url = "https://github.com/";
+                        }
+                      ];
+                    }
+                    {
+                      title = "Social";
+                      links = [
+                        {
+                          title = "Bluesky";
+                          url = "https://bsky.app/";
+                        }
+                        {
+                          title = "Reddit";
+                          url = "https://www.reddit.com/";
+                        }
+                        {
+                          title = "Instagram";
+                          url = "https://www.instagram.com/";
                         }
                       ];
                     }
