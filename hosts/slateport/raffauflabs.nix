@@ -4,7 +4,6 @@
   ...
 }: let
   ip = "mauville";
-  oldDomain = "raffauflabs.com";
   newDomain = "cute.haus";
 in {
   imports = [
@@ -42,14 +41,14 @@ in {
       username = "token";
       zone = newDomain;
 
-      extraConfig = ''
-        zone=raffauflabs.com
-        ${oldDomain}
-        music.${oldDomain}
-        pics.${oldDomain}
-        plex.${oldDomain}
-        podcasts.${oldDomain}
-      '';
+      # extraConfig = ''
+      #   zone=raffauflabs.com
+      #   ${oldDomain}
+      #   music.${oldDomain}
+      #   pics.${oldDomain}
+      #   plex.${oldDomain}
+      #   podcasts.${oldDomain}
+      # '';
     };
 
     fail2ban = {
@@ -109,8 +108,6 @@ in {
               proxy_buffering off;
             '';
           };
-
-          serverAliases = ["n.${newDomain}" "music.${oldDomain}"];
         };
 
         "immich.${newDomain}" = {
@@ -131,8 +128,6 @@ in {
               proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
             '';
           };
-
-          serverAliases = ["i.${newDomain}" "pics.${oldDomain}"];
         };
 
         "ombi.${newDomain}" = {
@@ -161,8 +156,6 @@ in {
               proxy_buffering off;
             '';
           };
-
-          serverAliases = ["p.${newDomain}" "plex.${oldDomain}"];
         };
 
         "uptime-kuma.${newDomain}" = {
@@ -195,8 +188,6 @@ in {
               proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
             '';
           };
-
-          serverAliases = ["a.${newDomain}" "podcasts.${oldDomain}"];
         };
       };
     };
