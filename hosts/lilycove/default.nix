@@ -7,6 +7,7 @@
 in {
   imports = [
     ./arr.nix
+    ./b2.nix
     ./disko.nix
     ./home.nix
     ./secrets.nix
