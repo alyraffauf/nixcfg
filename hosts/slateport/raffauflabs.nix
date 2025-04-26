@@ -31,6 +31,7 @@ in {
         "navidrome.${newDomain}"
         "ombi.${newDomain}"
         "plex.${newDomain}"
+        "uptime-kuma.${newDomain}"
         newDomain
       ];
 
@@ -70,12 +71,12 @@ in {
       recommendedTlsSettings = true;
 
       virtualHosts = {
-        "${oldDomain}" = {
+        "${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://localhost:${toString config.services.homepage-dashboard.listenPort}";
+            proxyPass = "http://localhost:${toString config.services.glance.settings.server.port}";
 
             extraConfig = ''
               client_max_body_size 512M;
@@ -162,6 +163,19 @@ in {
           };
 
           serverAliases = ["p.${newDomain}" "plex.${oldDomain}"];
+        };
+
+        "uptime-kuma.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://roxanne:${toString 3001}";
+
+            extraConfig = ''
+              client_max_body_size 512M;
+            '';
+          };
         };
 
         "audiobookshelf.${newDomain}" = {

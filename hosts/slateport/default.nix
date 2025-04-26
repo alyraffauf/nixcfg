@@ -8,6 +8,7 @@
     ./home.nix
     ./raffauflabs.nix
     ./secrets.nix
+    ./services.nix
     self.nixosModules.disko-btrfs-subvolumes
     self.nixosModules.hardware-lenovo-thinkcentre-m700
     self.nixosModules.locale-en-us
