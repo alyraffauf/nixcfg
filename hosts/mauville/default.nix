@@ -11,8 +11,8 @@ in {
     ./backups.nix
     ./disko.nix
     ./home.nix
-    ./raffauflabs.nix
     ./secrets.nix
+    ./services.nix
     self.nixosModules.hardware-beelink-mini-s12pro
     self.nixosModules.locale-en-us
   ];

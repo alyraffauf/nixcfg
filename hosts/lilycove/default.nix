@@ -22,7 +22,6 @@ in {
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "lilycove";
-
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
@@ -49,7 +48,7 @@ in {
         keyFile = config.age.secrets.syncthingKey.path;
         musicPath = "${dataDirectory}/syncthing/Music";
         romsPath = "${dataDirectory}/syncthing/ROMs";
-        syncMusic = true;
+        syncMusic = false;
         syncROMs = true;
         user = "aly";
       };
