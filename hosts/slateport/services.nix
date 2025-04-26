@@ -6,7 +6,7 @@
     settings = {
       pages = [
         {
-          name = "Startpage";
+          name = "cute.haus";
           width = "slim";
           hide-desktop-navigation = true;
           center-vertically = true;
