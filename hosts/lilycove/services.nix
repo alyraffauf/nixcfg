@@ -4,6 +4,14 @@ in {
   services = {
     nextjs-ollama-llm-ui.enable = true;
 
+    nfs.server = {
+      enable = true;
+
+      exports = ''
+        /mnt/Data 100.64.0.0/10(rw,sync,no_subtree_check,no_root_squash,fsid=0)
+      '';
+    };
+
     ollama = {
       enable = true;
       acceleration = "rocm";
