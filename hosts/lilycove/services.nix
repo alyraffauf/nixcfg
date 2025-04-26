@@ -2,6 +2,13 @@
   dataDirectory = "/mnt/Data";
 in {
   services = {
+    immich = {
+      enable = true;
+      host = "0.0.0.0";
+      mediaLocation = "${dataDirectory}/immich";
+      openFirewall = true;
+    };
+
     nextjs-ollama-llm-ui.enable = true;
 
     nfs.server = {
