@@ -1,11 +1,9 @@
 {
   config,
-  lib,
-  pkgs,
   self,
   ...
 }: let
-  filesDirectory = "/mnt/Files";
+  dataDirectory = "/mnt/Data";
 in {
   imports = [
     ./disko.nix
@@ -21,13 +19,7 @@ in {
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
 
-  environment = {
-    systemPackages = with pkgs; [heroic];
-    variables.GDK_SCALE = "2.0";
-  };
-
   networking.hostName = "lilycove";
-  security.sudo.wheelNeedsPassword = lib.mkForce true;
 
   services = {
     nextjs-ollama-llm-ui.enable = true;
@@ -80,8 +72,8 @@ in {
           "guest ok" = "yes";
           "read only" = "no";
           browseable = "yes";
-          comment = "Files @ ${config.networking.hostName}";
-          path = filesDirectory;
+          comment = "Data @ ${config.networking.hostName}";
+          path = dataDirectory;
         };
       };
     };
@@ -94,7 +86,7 @@ in {
     snapper.configs.archive = {
       ALLOW_GROUPS = ["users"];
       FSTYPE = "btrfs";
-      SUBVOLUME = "/mnt/Files";
+      SUBVOLUME = "/mnt/Data";
       TIMELINE_CLEANUP = true;
       TIMELINE_CREATE = true;
     };
@@ -106,42 +98,29 @@ in {
   time.timeZone = "America/New_York";
 
   myNixOS = {
-    desktop.hyprland = {
-      enable = true;
-      monitors = ["desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,auto,1.875000"];
-    };
-
     profiles = {
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
-      gaming.enable = true;
       media-share.enable = true;
+      server.enable = true;
       swap.enable = true;
-      wifi.enable = true;
-      workstation.enable = true;
     };
 
     programs = {
-      firefox.enable = true;
       lanzaboote.enable = true;
       nix.enable = true;
       podman.enable = true;
-      steam.enable = true;
     };
 
     services = {
-      greetd = {
-        enable = true;
-        autoLogin = "aly";
-      };
-
       syncthing = {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;
         keyFile = config.age.secrets.syncthingKey.path;
-        musicPath = "${filesDirectory}/Music";
-        syncMusic = false;
+        musicPath = "${dataDirectory}/syncthing/Music";
+        romsPath = "${dataDirectory}/syncthing/ROMs";
+        syncMusic = true;
         syncROMs = true;
         user = "aly";
       };
@@ -150,15 +129,8 @@ in {
     };
   };
 
-  myUsers = {
-    aly = {
-      enable = true;
-      password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
-    };
-
-    dustin = {
-      enable = false;
-      password = "$y$j9T$3mMCBnUQ.xjuPIbSof7w0.$fPtRGblPRSwRLj7TFqk1nzuNQk2oVlgvb/bE47sghl.";
-    };
+  myUsers.aly = {
+    enable = true;
+    password = "$y$j9T$SHPShqI2IpRE101Ey2ry/0$0mhW1f9LbVY02ifhJlP9XVImge9HOpf23s9i1JFLIt9";
   };
 }

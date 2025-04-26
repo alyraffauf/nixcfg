@@ -17,13 +17,13 @@
 
                 subvolumes = {
                   "/root" = {
-                    mountpoint = "/mnt/Files";
-                    mountOptions = ["compress=zstd" "noatime"];
+                    mountpoint = "/mnt/Data";
+                    mountOptions = ["compress=zstd" "noatime" "nofail"];
                   };
 
                   "/.snapshots" = {
-                    mountOptions = ["compress=zstd" "noatime"];
-                    mountpoint = "/mnt/Files/.snapshots";
+                    mountOptions = ["compress=zstd" "noatime" "nofail"];
+                    mountpoint = "/mnt/Data/.snapshots";
                   };
                 };
               };
