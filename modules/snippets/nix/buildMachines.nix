@@ -8,7 +8,7 @@
         {
           hostName = "lavaridge";
           maxJobs = 8;
-          speedFactor = 4;
+          speedFactor = 3;
           sshUser = "aly";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           system = "x86_64-linux";
