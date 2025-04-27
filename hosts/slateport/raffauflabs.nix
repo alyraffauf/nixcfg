@@ -115,7 +115,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://${ip}:${toString 2283}";
+            proxyPass = "http://lilycove:${toString 2283}";
 
             extraConfig = ''
               client_max_body_size 5000M;

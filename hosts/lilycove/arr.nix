@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  dataDirectory = "/mnt/Data";
   mediaDirectory = "/mnt/Media";
 in {
   services = {
@@ -13,6 +14,7 @@ in {
 
     lidarr = {
       enable = true;
+      dataDir = "${dataDirectory}/lidarr/.config/Lidarr";
       openFirewall = true; # Port: 8686
     };
 
@@ -23,22 +25,26 @@ in {
 
     radarr = {
       enable = true;
+      dataDir = "${dataDirectory}/radarr/.config/Radarr/";
       openFirewall = true; # Port: 7878
     };
 
     readarr = {
       enable = true;
+      dataDir = "${dataDirectory}/readarr/";
       openFirewall = true; # Port: 8787
     };
 
     sonarr = {
       enable = true;
+      dataDir = "${dataDirectory}/sonarr/.config/NzbDrone/";
       openFirewall = true; # Port: 8989
     };
 
     transmission = {
       enable = true;
       credentialsFile = config.age.secrets.transmission.path;
+      home = "${dataDirectory}/transmission/";
       openFirewall = true;
       openRPCPort = true;
 
