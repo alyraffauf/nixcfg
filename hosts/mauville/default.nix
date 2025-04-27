@@ -148,7 +148,6 @@ in {
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
-      forgejo-runner.enable = true;
       server.enable = true;
       swap.enable = true;
       wifi.enable = true;
