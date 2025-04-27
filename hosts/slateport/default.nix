@@ -36,7 +36,6 @@
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
-      forgejo-runner.enable = true;
       media-share.enable = true;
       server.enable = true;
       swap.enable = true;
