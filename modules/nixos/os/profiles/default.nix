@@ -4,6 +4,7 @@
     ./base
     ./btrfs
     ./data-share
+    ./forgejo-runner
     ./gaming
     ./hardened
     ./media-share

@@ -49,6 +49,7 @@ in {
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
+      forgejo-runner.enable = true;
       media-share.enable = true;
       server.enable = true;
       swap.enable = true;
