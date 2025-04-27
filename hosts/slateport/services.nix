@@ -45,7 +45,7 @@
                     {
                       title = "Immich";
                       url = "https://immich.cute.haus/";
-                      check-url = "http://mauville:2283";
+                      check-url = "http://lilycove:2283";
                       icon = "di:immich";
                     }
                     {
@@ -69,32 +69,32 @@
                   sites = [
                     {
                       title = "Sonarr";
-                      url = "http://mauville:8989/";
+                      url = "http://lilycove:8989/";
                       icon = "di:sonarr";
                     }
                     {
                       title = "Radarr";
-                      url = "http://mauville:7878/";
+                      url = "http://lilycove:7878/";
                       icon = "di:radarr";
                     }
                     {
                       title = "Lidarr";
-                      url = "http://mauville:8686/";
+                      url = "http://lilycove:8686/";
                       icon = "di:lidarr";
                     }
                     {
                       title = "Readarr";
-                      url = "http://mauville:8787/";
+                      url = "http://lilycove:8787/";
                       icon = "di:readarr";
                     }
                     {
                       title = "Prowlarr";
-                      url = "http://mauville:9696/";
+                      url = "http://lilycove:9696/";
                       icon = "di:prowlarr";
                     }
                     {
                       title = "Bazarr";
-                      url = "http://mauville:6767/";
+                      url = "http://lilycove:6767/";
                       icon = "di:bazarr";
                     }
                     {
@@ -104,7 +104,7 @@
                     }
                     {
                       title = "Transmission";
-                      url = "http://mauville:9091/transmission/web/";
+                      url = "http://lilycove:9091/transmission/web/";
                       icon = "di:transmission";
                       alt-status-codes = [401];
                     }
