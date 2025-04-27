@@ -40,6 +40,7 @@
         "vfs-cache-max-size=10G"
         "vfs-read-ahead=3G"
       ];
+
       video = [
         "buffer-size=512M"
         "vfs-cache-max-age=336h"
@@ -76,6 +77,7 @@
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
+      data-share.enable = true;
       media-share.enable = true;
       server.enable = true;
       swap.enable = true;

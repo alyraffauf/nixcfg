@@ -72,6 +72,7 @@
     profiles = {
       autoUpgrade.enable = true;
       base.enable = true;
+      data-share.enable = true;
       media-share.enable = true;
     };
 

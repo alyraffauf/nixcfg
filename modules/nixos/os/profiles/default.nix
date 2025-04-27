@@ -3,6 +3,7 @@
     ./autoUpgrade
     ./base
     ./btrfs
+    ./data-share
     ./gaming
     ./hardened
     ./media-share

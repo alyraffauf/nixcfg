@@ -4,12 +4,12 @@
   pkgs,
   ...
 }: {
-  options.myNixOS.profiles.media-share.enable = lib.mkEnableOption "media share";
-  config = lib.mkIf config.myNixOS.profiles.media-share.enable {
+  options.myNixOS.profiles.data-share.enable = lib.mkEnableOption "data share";
+  config = lib.mkIf config.myNixOS.profiles.data-share.enable {
     assertions = [
       {
         assertion = config.services.tailscale.enable;
-        message = "NFS connects to mauville shares over tailscale, but services.tailscale.enable != true.";
+        message = "NFS connects to lilycove shares over tailscale, but services.tailscale.enable != true.";
       }
     ];
 
@@ -33,16 +33,16 @@
         "x-systemd.mount-timeout=5s"
       ];
     in {
-      "/mnt/Media" = {
+      "/mnt/Data" = {
         inherit options fsType;
-        device = "mauville:/mnt/Media";
+        device = "lilycove:/mnt/Data";
       };
     };
 
     home-manager.sharedModules = [
       {
         gtk.gtk3.bookmarks = [
-          "file:///mnt/Media"
+          "file:///mnt/Data"
         ];
       }
     ];

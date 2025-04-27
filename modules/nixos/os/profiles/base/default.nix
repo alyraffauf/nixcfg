@@ -67,6 +67,16 @@
         };
       };
 
+      cachefilesd = {
+        enable = true;
+
+        extraConfig = ''
+          brun 20%
+          bcull 10%
+          bstop 5%
+        '';
+      };
+
       vscode-server.enable = true;
 
       openssh = {

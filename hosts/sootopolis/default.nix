@@ -30,6 +30,7 @@
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
+      data-share.enable = true;
       media-share.enable = true;
       swap.enable = true;
       wifi.enable = true;
