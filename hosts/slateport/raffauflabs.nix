@@ -136,7 +136,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://${ip}:${toString 5000}";
+            proxyPass = "http://lilycove:${toString 5000}";
             proxyWebsockets = true;
 
             extraConfig = ''
@@ -150,7 +150,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://${ip}:${toString 32400}";
+            proxyPass = "http://lilycove:${toString 32400}";
             proxyWebsockets = true;
 
             extraConfig = ''
