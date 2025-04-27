@@ -88,4 +88,10 @@ in {
 
     xserver.xkb.options = "ctrl:nocaps";
   };
+
+  systemd.services.transmission = {
+    # make Transmission wait for both the network-being-online and the automount
+    wants = ["network-online.target" "mnt-Media.automount"];
+    after = ["network-online.target" "mnt-Media.automount"];
+  };
 }
