@@ -27,13 +27,13 @@
                     {
                       title = "Plex";
                       url = "https://plex.cute.haus/";
-                      check-url = "http://mauville:32400/web/index.html";
+                      check-url = "http://lilycove:32400/web/index.html";
                       icon = "di:plex";
                     }
                     {
                       title = "Ombi";
                       url = "https://ombi.cute.haus/";
-                      check-url = "http://mauville:5000";
+                      check-url = "http://lilycove:5000";
                       icon = "di:ombi";
                     }
                     {
@@ -47,6 +47,24 @@
                       url = "https://immich.cute.haus/";
                       check-url = "http://lilycove:2283";
                       icon = "di:immich";
+                    }
+                    {
+                      title = "Forĝejo";
+                      url = "https://forgejo.cute.haus/";
+                      check-url = "http://mauville:3000";
+                      icon = "di:forgejo";
+                    }
+                    {
+                      title = "Nextcloud";
+                      url = "https://forgejo.cute.haus/";
+                      check-url = "http://mauville:3000";
+                      icon = "di:nextcloud";
+                    }
+                    {
+                      title = "aly.social";
+                      url = "https://aly.social/";
+                      check-url = "http://verdanturf:3000/";
+                      icon = "di:bluesky";
                     }
                     {
                       title = "Uptime Kuma";
@@ -78,6 +96,11 @@
                       icon = "di:radarr";
                     }
                     {
+                      title = "TubeSync";
+                      url = "http://lilycove:14848/";
+                      icon = "di:tubesync";
+                    }
+                    {
                       title = "Lidarr";
                       url = "http://lilycove:8686/";
                       icon = "di:lidarr";
@@ -107,12 +130,6 @@
                       url = "http://lilycove:9091/transmission/web/";
                       icon = "di:transmission";
                       alt-status-codes = [401];
-                    }
-                    {
-                      title = "aly.social";
-                      url = "https://aly.social/";
-                      check-url = "http://verdanturf:3000/";
-                      icon = "di:bluesky";
                     }
                   ];
                 }
