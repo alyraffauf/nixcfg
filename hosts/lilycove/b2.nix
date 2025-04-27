@@ -7,11 +7,12 @@
 
   fileSystems = let
     backblazeDirectory = "/mnt/Backblaze";
+    dataDirectory = "/mnt/Data";
 
     b2Options = [
       "allow_other"
       "args2env"
-      "cache-dir=${backblazeDirectory}/.rclone-cache"
+      "cache-dir=${dataDirectory}/.rclone-cache"
       "config=${config.age.secrets.rclone-b2.path}"
       "dir-cache-time=1h"
       "nodev"
@@ -29,10 +30,11 @@
         "vfs-cache-max-size=10G"
         "vfs-read-ahead=3G"
       ];
+
       video = [
         "buffer-size=512M"
         "vfs-cache-max-age=336h"
-        "vfs-cache-max-size=75G"
+        "vfs-cache-max-size=200G"
         "vfs-read-ahead=5G"
       ];
     };
