@@ -32,6 +32,18 @@ in {
       rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700.
     };
 
+    ombi = {
+      enable = true;
+      dataDir = "/mnt/Data/ombi";
+      openFirewall = true;
+    };
+
+    plex = {
+      enable = true;
+      dataDir = "/mnt/Data/plex";
+      openFirewall = true;
+    };
+
     samba = {
       enable = true;
       openFirewall = true;
