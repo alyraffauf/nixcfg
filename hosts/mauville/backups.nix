@@ -20,7 +20,7 @@ in {
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
-        paths = ["/var/lib/ombi"];
+        paths = [config.services.ombi.dataDir];
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
       };
 
@@ -29,8 +29,8 @@ in {
       // {
         backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
-        exclude = ["/var/lib/plex/Plex Media Server/Plug-in Support/Databases"];
-        paths = ["/var/lib/plex"];
+        exclude = ["${config.services.plex.dataDir}/Plex Media Server/Plug-in Support/Databases"];
+        paths = [config.services.plex.dataDir];
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
       };
 
