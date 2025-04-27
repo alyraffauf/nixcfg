@@ -65,7 +65,7 @@ in {
       "${mediaDirectory}" = {
         device = "/dev/sdb";
         fsType = "btrfs";
-        options = ["compress=zstd" "noatime"];
+        options = ["compress=zstd" "noatime" "nofail"];
       };
     };
 
