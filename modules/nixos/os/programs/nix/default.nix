@@ -12,7 +12,7 @@
         lib.filter (m: m.hostName != "${config.networking.hostName}") config.mySnippets.nix.buildMachines
       );
 
-      distributedBuilds = config.services.tailscale.enable;
+      distributedBuilds = true;
 
       gc = {
         automatic = true;
@@ -34,7 +34,6 @@
       };
 
       package = pkgs.lix;
-
       settings = config.mySnippets.nix.settings;
     };
 
