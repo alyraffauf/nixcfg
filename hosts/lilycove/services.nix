@@ -78,13 +78,13 @@ in {
       openFirewall = true;
     };
 
-    snapper.configs.archive = {
-      ALLOW_GROUPS = ["users"];
-      FSTYPE = "btrfs";
-      SUBVOLUME = "/mnt/Data";
-      TIMELINE_CLEANUP = true;
-      TIMELINE_CREATE = true;
-    };
+    # snapper.configs.data = {
+    #   ALLOW_GROUPS = ["users"];
+    #   FSTYPE = "btrfs";
+    #   SUBVOLUME = "/mnt/Data";
+    #   TIMELINE_CLEANUP = true;
+    #   TIMELINE_CREATE = true;
+    # };
 
     xserver.xkb.options = "ctrl:nocaps";
   };

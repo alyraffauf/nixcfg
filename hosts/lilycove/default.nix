@@ -8,7 +8,6 @@ in {
   imports = [
     ./arr.nix
     ./b2.nix
-    ./disko.nix
     ./home.nix
     ./secrets.nix
     ./services.nix
@@ -21,21 +20,40 @@ in {
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
+
+  fileSystems = {
+    "/mnt/Data" = {
+      device = "/dev/disk/by-id/ata-CT2000BX500SSD1_2345E8842829";
+      fsType = "btrfs";
+      options = ["compress=zstd" "noatime" "nofail"];
+    };
+  };
+
   networking.hostName = "lilycove";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
+  environment = {
+    variables.GDK_SCALE = "2.0";
+  };
+
   myNixOS = {
+    desktop.hyprland = {
+      enable = true;
+      monitors = ["desc:Guangxi Century Innovation Display Electronics Co. Ltd 27C1U-D 0000000000001,preferred,auto,1.875000"];
+    };
+
     profiles = {
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
       media-share.enable = true;
-      server.enable = true;
+      workstation.enable = true;
       swap.enable = true;
     };
 
     programs = {
+      firefox.enable = true;
       lanzaboote.enable = true;
       nix.enable = true;
       podman.enable = true;
