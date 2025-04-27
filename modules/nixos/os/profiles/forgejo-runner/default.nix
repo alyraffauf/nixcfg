@@ -4,7 +4,7 @@
   self,
   ...
 }: {
-  options.myNixOS.profiles.forgejo-runner.enable = lib.mkEnableOption "forĝejo runner";
+  options.myNixOS.profiles.forgejo-runner.enable = lib.mkEnableOption "3 forĝejo runners";
   config = lib.mkIf config.myNixOS.profiles.forgejo-runner.enable {
     assertions = [
       {
@@ -47,6 +47,24 @@
         ];
 
         name = "${config.networking.hostName}-secondary";
+        settings.container.network = "host";
+        tokenFile = config.age.secrets.act-runner.path;
+        url = "http://mauville:3000";
+      };
+
+      tertiary = {
+        enable = true;
+
+        labels = [
+          # provide a debian base with nodejs for actions
+          "debian-latest:docker://node:18-bullseye"
+          # fake the ubuntu name, because node provides no ubuntu builds
+          "ubuntu-latest:docker://node:18-bullseye"
+          # provide native execution on the host
+          "native:host"
+        ];
+
+        name = "${config.networking.hostName}-tertiary";
         settings.container.network = "host";
         tokenFile = config.age.secrets.act-runner.path;
         url = "http://mauville:3000";
