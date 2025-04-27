@@ -128,18 +128,6 @@ in {
     #   openFirewall = true;
     # };
 
-    ombi = {
-      enable = true;
-      dataDir = "/mnt/Data/ombi";
-      openFirewall = true;
-    };
-
-    plex = {
-      enable = true;
-      dataDir = "/mnt/Data/plex";
-      openFirewall = true;
-    };
-
     # slskd = {
     #   enable = true;
     #   domain = "0.0.0.0";
