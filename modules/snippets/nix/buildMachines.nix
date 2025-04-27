@@ -9,7 +9,8 @@
           hostName = "lavaridge";
           maxJobs = 8;
           speedFactor = 3;
-          sshUser = "aly";
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["x86_64-linux"];
         }
@@ -17,7 +18,8 @@
           hostName = "lilycove";
           maxJobs = 12;
           speedFactor = 5;
-          sshUser = "aly";
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["x86_64-linux"];
         }
@@ -25,7 +27,8 @@
           hostName = "mauville";
           maxJobs = 4;
           speedFactor = 2;
-          sshUser = "aly";
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["x86_64-linux"];
         }
@@ -33,7 +36,8 @@
           hostName = "roxanne";
           maxJobs = 4;
           speedFactor = 1;
-          sshUser = "aly";
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["aarch64-linux"];
         }
@@ -41,7 +45,8 @@
           hostName = "slateport";
           maxJobs = 4;
           speedFactor = 2;
-          sshUser = "aly";
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["x86_64-linux"];
         }

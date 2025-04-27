@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   options.myNixOS.programs.nix.enable = lib.mkEnableOption "sane nix configuration";
@@ -38,5 +39,21 @@
     };
 
     programs.nix-ld.enable = true;
+
+    users.users.nixbuild = {
+      isNormalUser = true;
+      createHome = false;
+      group = "nixbuild";
+
+      openssh.authorizedKeys.keyFiles =
+        lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+        (lib.filter (file: lib.hasPrefix "aly_" file)
+          (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")))
+        ++ lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+        (lib.filter (file: lib.hasPrefix "root_" file)
+          (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
+    };
+
+    users.groups.nixbuild = {};
   };
 }
