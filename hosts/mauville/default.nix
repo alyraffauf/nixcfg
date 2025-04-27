@@ -7,7 +7,6 @@
   mediaDirectory = "/mnt/Media";
 in {
   imports = [
-    ./arr.nix
     ./backups.nix
     ./disko.nix
     ./home.nix
