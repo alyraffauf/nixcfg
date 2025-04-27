@@ -26,6 +26,7 @@ in {
 
       domains = [
         "audiobookshelf.${newDomain}"
+        "forgejo.${newDomain}"
         "immich.${newDomain}"
         "navidrome.${newDomain}"
         "ombi.${newDomain}"
@@ -83,18 +84,18 @@ in {
           };
         };
 
-        # "git.${oldDomain}" = {
-        #   enableACME = true;
-        #   forceSSL = true;
+        "forgejo.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
 
-        #   locations."/" = {
-        #     proxyPass = "http://${ip}:${toString 3000}";
+          locations."/" = {
+            proxyPass = "http://mauville:${toString 3000}";
 
-        #     extraConfig = ''
-        #       client_max_body_size 512M;
-        #     '';
-        #   };
-        # };
+            extraConfig = ''
+              client_max_body_size 512M;
+            '';
+          };
+        };
 
         "navidrome.${newDomain}" = {
           enableACME = true;
