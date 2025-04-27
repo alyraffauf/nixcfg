@@ -963,11 +963,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1745793023,
-        "narHash": "sha256-J0iucA/0k/7uR/6VGLIVpiokPErDBjF2H6qACZ+ywv0=",
+        "lastModified": 1745793324,
+        "narHash": "sha256-g/uKhrSDuC3uBPyWYOGKueGkNITxbmn3V7M1k9aDE+0=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "b99218777f53297998a7cdc5533a7b197d94d599",
+        "rev": "5e42dbe933a4e4aa7ed2552ddf177eb468c95dcf",
         "type": "github"
       },
       "original": {
