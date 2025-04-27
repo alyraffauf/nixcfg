@@ -122,13 +122,6 @@ in {
     #   };
     # };
 
-    immich = {
-      enable = true;
-      host = "0.0.0.0";
-      mediaLocation = "${mediaDirectory}/Pictures";
-      openFirewall = true;
-    };
-
     # navidrome = {
     #   enable = true;
     #   openFirewall = true;
