@@ -11,23 +11,23 @@
           speedFactor = 3;
           sshUser = "aly";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-          system = "x86_64-linux";
+          systems = ["x86_64-linux"];
         }
         {
           hostName = "lilycove";
           maxJobs = 12;
-          speedFactor = 4;
+          speedFactor = 5;
           sshUser = "aly";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-          system = "x86_64-linux";
+          systems = ["x86_64-linux"];
         }
         {
           hostName = "mauville";
           maxJobs = 4;
-          speedFactor = 1;
+          speedFactor = 2;
           sshUser = "aly";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-          system = "x86_64-linux";
+          systems = ["x86_64-linux"];
         }
         {
           hostName = "roxanne";
@@ -35,15 +35,15 @@
           speedFactor = 1;
           sshUser = "aly";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-          system = "aarch64-linux";
+          systems = ["aarch64-linux"];
         }
         {
           hostName = "slateport";
           maxJobs = 4;
-          speedFactor = 1;
+          speedFactor = 2;
           sshUser = "aly";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-          system = "x86_64-linux";
+          systems = ["x86_64-linux"];
         }
       ];
     };
