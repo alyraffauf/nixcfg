@@ -13,6 +13,13 @@
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/bazarr";
       };
 
+    dizquetv =
+      config.mySnippets.restic
+      // {
+        paths = ["/mnt/Data/dizquetv"];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/dizquetv";
+      };
+
     immich =
       config.mySnippets.restic
       // {
@@ -38,14 +45,14 @@
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/lidarr";
       };
 
-    # ombi =
-    #   config.mySnippets.restic
-    #   // {
-    #     backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
-    #     backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
-    #     paths = ["/var/lib/ombi"];
-    #     repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
-    #   };
+    ombi =
+      config.mySnippets.restic
+      // {
+        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
+        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
+        paths = [config.services.ombi.dataDir];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
+      };
 
     prowlarr =
       config.mySnippets.restic
@@ -56,15 +63,15 @@
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/prowlarr";
       };
 
-    # plex =
-    #   config.mySnippets.restic
-    #   // {
-    #     backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
-    #     backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
-    #     exclude = ["/var/lib/plex/Plex Media Server/Plug-in Support/Databases"];
-    #     paths = ["/var/lib/plex"];
-    #     repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
-    #   };
+    plex =
+      config.mySnippets.restic
+      // {
+        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
+        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
+        exclude = ["${config.services.plex.dataDir}/Plex Media Server/Plug-in Support/Databases"];
+        paths = [config.services.plex.dataDir];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
+      };
 
     radarr =
       config.mySnippets.restic
@@ -99,6 +106,13 @@
     #     paths = ["/home/aly/sync"];
     #     repository = "rclone:b2:aly-backups/syncthing/sync";
     #   };
+
+    tubesync =
+      config.mySnippets.restic
+      // {
+        paths = ["/mnt/Data/tubesync"];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/tubesync";
+      };
 
     transmission =
       config.mySnippets.restic
