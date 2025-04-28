@@ -73,12 +73,6 @@
       autoUpgrade.enable = true;
       base.enable = true;
       data-share.enable = true;
-
-      forgejo-runner = {
-        enable = true;
-        number = 1;
-      };
-
       media-share.enable = true;
     };
 
