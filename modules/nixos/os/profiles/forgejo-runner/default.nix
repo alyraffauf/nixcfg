@@ -20,11 +20,7 @@
         enable = true;
 
         labels = [
-          # provide a debian base with nodejs for actions
-          "debian-latest:docker://node:18-bullseye"
-          # fake the ubuntu name, because node provides no ubuntu builds
-          "ubuntu-latest:docker://node:18-bullseye"
-          # provide native execution on the host
+          "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
           "native:host"
         ];
 
@@ -38,11 +34,7 @@
         enable = true;
 
         labels = [
-          # provide a debian base with nodejs for actions
-          "debian-latest:docker://node:18-bullseye"
-          # fake the ubuntu name, because node provides no ubuntu builds
-          "ubuntu-latest:docker://node:18-bullseye"
-          # provide native execution on the host
+          "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
           "native:host"
         ];
 
@@ -56,11 +48,7 @@
         enable = true;
 
         labels = [
-          # provide a debian base with nodejs for actions
-          "debian-latest:docker://node:18-bullseye"
-          # fake the ubuntu name, because node provides no ubuntu builds
-          "ubuntu-latest:docker://node:18-bullseye"
-          # provide native execution on the host
+          "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
           "native:host"
         ];
 
