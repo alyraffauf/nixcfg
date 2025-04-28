@@ -1,8 +1,4 @@
-{...}: let
-  audiobookshelf.port = 13378;
-  # domain = "cute.haus";
-  mediaDirectory = "/mnt/Media";
-  # musicDirectory = "${mediaDirectory}/Music";
+{config, ...}: let
   # navidrome = {
   #   port = 4533;
   #   lastfm = {
@@ -44,7 +40,7 @@ in {
       enable = true;
       host = "0.0.0.0";
       openFirewall = true;
-      port = audiobookshelf.port;
+      port = 13378;
     };
 
     fail2ban = {
@@ -59,7 +55,7 @@ in {
           backend = systemd
           filter = audiobookshelf
           maxretry = 5
-          port = 80,443,${toString audiobookshelf.port}
+          port = 80,443,${toString config.services.audiobookshelf.port}
         '';
 
         # navidrome = ''

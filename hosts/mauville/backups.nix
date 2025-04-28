@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  mediaDirectory = "/mnt/Media";
-in {
+}: {
   services.restic.backups = {
     audiobookshelf =
       config.mySnippets.restic
