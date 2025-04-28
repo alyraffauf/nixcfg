@@ -162,6 +162,13 @@ in {
     # };
   };
 
+  systemd.services = {
+    forgejo = {
+      wants = ["network-online.target" "mnt-Data.automount"];
+      after = ["network-online.target" "mnt-Data.automount"];
+    };
+  };
+
   # systemd.services = {
   #   navidrome.serviceConfig = let
   #     navidromeConfig = builtins.toFile "navidrome.json" (lib.generators.toJSON {} {
