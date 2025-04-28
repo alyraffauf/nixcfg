@@ -1,7 +1,55 @@
 {config, ...}: let
   dataDirectory = "/mnt/Data";
 in {
+  networking.firewall.allowedTCPPorts = [6881];
+
   services = {
+    # deluge = {
+    #   enable = true;
+    #   declarative = true;
+    #   authFile = config.age.secrets.deluge.path;
+    #   openFirewall = true;
+
+    #   config = {
+    #     enabled_plugins = ["Blocklist" "Label"];
+    #     listen_ports = [6881];
+    #     listen_random_port = false; # don’t pick a new one at start-up
+
+    #     #### network / privacy ##############################################
+    #     encryption = 2; # require encrypted peer traffic
+    #     random_outgoing_ports = true;
+    #     peer_tos = "0x88"; # Low-delay TOS
+    #     rate_limit_ip_overhead = true;
+
+    #     #### trackers & discovery ###########################################
+    #     allow_remote = true;
+    #     dht = true;
+    #     lsd = true;
+    #     peer_exchange = true;
+    #     enable_utp = true;
+    #     enable_udp_trackers = true;
+    #     announce_to_all_trackers = true;
+    #     allow_incoming_legacy = true;
+
+    #     #### paths ###########################################################
+    #     torrentfiles_location = "/mnt/Data/deluge/torrents";
+    #     download_location = "/mnt/Data/deluge/downloads";
+    #     copy_torrent_file = true;
+
+    #     #### limits & housekeeping ###########################################
+    #     max_active_limit = 8;
+    #     max_active_seeding = 4;
+    #     max_active_downloading = 4;
+    #     cache_size = 64; # MB
+    #     auto_manage_prefer_seeds = true;
+    #   };
+
+    #   web = {
+    #     enable = true;
+    #     openFirewall = true;
+    #   };
+    # };
+
     immich = {
       enable = true;
       host = "0.0.0.0";

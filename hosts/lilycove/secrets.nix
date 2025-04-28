@@ -1,5 +1,10 @@
 {self, ...}: {
   age.secrets = {
+    deluge = {
+      file = "${self.inputs.secrets}/deluge.age";
+      owner = "deluge";
+    };
+
     rclone-b2.file = "${self.inputs.secrets}/rclone/b2.age";
     restic-passwd.file = "${self.inputs.secrets}/restic-password.age";
 
