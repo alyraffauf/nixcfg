@@ -26,6 +26,7 @@
         "2,defaultName:note,on-created-empty:${lib.getExe' pkgs.obsidian "obsidian"}"
         "3,defaultName:code,on-created-empty:${config.myHome.profiles.defaultApps.editor.exec}"
         "4,defaultName:mail,on-created-empty:${lib.getExe config.programs.thunderbird.package}"
+        "5,defaultName:work,on-created-empty:${lib.getExe pkgs.google-chrome}"
       ];
     };
   };
