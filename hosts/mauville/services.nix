@@ -160,8 +160,8 @@ in {
 
   systemd.services = {
     forgejo = {
-      wants = ["network-online.target" "mnt-Data.automount"];
-      after = ["network-online.target" "mnt-Data.automount"];
+      wants = ["network-online.target" "mnt-Data.mount"];
+      after = ["network-online.target" "mnt-Data.mount"];
     };
   };
 
