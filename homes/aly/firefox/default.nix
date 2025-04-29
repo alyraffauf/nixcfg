@@ -72,11 +72,13 @@ in {
         settings =
           (import ./betterfox.nix)
           // {
+            "browser.tabs.groups.enabled" = true;
+            "browser.tabs.groups.smart.enabled" = true;
             "browser.toolbars.bookmarks.visibility" = "newtab";
-            # "services.sync.prefs.sync.browser.uiCustomization.state" = true;
             "sidebar.revamp" = true;
             "sidebar.verticalTabs" = true;
             "svg.context-properties.content.enabled" = true;
+            # "services.sync.prefs.sync.browser.uiCustomization.state" = true;
           };
       };
 
