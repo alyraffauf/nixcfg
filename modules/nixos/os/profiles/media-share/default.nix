@@ -35,7 +35,7 @@
     in {
       "/mnt/Media" = {
         inherit options fsType;
-        device = "mauville:/mnt/Media";
+        device = "lilycove:/mnt/Media";
       };
     };
 
