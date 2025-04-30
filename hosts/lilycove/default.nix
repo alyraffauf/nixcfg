@@ -29,6 +29,12 @@ in {
       fsType = "btrfs";
       options = ["compress=zstd" "noatime" "nofail"];
     };
+
+    "/mnt/Media" = {
+      device = "/dev/disk/by-id/ata-CT4000BX500SSD1_2447E9959972";
+      fsType = "btrfs";
+      options = ["compress=zstd" "noatime" "nofail"];
+    };
   };
 
   networking.hostName = "lilycove";
@@ -55,7 +61,7 @@ in {
         number = 3;
       };
 
-      media-share.enable = true;
+      # media-share.enable = true;
       server.enable = true;
       swap.enable = true;
     };
