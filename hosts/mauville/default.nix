@@ -60,14 +60,7 @@ in {
     mkB2Mount "Anime" "aly-anime" "video"
     // mkB2Mount "Audiobooks" "aly-audiobooks" "audio"
     // mkB2Mount "Movies" "aly-movies" "video"
-    // mkB2Mount "Shows" "aly-shows" "video"
-    // {
-      "${mediaDirectory}" = {
-        device = "/dev/sdb";
-        fsType = "btrfs";
-        options = ["compress=zstd" "noatime" "nofail"];
-      };
-    };
+    // mkB2Mount "Shows" "aly-shows" "video";
 
   networking = {
     firewall = {
