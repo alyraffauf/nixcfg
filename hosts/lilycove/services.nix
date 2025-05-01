@@ -131,6 +131,18 @@ in {
           comment = "Data @ ${config.networking.hostName}";
           path = dataDirectory;
         };
+
+        Media = {
+          "create mask" = "0755";
+          "directory mask" = "0755";
+          "force group" = "users";
+          "force user" = "aly";
+          "guest ok" = "yes";
+          "read only" = "no";
+          browseable = "yes";
+          comment = "Media @ ${config.networking.hostName}";
+          path = "/mnt/Media";
+        };
       };
     };
 

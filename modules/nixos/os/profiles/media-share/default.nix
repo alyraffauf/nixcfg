@@ -9,7 +9,7 @@
     assertions = [
       {
         assertion = config.services.tailscale.enable;
-        message = "NFS connects to mauville shares over tailscale, but services.tailscale.enable != true.";
+        message = "NFS connects to lilycove shares over tailscale, but services.tailscale.enable != true.";
       }
     ];
 
@@ -33,6 +33,11 @@
         "x-systemd.mount-timeout=5s"
       ];
     in {
+      "/mnt/Data" = {
+        inherit options fsType;
+        device = "lilycove:/mnt/Data";
+      };
+
       "/mnt/Media" = {
         inherit options fsType;
         device = "lilycove:/mnt/Media";
@@ -42,6 +47,7 @@
     home-manager.sharedModules = [
       {
         gtk.gtk3.bookmarks = [
+          "file:///mnt/Data"
           "file:///mnt/Media"
         ];
       }

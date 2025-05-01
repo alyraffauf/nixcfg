@@ -115,7 +115,7 @@ in {
           "level2 oplocks" = "yes";
         };
 
-        Media = {
+        Storage = {
           "create mask" = "0755";
           "directory mask" = "0755";
           "force group" = "users";
@@ -123,8 +123,8 @@ in {
           "guest ok" = "yes";
           "read only" = "no";
           browseable = "yes";
-          comment = "Media @ ${config.networking.hostName}";
-          path = mediaDirectory;
+          comment = "Storage @ ${config.networking.hostName}";
+          path = "/mnt/Storage";
         };
       };
     };
