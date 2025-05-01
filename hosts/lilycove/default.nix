@@ -25,15 +25,15 @@ in {
 
   fileSystems = {
     "/mnt/Data" = {
-      device = "/dev/disk/by-id/ata-CT2000BX500SSD1_2345E8842829";
+      device = "/dev/disk/by-id/ata-CT4000BX500SSD1_2447E9959972";
       fsType = "btrfs";
       options = ["compress=zstd" "noatime" "nofail"];
     };
 
     "/mnt/Media" = {
-      device = "/dev/disk/by-id/ata-CT4000BX500SSD1_2447E9959972";
+      device = "/dev/disk/by-id/ata-ST14000NM001G-2KJ103_ZL201XNJ-part1";
       fsType = "btrfs";
-      options = ["compress=zstd" "noatime" "nofail"];
+      options = ["subvol=@media" "compress=zstd" "noatime" "nofail"];
     };
   };
 
@@ -61,7 +61,6 @@ in {
         number = 3;
       };
 
-      # media-share.enable = true;
       server.enable = true;
       swap.enable = true;
     };
