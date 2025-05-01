@@ -60,7 +60,14 @@ in {
     mkB2Mount "Anime" "aly-anime" "video"
     // mkB2Mount "Audiobooks" "aly-audiobooks" "audio"
     // mkB2Mount "Movies" "aly-movies" "video"
-    // mkB2Mount "Shows" "aly-shows" "video";
+    // mkB2Mount "Shows" "aly-shows" "video"
+    // {
+      "/mnt/Storage" = {
+        device = "/dev/disk/by-id/ata-CT2000BX500SSD1_2345E8842829";
+        fsType = "btrfs";
+        options = ["compress=zstd" "noatime" "nofail"];
+      };
+    };
 
   networking = {
     firewall = {

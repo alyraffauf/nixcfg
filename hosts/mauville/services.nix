@@ -71,7 +71,7 @@ in {
     forgejo = {
       enable = true;
       lfs.enable = true;
-      stateDir = "/mnt/Data/forgejo";
+      stateDir = "/mnt/Storage/forgejo";
 
       settings = {
         actions = {
