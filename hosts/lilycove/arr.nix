@@ -6,6 +6,8 @@
   dataDirectory = "/mnt/Data";
   mediaDirectory = "/mnt/Media";
 in {
+  networking.firewall.allowedTCPPorts = [5143 6881];
+
   services = {
     bazarr = {
       enable = true;
