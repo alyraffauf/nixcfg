@@ -33,11 +33,6 @@
         "x-systemd.mount-timeout=5s"
       ];
     in {
-      "/mnt/Data" = {
-        inherit options fsType;
-        device = "lilycove:/mnt/Data";
-      };
-
       "/mnt/Media" = {
         inherit options fsType;
         device = "lilycove:/mnt/Media";
