@@ -73,6 +73,15 @@
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
       };
 
+    qbittorrent =
+      config.mySnippets.restic
+      // {
+        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start qbittorrent";
+        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop qbittorrent";
+        paths = [config.myNixOS.services.qbittorrent.dataDir];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/qbittorrent";
+      };
+
     radarr =
       config.mySnippets.restic
       // {
