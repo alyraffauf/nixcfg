@@ -35,6 +35,7 @@
     ];
 
     casks = [
+      "choosy"
       "firefox"
       "ghostty"
       "google-chrome"
