@@ -1,35 +1,38 @@
 {self, ...}: {
-  home-manager = {
-    sharedModules = [
-      {
-        gtk.gtk3.bookmarks = [
-          "file:///mnt/Files"
+  home-manager.users.aly = (
+    {pkgs, ...}: {
+      imports = [
+        self.homeManagerModules.default
+        self.inputs.agenix.homeManagerModules.default
+      ];
+
+      age.secrets.rclone-b2.file = "${self.inputs.secrets}/rclone/b2.age";
+
+      home = {
+        homeDirectory = "/home/aly";
+
+        packages = with pkgs; [
+          curl
+          rclone
+          restic
         ];
 
-        services.easyeffects = {
+        stateVersion = "25.05";
+        username = "aly";
+      };
+      programs = {
+        helix = {
           enable = true;
-          preset = "LoudnessEqualizer.json";
+          defaultEditor = true;
         };
 
-        # wayland.windowManager.hyprland.settings = {
-        #   general.layout = lib.mkForce "master";
+        home-manager.enable = true;
+      };
 
-        #   master = {
-        #     mfact = 0.40;
-        #     orientation = "center";
-        #   };
-        # };
-
-        myHome.services = {
-          gammastep.enable = true;
-          hypridle.autoSuspend = false;
-        };
-      }
-    ];
-
-    users = {
-      aly = self.homeManagerModules.aly-linux;
-      # dustin = self.homeManagerModules.dustin;
-    };
-  };
+      myHome = {
+        profiles.shell.enable = true;
+        programs.fastfetch.enable = true;
+      };
+    }
+  );
 }
