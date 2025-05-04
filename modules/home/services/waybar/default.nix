@@ -38,6 +38,8 @@ in {
           layer = "top";
           output = ["*"];
           position = "bottom";
+          reload_style_on_change = true;
+
           modules-left = ["group/tablet" "hyprland/submap"];
           modules-center = ["hyprland/workspaces"];
 
