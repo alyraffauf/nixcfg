@@ -17,7 +17,14 @@
       kernelPackages = pkgs.linuxPackages_cachyos-server;
     };
 
-    services.bpftune.enable = true;
+    services = {
+      bpftune.enable = true;
+
+      smartd = {
+        enable = true;
+        defaults.monitored = "-a -o on -s (S/../.././02|L/../../7/04)";
+      };
+    };
 
     systemd.oomd = {
       enable = true;
