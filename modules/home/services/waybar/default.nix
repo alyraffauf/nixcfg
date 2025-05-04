@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.myHome;
+  helpers = import ../../desktop/hyprland/helpers.nix {inherit config lib pkgs;};
 in {
   options.myHome.services.waybar.enable = lib.mkEnableOption "waybar";
 
@@ -161,6 +162,8 @@ in {
 
             ignored-sinks = ["Easy Effects Sink"];
             on-click = "pavucontrol -t 3";
+            on-click-middle = helpers.volume.micMute;
+            on-click-right = helpers.volume.mute;
             scroll-step = 5;
           };
 
