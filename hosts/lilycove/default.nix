@@ -41,6 +41,8 @@ in {
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
+  myDisko.installDrive = "/dev/disk/by-id/nvme-PNY_CS2130_1TB_SSD_PNY211821050701050CC";
+
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
