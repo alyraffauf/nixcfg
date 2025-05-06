@@ -26,11 +26,15 @@
       };
     };
 
-    systemd.oomd = {
-      enable = true;
-      enableRootSlice = true;
-      enableSystemSlice = true;
-      enableUserSlices = true;
+    systemd = {
+      oomd = {
+        enable = true;
+        enableRootSlice = true;
+        enableSystemSlice = true;
+        enableUserSlices = true;
+      };
+
+      services.smartd.unitConfig.ConditionVirtualization = "none";
     };
 
     zramSwap = {
