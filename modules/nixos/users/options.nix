@@ -12,6 +12,7 @@
     defaultGroups = lib.mkOption {
       description = "Default groups for desktop users.";
       default = [
+        "cdrom"
         "dialout"
         "docker"
         "libvirtd"
