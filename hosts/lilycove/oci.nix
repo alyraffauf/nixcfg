@@ -8,27 +8,27 @@
   ];
 
   virtualisation.oci-containers.containers = {
-    arm = {
-      autoStart = true;
-      image = "automaticrippingmachine/automatic-ripping-machine:latest";
-      ports = ["8181:8080"];
+    # arm = {
+    #   autoStart = true;
+    #   image = "automaticrippingmachine/automatic-ripping-machine:latest";
+    #   ports = ["8181:8080"];
 
-      volumes = [
-        "/mnt/Data/arm/home:/home/arm"
-        "/mnt/Data/arm/config:/etc/arm/config"
-      ];
+    #   volumes = [
+    #     "/mnt/Data/arm/home:/home/arm"
+    #     "/mnt/Data/arm/config:/etc/arm/config"
+    #   ];
 
-      extraOptions = [
-        # Needed for ARM to work correctly - by default `CAP_SYS_ADMIN` is dropped
-        # which blocks `mount()` calls within the container
-        # This is needed in order to `mount /dev/sr0 /mnt/dev/sr0` for ripping, which may be avoidable by
-        # handling mounts outside of the container, and having `/mnt/dev` bind mounted into the container.
-        "--privileged"
-        # Pass the CD/Bluray/DVD drive to the container
-        "--device=/dev/sr0:/dev/sr0"
-        "--pull=always"
-      ];
-    };
+    #   extraOptions = [
+    #     # Needed for ARM to work correctly - by default `CAP_SYS_ADMIN` is dropped
+    #     # which blocks `mount()` calls within the container
+    #     # This is needed in order to `mount /dev/sr0 /mnt/dev/sr0` for ripping, which may be avoidable by
+    #     # handling mounts outside of the container, and having `/mnt/dev` bind mounted into the container.
+    #     "--privileged"
+    #     # Pass the CD/Bluray/DVD drive to the container
+    #     "--device=/dev/sr0:/dev/sr0"
+    #     "--pull=always"
+    #   ];
+    # };
 
     dizquetv = {
       image = "vexorian/dizquetv:latest";
