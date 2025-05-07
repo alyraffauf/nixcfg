@@ -21,7 +21,7 @@ in {
     self.nixosModules.locale-en-us
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "sg" "r8169"];
 
   fileSystems = {
     "/mnt/Data" = {
