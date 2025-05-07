@@ -18,7 +18,6 @@
           mkvtoolnix
           rclone
           restic
-          youtube-dl
         ];
 
         stateVersion = "25.05";
