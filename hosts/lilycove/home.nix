@@ -13,8 +13,12 @@
 
         packages = with pkgs; [
           curl
+          ffmpeg-full
+          handbrake
+          mkvtoolnix
           rclone
           restic
+          youtube-dl
         ];
 
         stateVersion = "25.05";
