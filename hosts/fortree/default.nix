@@ -35,6 +35,7 @@
     ];
 
     casks = [
+      "aws-vpn-client"
       "choosy"
       "firefox"
       "ghostty"
