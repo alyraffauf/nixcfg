@@ -15,6 +15,7 @@
           curl
           ffmpeg-full
           handbrake
+          makemkv
           mkvtoolnix
           rclone
           restic
