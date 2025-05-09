@@ -12,10 +12,13 @@
         homeDirectory = "/home/aly";
 
         packages = with pkgs; [
+          abcde
           curl
           ffmpeg-full
+          flac
           handbrake
           makemkv
+          mediainfo
           mkvtoolnix
           rclone
           restic
