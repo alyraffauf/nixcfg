@@ -41,6 +41,7 @@
       "ghostty"
       "google-chrome"
       "macfuse"
+      "mkvtoolnix"
       "obsidian"
       "plexamp"
       "signal"
