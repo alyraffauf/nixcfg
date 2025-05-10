@@ -70,9 +70,10 @@ in {
     systemd.services.qbittorrent = {
       # based on the plex.nix service module and
       # https://github.com/qbittorrent/qBittorrent/blob/master/dist/unix/systemd/qbittorrent-nox%40.service.in
+      after = ["local-fs.target" "network-online.target"];
       description = "qBittorrent-nox service";
       documentation = ["man:qbittorrent-nox(1)"];
-      after = ["network.target"];
+      requires = ["local-fs.target" "network-online.target"];
       wantedBy = ["multi-user.target"];
 
       serviceConfig = {
