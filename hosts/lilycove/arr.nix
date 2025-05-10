@@ -78,12 +78,19 @@ in {
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "d ${config.services.lidarr.dataDir} 0755 lidarr lidarr"
-    "d ${config.services.radarr.dataDir} 0755 radarr radarr"
-    "d ${config.services.readarr.dataDir} 0755 readarr readarr"
-    "d ${config.services.sonarr.dataDir} 0755 sonarr sonarr"
-    "d ${config.services.transmission.home} 0755 transmission transmission"
-    "d ${config.services.transmission.home}/.incomplete 0755 transmission transmission"
-  ];
+  systemd = {
+    services.transmission = {
+      after = ["local-fs.target" "network-online.target"];
+      requires = ["local-fs.target" "network-online.target"];
+    };
+
+    tmpfiles.rules = [
+      "d ${config.services.lidarr.dataDir} 0755 lidarr lidarr"
+      "d ${config.services.radarr.dataDir} 0755 radarr radarr"
+      "d ${config.services.readarr.dataDir} 0755 readarr readarr"
+      "d ${config.services.sonarr.dataDir} 0755 sonarr sonarr"
+      "d ${config.services.transmission.home} 0755 transmission transmission"
+      "d ${config.services.transmission.home}/.incomplete 0755 transmission transmission"
+    ];
+  };
 }
