@@ -29,7 +29,7 @@
       "nofail"
       "vfs-cache-mode=full"
       "vfs-write-back=10s"
-      "x-systemd.after=network.target"
+      "x-systemd.after=network-online.target"
       "x-systemd.automount"
     ];
 
