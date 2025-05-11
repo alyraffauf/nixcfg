@@ -53,6 +53,13 @@
 
     ############################################################################
     # Non-flake inputs
+
+    ## Plex for Audiobooks
+    audnexus = {
+      url = "github:djdembeck/Audnexus.bundle";
+      flake = false;
+    };
+
     ## Declarative tap management for homebrew
     homebrew-core = {
       url = "github:homebrew/homebrew-core";

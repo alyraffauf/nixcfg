@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  self,
+  ...
+}: let
   dataDirectory = "/mnt/Data";
 in {
   networking.firewall.allowedTCPPorts = [6881];
@@ -44,6 +48,14 @@ in {
     plex = {
       enable = true;
       dataDir = "/mnt/Data/plex";
+
+      extraPlugins = [
+        (builtins.path {
+          name = "Audnexus.bundle";
+          path = self.inputs.audnexus;
+        })
+      ];
+
       openFirewall = true;
     };
 

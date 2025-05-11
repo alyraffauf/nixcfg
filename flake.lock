@@ -23,6 +23,22 @@
         "type": "github"
       }
     },
+    "audnexus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723487877,
+        "narHash": "sha256-BpwyedIjkXS+bHBsIeCpSoChyWCX5A38ywe71qo3tEI=",
+        "owner": "djdembeck",
+        "repo": "Audnexus.bundle",
+        "rev": "0e0caf6d27cf0b31c81d491c56d864986d33617e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "djdembeck",
+        "repo": "Audnexus.bundle",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -904,6 +920,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "audnexus": "audnexus",
         "chaotic": "chaotic",
         "disko": "disko",
         "home-manager": "home-manager_3",
