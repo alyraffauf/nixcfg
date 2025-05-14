@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./backups.nix
-    ./performance.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix
@@ -55,7 +54,7 @@
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
-      server.enable = true;
+      lowResource.enable = true;
     };
 
     programs.nix.enable = true;

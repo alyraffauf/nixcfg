@@ -7,6 +7,7 @@
     ./forgejo-runner
     ./gaming
     ./hardened
+    ./lowResource
     ./media-share
     ./server
     ./swap
