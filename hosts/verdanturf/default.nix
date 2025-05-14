@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   modulesPath,
   pkgs,
@@ -34,6 +35,7 @@
 
   nix.gc.options = lib.mkForce "--delete-older-than 2d";
   nixpkgs.hostPlatform = "x86_64-linux";
+  programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
   services.smartd.enable = lib.mkForce false;
 
   swapDevices = [
