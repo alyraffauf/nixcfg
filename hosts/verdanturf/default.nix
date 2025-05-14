@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./backups.nix
+    ./performance.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix
