@@ -100,12 +100,12 @@
       };
     };
 
-    pds = {
-      enable = true;
-      environmentFiles = [config.age.secrets.pds.path];
-      pdsadmin.enable = true;
-      settings.PDS_HOSTNAME = "aly.social";
-    };
+    # pds = {
+    #   enable = true;
+    #   environmentFiles = [config.age.secrets.pds.path];
+    #   pdsadmin.enable = true;
+    #   settings.PDS_HOSTNAME = "aly.social";
+    # };
 
     vaultwarden = {
       enable = true;

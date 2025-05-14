@@ -64,14 +64,14 @@ in {
           serverAliases = ["passwords.${oldDomain}"];
         };
 
-        "aly.social" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.pds.settings.PDS_PORT}";
-            proxyWebsockets = true;
-          };
-        };
+        # "aly.social" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://127.0.0.1:${toString config.services.pds.settings.PDS_PORT}";
+        #     proxyWebsockets = true;
+        #   };
+        # };
       };
     };
   };
