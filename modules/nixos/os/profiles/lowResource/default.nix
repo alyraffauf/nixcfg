@@ -38,11 +38,6 @@
         enableRootSlice = true;
         enableSystemSlice = true;
         enableUserSlices = true;
-
-        extraConfig = {
-          DefaultMemoryPressureLimit = "80%";
-          DefaultMemoryPressureDurationSec = "60";
-        };
       };
     };
 
