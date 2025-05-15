@@ -16,16 +16,9 @@
       nixos.enable = false;
     };
 
-    services = {
-      journald = {
-        storage = "volatile";
-        extraConfig = "SystemMaxUse=32M\nRuntimeMaxUse=32M";
-      };
-
-      smartd = {
-        enable = true;
-        defaults.monitored = "-a -o on -s (S/../.././02|L/../../7/04)";
-      };
+    services.journald = {
+      storage = "volatile";
+      extraConfig = "SystemMaxUse=32M\nRuntimeMaxUse=32M";
     };
 
     nix.settings.sandbox = false;
