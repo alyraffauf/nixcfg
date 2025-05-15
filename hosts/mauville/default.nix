@@ -84,49 +84,8 @@ in {
       enable = true;
 
       exports = ''
-        /mnt/Media 100.64.0.0/10(rw,sync,no_subtree_check,no_root_squash,fsid=0)
+        /mnt/Storage 100.64.0.0/10(rw,sync,no_subtree_check,no_root_squash,fsid=0)
       '';
-    };
-
-    samba = {
-      enable = true;
-      openFirewall = true;
-
-      settings = {
-        global = {
-          security = "user";
-          "map to guest" = "Bad User";
-
-          # Protocol tuning
-          "server min protocol" = "SMB3";
-          "server max protocol" = "SMB3_11";
-
-          # Performance options
-          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=262144 SO_SNDBUF=262144";
-          "use sendfile" = "no"; # Plex compatibility
-          "aio read size" = "1";
-          "aio write size" = "1";
-          "min receivefile size" = "131072"; # Bump slightly from 16K to 128K
-          "max xmit" = "65535"; # Samba's max recommended for best throughput
-
-          # Locking & latency
-          "strict locking" = "no";
-          "oplocks" = "yes";
-          "level2 oplocks" = "yes";
-        };
-
-        Storage = {
-          "create mask" = "0755";
-          "directory mask" = "0755";
-          "force group" = "users";
-          "force user" = "aly";
-          "guest ok" = "yes";
-          "read only" = "no";
-          browseable = "yes";
-          comment = "Storage @ ${config.networking.hostName}";
-          path = "/mnt/Storage";
-        };
-      };
     };
   };
 
