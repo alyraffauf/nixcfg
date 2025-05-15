@@ -10,15 +10,16 @@
     services.mako = {
       enable = true;
 
-      criteria."mode=do-not-disturb" = {
-        invisible = "1";
-      };
-
       settings = {
         actions = "true";
         anchor = "bottom-right";
         border-radius = "10";
         border-size = "4";
+
+        "mode=do-not-disturb" = {
+          invisible = "1";
+        };
+
         default-timeout = "10000";
         group-by = "app-name";
         height = "300";
