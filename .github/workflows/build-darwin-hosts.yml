@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: samueldr/lix-gha-installer-action@latest
       - uses: cachix/cachix-action@master
         with:
           name: alyraffauf
