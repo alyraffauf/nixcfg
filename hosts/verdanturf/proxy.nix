@@ -8,31 +8,31 @@ in {
   };
 
   services = {
-    # ddclient = {
-    #   enable = true;
+    ddclient = {
+      enable = true;
 
-    #   domains = [
-    #     "vault.${newDomain}"
-    #     "couchdb.${newDomain}"
-    #   ];
+      domains = [
+        "vault.${newDomain}"
+        "couchdb.${newDomain}"
+      ];
 
-    #   interval = "10min";
-    #   passwordFile = config.age.secrets.cloudflare.path;
-    #   protocol = "cloudflare";
-    #   ssl = true;
-    #   username = "token";
-    #   zone = newDomain;
+      interval = "10min";
+      passwordFile = config.age.secrets.cloudflare.path;
+      protocol = "cloudflare";
+      ssl = true;
+      username = "token";
+      zone = newDomain;
 
-    #   extraConfig = ''
-    #     zone=raffauflabs.com
-    #     couch.${oldDomain}
-    #     passwords.${oldDomain}
+      extraConfig = ''
+        zone=raffauflabs.com
+        couch.${oldDomain}
+        passwords.${oldDomain}
 
-    #     zone=aly.social
-    #     aly.social
-    #     *.aly.social
-    #   '';
-    # };
+        zone=aly.social
+        aly.social
+        *.aly.social
+      '';
+    };
 
     nginx = {
       enable = true;
@@ -61,7 +61,7 @@ in {
             proxyWebsockets = true;
           };
 
-          serverAliases = ["passwords.${oldDomain}"];
+          serverAliases = ["v.${newDomain}" "passwords.${oldDomain}"];
         };
 
         "aly.social" = {
