@@ -11,6 +11,7 @@
     self.inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];
 
+  boot.kernelPackages = lib.mkForce pkgs.linuxKernel.packages.linux_rpi4;
   environment.systemPackages = [pkgs.rclone];
 
   fileSystems = {
@@ -73,6 +74,7 @@
       autoUpgrade.enable = true;
       base.enable = true;
       data-share.enable = true;
+      lowResource.enable = true;
       media-share.enable = true;
     };
 
