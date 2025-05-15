@@ -7,7 +7,7 @@
   options.myNixOS.profiles.lowResource.enable = lib.mkEnableOption "optimizations for resource-constrained servers";
   config = lib.mkIf config.myNixOS.profiles.lowResource.enable {
     boot = {
-      kernelPackages = pkgs.linuxPackages_cachyos-server;
+      kernelPackages = pkgs.linuxPackages_latest;
       tmp.cleanOnBoot = true;
     };
 

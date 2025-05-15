@@ -14,7 +14,7 @@
         "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
       };
 
-      kernelPackages = pkgs.linuxPackages_cachyos-server;
+      kernelPackages = pkgs.linuxPackages_latest;
     };
 
     services = {
