@@ -28,9 +28,13 @@ in {
         "audiobookshelf.${newDomain}"
         "forgejo.${newDomain}"
         "immich.${newDomain}"
+        "lidarr.${newDomain}"
         "navidrome.${newDomain}"
         "ombi.${newDomain}"
         "plex.${newDomain}"
+        "prowlarr.${newDomain}"
+        "radarr.${newDomain}"
+        "sonarr.${newDomain}"
         "uptime-kuma.${newDomain}"
         newDomain
       ];
@@ -57,6 +61,28 @@ in {
       ignoreIP = ["100.64.0.0/10"];
       bantime = "24h";
       bantime-increment.enable = true;
+
+      jails = {
+        # HTTP basic-auth failures, 5 tries → 1-day ban
+        nginx-http-auth = {
+          settings = {
+            enabled = true;
+            maxretry = 5;
+            findtime = 300;
+            bantime = "24h";
+          };
+        };
+
+        # Generic scanner / bot patterns (wp-login.php, sqladmin, etc.)
+        nginx-botsearch = {
+          settings = {
+            enabled = true;
+            maxretry = 10;
+            findtime = 300;
+            bantime = "24h";
+          };
+        };
+      };
     };
 
     golink = {
