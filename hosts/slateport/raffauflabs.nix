@@ -11,7 +11,7 @@ in {
   ];
 
   networking = {
-    firewall.allowedTCPPorts = [80 443 2379 2380 6443 8581];
+    firewall.allowedTCPPorts = [80 443 2222 2379 2380 6443 8581];
     firewall.allowedUDPPorts = [8472];
   };
 
@@ -95,6 +95,19 @@ in {
       recommendedGzipSettings = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+
+      streamConfig = ''
+        upstream ssh_forgejo {
+          # point at your Forgejo SSH listener on mauville
+          server mauville:2222;
+        }
+
+        server {
+          listen       2222;         # slateport's port 2222
+          proxy_pass   ssh_forgejo; # hand off to upstream
+          # (optional) proxy_protocol on;  # if you need X-Forwarded-For support
+        }
+      '';
 
       virtualHosts = {
         "${newDomain}" = {

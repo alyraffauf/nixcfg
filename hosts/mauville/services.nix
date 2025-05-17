@@ -20,7 +20,7 @@ in {
   };
 
   networking = {
-    firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443 61208];
+    firewall.allowedTCPPorts = [80 443 2222 2379 2380 3000 6443 61208];
     firewall.allowedUDPPorts = [8472];
   };
 
@@ -89,6 +89,10 @@ in {
         server = {
           LANDING_PAGE = "explore";
           ROOT_URL = "https://forgejo.cute.haus/";
+          SSH_DOMAIN = "forgejo.cute.haus";
+          SSH_LISTEN_PORT = 2222;
+          SSH_PORT = 2222;
+          START_SSH_SERVER = true;
         };
 
         service = {
@@ -101,7 +105,7 @@ in {
         ui.DEFAULT_THEME = "forgejo-auto";
 
         "ui.meta" = {
-          AUTHOR = "Forĝejo @ cute.haus";
+          AUTHOR = "Aly Raffauf";
           DESCRIPTION = "Self-hosted git forge for projects + toys.";
           KEYWORDS = "git,source code,forge,forĝejo,aly raffauf";
         };
