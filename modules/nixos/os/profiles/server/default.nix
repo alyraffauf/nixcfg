@@ -22,7 +22,7 @@
 
       smartd = {
         enable = true;
-        defaults.monitored = "-a -o on -s (S/../.././02|L/../../7/04)";
+        defaults.monitored = "-a -o off -s S/../.././05";
       };
     };
 
