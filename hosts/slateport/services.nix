@@ -4,6 +4,7 @@
       defaultOptions.settings = {
         DIFFICULTY = 4;
         SERVE_ROBOTS_TXT = true;
+        WEBMASTER_EMAIL = "hello@aly.codes";
       };
 
       instances = {
