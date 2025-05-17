@@ -122,7 +122,7 @@
       "lilycove"
       "mauville"
       "roxanne"
-      "rustboro"
+      # "rustboro"
       "slateport"
       "sootopolis"
       "verdanturf"
