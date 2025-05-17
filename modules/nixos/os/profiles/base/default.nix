@@ -85,5 +85,7 @@
         settings.PasswordAuthentication = false;
       };
     };
+
+    system.rebuild.enableNg = true;
   };
 }
