@@ -179,8 +179,6 @@ in {
         rpc-bind-address = "0.0.0.0";
         rpc-port = 9091;
       };
-
-      webHome = pkgs.flood-for-transmission;
     };
   };
 
