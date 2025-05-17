@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: let
-  dataDirectory = "/mnt/Data";
   mediaDirectory = "/mnt/Media";
 in {
   networking.firewall.allowedTCPPorts = [5143 6881];
@@ -16,7 +15,6 @@ in {
 
     lidarr = {
       enable = true;
-      dataDir = "${dataDirectory}/lidarr/.config/Lidarr";
       openFirewall = true; # Port: 8686
     };
 
@@ -27,26 +25,22 @@ in {
 
     radarr = {
       enable = true;
-      dataDir = "${dataDirectory}/radarr/.config/Radarr/";
       openFirewall = true; # Port: 7878
     };
 
     readarr = {
       enable = true;
-      dataDir = "${dataDirectory}/readarr/";
       openFirewall = true; # Port: 8787
     };
 
     sonarr = {
       enable = true;
-      dataDir = "${dataDirectory}/sonarr/.config/NzbDrone/";
       openFirewall = true; # Port: 8989
     };
 
     transmission = {
       enable = true;
       credentialsFile = config.age.secrets.transmission.path;
-      home = "${dataDirectory}/transmission/";
       openFirewall = true;
       openRPCPort = true;
 
@@ -65,7 +59,7 @@ in {
       settings = {
         blocklist-enabled = true;
         blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
-        download-dir = "${mediaDirectory}/Downloads";
+        download-dir = mediaDirectory;
         encryption = 1;
         incomplete-dir = "${config.services.transmission.home}/.incomplete";
         incomplete-dir-enabled = true;
@@ -78,19 +72,8 @@ in {
     };
   };
 
-  systemd = {
-    services.transmission = {
-      after = ["local-fs.target" "network-online.target"];
-      requires = ["local-fs.target" "network-online.target"];
-    };
-
-    tmpfiles.rules = [
-      "d ${config.services.lidarr.dataDir} 0755 lidarr lidarr"
-      "d ${config.services.radarr.dataDir} 0755 radarr radarr"
-      "d ${config.services.readarr.dataDir} 0755 readarr readarr"
-      "d ${config.services.sonarr.dataDir} 0755 sonarr sonarr"
-      "d ${config.services.transmission.home} 0755 transmission transmission"
-      "d ${config.services.transmission.home}/.incomplete 0755 transmission transmission"
-    ];
+  systemd.services.transmission = {
+    after = ["local-fs.target" "network-online.target"];
+    requires = ["local-fs.target" "network-online.target"];
   };
 }
