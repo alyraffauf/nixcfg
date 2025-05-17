@@ -54,7 +54,7 @@ in {
 
       forgejo-runner = {
         enable = true;
-        number = 3;
+        number = 4;
       };
 
       server.enable = true;

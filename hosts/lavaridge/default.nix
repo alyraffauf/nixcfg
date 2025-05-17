@@ -81,7 +81,7 @@
 
       forgejo-runner = {
         enable = true;
-        number = 3;
+        number = 4;
       };
 
       media-share.enable = true;
