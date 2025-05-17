@@ -1,75 +1,69 @@
-{config, ...}: {
+{
+  config,
+  self,
+  ...
+}: {
+  imports = [
+    self.inputs.tailscale-golink.nixosModules.default
+  ];
+
   services = {
-    anubis = {
-      defaultOptions.settings = {
-        DIFFICULTY = 4;
-        SERVE_ROBOTS_TXT = true;
-        WEBMASTER_EMAIL = "hello@aly.codes";
-      };
+    ddclient = {
+      enable = true;
 
-      instances = {
-        alycodes.settings = {
-          TARGET = "http://localhost:8282";
-          BIND = ":60023";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20023";
-          METRICS_BIND_NETWORK = "tcp";
+      domains = [
+        "audiobookshelf.cute.haus"
+        "forgejo.cute.haus"
+        "immich.cute.haus"
+        "lidarr.cute.haus"
+        "navidrome.cute.haus"
+        "ombi.cute.haus"
+        "plex.cute.haus"
+        "prowlarr.cute.haus"
+        "radarr.cute.haus"
+        "sonarr.cute.haus"
+        "uptime-kuma.cute.haus"
+        "cute.haus"
+      ];
+
+      interval = "10min";
+      passwordFile = config.age.secrets.cloudflare.path;
+      protocol = "cloudflare";
+      ssl = true;
+      username = "token";
+      zone = "cute.haus";
+
+      extraConfig = ''
+        zone=aly.codes
+        aly.codes
+      '';
+    };
+
+    fail2ban = {
+      enable = true;
+      ignoreIP = ["100.64.0.0/10"];
+      bantime = "24h";
+      bantime-increment.enable = true;
+
+      jails = {
+        # HTTP basic-auth failures, 5 tries → 1-day ban
+        nginx-http-auth = {
+          settings = {
+            enabled = true;
+            maxretry = 5;
+            findtime = 300;
+            bantime = "24h";
+          };
         };
 
-        audiobookshelf.settings = {
-          TARGET = "http://mauville:13378";
-          BIND = ":60923";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20923";
-          METRICS_BIND_NETWORK = "tcp";
-        };
-
-        forgejo.settings = {
-          TARGET = "http://mauville:3000";
-          BIND = ":60823";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20823";
-          METRICS_BIND_NETWORK = "tcp";
-        };
-
-        glance.settings = {
-          TARGET = "http://127.0.0.1:${toString config.services.glance.settings.server.port}";
-          BIND = ":60723";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20723";
-          METRICS_BIND_NETWORK = "tcp";
-        };
-
-        immich.settings = {
-          TARGET = "http://lilycove:2283";
-          BIND = ":60623";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20623";
-          METRICS_BIND_NETWORK = "tcp";
-        };
-
-        ombi.settings = {
-          TARGET = "http://lilycove:5000";
-          BIND = ":60523";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20523";
-          METRICS_BIND_NETWORK = "tcp";
-        };
-
-        plex.settings = {
-          TARGET = "http://lilycove:32400";
-          BIND = ":60423";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20423";
-          METRICS_BIND_NETWORK = "tcp";
-        };
-
-        uptime-kuma.settings = {
-          TARGET = "http://roxanne:3001";
-          BIND = ":60323";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20323";
-          METRICS_BIND_NETWORK = "tcp";
+        # Generic scanner / bot patterns (wp-login.php, sqladmin, etc.)
+        nginx-botsearch = {
+          settings = {
+            enabled = true;
+            maxretry = 10;
+            findtime = 300;
+            bantime = "24h";
+          };
         };
       };
     };
@@ -334,6 +328,11 @@
 
         server.host = "0.0.0.0";
       };
+    };
+
+    golink = {
+      enable = true;
+      tailscaleAuthKeyFile = config.age.secrets.tailscaleAuthKey.path;
     };
   };
 }

@@ -4,9 +4,11 @@
   ...
 }: {
   imports = [
+    ./anubis.nix
     ./backups.nix
     ./home.nix
-    ./raffauflabs.nix
+    ./oci.nix
+    ./proxy.nix
     ./secrets.nix
     ./services.nix
     self.nixosModules.disko-btrfs-subvolumes
