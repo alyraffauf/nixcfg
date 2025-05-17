@@ -65,7 +65,7 @@ in {
       settings = {
         blocklist-enabled = true;
         blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
-        download-dir = "${mediaDirectory}/Downloads";
+        download-dir = mediaDirectory;
         encryption = 1;
         incomplete-dir = "${config.services.transmission.home}/.incomplete";
         incomplete-dir-enabled = true;
