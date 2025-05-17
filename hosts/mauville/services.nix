@@ -42,7 +42,7 @@ in {
           TARGET = "http://${config.services.forgejo.settings.server.HTTP_ADDR}:${toString config.services.forgejo.settings.server.HTTP_PORT}";
           BIND = ":60927";
           BIND_NETWORK = "tcp";
-          METRICS_BIND = "127.0.0.1:29397";
+          METRICS_BIND = "0.0.0.0:29397";
           METRICS_BIND_NETWORK = "tcp";
         };
       };
