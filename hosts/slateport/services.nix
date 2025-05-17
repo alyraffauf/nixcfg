@@ -152,9 +152,9 @@
                         icon = "di:tautulli";
                       }
                       {
-                        title = "Transmission";
-                        url = "http://mauville:9091/transmission/web/";
-                        icon = "di:transmission";
+                        title = "qBittorrent";
+                        url = "http://lilycove:8080";
+                        icon = "di:qbittorrent";
                         alt-status-codes = [401];
                       }
                       {
