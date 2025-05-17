@@ -126,6 +126,7 @@
       ];
     };
 
+    primaryUser = "aly";
     stateVersion = 6;
   };
 
