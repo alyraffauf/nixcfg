@@ -6,13 +6,25 @@
         SERVE_ROBOTS_TXT = true;
       };
 
-      instances.glance = {
-        settings = {
-          TARGET = "http://127.0.0.1:${toString config.services.glance.settings.server.port}";
-          BIND = ":60723";
-          BIND_NETWORK = "tcp";
-          METRICS_BIND = "0.0.0.0:20723";
-          METRICS_BIND_NETWORK = "tcp";
+      instances = {
+        forgejo = {
+          settings = {
+            TARGET = "http://mauville:3000";
+            BIND = ":60923";
+            BIND_NETWORK = "tcp";
+            METRICS_BIND = "0.0.0.0:20923";
+            METRICS_BIND_NETWORK = "tcp";
+          };
+        };
+
+        glance = {
+          settings = {
+            TARGET = "http://127.0.0.1:${toString config.services.glance.settings.server.port}";
+            BIND = ":60723";
+            BIND_NETWORK = "tcp";
+            METRICS_BIND = "0.0.0.0:20723";
+            METRICS_BIND_NETWORK = "tcp";
+          };
         };
       };
     };

@@ -112,7 +112,8 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://mauville:${toString 60927}";
+            proxyPass = "http://localhost${toString config.services.anubis.instances.forgejo.settings.BIND}";
+            proxyWebsockets = true;
 
             extraConfig = ''
               client_max_body_size 512M;
