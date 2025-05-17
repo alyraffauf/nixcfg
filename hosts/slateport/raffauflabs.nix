@@ -107,6 +107,20 @@ in {
           };
         };
 
+        "audiobookshelf.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.audiobookshelf.settings.BIND}";
+            proxyWebsockets = true;
+
+            extraConfig = ''
+              proxy_buffering off;
+            '';
+          };
+        };
+
         "forgejo.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
@@ -116,7 +130,22 @@ in {
             proxyWebsockets = true;
 
             extraConfig = ''
-              client_max_body_size 512M;
+              client_max_body_size 2G;
+            '';
+          };
+        };
+
+        "immich.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.immich.settings.BIND}";
+
+            extraConfig = ''
+              client_max_body_size 10G;
+              proxy_buffering off;
+              proxy_request_buffering off;
             '';
           };
         };
@@ -135,37 +164,13 @@ in {
           };
         };
 
-        "immich.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://lilycove:${toString 2283}";
-
-            extraConfig = ''
-              client_max_body_size 5000M;
-              proxy_buffering off;
-              proxy_redirect                      http:// https://;
-              proxy_set_header Host               $host;
-              proxy_set_header X-Forwarded-Proto  $scheme;
-              proxy_set_header Connection         "upgrade";
-              proxy_set_header Upgrade            $http_upgrade;
-              proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
-            '';
-          };
-        };
-
         "ombi.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://lilycove:${toString 5000}";
+            proxyPass = "http://localhost${toString config.services.anubis.instances.ombi.settings.BIND}";
             proxyWebsockets = true;
-
-            extraConfig = ''
-              proxy_buffering off;
-            '';
           };
         };
 
@@ -174,12 +179,8 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://lilycove:${toString 32400}";
+            proxyPass = "http://localhost${toString config.services.anubis.instances.plex.settings.BIND}";
             proxyWebsockets = true;
-
-            extraConfig = ''
-              proxy_buffering off;
-            '';
           };
         };
 
@@ -188,30 +189,8 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://roxanne:${toString 3001}";
-
-            extraConfig = ''
-              client_max_body_size 512M;
-            '';
-          };
-        };
-
-        "audiobookshelf.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://${ip}:${toString 13378}";
+            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
             proxyWebsockets = true;
-
-            extraConfig = ''
-              client_max_body_size 500M;
-              proxy_buffering off;
-              proxy_redirect                      http:// https://;
-              proxy_set_header Host               $host;
-              proxy_set_header X-Forwarded-Proto  $scheme;
-              proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
-            '';
           };
         };
       };
