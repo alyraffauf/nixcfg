@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
 in {
   environment.etc = {
     "fail2ban/filter.d/audiobookshelf.conf".text = ''
@@ -149,50 +145,12 @@ in {
     #     };
     #   };
     # };
-
-    transmission = {
-      enable = true;
-      credentialsFile = config.age.secrets.transmission.path;
-      openFirewall = true;
-      openRPCPort = true;
-
-      package = pkgs.transmission_4.overrideAttrs (old: rec {
-        src = pkgs.fetchFromGitHub {
-          owner = "transmission";
-          repo = "transmission";
-          rev = version;
-          hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
-          fetchSubmodules = true;
-        };
-
-        version = "4.0.5";
-      });
-
-      settings = {
-        blocklist-enabled = true;
-        blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
-        download-dir = "/mnt/Media/Downloads";
-        encryption = 1;
-        incomplete-dir = "${config.services.transmission.home}/.incomplete";
-        incomplete-dir-enabled = true;
-        peer-port = 5143;
-        rpc-bind-address = "0.0.0.0";
-        rpc-port = 9091;
-      };
-    };
   };
 
-  systemd = {
-    services = {
-      forgejo = {
-        after = ["mnt-Storage.mount"];
-        wants = ["mnt-Storage.mount"];
-      };
-
-      transmission = {
-        after = ["mnt-Media.mount" "network-online.target"];
-        wants = ["mnt-Media.mount" "network-online.target"];
-      };
+  systemd.services = {
+    forgejo = {
+      after = ["mnt-Storage.mount"];
+      wants = ["mnt-Storage.mount"];
     };
   };
 
