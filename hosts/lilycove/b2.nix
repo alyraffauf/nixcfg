@@ -27,14 +27,14 @@
       audio = [
         "buffer-size=128M"
         "vfs-cache-max-age=168h"
-        "vfs-cache-max-size=10G"
+        "vfs-cache-max-size=50G"
         "vfs-read-ahead=3G"
       ];
 
       video = [
         "buffer-size=512M"
         "vfs-cache-max-age=336h"
-        "vfs-cache-max-size=200G"
+        "vfs-cache-max-size=300G"
         "vfs-read-ahead=5G"
       ];
     };
