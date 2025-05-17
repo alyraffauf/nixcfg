@@ -102,11 +102,8 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://localhost:${toString config.services.glance.settings.server.port}";
-
-            extraConfig = ''
-              client_max_body_size 512M;
-            '';
+            proxyPass = "http://localhost${toString config.services.anubis.instances.glance.settings.BIND}";
+            proxyWebsockets = true;
           };
         };
 
