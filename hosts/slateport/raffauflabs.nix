@@ -115,7 +115,7 @@ in {
           forceSSL = true;
 
           locations."/" = {
-            proxyPass = "http://mauville:${toString 3000}";
+            proxyPass = "http://mauville:${toString 60927}";
 
             extraConfig = ''
               client_max_body_size 512M;

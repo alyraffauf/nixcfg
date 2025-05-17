@@ -29,6 +29,25 @@ in {
   };
 
   services = {
+    anubis = {
+      defaultOptions = {
+        settings = {
+          DIFFICULTY = 4;
+          SERVE_ROBOTS_TXT = true;
+        };
+      };
+
+      instances.forgejo = {
+        settings = {
+          TARGET = "http://${config.services.forgejo.settings.server.HTTP_ADDR}:${toString config.services.forgejo.settings.server.HTTP_PORT}";
+          BIND = ":60927";
+          BIND_NETWORK = "tcp";
+          METRICS_BIND = "127.0.0.1:29397";
+          METRICS_BIND_NETWORK = "tcp";
+        };
+      };
+    };
+
     audiobookshelf = {
       enable = true;
       host = "0.0.0.0";
