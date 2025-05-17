@@ -153,7 +153,6 @@ in {
     transmission = {
       enable = true;
       credentialsFile = config.age.secrets.transmission.path;
-      home = "/mnt/Data/transmission/";
       openFirewall = true;
       openRPCPort = true;
 
@@ -188,20 +187,15 @@ in {
   systemd = {
     services = {
       forgejo = {
-        after = ["mnt-Data.mount" "network-online.target"];
-        requires = ["mnt-Data.mount" "network-online.target"];
+        after = ["mnt-Storage.mount"];
+        wants = ["mnt-Storage.mount"];
       };
 
       transmission = {
-        after = ["mnt-Data.mount" "mnt-Media.mount" "network-online.target"];
-        requires = ["mnt-Data.mount" "mnt-Media.mount" "network-online.target"];
+        after = ["mnt-Media.mount" "network-online.target"];
+        wants = ["mnt-Media.mount" "network-online.target"];
       };
     };
-
-    tmpfiles.rules = [
-      "d ${config.services.transmission.home} 0755 transmission transmission"
-      "d ${config.services.transmission.home}/.incomplete 0755 transmission transmission"
-    ];
   };
 
   # systemd.services = {
