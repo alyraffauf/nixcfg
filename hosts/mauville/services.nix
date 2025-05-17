@@ -1,15 +1,8 @@
-{config, ...}: let
-  # navidrome = {
-  #   port = 4533;
-  #   lastfm = {
-  #     idFile = config.age.secrets.lastfmId.path;
-  #     secretFile = config.age.secrets.lastfmSecret.path;
-  #   };
-  #   spotify = {
-  #     idFile = config.age.secrets.spotifyId.path;
-  #     secretFile = config.age.secrets.spotifySecret.path;
-  #   };
-  # };
+{
+  config,
+  pkgs,
+  ...
+}: let
 in {
   environment.etc = {
     "fail2ban/filter.d/audiobookshelf.conf".text = ''
@@ -156,13 +149,59 @@ in {
     #     };
     #   };
     # };
+
+    transmission = {
+      enable = true;
+      credentialsFile = config.age.secrets.transmission.path;
+      home = "/mnt/Data/transmission/";
+      openFirewall = true;
+      openRPCPort = true;
+
+      package = pkgs.transmission_4.overrideAttrs (old: rec {
+        src = pkgs.fetchFromGitHub {
+          owner = "transmission";
+          repo = "transmission";
+          rev = version;
+          hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
+          fetchSubmodules = true;
+        };
+
+        version = "4.0.5";
+      });
+
+      settings = {
+        blocklist-enabled = true;
+        blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
+        download-dir = "/mnt/Media/Downloads";
+        encryption = 1;
+        incomplete-dir = "${config.services.transmission.home}/.incomplete";
+        incomplete-dir-enabled = true;
+        peer-port = 5143;
+        rpc-bind-address = "0.0.0.0";
+        rpc-port = 9091;
+      };
+
+      webHome = pkgs.flood-for-transmission;
+    };
   };
 
-  systemd.services = {
-    forgejo = {
-      wants = ["network-online.target" "mnt-Data.mount"];
-      after = ["network-online.target" "mnt-Data.mount"];
+  systemd = {
+    services = {
+      forgejo = {
+        after = ["mnt-Data.mount" "network-online.target"];
+        requires = ["mnt-Data.mount" "network-online.target"];
+      };
+
+      transmission = {
+        after = ["mnt-Data.mount" "mnt-Media.mount" "network-online.target"];
+        requires = ["mnt-Data.mount" "mnt-Media.mount" "network-online.target"];
+      };
     };
+
+    tmpfiles.rules = [
+      "d ${config.services.transmission.home} 0755 transmission transmission"
+      "d ${config.services.transmission.home}/.incomplete 0755 transmission transmission"
+    ];
   };
 
   # systemd.services = {

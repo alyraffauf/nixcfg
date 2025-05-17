@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   dataDirectory = "/mnt/Data";
-  mediaDirectory = "/mnt/Media";
 in {
   networking.firewall.allowedTCPPorts = [5143 6881];
 
@@ -42,55 +37,14 @@ in {
       dataDir = "${dataDirectory}/sonarr/.config/NzbDrone/";
       openFirewall = true; # Port: 8989
     };
-
-    transmission = {
-      enable = true;
-      credentialsFile = config.age.secrets.transmission.path;
-      home = "${dataDirectory}/transmission/";
-      openFirewall = true;
-      openRPCPort = true;
-
-      package = pkgs.transmission_4.overrideAttrs (old: rec {
-        src = pkgs.fetchFromGitHub {
-          owner = "transmission";
-          repo = "transmission";
-          rev = version;
-          hash = "sha256-gd1LGAhMuSyC/19wxkoE2mqVozjGPfupIPGojKY0Hn4=";
-          fetchSubmodules = true;
-        };
-
-        version = "4.0.5";
-      });
-
-      settings = {
-        blocklist-enabled = true;
-        blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
-        download-dir = "${mediaDirectory}/Downloads";
-        encryption = 1;
-        incomplete-dir = "${config.services.transmission.home}/.incomplete";
-        incomplete-dir-enabled = true;
-        peer-port = 5143;
-        rpc-bind-address = "0.0.0.0";
-        rpc-port = 9091;
-      };
-
-      webHome = pkgs.flood-for-transmission;
-    };
   };
 
   systemd = {
-    services.transmission = {
-      after = ["local-fs.target" "network-online.target"];
-      requires = ["local-fs.target" "network-online.target"];
-    };
-
     tmpfiles.rules = [
       "d ${config.services.lidarr.dataDir} 0755 lidarr lidarr"
       "d ${config.services.radarr.dataDir} 0755 radarr radarr"
       "d ${config.services.readarr.dataDir} 0755 readarr readarr"
       "d ${config.services.sonarr.dataDir} 0755 sonarr sonarr"
-      "d ${config.services.transmission.home} 0755 transmission transmission"
-      "d ${config.services.transmission.home}/.incomplete 0755 transmission transmission"
     ];
   };
 }
