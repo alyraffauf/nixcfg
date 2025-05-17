@@ -3,9 +3,7 @@
   pkgs,
   self,
   ...
-}: let
-  mediaDirectory = "/mnt/Media";
-in {
+}: {
   imports = [
     ./backups.nix
     ./disko.nix
@@ -22,7 +20,7 @@ in {
     b2Options = [
       "allow_other"
       "args2env"
-      "cache-dir=${mediaDirectory}/.rclone-cache"
+      "cache-dir=/mnt/storage/.rclone-cache"
       "config=${config.age.secrets.rclone-b2.path}"
       "dir-cache-time=1h"
       "nodev"
@@ -50,7 +48,7 @@ in {
     };
 
     mkB2Mount = name: remote: profile: {
-      "${mediaDirectory}/${name}" = {
+      "/mnt/Backblaze/${name}" = {
         device = "b2:${remote}";
         fsType = "rclone";
         options = b2Options ++ b2ProfileOptions.${profile};
@@ -107,6 +105,7 @@ in {
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
+      media-share.enable = true;
       server.enable = true;
       swap.enable = true;
       wifi.enable = true;
@@ -123,7 +122,7 @@ in {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;
         keyFile = config.age.secrets.syncthingKey.path;
-        musicPath = "${mediaDirectory}/Music";
+        musicPath = "/mnt/Media/Music";
         syncMusic = false;
         syncROMs = true;
         user = "aly";
