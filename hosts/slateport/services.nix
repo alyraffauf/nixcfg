@@ -8,6 +8,14 @@
       };
 
       instances = {
+        alycodes.settings = {
+          TARGET = "http://localhost:8282";
+          BIND = ":60023";
+          BIND_NETWORK = "tcp";
+          METRICS_BIND = "0.0.0.0:20023";
+          METRICS_BIND_NETWORK = "tcp";
+        };
+
         audiobookshelf.settings = {
           TARGET = "http://mauville:13378";
           BIND = ":60923";

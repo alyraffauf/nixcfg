@@ -46,14 +46,10 @@ in {
       username = "token";
       zone = newDomain;
 
-      # extraConfig = ''
-      #   zone=raffauflabs.com
-      #   ${oldDomain}
-      #   music.${oldDomain}
-      #   pics.${oldDomain}
-      #   plex.${oldDomain}
-      #   podcasts.${oldDomain}
-      # '';
+      extraConfig = ''
+        zone=aly.codes
+        aly.codes
+      '';
     };
 
     fail2ban = {
@@ -116,6 +112,16 @@ in {
 
           locations."/" = {
             proxyPass = "http://localhost${toString config.services.anubis.instances.glance.settings.BIND}";
+            proxyWebsockets = true;
+          };
+        };
+
+        "aly.codes" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.alycodes.settings.BIND}";
             proxyWebsockets = true;
           };
         };
@@ -216,6 +222,12 @@ in {
     backend = "podman";
 
     containers = {
+      alycodes = {
+        extraOptions = ["--pull=always"];
+        image = "ghcr.io/alyraffauf/aly.codes";
+        ports = ["0.0.0.0:8282:80"];
+      };
+
       homebridge = {
         environment = {
           "HOMEBRIDGE_CONFIG_UI_PORT" = "8581";
