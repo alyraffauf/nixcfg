@@ -35,7 +35,7 @@
 
       mossdeep = {
         hostNames = ["mossdeep" "mossdeep.local" "mossdeep.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/mossdeep.pub";
+        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_mossdeep.pub";
       };
 
       petalburg = {
