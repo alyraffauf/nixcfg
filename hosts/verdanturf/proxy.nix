@@ -13,6 +13,7 @@ in {
 
       domains = [
         "couchdb.${newDomain}"
+        "status.${newDomain}"
         "uptime-kuma.${newDomain}"
         "vault.${newDomain}"
       ];
@@ -50,6 +51,16 @@ in {
         };
 
         "uptime-kuma.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
+            proxyWebsockets = true;
+          };
+        };
+
+        "status.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
 
