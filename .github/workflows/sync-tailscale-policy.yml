@@ -4,10 +4,12 @@ on:
   push:
     branches: ["master"]
     paths:
+      - ".github/workflows/sync-tailscale-policy.yml"
       - "tailscale.json"
   pull_request:
     branches: ["master"]
     paths:
+      - ".github/workflows/sync-tailscale-policy.yml"
       - "tailscale.json"
   workflow_dispatch:
     inputs:
