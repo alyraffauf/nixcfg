@@ -19,6 +19,11 @@
       ssl = true;
       username = "token";
       zone = "aly.social";
+
+      extraConfig = ''
+        zone=aly.codes
+        aly.codes
+      '';
     };
 
     nginx = {
@@ -28,6 +33,16 @@
       recommendedTlsSettings = true;
 
       virtualHosts = {
+        "aly.codes" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.alycodes.settings.BIND}";
+            proxyWebsockets = true;
+          };
+        };
+
         "aly.social" = {
           enableACME = true;
           forceSSL = true;

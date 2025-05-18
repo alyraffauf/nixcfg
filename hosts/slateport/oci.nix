@@ -5,12 +5,6 @@
     backend = "podman";
 
     containers = {
-      alycodes = {
-        extraOptions = ["--pull=always"];
-        image = "ghcr.io/alyraffauf/aly.codes";
-        ports = ["0.0.0.0:8282:80"];
-      };
-
       homebridge = {
         environment = {
           "HOMEBRIDGE_CONFIG_UI_PORT" = "8581";

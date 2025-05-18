@@ -32,11 +32,6 @@
       ssl = true;
       username = "token";
       zone = "cute.haus";
-
-      extraConfig = ''
-        zone=aly.codes
-        aly.codes
-      '';
     };
 
     fail2ban = {

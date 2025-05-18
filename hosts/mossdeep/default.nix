@@ -7,8 +7,10 @@
   ...
 }: {
   imports = [
+    ./anubis.nix
     ./backups.nix
     ./disko.nix
+    ./oci.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix
@@ -72,6 +74,7 @@
 
     programs = {
       nix.enable = true;
+      podman.enable = true;
     };
 
     services.tailscale.enable = true;

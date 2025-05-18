@@ -43,16 +43,6 @@ in {
           };
         };
 
-        "aly.codes" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.alycodes.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
-
         "audiobookshelf.${newDomain}" = {
           enableACME = true;
           forceSSL = true;
