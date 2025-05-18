@@ -62,27 +62,13 @@
     #     repository = "rclone:b2:aly-backups/syncthing/sync";
     #   };
 
-    tubesync =
+    tautulli =
       config.mySnippets.restic
       // {
-        paths = ["/mnt/Data/tubesync"];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/tubesync";
-      };
-
-    transmission =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start transmission";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop transmission";
-
-        exclude = [
-          "${config.services.transmission.home}/.incomplete"
-          "${config.services.transmission.home}/Downloads"
-          "${config.services.transmission.home}/watchdir"
-        ];
-
-        paths = [config.services.transmission.home];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/transmission";
+        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start tautulli";
+        backupPrepareCommand = ''${pkgs.systemd}/bin/systemctl stop tautulli'';
+        paths = ["/var/lib/plexpy"];
+        repository = "rclone:b2:aly-backups/${config.networking.hostName}/tautulli";
       };
   };
 }

@@ -125,6 +125,8 @@ in {
       TIMELINE_CREATE = true;
     };
 
+    tautulli.enable = true;
+
     xserver.xkb.options = "ctrl:nocaps";
   };
 }
