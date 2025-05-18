@@ -179,7 +179,7 @@
                       }
                       {
                         title = "Tautulli";
-                        url = "http://roxanne:8181/";
+                        url = "http://lilycove:8181/";
                         icon = "di:tautulli";
                       }
                       {
