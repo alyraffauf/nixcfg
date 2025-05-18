@@ -2,6 +2,6 @@
 
 ## Overview
 
-Hetzner VPS.
+VPS running on Hetzner Cloud.
 
 ---
