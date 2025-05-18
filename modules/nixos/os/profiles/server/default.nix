@@ -19,11 +19,7 @@
 
     services = {
       bpftune.enable = true;
-
-      smartd = {
-        enable = true;
-        defaults.monitored = "-a -o off -s S/../.././05";
-      };
+      smartd.enable = true;
     };
 
     systemd.oomd = {
