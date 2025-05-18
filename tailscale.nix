@@ -2,23 +2,17 @@
   acls = [
     {
       action = "accept";
-      src = [
-        "*"
-      ];
-      dst = [
-        "*:*"
-      ];
+      dst = ["*:*"];
+      src = ["*"];
     }
   ];
+
   ssh = [
     {
       action = "accept";
-      src = [
-        "autogroup:member"
-      ];
-      dst = [
-        "autogroup:self"
-      ];
+      dst = ["autogroup:self"];
+      src = ["autogroup:member"];
+
       users = [
         "autogroup:nonroot"
         "root"
