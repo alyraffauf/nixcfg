@@ -44,8 +44,8 @@ for host in "${HOSTS[@]}"; do
     --no-link \
     --json \
     ".#nixosConfigurations.${host}.config.system.build.toplevel" \
-    2>/dev/null \
-    | jq -r '.[0].outputs.out')
+    2>/dev/null |
+    jq -r '.[0].outputs.out')
 
   OUT_PATHS["$host"]="$out"
   echo -e "[deployer] ${GREEN}✔ Built: ${out}${NC}"
