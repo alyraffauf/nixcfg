@@ -33,6 +33,11 @@
         publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_mauville.pub";
       };
 
+      mossdeep = {
+        hostNames = ["mossdeep" "mossdeep.local" "mossdeep.narwhal-snapper.ts.net"];
+        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/mossdeep.pub";
+      };
+
       petalburg = {
         hostNames = ["petalburg" "petalburg.local" "petalburg.narwhal-snapper.ts.net"];
         publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_petalburg.pub";
