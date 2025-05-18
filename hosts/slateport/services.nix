@@ -126,7 +126,7 @@
                       {
                         title = "aly.social";
                         url = "https://aly.social/";
-                        check-url = "http://verdanturf:3000/";
+                        check-url = "http://mossdeep:3000/";
                         icon = "di:bluesky";
                       }
                       {
