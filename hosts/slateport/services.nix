@@ -132,7 +132,6 @@
                       {
                         title = "Uptime Kuma";
                         url = "https://uptime-kuma.cute.haus/";
-                        check-url = "http://roxanne:3001";
                         icon = "di:uptime-kuma";
                       }
                       {
