@@ -121,6 +121,7 @@
       "lavaridge"
       "lilycove"
       "mauville"
+      "mossdeep"
       "roxanne"
       "rustboro"
       "slateport"

@@ -14,6 +14,7 @@ hosts/
 ├── fortree/       # MacBook Air M2
 ├── lilycove/      # Custom Mini-ITX Gaming Desktop
 ├── mauville/      # Beelink Mini S12 Pro
+├── mossdeep/      # Hetzner VPS
 ├── pacifidlog/    # Asus ROG Ally X
 ├── petalburg/     # Lenovo Yoga Pro 9i
 ├── roxanne/       # Raspberry Pi 4 4GB
