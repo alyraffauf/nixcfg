@@ -20,6 +20,13 @@
     user = "root";
   };
 
+  mossdeep = {
+    output = "mossdeep";
+    hostname = "mossdeep";
+    remoteBuild = false;
+    user = "root";
+  };
+
   roxanne = {
     output = "roxanne";
     hostname = "roxanne";
