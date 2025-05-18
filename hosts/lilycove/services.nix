@@ -126,7 +126,6 @@ in {
     };
 
     tautulli.enable = true;
-
     xserver.xkb.options = "ctrl:nocaps";
   };
 }

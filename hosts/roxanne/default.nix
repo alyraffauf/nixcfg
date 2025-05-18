@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./backups.nix
     ./home.nix
     ./secrets.nix
     self.inputs.nixos-hardware.nixosModules.raspberry-pi-4
@@ -30,16 +29,12 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 
-  services = {
-    journald.extraConfig = ''
-      # Store logs in RAM
-      Compress=yes
-      Storage=volatile
-      SystemMaxUse=50M
-    '';
-
-    tautulli.enable = true;
-  };
+  services.journald.extraConfig = ''
+    # Store logs in RAM
+    Compress=yes
+    Storage=volatile
+    SystemMaxUse=50M
+  '';
 
   stylix = {
     enable = false;
