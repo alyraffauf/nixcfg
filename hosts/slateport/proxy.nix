@@ -81,7 +81,11 @@ in {
             extraConfig = ''
               client_max_body_size 10G;
               proxy_buffering off;
+              proxy_read_timeout 600s;
+              proxy_redirect off;
               proxy_request_buffering off;
+              proxy_send_timeout 600s;
+              send_timeout 600s;
             '';
           };
         };
