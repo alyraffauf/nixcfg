@@ -55,6 +55,7 @@ in {
 
       arr = {
         enable = true;
+        backup = true;
         dataDir = "/mnt/Data";
       };
 

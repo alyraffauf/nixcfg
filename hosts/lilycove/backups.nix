@@ -4,15 +4,6 @@
   ...
 }: {
   services.restic.backups = {
-    bazarr =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start bazarr";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop bazarr";
-        paths = ["/var/lib/bazarr"];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/bazarr";
-      };
-
     dizquetv =
       config.mySnippets.restic
       // {
@@ -36,15 +27,6 @@
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/immich";
       };
 
-    lidarr =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start lidarr";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop lidarr";
-        paths = [config.services.lidarr.dataDir];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/lidarr";
-      };
-
     ombi =
       config.mySnippets.restic
       // {
@@ -52,15 +34,6 @@
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
         paths = [config.services.ombi.dataDir];
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
-      };
-
-    prowlarr =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start prowlarr";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop prowlarr";
-        paths = ["/var/lib/prowlarr"];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/prowlarr";
       };
 
     plex =
@@ -80,33 +53,6 @@
         backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop qbittorrent";
         paths = [config.myNixOS.services.qbittorrent.dataDir];
         repository = "rclone:b2:aly-backups/${config.networking.hostName}/qbittorrent";
-      };
-
-    radarr =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start radarr";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop radarr";
-        paths = [config.services.radarr.dataDir];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/radarr";
-      };
-
-    readarr =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start readarr";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop readarr";
-        paths = [config.services.readarr.dataDir];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/readarr";
-      };
-
-    sonarr =
-      config.mySnippets.restic
-      // {
-        backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start sonarr";
-        backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop sonarr";
-        paths = [config.services.sonarr.dataDir];
-        repository = "rclone:b2:aly-backups/${config.networking.hostName}/sonarr";
       };
 
     # syncthing-sync =
