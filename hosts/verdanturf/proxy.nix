@@ -29,6 +29,12 @@ in {
         zone=raffauflabs.com
         couch.${oldDomain}
         passwords.${oldDomain}
+
+        zone=aly.codes
+        status.aly.codes
+
+        zone=aly.social
+        status.aly.social
       '';
     };
 
@@ -80,6 +86,26 @@ in {
           };
 
           serverAliases = ["v.${newDomain}" "passwords.${oldDomain}"];
+        };
+
+        "status.aly.codes" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
+            proxyWebsockets = true;
+          };
+        };
+
+        "status.aly.social" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
+            proxyWebsockets = true;
+          };
         };
       };
     };
