@@ -56,14 +56,6 @@
         METRICS_BIND = "0.0.0.0:20423";
         METRICS_BIND_NETWORK = "tcp";
       };
-
-      uptime-kuma.settings = {
-        TARGET = "http://roxanne:3001";
-        BIND = ":60323";
-        BIND_NETWORK = "tcp";
-        METRICS_BIND = "0.0.0.0:20323";
-        METRICS_BIND_NETWORK = "tcp";
-      };
     };
   };
 }
