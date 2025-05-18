@@ -20,7 +20,7 @@
     b2Options = [
       "allow_other"
       "args2env"
-      "cache-dir=/mnt/storage/.rclone-cache"
+      "cache-dir=/mnt/Storage/.rclone-cache"
       "config=${config.age.secrets.rclone-b2.path}"
       "dir-cache-time=1h"
       "nodev"
