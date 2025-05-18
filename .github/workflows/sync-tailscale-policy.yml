@@ -5,12 +5,12 @@ on:
     branches: ["master"]
     paths:
       - ".github/workflows/sync-tailscale-policy.yml"
-      - "tailscale.json"
+      - "tailscale.nix"
   pull_request:
     branches: ["master"]
     paths:
       - ".github/workflows/sync-tailscale-policy.yml"
-      - "tailscale.json"
+      - "tailscale.nix"
   workflow_dispatch:
     inputs:
       action:
@@ -19,7 +19,7 @@ on:
         type: choice
         default: apply
         options:
-          - apply
+          - deploy
           - test
 
 jobs:
@@ -27,12 +27,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Convert tailscale.nix to tailscale.json
+        run: nix eval --json -f tailscale.nix > tailscale.json
 
       - name: Deploy ACL
         if: >
           github.event_name == 'push'
-          || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'apply')
+          || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'deploy')
         uses: tailscale/gitops-acl-action@v1
         with:
           api-key: ${{ secrets.TS_API_KEY }}
