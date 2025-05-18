@@ -77,6 +77,7 @@ in {
 
           locations."/" = {
             proxyPass = "http://localhost${toString config.services.anubis.instances.immich.settings.BIND}";
+            proxyWebsockets = true;
 
             extraConfig = ''
               client_max_body_size 10G;
