@@ -1,0 +1,50 @@
+name: sync-tailscale-policy
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "tailscale.json"
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "tailscale.json"
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Which action to run"
+        required: true
+        type: choice
+        default: apply
+        options:
+          - apply
+          - test
+
+jobs:
+  acls:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy ACL
+        if: >
+          github.event_name == 'push'
+          || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'apply')
+        uses: tailscale/gitops-acl-action@v1
+        with:
+          api-key: ${{ secrets.TS_API_KEY }}
+          tailnet: ${{ secrets.TS_TAILNET }}
+          policy-file: tailscale.json
+          action: apply
+
+      - name: Test ACL
+        if: >
+          github.event_name == 'pull_request'
+          || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'test')
+        uses: tailscale/gitops-acl-action@v1
+        with:
+          api-key: ${{ secrets.TS_API_KEY }}
+          tailnet: ${{ secrets.TS_TAILNET }}
+          policy-file: tailscale.json
+          action: test
