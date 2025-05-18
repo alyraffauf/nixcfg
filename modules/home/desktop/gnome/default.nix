@@ -47,6 +47,10 @@
           background-color = config.lib.stylix.colors.withHashtag.base01;
           click-action = "minimize";
           custom-background-color = true;
+          custom-theme-shrink = false;
+          dock-fixed = true;
+          dock-postion = "LEFT";
+          extend-height = true;
         };
 
         "org/gnome/system/location".enabled = true;
