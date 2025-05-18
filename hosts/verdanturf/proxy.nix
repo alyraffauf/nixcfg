@@ -12,8 +12,9 @@ in {
       enable = true;
 
       domains = [
-        "vault.${newDomain}"
         "couchdb.${newDomain}"
+        "uptime-kuma.${newDomain}"
+        "vault.${newDomain}"
       ];
 
       interval = "10min";
@@ -46,6 +47,16 @@ in {
           };
 
           serverAliases = ["couch.${oldDomain}"];
+        };
+
+        "uptime-kuma.${newDomain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
+            proxyWebsockets = true;
+          };
         };
 
         "vault.${newDomain}" = {

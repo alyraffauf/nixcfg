@@ -119,16 +119,6 @@ in {
             proxyWebsockets = true;
           };
         };
-
-        "uptime-kuma.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
       };
     };
   };

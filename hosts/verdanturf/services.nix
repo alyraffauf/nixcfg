@@ -100,6 +100,11 @@
       };
     };
 
+    uptime-kuma = {
+      enable = true;
+      appriseSupport = true;
+    };
+
     vaultwarden = {
       enable = true;
 

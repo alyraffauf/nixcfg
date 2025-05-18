@@ -22,7 +22,6 @@
         "prowlarr.cute.haus"
         "radarr.cute.haus"
         "sonarr.cute.haus"
-        "uptime-kuma.cute.haus"
         "cute.haus"
       ];
 
