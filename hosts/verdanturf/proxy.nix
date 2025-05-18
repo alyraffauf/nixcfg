@@ -27,10 +27,6 @@ in {
         zone=raffauflabs.com
         couch.${oldDomain}
         passwords.${oldDomain}
-
-        zone=aly.social
-        aly.social
-        *.aly.social
       '';
     };
 
@@ -62,15 +58,6 @@ in {
           };
 
           serverAliases = ["v.${newDomain}" "passwords.${oldDomain}"];
-        };
-
-        "aly.social" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.pds.settings.PDS_PORT}";
-            proxyWebsockets = true;
-          };
         };
       };
     };
