@@ -12,7 +12,7 @@ stages:
 "Update inputs":
   stage: "Update"
   rules:
-  - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   script:
     - git clone https://${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
     - cd nixcfg

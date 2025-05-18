@@ -34,6 +34,9 @@ find . -type f -name "*.nix" -exec alejandra "${ALEJANDRA_ARGS[@]}" {} +
 # Format all markdown files using Prettier
 find . -type f -name "*.md" -exec prettier "${PRETTIER_ARGS[@]}" {} +
 
+# Format all yaml files using Prettier
+find . -type f -name "*.yml" -exec prettier "${PRETTIER_ARGS[@]}" {} +
+
 # Format all json files using Prettier
 find . -type f -name "*.json" -exec prettier "${PRETTIER_ARGS[@]}" {} +
 

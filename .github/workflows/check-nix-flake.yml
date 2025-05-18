@@ -5,9 +5,9 @@ concurrency:
 on:
   push:
     paths-ignore:
-      - '**/*.md'
-      - '.github/**'
-      - '_img/**'
+      - "**/*.md"
+      - ".github/**"
+      - "_img/**"
   workflow_dispatch:
 jobs:
   check-fmt:
