@@ -271,7 +271,6 @@
 
         runtimeInputs = with pkgs; [
           jq
-          nixos-rebuild
         ];
 
         text = builtins.readFile ./utils/deployer.sh;

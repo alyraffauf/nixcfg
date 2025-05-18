@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# World's stupidest NixOS deployment script.
+# NixOS deployer — build all, then deploy sequentially
+# (positional flake syntax; parse JSON for outputs.out)
 
 set -euo pipefail
+IFS=$'\n\t'
 
 # Color definitions
 RED='\033[0;31m'
@@ -15,44 +17,62 @@ OPERATION="${OPERATION:-test}" # Options: "switch", "boot", "test", etc.
 DEPLOYMENTS="${DEPLOYMENTS:-deployments.nix}"
 
 # Ensure required commands are available.
-command -v nixos-rebuild >/dev/null || {
-  echo -e "${RED}Error: 'nixos-rebuild' command not found.${NC}"
-  exit 1
-}
-command -v jq >/dev/null || {
-  echo -e "${RED}Error: 'jq' command not found. Please install jq.${NC}"
-  exit 1
-}
+for cmd in nix jq ssh; do
+  command -v "$cmd" &>/dev/null || {
+    echo -e "${RED}[deployer] Error: '$cmd' command not found.${NC}"
+    exit 1
+  }
+done
 
 echo -e "[deployer] ${BLUE}FLAKE: ${FLAKE}${NC}"
 echo -e "[deployer] ${BLUE}OPERATION: ${OPERATION}${NC}"
+echo -e "[deployer] ${BLUE}DEPLOYMENTS: ${DEPLOYMENTS}${NC}"
 
-# Load deployments from deployments.nix using nix eval (output as JSON)
-echo -e "[deployer] ${BLUE}Beginning deployments...${NC}"
-deployments_json=$(nix eval --json -f "$DEPLOYMENTS")
+# Read deployments JSON once
+HOSTS_JSON="$(nix eval --json -f "$DEPLOYMENTS")"
+mapfile -t HOSTS < <(printf '%s\n' "$HOSTS_JSON" | jq -r 'keys[]')
 
-for host in $(echo "$deployments_json" | jq -r 'keys[]' | sort); do
-  output=$(echo "$deployments_json" | jq -r --arg host "$host" '.[$host].output')
-  hostname=$(echo "$deployments_json" | jq -r --arg host "$host" '.[$host].hostname')
-  remoteBuild=$(echo "$deployments_json" | jq -r --arg host "$host" '.[$host].remoteBuild')
-  user=$(echo "$deployments_json" | jq -r --arg host "$host" '.[$host].user')
+# Phase 1: Build all closures
+declare -A OUT_PATHS
+echo -e "[deployer] ${BLUE}Building...${NC}"
 
-  # Determine build mode.
-  if [[ "$remoteBuild" == "true" ]]; then
-    build_host_option="$user@$hostname"
-  else
-    build_host_option="localhost"
-  fi
+for host in "${HOSTS[@]}"; do
+  echo -e "[deployer] ${YELLOW}Building nixosConfigurations.${host}.config.system.build.toplevel...${NC}"
 
-  echo -e "[deployer] ${YELLOW}Deploying ${FLAKE}#${output} to ${user}@${hostname} (building on ${build_host_option})...${NC}"
+  # Build, printing JSON to stdout; warnings go to stderr
+  out=$(nix build \
+    --no-link \
+    --json \
+    ".#nixosConfigurations.${host}.config.system.build.toplevel" \
+    2>/dev/null \
+    | jq -r '.[0].outputs.out')
 
-  nixos-rebuild "$OPERATION" \
-    --build-host "$build_host_option" \
-    --target-host "$user@$hostname" \
-    --flake "$FLAKE#$output" \
-    --fast
-
-  echo -e "[deployer] ${GREEN}Successfully deployed ${FLAKE}#${output} to ${user}@${hostname}.${NC}"
+  OUT_PATHS["$host"]="$out"
+  echo -e "[deployer] ${GREEN}✔ Built: ${out}${NC}"
 done
 
-echo -e "[deployer] ${BLUE}Deployments complete.${NC}"
+echo -e "[deployer] ${GREEN}✔ All builds complete.${NC}"
+
+# Phase 2: Copy & activate sequentially
+echo -e "[deployer] ${BLUE}Deploying...${NC}"
+
+for host in "${HOSTS[@]}"; do
+  host_json=$(printf '%s\n' "$HOSTS_JSON" | jq --arg h "$host" '.[$h]')
+  hostname=$(printf '%s\n' "$host_json" | jq -r '.hostname')
+  user=$(printf '%s\n' "$host_json" | jq -r '.user')
+  target="${user}@${hostname}"
+  out="${OUT_PATHS[$host]}"
+
+  echo -e "[deployer] ${YELLOW}Deploying to ${target}...${NC}"
+
+  # Copy the closure
+  nix copy --to "ssh://${target}" "$out"
+
+  # Activate remotely
+  # shellcheck disable=SC2029  # local expansion is intended
+  ssh "$target" "sudo '$out/bin/switch-to-configuration' '$OPERATION'"
+
+  echo -e "[deployer] ${GREEN}✔ Deployed to ${target}.${NC}"
+done
+
+echo -e "[deployer] ${GREEN}✔ All deployments complete.${NC}"
