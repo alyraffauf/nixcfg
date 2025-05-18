@@ -6,7 +6,6 @@
   dataDirectory = "/mnt/Data";
 in {
   imports = [
-    ./arr.nix
     ./backups.nix
     ./b2.nix
     ./home.nix
@@ -40,7 +39,11 @@ in {
     };
   };
 
-  networking.hostName = "lilycove";
+  networking = {
+    firewall.allowedTCPPorts = [5143 6881];
+    hostName = "lilycove";
+  };
+
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
@@ -49,6 +52,12 @@ in {
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
+
+      arr = {
+        enable = true;
+        dataDir = "/mnt/Data";
+      };
+
       base.enable = true;
       btrfs.enable = true;
 
