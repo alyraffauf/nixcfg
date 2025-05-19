@@ -20,6 +20,7 @@
 
     packages = with pkgs; [
       fractal
+      google-chrome
       nicotine-plus
       obsidian
       plexamp
