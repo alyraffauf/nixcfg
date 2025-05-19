@@ -1,4 +1,4 @@
-name: build-nixos-hosts
+name: build-nixos
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

@@ -1,4 +1,4 @@
-name: build-darwin-hosts
+name: build-darwin
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

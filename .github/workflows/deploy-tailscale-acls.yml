@@ -1,15 +1,15 @@
-name: sync-tailscale-policy
+name: deploy-tailscale-acls
 
 on:
   push:
     branches: ["master"]
     paths:
-      - ".github/workflows/sync-tailscale-policy.yml"
+      - ".github/workflows/deploy-tailscale-acls.yml"
       - "tailscale.nix"
   pull_request:
     branches: ["master"]
     paths:
-      - ".github/workflows/sync-tailscale-policy.yml"
+      - ".github/workflows/deploy-tailscale-acls.yml"
       - "tailscale.nix"
   workflow_dispatch:
     inputs:
@@ -17,7 +17,7 @@ on:
         description: "Which action to run"
         required: true
         type: choice
-        default: apply
+        default: deploy
         options:
           - deploy
           - test

@@ -1,4 +1,4 @@
-name: build-nix-pkgs
+name: build-nix
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

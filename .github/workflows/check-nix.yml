@@ -1,4 +1,4 @@
-name: "check-nix-flake"
+name: check-nix
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -28,3 +28,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Check flake evaluation
         run: nix flake check --all-systems
+      - name: Check deployments evaluation
+        run: nix eval --file ./deployments.nix
+      - name: Check tailscale ACL evaluation
+        run: nix eval --file ./tailscale.nix
