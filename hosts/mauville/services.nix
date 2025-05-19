@@ -74,6 +74,14 @@ in {
         };
 
         DEFAULT.APP_NAME = "Forĝejo";
+        federation.ENABLED = true;
+        indexer.REPO_INDEXER_ENABLED = true;
+        log.ENABLE_SSH_LOG = true;
+
+        picture = {
+          AVATAR_MAX_FILE_SIZE = 5242880;
+          ENABLE_FEDERATED_AVATAR = true;
+        };
 
         repository = {
           DEFAULT_BRANCH = "master";
@@ -82,12 +90,12 @@ in {
           PREFERRED_LICENSES = "GPL-3.0";
         };
 
-        federation.ENABLED = true;
-        picture.ENABLE_FEDERATED_AVATAR = true;
         security.PASSWORD_CHECK_PWN = true;
 
         server = {
+          DOMAIN = "forgejo.cute.haus";
           LANDING_PAGE = "explore";
+          LFS_START_SERVER = true;
           ROOT_URL = "https://forgejo.cute.haus/";
           SSH_DOMAIN = "forgejo.cute.haus";
           SSH_LISTEN_PORT = 2222;
