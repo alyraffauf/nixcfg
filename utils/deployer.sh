@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# NixOS deployer — build all, then deploy sequentially
-# (positional flake syntax; parse JSON for outputs.out)
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -12,6 +10,7 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Environment variables
 FLAKE="${FLAKE:-.}"
 OPERATION="${OPERATION:-test}" # Options: "switch", "boot", "test", etc.
 DEPLOYMENTS="${DEPLOYMENTS:-deployments.nix}"
@@ -28,7 +27,7 @@ echo -e "[deployer] ${BLUE}FLAKE: ${FLAKE}${NC}"
 echo -e "[deployer] ${BLUE}OPERATION: ${OPERATION}${NC}"
 echo -e "[deployer] ${BLUE}DEPLOYMENTS: ${DEPLOYMENTS}${NC}"
 
-# Read deployments JSON once
+# Read deployments.nix via json/jq
 HOSTS_JSON="$(nix eval --json -f "$DEPLOYMENTS")"
 mapfile -t HOSTS < <(printf '%s\n' "$HOSTS_JSON" | jq -r 'keys[]')
 
@@ -39,7 +38,6 @@ echo -e "[deployer] ${BLUE}Building...${NC}"
 for host in "${HOSTS[@]}"; do
   echo -e "[deployer] ${YELLOW}Building nixosConfigurations.${host}.config.system.build.toplevel...${NC}"
 
-  # Build, printing JSON to stdout; warnings go to stderr
   out=$(nix build \
     --no-link \
     --json \
