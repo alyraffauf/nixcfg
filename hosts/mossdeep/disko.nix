@@ -2,7 +2,7 @@
 {lib, ...}: {
   disko.devices = {
     disk.disk1 = {
-      device = lib.mkDefault "/dev/sda";
+      device = lib.mkDefault "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_62292463";
       type = "disk";
       content = {
         type = "gpt";
