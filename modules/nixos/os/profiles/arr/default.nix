@@ -17,6 +17,13 @@
 
   config = lib.mkMerge [
     (lib.mkIf config.myNixOS.profiles.arr.enable {
+      fileSystems."/var/lib/prowlarr" =
+        lib.mkIf (config.myNixOS.profiles.arr.dataDir != "/var/lib")
+        {
+          device = "${config.myNixOS.profiles.arr.dataDir}/prowlarr";
+          options = ["bind"];
+        };
+
       services = {
         lidarr = {
           enable = true;
