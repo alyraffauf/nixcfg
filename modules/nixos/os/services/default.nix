@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./bazarr
     ./flatpak
     ./gdm
     ./greetd

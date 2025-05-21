@@ -25,6 +25,12 @@
       #   };
 
       services = {
+        bazarr = {
+          enable = true;
+          dataDir = "${config.myNixOS.profiles.arr.dataDir}/bazarr";
+          openFirewall = true; # Port: 6767
+        };
+
         lidarr = {
           enable = true;
           dataDir = "${config.myNixOS.profiles.arr.dataDir}/lidarr/.config/Lidarr";
@@ -56,15 +62,8 @@
         };
       };
 
-      myNixOS.services.bazarr = {
-        enable = true;
-        dataDir = "${config.myNixOS.profiles.arr.dataDir}/bazarr";
-        openFirewall = true; # Port: 6767
-      };
-
       systemd = {
         tmpfiles.rules = [
-          "d ${config.myNixOS.services.bazarr.dataDir} 0755 bazarr bazarr"
           "d ${config.services.lidarr.dataDir} 0755 lidarr lidarr"
           "d ${config.services.radarr.dataDir} 0755 radarr radarr"
           "d ${config.services.readarr.dataDir} 0755 readarr readarr"
@@ -80,7 +79,7 @@
           // {
             backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start bazarr";
             backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop bazarr";
-            paths = [config.myNixOS.services.bazarr.dataDir];
+            paths = [config.services.bazarr.dataDir];
             repository = "rclone:b2:aly-backups/${config.networking.hostName}/bazarr";
           };
 
