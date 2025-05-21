@@ -17,12 +17,12 @@
 
   config = lib.mkMerge [
     (lib.mkIf config.myNixOS.profiles.arr.enable {
-      fileSystems."/var/lib/prowlarr" =
-        lib.mkIf (config.myNixOS.profiles.arr.dataDir != "/var/lib")
-        {
-          device = "${config.myNixOS.profiles.arr.dataDir}/prowlarr";
-          options = ["bind"];
-        };
+      # fileSystems."/var/lib/prowlarr" =
+      #   lib.mkIf (config.myNixOS.profiles.arr.dataDir != "/var/lib")
+      #   {
+      #     device = "${config.myNixOS.profiles.arr.dataDir}/prowlarr";
+      #     options = ["bind"];
+      #   };
 
       services = {
         lidarr = {
@@ -33,6 +33,7 @@
 
         prowlarr = {
           enable = true;
+          dataDir = "${config.myNixOS.profiles.arr.dataDir}/prowlarr";
           openFirewall = true; # Port: 9696
         };
 
