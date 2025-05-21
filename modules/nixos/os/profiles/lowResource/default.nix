@@ -1,15 +1,11 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.myNixOS.profiles.lowResource.enable = lib.mkEnableOption "optimizations for resource-constrained servers";
   config = lib.mkIf config.myNixOS.profiles.lowResource.enable {
-    boot = {
-      kernelPackages = pkgs.linuxPackages_latest;
-      tmp.cleanOnBoot = true;
-    };
+    boot.tmp.cleanOnBoot = true;
 
     documentation = {
       enable = false;
