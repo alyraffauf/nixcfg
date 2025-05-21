@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./chromium
-    ./cloud
+    # ./cloud
     ./common.nix
     ./windowManagers
   ];
