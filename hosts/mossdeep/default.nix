@@ -42,7 +42,7 @@
   ];
 
   networking = {
-    firewall.allowedTCPPorts = [80 443];
+    firewall.allowedTCPPorts = [80 443 2222];
     hostName = "mossdeep";
   };
 
