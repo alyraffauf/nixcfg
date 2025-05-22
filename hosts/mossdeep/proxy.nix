@@ -51,6 +51,20 @@
             proxyWebsockets = true;
           };
         };
+
+        "git.aly.codes" = {
+          enableACME = true;
+          forceSSL = true;
+
+          locations."/" = {
+            proxyPass = "http://localhost${toString config.services.anubis.instances.forgejo.settings.BIND}";
+            proxyWebsockets = true;
+
+            extraConfig = ''
+              client_max_body_size 2G;
+            '';
+          };
+        };
       };
     };
   };
