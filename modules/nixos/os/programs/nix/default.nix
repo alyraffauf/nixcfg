@@ -41,6 +41,7 @@
     programs.nix-ld.enable = true;
 
     users.users.nixbuild = {
+      uid = 1999;
       isNormalUser = true;
       createHome = false;
       group = "nixbuild";
