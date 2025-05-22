@@ -22,6 +22,7 @@
     packages = with pkgs; [
       curl
       rclone
+      wget
     ];
 
     username = "aly";
