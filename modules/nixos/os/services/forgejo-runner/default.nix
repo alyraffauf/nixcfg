@@ -35,9 +35,23 @@
       lib.genAttrs runnerIndices (idx: {
         enable = true;
 
+        hostPackages = with pkgs; [
+          bash
+          cachix
+          coreutils
+          curl
+          gawk
+          gitMinimal
+          gnused
+          jq
+          nix
+          nodejs
+          wget
+        ];
+
         labels =
           [
-            "native:host"
+            "nixos-${arch}:host"
             "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
           ]
           ++ lib.optional (arch == "aarch64_linux") "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest";
