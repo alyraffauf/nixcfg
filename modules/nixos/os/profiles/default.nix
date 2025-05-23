@@ -5,7 +5,6 @@
     ./base
     ./btrfs
     ./data-share
-    ./forgejo-runner
     ./gaming
     ./hardened
     ./lowResource

@@ -105,12 +105,6 @@
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
-
-      forgejo-runner = {
-        enable = true;
-        number = 1;
-      };
-
       media-share.enable = true;
       server.enable = true;
       swap.enable = true;
@@ -124,6 +118,11 @@
     };
 
     services = {
+      forgejo-runner = {
+        enable = true;
+        number = 1;
+      };
+
       qbittorrent.enable = true;
 
       syncthing = {

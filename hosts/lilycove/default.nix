@@ -61,12 +61,6 @@ in {
 
       base.enable = true;
       btrfs.enable = true;
-
-      forgejo-runner = {
-        enable = true;
-        number = 4;
-      };
-
       server.enable = true;
       swap.enable = true;
     };
@@ -78,6 +72,11 @@ in {
     };
 
     services = {
+      forgejo-runner = {
+        enable = true;
+        number = 4;
+      };
+
       qbittorrent.enable = true;
 
       syncthing = {

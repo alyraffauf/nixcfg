@@ -5,7 +5,7 @@
   self,
   ...
 }: {
-  options.myNixOS.profiles.forgejo-runner = {
+  options.myNixOS.services.forgejo-runner = {
     enable = lib.mkEnableOption "Forĝejo runners";
 
     number = lib.mkOption {
@@ -15,7 +15,7 @@
     };
   };
 
-  config = lib.mkIf config.myNixOS.profiles.forgejo-runner.enable {
+  config = lib.mkIf config.myNixOS.services.forgejo-runner.enable {
     assertions = [
       {
         assertion = config.services.tailscale.enable;
@@ -26,7 +26,7 @@
     age.secrets.act-runner.file = "${self.inputs.secrets}/act-runner.age";
 
     services.gitea-actions-runner.instances = let
-      runnerCount = config.myNixOS.profiles.forgejo-runner.number;
+      runnerCount = config.myNixOS.services.forgejo-runner.number;
       runnerIndices = lib.map (i: toString i) (lib.range 1 runnerCount);
 
       # eg x86_64-linux → x86_64_linux

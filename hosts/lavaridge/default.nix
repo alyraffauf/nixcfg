@@ -78,12 +78,6 @@
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
-
-      forgejo-runner = {
-        enable = true;
-        number = 4;
-      };
-
       media-share.enable = true;
       server.enable = true;
       swap.enable = true;
@@ -97,6 +91,11 @@
     };
 
     services = {
+      forgejo-runner = {
+        enable = true;
+        number = 4;
+      };
+
       syncthing = {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;
