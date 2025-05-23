@@ -43,7 +43,7 @@ jobs:
         uses: tailscale/gitops-acl-action@v1
         with:
           api-key: ${{ secrets.TS_API_KEY }}
-          tailnet: ${{ secrets.TS_TAILNET }}
+          tailnet: alyraffauf.github
           policy-file: tailscale.json
           action: apply
 
@@ -54,6 +54,6 @@ jobs:
         uses: tailscale/gitops-acl-action@v1
         with:
           api-key: ${{ secrets.TS_API_KEY }}
-          tailnet: ${{ secrets.TS_TAILNET }}
+          tailnet: alyraffauf.github
           policy-file: tailscale.json
           action: test

@@ -3,6 +3,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on:
+  pull_request:
   push:
     paths-ignore:
       - "**/*.md"
@@ -11,21 +12,19 @@ on:
   workflow_dispatch:
 jobs:
   check-fmt:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
       - name: Check formatting
         run: nix fmt -- -c .
   check-eval:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
       - name: Check flake evaluation
         run: nix flake check --all-systems
       - name: Check deployments evaluation

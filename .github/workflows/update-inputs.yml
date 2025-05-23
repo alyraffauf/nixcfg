@@ -1,26 +1,83 @@
 name: update-inputs
 on:
-  schedule:
-    - cron: "0 6 * * 2,5"
   workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 2,5" # Tue & Fri
+
 jobs:
   update-flake-lock:
-    runs-on: ubuntu-latest
+    runs-on: native
+    env:
+      FJ_URL: https://git.aly.codes
+      BASE_BRANCH: master
+      BRANCH_PREFIX: flake-lock-update
+      GIT_AUTHOR_NAME: flake-bot
+      GIT_AUTHOR_EMAIL: flake-bot@local
+      GIT_COMMITTER_NAME: ${{ env.GIT_AUTHOR_NAME }}
+      GIT_COMMITTER_EMAIL: ${{ env.GIT_AUTHOR_EMAIL }}
+
     steps:
-      - uses: actions/checkout@main
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 1
-      - name: Setup Git
+      - uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
+
+      - name: Update inputs & commit
+        id: bump
         run: |
-          git config --local user.name  "github-actions[bot]"
-          git config --local user.email  "github-actions[bot]@users.noreply.github.com"
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/update-flake-lock@main
-        with:
-          token: ${{ secrets.FLAKE_UPDATE_PAT }}
-          pr-title: "flake: update inputs"
-          pr-assignees: alyraffauf
-          pr-labels: |-
-            dependencies
-            automated
+          set -euo pipefail
+          BRANCH="${BRANCH_PREFIX}-${GITHUB_RUN_ID}"
+          git switch -c "$BRANCH"
+
+          BEFORE=$(git rev-parse HEAD)
+
+          # Nix updates inputs and commits if needed
+          nix flake update --commit-lock-file
+
+          AFTER=$(git rev-parse HEAD)
+          if [ "$BEFORE" = "$AFTER" ]; then
+            echo "changed=false" >>"$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # ── Grab commit info ────────────────────────────────────────────────
+          # Full message
+          COMMIT_RAW=$(git log -1 --pretty=%B)
+
+          # First line is the short summary; we keep lines AFTER the first blank
+          COMMIT_BODY=$(printf '%s\n' "$COMMIT_RAW" \
+                         | sed '1,/^$/d'                  \
+                         | sed 's/^• */* /')              # nicer Markdown bullet
+
+          # Title becomes first line of the PR
+          COMMIT_TITLE=$(printf '%s\n' "$COMMIT_RAW" | head -n1)
+
+          # JSON-escape the body so \n etc. are valid JSON
+          BODY_JSON=$(printf '%s' "$COMMIT_BODY" | jq -Rs .)
+
+          echo "changed=true"            >>"$GITHUB_OUTPUT"
+          echo "branch=$BRANCH"          >>"$GITHUB_OUTPUT"
+          echo "title=$COMMIT_TITLE"     >>"$GITHUB_OUTPUT"
+          echo "body_json=$BODY_JSON"    >>"$GITHUB_OUTPUT"
+
+          git push -u origin "$BRANCH"
+
+      - name: Open pull-request
+        if: steps.bump.outputs.changed == 'true'
+        env:
+          TOKEN: ${{ secrets.FLAKE_UPDATE_PAT }}
+          BRANCH: ${{ steps.bump.outputs.branch }}
+          TITLE: ${{ steps.bump.outputs.title }}
+          BODY_JSON: ${{ steps.bump.outputs.body_json }}
+        run: |
+          set -euo pipefail
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          curl -fSs -X POST "$FJ_URL/api/v1/repos/$OWNER/$REPO/pulls" \
+            -H "Authorization: token $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "head": "'"$BRANCH"'",
+              "base": "'"$BASE_BRANCH"'",
+              "title": "'"$TITLE"'",
+              "body": '"$BODY_JSON"',
+              "draft": false
+            }'

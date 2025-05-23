@@ -3,6 +3,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on:
+  pull_request:
   push:
     paths:
       - "pkgs/**"
@@ -11,54 +12,42 @@ on:
   workflow_dispatch:
 jobs:
   build-deployer:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build deployer package
-        run: nix build --accept-flake-config .#packages.x86_64-linux.deployer
+        run: nix build --accept-flake-config .#packages.x86_64-linux.deployer --no-link --print-out-paths | cachix push alyraffauf
   build-formatter:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build formatter package
-        run: nix build --accept-flake-config .#packages.x86_64-linux.formatter
+        run: nix build --accept-flake-config .#packages.x86_64-linux.formatter --no-link --print-out-paths | cachix push alyraffauf
   build-installer:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build installer package
-        run: nix build --accept-flake-config .#packages.x86_64-linux.installer
+        run: nix build --accept-flake-config .#packages.x86_64-linux.installer --no-link --print-out-paths | cachix push alyraffauf
   build-devShell:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build devShell
-        run: nix build --accept-flake-config .#devShells.x86_64-linux.default
+        run: nix build --accept-flake-config .#devShells.x86_64-linux.default --no-link --print-out-paths | cachix push alyraffauf

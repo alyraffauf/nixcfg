@@ -3,6 +3,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on:
+  pull_request:
   push:
     paths-ignore:
       - "**/*.md"
@@ -11,150 +12,102 @@ on:
   workflow_dispatch:
 jobs:
   build-fallarbor:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build fallarbor
-        run: nix build --accept-flake-config .#nixosConfigurations.fallarbor.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.fallarbor.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-lavaridge:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build lavaridge
-        run: nix build --accept-flake-config .#nixosConfigurations.lavaridge.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.lavaridge.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-lilycove:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build lilycove
-        run: nix build --accept-flake-config .#nixosConfigurations.lilycove.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.lilycove.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-mauville:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build mauville
-        run: nix build --accept-flake-config .#nixosConfigurations.mauville.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.mauville.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-mossdeep:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build mossdeep
-        run: nix build --accept-flake-config .#nixosConfigurations.mossdeep.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.mossdeep.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-roxanne:
-    runs-on: ubuntu-24.04-arm
+    runs-on: native
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build roxanne
-        run: nix build --accept-flake-config .#nixosConfigurations.roxanne.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.roxanne.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-rustboro:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build rustboro
-        run: nix build --accept-flake-config .#nixosConfigurations.rustboro.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.rustboro.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-slateport:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build slateport
-        run: nix build --accept-flake-config .#nixosConfigurations.slateport.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.slateport.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-sootopolis:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build sootopolis
-        run: nix build --accept-flake-config .#nixosConfigurations.sootopolis.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.sootopolis.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-verdanturf:
-    runs-on: ubuntu-latest
+    runs-on: native
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build verdanturf
-        run: nix build --accept-flake-config .#nixosConfigurations.verdanturf.config.system.build.toplevel
+        run: nix build --accept-flake-config .#nixosConfigurations.verdanturf.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
