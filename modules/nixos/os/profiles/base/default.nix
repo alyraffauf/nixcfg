@@ -18,8 +18,8 @@
       ];
 
       variables = {
-        FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
-        NH_FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
+        FLAKE = lib.mkDefault "git+https://git.aly.codes/alyraffauf/nixcfg.git";
+        NH_FLAKE = lib.mkDefault "git+https://git.aly.codes/alyraffauf/nixcfg.git";
       };
     };
 
