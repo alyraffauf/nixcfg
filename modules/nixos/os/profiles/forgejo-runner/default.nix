@@ -1,12 +1,12 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
   options.myNixOS.profiles.forgejo-runner = {
-    enable =
-      lib.mkEnableOption "Forĝejo runners";
+    enable = lib.mkEnableOption "Forĝejo runners";
 
     number = lib.mkOption {
       type = lib.types.int;
@@ -27,22 +27,25 @@
 
     services.gitea-actions-runner.instances = let
       runnerCount = config.myNixOS.profiles.forgejo-runner.number;
-      # turn [1 2 … N] into ["1" "2" … "N"]
       runnerIndices = lib.map (i: toString i) (lib.range 1 runnerCount);
+
+      # eg x86_64-linux → x86_64_linux
+      arch = lib.replaceStrings ["-"] ["_"] pkgs.system;
     in
       lib.genAttrs runnerIndices (idx: {
         enable = true;
 
-        labels = [
-          "native:host"
-          "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
-          "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest"
-        ];
+        labels =
+          [
+            "native:host"
+            "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
+          ]
+          ++ lib.optional (arch == "aarch64_linux") "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest";
 
-        name = "${config.networking.hostName}-${idx}";
+        name = "${arch}-${config.networking.hostName}-${idx}";
         settings.container.network = "host";
         tokenFile = config.age.secrets.act-runner.path;
-        url = "http://mauville:3000";
+        url = "http://mossdeep:3001";
       });
   };
 }
