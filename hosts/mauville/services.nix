@@ -1,24 +1,4 @@
-{config, ...}: let
-in {
-  environment.etc = {
-    "fail2ban/filter.d/audiobookshelf.conf".text = ''
-      [Definition]
-      failregex = \[.*\] ERROR: \[Auth\] Failed login attempt for username \".*\" from ip <HOST> \(User not found\)
-      ignoreregex =
-      journalmatch = _SYSTEMD_UNIT=audiobookshelf.service
-    '';
-
-    # "fail2ban/filter.d/navidrome.conf".text = ''
-    #   [INCLUDES]
-    #   before = common.conf
-
-    #   [Definition]
-    #   failregex = msg="Unsuccessful login".*X-Real-Ip:\[<HOST>\]
-    #   ignoreregex =
-    #   journalmatch = _SYSTEMD_UNIT=navidrome.service
-    # '';
-  };
-
+{...}: {
   networking = {
     firewall.allowedTCPPorts = [80 443 2222 2379 2380 3000 6443 61208];
     firewall.allowedUDPPorts = [8472];
@@ -30,31 +10,6 @@ in {
       host = "0.0.0.0";
       openFirewall = true;
       port = 13378;
-    };
-
-    fail2ban = {
-      enable = true;
-      ignoreIP = ["100.64.0.0/10"];
-      bantime = "24h";
-      bantime-increment.enable = true;
-
-      jails = {
-        audiobookshelf = ''
-          enabled = true
-          backend = systemd
-          filter = audiobookshelf
-          maxretry = 5
-          port = 80,443,${toString config.services.audiobookshelf.port}
-        '';
-
-        # navidrome = ''
-        #   enabled = true
-        #   backend = systemd
-        #   filter = navidrome
-        #   maxretry = 5
-        #   port = 0,443,${toString navidrome.port}
-        # '';
-      };
     };
 
     forgejo = {

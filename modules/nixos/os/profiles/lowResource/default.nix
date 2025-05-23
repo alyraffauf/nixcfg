@@ -35,5 +35,7 @@
       algorithm = lib.mkDefault "zstd";
       priority = lib.mkDefault 100;
     };
+
+    myNixOS.services.fail2ban.enable = true;
   };
 }

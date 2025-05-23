@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./fail2ban
     ./flatpak
     ./gdm
     ./greetd

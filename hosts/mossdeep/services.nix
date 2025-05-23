@@ -3,30 +3,7 @@
   pkgs,
   ...
 }: {
-  environment.etc = {
-    "fail2ban/filter.d/forgejo.conf".text = ''
-      [Definition]
-      failregex =  .*(Failed authentication attempt|invalid credentials|Attempted access of unknown user).* from <HOST>
-      journalmatch = _SYSTEMD_UNIT=forgejo.service
-    '';
-  };
-
   services = {
-    fail2ban = {
-      enable = true;
-      ignoreIP = ["100.64.0.0/10"];
-      bantime = "24h";
-      bantime-increment.enable = true;
-
-      jails.forgejo.settings = {
-        action = "iptables-allports";
-        bantime = 900;
-        filter = "forgejo";
-        findtime = 3600;
-        maxretry = 4;
-      };
-    };
-
     pds = {
       enable = true;
       environmentFiles = [config.age.secrets.pds.path];

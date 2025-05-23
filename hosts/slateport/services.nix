@@ -33,35 +33,6 @@
       zone = "cute.haus";
     };
 
-    fail2ban = {
-      enable = true;
-      ignoreIP = ["100.64.0.0/10"];
-      bantime = "24h";
-      bantime-increment.enable = true;
-
-      jails = {
-        # HTTP basic-auth failures, 5 tries → 1-day ban
-        nginx-http-auth = {
-          settings = {
-            enabled = true;
-            maxretry = 5;
-            findtime = 300;
-            bantime = "24h";
-          };
-        };
-
-        # Generic scanner / bot patterns (wp-login.php, sqladmin, etc.)
-        nginx-botsearch = {
-          settings = {
-            enabled = true;
-            maxretry = 10;
-            findtime = 300;
-            bantime = "24h";
-          };
-        };
-      };
-    };
-
     glance = {
       enable = true;
       openFirewall = true;
