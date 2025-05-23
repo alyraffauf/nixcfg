@@ -94,7 +94,7 @@ This repository is licensed under the **[GNU General Public License](LICENSE.md)
 
 ## 🙌 Acknowledgments
 
-- [nixpkgs](github.com/nixos/nixpkgs): 'nough said.
+- [nixpkgs](https://github.com/nixos/nixpkgs): 'nough said.
 - [agenix](https://github.com/ryantm/agenix): secrets storage and orchestration.
 - [disko](https://github.com/nix-community/disko): declarative partitions and disk configuration.
 - [home-manager](https://github.com/nix-community/home-manager): declarative dotfile and user package management.
