@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 jobs:
   build-fallarbor:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -22,7 +22,7 @@ jobs:
       - name: Build fallarbor
         run: nix build --accept-flake-config .#nixosConfigurations.fallarbor.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-lavaridge:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -32,7 +32,7 @@ jobs:
       - name: Build lavaridge
         run: nix build --accept-flake-config .#nixosConfigurations.lavaridge.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-lilycove:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -42,7 +42,7 @@ jobs:
       - name: Build lilycove
         run: nix build --accept-flake-config .#nixosConfigurations.lilycove.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-mauville:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -52,7 +52,7 @@ jobs:
       - name: Build mauville
         run: nix build --accept-flake-config .#nixosConfigurations.mauville.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-mossdeep:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -62,7 +62,7 @@ jobs:
       - name: Build mossdeep
         run: nix build --accept-flake-config .#nixosConfigurations.mossdeep.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-roxanne:
-    runs-on: native
+    runs-on: nixos-aarch64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -72,7 +72,7 @@ jobs:
       - name: Build roxanne
         run: nix build --accept-flake-config .#nixosConfigurations.roxanne.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-rustboro:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -82,7 +82,7 @@ jobs:
       - name: Build rustboro
         run: nix build --accept-flake-config .#nixosConfigurations.rustboro.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-slateport:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -92,7 +92,7 @@ jobs:
       - name: Build slateport
         run: nix build --accept-flake-config .#nixosConfigurations.slateport.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-sootopolis:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -102,7 +102,7 @@ jobs:
       - name: Build sootopolis
         run: nix build --accept-flake-config .#nixosConfigurations.sootopolis.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-verdanturf:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:

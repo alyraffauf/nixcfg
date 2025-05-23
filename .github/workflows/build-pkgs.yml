@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 jobs:
   build-deployer:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -22,7 +22,7 @@ jobs:
       - name: Build deployer package
         run: nix build --accept-flake-config .#packages.x86_64-linux.deployer --no-link --print-out-paths | cachix push alyraffauf
   build-formatter:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -32,7 +32,7 @@ jobs:
       - name: Build formatter package
         run: nix build --accept-flake-config .#packages.x86_64-linux.formatter --no-link --print-out-paths | cachix push alyraffauf
   build-installer:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -42,7 +42,7 @@ jobs:
       - name: Build installer package
         run: nix build --accept-flake-config .#packages.x86_64-linux.installer --no-link --print-out-paths | cachix push alyraffauf
   build-devShell:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:

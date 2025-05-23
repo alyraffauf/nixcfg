@@ -6,7 +6,7 @@ on:
 
 jobs:
   update-flake-lock:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     env:
       FJ_URL: https://git.aly.codes
       BASE_BRANCH: master

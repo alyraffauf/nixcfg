@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 jobs:
   check-fmt:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
@@ -20,7 +20,7 @@ jobs:
       - name: Check formatting
         run: nix fmt -- -c .
   check-eval:
-    runs-on: native
+    runs-on: nixos-x86_64_linux
     steps:
       - uses: actions/checkout@main
         with:
