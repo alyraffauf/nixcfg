@@ -72,7 +72,14 @@
       podman.enable = true;
     };
 
-    services.tailscale.enable = true;
+    services = {
+      forgejo-runner = {
+        enable = true;
+        number = 1;
+      };
+
+      tailscale.enable = true;
+    };
   };
 
   myUsers.aly = {
