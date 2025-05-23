@@ -961,11 +961,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1747785510,
-        "narHash": "sha256-LisLKw4dtdcRFVmwHfTfzAqXx+05Ic0dwcqUq/KKO0c=",
+        "lastModified": 1748003264,
+        "narHash": "sha256-1ltrZecZ1+/wSMjJ5sRFJFzLYPpgjlm1JDX6HGTu+1o=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "aecb1cb2cd9793467df2b2c26f4a077c677c26b2",
+        "rev": "879c078fdd18d55f57620fa6841435b1d666acc9",
         "type": "github"
       },
       "original": {
