@@ -17,7 +17,10 @@
       extraConfig = "SystemMaxUse=32M\nRuntimeMaxUse=32M";
     };
 
-    nix.settings.sandbox = false;
+    nix = {
+      gc.options = lib.mkForce "--delete-older-than 1d";
+      settings.sandbox = false;
+    };
 
     systemd = {
       coredump.enable = false;
