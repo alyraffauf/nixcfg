@@ -25,7 +25,6 @@ ThinkPad T440p — an older but reliable workhorse. Mostly used for testing or a
 ### `/` (Root)
 
 - **Format**: Btrfs.
-- **Encryption**: Encrypted with LUKS for security.
 
 ---
 
