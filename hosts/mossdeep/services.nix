@@ -38,6 +38,7 @@
 
       dump.enable = true;
       lfs.enable = true;
+      package = pkgs.forgejo;
 
       secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer-passwd.path;
 
