@@ -35,19 +35,20 @@
       lib.genAttrs runnerIndices (idx: {
         enable = true;
 
-        hostPackages = with pkgs; [
-          bash
-          cachix
-          coreutils
-          curl
-          gawk
-          gitMinimal
-          gnused
-          jq
-          nix
-          nodejs
-          wget
-        ];
+        hostPackages = with pkgs;
+          [
+            bash
+            cachix
+            coreutils
+            curl
+            gawk
+            gitMinimal
+            gnused
+            jq
+            nodejs
+            wget
+          ]
+          ++ [(config.nix.package)];
 
         labels =
           [
