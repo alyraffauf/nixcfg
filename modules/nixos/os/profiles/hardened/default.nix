@@ -30,7 +30,6 @@
         updater.enable = true;
       };
 
-      openssh.enable = lib.mkForce false;
       printing.enable = lib.mkForce false;
       system-config-printer.enable = lib.mkForce false;
     };
