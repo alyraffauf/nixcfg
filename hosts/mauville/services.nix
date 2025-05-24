@@ -1,6 +1,6 @@
 {...}: {
   networking = {
-    firewall.allowedTCPPorts = [80 443 2222 2379 2380 3000 6443 61208];
+    firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443 61208];
     firewall.allowedUDPPorts = [8472];
   };
 
@@ -10,69 +10,6 @@
       host = "0.0.0.0";
       openFirewall = true;
       port = 13378;
-    };
-
-    forgejo = {
-      enable = true;
-      lfs.enable = true;
-      stateDir = "/mnt/Storage/forgejo";
-
-      settings = {
-        actions = {
-          ENABLED = true;
-          DEFAULT_ACTIONS_URL = "https://github.com";
-        };
-
-        cron = {
-          ENABLED = true;
-          RUN_AT_START = false;
-        };
-
-        DEFAULT.APP_NAME = "Forĝejo";
-        federation.ENABLED = true;
-        indexer.REPO_INDEXER_ENABLED = true;
-        log.ENABLE_SSH_LOG = true;
-
-        picture = {
-          AVATAR_MAX_FILE_SIZE = 5242880;
-          ENABLE_FEDERATED_AVATAR = true;
-        };
-
-        repository = {
-          DEFAULT_BRANCH = "master";
-          ENABLE_PUSH_CREATE_ORG = true;
-          ENABLE_PUSH_CREATE_USER = true;
-          PREFERRED_LICENSES = "GPL-3.0";
-        };
-
-        security.PASSWORD_CHECK_PWN = true;
-
-        server = {
-          DOMAIN = "forgejo.cute.haus";
-          LANDING_PAGE = "explore";
-          LFS_START_SERVER = true;
-          ROOT_URL = "https://forgejo.cute.haus/";
-          SSH_DOMAIN = "forgejo.cute.haus";
-          SSH_LISTEN_PORT = 2222;
-          SSH_PORT = 2222;
-          START_SSH_SERVER = true;
-        };
-
-        service = {
-          ALLOW_ONLY_INTERNAL_REGISTRATION = true;
-          DISABLE_REGISTRATION = true;
-          ENABLE_NOTIFY_MAIL = true;
-        };
-
-        session.COOKIE_SECURE = true;
-        ui.DEFAULT_THEME = "forgejo-auto";
-
-        "ui.meta" = {
-          AUTHOR = "Aly Raffauf";
-          DESCRIPTION = "Self-hosted git forge for projects + toys.";
-          KEYWORDS = "git,source code,forge,forĝejo,aly raffauf";
-        };
-      };
     };
 
     # navidrome = {
@@ -112,13 +49,6 @@
     #     };
     #   };
     # };
-  };
-
-  systemd.services = {
-    forgejo = {
-      after = ["mnt-Storage.mount"];
-      wants = ["mnt-Storage.mount"];
-    };
   };
 
   # systemd.services = {
