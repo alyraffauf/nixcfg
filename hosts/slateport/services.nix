@@ -84,8 +84,8 @@
                       }
                       {
                         title = "Forĝejo";
-                        url = "https://forgejo.cute.haus/";
-                        check-url = "http://mauville:3000";
+                        url = "https://git.aly.codes/";
+                        check-url = "http://mossdeep:3001";
                         icon = "di:forgejo";
                       }
                       {

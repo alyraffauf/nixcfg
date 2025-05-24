@@ -19,19 +19,6 @@ in {
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
 
-      streamConfig = ''
-        upstream ssh_forgejo {
-          # point at your Forgejo SSH listener on mauville
-          server mauville:2222;
-        }
-
-        server {
-          listen       2222;         # slateport's port 2222
-          proxy_pass   ssh_forgejo; # hand off to upstream
-          # (optional) proxy_protocol on;  # if you need X-Forwarded-For support
-        }
-      '';
-
       virtualHosts = {
         "${newDomain}" = {
           enableACME = true;
@@ -53,20 +40,6 @@ in {
 
             extraConfig = ''
               proxy_buffering off;
-            '';
-          };
-        };
-
-        "forgejo.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.forgejo.settings.BIND}";
-            proxyWebsockets = true;
-
-            extraConfig = ''
-              client_max_body_size 2G;
             '';
           };
         };

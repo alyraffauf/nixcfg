@@ -17,14 +17,6 @@
         METRICS_BIND_NETWORK = "tcp";
       };
 
-      forgejo.settings = {
-        TARGET = "http://mauville:3000";
-        BIND = ":60823";
-        BIND_NETWORK = "tcp";
-        METRICS_BIND = "0.0.0.0:20823";
-        METRICS_BIND_NETWORK = "tcp";
-      };
-
       glance.settings = {
         TARGET = "http://127.0.0.1:${toString config.services.glance.settings.server.port}";
         BIND = ":60723";
