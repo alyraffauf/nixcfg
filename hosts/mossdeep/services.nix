@@ -26,8 +26,20 @@
 
     forgejo = {
       enable = true;
+
+      database = {
+        createDatabase = true;
+        host = "127.0.0.1";
+        name = "forgejo";
+        passwordFile = config.age.secrets.postgres-forgejo.path;
+        type = "postgres";
+        user = "forgejo";
+      };
+
       dump.enable = true;
       lfs.enable = true;
+
+      secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer-passwd.path;
 
       settings = {
         actions = {
@@ -40,15 +52,6 @@
           RUN_AT_START = false;
         };
 
-        database = {
-          createDatabase = false;
-          host = "127.0.0.1";
-          name = "forgejo";
-          passwordFile = config.age.secrets.postgres-forgejo.path;
-          type = "postgres";
-          user = "forgejo";
-        };
-
         DEFAULT.APP_NAME = "Forĝejo";
         federation.ENABLED = true;
         indexer.REPO_INDEXER_ENABLED = true;
@@ -56,6 +59,15 @@
         log = {
           ENABLE_SSH_LOG = true;
           LEVEL = "Debug";
+        };
+
+        mailer = {
+          ENABLED = true;
+          FROM = "Forĝejo <git@aly.social>";
+          PROTOCOL = "smtp+starttls";
+          SMTP_ADDR = "smtp.resend.com";
+          SMTP_PORT = 587;
+          USER = "resend";
         };
 
         picture = {
