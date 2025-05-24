@@ -52,9 +52,8 @@
         labels =
           [
             "nixos-${arch}:host"
-            "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest"
           ]
-          ++ lib.optional (arch == "aarch64_linux") "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest";
+          ++ lib.optional (arch == "aarch64_linux") "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest" ++ lib.optional (arch == "x86_64_linux") "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest";
 
         name = "${arch}-${config.networking.hostName}-${idx}";
         settings.container.network = "host";
