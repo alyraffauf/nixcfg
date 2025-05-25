@@ -114,4 +114,6 @@
       };
     };
   };
+
+  systemd.services.podman-alycodes.after = ["forgejo.service"];
 }
