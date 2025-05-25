@@ -50,7 +50,7 @@
           custom-theme-shrink = false;
           dock-fixed = true;
           dock-postion = "LEFT";
-          extend-height = true;
+          extend-height = false;
         };
 
         "org/gnome/system/location".enabled = true;
