@@ -48,6 +48,11 @@
         publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_roxanne.pub";
       };
 
+      rustboro = {
+        hostNames = ["rustboro" "rustboro.local" "rustboro.narwhal-snapper.ts.net"];
+        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_rustboro.pub";
+      };
+
       slateport = {
         hostNames = ["slateport" "slateport.local" "slateport.narwhal-snapper.ts.net"];
         publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_slateport.pub";
