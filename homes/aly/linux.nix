@@ -6,9 +6,9 @@
 }: {
   imports = [
     ./chromium
-    # ./cloud
     ./common.nix
     ./windowManagers
+    ./zen
   ];
 
   gtk.gtk3.bookmarks = lib.mkAfter [

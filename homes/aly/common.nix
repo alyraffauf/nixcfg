@@ -13,7 +13,6 @@
     ./mail
     ./secrets.nix
     ./vsCode
-    ./zen
     self.homeManagerModules.default
     self.homeManagerModules.snippets
     self.inputs.agenix.homeManagerModules.default
