@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   self,
   ...
@@ -12,7 +11,6 @@ in {
 
   programs.zen-browser = {
     enable = true;
-    package = lib.mkIf pkgs.stdenv.isDarwin null;
 
     profiles = {
       default = {
