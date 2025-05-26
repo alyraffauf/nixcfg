@@ -39,12 +39,9 @@ in {
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
           bitwarden
-          clearurls
           consent-o-matic
-          raindropio
           simple-tab-groups
           ublock-origin
-          zoom-redirector
         ];
 
         id = 0;
@@ -126,16 +123,4 @@ in {
   };
 
   stylix.targets.firefox.profileNames = ["default"];
-
-  # xdg.desktopEntries.firework = {
-  #   categories = ["Application" "Network" "WebBrowser"];
-  #   exec = "firefox -p work --name firework %U";
-  #   genericName = "Web Browser";
-  #   icon = "firefox";
-  #   mimeType = ["text/html" "text/xml"];
-  #   name = "Firefox (work)";
-  #   settings = {StartupWMClass = "firework";};
-  #   startupNotify = true;
-  #   terminal = false;
-  # };
 }
