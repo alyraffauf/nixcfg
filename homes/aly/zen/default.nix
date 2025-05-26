@@ -14,11 +14,6 @@ in {
     enable = true;
     package = lib.mkIf pkgs.stdenv.isDarwin null;
 
-    policies = {
-      DisableAppUpdate = true;
-      DisableTelemetry = true;
-    };
-
     profiles = {
       default = {
         containersForce = true;
