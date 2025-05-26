@@ -50,5 +50,10 @@
     enable = true;
     editor.package = config.programs.vscode.package;
     terminal.package = config.programs.ghostty.package;
+
+    webBrowser = {
+      exec = lib.getExe config.programs.zen-browser.finalPackage;
+      package = config.programs.zen-browser.finalPackage;
+    };
   };
 }
