@@ -49,6 +49,7 @@
       "thunderbird"
       "todoist"
       "vlc"
+      "zen"
     ];
 
     masApps = {
