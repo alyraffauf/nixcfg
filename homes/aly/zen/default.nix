@@ -69,6 +69,8 @@ in {
             "Wiktionary"
           ];
         };
+
+        settings = import ../firefox/betterfox/smoothfox.nix;
       };
     };
   };
