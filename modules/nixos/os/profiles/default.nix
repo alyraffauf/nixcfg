@@ -2,6 +2,7 @@
   imports = [
     ./arr
     ./autoUpgrade
+    ./backups
     ./base
     ./btrfs
     ./data-share

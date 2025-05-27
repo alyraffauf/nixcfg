@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./anubis.nix
-    ./backups.nix
     ./oci.nix
     ./proxy.nix
     ./secrets.nix
@@ -68,6 +67,7 @@
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
+      backups.enable = true;
       base.enable = true;
       lowResource.enable = true;
     };

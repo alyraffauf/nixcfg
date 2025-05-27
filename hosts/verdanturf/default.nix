@@ -57,6 +57,7 @@
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
+      backups.enable = true;
       lowResource.enable = true;
     };
 

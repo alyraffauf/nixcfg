@@ -55,10 +55,10 @@ in {
 
       arr = {
         enable = true;
-        backup = true;
         dataDir = "/mnt/Data";
       };
 
+      backups.enable = true;
       base.enable = true;
       btrfs.enable = true;
       server.enable = true;
