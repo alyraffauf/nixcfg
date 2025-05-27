@@ -60,6 +60,8 @@
         arguments = ["--pretty"];
       };
 
+      ripgrep-all.enable = true;
+
       yazi = {
         enable = true;
         enableBashIntegration = true;
