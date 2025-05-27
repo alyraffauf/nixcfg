@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./firefox
-    ./ghostty
     ./git
     ./helix
     ./mail
@@ -78,6 +77,10 @@
 
   myHome = {
     profiles.shell.enable = true;
-    programs.fastfetch.enable = true;
+
+    programs = {
+      fastfetch.enable = true;
+      ghostty.enable = true;
+    };
   };
 }
