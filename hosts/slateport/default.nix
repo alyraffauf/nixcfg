@@ -35,6 +35,7 @@
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
+      backups.enable = true;
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
