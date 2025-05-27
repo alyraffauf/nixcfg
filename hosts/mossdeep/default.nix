@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./anubis.nix
-    ./oci.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix
@@ -77,7 +76,11 @@
       podman.enable = true;
     };
 
-    services.tailscale.enable = true;
+    services = {
+      alycodes.enable = true;
+      forgejo.enable = true;
+      tailscale.enable = true;
+    };
   };
 
   myUsers.root.enable = true;
