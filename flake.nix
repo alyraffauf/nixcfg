@@ -220,7 +220,6 @@
       hardware-lenovo-thinkpad-5D50X = ./modules/nixos/hardware/lenovo/thinkpad/5D50X;
       hardware-lenovo-thinkpad-T440p = ./modules/nixos/hardware/lenovo/thinkpad/T440p;
       hardware-lenovo-thinkpad-X1-gen-9 = ./modules/nixos/hardware/lenovo/thinkpad/X1/gen-9;
-      hardware-lenovo-yoga-16IMH9 = ./modules/nixos/hardware/lenovo/yoga/16IMH9;
       hardware-nvidia-gpu = ./modules/nixos/hardware/nvidia/gpu;
       hardware-profiles-laptop = ./modules/nixos/hardware/profiles/laptop.nix;
       locale-en-us = ./modules/nixos/locale/en-us;
