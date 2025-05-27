@@ -9,13 +9,13 @@
   imports = [
     ./anubis.nix
     ./backups.nix
-    ./disko.nix
     ./oci.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix
     ./stylix.nix
     "${modulesPath}/profiles/qemu-guest.nix"
+    self.nixosModules.disko-lvm-ext4
     self.nixosModules.locale-en-us
   ];
 
@@ -63,6 +63,7 @@
   };
 
   time.timeZone = "America/New_York";
+  myDisko.installDrive = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_62292463";
 
   myNixOS = {
     profiles = {

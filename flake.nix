@@ -206,6 +206,7 @@
     nixosModules = {
       disko-btrfs-subvolumes = ./modules/nixos/disko/btrfs-subvolumes;
       disko-luks-btrfs-subvolumes = ./modules/nixos/disko/luks-btrfs-subvolumes;
+      disko-lvm-ext4 = ./modules/nixos/disko/lvm-ext4;
       hardware-amd-cpu = ./modules/nixos/hardware/amd/cpu;
       hardware-amd-gpu = ./modules/nixos/hardware/amd/gpu;
       hardware-asus-ally-RC72LA = ./modules/nixos/hardware/asus/ally/RC72LA;
