@@ -2,7 +2,7 @@
   # ***********************************************************************
   # Betterfox
   # "Ad meliora"
-  # version: 135
+  # version: 137
   # url: https://github.com/yokoffing/Betterfox
   # ***********************************************************************
 
@@ -208,27 +208,4 @@
   "browser.menu.showViewImageInfo" = true;
   "findbar.highlightAll" = true;
   "layout.word_select.eat_space_to_next_word" = false;
-
-  #############################################################
-  # SECTION: SMOOTHFOX
-  #############################################################
-  # Smoothfox Customizations
-  # "Faber est suae quisque fortunae"
-  # priority: better scrolling
-  # version: 126.1
-  # url: https://github.com/yokoffing/Betterfox
-  #
-  # OPTION: NATURAL SMOOTH SCROLLING V3 [MODIFIED]
-  "apz.overscroll.enabled" = true; # DEFAULT NON-LINUX
-  "general.smoothScroll" = true; # DEFAULT
-  "general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS" = 12;
-  "general.smoothScroll.msdPhysics.enabled" = true;
-  "general.smoothScroll.msdPhysics.motionBeginSpringConstant" = 600;
-  "general.smoothScroll.msdPhysics.regularSpringConstant" = 650;
-  "general.smoothScroll.msdPhysics.slowdownMinDeltaMS" = 25;
-  "general.smoothScroll.msdPhysics.slowdownMinDeltaRatio" = "2";
-  "general.smoothScroll.msdPhysics.slowdownSpringConstant" = 250;
-  "general.smoothScroll.currentVelocityWeighting" = "1";
-  "general.smoothScroll.stopDecelerationWeighting" = "1";
-  "mousewheel.default.delta_multiplier_y" = 300; # (250-400; adjust as desired)
 }
