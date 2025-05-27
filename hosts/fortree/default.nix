@@ -34,22 +34,27 @@
       }
     ];
 
-    casks = [
-      "aws-vpn-client"
-      "choosy"
-      "firefox"
-      "ghostty"
-      "google-chrome"
-      "macfuse"
-      "mkvtoolnix"
-      "obsidian"
-      "plexamp"
-      "signal"
-      "slack"
-      "thunderbird"
-      "todoist"
-      "vlc"
-      "zen"
+    casks = let
+      greedy = name: {
+        inherit name;
+        greedy = true;
+      };
+    in [
+      (greedy "aws-vpn-client")
+      (greedy "choosy")
+      (greedy "firefox")
+      (greedy "ghostty")
+      (greedy "google-chrome")
+      (greedy "macfuse")
+      (greedy "mkvtoolnix")
+      (greedy "obsidian")
+      (greedy "plexamp")
+      (greedy "signal")
+      (greedy "slack")
+      (greedy "thunderbird")
+      (greedy "todoist")
+      (greedy "vlc")
+      (greedy "zen")
     ];
 
     masApps = {
