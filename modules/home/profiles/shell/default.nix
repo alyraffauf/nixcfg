@@ -7,16 +7,9 @@
   options.myHome.profiles.shell.enable = lib.mkEnableOption "basic shell environment";
 
   config = lib.mkIf config.myHome.profiles.shell.enable {
-    home = {
-      packages = with pkgs; [
-        (lib.hiPrio uutils-coreutils-noprefix)
-      ];
-
-      shellAliases = {
-        cat = "bat";
-        grep = "rg";
-      };
-    };
+    home.packages = with pkgs; [
+      (lib.hiPrio uutils-coreutils-noprefix)
+    ];
 
     programs = {
       bash = {
