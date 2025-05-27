@@ -78,7 +78,12 @@
 
     services = {
       alycodes.enable = true;
-      forgejo.enable = true;
+
+      forgejo = {
+        enable = true;
+        db = "postgresql";
+      };
+
       tailscale.enable = true;
     };
   };
