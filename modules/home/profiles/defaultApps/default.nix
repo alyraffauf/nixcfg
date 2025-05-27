@@ -84,7 +84,7 @@ in {
     terminal = {
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.wezterm;
+        default = pkgs.ghostty;
         description = "The default terminal emulator package.";
       };
 

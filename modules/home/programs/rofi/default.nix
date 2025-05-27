@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.myHome;
-  defaultApps.terminal = cfg.profiles.defaultApps.terminal.exec or (lib.getExe pkgs.wezterm);
+  defaultApps.terminal = cfg.profiles.defaultApps.terminal.exec or (lib.getExe pkgs.ghostty);
   inherit (config.lib.formats.rasi) mkLiteral;
 
   mkRgba = opacity: color: let

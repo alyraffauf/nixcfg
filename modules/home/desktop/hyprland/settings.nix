@@ -7,7 +7,7 @@
   cfg = config.myHome;
 
   defaultApps = {
-    terminal = cfg.profiles.defaultApps.terminal.exec or (lib.getExe pkgs.wezterm);
+    terminal = cfg.profiles.defaultApps.terminal.exec or (lib.getExe pkgs.ghostty);
     webBrowser = cfg.profiles.defaultApps.webBrowser.exec or (lib.getExe config.programs.firefox.finalPackage);
     fileManager = cfg.profiles.defaultApps.fileManager.exec or (lib.getExe pkgs.nemo);
     editor = cfg.profiles.defaultApps.editor.exec or (lib.getExe pkgs.gnome-text-editor);
