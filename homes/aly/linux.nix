@@ -25,7 +25,6 @@
       plexamp
       protonvpn-gui
       signal-desktop-bin
-      transmission-remote-gtk
     ];
 
     stateVersion = "25.05";
