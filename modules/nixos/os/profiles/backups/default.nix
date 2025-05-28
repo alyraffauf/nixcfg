@@ -98,6 +98,14 @@
         }
       );
 
+      postgresql = lib.mkIf config.services.postgresql.enable (
+        config.mySnippets.restic
+        // {
+          paths = [config.services.postgresql.dataDir];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
+        }
+      );
+
       prowlarr = lib.mkIf config.services.prowlarr.enable (
         config.mySnippets.restic
         // {
