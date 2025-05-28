@@ -70,7 +70,13 @@ in {
           ];
         };
 
-        settings = import ../firefox/betterfox/smoothfox.nix;
+        settings =
+          (import ../firefox/betterfox/smoothfox.nix)
+          // {
+            "zen.tabs.vertical.right-side" = true;
+            "zen.welcome-screen.seen" = true;
+            "zen.workspaces.continue-where-left-off" = true;
+          };
       };
     };
   };
