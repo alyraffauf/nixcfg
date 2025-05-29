@@ -8,6 +8,7 @@
   imports = [
     ./firefox
     ./git
+    ./halloy
     ./helix
     ./mail
     ./secrets.nix
