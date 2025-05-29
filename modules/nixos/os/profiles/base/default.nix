@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   options.myNixOS.profiles.base.enable = lib.mkEnableOption "base system configuration";
@@ -86,6 +87,9 @@
       };
     };
 
-    system.rebuild.enableNg = true;
+    system = {
+      configurationRevision = self.rev or self.dirtyRev or null;
+      rebuild.enableNg = true;
+    };
   };
 }
