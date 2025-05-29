@@ -137,6 +137,7 @@ in {
       "blur,rofi"
       "blur,swayosd"
       "blur,waybar"
+      "blur,zen-beta"
       "ignorezero,gtk-layer-shell"
       "ignorezero,notifications"
       "ignorezero,nwg-drawer"
