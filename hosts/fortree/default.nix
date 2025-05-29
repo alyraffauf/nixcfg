@@ -93,34 +93,6 @@
   system = {
     configurationRevision = self.rev or self.dirtyRev or null; # Set Git commit hash for darwin-version.
 
-    defaults = {
-      dock = {
-        autohide = false; # don't autohide dock
-        minimize-to-application = true;
-        mru-spaces = false; # do not rearrange spaces based on most recent use
-        orientation = "left"; # left side of the screen
-        show-recents = false; # do not show recently closed apps
-
-        # # set hot corners
-        # wvous-tl-corner = 2;
-        # wvous-tr-corner = 2;
-        # wvous-bl-corner = 1;
-        # wvous-br-corner = 1;
-
-        # persistent-apps = [];
-        # # persistent-others = ["~/Desktop" "~/Downloads"];
-      };
-
-      finder = {
-        AppleShowAllFiles = true; # show hidden files
-        CreateDesktop = false; # do not show icons on desktop
-        FXDefaultSearchScope = "SCcf"; # search current folder by default
-        NewWindowTarget = "Home";
-        ShowPathbar = true; # show path bar
-        ShowStatusBar = true; # show status bar
-      };
-    };
-
     keyboard = {
       enableKeyMapping = true;
 

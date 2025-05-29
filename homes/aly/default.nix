@@ -54,6 +54,8 @@
         homeDirectory = "/Users/aly";
         shellAliases."docker" = "podman";
       };
+
+      myHome.aly.desktop.macos.enable = true;
     })
 
     (lib.mkIf pkgs.stdenv.isLinux {
