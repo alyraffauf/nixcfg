@@ -12,6 +12,8 @@
 
   environment.systemPackages = with pkgs; [
     (lib.hiPrio uutils-coreutils-noprefix)
+    eza
+    git
   ];
 
   fonts.packages = with pkgs; [
@@ -88,11 +90,8 @@
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
-  services.openssh.enable = true;
 
   system = {
-    configurationRevision = self.rev or self.dirtyRev or null; # Set Git commit hash for darwin-version.
-
     keyboard = {
       enableKeyMapping = true;
 

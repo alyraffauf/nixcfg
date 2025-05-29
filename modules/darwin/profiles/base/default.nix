@@ -1,22 +1,13 @@
 {
   config,
   lib,
-  pkgs,
+  self,
   ...
 }: {
   options.myDarwin.profiles.base.enable = lib.mkEnableOption "base system configuration";
 
   config = lib.mkIf config.myDarwin.profiles.base.enable {
-    environment = {
-      systemPackages = with pkgs; [
-        (lib.hiPrio uutils-coreutils-noprefix)
-        eza
-        git
-        rclone
-      ];
-
-      variables.FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
-    };
+    environment.variables.FLAKE = lib.mkDefault "git+https://git.aly.codes/alyraffauf/nixcfg.git";
 
     programs = {
       direnv = {
@@ -31,9 +22,13 @@
     security.pam.services.sudo_local.touchIdAuth = true;
     services.openssh.enable = true;
 
-    system.defaults.alf = {
-      globalstate = 1;
-      loggingenabled = 1;
+    system = {
+      configurationRevision = self.rev or self.dirtyRev or null;
+
+      defaults.alf = {
+        globalstate = 1;
+        loggingenabled = 1;
+      };
     };
   };
 }
