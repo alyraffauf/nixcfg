@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   self,
   ...
 }: {
@@ -8,5 +9,8 @@
     path = "${config.xdg.configHome}/halloy/config.toml";
   };
 
-  programs.halloy.enable = true;
+  programs.halloy = {
+    enable = true;
+    settings = lib.mkForce {};
+  };
 }
