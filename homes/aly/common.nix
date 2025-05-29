@@ -1,23 +1,9 @@
 {
-  config,
-  lib,
   pkgs,
   self,
   ...
 }: {
-  imports = [
-    ./firefox
-    ./git
-    ./halloy
-    ./helix
-    ./mail
-    ./secrets.nix
-    ./vsCode
-    ./zen
-    self.homeManagerModules.default
-    self.homeManagerModules.snippets
-    self.inputs.agenix.homeManagerModules.default
-  ];
+  imports = [self.homeManagerModules.default];
 
   home = {
     packages = with pkgs; [
@@ -29,54 +15,27 @@
     username = "aly";
   };
 
-  programs = {
-    awscli = {
-      enable = true;
-
-      credentials = {
-        "default" = {
-          "credential_process" = ''sh -c "${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.age.secrets.aws.path}"'';
-        };
-      };
-    };
-
-    home-manager.enable = true;
-
-    vesktop = {
-      enable = true;
-
-      settings = {
-        appBadge = false;
-        arRPC = true;
-        disableMinSize = true;
-        minimizeToTray = false;
-        tray = false;
-        hardwareAcceleration = true;
-        discordBranch = "stable";
-      };
-
-      vencord.settings = {
-        autoUpdate = true;
-        autoUpdateNotification = false;
-        disableMinSize = true;
-        notifyAboutUpdates = false;
-
-        plugins = {
-          AlwaysTrust.enabled = true;
-          BlurNSFW.enabled = true;
-          ClearURLs.enabled = true;
-          FakeNitro.enabled = true;
-          PinDMs.enabled = true;
-          WebKeybinds.enabled = true;
-          WebScreenShareFixes.enabled = true;
-        };
-
-        useQuickCss = true;
-      };
-    };
-  };
+  programs.home-manager.enable = true;
+  xdg.enable = true;
+  stylix.targets.firefox.profileNames = ["default"];
 
   myHome = {
+    aly = {
+      profiles.mail.enable = true;
+
+      programs = {
+        awscli.enable = true;
+        firefox.enable = true;
+        git.enable = true;
+        halloy.enable = true;
+        helix.enable = true;
+        thunderbird.enable = true;
+        vesktop.enable = true;
+        vsCode.enable = true;
+        zen.enable = true;
+      };
+    };
+
     profiles.shell.enable = true;
 
     programs = {

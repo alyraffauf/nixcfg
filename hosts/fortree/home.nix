@@ -4,7 +4,11 @@
     lib,
     ...
   }: {
-    imports = [self.homeManagerModules.aly-darwin];
+    imports = [
+      self.homeManagerModules.aly-darwin
+      self.homeManagerModules.snippets
+      self.inputs.agenix.homeManagerModules.default
+    ];
 
     age.secrets = {
       syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/fortree/cert.age";

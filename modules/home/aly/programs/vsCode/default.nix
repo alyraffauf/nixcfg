@@ -1,9 +1,12 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  config = {
+  options.myHome.aly.programs.vsCode.enable = lib.mkEnableOption "vsCode editor";
+
+  config = lib.mkIf config.myHome.aly.programs.vsCode.enable {
     programs.vscode = {
       enable = true;
 

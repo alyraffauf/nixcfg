@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./aly
     ./desktop
     ./profiles
     ./programs

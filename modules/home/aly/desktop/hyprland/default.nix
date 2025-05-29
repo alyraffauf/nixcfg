@@ -4,8 +4,10 @@
   pkgs,
   ...
 }: {
-  wayland.windowManager = {
-    hyprland.settings = {
+  options.myHome.aly.desktop.hyprland.enable = lib.mkEnableOption "hyprland window manager";
+
+  config = lib.mkIf config.myHome.aly.desktop.hyprland.enable {
+    wayland.windowManager.hyprland.settings = {
       bind = [
         "$mod SHIFT,D,movetoworkspace,special:discord"
         "$mod,D,togglespecialworkspace,discord"

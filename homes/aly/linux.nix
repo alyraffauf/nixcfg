@@ -2,12 +2,12 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
-    ./chromium
     ./common.nix
-    ./windowManagers
+    self.homeManagerModules.default
   ];
 
   gtk.gtk3.bookmarks = lib.mkAfter [
@@ -44,14 +44,21 @@
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
-  myHome.profiles.defaultApps = {
-    enable = true;
-    editor.package = config.programs.vscode.package;
-    terminal.package = config.programs.ghostty.package;
+  myHome = {
+    aly = {
+      desktop.hyprland.enable = config.wayland.windowManager.hyprland.enable;
+      programs.chromium.enable = true;
+    };
 
-    webBrowser = {
-      exec = lib.getExe config.programs.zen-browser.finalPackage;
-      package = config.programs.zen-browser.finalPackage;
+    profiles.defaultApps = {
+      enable = true;
+      editor.package = config.programs.vscode.package;
+      terminal.package = config.programs.ghostty.package;
+
+      webBrowser = {
+        exec = lib.getExe config.programs.zen-browser.finalPackage;
+        package = config.programs.zen-browser.finalPackage;
+      };
     };
   };
 }
