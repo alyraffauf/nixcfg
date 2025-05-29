@@ -5,7 +5,7 @@
     ...
   }: {
     imports = [
-      self.homeManagerModules.aly-darwin
+      self.homeManagerModules.aly
       self.homeManagerModules.snippets
       self.inputs.agenix.homeManagerModules.default
     ];

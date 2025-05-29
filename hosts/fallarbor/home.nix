@@ -1,6 +1,6 @@
 {self, ...}: {
   home-manager.users = {
-    aly = self.homeManagerModules.aly-linux;
+    aly = self.homeManagerModules.aly;
     dustin = self.homeManagerModules.dustin;
   };
 }

@@ -1,3 +1,3 @@
 {self, ...}: {
-  home-manager.users.aly = self.homeManagerModules.aly-linux;
+  home-manager.users.aly = self.homeManagerModules.aly;
 }

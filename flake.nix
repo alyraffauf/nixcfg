@@ -196,8 +196,7 @@
     formatter = self.inputs.nixpkgs.lib.genAttrs allSystems (system: self.packages.${system}.formatter);
 
     homeManagerModules = {
-      aly-linux = ./homes/aly/linux.nix;
-      aly-darwin = ./homes/aly/darwin.nix;
+      aly = ./homes/aly;
       default = ./modules/home;
       dustin = ./homes/dustin;
       snippets = ./modules/snippets;
