@@ -45,7 +45,6 @@
       (greedy "firefox")
       (greedy "ghostty")
       (greedy "google-chrome")
-      (greedy "macfuse")
       (greedy "mkvtoolnix")
       (greedy "obsidian")
       (greedy "plexamp")
