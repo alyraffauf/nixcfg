@@ -4,13 +4,13 @@
   lib,
   ...
 }: {
-  options.myHome.aly.services.raycast = {
+  options.myHome.services.raycast = {
     enable = lib.mkEnableOption "raycast";
     package = lib.mkPackageOption pkgs "raycast" {};
   };
 
-  config = lib.mkIf config.myHome.aly.services.raycast.enable {
-    home.packages = [config.myHome.aly.services.raycast.package];
+  config = lib.mkIf config.myHome.services.raycast.enable {
+    home.packages = [config.myHome.services.raycast.package];
 
     launchd.agents.raycast = {
       enable = true;
@@ -20,7 +20,7 @@
         ProcessType = "Interactive";
 
         ProgramArguments = [
-          "${config.home.homeDirectory}/Applications/Home Manager Apps/${config.myHome.aly.services.raycast.package.sourceRoot}/Contents/MacOS/Raycast"
+          "${config.home.homeDirectory}/Applications/Home Manager Apps/${config.myHome.services.raycast.package.sourceRoot}/Contents/MacOS/Raycast"
         ];
 
         StandardErrorPath = "${config.xdg.cacheHome}/raycast.log";
