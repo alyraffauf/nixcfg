@@ -66,11 +66,6 @@
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
 
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-  };
-
   myNixOS = {
     profiles = {
       autoUpgrade.enable = true;
