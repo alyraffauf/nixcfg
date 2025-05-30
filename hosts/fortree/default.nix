@@ -44,7 +44,6 @@
     in [
       (greedy "aws-vpn-client")
       (greedy "choosy")
-      (greedy "firefox")
       (greedy "ghostty")
       (greedy "google-chrome")
       (greedy "mkvtoolnix")
