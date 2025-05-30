@@ -49,6 +49,14 @@
           ShowStatusBar = true; # show status bar
         };
 
+        "com.apple.Siri" = {
+          ConfirmSiriInvokedViaEitherCmdTwice = 0;
+          ContinuousSpellCheckingEnabled = 0;
+          GrammarCheckingEnabled = 1;
+          StatusMenuVisible = 0;
+          VoiceTriggerUserEnabled = 1;
+        };
+
         NSGlobalDomain = {
           NSAutomaticSpellingCorrectionEnabled = false;
           NSDocumentSaveNewDocumentsToCloud = false;
