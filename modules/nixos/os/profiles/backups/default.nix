@@ -102,7 +102,7 @@
         config.mySnippets.restic
         // {
           paths = [config.services.postgresql.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/postgresql";
         }
       );
 
