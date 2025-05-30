@@ -30,6 +30,14 @@
         }
       );
 
+      forgejo = lib.mkIf config.services.forgejo.enable (
+        config.mySnippets.restic
+        // {
+          paths = [config.services.forgejo.stateDir];
+          repository = "rclone:b2:aly-backups/${config.networking.hostName}/forgejo";
+        }
+      );
+
       immich = lib.mkIf config.services.immich.enable (
         config.mySnippets.restic
         // {
