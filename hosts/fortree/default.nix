@@ -91,6 +91,21 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   system = {
+    defaults.dock.persistent-apps = [
+      {app = "/System/Applications/Launchpad.app";}
+      {app = "/Applications/Zen.app";}
+      {app = "/Applications/Signal.app";}
+      {app = "${pkgs.vesktop}/Applications/Vesktop.app";}
+      {app = "/Applications/Slack.app";}
+      {app = "/Applications/Thunderbird.app";}
+      {app = "/Applications/Obsidian.app";}
+      {app = "${pkgs.vscode}/Applications/Visual Studio Code.app";}
+      {app = "/Applications/Ghostty.app";}
+      {app = "/System/Applications/Music.app";}
+      {app = "/Applications/Plexamp.app";}
+      {app = "/System/Applications/iPhone Mirroring.app";}
+    ];
+
     keyboard = {
       enableKeyMapping = true;
 
