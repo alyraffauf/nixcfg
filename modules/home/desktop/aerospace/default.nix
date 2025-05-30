@@ -3,13 +3,13 @@
   lib,
   ...
 }: {
-  options.myDarwin.desktop.aerospace.enable = lib.mkEnableOption "Aerospace tiling window manager.";
+  options.myHome.desktop.aerospace.enable = lib.mkEnableOption "Aerospace tiling window manager";
 
-  config = lib.mkIf config.myDarwin.desktop.aerospace.enable {
-    services.aerospace = {
+  config = lib.mkIf config.myHome.desktop.aerospace.enable {
+    programs.aerospace = {
       enable = true;
 
-      settings = {
+      userSettings = {
         enable-normalization-flatten-containers = false;
         enable-normalization-opposite-orientation-for-nested-containers =
           false;
