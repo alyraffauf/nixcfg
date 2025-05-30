@@ -56,7 +56,6 @@
       (greedy "todoist")
       (greedy "vlc")
       (greedy "zen")
-      (greedy "raycast")
     ];
 
     masApps = {
