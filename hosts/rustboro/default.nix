@@ -28,7 +28,6 @@
     };
 
     programs = {
-      firefox.enable = true;
       nix.enable = true;
       podman.enable = true;
       systemd-boot.enable = true;
