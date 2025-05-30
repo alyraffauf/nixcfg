@@ -70,7 +70,6 @@
         homeDirectory = "/home/aly";
 
         packages = with pkgs; [
-          google-chrome
           nicotine-plus
           obsidian
           plexamp
