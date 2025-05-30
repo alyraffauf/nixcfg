@@ -29,6 +29,8 @@
     };
 
     targets.darwin.defaults = {
+      "com.apple.Spotlight".MenuItemHidden = true;
+
       "com.apple.symbolichotkeys" = {
         # Disable spotlight hotkeys
         AppleSymbolicHotKeys = {
@@ -38,6 +40,7 @@
       };
 
       "com.raycast.macos" = {
+        "NSStatusItem Visible raycastIcon" = 0;
         "permissions.folders.read:${config.home.homeDirectory}/Desktop" = true;
         "permissions.folders.read:${config.home.homeDirectory}/Documents" = true;
         "permissions.folders.read:${config.home.homeDirectory}/Downloads" = true;
