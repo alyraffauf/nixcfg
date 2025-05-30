@@ -2,7 +2,7 @@ name: update-inputs
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 0 * * 2,5" # Tue & Fri
+    - cron: "0 6 * * 2,5" # Tue & Fri
 
 jobs:
   update-flake-lock:
