@@ -21,7 +21,7 @@
 
       programs.home-manager.enable = true;
       xdg.enable = true;
-      stylix.targets.firefox.profileNames = ["default"];
+      # stylix.targets.firefox.profileNames = ["default"];
 
       myHome = {
         aly = {
@@ -29,7 +29,6 @@
 
           programs = {
             awscli.enable = true;
-            firefox.enable = true;
             git.enable = true;
             halloy.enable = true;
             helix.enable = true;
