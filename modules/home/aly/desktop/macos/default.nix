@@ -63,6 +63,7 @@
           NSNavPanelExpandedStateForSaveMode = true;
           NSNavPanelExpandedStateForSaveMode2 = true;
           NSQuitAlwaysKeepsWindows = false;
+          NSWindowShouldDragOnGesture = true;
           PMPrintingExpandedStateForPrint = true;
           PMPrintingExpandedStateForPrint2 = true;
         };
