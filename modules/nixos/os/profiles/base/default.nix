@@ -15,6 +15,7 @@
         git
         helix
         htop
+        lm_sensors
         wget
       ];
 
