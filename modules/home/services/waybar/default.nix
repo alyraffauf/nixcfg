@@ -21,7 +21,7 @@ in {
         networkmanager
         networkmanager_dmenu
         nwg-drawer
-        pavucontrol
+        pwvucontrol
         procps
         rofi-power-menu
         systemd
@@ -163,7 +163,7 @@ in {
             };
 
             ignored-sinks = ["Easy Effects Sink"];
-            on-click = "pavucontrol -t 3";
+            on-click = "pwvucontrol";
             on-click-middle = helpers.volume.micMute;
             on-click-right = helpers.volume.mute;
             scroll-step = 5;
