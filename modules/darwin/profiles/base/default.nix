@@ -1,13 +1,21 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: {
   options.myDarwin.profiles.base.enable = lib.mkEnableOption "base system configuration";
 
   config = lib.mkIf config.myDarwin.profiles.base.enable {
-    environment.variables.FLAKE = lib.mkDefault "git+https://git.aly.codes/alyraffauf/nixcfg.git";
+    environment = {
+      systemPackages = with pkgs; [nh];
+
+      variables = {
+        FLAKE = lib.mkDefault "git+https://git.aly.codes/alyraffauf/nixcfg.git";
+        NH_FLAKE = lib.mkDefault "git+https://git.aly.codes/alyraffauf/nixcfg.git";
+      };
+    };
 
     programs = {
       direnv = {
