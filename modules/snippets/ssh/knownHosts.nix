@@ -10,62 +10,62 @@
     default = {
       fallarbor = {
         hostNames = ["fallarbor" "fallarbor.local" "fallarbor.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_fallarbor.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_fallarbor.pub";
       };
 
       fortree = {
         hostNames = ["fortree" "fortree.local" "fortree.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_fortree.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_fortree.pub";
       };
 
       lavaridge = {
         hostNames = ["lavaridge" "lavaridge.local" "lavaridge.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_lavaridge.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_lavaridge.pub";
       };
 
       lilycove = {
         hostNames = ["lilycove" "lilycove.local" "lilycove.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_lilycove.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_lilycove.pub";
       };
 
       mauville = {
         hostNames = ["mauville" "mauville.local" "mauville.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_mauville.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_mauville.pub";
       };
 
       mossdeep = {
         hostNames = ["mossdeep" "mossdeep.local" "mossdeep.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_mossdeep.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_mossdeep.pub";
       };
 
       petalburg = {
         hostNames = ["petalburg" "petalburg.local" "petalburg.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_petalburg.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_petalburg.pub";
       };
 
       roxanne = {
         hostNames = ["roxanne" "roxanne.local" "roxanne.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_roxanne.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_roxanne.pub";
       };
 
       rustboro = {
         hostNames = ["rustboro" "rustboro.local" "rustboro.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_rustboro.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_rustboro.pub";
       };
 
       slateport = {
         hostNames = ["slateport" "slateport.local" "slateport.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_slateport.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_slateport.pub";
       };
 
       sootopolis = {
         hostNames = ["sootopolis" "sootopolis.local" "sootopolis.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_sootopolis.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_sootopolis.pub";
       };
 
       verdanturf = {
         hostNames = ["verdanturf" "verdanturf.local" "verdanturf.narwhal-snapper.ts.net"];
-        publicKey = builtins.readFile "${self.inputs.secrets}/publicKeys/root_verdanturf.pub";
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_verdanturf.pub";
       };
     };
   };
