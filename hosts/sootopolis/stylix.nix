@@ -5,8 +5,8 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
-    image = "${self.inputs.wallpapers}/wallhaven-4oyd2m.jpg";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    image = "${self.inputs.wallpapers}/wallhaven-yxdrex.png";
     imageScalingMode = "fill";
     polarity = "dark";
 
@@ -42,7 +42,7 @@
 
     opacity = {
       applications = 1.0;
-      desktop = 1.0;
+      desktop = 0.8;
       terminal = 0.8;
       popups = 0.8;
     };
