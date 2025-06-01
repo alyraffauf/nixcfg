@@ -36,12 +36,14 @@
     };
 
     services = {
-      displayManager.autoLogin = lib.mkIf (config.myNixOS.services.gdm.autoLogin != null) {
-        enable = true;
-        user = config.myNixOS.services.gdm.autoLogin;
-      };
+      displayManager = {
+        autoLogin = lib.mkIf (config.myNixOS.services.gdm.autoLogin != null) {
+          enable = true;
+          user = config.myNixOS.services.gdm.autoLogin;
+        };
 
-      xserver.displayManager.gdm.enable = true;
+        gdm.enable = true;
+      };
     };
   };
 }

@@ -13,7 +13,7 @@
     ];
 
     programs.firefox.policies.Preferences."browser.tabs.inTitlebar" = lib.mkIf (config.programs.firefox.enable) 1;
-    services.xserver.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome.enable = true;
     myNixOS.desktop.enable = true;
   };
 }
