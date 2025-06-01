@@ -52,8 +52,9 @@
 
         settings = {
           actions = {
-            ENABLED = true;
+            ARTIFACT_RETENTION_DAYS = 15;
             DEFAULT_ACTIONS_URL = "https://github.com";
+            ENABLED = true;
           };
 
           cron = {
