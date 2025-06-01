@@ -36,7 +36,6 @@ in {
         randomizedDelaySec = "60min";
       };
 
-      package = pkgs.lix;
       settings = config.mySnippets.nix.settings;
     };
 

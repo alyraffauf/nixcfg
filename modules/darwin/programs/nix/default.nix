@@ -39,7 +39,6 @@
       #   maxJobs = 4;
       # };
 
-      package = pkgs.lix;
       settings = config.mySnippets.nix.settings;
     };
   };
