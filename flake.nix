@@ -27,8 +27,17 @@
     };
 
     lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      url = "git+https://git.lix.systems/lix-project/lix.git?ref=release-2.93";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module.git?ref=release-2.93";
+
+      inputs = {
+        lix.follows = "lix";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nix-darwin = {
@@ -146,7 +155,7 @@
         self.darwinModules.default
         self.inputs.agenix.darwinModules.default
         self.inputs.home-manager.darwinModules.home-manager
-        self.inputs.lix.nixosModules.default
+        self.inputs.lix-module.nixosModules.default
         self.inputs.nix-homebrew.darwinModules.nix-homebrew
         self.inputs.stylix.darwinModules.stylix
         self.nixosModules.snippets
@@ -181,7 +190,7 @@
             nh
             nix-update
             nixd
-            nixos-rebuild-ng
+            # nixos-rebuild-ng
             nodePackages.prettier
             rubocop
             shellcheck
@@ -245,7 +254,7 @@
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.lanzaboote.nixosModules.lanzaboote
-            self.inputs.lix.nixosModules.default
+            self.inputs.lix-module.nixosModules.default
             self.inputs.stylix.nixosModules.stylix
             self.inputs.vscode-server.nixosModules.default
             self.nixosModules.nixos
