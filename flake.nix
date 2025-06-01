@@ -190,7 +190,6 @@
             nh
             nix-update
             nixd
-            # nixos-rebuild-ng
             nodePackages.prettier
             rubocop
             shellcheck
