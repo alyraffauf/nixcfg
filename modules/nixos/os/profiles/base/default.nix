@@ -9,6 +9,8 @@
 
   config = lib.mkIf config.myNixOS.profiles.base.enable {
     environment = {
+      etc."nixos".source = self;
+
       systemPackages = with pkgs; [
         (inxi.override {withRecommends = true;})
         (lib.hiPrio uutils-coreutils-noprefix)
