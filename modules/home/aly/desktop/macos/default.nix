@@ -23,12 +23,13 @@
           show-recents = false; # do not show recently closed apps
           size-immutable = true;
           tilesize = 64;
+          workspaces-wrap-arrows = false;
 
           # # set hot corners
-          # wvous-tl-corner = 2;
-          # wvous-tr-corner = 2;
-          # wvous-bl-corner = 1;
-          # wvous-br-corner = 1;
+          wvous-tl-corner = 2;
+          wvous-tr-corner = 12;
+          wvous-bl-corner = 11;
+          wvous-br-corner = 14;
 
           # persistent-apps = [];
           # # persistent-others = ["~/Desktop" "~/Downloads"];
