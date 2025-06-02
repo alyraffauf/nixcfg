@@ -8,6 +8,7 @@
     ./data-share
     ./gaming
     ./hardened
+    ./iso
     ./lowResource
     ./media-share
     ./server
