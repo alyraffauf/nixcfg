@@ -31,6 +31,7 @@
     hostName = "verdanturf";
   };
 
+  nix.settings.max-jobs = 0;
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
 
