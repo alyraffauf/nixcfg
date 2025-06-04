@@ -69,9 +69,21 @@
     ############################################################################
     # Non-flake inputs
 
+    ## Absolute scanner for Plex
+    absolute = {
+      url = "github:ZeroQI/Absolute-Series-Scanner";
+      flake = false;
+    };
+
     ## Plex for Audiobooks
     audnexus = {
       url = "github:djdembeck/Audnexus.bundle";
+      flake = false;
+    };
+
+    ## Plex for Anime
+    hama = {
+      url = "github:ZeroQI/Hama.bundle";
       flake = false;
     };
 

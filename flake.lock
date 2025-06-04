@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "absolute": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740225090,
+        "narHash": "sha256-AvWUNkne9JfM6WrzoaLfOHu6NhZofS0vE+xjzxwLtzs=",
+        "owner": "ZeroQI",
+        "repo": "Absolute-Series-Scanner",
+        "rev": "43df2ee5de503221d9d4e96e399ca2eca8f19859",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZeroQI",
+        "repo": "Absolute-Series-Scanner",
+        "type": "github"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": "darwin",
@@ -519,6 +535,22 @@
         "type": "github"
       }
     },
+    "hama": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743761638,
+        "narHash": "sha256-xXgmPrRJkBtXW1REYnxb1w5U1a8R79UllUWrcfCnuk4=",
+        "owner": "ZeroQI",
+        "repo": "Hama.bundle",
+        "rev": "02f2025d6ffcceb973a2e3f72ec98b60ba9a60bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZeroQI",
+        "repo": "Hama.bundle",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1034,10 +1066,12 @@
     },
     "root": {
       "inputs": {
+        "absolute": "absolute",
         "agenix": "agenix",
         "audnexus": "audnexus",
         "chaotic": "chaotic",
         "disko": "disko",
+        "hama": "hama",
         "home-manager": "home-manager_3",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
