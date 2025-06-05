@@ -7,6 +7,7 @@
     ./forgejo-runner
     ./gdm
     ./greetd
+    ./plex
     ./qbittorrent
     ./sddm
     ./sunshine

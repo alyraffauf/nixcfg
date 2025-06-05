@@ -77,6 +77,12 @@ in {
         number = 4;
       };
 
+      plex = {
+        enable = true;
+        dataDir = "/mnt/Data";
+        tautulli.enable = true;
+      };
+
       qbittorrent.enable = true;
 
       syncthing = {
