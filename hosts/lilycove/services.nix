@@ -1,8 +1,4 @@
-{
-  config,
-  self,
-  ...
-}: let
+{config, ...}: let
   dataDirectory = "/mnt/Data";
 in {
   networking.firewall.allowedTCPPorts = [6881];
@@ -13,6 +9,12 @@ in {
       host = "0.0.0.0";
       mediaLocation = "${dataDirectory}/immich";
       openFirewall = true;
+    };
+
+    jellyfin = {
+      enable = true;
+      openFirewall = true;
+      dataDir = "${dataDirectory}/jellyfin";
     };
 
     nextjs-ollama-llm-ui.enable = true;
