@@ -17,11 +17,15 @@
       smartd.enable = true;
     };
 
-    systemd.oomd = {
-      enable = true;
-      enableRootSlice = true;
-      enableSystemSlice = true;
-      enableUserSlices = true;
+    systemd = {
+      enableEmergencyMode = false;
+
+      oomd = {
+        enable = true;
+        enableRootSlice = true;
+        enableSystemSlice = true;
+        enableUserSlices = true;
+      };
     };
 
     zramSwap = {
