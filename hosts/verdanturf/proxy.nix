@@ -38,74 +38,72 @@ in {
       '';
     };
 
-    nginx = {
+    caddy = {
       enable = true;
-      recommendedGzipSettings = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+      email = "alyraffauf@fastmail.com";
 
       virtualHosts = {
         "couchdb.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
+          serverAliases = [
+            "couchdb.${newDomain}"
+            "couch.${oldDomain}"
+          ];
 
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.couchdb.port}";
-          };
-
-          serverAliases = ["couch.${oldDomain}"];
+          extraConfig = ''
+            encode gzip
+            reverse_proxy 127.0.0.1:${toString config.services.couchdb.port}
+          '';
         };
 
         "uptime-kuma.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
-            proxyWebsockets = true;
-          };
+          extraConfig = ''
+            encode gzip
+            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
+              flush_interval -1   # proxy_buffering off equivalent
+            }
+          '';
         };
 
         "status.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
-
-        "vault.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
-            proxyWebsockets = true;
-          };
-
-          serverAliases = ["v.${newDomain}" "passwords.${oldDomain}"];
+          extraConfig = ''
+            encode gzip
+            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
+              flush_interval -1
+            }
+          '';
         };
 
         "status.aly.codes" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
-            proxyWebsockets = true;
-          };
+          extraConfig = ''
+            encode gzip
+            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
+              flush_interval -1
+            }
+          '';
         };
 
         "status.aly.social" = {
-          enableACME = true;
-          forceSSL = true;
+          extraConfig = ''
+            encode gzip
+            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
+              flush_interval -1
+            }
+          '';
+        };
 
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.uptime-kuma.settings.BIND}";
-            proxyWebsockets = true;
-          };
+        "vault.${newDomain}" = {
+          serverAliases = [
+            "vault.${newDomain}"
+            "v.${newDomain}"
+            "passwords.${oldDomain}"
+          ];
+
+          extraConfig = ''
+            encode gzip
+            reverse_proxy 127.0.0.1:${
+              toString config.services.vaultwarden.config.ROCKET_PORT
+            }
+          '';
         };
       };
     };
