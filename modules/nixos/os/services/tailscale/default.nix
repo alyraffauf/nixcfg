@@ -40,6 +40,7 @@
       authKeyFile = config.myNixOS.services.tailscale.authKeyFile;
       extraUpFlags = ["--ssh"];
       openFirewall = true;
+      permitCertUid = lib.mkIf (config.services.caddy.enable) "caddy";
       useRoutingFeatures = "both";
     };
   };
