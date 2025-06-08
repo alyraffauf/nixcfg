@@ -12,91 +12,69 @@ in {
     defaults.email = "alyraffauf@gmail.com";
   };
 
-  services = {
-    nginx = {
-      enable = true;
-      recommendedGzipSettings = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+  services.caddy = {
+    enable = true;
+    email = "alyraffauf@gmail.com";
 
-      virtualHosts = {
-        "${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
+    virtualHosts = {
+      "${newDomain}" = {
+        extraConfig = ''
+          encode gzip
+          reverse_proxy localhost${toString config.services.anubis.instances.glance.settings.BIND}
+        '';
+      };
 
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.glance.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
+      "audiobookshelf.${newDomain}" = {
+        extraConfig = ''
+          encode gzip
+          reverse_proxy localhost${toString config.services.anubis.instances.audiobookshelf.settings.BIND} {
+            flush_interval -1   # proxy_buffering off
+          }
+        '';
+      };
 
-        "audiobookshelf.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
+      # -------- immich --------
+      "immich.${newDomain}" = {
+        extraConfig = ''
+          encode gzip
 
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.audiobookshelf.settings.BIND}";
-            proxyWebsockets = true;
+          @uploads method POST PUT
+          handle @uploads {
+            request_body {
+              max_size 10GB
+            }
+          }
 
-            extraConfig = ''
-              proxy_buffering off;
-            '';
-          };
-        };
+          reverse_proxy localhost${toString config.services.anubis.instances.immich.settings.BIND} {
+            flush_interval -1
+            transport http {
+              read_buffer 0     # proxy_request_buffering off
+            }
+          }
+        '';
+      };
 
-        "immich.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
+      "navidrome.${newDomain}" = {
+        extraConfig = ''
+          encode gzip
+          reverse_proxy ${ip}:4533 {
+            flush_interval -1
+          }
+        '';
+      };
 
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.immich.settings.BIND}";
-            proxyWebsockets = true;
+      "ombi.${newDomain}" = {
+        extraConfig = ''
+          encode gzip
+          reverse_proxy localhost${toString config.services.anubis.instances.ombi.settings.BIND}
+        '';
+      };
 
-            extraConfig = ''
-              client_max_body_size 10G;
-              proxy_buffering off;
-              proxy_read_timeout 600s;
-              proxy_redirect off;
-              proxy_request_buffering off;
-              proxy_send_timeout 600s;
-              send_timeout 600s;
-            '';
-          };
-        };
-
-        "navidrome.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://${ip}:${toString 4533}";
-            proxyWebsockets = true;
-
-            extraConfig = ''
-              proxy_buffering off;
-            '';
-          };
-        };
-
-        "ombi.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.ombi.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
-
-        "plex.${newDomain}" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.plex.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
+      "plex.${newDomain}" = {
+        extraConfig = ''
+          encode gzip
+          reverse_proxy localhost${toString config.services.anubis.instances.plex.settings.BIND}
+        '';
       };
     };
   };

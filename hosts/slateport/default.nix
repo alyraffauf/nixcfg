@@ -17,7 +17,6 @@
   ];
 
   networking.hostName = "slateport";
-  services.syncthing.guiAddress = "0.0.0.0:8384";
 
   stylix = {
     enable = false;
