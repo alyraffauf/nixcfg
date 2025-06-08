@@ -33,10 +33,26 @@ in {
         '';
       };
 
+      "readarr.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/readarr
+          reverse_proxy localhost:${toString config.services.readarr.settings.server.port}
+        '';
+      };
+
       "sonarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/sonarr
           reverse_proxy localhost:${toString config.services.sonarr.settings.server.port}
+        '';
+      };
+
+      "syncthing-${config.networking.hostName}.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/syncthing-${config.networking.hostName}
+          reverse_proxy localhost:8384 {
+            header_up Host localhost
+          }
         '';
       };
     };
