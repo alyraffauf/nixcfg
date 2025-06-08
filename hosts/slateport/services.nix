@@ -150,12 +150,12 @@
                       }
                       {
                         title = "Tautulli";
-                        url = "http://lilycove:8181/";
+                        url = "https://tautulli.${config.mySnippets.tailnet}/";
                         icon = "di:tautulli";
                       }
                       {
                         title = "qBittorrent";
-                        url = "http://lilycove:8080";
+                        url = "https://qbittorrent.${config.mySnippets.tailnet}/";
                         icon = "di:qbittorrent";
                         alt-status-codes = [401];
                       }

@@ -39,6 +39,14 @@ in {
         '';
       };
 
+      "qbittorrent.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/qbittorrent
+          encode zstd gzip
+          reverse_proxy localhost:${toString config.myNixOS.services.qbittorrent.port}
+        '';
+      };
+
       "radarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/radarr
@@ -60,6 +68,14 @@ in {
           bind tailscale/sonarr
           encode zstd gzip
           reverse_proxy localhost:${toString config.services.sonarr.settings.server.port}
+        '';
+      };
+
+      "tautulli.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/tautulli
+          encode zstd gzip
+          reverse_proxy localhost:${toString config.services.tautulli.port}
         '';
       };
     };
