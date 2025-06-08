@@ -8,6 +8,7 @@ in {
       "bazarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/bazarr
+          encode zstd gzip
           reverse_proxy localhost:${toString config.services.bazarr.listenPort}
         '';
       };
@@ -15,6 +16,7 @@ in {
       "lidarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/lidarr
+          encode zstd gzip
           reverse_proxy localhost:${toString config.services.lidarr.settings.server.port}
         '';
       };
@@ -22,6 +24,7 @@ in {
       "prowlarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/prowlarr
+          encode zstd gzip
           reverse_proxy localhost:${toString config.services.prowlarr.settings.server.port}
         '';
       };
@@ -29,6 +32,7 @@ in {
       "radarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/radarr
+          encode zstd gzip
           reverse_proxy localhost:${toString config.services.radarr.settings.server.port}
         '';
       };
@@ -36,6 +40,7 @@ in {
       "readarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/readarr
+          encode zstd gzip
           reverse_proxy localhost:${toString config.services.readarr.settings.server.port}
         '';
       };
@@ -43,6 +48,7 @@ in {
       "sonarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/sonarr
+          encode zstd gzip
           reverse_proxy localhost:${toString config.services.sonarr.settings.server.port}
         '';
       };

@@ -49,14 +49,14 @@ in {
           ];
 
           extraConfig = ''
-            encode gzip
+            encode zstd gzip
             reverse_proxy 127.0.0.1:${toString config.services.couchdb.port}
           '';
         };
 
         "uptime-kuma.${newDomain}" = {
           extraConfig = ''
-            encode gzip
+            encode zstd gzip
             reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
               flush_interval -1   # proxy_buffering off equivalent
             }
@@ -65,7 +65,7 @@ in {
 
         "status.${newDomain}" = {
           extraConfig = ''
-            encode gzip
+            encode zstd gzip
             reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
               flush_interval -1
             }
@@ -74,7 +74,7 @@ in {
 
         "status.aly.codes" = {
           extraConfig = ''
-            encode gzip
+            encode zstd gzip
             reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
               flush_interval -1
             }
@@ -83,7 +83,7 @@ in {
 
         "status.aly.social" = {
           extraConfig = ''
-            encode gzip
+            encode zstd gzip
             reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
               flush_interval -1
             }
@@ -98,7 +98,7 @@ in {
           ];
 
           extraConfig = ''
-            encode gzip
+            encode zstd gzip
             reverse_proxy 127.0.0.1:${
               toString config.services.vaultwarden.config.ROCKET_PORT
             }

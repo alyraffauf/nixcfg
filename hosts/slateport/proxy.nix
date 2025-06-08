@@ -18,14 +18,14 @@ in {
     virtualHosts = {
       "${newDomain}" = {
         extraConfig = ''
-          encode gzip
+          encode zstd gzip
           reverse_proxy localhost${toString config.services.anubis.instances.glance.settings.BIND}
         '';
       };
 
       "audiobookshelf.${newDomain}" = {
         extraConfig = ''
-          encode gzip
+          encode zstd gzip
           reverse_proxy localhost${toString config.services.anubis.instances.audiobookshelf.settings.BIND} {
             flush_interval -1   # proxy_buffering off
           }
@@ -35,7 +35,7 @@ in {
       # -------- immich --------
       "immich.${newDomain}" = {
         extraConfig = ''
-          encode gzip
+          encode zstd gzip
 
           @uploads method POST PUT
           handle @uploads {
@@ -55,7 +55,7 @@ in {
 
       "navidrome.${newDomain}" = {
         extraConfig = ''
-          encode gzip
+          encode zstd gzip
           reverse_proxy ${ip}:4533 {
             flush_interval -1
           }
@@ -64,14 +64,14 @@ in {
 
       "ombi.${newDomain}" = {
         extraConfig = ''
-          encode gzip
+          encode zstd gzip
           reverse_proxy localhost${toString config.services.anubis.instances.ombi.settings.BIND}
         '';
       };
 
       "plex.${newDomain}" = {
         extraConfig = ''
-          encode gzip
+          encode zstd gzip
           reverse_proxy localhost${toString config.services.anubis.instances.plex.settings.BIND}
         '';
       };
