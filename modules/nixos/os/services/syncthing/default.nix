@@ -40,41 +40,59 @@
   config = lib.mkIf config.myNixOS.services.syncthing.enable {
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
 
-    services.syncthing = let
-      cfg = config.myNixOS.services.syncthing;
-      devices = config.mySnippets.syncthing.devices;
-
-      folders = lib.mkMerge [
-        config.mySnippets.syncthing.folders
-        {
-          "music" = {
-            enable = cfg.syncMusic;
-            path = cfg.musicPath;
+    services = {
+      caddy.virtualHosts =
+        lib.mkIf
+        (
+          config.myNixOS.services.caddy.enable
+          && config.myNixOS.services.tailscale.enable
+        ) {
+          "syncthing-${config.networking.hostName}.${config.mySnippets.tailnet}" = {
+            extraConfig = ''
+              bind tailscale/syncthing-${config.networking.hostName}
+              reverse_proxy localhost:8384 {
+                header_up Host localhost
+              }
+            '';
           };
-
-          "roms" = {
-            enable = cfg.syncROMs;
-            path = cfg.romsPath;
-          };
-        }
-      ];
-    in {
-      enable = true;
-      cert = cfg.certFile;
-      configDir = "${config.services.syncthing.dataDir}/.syncthing";
-      dataDir = "/home/${cfg.user}";
-      key = cfg.keyFile;
-      openDefaultPorts = true;
-      user = cfg.user;
-
-      settings = {
-        options = {
-          localAnnounceEnabled = true;
-          relaysEnabled = true;
-          urAccepted = -1;
         };
 
-        inherit devices folders;
+      syncthing = let
+        cfg = config.myNixOS.services.syncthing;
+        devices = config.mySnippets.syncthing.devices;
+
+        folders = lib.mkMerge [
+          config.mySnippets.syncthing.folders
+          {
+            "music" = {
+              enable = cfg.syncMusic;
+              path = cfg.musicPath;
+            };
+
+            "roms" = {
+              enable = cfg.syncROMs;
+              path = cfg.romsPath;
+            };
+          }
+        ];
+      in {
+        enable = true;
+        cert = cfg.certFile;
+        configDir = "${config.services.syncthing.dataDir}/.syncthing";
+        dataDir = "/home/${cfg.user}";
+        key = cfg.keyFile;
+        openDefaultPorts = true;
+        user = cfg.user;
+
+        settings = {
+          options = {
+            localAnnounceEnabled = true;
+            relaysEnabled = true;
+            urAccepted = -1;
+          };
+
+          inherit devices folders;
+        };
       };
     };
   };
