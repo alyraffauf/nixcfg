@@ -50,20 +50,6 @@
 
         virtualHosts = {
           "${config.networking.hostName}.${config.mySnippets.tailnet}".extraConfig = let
-            jellyfin = ''
-              redir /jellyfin /jellyfin/
-              handle_path /jellyfin/* {
-                reverse_proxy localhost:${toString 8096}
-              }
-            '';
-
-            qbittorrent = ''
-              redir /qbittorrent /qbittorrent/
-              handle_path /qbittorrent/* {
-                reverse_proxy localhost:${toString config.myNixOS.services.qbittorrent.port}
-              }
-            '';
-
             syncthing = ''
               redir /syncthing /syncthing/
               handle_path /syncthing/* {
@@ -74,10 +60,7 @@
             '';
           in
             lib.concatLines (
-              lib.optional (config.services.jellyfin.enable)
-              jellyfin
-              ++ lib.optional (config.myNixOS.services.qbittorrent.enable) qbittorrent
-              ++ lib.optional (config.services.syncthing.enable) syncthing
+              lib.optional (config.services.syncthing.enable) syncthing
             );
         };
       };
