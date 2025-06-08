@@ -118,6 +118,8 @@
     };
 
     services = {
+      caddy.enable = true;
+
       forgejo-runner = {
         enable = true;
         number = 1;

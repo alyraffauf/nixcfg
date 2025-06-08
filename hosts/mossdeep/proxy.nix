@@ -6,7 +6,6 @@
 
   services = {
     caddy = {
-      enable = true;
       email = "alyraffauf@fastmail.com";
 
       virtualHosts = {

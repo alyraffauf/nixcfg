@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./alycodes
+    ./caddy
     ./fail2ban
     ./flatpak
     ./forgejo

@@ -35,6 +35,7 @@
     };
 
     services = {
+      caddy.enable = true;
       gdm.enable = true;
       tailscale.enable = true;
     };

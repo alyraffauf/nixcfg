@@ -4,6 +4,43 @@ in {
   networking.firewall.allowedTCPPorts = [6881];
 
   services = {
+    caddy.virtualHosts = {
+      "bazarr.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/bazarr
+          reverse_proxy localhost:${toString config.services.bazarr.listenPort}
+        '';
+      };
+
+      "lidarr.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/lidarr
+          reverse_proxy localhost:${toString config.services.lidarr.settings.server.port}
+        '';
+      };
+
+      "prowlarr.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/prowlarr
+          reverse_proxy localhost:${toString config.services.prowlarr.settings.server.port}
+        '';
+      };
+
+      "radarr.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/radarr
+          reverse_proxy localhost:${toString config.services.radarr.settings.server.port}
+        '';
+      };
+
+      "sonarr.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/sonarr
+          reverse_proxy localhost:${toString config.services.sonarr.settings.server.port}
+        '';
+      };
+    };
+
     immich = {
       enable = true;
       host = "0.0.0.0";

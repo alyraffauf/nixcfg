@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   options.myNixOS.services.tailscale = {
@@ -28,6 +29,8 @@
       }
     ];
 
+    age.secrets.tailscaleCaddyAuth.file = "${self.inputs.secrets}/tailscale/caddyAuth.age";
+
     home-manager.sharedModules = [
       {
         programs.gnome-shell.extensions = [
@@ -45,36 +48,38 @@
       caddy = lib.mkIf config.myNixOS.services.tailscale.enableCaddy {
         enable = true;
 
-        virtualHosts."${config.networking.hostName}.${config.mySnippets.tailnet}".extraConfig = let
-          jellyfin = ''
-            redir /jellyfin /jellyfin/
-            handle_path /jellyfin/* {
-              reverse_proxy localhost:${toString 8096}
-            }
-          '';
-
-          qbittorrent = ''
-            redir /qbittorrent /qbittorrent/
-            handle_path /qbittorrent/* {
-              reverse_proxy localhost:${toString config.myNixOS.services.qbittorrent.port}
-            }
-          '';
-
-          syncthing = ''
-            redir /syncthing /syncthing/
-            handle_path /syncthing/* {
-              reverse_proxy localhost:8384 {
-                header_up Host localhost
+        virtualHosts = {
+          "${config.networking.hostName}.${config.mySnippets.tailnet}".extraConfig = let
+            jellyfin = ''
+              redir /jellyfin /jellyfin/
+              handle_path /jellyfin/* {
+                reverse_proxy localhost:${toString 8096}
               }
-            }
-          '';
-        in
-          lib.concatLines (
-            lib.optional (config.services.jellyfin.enable)
-            jellyfin
-            ++ lib.optional (config.myNixOS.services.qbittorrent.enable) qbittorrent
-            ++ lib.optional (config.services.syncthing.enable) syncthing
-          );
+            '';
+
+            qbittorrent = ''
+              redir /qbittorrent /qbittorrent/
+              handle_path /qbittorrent/* {
+                reverse_proxy localhost:${toString config.myNixOS.services.qbittorrent.port}
+              }
+            '';
+
+            syncthing = ''
+              redir /syncthing /syncthing/
+              handle_path /syncthing/* {
+                reverse_proxy localhost:8384 {
+                  header_up Host localhost
+                }
+              }
+            '';
+          in
+            lib.concatLines (
+              lib.optional (config.services.jellyfin.enable)
+              jellyfin
+              ++ lib.optional (config.myNixOS.services.qbittorrent.enable) qbittorrent
+              ++ lib.optional (config.services.syncthing.enable) syncthing
+            );
+        };
       };
 
       tailscale = {

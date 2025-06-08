@@ -78,6 +78,7 @@
 
     services = {
       alycodes.enable = true;
+      caddy.enable = true;
 
       forgejo = {
         enable = true;

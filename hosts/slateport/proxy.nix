@@ -13,7 +13,6 @@ in {
   };
 
   services.caddy = {
-    enable = true;
     email = "alyraffauf@gmail.com";
 
     virtualHosts = {

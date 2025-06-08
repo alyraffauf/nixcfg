@@ -62,7 +62,11 @@
     };
 
     programs.nix.enable = true;
-    services.tailscale.enable = true;
+
+    services = {
+      caddy.enable = true;
+      tailscale.enable = true;
+    };
   };
 
   myUsers.root.enable = true;

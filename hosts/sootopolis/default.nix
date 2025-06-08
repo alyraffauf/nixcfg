@@ -45,6 +45,7 @@
     };
 
     services = {
+      caddy.enable = true;
       greetd.enable = true;
 
       syncthing = {
