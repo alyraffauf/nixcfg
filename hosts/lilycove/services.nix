@@ -13,6 +13,16 @@ in {
         '';
       };
 
+      "jellyfin.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/jellyfin
+          encode zstd gzip
+          reverse_proxy localhost:8096 {
+            flush_interval -1
+          }
+        '';
+      };
+
       "lidarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/lidarr
