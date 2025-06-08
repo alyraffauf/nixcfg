@@ -120,32 +120,32 @@
                     sites = [
                       {
                         title = "Sonarr";
-                        url = "http://lilycove:8989/";
+                        url = "https://sonarr.${config.mySnippets.tailnet}/";
                         icon = "di:sonarr";
                       }
                       {
                         title = "Radarr";
-                        url = "http://lilycove:7878/";
+                        url = "https://radarr.${config.mySnippets.tailnet}/";
                         icon = "di:radarr";
                       }
                       {
                         title = "Lidarr";
-                        url = "http://lilycove:8686/";
+                        url = "https://lidarr.${config.mySnippets.tailnet}/";
                         icon = "di:lidarr";
                       }
                       {
                         title = "Readarr";
-                        url = "http://lilycove:8787/";
+                        url = "https://readarr.${config.mySnippets.tailnet}/";
                         icon = "di:readarr";
                       }
                       {
                         title = "Prowlarr";
-                        url = "http://lilycove:9696/";
+                        url = "https://prowlarr.${config.mySnippets.tailnet}/";
                         icon = "di:prowlarr";
                       }
                       {
                         title = "Bazarr";
-                        url = "http://lilycove:6767/";
+                        url = "https://bazarr.${config.mySnippets.tailnet}/";
                         icon = "di:bazarr";
                       }
                       {
