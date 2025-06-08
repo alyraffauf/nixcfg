@@ -5,6 +5,40 @@
   };
 
   services = {
+    caddy = {
+      enable = true;
+      email = "alyraffauf@fastmail.com";
+
+      virtualHosts = {
+        "aly.codes" = {
+          extraConfig = ''
+            encode gzip
+            reverse_proxy localhost${config.services.anubis.instances.alycodes.settings.BIND}
+          '';
+        };
+
+        "aly.social" = {
+          extraConfig = ''
+            encode gzip
+            reverse_proxy localhost:${toString config.services.pds.settings.PDS_PORT}
+          '';
+        };
+
+        "git.aly.codes" = {
+          extraConfig = ''
+            encode gzip
+
+            @uploads method POST PUT
+            handle @uploads {
+              request_body { max_size 2GB }
+            }
+
+            reverse_proxy localhost${config.services.anubis.instances.forgejo.settings.BIND}
+          '';
+        };
+      };
+    };
+
     ddclient = {
       enable = true;
 
@@ -24,48 +58,6 @@
         zone=aly.codes
         aly.codes
       '';
-    };
-
-    nginx = {
-      enable = true;
-      recommendedGzipSettings = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
-
-      virtualHosts = {
-        "aly.codes" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.alycodes.settings.BIND}";
-            proxyWebsockets = true;
-          };
-        };
-
-        "aly.social" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.pds.settings.PDS_PORT}";
-            proxyWebsockets = true;
-          };
-        };
-
-        "git.aly.codes" = {
-          enableACME = true;
-          forceSSL = true;
-
-          locations."/" = {
-            proxyPass = "http://localhost${toString config.services.anubis.instances.forgejo.settings.BIND}";
-            proxyWebsockets = true;
-
-            extraConfig = ''
-              client_max_body_size 2G;
-            '';
-          };
-        };
-      };
     };
   };
 }
