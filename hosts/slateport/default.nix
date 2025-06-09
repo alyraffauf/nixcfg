@@ -64,8 +64,5 @@
     };
   };
 
-  myUsers.aly = {
-    enable = true;
-    password = "$y$j9T$Lit66g43.Zn60mwGig7cx1$L.aLzGvy0q.b1E40/XSIkhj2tkJbigpXFrxR/D/FVB4";
-  };
+  myUsers.aly.enable = true;
 }
