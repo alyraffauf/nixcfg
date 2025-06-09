@@ -5,7 +5,7 @@
 
       password = lib.mkOption {
         description = "Hashed password for ${user}.";
-        type = lib.types.str;
+        type = lib.types.nullOr lib.types.str;
       };
     };
   in {
