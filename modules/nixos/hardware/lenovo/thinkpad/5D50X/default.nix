@@ -1,6 +1,8 @@
 # Lenovo 5D50X AKA ThinkPad Trackpoint II USB/Bluetooth Keyboard.
-{...}: {
+{lib,...}: {
   imports = [../common.nix];
+
+  options.myHardware.lenovo.thinkpad.kb5D50X.enable = lib.mkEnableOption "Lenovo ThinkPad 5D50X hardware configuration.";
 
   config = {
     services.udev.extraRules = ''

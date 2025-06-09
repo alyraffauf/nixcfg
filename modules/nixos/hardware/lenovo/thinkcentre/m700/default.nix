@@ -5,6 +5,8 @@
     self.nixosModules.hardware-intel-gpu
   ];
 
+  options.myHardware.lenovo.thinkcentre.m700.enable = self.lib.mkEnableOption "Lenovo ThinkCentre M700 hardware configuration.";
+
   config = {
     boot.initrd.availableKernelModules = [
       "ahci"

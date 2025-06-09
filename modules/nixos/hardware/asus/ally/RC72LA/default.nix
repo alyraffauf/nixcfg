@@ -10,6 +10,8 @@
     self.nixosModules.hardware-common
   ];
 
+  options.myHardware.asus.ally.RC72LA.enable = lib.mkEnableOption "ASUS Ally X RC72LA hardware configuration.";
+
   config = {
     boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.11") (lib.mkDefault pkgs.linuxPackages_latest);
 

@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  options.myHardware.profiles.laptop.enable = lib.mkEnableOption "Laptop hardware configuration.";
+
   config = lib.mkMerge [
     {
       boot.kernel.sysctl = {

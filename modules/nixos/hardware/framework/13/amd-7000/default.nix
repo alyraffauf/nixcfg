@@ -13,6 +13,8 @@
     self.nixosModules.hardware-common
   ];
 
+  options.myHardware.framework.laptop13.amd-7000.enable = lib.mkEnableOption "Framework Laptop 13 AMD 7000 hardware configuration.";
+
   config = {
     boot = {
       initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];

@@ -1,4 +1,6 @@
 {lib, ...}: {
+  options.myHardware.intel.cpu.enable = lib.mkEnableOption "Intel CPU configuration.";
+
   config = {
     boot.kernelModules = ["kvm-intel"];
     hardware.cpu.intel.updateMicrocode = true;

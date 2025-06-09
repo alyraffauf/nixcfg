@@ -8,6 +8,8 @@
     self.nixosModules.hardware-profiles-laptop
   ];
 
+  options.myHardware.lenovo.thinkpad.X1.gen-9.enable = self.lib.mkEnableOption "Lenovo ThinkPad X1 Carbon Gen 9 hardware configuration.";
+
   config = {
     boot.initrd.availableKernelModules = [
       "nvme"

@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  lib,
+  self,
+  ...
+}: {
   imports = [
     ../common.nix
     self.nixosModules.hardware-common
@@ -6,6 +10,8 @@
     self.nixosModules.hardware-intel-gpu
     self.nixosModules.hardware-profiles-laptop
   ];
+
+  options.myHardware.lenovo.thinkpad.T440p.enable = lib.mkEnableOption "Lenovo ThinkPad T440p hardware configuration.";
 
   config = {
     boot = {

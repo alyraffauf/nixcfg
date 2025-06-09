@@ -5,10 +5,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.hardware.thinkpad.x1c.gen-9.equalizer;
+  cfg = config.hardware.thinkpad.X1.gen-9.equalizer;
 in {
   options = {
-    hardware.thinkpad.x1c.gen-9.equalizer = {
+    hardware.thinkpad.X1.gen-9.equalizer = {
       enable = lib.mkOption {
         type = lib.types.bool;
         default = true;

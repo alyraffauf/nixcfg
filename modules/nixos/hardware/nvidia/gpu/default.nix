@@ -1,4 +1,10 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myHardware.nvidia.gpu.enable = lib.mkEnableOption "NVIDIA GPU configuration.";
+
   config = {
     boot = {
       extraModulePackages = [config.boot.kernelPackages.nvidia_x11];

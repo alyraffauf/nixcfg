@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  options.myHardware.intel.gpu.enable = lib.mkEnableOption "Intel GPU configuration.";
+
   config = {
     boot.initrd.kernelModules = ["i915"];
 
