@@ -29,6 +29,5 @@
 
     syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/mauville/cert.age";
     syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/mauville/key.age";
-    transmission.file = "${self.inputs.secrets}/transmission.age";
   };
 }

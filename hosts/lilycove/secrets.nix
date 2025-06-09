@@ -33,6 +33,5 @@
     syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/lilycove/cert.age";
     syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/lilycove/key.age";
     tailscaleAuthKey.file = "${self.inputs.secrets}/tailscale/auth.age";
-    transmission.file = "${self.inputs.secrets}/transmission.age";
   };
 }
