@@ -15,8 +15,6 @@ hosts/
 ├── lilycove/      # Custom Mini-ITX Gaming Desktop
 ├── mauville/      # Beelink Mini S12 Pro
 ├── mossdeep/      # Hetzner VPS
-├── pacifidlog/    # Asus ROG Ally X
-├── petalburg/     # Lenovo Yoga Pro 9i
 ├── roxanne/       # Raspberry Pi 4 4GB
 ├── rustboro/      # ThinkPad T440p
 ├── slateport/     # Lenovo ThinkCentre M700 Tiny
