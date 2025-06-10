@@ -34,7 +34,7 @@
     home-manager.sharedModules = [
       {
         programs.gnome-shell.extensions = [
-          {package = pkgs.gnomeExtensions.tailscale-status;}
+          {package = pkgs.gnomeExtensions.tailscale-qs;}
         ];
       }
     ];
