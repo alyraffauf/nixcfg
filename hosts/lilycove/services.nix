@@ -107,13 +107,14 @@ in {
     ollama = {
       enable = true;
       acceleration = "rocm";
+      host = "0.0.0.0";
 
       loadModels = [
-        "deepseek-r1:14b"
-        "gemma2:9b"
-        "llama3.1:8b"
+        "gemma3:12b"
+        "llava:13b"
       ];
 
+      openFirewall = true;
       rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700.
     };
 
