@@ -32,7 +32,6 @@ in {
         '';
       };
 
-      # -------- immich --------
       "immich.${newDomain}" = {
         extraConfig = ''
           encode zstd gzip
@@ -50,6 +49,13 @@ in {
               read_buffer 0     # proxy_request_buffering off
             }
           }
+        '';
+      };
+
+      "karakeep.${newDomain}" = {
+        extraConfig = ''
+          encode zstd gzip
+          reverse_proxy localhost${toString config.services.anubis.instances.karekeep.settings.BIND}
         '';
       };
 

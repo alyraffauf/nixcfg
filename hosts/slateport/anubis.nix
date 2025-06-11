@@ -33,6 +33,14 @@
         METRICS_BIND_NETWORK = "tcp";
       };
 
+      karekeep.settings = {
+        TARGET = "http://mauville:7020";
+        BIND = ":60633";
+        BIND_NETWORK = "tcp";
+        METRICS_BIND = "0.0.0.0:20633";
+        METRICS_BIND_NETWORK = "tcp";
+      };
+
       ombi.settings = {
         TARGET = "http://lilycove:5000";
         BIND = ":60523";

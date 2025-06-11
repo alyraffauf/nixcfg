@@ -13,16 +13,13 @@
 
       domains = [
         "audiobookshelf.cute.haus"
+        "cute.haus"
         "forgejo.cute.haus"
         "immich.cute.haus"
-        "lidarr.cute.haus"
+        "karakeep.cute.haus"
         "navidrome.cute.haus"
         "ombi.cute.haus"
         "plex.cute.haus"
-        "prowlarr.cute.haus"
-        "radarr.cute.haus"
-        "sonarr.cute.haus"
-        "cute.haus"
       ];
 
       interval = "10min";
@@ -89,10 +86,10 @@
                         icon = "di:forgejo";
                       }
                       {
-                        title = "Nextcloud";
-                        url = "https://git.aly.codes/";
-                        check-url = "http://mossdeep:3001";
-                        icon = "di:nextcloud";
+                        title = "Karakeep";
+                        url = "https://karakeep.cute.haus/";
+                        check-url = "http://mauville:7020";
+                        icon = "di:karakeep";
                       }
                       {
                         title = "aly.social";
