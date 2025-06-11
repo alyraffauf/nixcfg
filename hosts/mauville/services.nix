@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   networking = {
     firewall.allowedTCPPorts = [80 443 2379 2380 3000 6443 61208];
     firewall.allowedUDPPorts = [8472];
@@ -26,7 +26,7 @@
         INFERENCE_LANG = "english";
         INFERENCE_TEXT_MODEL = INFERENCE_IMAGE_MODEL;
         NEXTAUTH_URL = "https://karakeep.cute.haus/";
-        OLLAMA_BASE_URL = "http://lilycove:11434";
+        OLLAMA_BASE_URL = "https://ollama.${config.mySnippets.tailnet}";
         OLLAMA_KEEP_ALIVE = "5m";
         PORT = "7020";
       };
