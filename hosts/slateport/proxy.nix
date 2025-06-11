@@ -55,7 +55,10 @@ in {
       "karakeep.${newDomain}" = {
         extraConfig = ''
           encode zstd gzip
-          reverse_proxy http://mauville:7020
+
+          reverse_proxy http://mauville:7020 {
+            flush_interval -1
+          }
         '';
       };
 
