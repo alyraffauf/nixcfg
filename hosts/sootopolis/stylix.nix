@@ -6,7 +6,7 @@
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-yxdrex.png";
     imageScalingMode = "fill";
     polarity = "dark";
