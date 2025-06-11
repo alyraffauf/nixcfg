@@ -111,7 +111,7 @@ in {
 
       loadModels = [
         "gemma3:12b"
-        "llava:13b"
+        "gemma3:4b"
       ];
 
       openFirewall = true;
