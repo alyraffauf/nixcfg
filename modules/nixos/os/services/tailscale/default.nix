@@ -19,6 +19,12 @@
       default = true;
       type = lib.types.bool;
     };
+
+    operator = lib.mkOption {
+      description = "Tailscale operator name";
+      default = null;
+      type = lib.types.nullOr lib.types.str;
+    };
   };
 
   config = lib.mkIf config.myNixOS.services.tailscale.enable {
@@ -68,7 +74,12 @@
       tailscale = {
         enable = true;
         authKeyFile = config.myNixOS.services.tailscale.authKeyFile;
-        extraUpFlags = ["--ssh"];
+
+        extraUpFlags =
+          ["--ssh"]
+          ++ lib.optional (config.myNixOS.services.tailscale.operator != null)
+          "--operator ${config.myNixOS.services.tailscale.operator}";
+
         openFirewall = true;
         permitCertUid = lib.mkIf (config.services.caddy.enable) "caddy";
         useRoutingFeatures = "both";

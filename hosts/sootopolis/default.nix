@@ -60,7 +60,10 @@
         user = "aly";
       };
 
-      tailscale.enable = true;
+      tailscale = {
+        enable = true;
+        operator = "aly";
+      };
     };
   };
 
