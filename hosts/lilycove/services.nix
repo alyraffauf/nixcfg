@@ -31,6 +31,14 @@ in {
         '';
       };
 
+      "ollama.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/ollama
+          encode zstd gzip
+          reverse_proxy localhost:${toString config.services.ollama.port}
+        '';
+      };
+
       "prowlarr.${config.mySnippets.tailnet}" = {
         extraConfig = ''
           bind tailscale/prowlarr
