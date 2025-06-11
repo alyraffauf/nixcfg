@@ -12,6 +12,21 @@
       port = 13378;
     };
 
+    karakeep = {
+      enable = true;
+
+      extraEnvironment = {
+        DISABLE_NEW_RELEASE_CHECK = "true";
+        DISABLE_REGISTRATION = "true";
+        INFERENCE_CONTEXT_LENGTH = "50000";
+        INFERENCE_IMAGE_MODEL = "gemma3:12b";
+        INFERENCE_LANG = "english";
+        INFERENCE_TEXT_MODEL = "gemma3:12b";
+        OLLAMA_BASE_URL = "http://lilycove:11434";
+        PORT = "7020";
+      };
+    };
+
     # navidrome = {
     #   enable = true;
     #   openFirewall = true;
