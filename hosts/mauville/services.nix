@@ -21,7 +21,7 @@
         INFERENCE_CONTEXT_LENGTH = "50000";
         INFERENCE_IMAGE_MODEL = "gemma3:12b";
         INFERENCE_LANG = "english";
-        INFERENCE_TEXT_MODEL = "gemma3:12b";
+        INFERENCE_TEXT_MODEL = "gemma3:4b";
         OLLAMA_BASE_URL = "http://lilycove:11434";
         PORT = "7020";
       };
