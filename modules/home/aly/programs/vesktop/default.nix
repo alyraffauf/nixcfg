@@ -14,7 +14,7 @@
         arRPC = true;
         disableMinSize = true;
         minimizeToTray = false;
-        tray = false;
+        tray = true;
         hardwareAcceleration = true;
         discordBranch = "stable";
       };
