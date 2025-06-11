@@ -88,7 +88,7 @@
                       {
                         title = "Karakeep";
                         url = "https://karakeep.cute.haus/";
-                        check-url = "http://mauville:7020";
+                        check-url = "http://mossdeep:3001";
                         icon = "di:karakeep";
                       }
                       {
