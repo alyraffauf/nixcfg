@@ -5,6 +5,7 @@
 }: {
   stylix = {
     enable = true;
+    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-yxdrex.png";
     imageScalingMode = "fill";
@@ -23,8 +24,8 @@
       };
 
       sansSerif = {
-        name = "UbuntuSans Nerd Font";
-        package = pkgs.nerd-fonts.ubuntu-sans;
+        name = "Adwaita";
+        package = pkgs.adwaita-fonts;
       };
 
       serif = {
