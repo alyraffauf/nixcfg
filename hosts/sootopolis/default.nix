@@ -21,10 +21,12 @@
   myDisko.installDrive = "/dev/disk/by-id/nvme-SHPP41-1000GM_ANCAN50211160B42I";
 
   myNixOS = {
-    desktop.hyprland = {
-      enable = true;
-      laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
-    };
+    # desktop.hyprland = {
+    #   enable = true;
+    #   laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
+    # };
+
+    desktop.gnome.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
@@ -46,7 +48,8 @@
 
     services = {
       caddy.enable = true;
-      greetd.enable = true;
+      gdm.enable = true;
+      # greetd.enable = true;
 
       syncthing = {
         enable = true;
