@@ -24,7 +24,7 @@
 
         "org/gnome/desktop/wm/preferences" = {
           auto-raise = true;
-          button-layout = "appmenu:close";
+          button-layout = "appmenu:minimize,maximize,close";
         };
 
         "org/gnome/mutter" = {
@@ -48,7 +48,7 @@
           click-action = "minimize";
           custom-background-color = true;
           custom-theme-shrink = false;
-          dock-fixed = true;
+          dock-fixed = false;
           dock-postion = "LEFT";
           extend-height = false;
         };
@@ -65,8 +65,13 @@
 
         extensions = [
           {package = pkgs.gnomeExtensions.appindicator;}
+          {package = pkgs.gnomeExtensions.auto-move-windows;}
+          {package = pkgs.gnomeExtensions.caffeine;}
           {package = pkgs.gnomeExtensions.dash-to-dock;}
+          {package = pkgs.gnomeExtensions.dynamic-panel;}
+          {package = pkgs.gnomeExtensions.night-theme-switcher;}
           {package = pkgs.gnomeExtensions.tiling-shell;}
+          {package = pkgs.gnomeExtensions.vscode-search-provider;}
         ];
       };
     };
