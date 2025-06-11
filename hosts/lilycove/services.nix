@@ -112,6 +112,7 @@ in {
       loadModels = [
         "gemma3:12b"
         "gemma3:4b"
+        "nomic-embed-text"
       ];
 
       openFirewall = true;
