@@ -55,7 +55,7 @@ in {
       "karakeep.${newDomain}" = {
         extraConfig = ''
           encode zstd gzip
-          reverse_proxy localhost${toString config.services.anubis.instances.karekeep.settings.BIND}
+          reverse_proxy http://mauville:7020
         '';
       };
 

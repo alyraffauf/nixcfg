@@ -49,6 +49,7 @@ in {
             augmented-steam
             bitwarden
             consent-o-matic
+            karakeep
             ublock-origin
           ];
 
