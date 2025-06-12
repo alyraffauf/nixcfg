@@ -18,7 +18,7 @@
       extraEnvironment = rec {
         DISABLE_NEW_RELEASE_CHECK = "true";
         DISABLE_SIGNUPS = "true";
-        INFERENCE_CONTEXT_LENGTH = "50000";
+        INFERENCE_CONTEXT_LENGTH = "128000";
         INFERENCE_EMBEDDING_MODEL = "nomic-embed-text";
         INFERENCE_ENABLE_AUTO_SUMMARIZATION = "true";
         INFERENCE_IMAGE_MODEL = "gemma3:4b";
