@@ -53,6 +53,7 @@
           "East Pole Coffee Co." = mkWPA2WiFi "East Pole Coffee Co." "$EastPolePSK";
           "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
           "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
+          "MOTO4A8E-5G" = mkWPA2WiFi "MOTO4A8E-5G" "$MOTO4A8EPSK";
           "norman" = mkWPA2WiFi "norman" "$normanPSK";
           "Oakview Coffee Wi-Fi" = mkWPA2WiFi "Oakview Coffee Wi-Fi" "$OakviewCoffeeWiFiPSK";
           "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
