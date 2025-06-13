@@ -59,6 +59,7 @@
           "Parkgrounds1" = mkWPA2WiFi "Parkgrounds1" "$Parkgrounds1PSK";
           "PERC COFFEE 5 Guest" = mkWPA2WiFi "PERC COFFEE 5 Guest" "$PERCguestPSK";
           "PERCguest" = mkWPA2WiFi "PERCguest" "$PERCguestPSK";
+          "SELF-public" = mkWPA2WiFi "SELF-public" "$SELFpublicPSK";
           "VINATL-Guest" = mkWPA2WiFi "VINATL-Guest" "$VINATLGuestPSK";
           "WeWorkWiFi" = mkEAPWiFi "WeWorkWiFi" "$WeWorkWiFiIdentity" "$WeWorkWiFiPassword" "mschapv2";
         };
