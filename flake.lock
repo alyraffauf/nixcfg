@@ -1084,6 +1084,7 @@
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "secrets": "secrets",
+        "self2025": "self2025",
         "stylix": "stylix",
         "tailscale-golink": "tailscale-golink",
         "vscode-server": "vscode-server",
@@ -1142,6 +1143,26 @@
       "original": {
         "owner": "alyraffauf",
         "repo": "secrets",
+        "type": "github"
+      }
+    },
+    "self2025": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1749830734,
+        "narHash": "sha256-HT39beuKhqxMS9Do1FUq2QCGSDFwweCYC9CzRfCJbRs=",
+        "owner": "alyraffauf",
+        "repo": "self2025",
+        "rev": "4d57b84e44db00da012dd1e4e1f3d9b4810d9cc7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "self2025",
         "type": "github"
       }
     },

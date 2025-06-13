@@ -49,6 +49,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
 
+    self2025 = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:alyraffauf/self2025";
+    };
+
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:danth/stylix";
