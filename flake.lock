@@ -1153,11 +1153,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749830734,
-        "narHash": "sha256-HT39beuKhqxMS9Do1FUq2QCGSDFwweCYC9CzRfCJbRs=",
+        "lastModified": 1749926797,
+        "narHash": "sha256-6azD+7EgAEsXflJInJG1BPP7c7sMLXqVDm/xFjf1CgY=",
         "owner": "alyraffauf",
         "repo": "self2025",
-        "rev": "4d57b84e44db00da012dd1e4e1f3d9b4810d9cc7",
+        "rev": "33aac37dd81bfa27630e6955f31952f51b85a91e",
         "type": "github"
       },
       "original": {
