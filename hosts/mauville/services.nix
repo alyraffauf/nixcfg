@@ -32,6 +32,20 @@
       };
     };
 
+    open-webui = {
+      enable = true;
+
+      environment = {
+        OLLAMA_API_BASE_URL = "https://ollama.narwhal-snapper.ts.net";
+        # Disable authentication
+        WEBUI_AUTH = "False";
+      };
+
+      host = "0.0.0.0";
+      openFirewall = true;
+      port = 8585;
+    };
+
     # navidrome = {
     #   enable = true;
     #   openFirewall = true;
