@@ -76,7 +76,7 @@ in {
 
       forgejo-runner = {
         enable = true;
-        number = 4;
+        number = 2;
       };
 
       plex = {
