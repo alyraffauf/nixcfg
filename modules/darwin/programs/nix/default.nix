@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.myDarwin.programs.nix.enable = lib.mkEnableOption "sane nix configuration";
@@ -21,6 +20,8 @@
             Hour = 9;
           }
         ];
+
+        options = "--delete-older-than 7d"; # Free when >20GB space left and when older than 10 days.
       };
 
       # linux-builder = {
