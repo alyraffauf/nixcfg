@@ -37,7 +37,9 @@
               request_body { max_size 2GB }
             }
 
-            reverse_proxy localhost${config.services.anubis.instances.forgejo.settings.BIND}
+            reverse_proxy localhost${config.services.anubis.instances.forgejo.settings.BIND} {
+              header_up X-Real-Ip {remote_host}
+            }
           '';
         };
 
