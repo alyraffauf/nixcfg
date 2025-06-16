@@ -16,6 +16,7 @@ in {
   config = lib.mkIf config.myHome.aly.programs.zen.enable {
     programs.zen-browser = {
       enable = true;
+      nativeMessagingHosts = [pkgs.bitwarden];
       package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
 
       profiles = {
