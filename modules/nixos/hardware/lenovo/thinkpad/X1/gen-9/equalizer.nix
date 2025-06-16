@@ -319,7 +319,7 @@ in {
         # and hand over to this instead of the speakers when they disconnect.
         "priority.session" = 1500;
         "priority.driver" = 1500;
-        "state.default-volume" = 0.343;
+        "state.default-volume" = 0.6;
         "device.icon-name" = "audio-card-analog-pci";
       };
       "playback.props" = {
