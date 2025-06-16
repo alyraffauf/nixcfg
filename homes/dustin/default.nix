@@ -17,12 +17,13 @@
       calibre
       fractal
       libreoffice-still
+      marp-cli
       plexamp
       signal-desktop-bin
+      stellarium
       teams-for-linux
       trayscale
       webcord
-      xfce.xfce4-taskmanager
       zoom-us
     ];
   };
