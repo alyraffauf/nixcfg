@@ -17,7 +17,7 @@
         "aly.codes" = {
           extraConfig = ''
             encode gzip zstd
-            reverse_proxy localhost${config.services.anubis.instances.alycodes.settings.BIND}
+            reverse_proxy localhost:${toString config.myNixOS.services.alycodes.port}
           '';
         };
 

@@ -9,13 +9,13 @@
     };
 
     instances = {
-      alycodes.settings = {
-        TARGET = "http://localhost:8282";
-        BIND = ":60023";
-        BIND_NETWORK = "tcp";
-        METRICS_BIND = "0.0.0.0:20023";
-        METRICS_BIND_NETWORK = "tcp";
-      };
+      # alycodes.settings = {
+      #   TARGET = "http://localhost:8282";
+      #   BIND = ":60023";
+      #   BIND_NETWORK = "tcp";
+      #   METRICS_BIND = "0.0.0.0:20023";
+      #   METRICS_BIND_NETWORK = "tcp";
+      # };
 
       forgejo.settings = {
         TARGET = "http://localhost:3001";
