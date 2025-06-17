@@ -1,12 +1,7 @@
-{
-  config,
-  self,
-  ...
-}: {
+{self, ...}: {
   imports = [
     ./anubis.nix
     ./backups.nix
-    ./home.nix
     ./oci.nix
     ./proxy.nix
     ./secrets.nix
@@ -52,17 +47,9 @@
 
     services = {
       caddy.enable = true;
-
-      syncthing = {
-        enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
-        user = "aly";
-      };
-
       tailscale.enable = true;
     };
   };
 
-  myUsers.aly.enable = true;
+  myUsers.root.enable = true;
 }
