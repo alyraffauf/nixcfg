@@ -2,15 +2,10 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: let
   engines = import ../firefox/engines.nix;
 in {
-  imports = [
-    self.inputs.zen-browser.homeModules.default
-  ];
-
   options.myHome.aly.programs.zen.enable = lib.mkEnableOption "zen web browser";
 
   config = lib.mkIf config.myHome.aly.programs.zen.enable {

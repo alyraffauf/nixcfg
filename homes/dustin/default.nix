@@ -6,7 +6,6 @@
 }: {
   imports = [
     self.homeManagerModules.default
-    self.inputs.zen-browser.homeModules.default
   ];
 
   home = {
