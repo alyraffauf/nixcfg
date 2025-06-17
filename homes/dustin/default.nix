@@ -6,6 +6,7 @@
 }: {
   imports = [
     self.homeManagerModules.default
+    self.inputs.zen-browser.homeModules.default
   ];
 
   home = {
@@ -53,6 +54,12 @@
         lock_timeout = 14400;
         pinentry = pkgs.pinentry-gnome3;
       };
+    };
+
+    zen-browser = {
+      enable = true;
+      nativeMessagingHosts = [pkgs.bitwarden];
+      package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
     };
   };
 
