@@ -17,6 +17,11 @@
           user = "root";
         };
 
+        "slateport" = {
+          hostname = "slateport";
+          user = "root";
+        };
+
         "verdanturf" = {
           hostname = "verdanturf";
           user = "root";
