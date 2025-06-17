@@ -17,6 +17,11 @@
           user = "root";
         };
 
+        "roxanne" = {
+          hostname = "roxanne";
+          user = "root";
+        };
+
         "slateport" = {
           hostname = "slateport";
           user = "root";
