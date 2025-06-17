@@ -11,27 +11,18 @@
       enable = true;
       compression = true;
 
-      matchBlocks = {
-        "mossdeep" = {
-          hostname = "mossdeep";
-          user = "root";
+      matchBlocks = let
+        rootMe = name: {
+          ${name} = {
+            hostname = name;
+            user = "root";
+          };
         };
-
-        "roxanne" = {
-          hostname = "roxanne";
-          user = "root";
-        };
-
-        "slateport" = {
-          hostname = "slateport";
-          user = "root";
-        };
-
-        "verdanturf" = {
-          hostname = "verdanturf";
-          user = "root";
-        };
-      };
+      in
+        rootMe "mossdeep"
+        // rootMe "roxanne"
+        // rootMe "slateport"
+        // rootMe "verdanturf";
 
       package = pkgs.openssh;
     };
