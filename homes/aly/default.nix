@@ -33,6 +33,7 @@
             git.enable = true;
             halloy.enable = true;
             helix.enable = true;
+            ssh.enable = true;
             thunderbird.enable = true;
             vesktop.enable = true;
             vsCode.enable = true;
