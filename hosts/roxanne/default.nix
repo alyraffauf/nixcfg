@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./home.nix
     ./secrets.nix
     self.inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];
@@ -84,5 +83,5 @@
     };
   };
 
-  myUsers.aly.enable = true;
+  myUsers.root.enable = true;
 }
