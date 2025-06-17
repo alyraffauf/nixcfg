@@ -39,6 +39,12 @@
           workspaces-only-on-primary = true;
         };
 
+        "/org/gnome/settings-daemon/plugins/media-keys" = {
+          play = ["<Super>AudioMute"];
+          previous = ["<Super>AudioLowerVolume"];
+          next = ["<Super>AudioRaiseVolume"];
+        };
+
         "org/gnome/shell" = {
           welcome-dialog-last-shown-version = "9999999999"; # No welcome dialog.
         };
