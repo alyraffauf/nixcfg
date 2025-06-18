@@ -71,6 +71,7 @@
         homeDirectory = "/home/aly";
 
         packages = with pkgs; [
+          bitwarden-desktop
           nicotine-plus
           obsidian
           plexamp
