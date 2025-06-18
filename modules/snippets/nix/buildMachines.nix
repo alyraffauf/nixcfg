@@ -48,6 +48,7 @@
         {
           hostName = "slateport";
           maxJobs = 4;
+          protocol = "ssh-ng";
           speedFactor = 2;
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
           sshUser = "nixbuild";
