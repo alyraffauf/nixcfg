@@ -57,7 +57,8 @@
     ];
 
     masApps = {
-      "Photomator – Photo Editor" = 1444636541;
+      "Bitwarden" = 1352778147;
+      "Photomator" = 1444636541;
     };
 
     onActivation = {
