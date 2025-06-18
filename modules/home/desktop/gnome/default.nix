@@ -39,7 +39,7 @@
           workspaces-only-on-primary = true;
         };
 
-        "/org/gnome/settings-daemon/plugins/media-keys" = {
+        "org/gnome/settings-daemon/plugins/media-keys" = {
           play = ["<Super>AudioMute"];
           previous = ["<Super>AudioLowerVolume"];
           next = ["<Super>AudioRaiseVolume"];
