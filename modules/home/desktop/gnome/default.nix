@@ -52,7 +52,7 @@
         "org/gnome/shell/extensions/dash-to-dock" = {
           background-color = lib.mkIf config.stylix.targets.gnome.enable config.lib.stylix.colors.withHashtag.base01;
           click-action = "minimize";
-          custom-background-color = true;
+          custom-background-color = lib.mkIf config.stylix.targets.gnome.enable true;
           custom-theme-shrink = false;
           dock-fixed = false;
           dock-postion = "LEFT";
