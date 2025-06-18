@@ -50,7 +50,7 @@
         };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
-          background-color = config.lib.stylix.colors.withHashtag.base01;
+          background-color = lib.mkIf config.stylix.targets.gnome.enable config.lib.stylix.colors.withHashtag.base01;
           click-action = "minimize";
           custom-background-color = true;
           custom-theme-shrink = false;
