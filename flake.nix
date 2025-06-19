@@ -46,7 +46,6 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
 
     self2025 = {
