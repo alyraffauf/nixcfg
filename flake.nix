@@ -227,6 +227,12 @@
       };
     });
 
+    diskoConfigurations = {
+      btrfs-subvolumes = ./modules/nixos/disko/btrfs-subvolumes;
+      luks-btrfs-subvolumes = ./modules/nixos/disko/luks-btrfs-subvolumes;
+      lvm-ext4 = ./modules/nixos/disko/lvm-ext4;
+    };
+
     formatter = self.inputs.nixpkgs.lib.genAttrs allSystems (system: self.packages.${system}.formatter);
 
     homeManagerModules = {
@@ -237,9 +243,6 @@
     };
 
     nixosModules = {
-      disko-btrfs-subvolumes = ./modules/nixos/disko/btrfs-subvolumes;
-      disko-luks-btrfs-subvolumes = ./modules/nixos/disko/luks-btrfs-subvolumes;
-      disko-lvm-ext4 = ./modules/nixos/disko/lvm-ext4;
       hardware = ./modules/nixos/hardware;
       locale-en-us = ./modules/nixos/locale/en-us;
       nixos = ./modules/nixos/os;

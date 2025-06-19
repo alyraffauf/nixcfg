@@ -3,7 +3,7 @@
     ./home.nix
     ./secrets.nix
     ./stylix.nix
-    self.nixosModules.disko-btrfs-subvolumes
+    self.diskoConfigurations.btrfs-subvolumes
     self.nixosModules.locale-en-us
   ];
 

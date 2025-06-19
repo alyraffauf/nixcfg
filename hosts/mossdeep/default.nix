@@ -13,7 +13,7 @@
     ./services.nix
     ./stylix.nix
     "${modulesPath}/profiles/qemu-guest.nix"
-    self.nixosModules.disko-lvm-ext4
+    self.diskoConfigurations.lvm-ext4
     self.nixosModules.locale-en-us
   ];
 

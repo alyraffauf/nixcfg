@@ -13,7 +13,7 @@ in {
     ./secrets.nix
     ./services.nix
     ./stylix.nix
-    self.nixosModules.disko-luks-btrfs-subvolumes
+    self.diskoConfigurations.luks-btrfs-subvolumes
     self.nixosModules.locale-en-us
   ];
 

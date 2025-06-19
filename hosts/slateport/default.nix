@@ -6,7 +6,7 @@
     ./proxy.nix
     ./secrets.nix
     ./services.nix
-    self.nixosModules.disko-btrfs-subvolumes
+    self.diskoConfigurations.btrfs-subvolumes
     self.nixosModules.locale-en-us
   ];
 
