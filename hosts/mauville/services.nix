@@ -61,27 +61,27 @@
     #   openFirewall = true;
     # };
 
-    paperless = {
-      enable = true;
-      address = "0.0.0.0";
-      dataDir = "/mnt/Data/paperless";
+    # paperless = {
+    #   enable = true;
+    #   address = "0.0.0.0";
+    #   dataDir = "/mnt/Data/paperless";
 
-      settings = {
-        PAPERLESS_ACCOUNT_ALLOW_SIGNUPS = false;
+    #   settings = {
+    #     PAPERLESS_ACCOUNT_ALLOW_SIGNUPS = false;
 
-        PAPERLESS_CONSUMER_IGNORE_PATTERN = [
-          ".DS_STORE/*"
-          "desktop.ini"
-        ];
+    #     PAPERLESS_CONSUMER_IGNORE_PATTERN = [
+    #       ".DS_STORE/*"
+    #       "desktop.ini"
+    #     ];
 
-        PAPERLESS_OCR_LANGUAGE = "eng";
+    #     PAPERLESS_OCR_LANGUAGE = "eng";
 
-        PAPERLESS_OCR_USER_ARGS = {
-          optimize = 1;
-          pdfa_image_compression = "lossless";
-        };
-      };
-    };
+    #     PAPERLESS_OCR_USER_ARGS = {
+    #       optimize = 1;
+    #       pdfa_image_compression = "lossless";
+    #     };
+    #   };
+    # };
 
     # slskd = {
     #   enable = true;
