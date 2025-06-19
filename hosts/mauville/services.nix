@@ -42,6 +42,8 @@
       };
     };
 
+    meilisearch.dumplessUpgrade = true;
+
     open-webui = {
       enable = true;
 
