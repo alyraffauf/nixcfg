@@ -135,7 +135,6 @@
   outputs = {self, ...}: let
     allSystems = [
       "aarch64-darwin"
-      "aarch64-linux"
       "x86_64-linux"
     ];
 
@@ -156,7 +155,6 @@
       "mauville"
       "mossdeep"
       "oldale"
-      "roxanne"
       "rustboro"
       "slateport"
       "sootopolis"

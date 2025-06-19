@@ -44,11 +44,6 @@
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_petalburg.pub";
       };
 
-      roxanne = {
-        hostNames = ["roxanne" "roxanne.local" "roxanne.${config.mySnippets.tailnet}"];
-        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_roxanne.pub";
-      };
-
       rustboro = {
         hostNames = ["rustboro" "rustboro.local" "rustboro.${config.mySnippets.tailnet}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_rustboro.pub";

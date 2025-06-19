@@ -23,12 +23,6 @@
     user = "root";
   };
 
-  roxanne = {
-    output = "roxanne";
-    hostname = "roxanne";
-    user = "root";
-  };
-
   slateport = {
     output = "slateport";
     hostname = "slateport";

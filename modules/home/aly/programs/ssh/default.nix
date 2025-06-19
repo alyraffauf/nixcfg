@@ -20,7 +20,6 @@
         };
       in
         rootMe "mossdeep"
-        // rootMe "roxanne"
         // rootMe "slateport"
         // rootMe "verdanturf";
 
