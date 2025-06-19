@@ -216,6 +216,7 @@
           ])
           ++ [
             self.inputs.agenix.packages.${pkgs.system}.default
+            self.inputs.disko.packages.${pkgs.system}.disko-install
             self.packages.${pkgs.system}.default
             self.packages.${pkgs.system}.deployer
           ];
