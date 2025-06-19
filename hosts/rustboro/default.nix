@@ -4,7 +4,6 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-btrfs-subvolumes
-    self.nixosModules.hardware-lenovo-thinkpad-T440p
     self.nixosModules.locale-en-us
   ];
 
@@ -15,6 +14,7 @@
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
+  myHardware.lenovo.thinkpad.T440p.enable = true;
 
   myNixOS = {
     desktop.gnome.enable = true;

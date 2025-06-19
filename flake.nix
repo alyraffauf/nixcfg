@@ -239,21 +239,7 @@
       disko-btrfs-subvolumes = ./modules/nixos/disko/btrfs-subvolumes;
       disko-luks-btrfs-subvolumes = ./modules/nixos/disko/luks-btrfs-subvolumes;
       disko-lvm-ext4 = ./modules/nixos/disko/lvm-ext4;
-      hardware-amd-cpu = ./modules/nixos/hardware/amd/cpu;
-      hardware-amd-gpu = ./modules/nixos/hardware/amd/gpu;
-      hardware-asus-ally-RC72LA = ./modules/nixos/hardware/asus/ally/RC72LA;
-      hardware-beelink-mini-s12pro = ./modules/nixos/hardware/beelink/mini/s12pro;
-      hardware-common = ./modules/nixos/hardware/common;
-      hardware-framework-13-amd-7000 = ./modules/nixos/hardware/framework/13/amd-7000;
-      hardware-framework-13-intel-11th = ./modules/nixos/hardware/framework/13/intel-11th;
-      hardware-intel-cpu = ./modules/nixos/hardware/intel/cpu;
-      hardware-intel-gpu = ./modules/nixos/hardware/intel/gpu;
-      hardware-lenovo-thinkcentre-m700 = ./modules/nixos/hardware/lenovo/thinkcentre/m700;
-      hardware-lenovo-thinkpad-5D50X = ./modules/nixos/hardware/lenovo/thinkpad/5D50X;
-      hardware-lenovo-thinkpad-T440p = ./modules/nixos/hardware/lenovo/thinkpad/T440p;
-      hardware-lenovo-thinkpad-X1-gen-9 = ./modules/nixos/hardware/lenovo/thinkpad/X1/gen-9;
-      hardware-nvidia-gpu = ./modules/nixos/hardware/nvidia/gpu;
-      hardware-profiles-laptop = ./modules/nixos/hardware/profiles/laptop.nix;
+      hardware = ./modules/nixos/hardware;
       locale-en-us = ./modules/nixos/locale/en-us;
       nixos = ./modules/nixos/os;
       snippets = ./modules/snippets;
@@ -275,6 +261,7 @@
             self.inputs.lix-module.nixosModules.default
             self.inputs.stylix.nixosModules.stylix
             self.inputs.vscode-server.nixosModules.default
+            self.nixosModules.hardware
             self.nixosModules.nixos
             self.nixosModules.snippets
             self.nixosModules.users

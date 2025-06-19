@@ -1,18 +1,12 @@
 {
+  config,
   lib,
   pkgs,
-  self,
   ...
 }: {
-  imports = [
-    ../../common.nix
-    ../common.nix
-    self.nixosModules.hardware-common
-    self.nixosModules.hardware-intel-cpu
-    self.nixosModules.hardware-intel-gpu
-  ];
+  options.myHardware.framework.laptop13.intel-11th.enable = lib.mkEnableOption "Framework Laptop 13 Intel 11th gen hardware configuration.";
 
-  config = {
+  config = lib.mkIf config.myHardware.framework.laptop13.intel-11th.enable {
     boot = {
       blacklistedKernelModules = ["cros-usbpd-charger"];
       initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
@@ -43,5 +37,17 @@
       ## https://community.frame.work/t/headphone-jack-intermittent-noise/5246/55
       SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa0e0", ATTR{power/control}="on"
     '';
+
+    myHardware = {
+      intel = {
+        cpu.enable = true;
+        gpu.enable = true;
+      };
+
+      profiles = {
+        base.enable = true;
+        laptop.enable = true;
+      };
+    };
   };
 }

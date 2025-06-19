@@ -14,9 +14,6 @@ in {
     ./services.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hardware-amd-cpu
-    self.nixosModules.hardware-amd-gpu
-    self.nixosModules.hardware-common
     self.nixosModules.locale-en-us
   ];
 
@@ -46,8 +43,16 @@ in {
 
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
-
   myDisko.installDrive = "/dev/disk/by-id/nvme-PNY_CS2130_1TB_SSD_PNY211821050701050CC";
+
+  myHardware = {
+    amd = {
+      cpu.enable = true;
+      gpu.enable = true;
+    };
+
+    profiles.base.enable = true;
+  };
 
   myNixOS = {
     profiles = {

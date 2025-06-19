@@ -1,5 +1,11 @@
-{...}: {
-  config = {
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myHardware.amd.gpu.enable = lib.mkEnableOption "AMD GPU configuration.";
+
+  config = lib.mkIf config.myHardware.amd.gpu.enable {
     environment.variables = {
       DPAU_DRIVER = "radeonsi";
       GSK_RENDERER = "ngl";

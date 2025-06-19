@@ -8,7 +8,6 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hardware-lenovo-thinkpad-X1-gen-9
     self.nixosModules.locale-en-us
   ];
 
@@ -16,6 +15,7 @@
   networking.hostName = "fallarbor";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
+  myHardware.lenovo.thinkpad.X1.gen-9.enable = true;
 
   myNixOS = {
     desktop = {

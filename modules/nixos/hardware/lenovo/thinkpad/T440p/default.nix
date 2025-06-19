@@ -1,13 +1,11 @@
-{self, ...}: {
-  imports = [
-    ../common.nix
-    self.nixosModules.hardware-common
-    self.nixosModules.hardware-intel-cpu
-    self.nixosModules.hardware-intel-gpu
-    self.nixosModules.hardware-profiles-laptop
-  ];
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myHardware.lenovo.thinkpad.T440p.enable = lib.mkEnableOption "Lenovo ThinkPad T440p hardware configuration.";
 
-  config = {
+  config = lib.mkIf config.myHardware.lenovo.thinkpad.T440p.enable {
     boot = {
       extraModprobeConfig = ''
         options bbswitch use_acpi_to_detect_card_state=1
@@ -23,6 +21,13 @@
         "usb_storage"
         "xhci_pci"
       ];
+    };
+
+    hardware.trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      sensitivity = 64;
+      speed = 40;
     };
 
     home-manager = {
@@ -41,5 +46,17 @@
     powerManagement.cpuFreqGovernor = "ondemand";
     services.fwupd.enable = true;
     zramSwap.algorithm = "lz4";
+
+    myHardware = {
+      intel = {
+        cpu.enable = true;
+        gpu.enable = true;
+      };
+
+      profiles = {
+        base.enable = true;
+        laptop.enable = true;
+      };
+    };
   };
 }

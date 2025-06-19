@@ -9,7 +9,6 @@
     ./secrets.nix
     ./stylix.nix
     self.nixosModules.disko-luks-btrfs-subvolumes
-    self.nixosModules.hardware-framework-13-intel-11th
     self.nixosModules.locale-en-us
   ];
 
@@ -65,6 +64,7 @@
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
+  myHardware.framework.laptop13.intel-11th.enable = true;
 
   myNixOS = {
     profiles = {

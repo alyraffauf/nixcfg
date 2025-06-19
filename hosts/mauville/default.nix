@@ -10,7 +10,6 @@
     ./home.nix
     ./secrets.nix
     ./services.nix
-    self.nixosModules.hardware-beelink-mini-s12pro
     self.nixosModules.locale-en-us
   ];
 
@@ -98,6 +97,7 @@
   };
 
   time.timeZone = "America/New_York";
+  myHardware.beelink.mini.s12pro.enable = true;
 
   myNixOS = {
     profiles = {

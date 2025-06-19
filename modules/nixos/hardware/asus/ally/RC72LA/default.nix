@@ -1,16 +1,12 @@
 {
+  config,
   lib,
   pkgs,
-  self,
   ...
 }: {
-  imports = [
-    self.nixosModules.hardware-amd-cpu
-    self.nixosModules.hardware-amd-gpu
-    self.nixosModules.hardware-common
-  ];
+  options.myHardware.asus.ally.RC72LA.enable = lib.mkEnableOption "ASUS Ally X RC72LA hardware configuration.";
 
-  config = {
+  config = lib.mkIf config.myHardware.asus.ally.RC72LA.enable {
     boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.11") (lib.mkDefault pkgs.linuxPackages_latest);
 
     services = {
@@ -107,6 +103,15 @@
 
       power-profiles-daemon.enable = lib.mkDefault true;
       upower.enable = lib.mkDefault true;
+    };
+
+    myHardware = {
+      amd = {
+        cpu.enable = true;
+        gpu.enable = true;
+      };
+
+      profiles.base.enable = true;
     };
   };
 }

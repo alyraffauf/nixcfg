@@ -1,8 +1,19 @@
 # Lenovo 5D50X AKA ThinkPad Trackpoint II USB/Bluetooth Keyboard.
-{...}: {
-  imports = [../common.nix];
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myHardware.lenovo.thinkpad.kb5D50X.enable = lib.mkEnableOption "Lenovo ThinkPad 5D50X hardware configuration.";
 
-  config = {
+  config = lib.mkIf config.myHardware.lenovo.thinkpad.kb5D50X.enable {
+    hardware.trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      sensitivity = 64;
+      speed = 40;
+    };
+
     services.udev.extraRules = ''
       ## Handle Fn Lock light for ThinkPad Trackpoint II USB/Bluetooth Keyboard
       SUBSYSTEM=="hid", DRIVER=="lenovo", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6047|60ee", ATTR{fn_lock}="0"

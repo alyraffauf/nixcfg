@@ -1,18 +1,26 @@
-{self, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
-    ../../common.nix
     ./equalizer.nix
-    self.nixosModules.hardware-common
-    self.nixosModules.hardware-intel-cpu
-    self.nixosModules.hardware-intel-gpu
-    self.nixosModules.hardware-profiles-laptop
   ];
 
-  config = {
+  options.myHardware.lenovo.thinkpad.X1.gen-9.enable = lib.mkEnableOption "Lenovo ThinkPad X1 Carbon Gen 9 hardware configuration.";
+
+  config = lib.mkIf config.myHardware.lenovo.thinkpad.X1.gen-9.enable {
     boot.initrd.availableKernelModules = [
       "nvme"
       "thunderbolt"
     ];
+
+    hardware.trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      sensitivity = 64;
+      speed = 40;
+    };
 
     # home-manager = {
     #   sharedModules = [
@@ -30,6 +38,18 @@
     services = {
       fprintd.enable = true;
       fwupd.enable = true;
+    };
+
+    myHardware = {
+      intel = {
+        cpu.enable = true;
+        gpu.enable = true;
+      };
+
+      profiles = {
+        base.enable = true;
+        laptop.enable = true;
+      };
     };
   };
 }

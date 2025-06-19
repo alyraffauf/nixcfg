@@ -3,7 +3,9 @@
   lib,
   ...
 }: {
-  config = {
+  options.myHardware.amd.cpu.enable = lib.mkEnableOption "AMD CPU configuration.";
+
+  config = lib.mkIf config.myHardware.amd.cpu.enable {
     boot = {
       blacklistedKernelModules = ["k10temp"]; # Conflicts with zenpower
       extraModulePackages = with config.boot.kernelPackages; [zenpower];

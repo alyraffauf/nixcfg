@@ -5,13 +5,13 @@
   pkgs,
   ...
 }: let
-  cfg = config.hardware.thinkpad.x1c.gen-9.equalizer;
+  cfg = config.myHardware.lenovo.thinkpad.X1.gen-9.equalizer;
 in {
   options = {
-    hardware.thinkpad.x1c.gen-9.equalizer = {
+    myHardware.lenovo.thinkpad.X1.gen-9.equalizer = {
       enable = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = config.myHardware.lenovo.thinkpad.X1.gen-9.enable;
         description = ''
           Create a new audio device called "ThinkPad Speakers",
           which applies sound tuning before sending the audio out to the speakers.

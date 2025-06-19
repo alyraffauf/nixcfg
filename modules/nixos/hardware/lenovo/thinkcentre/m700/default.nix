@@ -1,11 +1,11 @@
-{self, ...}: {
-  imports = [
-    self.nixosModules.hardware-common
-    self.nixosModules.hardware-intel-cpu
-    self.nixosModules.hardware-intel-gpu
-  ];
+{
+  config,
+  lib,
+  ...
+}: {
+  options.myHardware.lenovo.thinkcentre.m700.enable = lib.mkEnableOption "Lenovo ThinkCentre M700 hardware configuration.";
 
-  config = {
+  config = lib.mkIf config.myHardware.lenovo.thinkcentre.m700.enable {
     boot.initrd.availableKernelModules = [
       "ahci"
       "sd_mod"
@@ -13,5 +13,14 @@
     ];
 
     services.fwupd.enable = true;
+
+    myHardware = {
+      intel = {
+        cpu.enable = true;
+        gpu.enable = true;
+      };
+
+      profiles.base.enable = true;
+    };
   };
 }

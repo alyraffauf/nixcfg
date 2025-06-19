@@ -1,19 +1,16 @@
 {
+  config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [
-    ../../common.nix
-    ../common.nix
     ./equalizer.nix
-    self.nixosModules.hardware-amd-cpu
-    self.nixosModules.hardware-amd-gpu
-    self.nixosModules.hardware-common
   ];
 
-  config = {
+  options.myHardware.framework.laptop13.amd-7000.enable = lib.mkEnableOption "Framework Laptop 13 AMD 7000 hardware configuration.";
+
+  config = lib.mkIf config.myHardware.framework.laptop13.amd-7000.enable {
     boot = {
       initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
 
@@ -30,6 +27,18 @@
       wifi = {
         backend = "iwd";
         powersave = true;
+      };
+    };
+
+    myHardware = {
+      amd = {
+        cpu.enable = true;
+        gpu.enable = true;
+      };
+
+      profiles = {
+        base.enable = true;
+        laptop.enable = true;
       };
     };
   };

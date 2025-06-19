@@ -7,7 +7,6 @@
     ./secrets.nix
     ./services.nix
     self.nixosModules.disko-btrfs-subvolumes
-    self.nixosModules.hardware-lenovo-thinkcentre-m700
     self.nixosModules.locale-en-us
   ];
 
@@ -25,6 +24,7 @@
 
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
+  myHardware.lenovo.thinkcentre.m700.enable = true;
 
   myNixOS = {
     profiles = {

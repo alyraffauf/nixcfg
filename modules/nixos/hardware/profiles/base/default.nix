@@ -1,14 +1,11 @@
 {
   config,
   lib,
-  self,
   ...
 }: {
-  imports = [
-    self.nixosModules.hardware-lenovo-thinkpad-5D50X
-  ];
+  options.myHardware.profiles.base.enable = lib.mkEnableOption "Base common hardware configuration";
 
-  config = {
+  config = lib.mkIf config.myHardware.profiles.base.enable {
     console.useXkbConfig = true;
 
     hardware = {
@@ -53,5 +50,6 @@
     };
 
     zramSwap.enable = lib.mkDefault true;
+    myHardware.lenovo.thinkpad.kb5D50X.enable = true;
   };
 }
