@@ -4,72 +4,57 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   cfg = config.myNixOS.services.qbittorrent;
   UID = 888;
   GID = 888;
 in {
   options.myNixOS.services.qbittorrent = {
-    enable = mkEnableOption (lib.mdDoc "qBittorrent headless");
+    enable = lib.mkEnableOption "qBittorrent headless";
 
-    dataDir = mkOption {
-      type = types.path;
+    dataDir = lib.mkOption {
+      type = lib.types.path;
       default = "/var/lib/qbittorrent";
-      description = lib.mdDoc ''
-        The directory where qBittorrent stores its data files.
-      '';
+      description = "The directory where qBittorrent stores its data files.";
     };
 
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       default = "qbittorrent";
-      description = lib.mdDoc ''
-        User account under which qBittorrent runs.
-      '';
+      description = "User account under which qBittorrent runs.";
     };
 
-    group = mkOption {
-      type = types.str;
+    group = lib.mkOption {
+      type = lib.types.str;
       default = "qbittorrent";
-      description = lib.mdDoc ''
-        Group under which qBittorrent runs.
-      '';
+      description = "Group under which qBittorrent runs.";
     };
 
-    port = mkOption {
-      type = types.port;
+    port = lib.mkOption {
+      type = lib.types.port;
       default = 8080;
-      description = lib.mdDoc ''
-        qBittorrent web UI port.
-      '';
+      description = "qBittorrent web UI port.";
     };
 
-    openFirewall = mkOption {
-      type = types.bool;
+    openFirewall = lib.mkOption {
+      type = lib.types.bool;
       default = false;
-      description = lib.mdDoc ''
-        Open services.qBittorrent.port to the outside network.
-      '';
+      description = "Open services.qBittorrent.port to the outside network.";
     };
 
-    package = mkOption {
-      type = types.package;
+    package = lib.mkOption {
+      type = lib.types.package;
       default = pkgs.qbittorrent-nox;
-      defaultText = literalExpression "pkgs.qbittorrent-nox";
-      description = lib.mdDoc ''
-        The qbittorrent package to use.
-      '';
+      defaultText = lib.literalExpression "pkgs.qbittorrent-nox";
+      description = "The qbittorrent package to use.";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     networking.firewall =
-      mkIf cfg.openFirewall {allowedTCPPorts = [cfg.port];};
+      lib.mkIf cfg.openFirewall {allowedTCPPorts = [cfg.port];};
 
     systemd.services.qbittorrent = {
-      # based on the plex.nix service module and
-      # https://github.com/qbittorrent/qBittorrent/blob/master/dist/unix/systemd/qbittorrent-nox%40.service.in
       after = ["local-fs.target" "network-online.target"];
       description = "qBittorrent-nox service";
       documentation = ["man:qbittorrent-nox(1)"];
@@ -95,7 +80,6 @@ in {
           '';
         in "!${preStartScript}";
 
-        #ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
         ExecStart = "${cfg.package}/bin/qbittorrent-nox";
         # To prevent "Quit & shutdown daemon" from working; we want systemd to
         # manage it!
@@ -110,7 +94,7 @@ in {
       };
     };
 
-    users.users = mkIf (cfg.user == "qbittorrent") {
+    users.users = lib.mkIf (cfg.user == "qbittorrent") {
       qbittorrent = {
         group = cfg.group;
         uid = UID;
@@ -118,6 +102,6 @@ in {
     };
 
     users.groups =
-      mkIf (cfg.group == "qbittorrent") {qbittorrent = {gid = GID;};};
+      lib.mkIf (cfg.group == "qbittorrent") {qbittorrent = {gid = GID;};};
   };
 }
