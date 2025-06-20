@@ -7,8 +7,6 @@
 
   config = lib.mkIf config.myDarwin.programs.nix.enable {
     nix = {
-      inherit (config.mySnippets.nix) settings;
-
       buildMachines =
         lib.filter (m: m.hostName != "${config.networking.hostName}") config.mySnippets.nix.buildMachines;
 
@@ -41,6 +39,8 @@
 
       #   maxJobs = 4;
       # };
+
+      settings = config.mySnippets.nix.settings;
     };
   };
 }

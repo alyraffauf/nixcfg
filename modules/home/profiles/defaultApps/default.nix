@@ -162,17 +162,17 @@ in {
       ];
 
       sessionVariables = {
-        BROWSER = "${builtins.baseNameOf cfg.webBrowser.exec}";
-        EDITOR = "${builtins.baseNameOf cfg.terminalEditor.exec}";
-        TERMINAL = "${builtins.baseNameOf cfg.terminal.exec}";
+        BROWSER = "${builtins.baseNameOf (cfg.webBrowser.exec)}";
+        EDITOR = "${builtins.baseNameOf (cfg.terminalEditor.exec)}";
+        TERMINAL = "${builtins.baseNameOf (cfg.terminal.exec)}";
       };
     };
 
     xdg = {
       configFile."xfce4/helpers.rc".text = ''
-        FileManager=${builtins.baseNameOf cfg.fileManager.exec}
-        TerminalEmulator=${builtins.baseNameOf cfg.terminal.exec}
-        WebBrowser=${builtins.baseNameOf cfg.webBrowser.exec}
+        FileManager=${builtins.baseNameOf (cfg.fileManager.exec)}
+        TerminalEmulator=${builtins.baseNameOf (cfg.terminal.exec)}
+        WebBrowser=${builtins.baseNameOf (cfg.webBrowser.exec)}
       '';
 
       mimeApps = lib.mkIf cfg.forceMimeAssociations {

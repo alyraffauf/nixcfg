@@ -30,7 +30,9 @@
     home-manager.sharedModules = [
       {
         myHome.desktop.hyprland = {
-          inherit (config.myNixOS.desktop.hyprland) enable laptopMonitor monitors;
+          enable = true;
+          laptopMonitor = config.myNixOS.desktop.hyprland.laptopMonitor;
+          monitors = config.myNixOS.desktop.hyprland.monitors;
         };
 
         wayland.windowManager.hyprland.settings.input = {

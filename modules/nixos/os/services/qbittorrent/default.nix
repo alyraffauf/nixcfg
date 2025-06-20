@@ -96,7 +96,7 @@ in {
 
     users.users = lib.mkIf (cfg.user == "qbittorrent") {
       qbittorrent = {
-        inherit (cfg) group;
+        group = cfg.group;
         uid = UID;
       };
     };

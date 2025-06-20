@@ -22,11 +22,11 @@
       then
         with pkgs; [
           (retroarch-bare.wrapper {
-            inherit (config.retroarch) cores;
+            cores = config.retroarch.cores;
           })
         ]
       else [pkgs.retroarch];
 
-    services.xserver.desktopManager.retroarch = lib.mkIf config.retroarch.session.enable {enable = true;};
+    services.xserver.desktopManager.retroarch = lib.mkIf (config.retroarch.session.enable) {enable = true;};
   };
 }

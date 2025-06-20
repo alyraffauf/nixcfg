@@ -1,4 +1,4 @@
-_: {
+{...}: {
   services.anubis = {
     defaultOptions.settings = {
       DIFFICULTY = 4;

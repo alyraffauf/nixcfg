@@ -1,3 +1,3 @@
 # Default overlay.
-_: final: prev: {
+{...}: final: prev: {
 }
