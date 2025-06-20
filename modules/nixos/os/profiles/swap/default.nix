@@ -16,10 +16,10 @@
   config = lib.mkIf config.myNixOS.profiles.swap.enable {
     swapDevices = [
       {
+        inherit (config.myNixOS.profiles.swap) size;
         device = "/.swap";
         priority = 0;
         randomEncryption.enable = true;
-        size = config.myNixOS.profiles.swap.size;
       }
     ];
   };

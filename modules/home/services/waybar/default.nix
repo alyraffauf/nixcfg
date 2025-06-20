@@ -27,7 +27,7 @@ in {
         systemd
         uutils-coreutils-noprefix
       ])
-      ++ lib.optional (config.wayland.windowManager.hyprland.enable) config.wayland.windowManager.hyprland.package;
+      ++ lib.optional config.wayland.windowManager.hyprland.enable config.wayland.windowManager.hyprland.package;
 
     programs.waybar = {
       enable = true;
@@ -230,14 +230,14 @@ in {
           "group/tablet" = {
             modules =
               ["custom/menu"]
-              ++ lib.optionals (cfg.desktop.hyprland.tabletMode.enable) ["custom/app-close" "custom/virtual-keyboard"];
+              ++ lib.optionals cfg.desktop.hyprland.tabletMode.enable ["custom/app-close" "custom/virtual-keyboard"];
 
             orientation = "horizontal";
           };
 
           "group/hardware" = {
             modules =
-              ["pulseaudio" "bluetooth" "network"] ++ lib.lists.optionals (cfg.desktop.hyprland.laptopMonitor != null) ["power-profiles-daemon" "battery"];
+              ["pulseaudio" "bluetooth" "network"] ++ lib.lists.optionals cfg.desktop.hyprland.laptopMonitor != null ["power-profiles-daemon" "battery"];
 
             orientation = "horizontal";
           };
@@ -340,11 +340,9 @@ in {
     };
 
     systemd.user.services.waybar = {
-      Install.WantedBy = lib.mkForce (lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target");
-
+      Install.WantedBy = lib.mkForce (lib.optional config.wayland.windowManager.hyprland.enable "hyprland-session.target");
       Service.Restart = lib.mkForce "no";
-
-      Unit.BindsTo = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
+      Unit.BindsTo = lib.optional config.wayland.windowManager.hyprland.enable "hyprland-session.target";
     };
 
     xdg.configFile."nwg-drawer/drawer.css".text = ''

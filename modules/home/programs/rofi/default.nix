@@ -30,6 +30,7 @@ in {
     stylix.targets.rofi.enable = false;
 
     programs.rofi = {
+      inherit (defaultApps) terminal;
       enable = true;
       font = "${config.stylix.fonts.monospace.name} ${toString config.stylix.fonts.sizes.popups}";
       location = "center";
@@ -39,7 +40,6 @@ in {
         pkgs.rofi-power-menu
       ];
 
-      terminal = defaultApps.terminal;
       theme = {
         "*" = {
           background = mkRgba rofiOpacity "base00";

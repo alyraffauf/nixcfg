@@ -29,9 +29,11 @@
           mkWPA2WiFi = ssid: psk: (
             (mkOpenWiFi ssid)
             // {
-              wifi-security.auth-alg = "open";
-              wifi-security.key-mgmt = "wpa-psk";
-              wifi-security.psk = "${psk}";
+              wifi-security = {
+                auth-alg = "open";
+                key-mgmt = "wpa-psk";
+                psk = "${psk}";
+              };
             }
           );
 

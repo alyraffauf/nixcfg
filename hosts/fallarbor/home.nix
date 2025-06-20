@@ -1,6 +1,5 @@
 {self, ...}: {
   home-manager.users = {
-    aly = self.homeManagerModules.aly;
-    dustin = self.homeManagerModules.dustin;
+    inherit (self.homeManagerModules) aly dustin;
   };
 }

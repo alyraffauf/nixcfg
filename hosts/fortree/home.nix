@@ -19,7 +19,7 @@
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
     services.syncthing = let
-      devices = config.mySnippets.syncthing.devices;
+      inherit (config.mySnippets.syncthing) devices;
 
       folders = lib.mkMerge [
         config.mySnippets.syncthing.folders
@@ -39,7 +39,7 @@
         }
       ];
     in {
-      enable = true;
+      inherit (config.mySnippets.syncthing) enable;
       cert = config.age.secrets.syncthingCert.path;
       key = config.age.secrets.syncthingKey.path;
 

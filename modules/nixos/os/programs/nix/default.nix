@@ -10,6 +10,8 @@ in {
 
   config = lib.mkIf config.myNixOS.programs.nix.enable {
     nix = {
+      inherit (config.mySnippets.nix) settings;
+
       buildMachines = lib.mkIf config.services.tailscale.enable (
         lib.filter (m: m.hostName != config.networking.hostName)
         config.mySnippets.nix.buildMachines
@@ -34,8 +36,6 @@ in {
         persistent = true;
         randomizedDelaySec = "60min";
       };
-
-      settings = config.mySnippets.nix.settings;
     };
 
     programs.nix-ld.enable = true;

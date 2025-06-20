@@ -1,4 +1,4 @@
-{...}: {
+_: {
   systemd.tmpfiles.rules = ["d /var/lib/homebridge 0755 root root"];
 
   virtualisation.oci-containers = {

@@ -66,14 +66,13 @@
             '';
           in
             lib.concatLines (
-              lib.optional (config.services.syncthing.enable) syncthing
+              lib.optional config.services.syncthing.enable syncthing
             );
         };
       };
 
       tailscale = {
-        enable = true;
-        authKeyFile = config.myNixOS.services.tailscale.authKeyFile;
+        inherit (config.myNixOS.services.tailscale) enable authKeyFile;
 
         extraUpFlags =
           ["--ssh"]
@@ -81,7 +80,7 @@
           "--operator ${config.myNixOS.services.tailscale.operator}";
 
         openFirewall = true;
-        permitCertUid = lib.mkIf (config.services.caddy.enable) "caddy";
+        permitCertUid = lib.mkIf config.services.caddy.enable "caddy";
         useRoutingFeatures = "both";
       };
     };
