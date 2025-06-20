@@ -210,6 +210,7 @@
             rubocop
             shellcheck
             shfmt
+            statix
           ])
           ++ [
             self.inputs.agenix.packages.${pkgs.system}.default
