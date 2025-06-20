@@ -31,6 +31,9 @@ else
   STATIX_ARGS+=("fix")
 fi
 
+# Lint all nix files
+statix "${STATIX_ARGS[@]}"
+
 # Format all nix files
 find . -type f -name "*.nix" -exec alejandra "${ALEJANDRA_ARGS[@]}" {} +
 
@@ -48,6 +51,3 @@ find . -type f -name "*.rb" -exec rubocop "${RUBOCOP_ARGS[@]}" {} +
 
 # Format all shell files
 find . -type f -name "*.sh" -exec shfmt "${SHFMT_ARGS[@]}" {} +
-
-# Lint all nix files
-statix "${STATIX_ARGS[@]}"
