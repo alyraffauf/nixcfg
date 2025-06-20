@@ -40,7 +40,7 @@
       #   maxJobs = 4;
       # };
 
-      settings = config.mySnippets.nix.settings;
+      inherit (config.mySnippets.nix) settings;
     };
   };
 }

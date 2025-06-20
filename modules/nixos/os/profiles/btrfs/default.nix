@@ -14,8 +14,8 @@
   in
     uniqueDeviceList (
       lib.mapAttrsToList (name: fs: {
-        mountPoint = fs.mountPoint;
-        device = fs.device;
+        inherit (fs) mountPoint;
+        inherit (fs) device;
       }) (lib.filterAttrs (name: fs: fs.fsType == "btrfs") config.fileSystems)
     );
 
@@ -50,7 +50,7 @@ in {
 
   config = lib.mkIf config.myNixOS.profiles.btrfs.enable {
     boot.supportedFilesystems = ["btrfs"];
-    environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.snapper-gui];
+    environment.systemPackages = lib.optionals config.services.xserver.enable [pkgs.snapper-gui];
 
     services = lib.mkIf (btrfsFSDevices != []) {
       beesd.filesystems = lib.mkIf config.myNixOS.profiles.btrfs.deduplicate beesdConfig;

@@ -27,7 +27,7 @@
 
     services.gitea-actions-runner.instances = let
       runnerCount = config.myNixOS.services.forgejo-runner.number;
-      runnerIndices = lib.map (i: toString i) (lib.range 1 runnerCount);
+      runnerIndices = lib.map toString (lib.range 1 runnerCount);
 
       # eg x86_64-linux → x86_64_linux
       arch = lib.replaceStrings ["-"] ["_"] pkgs.system;
@@ -48,7 +48,7 @@
             nodejs
             wget
           ]
-          ++ [(config.nix.package)];
+          ++ [config.nix.package];
 
         labels =
           [

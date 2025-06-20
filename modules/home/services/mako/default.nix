@@ -38,7 +38,7 @@
     systemd.user.services.mako = {
       Unit = {
         After = "graphical-session.target";
-        BindsTo = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
+        BindsTo = lib.optional config.wayland.windowManager.hyprland.enable "hyprland-session.target";
         Description = "Lightweight Wayland notification daemon";
         Documentation = "man:mako(1)";
         PartOf = "graphical-session.target";
@@ -53,7 +53,7 @@
         Type = "dbus";
       };
 
-      Install.WantedBy = lib.optional (config.wayland.windowManager.hyprland.enable) "hyprland-session.target";
+      Install.WantedBy = lib.optional config.wayland.windowManager.hyprland.enable "hyprland-session.target";
     };
   };
 }

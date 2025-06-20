@@ -1,6 +1,5 @@
 {self, ...}: {
-  home-manager.users.aly = (
-    {pkgs, ...}: {
+  home-manager.users.aly = {pkgs, ...}: {
       imports = [
         self.homeManagerModules.default
         self.inputs.agenix.homeManagerModules.default
@@ -40,6 +39,5 @@
         profiles.shell.enable = true;
         programs.fastfetch.enable = true;
       };
-    }
-  );
+    };
 }

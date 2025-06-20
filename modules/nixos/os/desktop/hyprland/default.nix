@@ -31,8 +31,8 @@
       {
         myHome.desktop.hyprland = {
           enable = true;
-          laptopMonitor = config.myNixOS.desktop.hyprland.laptopMonitor;
-          monitors = config.myNixOS.desktop.hyprland.monitors;
+          inherit (config.myNixOS.desktop.hyprland) laptopMonitor;
+          inherit (config.myNixOS.desktop.hyprland) monitors;
         };
 
         wayland.windowManager.hyprland.settings.input = {

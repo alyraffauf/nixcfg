@@ -1,4 +1,4 @@
-{...}: {
+_: {
   systemd.tmpfiles.rules = [
     "d /mnt/Data/dizquetv 0755 root root"
     "d /mnt/Data/tubesync/config/ 0755 root root"

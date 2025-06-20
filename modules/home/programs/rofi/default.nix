@@ -39,7 +39,7 @@ in {
         pkgs.rofi-power-menu
       ];
 
-      terminal = defaultApps.terminal;
+      inherit (defaultApps) terminal;
       theme = {
         "*" = {
           background = mkRgba rofiOpacity "base00";

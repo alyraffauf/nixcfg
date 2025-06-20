@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.myNixOS.programs.virt-manager.enable {
     programs = {
-      dconf.profiles.user.databases = lib.optionals (config.services.xserver.enable) [
+      dconf.profiles.user.databases = lib.optionals config.services.xserver.enable [
         {
           settings = {
             "org/virt-manager/virt-manager/connections" = {

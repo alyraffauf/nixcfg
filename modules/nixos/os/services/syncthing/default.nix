@@ -59,7 +59,7 @@
 
       syncthing = let
         cfg = config.myNixOS.services.syncthing;
-        devices = config.mySnippets.syncthing.devices;
+        inherit (config.mySnippets.syncthing) devices;
 
         folders = lib.mkMerge [
           config.mySnippets.syncthing.folders
@@ -82,7 +82,7 @@
         dataDir = "/home/${cfg.user}";
         key = cfg.keyFile;
         openDefaultPorts = true;
-        user = cfg.user;
+        inherit (cfg) user;
 
         settings = {
           options = {

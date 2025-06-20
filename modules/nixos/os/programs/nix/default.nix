@@ -35,7 +35,7 @@ in {
         randomizedDelaySec = "60min";
       };
 
-      settings = config.mySnippets.nix.settings;
+      inherit (config.mySnippets.nix) settings;
     };
 
     programs.nix-ld.enable = true;

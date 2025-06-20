@@ -6,7 +6,7 @@
 }: {
   options.myNixOS.services.flatpak.enable = lib.mkEnableOption "flatpak package manager";
   config = lib.mkIf config.myNixOS.services.flatpak.enable {
-    environment.systemPackages = lib.optionals (config.services.xserver.enable) [pkgs.gnome-software];
+    environment.systemPackages = lib.optionals config.services.xserver.enable [pkgs.gnome-software];
 
     fileSystems = let
       mkRoSymBind = path: {
@@ -22,7 +22,7 @@
             adwaita-icon-theme
             gnome-themes-extra
           ])
-          ++ lib.optional (config.stylix.enable) config.stylix.cursor.package;
+          ++ lib.optional config.stylix.enable config.stylix.cursor.package;
 
         pathsToLink = ["/share/icons"];
       };
@@ -45,7 +45,7 @@
           noto-fonts-cjk-sans
           noto-fonts-emoji
         ])
-        ++ lib.optionals (config.stylix.enable) [
+        ++ lib.optionals config.stylix.enable [
           config.stylix.fonts.sansSerif.package
           config.stylix.fonts.monospace.package
           config.stylix.fonts.serif.package
