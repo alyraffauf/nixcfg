@@ -9,7 +9,6 @@
         fontconfig.enable = true;
         ghostty.enable = true;
         helix.enable = true;
-        vesktop.enable = true;
         vscode.enable = true;
         zellij.enable = true;
       };
