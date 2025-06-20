@@ -7,6 +7,7 @@ ALEJANDRA_ARGS=()
 PRETTIER_ARGS=()
 RUBOCOP_ARGS=()
 SHFMT_ARGS=("-i" "2")
+STATIX_ARGS=()
 
 # Check if "-c" is present in any argument
 CHECK_MODE=false
@@ -22,10 +23,12 @@ if $CHECK_MODE; then
   ALEJANDRA_ARGS+=("-c")
   PRETTIER_ARGS+=("--check")
   SHFMT_ARGS+=("-d") # Use diff mode (don't write changes)
+  STATIX_ARGS+=("check")
 else
   RUBOCOP_ARGS+=("-A" "--disable-uncorrectable")
   PRETTIER_ARGS+=("--write")
   SHFMT_ARGS+=("-w") # Write changes
+  STATIX_ARGS+=("fix")
 fi
 
 # Format all nix files
@@ -45,3 +48,6 @@ find . -type f -name "*.rb" -exec rubocop "${RUBOCOP_ARGS[@]}" {} +
 
 # Format all shell files
 find . -type f -name "*.sh" -exec shfmt "${SHFMT_ARGS[@]}" {} +
+
+# Lint all nix files
+statix "${STATIX_ARGS[@]}"

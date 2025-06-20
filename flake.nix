@@ -313,6 +313,7 @@
           nodePackages.prettier
           rubocop
           shfmt
+          statix
         ];
 
         text = builtins.readFile ./utils/formatter.sh;
