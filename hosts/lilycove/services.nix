@@ -86,6 +86,14 @@ in {
           reverse_proxy localhost:${toString config.services.tautulli.port}
         '';
       };
+
+      "vscode.${config.mySnippets.tailnet}" = {
+        extraConfig = ''
+          bind tailscale/vscode
+          encode zstd gzip
+          reverse_proxy localhost:${toString config.services.openvscode-server.port}
+        '';
+      };
     };
 
     immich = {
@@ -131,6 +139,13 @@ in {
       enable = true;
       dataDir = "/mnt/Data/ombi";
       openFirewall = true;
+    };
+
+    openvscode-server = {
+      enable = true;
+      port = 3020;
+      user = "aly";
+      withoutConnectionToken = true;
     };
 
     samba = {
