@@ -4,6 +4,7 @@ set -euo pipefail
 
 # Initialize variables
 ALEJANDRA_ARGS=()
+DEADNIX_ARGS=()
 PRETTIER_ARGS=()
 RUBOCOP_ARGS=()
 SHFMT_ARGS=("-i" "2")
@@ -21,10 +22,12 @@ done
 # Adjust arguments based on CHECK_MODE
 if $CHECK_MODE; then
   ALEJANDRA_ARGS+=("-c")
+  DEADNIX_ARGS+=("--fail")
   PRETTIER_ARGS+=("--check")
   SHFMT_ARGS+=("-d") # Use diff mode (don't write changes)
   STATIX_ARGS+=("check")
 else
+  DEADNIX_ARGS+=("--edit")
   RUBOCOP_ARGS+=("-A" "--disable-uncorrectable")
   PRETTIER_ARGS+=("--write")
   SHFMT_ARGS+=("-w") # Write changes
@@ -33,6 +36,9 @@ fi
 
 # Lint all nix files
 statix "${STATIX_ARGS[@]}"
+
+# Remove unused code in nix files
+deadnix "${DEADNIX_ARGS[@]}"
 
 # Format all nix files
 find . -type f -name "*.nix" -exec alejandra "${ALEJANDRA_ARGS[@]}" {} +

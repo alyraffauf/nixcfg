@@ -309,6 +309,7 @@
 
         runtimeInputs = with pkgs; [
           alejandra
+          deadnix
           findutils
           nodePackages.prettier
           rubocop
