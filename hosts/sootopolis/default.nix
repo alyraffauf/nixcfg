@@ -48,6 +48,7 @@
 
     services = {
       caddy.enable = true;
+      flatpak.enable = true;
       gdm.enable = true;
       # greetd.enable = true;
 
