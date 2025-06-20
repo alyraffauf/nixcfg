@@ -202,6 +202,7 @@
             (lib.hiPrio uutils-coreutils-noprefix)
             alejandra
             bash-language-server
+            deadnix
             git
             nh
             nix-update
