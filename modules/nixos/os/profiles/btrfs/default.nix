@@ -6,17 +6,23 @@
 }: let
   # Compute a list of Btrfs file systems (with mountPoint and device)
   btrfsFSDevices = let
-    isDeviceInList = list: device: builtins.filter (e: e.device == device) list != [];
-    uniqueDeviceList = lib.foldl' (acc: e:
-      if isDeviceInList acc e.device
-      then acc
-      else acc ++ [e]) [];
+    # Helper: does a device already appear in the accumulator?
+    isDeviceInList = list: device:
+      builtins.any (e: e.device == device) list;
+
+    # Helper: keep only the first occurrence of each device
+    uniqueDeviceList = lib.foldl' (
+      acc: e:
+        if isDeviceInList acc e.device
+        then acc
+        else acc ++ [e]
+    ) [];
   in
     uniqueDeviceList (
-      lib.mapAttrsToList (name: fs: {
-        inherit (fs) mountPoint;
-        inherit (fs) device;
-      }) (lib.filterAttrs (name: fs: fs.fsType == "btrfs") config.fileSystems)
+      lib.mapAttrsToList (_: fs: {
+        inherit (fs) mountPoint device;
+      })
+      (lib.filterAttrs (_: fs: fs.fsType == "btrfs") config.fileSystems)
     );
 
   # Create beesd.filesystems attrset keyed by device basename, with spec = device path
