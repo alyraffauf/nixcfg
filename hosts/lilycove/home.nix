@@ -36,6 +36,13 @@
     };
 
     myHome = {
+      aly.programs = {
+        git.enable = true;
+        awscli.enable = true;
+        rbw.enable = true;
+        ssh.enable = true;
+      };
+
       profiles.shell.enable = true;
       programs.fastfetch.enable = true;
     };
