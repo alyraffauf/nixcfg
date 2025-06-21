@@ -3,7 +3,12 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  backupDestination = "rclone:b2:aly-backups/${config.networking.hostName}";
+  mkRepo = service: "${backupDestination}/${service}";
+  stop = service: "${pkgs.systemd}/bin/systemctl stop ${service}";
+  start = service: "${pkgs.systemd}/bin/systemctl start ${service}";
+in {
   options.myNixOS.profiles.backups = {
     enable = lib.mkEnableOption "automatically back up enabled services to b2";
   };
@@ -13,20 +18,20 @@
       bazarr = lib.mkIf config.services.bazarr.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start bazarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop bazarr";
+          backupCleanupCommand = start "bazarr";
+          backupPrepareCommand = stop "bazarr";
           paths = [config.services.bazarr.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/bazarr";
+          repository = mkRepo "bazarr";
         }
       );
 
       couchdb = lib.mkIf config.services.couchdb.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start couchdb";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop couchdb";
+          backupCleanupCommand = start "couchdb";
+          backupPrepareCommand = stop "couchdb";
           paths = [config.services.couchdb.databaseDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/couchdb";
+          repository = mkRepo "couchdb";
         }
       );
 
@@ -34,15 +39,15 @@
         config.mySnippets.restic
         // {
           paths = [config.services.forgejo.stateDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/forgejo";
+          repository = mkRepo "forgejo";
         }
       );
 
       immich = lib.mkIf config.services.immich.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start immich-server";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop immich-server";
+          backupCleanupCommand = start "immich-server";
+          backupPrepareCommand = stop "immich-server";
 
           paths = [
             "${config.services.immich.mediaLocation}/library"
@@ -51,58 +56,58 @@
             "${config.services.immich.mediaLocation}/backups"
           ];
 
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/immich";
+          repository = mkRepo "immich";
         }
       );
 
       jellyfin = lib.mkIf config.services.jellyfin.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start jellyfin";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop jellyfin";
+          backupCleanupCommand = start "jellyfin";
+          backupPrepareCommand = stop "jellyfin";
           paths = [config.services.jellyfin.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/jellyfin";
+          repository = mkRepo "jellyfin";
         }
       );
 
       lidarr = lib.mkIf config.services.lidarr.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start lidarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop lidarr";
+          backupCleanupCommand = start "lidarr";
+          backupPrepareCommand = stop "lidarr";
           paths = [config.services.lidarr.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/lidarr";
+          repository = mkRepo "lidarr";
         }
       );
 
       ombi = lib.mkIf config.services.ombi.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start ombi";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop ombi";
+          backupCleanupCommand = start "ombi";
+          backupPrepareCommand = stop "ombi";
           paths = [config.services.ombi.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/ombi";
+          repository = mkRepo "ombi";
         }
       );
 
       pds = lib.mkIf config.services.pds.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start pds";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop pds";
+          backupCleanupCommand = start "pds";
+          backupPrepareCommand = stop "pds";
           paths = [config.services.pds.settings.PDS_DATA_DIRECTORY];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/pds";
+          repository = mkRepo "pds";
         }
       );
 
       plex = lib.mkIf config.services.plex.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start plex";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop plex";
+          backupCleanupCommand = start "plex";
+          backupPrepareCommand = stop "plex";
           exclude = ["${config.services.plex.dataDir}/Plex Media Server/Plug-in Support/Databases"];
           paths = [config.services.plex.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/plex";
+          repository = mkRepo "plex";
         }
       );
 
@@ -110,87 +115,87 @@
         config.mySnippets.restic
         // {
           paths = [config.services.postgresql.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/postgresql";
+          repository = mkRepo "postgresql";
         }
       );
 
       prowlarr = lib.mkIf config.services.prowlarr.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start prowlarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop prowlarr";
-          paths = ["config.services.prowlarr.dataDir"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/prowlarr";
+          backupCleanupCommand = start "prowlarr";
+          backupPrepareCommand = stop "prowlarr";
+          paths = [config.services.prowlarr.dataDir];
+          repository = mkRepo "prowlarr";
         }
       );
 
       qbittorrent = lib.mkIf config.myNixOS.services.qbittorrent.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start qbittorrent";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop qbittorrent";
+          backupCleanupCommand = start "qbittorrent";
+          backupPrepareCommand = stop "qbittorrent";
           paths = [config.myNixOS.services.qbittorrent.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/qbittorrent";
+          repository = mkRepo "qbittorrent";
         }
       );
 
       radarr = lib.mkIf config.services.radarr.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start radarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop radarr";
+          backupCleanupCommand = start "radarr";
+          backupPrepareCommand = stop "radarr";
           paths = [config.services.radarr.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/radarr";
+          repository = mkRepo "radarr";
         }
       );
 
       readarr = lib.mkIf config.services.readarr.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start readarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop readarr";
+          backupCleanupCommand = start "readarr";
+          backupPrepareCommand = stop "readarr";
           paths = [config.services.readarr.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/readarr";
+          repository = mkRepo "readarr";
         }
       );
 
       sonarr = lib.mkIf config.services.sonarr.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start sonarr";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop sonarr";
+          backupCleanupCommand = start "sonarr";
+          backupPrepareCommand = stop "sonarr";
           paths = [config.services.sonarr.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/sonarr";
+          repository = mkRepo "sonarr";
         }
       );
 
       tautulli = lib.mkIf config.services.tautulli.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start tautulli";
-          backupPrepareCommand = ''${pkgs.systemd}/bin/systemctl stop tautulli'';
+          backupCleanupCommand = start "tautulli";
+          backupPrepareCommand = stop "tautulli";
           paths = [config.services.tautulli.dataDir];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/tautulli";
+          repository = mkRepo "tautulli";
         }
       );
 
       uptime-kuma = lib.mkIf config.services.uptime-kuma.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start uptime-kuma";
-          backupPrepareCommand = ''${pkgs.systemd}/bin/systemctl stop uptime-kuma'';
+          backupCleanupCommand = start "uptime-kuma";
+          backupPrepareCommand = stop "uptime-kuma";
           paths = ["/var/lib/uptime-kuma"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/uptime-kuma";
+          repository = mkRepo "uptime-kuma";
         }
       );
 
       vaultwarden = lib.mkIf config.services.vaultwarden.enable (
         config.mySnippets.restic
         // {
-          backupCleanupCommand = "${pkgs.systemd}/bin/systemctl start vaultwarden";
-          backupPrepareCommand = "${pkgs.systemd}/bin/systemctl stop vaultwarden";
+          backupCleanupCommand = start "vaultwarden";
+          backupPrepareCommand = stop "vaultwarden";
           paths = ["/var/lib/vaultwarden"];
-          repository = "rclone:b2:aly-backups/${config.networking.hostName}/vaultwarden";
+          repository = mkRepo "vaultwarden";
         }
       );
     };
