@@ -34,6 +34,7 @@
           experimental-features = [
             "scale-monitor-framebuffer"
             "variable-refresh-rate"
+            "xwayland-native-scaling"
           ];
 
           workspaces-only-on-primary = true;
