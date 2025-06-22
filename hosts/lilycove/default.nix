@@ -90,6 +90,7 @@ in {
         tautulli.enable = true;
       };
 
+      promtail.enable = true;
       qbittorrent.enable = true;
 
       syncthing = {

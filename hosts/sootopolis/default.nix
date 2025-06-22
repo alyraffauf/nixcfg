@@ -51,6 +51,7 @@
       flatpak.enable = true;
       gdm.enable = true;
       # greetd.enable = true;
+      promtail.enable = true;
 
       syncthing = {
         enable = true;

@@ -93,6 +93,8 @@
         number = 2;
       };
 
+      promtail.enable = true;
+
       syncthing = {
         enable = true;
         certFile = config.age.secrets.syncthingCert.path;

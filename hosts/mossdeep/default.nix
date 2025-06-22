@@ -85,6 +85,7 @@
         db = "postgresql";
       };
 
+      promtail.enable = true;
       tailscale.enable = true;
     };
   };

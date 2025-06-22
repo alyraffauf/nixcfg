@@ -47,6 +47,7 @@
 
     services = {
       caddy.enable = true;
+      promtail.enable = true;
       tailscale.enable = true;
     };
   };
