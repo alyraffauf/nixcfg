@@ -9,6 +9,7 @@
     ./gdm
     ./greetd
     ./plex
+    ./prometheusNode
     ./promtail
     ./qbittorrent
     ./sddm
