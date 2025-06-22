@@ -85,6 +85,7 @@
         db = "postgresql";
       };
 
+      prometheusNode.enable = true;
       promtail.enable = true;
       tailscale.enable = true;
     };
