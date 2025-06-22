@@ -9,6 +9,7 @@
     ./gdm
     ./greetd
     ./plex
+    ./promtail
     ./qbittorrent
     ./sddm
     ./sunshine
