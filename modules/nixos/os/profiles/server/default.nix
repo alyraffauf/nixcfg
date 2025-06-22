@@ -16,6 +16,7 @@
       bpftune.enable = true;
       logrotate.enable = true;
       smartd.enable = true;
+      timesyncd.enable = true;
     };
 
     systemd = {
