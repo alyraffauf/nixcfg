@@ -10,6 +10,7 @@ in {
     ./b2.nix
     ./home.nix
     ./oci.nix
+    ./prometheus.nix
     ./secrets.nix
     ./services.nix
     ./stylix.nix

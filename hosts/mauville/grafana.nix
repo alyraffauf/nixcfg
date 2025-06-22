@@ -115,6 +115,51 @@
 
       scrapeConfigs = [
         {
+          job_name = "bazarr";
+          static_configs = [
+            {
+              targets = ["lilycove:9708"];
+            }
+          ];
+        }
+
+        {
+          job_name = "lidarr";
+          static_configs = [
+            {
+              targets = ["lilycove:9709"];
+            }
+          ];
+        }
+
+        {
+          job_name = "prowlarr";
+          static_configs = [
+            {
+              targets = ["lilycove:9710"];
+            }
+          ];
+        }
+
+        {
+          job_name = "radarr";
+          static_configs = [
+            {
+              targets = ["lilycove:9711"];
+            }
+          ];
+        }
+
+        {
+          job_name = "sonarr";
+          static_configs = [
+            {
+              targets = ["lilycove:9712"];
+            }
+          ];
+        }
+
+        {
           job_name = "node";
           static_configs = [
             {
