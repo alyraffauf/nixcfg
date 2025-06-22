@@ -151,6 +151,16 @@
         }
 
         {
+          job_name = "smartctl";
+          static_configs = [
+            {
+              targets = ["lilycove:9633"];
+              labels.instance = "lilycove";
+            }
+          ];
+        }
+
+        {
           job_name = "sonarr";
           static_configs = [
             {

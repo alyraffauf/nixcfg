@@ -34,5 +34,7 @@
       port = 9712;
       url = "https://sonarr.${config.mySnippets.tailnet}";
     };
+
+    smartctl.enable = true;
   };
 }
