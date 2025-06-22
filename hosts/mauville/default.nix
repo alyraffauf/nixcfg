@@ -7,6 +7,7 @@
   imports = [
     ./backups.nix
     ./disko.nix
+    ./grafana.nix
     ./home.nix
     ./secrets.nix
     ./services.nix
@@ -125,6 +126,7 @@
         number = 1;
       };
 
+      promtail.enable = true;
       qbittorrent.enable = true;
 
       syncthing = {

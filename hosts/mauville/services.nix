@@ -13,11 +13,19 @@
     };
 
     caddy.virtualHosts = {
-      "paperless.narwhal-snapper.ts.net" = {
+      "grafana.narwhal-snapper.ts.net" = {
         extraConfig = ''
-          bind tailscale/paperless
+          bind tailscale/grafana
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.paperless.port}
+          reverse_proxy localhost:${toString config.services.grafana.settings.server.http_port}
+        '';
+      };
+
+      "loki.narwhal-snapper.ts.net" = {
+        extraConfig = ''
+          bind tailscale/loki
+          encode zstd gzip
+          reverse_proxy localhost:${toString config.services.loki.configuration.server.http_listen_port}
         '';
       };
     };
