@@ -176,7 +176,6 @@
           {package = pkgs.gnomeExtensions.caffeine;}
           {package = pkgs.gnomeExtensions.night-theme-switcher;}
           {package = pkgs.gnomeExtensions.tiling-shell;}
-          {package = pkgs.gnomeExtensions.vscode-search-provider;}
         ];
       };
     };

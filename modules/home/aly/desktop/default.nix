@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./gnome
     ./hyprland
     ./macos
   ];
