@@ -14,6 +14,7 @@
 
     services = {
       bpftune.enable = true;
+      logrotate.enable = true;
       smartd.enable = true;
     };
 
