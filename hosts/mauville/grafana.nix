@@ -118,14 +118,28 @@
           job_name = "node";
           static_configs = [
             {
-              targets = [
-                "lavaridge:3021"
-                "lilycove:3021"
-                "mauville:3021"
-                "mossdeep:3021"
-                "slateport:3021"
-                "verdanturf:3021"
-              ];
+              targets = ["lavaridge:3021"];
+              labels.instance = "lavaridge";
+            }
+            {
+              targets = ["lilycove:3021"];
+              labels.instance = "lilycove";
+            }
+            {
+              targets = ["mauville:3021"];
+              labels.instance = "mauville";
+            }
+            {
+              targets = ["mossdeep:3021"];
+              labels.instance = "mossdeep";
+            }
+            {
+              targets = ["slateport:3021"];
+              labels.instance = "slateport";
+            }
+            {
+              targets = ["verdanturf:3021"];
+              labels.instance = "verdanturf";
             }
           ];
         }
