@@ -8,7 +8,7 @@
   };
 
   config = lib.mkIf config.myNixOS.services.prometheusNode.enable {
-    services.promtheus.exporters.node = {
+    services.prometheus.exporters.node = {
       enable = true;
       enabledCollectors = ["systemd"];
 
