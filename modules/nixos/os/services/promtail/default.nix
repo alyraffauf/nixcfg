@@ -14,7 +14,7 @@
   };
 
   config = lib.mkIf config.myNixOS.services.promtail.enable {
-    promtail = {
+    services.promtail = {
       enable = true;
 
       configuration = {
