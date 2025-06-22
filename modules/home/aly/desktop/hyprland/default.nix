@@ -4,7 +4,11 @@
   pkgs,
   ...
 }: {
-  options.myHome.aly.desktop.hyprland.enable = lib.mkEnableOption "hyprland window manager";
+  options.myHome.aly.desktop.hyprland.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = config.myHome.desktop.hyprland.enable && config.home.username == "aly";
+    description = "Enable Aly's Hyprland environment.";
+  };
 
   config = lib.mkIf config.myHome.aly.desktop.hyprland.enable {
     wayland.windowManager.hyprland.settings = {

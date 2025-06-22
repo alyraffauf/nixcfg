@@ -86,13 +86,9 @@
       systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
       myHome = {
-        aly = {
-          desktop.hyprland.enable = config.wayland.windowManager.hyprland.enable;
-
-          programs = {
-            chromium.enable = true;
-            rbw.enable = true;
-          };
+        aly.programs = {
+          chromium.enable = true;
+          rbw.enable = true;
         };
 
         profiles.defaultApps = {

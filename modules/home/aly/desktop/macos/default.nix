@@ -3,7 +3,11 @@
   lib,
   ...
 }: {
-  options.myHome.aly.desktop.macos.enable = lib.mkEnableOption "macOS desktop configuration.";
+  options.myHome.aly.desktop.macos.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "Enable Aly's macOS desktop settings.";
+  };
 
   config = lib.mkIf config.myHome.aly.desktop.macos.enable {
     targets.darwin = {
