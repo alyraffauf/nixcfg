@@ -1098,11 +1098,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1750285702,
-        "narHash": "sha256-gkYn4YUxQ4l0QVggwuKv7JrN6iSXbVlJBi6PR/1TK5Y=",
+        "lastModified": 1750617088,
+        "narHash": "sha256-oc0B1kplmHtoDHN3W09I/tLkYfZr8XBAgx1DM5sC+x0=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "11a69c61f298a0efdc2d7664d05ea84150366a5f",
+        "rev": "2301b5e69f7c8cbbe1c6c78554ae260025e0b450",
         "type": "github"
       },
       "original": {
