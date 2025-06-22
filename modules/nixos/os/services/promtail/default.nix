@@ -51,6 +51,10 @@
                 source_labels = ["__journal__systemd_unit"];
                 target_label = "unit";
               }
+              {
+                source_labels = ["__journal__systemd_user_unit"];
+                target_label = "user_unit";
+              }
             ];
           }
         ];
