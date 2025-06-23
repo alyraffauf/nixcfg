@@ -17,6 +17,8 @@
       };
     };
 
+    networking.applicationFirewall.enable = true;
+
     programs = {
       direnv = {
         enable = true;
@@ -34,7 +36,6 @@
       configurationRevision = self.rev or self.dirtyRev or null;
 
       defaults.alf = {
-        globalstate = 1;
         loggingenabled = 1;
       };
     };
