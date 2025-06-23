@@ -31,13 +31,6 @@
 
     security.pam.services.sudo_local.touchIdAuth = true;
     services.openssh.enable = true;
-
-    system = {
-      configurationRevision = self.rev or self.dirtyRev or null;
-
-      defaults.alf = {
-        loggingenabled = 1;
-      };
-    };
+    system.configurationRevision = self.rev or self.dirtyRev or null;
   };
 }
