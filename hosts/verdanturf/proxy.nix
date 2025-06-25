@@ -101,6 +101,10 @@ in {
             encode zstd gzip
             reverse_proxy 127.0.0.1:${
               toString config.services.vaultwarden.config.ROCKET_PORT
+            } {
+              header_up X-Real-IP {remote_host}
+              header_up X-Forwarded-For {remote_host}
+              header_up X-Forwarded-Proto {scheme}}
             }
           '';
         };
