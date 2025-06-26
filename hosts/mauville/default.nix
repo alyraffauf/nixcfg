@@ -120,12 +120,6 @@
 
     services = {
       caddy.enable = true;
-
-      forgejo-runner = {
-        enable = true;
-        number = 1;
-      };
-
       prometheusNode.enable = true;
       promtail.enable = true;
       qbittorrent.enable = true;
