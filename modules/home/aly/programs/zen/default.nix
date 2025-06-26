@@ -47,6 +47,7 @@ in {
             consent-o-matic
             karakeep
             ublock-origin
+            web-scrobbler
           ];
 
           id = 0;
