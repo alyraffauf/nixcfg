@@ -5,6 +5,6 @@
     ./profiles
     ./programs
     ./services
-    self.inputs.zen-browser.homeModules.default
+    self.inputs.zen-browser.homeModules.twilight
   ];
 }
