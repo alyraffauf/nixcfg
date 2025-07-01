@@ -67,6 +67,8 @@
   myHardware.framework.laptop13.intel-11th.enable = true;
 
   myNixOS = {
+    desktop.gnome.enable = true;
+
     profiles = {
       autoUpgrade.enable = true;
       backups.enable = true;
@@ -87,6 +89,8 @@
 
     services = {
       caddy.enable = true;
+      flatpak.enable = true;
+      gdm.enable = true;
       prometheusNode.enable = true;
       promtail.enable = true;
 
@@ -103,5 +107,8 @@
     };
   };
 
-  myUsers.aly.enable = true;
+  myUsers.aly = {
+    enable = true;
+    password = "$y$j9T$.fv9yQ8dHh/oyZ8M.b67h.$sHKoOdzIvltyVNk2zi8F.bUNcwIonjGTtzwYgOcb0H3";
+  };
 }
