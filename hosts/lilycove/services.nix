@@ -109,8 +109,6 @@ in {
       dataDir = "${dataDirectory}/jellyfin";
     };
 
-    nextjs-ollama-llm-ui.enable = true;
-
     nfs.server = {
       enable = true;
 
