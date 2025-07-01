@@ -5,8 +5,9 @@
 }: {
   stylix = {
     enable = true;
+    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-    image = "${self.inputs.wallpapers}/wallhaven-4oyd2m.jpg";
+    image = "${self.inputs.wallpapers}/wallhaven-yxdrex.png";
     imageScalingMode = "fill";
     polarity = "dark";
 
@@ -23,8 +24,8 @@
       };
 
       sansSerif = {
-        name = "UbuntuSans Nerd Font";
-        package = pkgs.nerd-fonts.ubuntu-sans;
+        name = "Adwaita";
+        package = pkgs.adwaita-fonts;
       };
 
       serif = {
@@ -36,15 +37,15 @@
         applications = 12;
         desktop = 11;
         popups = 12;
-        terminal = 13;
+        terminal = 12;
       };
     };
 
     opacity = {
       applications = 1.0;
-      desktop = 0.8;
-      terminal = 0.8;
-      popups = 0.8;
+      desktop = 1.0;
+      terminal = 1.0;
+      popups = 1.0;
     };
   };
 }
