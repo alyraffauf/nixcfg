@@ -90,6 +90,13 @@
     services = {
       caddy.enable = true;
       flatpak.enable = true;
+
+      forgejo-runner = {
+        enable = true;
+        dockerContainers = 1;
+        nativeRunners = 1;
+      };
+
       gdm.enable = true;
       prometheusNode.enable = true;
       promtail.enable = true;
