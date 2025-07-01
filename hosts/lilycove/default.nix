@@ -83,6 +83,7 @@ in {
       forgejo-runner = {
         enable = true;
         dockerContainers = 3;
+        nativeRunners = 2;
       };
 
       plex = {
