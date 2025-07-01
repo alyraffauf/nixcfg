@@ -8,10 +8,10 @@
   options.myNixOS.services.forgejo-runner = {
     enable = lib.mkEnableOption "Forĝejo runners";
 
-    number = lib.mkOption {
+    dockerContainers = lib.mkOption {
       type = lib.types.int;
       default = 1;
-      description = "How many forgejo runner instances to spawn.";
+      description = "How many docker containers to run for the Forĝejo runner.";
     };
   };
 
@@ -31,39 +31,50 @@
     in {
       package = pkgs.forgejo-runner;
 
-      instances.alycodes = {
-        enable = true;
+      instance = {
+        alycodes-containers = {
+          enable = true;
 
-        hostPackages = with pkgs;
-          [
-            bash
-            cachix
-            coreutils
-            curl
-            gawk
-            gitMinimal
-            gnused
-            jq
-            nodejs
-            wget
-          ]
-          ++ [config.nix.package];
+          labels = lib.optional (arch == "aarch64_linux") "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest" ++ lib.optional (arch == "x86_64_linux") "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest";
 
-        labels =
-          [
-            "nixos-${arch}:host"
-          ]
-          ++ lib.optional (arch == "aarch64_linux") "ubuntu-24.04-arm:docker://gitea/runner-images:ubuntu-latest" ++ lib.optional (arch == "x86_64_linux") "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest";
+          name = "${arch}-${config.networking.hostName}-alycodes-containers";
 
-        name = "${arch}-${config.networking.hostName}-alycodes";
+          settings = {
+            container.network = "host";
+            runner.capacity = config.myNixOS.services.forgejo-runner.dockerContainers;
+          };
 
-        settings = {
-          container.network = "host";
-          runner.capacity = config.myNixOS.services.forgejo-runner.number;
+          tokenFile = config.age.secrets.act-runner.path;
+          url = "http://mossdeep:3001";
         };
 
-        tokenFile = config.age.secrets.act-runner.path;
-        url = "http://mossdeep:3001";
+        alycodes-nixos = {
+          enable = true;
+
+          hostPackages = with pkgs;
+            [
+              bash
+              cachix
+              coreutils
+              curl
+              gawk
+              gitMinimal
+              gnused
+              jq
+              nodejs
+              wget
+            ]
+            ++ [config.nix.package];
+
+          labels = [
+            "nixos-${arch}:host"
+          ];
+
+          name = "${arch}-${config.networking.hostName}-alycodes-nixos";
+          settings.container.network = "host";
+          tokenFile = config.age.secrets.act-runner.path;
+          url = "http://mossdeep:3001";
+        };
       };
 
       # instances = let
