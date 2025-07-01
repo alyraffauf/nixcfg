@@ -8,6 +8,12 @@
   options.myNixOS.services.forgejo-runner = {
     enable = lib.mkEnableOption "Forĝejo runners";
 
+    nativeRunners = lib.mkOption {
+      type = lib.types.int;
+      default = 1;
+      description = "How many native NixOS runners to run for the Forĝejo runner.";
+    };
+
     dockerContainers = lib.mkOption {
       type = lib.types.int;
       default = 1;
@@ -74,7 +80,12 @@
           ];
 
           name = "${arch}-${config.networking.hostName}-alycodes-nixos";
-          settings.container.network = "host";
+
+          settings = {
+            container.network = "host";
+            runner.capacity = config.myNixOS.services.forgejo-runner.nativeRunners;
+          };
+
           url = "http://mossdeep:3001";
         };
       };
