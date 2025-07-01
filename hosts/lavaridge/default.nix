@@ -87,12 +87,6 @@
 
     services = {
       caddy.enable = true;
-
-      forgejo-runner = {
-        enable = true;
-        number = 2;
-      };
-
       prometheusNode.enable = true;
       promtail.enable = true;
 
