@@ -20,6 +20,13 @@
         journalmatch = _SYSTEMD_UNIT=forgejo.service
       '';
 
+      "fail2ban/filter.d/karakeep.conf".text = ''
+        [Definition]
+        failregex = ^.*error:\s+Authentication\serror\..*IP-Address:\s+"?<HOST>"?.*$
+        ignoreregex =
+        journalmatch = _SYSTEMD_UNIT=karakeep-web.service
+      '';
+
       "fail2ban/filter.d/navidrome.conf".text = ''
         [INCLUDES]
         before = common.conf
@@ -90,6 +97,14 @@
           findtime = 3600;
           maxretry = 4;
         };
+
+        karakeep = ''
+          enabled = true
+          backend = systemd
+          filter = karakeep
+          maxretry = 5
+          port = 80,443,7020
+        '';
 
         navidrome = ''
           enabled = true
