@@ -28,7 +28,7 @@
       containers = {
         homebridge = {
           environment = {
-            "HOMEBRIDGE_CONFIG_UI_PORT" = "${config.myNixOS.services.homebridge.port}";
+            "HOMEBRIDGE_CONFIG_UI_PORT" = "${toString config.myNixOS.services.homebridge.port}";
             "TZ" = "America/New_York";
           };
 
