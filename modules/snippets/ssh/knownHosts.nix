@@ -9,6 +9,11 @@
     description = "Default ssh known hosts.";
 
     default = {
+      evergrande = {
+        hostNames = ["evergrande" "evergrande.local" "evergrande.${config.mySnippets.tailnet}"];
+        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_evergrande.pub";
+      };
+
       fallarbor = {
         hostNames = ["fallarbor" "fallarbor.local" "fallarbor.${config.mySnippets.tailnet}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_fallarbor.pub";
