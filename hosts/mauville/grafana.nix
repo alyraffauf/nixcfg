@@ -173,6 +173,10 @@
           job_name = "node";
           static_configs = [
             {
+              targets = ["evergrande:3021"];
+              labels.instance = "evergrande";
+            }
+            {
               targets = ["lavaridge:3021"];
               labels.instance = "lavaridge";
             }
