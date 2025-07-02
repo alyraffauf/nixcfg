@@ -1,6 +1,5 @@
 {self, ...}: {
   imports = [
-    ./backups.nix
     ./secrets.nix
     ./services.nix
     self.diskoConfigurations.btrfs-subvolumes
