@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  self,
-  ...
-}: {
+{config, ...}: {
   security.acme = {
     acceptTerms = true;
     defaults.email = "alyraffauf@fastmail.com";
@@ -14,20 +9,6 @@
       email = "alyraffauf@fastmail.com";
 
       virtualHosts = {
-        "aly.codes" = {
-          extraConfig = ''
-            encode gzip zstd
-            reverse_proxy localhost${config.services.anubis.instances.alycodes.settings.BIND}
-          '';
-        };
-
-        "aly.social" = {
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy localhost:${toString config.services.pds.settings.PDS_PORT}
-          '';
-        };
-
         "git.aly.codes" = {
           extraConfig = ''
             encode zstd gzip
@@ -42,38 +23,7 @@
             }
           '';
         };
-
-        "self2025.aly.codes" = {
-          extraConfig = let
-            site = self.inputs.self2025.packages.${pkgs.system}.default;
-          in ''
-            encode zstd gzip
-            file_server
-            root * ${site}
-          '';
-        };
       };
-    };
-
-    ddclient = {
-      enable = true;
-
-      domains = [
-        "aly.social"
-        "*.aly.social"
-      ];
-
-      interval = "10min";
-      passwordFile = config.age.secrets.cloudflare.path;
-      protocol = "cloudflare";
-      ssl = true;
-      username = "token";
-      zone = "aly.social";
-
-      extraConfig = ''
-        zone=aly.codes
-        aly.codes
-      '';
     };
   };
 }
