@@ -67,8 +67,6 @@
   myHardware.framework.laptop13.intel-11th.enable = true;
 
   myNixOS = {
-    desktop.gnome.enable = true;
-
     profiles = {
       autoUpgrade.enable = true;
       backups.enable = true;
@@ -89,7 +87,6 @@
 
     services = {
       caddy.enable = true;
-      flatpak.enable = true;
 
       forgejo-runner = {
         enable = true;
@@ -97,7 +94,6 @@
         nativeRunners = 1;
       };
 
-      gdm.enable = true;
       prometheusNode.enable = true;
       promtail.enable = true;
 
