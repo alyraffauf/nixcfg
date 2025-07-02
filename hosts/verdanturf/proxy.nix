@@ -13,9 +13,6 @@ in {
 
       domains = [
         "couchdb.${newDomain}"
-        "status.${newDomain}"
-        "uptime-kuma.${newDomain}"
-        "vault.${newDomain}"
       ];
 
       interval = "10min";
@@ -28,13 +25,6 @@ in {
       extraConfig = ''
         zone=raffauflabs.com
         couch.${oldDomain}
-        passwords.${oldDomain}
-
-        zone=aly.codes
-        status.aly.codes
-
-        zone=aly.social
-        status.aly.social
       '';
     };
 
@@ -51,61 +41,6 @@ in {
           extraConfig = ''
             encode zstd gzip
             reverse_proxy 127.0.0.1:${toString config.services.couchdb.port}
-          '';
-        };
-
-        "uptime-kuma.${newDomain}" = {
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
-              flush_interval -1   # proxy_buffering off equivalent
-            }
-          '';
-        };
-
-        "status.${newDomain}" = {
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
-              flush_interval -1
-            }
-          '';
-        };
-
-        "status.aly.codes" = {
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
-              flush_interval -1
-            }
-          '';
-        };
-
-        "status.aly.social" = {
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy localhost${config.services.anubis.instances.uptime-kuma.settings.BIND} {
-              flush_interval -1
-            }
-          '';
-        };
-
-        "vault.${newDomain}" = {
-          serverAliases = [
-            "vault.${newDomain}"
-            "v.${newDomain}"
-            "passwords.${oldDomain}"
-          ];
-
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy 127.0.0.1:${
-              toString config.services.vaultwarden.config.ROCKET_PORT
-            } {
-              header_up X-Real-IP {remote_host}
-              header_up X-Forwarded-For {remote_host}
-              header_up X-Forwarded-Proto {scheme}}
-            }
           '';
         };
       };

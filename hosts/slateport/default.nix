@@ -1,9 +1,7 @@
 {self, ...}: {
   imports = [
-    ./anubis.nix
     ./backups.nix
     ./oci.nix
-    ./proxy.nix
     ./secrets.nix
     ./services.nix
     self.diskoConfigurations.btrfs-subvolumes

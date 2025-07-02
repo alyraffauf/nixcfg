@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./anubis.nix
     ./proxy.nix
     ./secrets.nix
     ./services.nix

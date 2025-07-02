@@ -39,6 +39,11 @@
     uptime-kuma = {
       enable = true;
       appriseSupport = true;
+
+      settings = {
+        PORT = "3001";
+        HOST = "0.0.0.0";
+      };
     };
 
     vaultwarden = {
@@ -46,7 +51,7 @@
 
       config = {
         DOMAIN = "https://vault.cute.haus";
-        ROCKET_ADDRESS = "127.0.0.1";
+        ROCKET_ADDRESS = "0.0.0.0";
         ROCKET_LOG = "critical";
         ROCKET_PORT = 8222;
         SIGNUPS_ALLOWED = false;

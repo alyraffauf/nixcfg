@@ -7,6 +7,8 @@
   ...
 }: {
   imports = [
+    ./anubis.nix
+    ./proxy.nix
     ./secrets.nix
     ./stylix.nix
     "${modulesPath}/profiles/qemu-guest.nix"
