@@ -5,16 +5,16 @@
       description = "List of default nix build machines.";
 
       default = [
-        # {
-        #   hostName = "lavaridge";
-        #   maxJobs = 8;
-        #   protocol = "ssh-ng";
-        #   speedFactor = 3;
-        #   sshKey = "/etc/ssh/ssh_host_ed25519_key";
-        #   sshUser = "nixbuild";
-        #   supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        #   systems = ["x86_64-linux"];
-        # }
+        {
+          hostName = "lavaridge";
+          maxJobs = 8;
+          protocol = "ssh-ng";
+          speedFactor = 3;
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          sshUser = "nixbuild";
+          supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+          systems = ["x86_64-linux"];
+        }
         {
           hostName = "lilycove";
           maxJobs = 12;
