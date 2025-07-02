@@ -1,7 +1,6 @@
 {self, ...}: {
   imports = [
     ./backups.nix
-    ./oci.nix
     ./secrets.nix
     ./services.nix
     self.diskoConfigurations.btrfs-subvolumes
@@ -45,6 +44,7 @@
 
     services = {
       caddy.enable = true;
+      homebridge.enable = true;
       prometheusNode.enable = true;
       promtail.enable = true;
       tailscale.enable = true;
