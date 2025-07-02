@@ -29,7 +29,7 @@
           hostName = "mauville";
           maxJobs = 4;
           protocol = "ssh-ng";
-          speedFactor = 2;
+          speedFactor = 1;
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
           sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
@@ -39,7 +39,7 @@
           hostName = "slateport";
           maxJobs = 4;
           protocol = "ssh-ng";
-          speedFactor = 2;
+          speedFactor = 1;
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
           sshUser = "nixbuild";
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
