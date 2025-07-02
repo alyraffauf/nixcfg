@@ -147,6 +147,7 @@
         });
 
     forAllLinuxHosts = self.inputs.nixpkgs.lib.genAttrs [
+      "evergrande"
       "fallarbor"
       "lavaridge"
       "lilycove"

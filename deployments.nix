@@ -1,4 +1,10 @@
 {
+  evergrande = {
+    output = "evergrande";
+    hostname = "evergrande";
+    user = "root";
+  };
+
   lavaridge = {
     output = "lavaridge";
     hostname = "lavaridge";
