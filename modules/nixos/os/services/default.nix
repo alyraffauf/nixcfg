@@ -8,6 +8,7 @@
     ./forgejo-runner
     ./gdm
     ./greetd
+    ./homebridge
     ./plex
     ./prometheusNode
     ./promtail
