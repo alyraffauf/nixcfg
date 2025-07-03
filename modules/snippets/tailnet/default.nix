@@ -74,6 +74,12 @@
           port = 8080;
           vHost = "qbittorrent.${config.mySnippets.tailnet.name}";
         };
+
+        radarr = {
+          hostName = "lilycove";
+          port = 7878;
+          vHost = "radarr.${config.mySnippets.tailnet.name}";
+        };
       };
     };
   };
