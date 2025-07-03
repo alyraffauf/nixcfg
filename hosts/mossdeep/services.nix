@@ -4,7 +4,7 @@
       enable = true;
       environmentFiles = [config.age.secrets.pds.path];
       pdsadmin.enable = true;
-      settings.PDS_HOSTNAME = config.mySnippets.cute-haus.networkMap.pds.vHost;
+      settings.PDS_HOSTNAME = config.mySnippets.cute-haus.networkMap.aly-social.vHost;
     };
   };
 

@@ -9,7 +9,7 @@
       email = "alyraffauf@fastmail.com";
 
       virtualHosts = {
-        "git.aly.codes" = {
+        "${config.mySnippets.cute-haus.networkMap.forgejo.vHost}" = {
           extraConfig = ''
             encode zstd gzip
 
