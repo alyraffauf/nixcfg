@@ -13,7 +13,7 @@
     };
 
     caddy.virtualHosts = {
-      "${config.mySnippets.tailnet.grafana.vHost}" = {
+      "${config.mySnippets.tailnet.networkMap.grafana.vHost}" = {
         extraConfig = ''
           bind tailscale/grafana
           encode zstd gzip
@@ -21,7 +21,7 @@
         '';
       };
 
-      "${config.mySnippets.tailnet.loki.vHost}" = {
+      "${config.mySnippets.tailnet.networkMap.loki.vHost}" = {
         extraConfig = ''
           bind tailscale/loki
           encode zstd gzip
@@ -29,7 +29,7 @@
         '';
       };
 
-      "${config.mySnippets.tailnet.prometheus.vHost}" = {
+      "${config.mySnippets.tailnet.networkMap.prometheus.vHost}" = {
         extraConfig = ''
           bind tailscale/prometheus
           encode zstd gzip
