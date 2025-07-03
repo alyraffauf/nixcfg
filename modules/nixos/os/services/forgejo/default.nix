@@ -95,12 +95,12 @@
           security.PASSWORD_CHECK_PWN = true;
 
           server = {
-            DOMAIN = "git.aly.codes";
-            HTTP_PORT = 3001;
+            DOMAIN = config.mySnippets.cute-haus.networkMap.forgejo.vHost;
+            HTTP_PORT = config.mySnippets.cute-haus.networkMap.forgejo.port;
             LANDING_PAGE = "explore";
             LFS_START_SERVER = true;
-            ROOT_URL = "https://git.aly.codes/";
-            SSH_DOMAIN = "git.aly.codes";
+            ROOT_URL = "https://${config.mySnippets.cute-haus.networkMap.forgejo.vHost}/";
+            SSH_DOMAIN = config.mySnippets.cute-haus.networkMap.forgejo.vHost;
             SSH_LISTEN_PORT = 2222;
             SSH_PORT = 2222;
             START_SSH_SERVER = true;
