@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   self,
   ...
 }: let
@@ -94,7 +95,20 @@ in {
 
       prometheusNode.enable = true;
       promtail.enable = true;
-      qbittorrent.enable = true;
+
+      qbittorrent = {
+        enable = true;
+
+        package = pkgs.qbittorrent-nox.overrideAttrs (old: rec {
+          version = "5.1.0";
+          src = pkgs.fetchFromGitHub {
+            owner = "qbittorrent";
+            repo = "qBittorrent";
+            rev = "release-${version}";
+            hash = "sha256-ZLmKEdvtOxCzEOnJ4JPQQhR427YA288vTRxpk6O0tUc=";
+          };
+        });
+      };
 
       syncthing = {
         enable = true;
