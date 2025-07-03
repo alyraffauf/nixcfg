@@ -17,7 +17,7 @@
         extraConfig = ''
           bind tailscale/grafana
           encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.grafana.hostName}:${toString config.mySnippets.tailnet.grafana.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.grafana.hostName}:${toString config.mySnippets.tailnet.networkMap.grafana.port}
         '';
       };
 
@@ -25,7 +25,7 @@
         extraConfig = ''
           bind tailscale/loki
           encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.loki.hostName}:${toString config.mySnippets.tailnet.loki.port}
+          reverse_proxy ${config.mySnippets.tailnet.loki.networkMap.hostName}:${toString config.mySnippets.tailnet.networkMap.loki.port}
         '';
       };
 
@@ -33,7 +33,7 @@
         extraConfig = ''
           bind tailscale/prometheus
           encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.prometheus.hostName}:${toString config.mySnippets.tailnet.prometheus.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.prometheus.hostName}:${toString config.mySnippets.tailnet.networkMap.prometheus.port}
         '';
       };
     };
