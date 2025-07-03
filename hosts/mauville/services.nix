@@ -43,7 +43,7 @@
         INFERENCE_JOB_TIMEOUT_SEC = "600";
         INFERENCE_LANG = "english";
         INFERENCE_TEXT_MODEL = INFERENCE_IMAGE_MODEL;
-        NEXTAUTH_URL = "https://karakeep.cute.haus/";
+        NEXTAUTH_URL = "https://${config.mySnippets.cute-haus.networkMap.karakeep.vHost}";
         OLLAMA_BASE_URL = "https://ollama.${config.mySnippets.tailnet}";
         OLLAMA_KEEP_ALIVE = "5m";
         PORT = "7020";
@@ -56,7 +56,7 @@
       enable = true;
 
       environment = {
-        OLLAMA_API_BASE_URL = "https://ollama.narwhal-snapper.ts.net";
+        OLLAMA_API_BASE_URL = "https://ollama.${config.mySnippets.tailnet}";
         # Disable authentication
         WEBUI_AUTH = "False";
       };
