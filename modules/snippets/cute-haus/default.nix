@@ -13,7 +13,7 @@
       aly-social = {
         hostName = "mossdeep";
         port = 3000;
-        vHost = "social.aly.codes";
+        vHost = "aly.social";
       };
 
       audiobookshelf = {
