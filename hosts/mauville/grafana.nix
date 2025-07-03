@@ -19,13 +19,13 @@
             name = "Prometheus";
             type = "prometheus";
             access = "proxy";
-            url = "https://${config.mySnippets.tailnet.prometheus.vHost}";
+            url = "https://${config.mySnippets.tailnet.networkMap.prometheus.vHost}";
           }
           {
             name = "Loki";
             type = "loki";
             access = "proxy";
-            url = "https://${config.mySnippets.tailnet.loki.vHost}";
+            url = "https://${config.mySnippets.tailnet.networkMap.loki.vHost}";
           }
         ];
       };
