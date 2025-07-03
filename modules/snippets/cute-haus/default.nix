@@ -23,7 +23,7 @@
       };
 
       glance = {
-        hostName = "slateport";
+        hostName = "mauville";
         port = 8080;
         vHost = "cute.haus";
       };
