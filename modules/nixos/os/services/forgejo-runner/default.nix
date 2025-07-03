@@ -53,7 +53,7 @@
             runner.capacity = config.myNixOS.services.forgejo-runner.dockerContainers;
           };
 
-          url = "http://mossdeep:3001";
+          url = "http://${config.mySnippets.cute-haus.networkMap.forgejo.hostName}:${toString config.mySnippets.cute-haus.networkMap.forgejo.port}";
         };
 
         alycodes-nixos = {
@@ -75,10 +75,7 @@
             ]
             ++ [config.nix.package];
 
-          labels = [
-            "nixos-${arch}:host"
-          ];
-
+          labels = ["nixos-${arch}:host"];
           name = "${arch}-${config.networking.hostName}-alycodes-nixos";
 
           settings = {
@@ -86,7 +83,7 @@
             runner.capacity = config.myNixOS.services.forgejo-runner.nativeRunners;
           };
 
-          url = "http://mossdeep:3001";
+          url = "http://${config.mySnippets.cute-haus.networkMap.forgejo.hostName}:${toString config.mySnippets.cute-haus.networkMap.forgejo.port}";
         };
       };
     };
