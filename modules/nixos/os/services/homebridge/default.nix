@@ -8,7 +8,7 @@
 
     port = lib.mkOption {
       description = "Port to listen on.";
-      default = 8282;
+      default = 8581;
       type = lib.types.int;
     };
 
@@ -28,7 +28,7 @@
       containers = {
         homebridge = {
           environment = {
-            "HOMEBRIDGE_CONFIG_UI_PORT" = "${toString config.myNixOS.services.homebridge.port}";
+            "HOMEBRIDGE_CONFIG_UI_PORT" = toString config.myNixOS.services.homebridge.port;
             "TZ" = "America/New_York";
           };
 
