@@ -67,7 +67,7 @@
       vaultwarden = {
         hostName = "verdanturf";
         port = 8222;
-        vHost = "vaultwarden.cute.haus";
+        vHost = "vault.cute.haus";
       };
     };
   };
