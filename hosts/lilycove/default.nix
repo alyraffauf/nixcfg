@@ -124,7 +124,7 @@ in {
           };
         });
 
-        port = config.mySnippets.tailnet.networkMap.qbittorrent.port;
+        inherit (config.mySnippets.tailnet.networkMap.qbittorrent) port;
       };
 
       syncthing = {
