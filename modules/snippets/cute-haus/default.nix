@@ -28,6 +28,12 @@
         vHost = "cute.haus";
       };
 
+      forgejo = {
+        hostName = "mossdeep";
+        port = 3001;
+        vHost = "git.aly.codes";
+      };
+
       immich = {
         hostName = "lilycove";
         port = 2283;
