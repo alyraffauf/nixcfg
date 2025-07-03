@@ -101,6 +101,7 @@ in {
       host = "0.0.0.0";
       mediaLocation = "${dataDirectory}/immich";
       openFirewall = true;
+      port = config.mySnippets.cute-haus.networkMap.immich.port;
     };
 
     jellyfin = {
@@ -137,6 +138,7 @@ in {
       enable = true;
       dataDir = "/mnt/Data/ombi";
       openFirewall = true;
+      port = config.mySnippets.cute-haus.networkMap.ombi.port;
     };
 
     openvscode-server = {
