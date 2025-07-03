@@ -16,7 +16,11 @@
   };
 
   config = lib.mkIf config.myNixOS.services.forgejo.enable {
-    age.secrets.forgejo-mailer-passwd.file = "${self.inputs.secrets}/forgejo/passwd.age";
+    age.secrets = {
+      forgejo-b2Id.file = "${self.inputs.secrets}/forgejo/b2Id.age";
+      forgejo-b2Key.file = "${self.inputs.secrets}/forgejo/b2Key.age";
+      forgejo-mailer-passwd.file = "${self.inputs.secrets}/forgejo/passwd.age";
+    };
 
     services = {
       postgresql = lib.mkIf (config.myNixOS.services.forgejo.db
@@ -48,7 +52,15 @@
 
         lfs.enable = true;
         package = pkgs.forgejo;
-        secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer-passwd.path;
+
+        secrets = {
+          mailer.PASSWD = config.age.secrets.forgejo-mailer-passwd.path;
+
+          storage = {
+            MINIO_ACCESS_KEY_ID = config.age.secrets.forgejo-b2Id.path;
+            MINIO_SECRET_ACCESS_KEY = config.age.secrets.forgejo-b2Key.path;
+          };
+        };
 
         settings = {
           actions = {
@@ -113,6 +125,17 @@
           };
 
           session.COOKIE_SECURE = true;
+
+          storage = {
+            STORAGE_TYPE = "minio";
+            MINIO_ENDPOINT = "s3.us-east-005.backblazeb2.com";
+            MINIO_BUCKET_LOOKUP = "dns";
+            MINIO_BUCKET = "aly-forgejo";
+            MINIO_LOCATION = "us-east-005";
+            MINIO_USE_SSL = true;
+            MINIO_CHECKSUM_ALGORITHM = "md5";
+          };
+
           ui.DEFAULT_THEME = "forgejo-auto";
 
           "ui.meta" = {
