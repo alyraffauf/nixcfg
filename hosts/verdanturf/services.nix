@@ -1,8 +1,9 @@
 {config, ...}: {
   services = {
     couchdb = {
-      enable = true;
       inherit (config.mySnippets.tailnet.networkMap.couchdb) port;
+      enable = true;
+      bindAddress = "0.0.0.0";
 
       extraConfig = {
         couchdb = {
