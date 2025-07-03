@@ -44,7 +44,7 @@ in {
   };
 
   nixpkgs.overlays = [
-    (self: super: {
+    (_self: super: {
       headphones = super.headphones.overrideAttrs (old: let
         version = "0.6.4";
       in {
@@ -114,7 +114,7 @@ in {
       qbittorrent = {
         enable = true;
 
-        package = pkgs.qbittorrent-nox.overrideAttrs (old: rec {
+        package = pkgs.qbittorrent-nox.overrideAttrs (_old: rec {
           version = "5.1.0";
           src = pkgs.fetchFromGitHub {
             owner = "qbittorrent";
