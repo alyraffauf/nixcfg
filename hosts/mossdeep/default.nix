@@ -77,7 +77,11 @@
     };
 
     services = {
-      alycodes.enable = true;
+      alycodes = {
+        enable = true;
+        port = config.mySnippets.cute-haus.networkMap.aly-codes.port;
+      };
+
       caddy.enable = true;
 
       forgejo = {
