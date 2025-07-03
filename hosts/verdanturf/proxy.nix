@@ -24,11 +24,11 @@
       email = "alyraffauf@fastmail.com";
 
       virtualHosts = {
-        "couchdb.${config.mySnippets.tailnet}" = {
+        "${config.mySnippets.tailnet.networkMap.couchdb.vHost}" = {
           extraConfig = ''
             bind tailscale/couchdb
             encode zstd gzip
-            reverse_proxy localhost:${toString config.services.couchdb.port}
+            reverse_proxy ${config.mySnippets.tailnet.networkMap.couchdb.hostName}:${toString config.mySnippets.tailnet.networkMap.couchdb.port}
           '';
         };
       };

@@ -5,7 +5,7 @@ in {
 
   services = {
     caddy.virtualHosts = {
-      "bazarr.${config.mySnippets.tailnet}" = {
+      "bazarr.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/bazarr
           encode zstd gzip
@@ -13,7 +13,7 @@ in {
         '';
       };
 
-      "jellyfin.${config.mySnippets.tailnet}" = {
+      "jellyfin.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/jellyfin
           encode zstd gzip
@@ -23,7 +23,7 @@ in {
         '';
       };
 
-      "lidarr.${config.mySnippets.tailnet}" = {
+      "lidarr.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/lidarr
           encode zstd gzip
@@ -31,7 +31,7 @@ in {
         '';
       };
 
-      "ollama.${config.mySnippets.tailnet}" = {
+      "ollama.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/ollama
           encode zstd gzip
@@ -39,7 +39,7 @@ in {
         '';
       };
 
-      "prowlarr.${config.mySnippets.tailnet}" = {
+      "prowlarr.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/prowlarr
           encode zstd gzip
@@ -47,7 +47,7 @@ in {
         '';
       };
 
-      "qbittorrent.${config.mySnippets.tailnet}" = {
+      "qbittorrent.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/qbittorrent
           encode zstd gzip
@@ -55,7 +55,7 @@ in {
         '';
       };
 
-      "radarr.${config.mySnippets.tailnet}" = {
+      "radarr.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/radarr
           encode zstd gzip
@@ -63,7 +63,7 @@ in {
         '';
       };
 
-      "readarr.${config.mySnippets.tailnet}" = {
+      "readarr.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/readarr
           encode zstd gzip
@@ -71,7 +71,7 @@ in {
         '';
       };
 
-      "sonarr.${config.mySnippets.tailnet}" = {
+      "sonarr.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/sonarr
           encode zstd gzip
@@ -79,7 +79,7 @@ in {
         '';
       };
 
-      "tautulli.${config.mySnippets.tailnet}" = {
+      "tautulli.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/tautulli
           encode zstd gzip
@@ -87,7 +87,7 @@ in {
         '';
       };
 
-      "vscode.${config.mySnippets.tailnet}" = {
+      "vscode.${config.mySnippets.tailnet.name}" = {
         extraConfig = ''
           bind tailscale/vscode
           encode zstd gzip

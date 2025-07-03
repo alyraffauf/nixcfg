@@ -13,19 +13,27 @@
     };
 
     caddy.virtualHosts = {
-      "grafana.narwhal-snapper.ts.net" = {
+      "${config.mySnippets.tailnet.grafana.vHost}" = {
         extraConfig = ''
           bind tailscale/grafana
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.grafana.settings.server.http_port}
+          reverse_proxy ${config.mySnippets.tailnet.grafana.hostName}:${toString config.mySnippets.tailnet.grafana.port}
         '';
       };
 
-      "loki.narwhal-snapper.ts.net" = {
+      "${config.mySnippets.tailnet.loki.vHost}" = {
         extraConfig = ''
           bind tailscale/loki
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.loki.configuration.server.http_listen_port}
+          reverse_proxy ${config.mySnippets.tailnet.loki.hostName}:${toString config.mySnippets.tailnet.loki.port}
+        '';
+      };
+
+      "${config.mySnippets.tailnet.prometheus.vHost}" = {
+        extraConfig = ''
+          bind tailscale/prometheus
+          encode zstd gzip
+          reverse_proxy ${config.mySnippets.tailnet.prometheus.hostName}:${toString config.mySnippets.tailnet.prometheus.port}
         '';
       };
     };
@@ -119,48 +127,48 @@
                     sites = [
                       {
                         title = "Sonarr";
-                        url = "https://sonarr.${config.mySnippets.tailnet}/";
+                        url = "https://sonarr.${config.mySnippets.tailnet.name}/";
                         icon = "di:sonarr";
                       }
                       {
                         title = "Radarr";
-                        url = "https://radarr.${config.mySnippets.tailnet}/";
+                        url = "https://radarr.${config.mySnippets.tailnet.name}/";
                         icon = "di:radarr";
                       }
                       {
                         title = "Lidarr";
-                        url = "https://lidarr.${config.mySnippets.tailnet}/";
+                        url = "https://lidarr.${config.mySnippets.tailnet.name}/";
                         icon = "di:lidarr";
                       }
                       {
                         title = "Readarr";
-                        url = "https://readarr.${config.mySnippets.tailnet}/";
+                        url = "https://readarr.${config.mySnippets.tailnet.name}/";
                         icon = "di:readarr";
                       }
                       {
                         title = "Prowlarr";
-                        url = "https://prowlarr.${config.mySnippets.tailnet}/";
+                        url = "https://prowlarr.${config.mySnippets.tailnet.name}/";
                         icon = "di:prowlarr";
                       }
                       {
                         title = "Bazarr";
-                        url = "https://bazarr.${config.mySnippets.tailnet}/";
+                        url = "https://bazarr.${config.mySnippets.tailnet.name}/";
                         icon = "di:bazarr";
                       }
                       {
                         title = "Tautulli";
-                        url = "https://tautulli.${config.mySnippets.tailnet}/";
+                        url = "https://tautulli.${config.mySnippets.tailnet.name}/";
                         icon = "di:tautulli";
                       }
                       {
                         title = "qBittorrent";
-                        url = "https://qbittorrent.${config.mySnippets.tailnet}/";
+                        url = "https://qbittorrent.${config.mySnippets.tailnet.name}/";
                         icon = "di:qbittorrent";
                         alt-status-codes = [401];
                       }
                       {
                         title = "Homebridge";
-                        url = "https://homebridge.${config.mySnippets.tailnet}/";
+                        url = "https://homebridge.${config.mySnippets.tailnet.name}/";
                         icon = "di:homebridge";
                       }
                     ];
@@ -307,7 +315,7 @@
         INFERENCE_LANG = "english";
         INFERENCE_TEXT_MODEL = INFERENCE_IMAGE_MODEL;
         NEXTAUTH_URL = "https://${config.mySnippets.cute-haus.networkMap.karakeep.vHost}";
-        OLLAMA_BASE_URL = "https://ollama.${config.mySnippets.tailnet}";
+        OLLAMA_BASE_URL = "https://ollama.${config.mySnippets.tailnet.name}";
         OLLAMA_KEEP_ALIVE = "5m";
         PORT = "7020";
       };
@@ -319,7 +327,7 @@
       enable = true;
 
       environment = {
-        OLLAMA_API_BASE_URL = "https://ollama.${config.mySnippets.tailnet}";
+        OLLAMA_API_BASE_URL = "https://ollama.${config.mySnippets.tailnet.name}";
         # Disable authentication
         WEBUI_AUTH = "False";
       };

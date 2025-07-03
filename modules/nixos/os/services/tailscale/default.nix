@@ -55,7 +55,7 @@
         enable = true;
 
         virtualHosts = {
-          "${config.networking.hostName}.${config.mySnippets.tailnet}".extraConfig = let
+          "${config.networking.hostName}.${config.mySnippets.tailnet.name}".extraConfig = let
             syncthing = ''
               redir /syncthing /syncthing/
               handle_path /syncthing/* {

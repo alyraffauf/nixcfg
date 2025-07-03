@@ -5,26 +5,27 @@
 
       settings = {
         server = {
-          http_addr = "127.0.0.1";
-          http_port = 3010;
-          domain = "grafana.narwhal-snapper.ts.net";
+          http_addr = "0.0.0.0";
+          http_port = config.mySnippets.tailnet.networkMap.grafana.port;
+          domain = config.mySnippets.tailnet.networkMap.grafana.vHost;
         };
       };
 
       provision = {
         enable = true;
+
         datasources.settings.datasources = [
           {
             name = "Prometheus";
             type = "prometheus";
             access = "proxy";
-            url = "http://127.0.0.1:${toString config.services.prometheus.port}";
+            url = "https://${config.mySnippets.tailnet.prometheus.vHost}";
           }
           {
             name = "Loki";
             type = "loki";
             access = "proxy";
-            url = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
+            url = "https://${config.mySnippets.tailnet.loki.vHost}";
           }
         ];
       };
@@ -42,7 +43,7 @@
         };
 
         common = {
-          instance_addr = "127.0.0.1";
+          instance_addr = "0.0.0.0";
           path_prefix = "/tmp/loki";
 
           storage = {
@@ -111,7 +112,7 @@
     prometheus = {
       enable = true;
       globalConfig.scrape_interval = "10s";
-      port = 3020;
+      port = config.mySnippets.tailnet.networkMap.prometheus.port;
 
       scrapeConfigs = [
         {

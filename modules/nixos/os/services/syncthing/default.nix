@@ -47,7 +47,7 @@
           config.myNixOS.services.caddy.enable
           && config.myNixOS.services.tailscale.enable
         ) {
-          "syncthing-${config.networking.hostName}.${config.mySnippets.tailnet}" = {
+          "syncthing-${config.networking.hostName}.${config.mySnippets.tailnet.name}" = {
             extraConfig = ''
               bind tailscale/syncthing-${config.networking.hostName}
               reverse_proxy localhost:8384 {

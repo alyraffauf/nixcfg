@@ -10,62 +10,62 @@
 
     default = {
       evergrande = {
-        hostNames = ["evergrande" "evergrande.local" "evergrande.${config.mySnippets.tailnet}"];
+        hostNames = ["evergrande" "evergrande.local" "evergrande.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_evergrande.pub";
       };
 
       fallarbor = {
-        hostNames = ["fallarbor" "fallarbor.local" "fallarbor.${config.mySnippets.tailnet}"];
+        hostNames = ["fallarbor" "fallarbor.local" "fallarbor.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_fallarbor.pub";
       };
 
       fortree = {
-        hostNames = ["fortree" "fortree.local" "fortree.${config.mySnippets.tailnet}"];
+        hostNames = ["fortree" "fortree.local" "fortree.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_fortree.pub";
       };
 
       lavaridge = {
-        hostNames = ["lavaridge" "lavaridge.local" "lavaridge.${config.mySnippets.tailnet}"];
+        hostNames = ["lavaridge" "lavaridge.local" "lavaridge.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_lavaridge.pub";
       };
 
       lilycove = {
-        hostNames = ["lilycove" "lilycove.local" "lilycove.${config.mySnippets.tailnet}"];
+        hostNames = ["lilycove" "lilycove.local" "lilycove.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_lilycove.pub";
       };
 
       mauville = {
-        hostNames = ["mauville" "mauville.local" "mauville.${config.mySnippets.tailnet}"];
+        hostNames = ["mauville" "mauville.local" "mauville.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_mauville.pub";
       };
 
       mossdeep = {
-        hostNames = ["mossdeep" "mossdeep.local" "mossdeep.${config.mySnippets.tailnet}"];
+        hostNames = ["mossdeep" "mossdeep.local" "mossdeep.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_mossdeep.pub";
       };
 
       petalburg = {
-        hostNames = ["petalburg" "petalburg.local" "petalburg.${config.mySnippets.tailnet}"];
+        hostNames = ["petalburg" "petalburg.local" "petalburg.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_petalburg.pub";
       };
 
       rustboro = {
-        hostNames = ["rustboro" "rustboro.local" "rustboro.${config.mySnippets.tailnet}"];
+        hostNames = ["rustboro" "rustboro.local" "rustboro.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_rustboro.pub";
       };
 
       slateport = {
-        hostNames = ["slateport" "slateport.local" "slateport.${config.mySnippets.tailnet}"];
+        hostNames = ["slateport" "slateport.local" "slateport.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_slateport.pub";
       };
 
       sootopolis = {
-        hostNames = ["sootopolis" "sootopolis.local" "sootopolis.${config.mySnippets.tailnet}"];
+        hostNames = ["sootopolis" "sootopolis.local" "sootopolis.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_sootopolis.pub";
       };
 
       verdanturf = {
-        hostNames = ["verdanturf" "verdanturf.local" "verdanturf.${config.mySnippets.tailnet}"];
+        hostNames = ["verdanturf" "verdanturf.local" "verdanturf.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_verdanturf.pub";
       };
     };

@@ -2,6 +2,7 @@
   services = {
     couchdb = {
       enable = true;
+      port = config.mySnippets.tailnet.networkMap.couchdb.port;
 
       extraConfig = {
         couchdb = {
