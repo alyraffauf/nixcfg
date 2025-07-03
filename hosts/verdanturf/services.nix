@@ -41,7 +41,7 @@
       appriseSupport = true;
 
       settings = {
-        PORT = "3001";
+        PORT = toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port;
         HOST = "0.0.0.0";
       };
     };
@@ -50,10 +50,10 @@
       enable = true;
 
       config = {
-        DOMAIN = "https://vault.cute.haus";
+        DOMAIN = "https://${config.mySnippets.cute-haus.networkMap.vaultwarden.vHost}";
         ROCKET_ADDRESS = "0.0.0.0";
         ROCKET_LOG = "critical";
-        ROCKET_PORT = 8222;
+        ROCKET_PORT = config.mySnippets.cute-haus.networkMap.vaultwarden.port;
         SIGNUPS_ALLOWED = false;
       };
 
