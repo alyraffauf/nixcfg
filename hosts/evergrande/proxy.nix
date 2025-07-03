@@ -47,6 +47,21 @@
           '';
         };
 
+        "${config.mySnippets.cute-haus.networkMap.forgejo.vHost}" = {
+          extraConfig = ''
+            encode zstd gzip
+
+            @uploads method POST PUT
+            handle @uploads {
+              request_body { max_size 2GB }
+            }
+
+            reverse_proxy localhost${config.services.anubis.instances.forgejo.settings.BIND} {
+              header_up X-Real-Ip {remote_host}
+            }
+          '';
+        };
+
         "immich.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
