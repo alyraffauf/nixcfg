@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   services.anubis = {
     defaultOptions.settings = {
       DIFFICULTY = 4;
@@ -10,7 +10,7 @@ _: {
 
     instances = {
       alycodes.settings = {
-        TARGET = "http://mossdeep:8282";
+        TARGET = "http://${config.mySnippets.cute-haus.networkMap.aly-codes.hostName}:${toString config.mySnippets.cute-haus.networkMap.aly-codes.port}";
         BIND = ":60023";
         BIND_NETWORK = "tcp";
         METRICS_BIND = "0.0.0.0:20023";

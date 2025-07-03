@@ -24,14 +24,14 @@
         "aly.social" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy mossdeep:3000
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.aly-social.hostName}:${toString config.mySnippets.cute-haus.networkMap.aly-social.port}
           '';
         };
 
         "audiobookshelf.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy mauville:13378 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.audiobookshelf.hostName}:${toString config.mySnippets.cute-haus.networkMap.audiobookshelf.port} {
               flush_interval -1   # proxy_buffering off
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
@@ -43,7 +43,7 @@
         "cute.haus" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy slateport:8080
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.glance.hostName}:${toString config.mySnippets.cute-haus.networkMap.glance.port}
           '';
         };
 
@@ -58,7 +58,7 @@
               }
             }
 
-            reverse_proxy lilycove:2283 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.immich.hostName}:${toString config.mySnippets.cute-haus.networkMap.immich.port} {
               flush_interval -1
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
@@ -75,7 +75,7 @@
           extraConfig = ''
             encode zstd gzip
 
-            reverse_proxy mauville:7020 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.karakeep.hostName}:${toString config.mySnippets.cute-haus.networkMap.karakeep.port} {
               flush_interval -1
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
@@ -88,7 +88,7 @@
           extraConfig = ''
             encode zstd gzip
 
-            reverse_proxy lilycove:5000 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.ombi.hostName}:${toString config.mySnippets.cute-haus.networkMap.ombi.port} {
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
               header_up X-Forwarded-Proto {scheme}}
@@ -100,7 +100,7 @@
           extraConfig = ''
             encode zstd gzip
 
-            reverse_proxy lilycove:32400 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.plex.hostName}:${toString config.mySnippets.cute-haus.networkMap.plex.port} {
               flush_interval -1   # proxy_buffering off equivalent
             }
           '';
@@ -119,7 +119,7 @@
         "status.aly.codes" = {
           extraConfig = ''
             encode gzip zstd
-            reverse_proxy verdanturf:3001 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
               flush_interval -1   # proxy_buffering off equivalent
             }
           '';
@@ -128,7 +128,7 @@
         "status.aly.social" = {
           extraConfig = ''
             encode gzip zstd
-            reverse_proxy verdanturf:3001 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
               flush_interval -1   # proxy_buffering off equivalent
             }
           '';
@@ -137,7 +137,7 @@
         "status.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy verdanturf:3001 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
               flush_interval -1   # proxy_buffering off equivalent
             }
           '';
@@ -146,7 +146,7 @@
         "uptime-kuma.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy verdanturf:3001 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
               flush_interval -1   # proxy_buffering off equivalent
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
@@ -158,7 +158,7 @@
         "vault.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy verdanturf:8222 {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.vaultwarden.hostName}:${toString config.mySnippets.cute-haus.networkMap.vaultwarden.port} {
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
               header_up X-Forwarded-Proto {scheme}}
