@@ -8,6 +8,16 @@
   ];
 
   services = {
+    caddy.virtualHosts = {
+      "homebridge.narwhal-snapper.ts.net" = {
+        extraConfig = ''
+          bind tailscale/homebridge
+          encode zstd gzip
+          reverse_proxy localhost:${toString config.myNixOS.services.homebridge.port}
+        '';
+      };
+    };
+
     # ddclient = {
     #   enable = true;
 
@@ -37,7 +47,7 @@
       settings = {
         pages = [
           {
-            name = "cute.haus";
+            name = config.mySnippets.cute-haus.networkMap.glance.vHost;
             width = "slim";
             hide-desktop-navigation = true;
             center-vertically = true;
@@ -57,54 +67,56 @@
                     sites = [
                       {
                         title = "Plex";
-                        url = "https://plex.cute.haus/";
-                        check-url = "http://lilycove:32400/web/index.html";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.plex.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.plex.hostName}:${toString config.mySnippets.cute-haus.networkMap.plex.port}/web/index.html";
                         icon = "di:plex";
                       }
                       {
                         title = "Ombi";
-                        url = "https://ombi.cute.haus/";
-                        check-url = "http://lilycove:5000";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.ombi.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.ombi.hostName}:${toString config.mySnippets.cute-haus.networkMap.ombi.port}/";
                         icon = "di:ombi";
                       }
                       {
                         title = "Audiobookshelf";
-                        url = "https://audiobookshelf.cute.haus/";
-                        check-url = "http://mauville:13378";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.audiobookshelf.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.audiobookshelf.hostName}:${toString config.mySnippets.cute-haus.networkMap.audiobookshelf.port}/";
                         icon = "di:audiobookshelf";
                       }
                       {
                         title = "Immich";
-                        url = "https://immich.cute.haus/";
-                        check-url = "http://lilycove:2283";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.immich.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.immich.hostName}:${toString config.mySnippets.cute-haus.networkMap.immich.port}/";
                         icon = "di:immich";
                       }
                       {
                         title = "Forĝejo";
-                        url = "https://git.aly.codes/";
-                        check-url = "http://mossdeep:3001";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.forgejo.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.forgejo.hostName}:${toString config.mySnippets.cute-haus.networkMap.forgejo.port}/";
                         icon = "di:forgejo";
                       }
                       {
                         title = "Karakeep";
-                        url = "https://karakeep.cute.haus/";
-                        check-url = "http://mossdeep:3001";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.karakeep.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.karakeep.hostName}:${toString config.mySnippets.cute-haus.networkMap.karakeep.port}/";
                         icon = "di:karakeep";
                       }
                       {
                         title = "aly.social";
-                        url = "https://aly.social/";
-                        check-url = "http://mossdeep:3000/";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.aly-social.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.aly-social.hostName}:${toString config.mySnippets.cute-haus.networkMap.aly-social.port}/";
                         icon = "di:bluesky";
                       }
                       {
                         title = "Uptime Kuma";
-                        url = "https://uptime-kuma.cute.haus/";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.uptime-kuma.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port}/";
                         icon = "di:uptime-kuma";
                       }
                       {
                         title = "Vaultwarden";
-                        url = "https://vault.cute.haus/";
+                        url = "https://${config.mySnippets.cute-haus.networkMap.vaultwarden.vHost}/";
+                        check-url = "http://${config.mySnippets.cute-haus.networkMap.vaultwarden.hostName}:${toString config.mySnippets.cute-haus.networkMap.vaultwarden.port}/";
                         icon = "di:vaultwarden";
                       }
                     ];
@@ -158,7 +170,7 @@
                       }
                       {
                         title = "Homebridge";
-                        url = "http://slateport:8581/";
+                        url = "https://homebridge.${config.mySnippets.tailnet}/";
                         icon = "di:homebridge";
                       }
                     ];
