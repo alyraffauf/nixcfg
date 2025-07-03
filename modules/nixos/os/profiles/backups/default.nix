@@ -35,7 +35,7 @@ in {
         }
       );
 
-      forgejo = lib.mkIf config.services.forgejo.enable (
+      forgejo = lib.mkIf (config.services.forgejo.enable && config.services.forgejo.settings.storage.STORAGE_TYPE != "minio") (
         config.mySnippets.restic
         // {
           paths = [config.services.forgejo.stateDir];
