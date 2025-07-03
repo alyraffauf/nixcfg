@@ -127,13 +127,14 @@
           session.COOKIE_SECURE = true;
 
           storage = {
-            STORAGE_TYPE = "minio";
-            MINIO_ENDPOINT = "s3.us-east-005.backblazeb2.com";
-            MINIO_BUCKET_LOOKUP = "dns";
             MINIO_BUCKET = "aly-forgejo";
+            MINIO_BUCKET_LOOKUP = "dns";
+            MINIO_CHECKSUM_ALGORITHM = "md5";
+            MINIO_ENDPOINT = "s3.us-east-005.backblazeb2.com";
             MINIO_LOCATION = "us-east-005";
             MINIO_USE_SSL = true;
-            MINIO_CHECKSUM_ALGORITHM = "md5";
+            SERVE_DIRECT = true;
+            STORAGE_TYPE = "minio";
           };
 
           ui.DEFAULT_THEME = "forgejo-auto";
