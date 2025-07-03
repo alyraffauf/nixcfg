@@ -5,93 +5,93 @@ in {
 
   services = {
     caddy.virtualHosts = {
-      "bazarr.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.bazarr.vHost}" = {
         extraConfig = ''
           bind tailscale/bazarr
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.bazarr.listenPort}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.bazarr.hostName}:${toString config.mySnippets.tailnet.networkMap.bazarr.port}
         '';
       };
 
-      "jellyfin.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.jellyfin.vHost}" = {
         extraConfig = ''
           bind tailscale/jellyfin
           encode zstd gzip
-          reverse_proxy localhost:8096 {
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.jellyfin.hostName}:${toString config.mySnippets.tailnet.networkMap.jellyfin.port} {
             flush_interval -1
           }
         '';
       };
 
-      "lidarr.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.lidarr.vHost}" = {
         extraConfig = ''
           bind tailscale/lidarr
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.lidarr.settings.server.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.lidarr.hostName}:${toString config.mySnippets.tailnet.networkMap.lidarr.port}
         '';
       };
 
-      "ollama.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.ollama.vHost}" = {
         extraConfig = ''
           bind tailscale/ollama
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.ollama.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.ollama.hostName}:${toString config.mySnippets.tailnet.networkMap.ollama.port}
         '';
       };
 
-      "prowlarr.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.prowlarr.vHost}" = {
         extraConfig = ''
           bind tailscale/prowlarr
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.prowlarr.settings.server.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.prowlarr.hostName}:${toString config.mySnippets.tailnet.networkMap.prowlarr.port}
         '';
       };
 
-      "qbittorrent.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.qbittorrent.vHost}" = {
         extraConfig = ''
           bind tailscale/qbittorrent
           encode zstd gzip
-          reverse_proxy localhost:${toString config.myNixOS.services.qbittorrent.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.qbittorrent.hostName}:${toString config.mySnippets.tailnet.networkMap.qbittorrent.port}
         '';
       };
 
-      "radarr.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.radarr.vHost}" = {
         extraConfig = ''
           bind tailscale/radarr
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.radarr.settings.server.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.radarr.hostName}:${toString config.mySnippets.tailnet.networkMap.radarr.port}
         '';
       };
 
-      "readarr.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.readarr.vHost}" = {
         extraConfig = ''
           bind tailscale/readarr
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.readarr.settings.server.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.readarr.hostName}:${toString config.mySnippets.tailnet.networkMap.readarr.port}
         '';
       };
 
-      "sonarr.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.sonarr.vHost}" = {
         extraConfig = ''
           bind tailscale/sonarr
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.sonarr.settings.server.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.sonarr.hostName}:${toString config.mySnippets.tailnet.networkMap.sonarr.port}
         '';
       };
 
-      "tautulli.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.tautulli.vHost}" = {
         extraConfig = ''
           bind tailscale/tautulli
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.tautulli.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.tautulli.hostName}:${toString config.mySnippets.tailnet.networkMap.tautulli.port}
         '';
       };
 
-      "vscode.${config.mySnippets.tailnet.name}" = {
+      "${config.mySnippets.tailnet.networkMap.vscode.vHost}" = {
         extraConfig = ''
           bind tailscale/vscode
           encode zstd gzip
-          reverse_proxy localhost:${toString config.services.openvscode-server.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.vscode.hostName}:${toString config.mySnippets.tailnet.networkMap.vscode.port}
         '';
       };
     };
