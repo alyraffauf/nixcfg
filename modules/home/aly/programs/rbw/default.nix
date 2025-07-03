@@ -11,7 +11,7 @@
       enable = true;
 
       settings = {
-        base_url = "https://vault.cute.haus";
+        base_url = "https://${config.mySnippets.cute-haus.networkMap.vaultwarden.vHost}";
         email = "alyraffauf@fastmail.com";
         lock_timeout = 14400;
         pinentry = pkgs.pinentry-gnome3;
