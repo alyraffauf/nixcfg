@@ -123,7 +123,6 @@
       caddy.enable = true;
       prometheusNode.enable = true;
       promtail.enable = true;
-      qbittorrent.enable = true;
 
       syncthing = {
         enable = true;
