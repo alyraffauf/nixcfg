@@ -1,12 +1,4 @@
-{
-  config,
-  self,
-  ...
-}: {
-  imports = [
-    self.inputs.tailscale-golink.nixosModules.default
-  ];
-
+{config, ...}: {
   services = {
     caddy.virtualHosts = {
       "homebridge.narwhal-snapper.ts.net" = {
