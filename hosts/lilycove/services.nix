@@ -149,7 +149,7 @@ in {
 
     openvscode-server = {
       enable = true;
-      port = 3020;
+      inherit (config.mySnippets.cute-haus.networkMap.vscode) port;
       user = "aly";
       withoutConnectionToken = true;
     };
