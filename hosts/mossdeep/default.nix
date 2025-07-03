@@ -7,8 +7,6 @@
   ...
 }: {
   imports = [
-    ./anubis.nix
-    ./proxy.nix
     ./secrets.nix
     ./services.nix
     ./stylix.nix
@@ -40,7 +38,7 @@
   ];
 
   networking = {
-    firewall.allowedTCPPorts = [80 443 2222];
+    firewall.allowedTCPPorts = [2222];
     hostName = "mossdeep";
   };
 
