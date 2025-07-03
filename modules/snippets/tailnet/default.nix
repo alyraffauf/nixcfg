@@ -47,7 +47,7 @@
 
         loki = {
           hostName = "mauville";
-          port = 3100;
+          port = 3030;
           vHost = "loki.${config.mySnippets.tailnet.name}";
         };
 

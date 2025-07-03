@@ -38,7 +38,7 @@
         auth_enabled = false;
 
         server = {
-          http_listen_port = 3030;
+          http_listen_port = config.mySnippets.tailnet.networkMap.loki.port;
           grpc_listen_port = 0;
         };
 
