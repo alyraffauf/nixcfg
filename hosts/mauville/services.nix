@@ -25,7 +25,7 @@
         extraConfig = ''
           bind tailscale/loki
           encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.loki.networkMap.hostName}:${toString config.mySnippets.tailnet.networkMap.loki.port}
+          reverse_proxy ${config.mySnippets.tailnet.networkMap.loki.hostName}:${toString config.mySnippets.tailnet.networkMap.loki.port}
         '';
       };
 
