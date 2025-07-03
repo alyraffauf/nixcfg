@@ -79,7 +79,7 @@
     services = {
       alycodes = {
         enable = true;
-        port = config.mySnippets.cute-haus.networkMap.aly-codes.port;
+        inherit (config.mySnippets.cute-haus.networkMap.aly-codes) port;
       };
 
       caddy.enable = true;

@@ -38,7 +38,7 @@
               "--log-opt=max-size=10mb"
               "--network=host"
             ]
-            ++ lib.optional (config.myNixOS.services.tailscale.enable) "--dns=1.1.1.1,1.0.0.1"; # Tailscale workaround;
+            ++ lib.optional config.myNixOS.services.tailscale.enable "--dns=1.1.1.1,1.0.0.1"; # Tailscale workaround;
 
           image = "homebridge/homebridge:latest";
           log-driver = "journald";
