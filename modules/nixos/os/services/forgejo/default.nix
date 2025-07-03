@@ -100,7 +100,7 @@
             LANDING_PAGE = "explore";
             LFS_START_SERVER = true;
             ROOT_URL = "https://${config.mySnippets.cute-haus.networkMap.forgejo.vHost}/";
-            SSH_DOMAIN = config.mySnippets.cute-haus.networkMap.forgejo.vHost;
+            SSH_DOMAIN = config.mySnippets.cute-haus.networkMap.forgejo.sshVHost;
             SSH_LISTEN_PORT = 2222;
             SSH_PORT = 2222;
             START_SSH_SERVER = true;

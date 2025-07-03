@@ -31,6 +31,7 @@
       forgejo = {
         hostName = "mossdeep";
         port = 3001;
+        sshVHost = "ssh.aly.codes";
         vHost = "git.aly.codes";
       };
 
