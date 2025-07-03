@@ -123,6 +123,8 @@ in {
             hash = "sha256-ZLmKEdvtOxCzEOnJ4JPQQhR427YA288vTRxpk6O0tUc=";
           };
         });
+
+        port = config.mySnippets.tailnet.networkMap.qbittorrent.port;
       };
 
       syncthing = {
