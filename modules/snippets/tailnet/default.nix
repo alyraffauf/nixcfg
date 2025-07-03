@@ -92,6 +92,18 @@
           port = 8989;
           vHost = "sonarr.${config.mySnippets.tailnet.name}";
         };
+
+        tautulli = {
+          hostName = "lilycove";
+          port = 8181;
+          vHost = "tautulli.${config.mySnippets.tailnet.name}";
+        };
+
+        vscode = {
+          hostName = "lilycove";
+          port = 3020;
+          vHost = "vscode.${config.mySnippets.tailnet.name}";
+        };
       };
     };
   };
