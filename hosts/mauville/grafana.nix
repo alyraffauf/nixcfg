@@ -112,7 +112,7 @@
     prometheus = {
       enable = true;
       globalConfig.scrape_interval = "10s";
-      port = config.mySnippets.tailnet.networkMap.prometheus.port;
+      inherit (config.mySnippets.tailnet.networkMap.prometheus) port;
 
       scrapeConfigs = [
         {
