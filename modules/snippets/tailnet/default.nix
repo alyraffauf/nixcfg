@@ -86,6 +86,12 @@
           port = 8787;
           vHost = "readarr.${config.mySnippets.tailnet.name}";
         };
+
+        sonarr = {
+          hostName = "lilycove";
+          port = 8989;
+          vHost = "sonarr.${config.mySnippets.tailnet.name}";
+        };
       };
     };
   };
