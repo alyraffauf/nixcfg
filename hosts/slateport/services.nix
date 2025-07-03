@@ -302,10 +302,5 @@
         server.host = "0.0.0.0";
       };
     };
-
-    golink = {
-      enable = true;
-      tailscaleAuthKeyFile = config.age.secrets.tailscaleAuthKey.path;
-    };
   };
 }
