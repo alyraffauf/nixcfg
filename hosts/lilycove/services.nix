@@ -141,15 +141,16 @@ in {
     };
 
     ombi = {
+      inherit (config.mySnippets.cute-haus.networkMap.ombi) port;
       enable = true;
       dataDir = "/mnt/Data/ombi";
       openFirewall = true;
-      inherit (config.mySnippets.cute-haus.networkMap.ombi) port;
     };
 
     openvscode-server = {
-      enable = true;
       inherit (config.mySnippets.tailnet.networkMap.vscode) port;
+      enable = true;
+      host = "0.0.0.0";
       user = "aly";
       withoutConnectionToken = true;
     };
