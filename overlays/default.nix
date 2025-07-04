@@ -17,4 +17,15 @@ _: final: prev: {
       sha256 = "0gv7rasjbm4rf9izghibgf5fbjykvzv0ibqc2in1naagjivqrpq4";
     };
   });
+
+  qbittorrent-nox = prev.qbittorrent-nox.overrideAttrs (old: rec {
+    version = "5.1.0";
+
+    src = prev.fetchFromGitHub {
+      owner = "qbittorrent";
+      repo = "qBittorrent";
+      rev = "release-${version}";
+      hash = "sha256-ZLmKEdvtOxCzEOnJ4JPQQhR427YA288vTRxpk6O0tUc=";
+    };
+  });
 }

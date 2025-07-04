@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   self,
   ...
 }: let
@@ -97,19 +96,8 @@ in {
       promtail.enable = true;
 
       qbittorrent = {
-        enable = true;
-
-        package = pkgs.qbittorrent-nox.overrideAttrs (_old: rec {
-          version = "5.1.0";
-          src = pkgs.fetchFromGitHub {
-            owner = "qbittorrent";
-            repo = "qBittorrent";
-            rev = "release-${version}";
-            hash = "sha256-ZLmKEdvtOxCzEOnJ4JPQQhR427YA288vTRxpk6O0tUc=";
-          };
-        });
-
         inherit (config.mySnippets.tailnet.networkMap.qbittorrent) port;
+        enable = true;
       };
 
       syncthing = {
