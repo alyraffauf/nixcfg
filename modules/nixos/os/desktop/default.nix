@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./cosmic
     ./gnome
     ./hyprland
     ./kde

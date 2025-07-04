@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./aerospace
+    ./cosmic
     ./gnome
     ./hyprland
     ./kde
