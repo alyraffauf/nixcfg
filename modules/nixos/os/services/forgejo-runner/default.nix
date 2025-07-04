@@ -35,8 +35,6 @@
     services.gitea-actions-runner = let
       arch = lib.replaceStrings ["-"] ["_"] pkgs.system;
     in {
-      package = pkgs.forgejo-runner;
-
       instances = let
         tokenFile = config.age.secrets.act-runner.path;
       in {
@@ -49,11 +47,7 @@
           name = "${arch}-${config.networking.hostName}-alycodes-containers";
 
           settings = {
-            container = {
-              network = "host";
-              privileged = true;
-            };
-
+            container.network = "host";
             runner.capacity = config.myNixOS.services.forgejo-runner.dockerContainers;
           };
 
