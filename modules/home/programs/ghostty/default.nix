@@ -9,7 +9,7 @@
   config = lib.mkIf config.myHome.programs.ghostty.enable {
     programs.ghostty = {
       enable = true;
-      package = lib.mkIf pkgs.stdenv.isDarwin null;
+      package = lib.mkIf pkgs.stdenv.isDarwin pkgs.ghostty-bin;
 
       settings = {
         font-size = lib.mkForce (toString (config.stylix.fonts.sizes.terminal + 2));
