@@ -77,6 +77,8 @@
     hostName = "mauville";
   };
 
+  powerManagement.powertop.enable = true;
+
   services = {
     nfs.server = {
       enable = true;

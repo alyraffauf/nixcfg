@@ -7,6 +7,7 @@
   ];
 
   networking.hostName = "slateport";
+  powerManagement.powertop.enable = true;
 
   stylix = {
     enable = false;
