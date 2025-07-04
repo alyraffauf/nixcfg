@@ -20,7 +20,6 @@
           ms-vscode-remote.remote-ssh
           oderwat.indent-rainbow
           rubymaniac.vscode-paste-and-indent
-          supermaven.supermaven
         ];
 
         keybindings = let
