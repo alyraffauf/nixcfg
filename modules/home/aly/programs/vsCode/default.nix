@@ -72,7 +72,7 @@
           "window.menuBarVisibility" = "hidden";
 
           "window.titleBarStyle" =
-            if (config.myHome.desktop.gnome.enable || pkgs.stdenv.isDarwin)
+            if (config.myHome.desktop.gnome.enable || config.myHome.desktop.cosmic.enable || pkgs.stdenv.isDarwin)
             then "custom"
             else "native";
         };
