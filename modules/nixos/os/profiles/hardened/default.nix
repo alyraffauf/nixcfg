@@ -34,6 +34,8 @@
       system-config-printer.enable = lib.mkForce false;
     };
 
+    system.nixos.tags = ["hardened"];
+
     zramSwap = {
       enable = lib.mkDefault true;
       algorithm = lib.mkDefault "lz4";

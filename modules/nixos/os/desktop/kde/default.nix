@@ -41,6 +41,7 @@
     ];
 
     services.desktopManager.plasma6.enable = true;
+    system.nixos.tags = ["kde"];
     myNixOS.desktop.enable = true;
   };
 }

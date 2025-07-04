@@ -19,6 +19,8 @@
       timesyncd.enable = true;
     };
 
+    system.nixos.tags = ["server"];
+
     systemd = {
       enableEmergencyMode = false;
 

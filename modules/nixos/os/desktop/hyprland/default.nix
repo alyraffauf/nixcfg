@@ -54,6 +54,8 @@
       udev.packages = [pkgs.swayosd];
     };
 
+    system.nixos.tags = ["hyprland"];
+
     myNixOS.desktop.enable = true;
   };
 }

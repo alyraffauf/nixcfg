@@ -92,6 +92,7 @@
 
     system = {
       configurationRevision = self.rev or self.dirtyRev or null;
+      nixos.tags = ["base"];
       rebuild.enableNg = true;
     };
   };
