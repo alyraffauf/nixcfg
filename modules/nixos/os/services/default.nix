@@ -2,6 +2,7 @@
   imports = [
     ./alycodes
     ./caddy
+    ./cosmic-greeter
     ./fail2ban
     ./flatpak
     ./forgejo
