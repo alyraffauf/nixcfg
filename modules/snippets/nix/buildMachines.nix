@@ -35,7 +35,6 @@
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["x86_64-linux"];
         }
-
       ];
     };
   };
