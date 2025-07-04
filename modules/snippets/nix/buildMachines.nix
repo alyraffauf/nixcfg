@@ -35,16 +35,7 @@
           supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           systems = ["x86_64-linux"];
         }
-        {
-          hostName = "slateport";
-          maxJobs = 4;
-          protocol = "ssh-ng";
-          speedFactor = 1;
-          sshKey = "/etc/ssh/ssh_host_ed25519_key";
-          sshUser = "nixbuild";
-          supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-          systems = ["x86_64-linux"];
-        }
+
       ];
     };
   };
