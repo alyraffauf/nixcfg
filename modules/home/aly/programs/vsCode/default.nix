@@ -72,9 +72,9 @@
           "window.menuBarVisibility" = "hidden";
 
           "window.titleBarStyle" =
-            if (config.myHome.desktop.gnome.enable || config.myHome.desktop.cosmic.enable || pkgs.stdenv.isDarwin)
-            then "custom"
-            else "native";
+            if (config.myHome.desktop.hyprland.enable)
+            then "native"
+            else "custom";
         };
       };
     };
