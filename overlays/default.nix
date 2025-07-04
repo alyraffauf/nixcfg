@@ -1,5 +1,5 @@
 # Default overlay.
-_: final: prev: {
+_: _final: prev: {
   ghostty = prev.ghostty.overrideAttrs (_: {
     preBuild = ''
       shopt -s globstar
@@ -18,7 +18,7 @@ _: final: prev: {
     };
   });
 
-  qbittorrent-nox = prev.qbittorrent-nox.overrideAttrs (old: rec {
+  qbittorrent-nox = prev.qbittorrent-nox.overrideAttrs (_old: rec {
     version = "5.1.0";
 
     src = prev.fetchFromGitHub {
