@@ -15,7 +15,6 @@
         enableExtensionUpdateCheck = false;
 
         extensions = with pkgs.vscode-extensions; [
-          github.vscode-github-actions
           github.vscode-pull-request-github
           ms-vscode-remote.remote-ssh
           oderwat.indent-rainbow
