@@ -43,21 +43,6 @@ in {
     hostName = "lilycove";
   };
 
-  nixpkgs.overlays = [
-    (_self: super: {
-      headphones = super.headphones.overrideAttrs (old: let
-        version = "0.6.4";
-      in {
-        inherit version;
-        src = old.src.override {
-          # keep fetchFromGitHub, just bump rev & hash
-          rev = "v${version}";
-          sha256 = "0gv7rasjbm4rf9izghibgf5fbjykvzv0ibqc2in1naagjivqrpq4";
-        };
-      });
-    })
-  ];
-
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/disk/by-id/nvme-PNY_CS2130_1TB_SSD_PNY211821050701050CC";
