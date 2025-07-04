@@ -49,7 +49,11 @@
           name = "${arch}-${config.networking.hostName}-alycodes-containers";
 
           settings = {
-            container.network = "host";
+            container = {
+              network = "host";
+              privileged = true;
+            };
+
             runner.capacity = config.myNixOS.services.forgejo-runner.dockerContainers;
           };
 
