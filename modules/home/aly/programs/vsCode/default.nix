@@ -18,7 +18,6 @@
           github.vscode-pull-request-github
           ms-vscode-remote.remote-ssh
           oderwat.indent-rainbow
-          rubymaniac.vscode-paste-and-indent
         ];
 
         keybindings = let
