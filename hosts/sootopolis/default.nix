@@ -26,7 +26,7 @@
     #   laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
     # };
 
-    desktop.gnome.enable = true;
+    desktop.cosmic.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
@@ -49,8 +49,7 @@
     services = {
       caddy.enable = true;
       flatpak.enable = true;
-      gdm.enable = true;
-      # greetd.enable = true;
+      cosmic-greeter.enable = true;
       promtail.enable = true;
 
       syncthing = {

@@ -5,7 +5,7 @@
 }: {
   options.myNixOS.desktop.cosmic.enable = lib.mkEnableOption "COSMIC desktop environment";
 
-  config = lib.mkIf config.myNixOS.desktop.gnome.enable {
+  config = lib.mkIf config.myNixOS.desktop.cosmic.enable {
     home-manager.sharedModules = [
       {
         config.myHome.desktop.cosmic.enable = true;
