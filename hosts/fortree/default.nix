@@ -43,7 +43,6 @@
       };
     in [
       (greedy "aws-vpn-client")
-      (greedy "ghostty")
       (greedy "google-chrome")
       (greedy "mkvtoolnix")
       (greedy "obsidian")
@@ -100,7 +99,7 @@
         {app = "/Applications/Thunderbird.app";}
         {app = "/Applications/Obsidian.app";}
         {app = "${pkgs.vscode}/Applications/Visual Studio Code.app";}
-        {app = "/Applications/Ghostty.app";}
+        {app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";}
         {app = "/System/Applications/Music.app";}
         {app = "/Applications/Plexamp.app";}
         {app = "/System/Applications/iPhone Mirroring.app";}
