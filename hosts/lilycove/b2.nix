@@ -50,5 +50,6 @@
     mkB2Mount "Anime" "aly-anime" "video"
     // mkB2Mount "Audiobooks" "aly-audiobooks" "audio"
     // mkB2Mount "Movies" "aly-movies" "video"
+    // mkB2Mount "Music" "aly-music" "audio"
     // mkB2Mount "Shows" "aly-shows" "video";
 }
