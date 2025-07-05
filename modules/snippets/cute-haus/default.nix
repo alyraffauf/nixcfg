@@ -60,9 +60,9 @@
       };
 
       uptime-kuma = {
+        # Only used for status pages
         hostName = "verdanturf";
         port = 3001;
-        vHost = "uptime-kuma.cute.haus";
       };
 
       vaultwarden = {

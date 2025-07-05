@@ -93,6 +93,12 @@
           vHost = "tautulli.${config.mySnippets.tailnet.name}";
         };
 
+        uptime-kuma = {
+          hostName = "verdanturf";
+          port = 3001;
+          vHost = "uptime-kuma.${config.mySnippets.tailnet.name}";
+        };
+
         vscode = {
           hostName = "lilycove";
           port = 3020;
