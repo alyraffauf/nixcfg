@@ -124,12 +124,6 @@
                         icon = "di:lidarr";
                       }
                       {
-                        title = "Readarr";
-                        url = "https://${config.mySnippets.tailnet.networkMap.readarr.vHost}/";
-                        check-url = "http://${config.mySnippets.tailnet.networkMap.readarr.hostName}:${toString config.mySnippets.tailnet.networkMap.readarr.port}/";
-                        icon = "di:readarr";
-                      }
-                      {
                         title = "Prowlarr";
                         url = "https://${config.mySnippets.tailnet.networkMap.prowlarr.vHost}/";
                         check-url = "http://${config.mySnippets.tailnet.networkMap.prowlarr.hostName}:${toString config.mySnippets.tailnet.networkMap.prowlarr.port}/";
