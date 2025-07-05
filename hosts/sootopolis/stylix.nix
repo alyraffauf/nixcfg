@@ -6,7 +6,7 @@
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-yxdrex.png";
     imageScalingMode = "fill";
     polarity = "dark";
@@ -37,7 +37,7 @@
         applications = 12;
         desktop = 11;
         popups = 12;
-        terminal = 12;
+        terminal = 11;
       };
     };
 
