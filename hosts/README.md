@@ -10,6 +10,7 @@ The `hosts/` directory is organized as follows:
 
 ```plaintext
 hosts/
+├── evergrande/    # Hetzner VPS
 ├── fallarbor/     # Framework Laptop 13 (11th Gen Intel)
 ├── fortree/       # MacBook Air M2
 ├── lilycove/      # Custom Mini-ITX Gaming Desktop
