@@ -152,17 +152,6 @@
           '';
         };
 
-        "uptime-kuma.cute.haus" = {
-          extraConfig = ''
-            encode zstd gzip
-            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
-              header_up X-Real-IP {remote_host}
-              header_up X-Forwarded-For {remote_host}
-              header_up X-Forwarded-Proto {scheme}}
-            }
-          '';
-        };
-
         "vault.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
