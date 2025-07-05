@@ -40,12 +40,6 @@
           openFirewall = true; # Port: 7878
         };
 
-        readarr = {
-          enable = true;
-          dataDir = "${config.myNixOS.profiles.arr.dataDir}/readarr/";
-          openFirewall = true; # Port: 8787
-        };
-
         sonarr = {
           enable = true;
           dataDir = "${config.myNixOS.profiles.arr.dataDir}/sonarr/.config/NzbDrone/";
