@@ -80,12 +80,6 @@
                         icon = "di:bluesky";
                       }
                       {
-                        title = "Uptime Kuma";
-                        url = "https://${config.mySnippets.cute-haus.networkMap.uptime-kuma.vHost}/";
-                        check-url = "http://${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port}/";
-                        icon = "di:uptime-kuma";
-                      }
-                      {
                         title = "Vaultwarden";
                         url = "https://${config.mySnippets.cute-haus.networkMap.vaultwarden.vHost}/";
                         check-url = "http://${config.mySnippets.cute-haus.networkMap.vaultwarden.hostName}:${toString config.mySnippets.cute-haus.networkMap.vaultwarden.port}/";
@@ -158,6 +152,12 @@
                         url = "https://${config.mySnippets.tailnet.networkMap.grafana.vHost}/";
                         check-url = "http://${config.mySnippets.tailnet.networkMap.grafana.hostName}:${toString config.mySnippets.tailnet.networkMap.grafana.port}/";
                         icon = "di:grafana";
+                      }
+                      {
+                        title = "Uptime Kuma";
+                        url = "https://${config.mySnippets.tailnet.networkMap.uptime-kuma.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.tailnet.networkMap.uptime-kuma.port}/";
+                        icon = "di:uptime-kuma";
                       }
                       {
                         title = "VS Code";
