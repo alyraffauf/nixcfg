@@ -12,32 +12,6 @@
       port = 13378;
     };
 
-    caddy.virtualHosts = {
-      "${config.mySnippets.tailnet.networkMap.grafana.vHost}" = {
-        extraConfig = ''
-          bind tailscale/grafana
-          encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.networkMap.grafana.hostName}:${toString config.mySnippets.tailnet.networkMap.grafana.port}
-        '';
-      };
-
-      "${config.mySnippets.tailnet.networkMap.loki.vHost}" = {
-        extraConfig = ''
-          bind tailscale/loki
-          encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.networkMap.loki.hostName}:${toString config.mySnippets.tailnet.networkMap.loki.port}
-        '';
-      };
-
-      "${config.mySnippets.tailnet.networkMap.prometheus.vHost}" = {
-        extraConfig = ''
-          bind tailscale/prometheus
-          encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.networkMap.prometheus.hostName}:${toString config.mySnippets.tailnet.networkMap.prometheus.port}
-        '';
-      };
-    };
-
     glance = {
       enable = true;
       openFirewall = true;
