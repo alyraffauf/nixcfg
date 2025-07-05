@@ -30,7 +30,7 @@
 
         prowlarr = {
           enable = true;
-          dataDir = "${config.myNixOS.profiles.arr.dataDir}/prowlarr";
+          # dataDir = "${config.myNixOS.profiles.arr.dataDir}/prowlarr";
           openFirewall = true; # Port: 9696
         };
 
