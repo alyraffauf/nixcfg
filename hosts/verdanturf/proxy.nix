@@ -55,6 +55,14 @@
             reverse_proxy ${config.mySnippets.tailnet.networkMap.prometheus.hostName}:${toString config.mySnippets.tailnet.networkMap.prometheus.port}
           '';
         };
+
+        "${config.mySnippets.tailnet.networkMap.uptime-kuma.vHost}" = {
+          extraConfig = ''
+            bind tailscale/uptime-kuma
+            encode zstd gzip
+            reverse_proxy ${config.mySnippets.tailnet.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.tailnet.networkMap.uptime-kuma.port}
+          '';
+        };
       };
     };
   };
