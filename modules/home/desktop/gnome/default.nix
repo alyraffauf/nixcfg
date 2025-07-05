@@ -185,7 +185,7 @@
       editor.package = lib.mkDefault pkgs.gnome-text-editor;
       fileManager.package = lib.mkDefault pkgs.nautilus;
       imageViewer.package = lib.mkDefault pkgs.loupe;
-      pdfViewer.package = lib.mkDefault pkgs.evince;
+      pdfViewer.package = lib.mkDefault pkgs.papers;
       terminal.package = lib.mkDefault pkgs.ptyxis;
       videoPlayer.package = lib.mkDefault pkgs.celluloid;
     };

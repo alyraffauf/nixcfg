@@ -70,7 +70,7 @@ in {
     pdfViewer = {
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.evince;
+        default = pkgs.papers;
         description = "The default PDF viewer package.";
       };
 
