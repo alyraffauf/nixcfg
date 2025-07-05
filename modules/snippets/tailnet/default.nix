@@ -81,12 +81,6 @@
           vHost = "radarr.${config.mySnippets.tailnet.name}";
         };
 
-        readarr = {
-          hostName = "lilycove";
-          port = 8787;
-          vHost = "readarr.${config.mySnippets.tailnet.name}";
-        };
-
         sonarr = {
           hostName = "lilycove";
           port = 8989;
