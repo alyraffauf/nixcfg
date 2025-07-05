@@ -63,14 +63,6 @@ in {
         '';
       };
 
-      "${config.mySnippets.tailnet.networkMap.readarr.vHost}" = {
-        extraConfig = ''
-          bind tailscale/readarr
-          encode zstd gzip
-          reverse_proxy ${config.mySnippets.tailnet.networkMap.readarr.hostName}:${toString config.mySnippets.tailnet.networkMap.readarr.port}
-        '';
-      };
-
       "${config.mySnippets.tailnet.networkMap.sonarr.vHost}" = {
         extraConfig = ''
           bind tailscale/sonarr
