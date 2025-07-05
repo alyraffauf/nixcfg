@@ -134,27 +134,21 @@
         "status.aly.codes" = {
           extraConfig = ''
             encode gzip zstd
-            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
-              flush_interval -1   # proxy_buffering off equivalent
-            }
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port}
           '';
         };
 
         "status.aly.social" = {
           extraConfig = ''
             encode gzip zstd
-            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
-              flush_interval -1   # proxy_buffering off equivalent
-            }
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port}
           '';
         };
 
         "status.cute.haus" = {
           extraConfig = ''
             encode zstd gzip
-            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
-              flush_interval -1   # proxy_buffering off equivalent
-            }
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port}
           '';
         };
 
@@ -162,7 +156,6 @@
           extraConfig = ''
             encode zstd gzip
             reverse_proxy ${config.mySnippets.cute-haus.networkMap.uptime-kuma.hostName}:${toString config.mySnippets.cute-haus.networkMap.uptime-kuma.port} {
-              flush_interval -1   # proxy_buffering off equivalent
               header_up X-Real-IP {remote_host}
               header_up X-Forwarded-For {remote_host}
               header_up X-Forwarded-Proto {scheme}}
