@@ -100,43 +100,57 @@
 
                     sites = [
                       {
+                        title = "Jellyfin";
+                        url = "https://${config.mySnippets.tailnet.networkMap.jellyfin.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.jellyfin.hostName}:${toString config.mySnippets.tailnet.networkMap.jellyfin.port}/web/index.html";
+                        icon = "di:jellyfin";
+                      }
+                      {
                         title = "Sonarr";
-                        url = "https://sonarr.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.sonarr.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.sonarr.hostName}:${toString config.mySnippets.tailnet.networkMap.sonarr.port}/";
                         icon = "di:sonarr";
                       }
                       {
                         title = "Radarr";
-                        url = "https://radarr.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.radarr.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.radarr.hostName}:${toString config.mySnippets.tailnet.networkMap.radarr.port}/";
                         icon = "di:radarr";
                       }
                       {
                         title = "Lidarr";
-                        url = "https://lidarr.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.lidarr.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.lidarr.hostName}:${toString config.mySnippets.tailnet.networkMap.lidarr.port}/";
                         icon = "di:lidarr";
                       }
                       {
                         title = "Readarr";
-                        url = "https://readarr.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.readarr.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.readarr.hostName}:${toString config.mySnippets.tailnet.networkMap.readarr.port}/";
                         icon = "di:readarr";
                       }
                       {
                         title = "Prowlarr";
-                        url = "https://prowlarr.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.prowlarr.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.prowlarr.hostName}:${toString config.mySnippets.tailnet.networkMap.prowlarr.port}/";
                         icon = "di:prowlarr";
                       }
                       {
                         title = "Bazarr";
-                        url = "https://bazarr.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.bazarr.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.bazarr.hostName}:${toString config.mySnippets.tailnet.networkMap.bazarr.port}/";
                         icon = "di:bazarr";
                       }
                       {
                         title = "Tautulli";
-                        url = "https://tautulli.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.tautulli.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.tautulli.hostName}:${toString config.mySnippets.tailnet.networkMap.tautulli.port}/";
                         icon = "di:tautulli";
                       }
                       {
                         title = "qBittorrent";
-                        url = "https://qbittorrent.${config.mySnippets.tailnet.name}/";
+                        url = "https://${config.mySnippets.tailnet.networkMap.qbittorrent.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.qbittorrent.hostName}:${toString config.mySnippets.tailnet.networkMap.qbittorrent.port}/";
                         icon = "di:qbittorrent";
                         alt-status-codes = [401];
                       }
@@ -144,6 +158,18 @@
                         title = "Homebridge";
                         url = "https://homebridge.${config.mySnippets.tailnet.name}/";
                         icon = "di:homebridge";
+                      }
+                      {
+                        title = "Grafana";
+                        url = "https://${config.mySnippets.tailnet.networkMap.grafana.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.grafana.hostName}:${toString config.mySnippets.tailnet.networkMap.grafana.port}/";
+                        icon = "di:grafana";
+                      }
+                      {
+                        title = "VS Code";
+                        url = "https://${config.mySnippets.tailnet.networkMap.vscode.vHost}/";
+                        check-url = "http://${config.mySnippets.tailnet.networkMap.vscode.hostName}:${toString config.mySnippets.tailnet.networkMap.vscode.port}/";
+                        icon = "di:vscode";
                       }
                     ];
                   }
