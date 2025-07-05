@@ -50,6 +50,7 @@
       enable = true;
 
       extensions = [
+        {package = pkgs.gnomeExtensions.bluetooth-battery-meter;}
         {package = pkgs.gnomeExtensions.vscode-search-provider;}
       ];
     };
