@@ -55,7 +55,6 @@
               declare -A backups
               backups=(
                 ['/home/aly/roms']="b2://aly-roms"
-                ['/mnt/Media/Music']="b2://aly-music"
               )
 
               # Recursively backup folders to B2 with sanity checks.
