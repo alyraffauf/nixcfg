@@ -29,11 +29,11 @@
     user = "root";
   };
 
-  slateport = {
-    output = "slateport";
-    hostname = "slateport";
-    user = "root";
-  };
+  # slateport = {
+  #   output = "slateport";
+  #   hostname = "slateport";
+  #   user = "root";
+  # };
 
   verdanturf = {
     output = "verdanturf";
