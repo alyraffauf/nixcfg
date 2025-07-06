@@ -11,6 +11,16 @@ on:
       - "_img/**"
   workflow_dispatch:
 jobs:
+  build-dewford:
+    runs-on: nixos-x86_64_linux
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build dewford
+        run: nix build --accept-flake-config .#nixosConfigurations.dewford.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-evergrande:
     runs-on: nixos-x86_64_linux
     steps:
