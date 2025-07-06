@@ -91,6 +91,16 @@ jobs:
         run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build oldale
         run: nix build --accept-flake-config .#nixosConfigurations.oldale.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
+  build-petalburg:
+    runs-on: nixos-x86_64_linux
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - name: Setup Cachix
+        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build petalburg
+        run: nix build --accept-flake-config .#nixosConfigurations.petalburg.config.system.build.toplevel --no-link --print-out-paths | cachix push alyraffauf
   build-rustboro:
     runs-on: nixos-x86_64_linux
     steps:
