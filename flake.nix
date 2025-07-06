@@ -323,6 +323,7 @@
           deadnix
           diffutils
           findutils
+          go
           gopls
           nodePackages.prettier
           rubocop
