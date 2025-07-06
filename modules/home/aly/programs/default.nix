@@ -11,6 +11,7 @@
     ./thunderbird
     ./vesktop
     ./vsCode
+    ./zed-editor
     ./zen
   ];
 }

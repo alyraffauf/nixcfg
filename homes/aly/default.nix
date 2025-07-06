@@ -37,6 +37,7 @@
             thunderbird.enable = true;
             vesktop.enable = true;
             vsCode.enable = true;
+            zed-editor.enable = true;
             zen.enable = true;
           };
         };
