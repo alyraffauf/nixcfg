@@ -17,7 +17,6 @@
         extensions = with pkgs.vscode-extensions; [
           github.vscode-pull-request-github
           ms-vscode-remote.remote-ssh
-          oderwat.indent-rainbow
         ];
 
         keybindings = let
