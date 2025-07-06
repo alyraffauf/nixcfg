@@ -321,6 +321,7 @@
         runtimeInputs = with pkgs; [
           alejandra
           deadnix
+          diffutils
           findutils
           gopls
           nodePackages.prettier
