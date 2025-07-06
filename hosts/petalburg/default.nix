@@ -42,6 +42,7 @@
     programs = {
       nix.enable = true;
       podman.enable = true;
+      steam.enable = true;
       systemd-boot.enable = true;
     };
 
@@ -51,7 +52,6 @@
       gdm.enable = true;
       prometheusNode.enable = true;
       promtail.enable = true;
-      steam.enable = true;
 
       syncthing = {
         enable = true;
