@@ -201,6 +201,8 @@
             bash-language-server
             deadnix
             git
+            go
+            gopls
             nh
             nix-update
             nixd
@@ -287,14 +289,25 @@
     packages = forAllSystems ({pkgs}: rec {
       default = installer;
 
-      deployer = pkgs.writeShellApplication {
-        name = "deployer";
+      deployer = pkgs.stdenv.mkDerivation {
+        pname = "deployer";
+        version = "0.1.0";
+        src = self + /utils; # directory with deployer.go
 
-        runtimeInputs = with pkgs; [
-          jq
-        ];
+        nativeBuildInputs = [pkgs.go];
+        dontConfigure = true;
 
-        text = builtins.readFile ./utils/deployer.sh;
+        buildPhase = ''
+          export GO111MODULE=off               # GOPATH mode
+          export GOCACHE="$TMPDIR/go-cache"    # writable cache
+          mkdir -p "$GOCACHE"
+
+          go build -o deployer .
+        '';
+
+        installPhase = ''
+          install -Dm755 deployer $out/bin/deployer
+        '';
       };
 
       installer = pkgs.writeShellApplication {
@@ -309,6 +322,7 @@
           alejandra
           deadnix
           findutils
+          gopls
           nodePackages.prettier
           rubocop
           shfmt

@@ -9,6 +9,7 @@ PRETTIER_ARGS=()
 RUBOCOP_ARGS=()
 SHFMT_ARGS=("-i" "2")
 STATIX_ARGS=()
+GOPLS_ARGS=()
 
 # Check if "-c" is present in any argument
 CHECK_MODE=false
@@ -30,8 +31,9 @@ else
   DEADNIX_ARGS+=("--edit")
   RUBOCOP_ARGS+=("-A" "--disable-uncorrectable")
   PRETTIER_ARGS+=("--write")
-  SHFMT_ARGS+=("-w") # Write changes
+  SHFMT_ARGS+=("-w")
   STATIX_ARGS+=("fix")
+  GOPLS_ARGS+=("-w")
 fi
 
 # Lint all nix files
@@ -57,3 +59,22 @@ find . -type f -name "*.rb" -exec rubocop "${RUBOCOP_ARGS[@]}" {} +
 
 # Format all shell files
 find . -type f -name "*.sh" -exec shfmt "${SHFMT_ARGS[@]}" {} +
+
+# Format go files using gopls
+if $CHECK_MODE; then
+  failed=0
+  # -print0 / read -d '' protects against spaces in filenames
+  while IFS= read -r -d '' file; do
+    # diff exits 1 when files differ, 0 when identical
+    if ! gopls format "$file" | diff -u "$file" - >/dev/null; then
+      echo "✗ $file needs formatting"
+      failed=1
+    fi
+  done < <(find . -type f -name '*.go' -print0)
+
+  if ((failed)); then
+    exit 1
+  fi
+else
+  find . -type f -name '*.go' -exec gopls format "${GOPLS_ARGS[@]}" {} +
+fi
