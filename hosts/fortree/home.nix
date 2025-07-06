@@ -53,5 +53,15 @@
         inherit devices folders;
       };
     };
+
+    stylix.targets = {
+      bat.enable = true;
+      font-packages.enable = true;
+      fontconfig.enable = true;
+      ghostty.enable = true;
+      helix.enable = true;
+      vscode.enable = true;
+      zellij.enable = true;
+    };
   };
 }
