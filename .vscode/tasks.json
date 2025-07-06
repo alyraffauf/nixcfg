@@ -38,8 +38,8 @@
     {
       "label": "Rebuild Darwin",
       "type": "shell",
-      "command": "darwin-rebuild",
-      "args": ["switch", "--flake", "."],
+      "command": "nh",
+      "args": ["darwin", "switch", "."],
       "group": {
         "kind": "build",
         "isDefault": false
