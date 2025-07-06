@@ -61,20 +61,15 @@ find . -type f -name "*.rb" -exec rubocop "${RUBOCOP_ARGS[@]}" {} +
 find . -type f -name "*.sh" -exec shfmt "${SHFMT_ARGS[@]}" {} +
 
 # Format go files using gopls
-if $CHECK_MODE; then
-  failed=0
-  # -print0 / read -d '' protects against spaces in filenames
-  while IFS= read -r -d '' file; do
-    # diff exits 1 when files differ, 0 when identical
-    if ! gopls format "$file" | diff -u "$file" - >/dev/null; then
-      echo "✗ $file needs formatting"
-      failed=1
-    fi
-  done < <(find . -type f -name '*.go' -print0)
+readarray -d '' GO_FILES < <(find . -type f -name '*.go' -print0)
 
-  if ((failed)); then
-    exit 1
+if ((${#GO_FILES[@]})); then
+  if $CHECK_MODE; then
+    if gopls format -d "${GO_FILES[@]}" | grep -q .; then
+      echo "Go files not formatted"
+      exit 1
+    fi
+  else
+    gopls format -w "${GO_FILES[@]}"
   fi
-else
-  find . -type f -name '*.go' -exec gopls format "${GOPLS_ARGS[@]}" {} +
 fi
