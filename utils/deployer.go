@@ -148,7 +148,9 @@ func main() {
 
 		switch spec.Type {
 		case "darwin":
-			run("ssh", target, "sudo", path+"/bin/activate", op)
+			run("ssh", target, "sudo", path+"/activate")
+			// ignores use-supplied operation (for now).
+			// TODO: handle operation as does darwin-rebuild.
 		case "nixos":
 			run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
 		default:
