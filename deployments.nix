@@ -6,6 +6,14 @@
     user = "root";
   };
 
+  # Darwin example
+  # fortree = {
+  #   output = "fortree";
+  #   hostname = "fortree";
+  #   user = "aly";
+  #   type = "darwin";
+  # };
+
   lavaridge = {
     output = "lavaridge";
     hostname = "lavaridge";
