@@ -2,6 +2,6 @@
 
 ## Overview
 
-VPS running on Netcap.
+VPS running on Netcup.
 
 ---
