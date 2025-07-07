@@ -8,6 +8,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 	"os/exec"
@@ -56,17 +57,34 @@ func run(cmd string, args ...string) []byte {
 }
 
 func main() {
-	flake := os.Getenv("FLAKE")
+	flakeFlag := flag.String("flake", "", "Flake specification")
+	opFlag := flag.String("operation", "", "Operation to perform")
+	cfgFlag := flag.String("deployments", "", "Path to deployments file")
+	flag.Parse()
+
+	flake := *flakeFlag
+	op := *opFlag
+	cfg := *cfgFlag
+
 	if flake == "" {
-		flake = "."
+		flake = os.Getenv("FLAKE")
+		if flake == "" {
+			flake = "."
+		}
 	}
-	op := os.Getenv("OPERATION")
+
 	if op == "" {
-		op = "test"
+		op = os.Getenv("OPERATION")
+		if op == "" {
+			op = "test"
+		}
 	}
-	cfg := os.Getenv("DEPLOYMENTS")
+
 	if cfg == "" {
-		cfg = "deployments.nix"
+		cfg = os.Getenv("DEPLOYMENTS")
+		if cfg == "" {
+			cfg = "deployments.nix"
+		}
 	}
 
 	info("Flake: %s", flake)
