@@ -88,6 +88,11 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  security.sudo.extraConfig = ''
+    root ALL=(ALL) NOPASSWD: ALL
+    %admin ALL=(ALL) NOPASSWD: ALL
+  '';
+
   system = {
     defaults = {
       dock.persistent-apps = [
