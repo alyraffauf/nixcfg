@@ -174,6 +174,10 @@
           job_name = "node";
           static_configs = [
             {
+              targets = ["dewford:3021"];
+              labels.instance = "dewford";
+            }
+            {
               targets = ["evergrande:3021"];
               labels.instance = "evergrande";
             }
