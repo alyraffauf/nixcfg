@@ -2,7 +2,7 @@
 // A minimal NixOS deployment tool in Go.
 // Usage:
 //   go build -o deployer deployer.go
-//   FLAKE=. OPERATION=test DEPLOYMENTS=deployments.nix ./deployer
+//   ./deployer --flake github:alyraffauf/nixcfg --operation test --deployments deployments.nix
 
 package main
 
