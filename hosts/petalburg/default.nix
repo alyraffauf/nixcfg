@@ -13,6 +13,22 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "r8169"];
   networking.hostName = "petalburg";
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    host = "0.0.0.0";
+
+    loadModels = [
+      "gemma3:12b"
+      "gemma3:4b"
+      "nomic-embed-text"
+    ];
+
+    openFirewall = true;
+    rocmOverrideGfx = "10.3.0"; # Wepretend because ollama/ROCM does not support the 6700.
+  };
+
   system.stateVersion = "25.11";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/nvm0n1";
