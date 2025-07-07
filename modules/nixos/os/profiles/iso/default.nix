@@ -62,5 +62,7 @@
       rebuild.enableNg = true;
       switch.enable = false;
     };
+
+    users.defaultUserShell = lib.mkForce pkgs.bash;
   };
 }
