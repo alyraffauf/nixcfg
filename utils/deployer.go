@@ -16,9 +16,10 @@ import (
 
 // Deployment spec for a single host.
 type HostSpec struct {
-	Output   string `json:"output"`   // flake output name
-	Hostname string `json:"hostname"` // SSH host
-	User     string `json:"user"`     // SSH user
+	Output   string `json:"output"`   // flake output
+	Hostname string `json:"hostname"` // ssh host
+	Type     string `json:"type"`     // type (nixos, darwin)
+	User     string `json:"user"`     // ssh user
 }
 
 // model 'nix build --json' output.
@@ -102,8 +103,19 @@ func main() {
 	outs := make(map[string]string, len(hosts))
 	for name, spec := range hosts {
 		info("Building %s#%s...", flake, spec.Output)
-		expr := fmt.Sprintf("%s#nixosConfigurations.%s.config.system.build.toplevel", flake, spec.Output)
-		data := runJSON("nix", "build", "--no-link", "--json", expr)
+
+		var data []byte
+
+		switch spec.Type {
+		case "darwin":
+			expr := fmt.Sprintf("%s#darwinConfigurations.%s.config.system.build.toplevel", flake, spec.Output)
+			data = runJSON("nix", "build", "--no-link", "--json", expr)
+		case "nixos":
+			expr := fmt.Sprintf("%s#nixosConfigurations.%s.config.system.build.toplevel", flake, spec.Output)
+			data = runJSON("nix", "build", "--no-link", "--json", expr)
+		default:
+			fatal("unsupported system type: %s", spec.Type)
+		}
 
 		var res []BuildResult
 		if err := json.Unmarshal(data, &res); err != nil {
@@ -133,7 +145,16 @@ func main() {
 		target := fmt.Sprintf("%s@%s", spec.User, spec.Hostname)
 		path := outs[name]
 		info("Activating %s on %s...", path, target)
-		run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
+
+		switch spec.Type {
+		case "darwin":
+			run("ssh", target, "sudo", path+"/bin/activate", op)
+		case "nixos":
+			run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
+		default:
+			fatal("unsupported system type: %s", spec.Type)
+		}
+
 		info("✔ Deployed %s#%s to %s", flake, spec.Output, target)
 	}
 
