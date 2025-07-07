@@ -83,7 +83,7 @@ func main() {
 	// Build closures
 	outs := make(map[string]string, len(hosts))
 	for name, spec := range hosts {
-		info("Building %s...", spec.Output)
+		info("Building %s#%s...", flake, spec.Output)
 		expr := fmt.Sprintf("%s#nixosConfigurations.%s.config.system.build.toplevel", flake, spec.Output)
 		data := runJSON("nix", "build", "--no-link", "--json", expr)
 
@@ -114,9 +114,9 @@ func main() {
 	for name, spec := range hosts {
 		target := fmt.Sprintf("%s@%s", spec.User, spec.Hostname)
 		path := outs[name]
-		info("Activating on %s...", target)
+		info("Activating %s on %s...", path, target)
 		run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
-		info("✔ Deployed %s on %s", target)
+		info("✔ Deployed %s#%s to %s", flake, spec.Output, target)
 	}
 
 	info("✔ Deployments complete.")
