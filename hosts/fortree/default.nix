@@ -98,7 +98,7 @@
         {app = "/Applications/Slack.app";}
         {app = "/Applications/Thunderbird.app";}
         {app = "/Applications/Obsidian.app";}
-        {app = "${pkgs.vscode}/Applications/Visual Studio Code.app";}
+        {app = "${pkgs.zed-editor}/Applications/Zed.app";}
         {app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";}
         {app = "/System/Applications/Music.app";}
         {app = "/Applications/Plexamp.app";}
