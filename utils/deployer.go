@@ -27,12 +27,12 @@ type BuildResult struct {
 	Outputs map[string]string `json:"outputs"`
 }
 
-func fatal(format string, args ...interface{}) {
+func fatal(format string, args ...any) {
 	fmt.Fprintf(os.Stderr, "[deployer] Error: "+format+"\n", args...)
 	os.Exit(1)
 }
 
-func info(format string, args ...interface{}) {
+func info(format string, args ...any) {
 	fmt.Printf("[deployer] "+format+"\n", args...)
 }
 
