@@ -17,7 +17,8 @@
 
         # buffer_font_family = "CaskaydiaCove Nerd Font";
         # buffer_font_size = 16;
-        features.edit_prediction_provider = "zed";
+
+        features.edit_prediction_provider = "copilot";
         minimap.show = "auto";
         preferred_line_length = 80;
         soft_wrap = "preferred_line_length";
