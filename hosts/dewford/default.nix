@@ -98,7 +98,7 @@
   };
 
   time.timeZone = "America/New_York";
-  myDisko.installDrive = "/dev/sda";
+  myDisko.installDrive = "/dev/vda";
 
   myNixOS = {
     profiles = {
