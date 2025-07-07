@@ -6,7 +6,12 @@
 
       default = {
         builders-use-substitutes = true;
-        experimental-features = ["nix-command" "flakes"];
+
+        experimental-features = [
+          "flakes"
+          "nix-command"
+          "pipe-operator"
+        ];
 
         substituters = [
           "https://alyraffauf.cachix.org"
