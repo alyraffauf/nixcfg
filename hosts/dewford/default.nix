@@ -84,13 +84,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 8192;
-    }
-  ];
-
   system = {
     autoUpgrade.operation = "switch";
     stateVersion = "25.11";
@@ -106,6 +99,7 @@
       base.enable = true;
       data-share.enable = true;
       server.enable = true;
+      swap.enable = true;
       media-share.enable = true;
     };
 

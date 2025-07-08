@@ -1,6 +1,5 @@
 {
   config,
-
   modulesPath,
   pkgs,
   self,
@@ -46,13 +45,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 2048;
-    }
-  ];
-
   system = {
     autoUpgrade.operation = "switch";
     stateVersion = "25.05";
@@ -67,6 +59,11 @@
       backups.enable = true;
       base.enable = true;
       server.enable = true;
+
+      swap = {
+        enable = true;
+        size = 2048;
+      };
     };
 
     programs = {

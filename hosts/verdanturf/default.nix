@@ -39,13 +39,6 @@
     amazon-ssm-agent.enable = true;
   };
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 2048;
-    }
-  ];
-
   system = {
     autoUpgrade.operation = "switch";
     stateVersion = "24.11";
@@ -58,6 +51,11 @@
       autoUpgrade.enable = true;
       backups.enable = true;
       server.enable = true;
+
+      swap = {
+        enable = true;
+        size = 2048;
+      };
     };
 
     programs.nix.enable = true;
