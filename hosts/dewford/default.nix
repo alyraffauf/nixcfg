@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   modulesPath,
   pkgs,
   self,
@@ -84,7 +83,6 @@
   networking.hostName = "dewford";
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
-  services.smartd.enable = lib.mkForce false;
 
   swapDevices = [
     {

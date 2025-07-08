@@ -1,6 +1,6 @@
 {
   config,
-  lib,
+
   modulesPath,
   pkgs,
   self,
@@ -45,7 +45,6 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
-  services.smartd.enable = lib.mkForce false;
 
   swapDevices = [
     {
@@ -67,7 +66,7 @@
       autoUpgrade.enable = true;
       backups.enable = true;
       base.enable = true;
-      lowResource.enable = true;
+      server.enable = true;
     };
 
     programs = {

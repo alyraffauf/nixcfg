@@ -57,7 +57,7 @@
     profiles = {
       autoUpgrade.enable = true;
       backups.enable = true;
-      lowResource.enable = true;
+      server.enable = true;
     };
 
     programs.nix.enable = true;

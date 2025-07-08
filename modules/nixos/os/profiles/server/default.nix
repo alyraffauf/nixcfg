@@ -12,16 +12,26 @@
       "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
     };
 
+    documentation = {
+      enable = false;
+      nixos.enable = false;
+    };
+
     services = {
       bpftune.enable = true;
-      logrotate.enable = true;
-      smartd.enable = true;
+
+      journald = {
+        storage = "volatile";
+        extraConfig = "SystemMaxUse=32M\nRuntimeMaxUse=32M";
+      };
+
       timesyncd.enable = true;
     };
 
     system.nixos.tags = ["server"];
 
     systemd = {
+      coredump.enable = false;
       enableEmergencyMode = false;
 
       oomd = {

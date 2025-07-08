@@ -205,6 +205,8 @@ in {
       openFirewall = true;
     };
 
+    smartd.enable = true;
+
     snapper.configs.media = {
       ALLOW_GROUPS = ["users"];
       FSTYPE = "btrfs";
