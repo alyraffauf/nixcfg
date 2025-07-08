@@ -54,6 +54,7 @@
           "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
           "East Pole Coffee Co." = mkWPA2WiFi "East Pole Coffee Co." "$EastPolePSK";
           "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
+          "LilycoveDeptStore" = mkWPA2WiFi "LilycoveDeptStore" "$LilycoveDeptStorePSK";
           "Muchacho Guest" = mkOpenWiFi "Muchacho Guest";
           "MOTO4A8E-5G" = mkWPA2WiFi "MOTO4A8E-5G" "$MOTO4A8EPSK";
           "norman" = mkWPA2WiFi "norman" "$normanPSK";
