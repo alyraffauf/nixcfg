@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"sync"
 )
 
 // Deployment spec for a single host.
@@ -133,32 +134,33 @@ func main() {
 	}
 
 	// Copy closures
+	var wg sync.WaitGroup
 	for name, spec := range hosts {
-		target := fmt.Sprintf("%s@%s", spec.User, spec.Hostname)
-		path := outs[name]
-		info("Copying %s...", path)
-		run("nix", "copy", "--to", "ssh://"+target, path)
+		wg.Add(1)
+		go func(name string, spec HostSpec) {
+			defer wg.Done()
+			target := fmt.Sprintf("%s@%s", spec.User, spec.Hostname)
+			path := outs[name]
+			info("Copying %s to %s...", path, target)
+			run("nix", "copy", "--to", "ssh://"+target, path)
+			info("✔ Copied %s to %s", path, target)
+			info("Deploying %s#%s to %s...", flake, spec.Output, target)
+
+			switch spec.Type {
+			case "darwin":
+				run("ssh", target, "sudo", path+"/activate")
+				// ignores user-supplied operation (for now).
+				// TODO: handle operation as does darwin-rebuild.
+			case "nixos":
+				run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
+			default:
+				fatal("unsupported system type: %s", spec.Type)
+			}
+
+			info("✔ Deployed %s#%s to %s", flake, spec.Output, target)
+		}(name, spec)
 	}
 
-	// Activate
-	for name, spec := range hosts {
-		target := fmt.Sprintf("%s@%s", spec.User, spec.Hostname)
-		path := outs[name]
-		info("Activating %s on %s...", path, target)
-
-		switch spec.Type {
-		case "darwin":
-			run("ssh", target, "sudo", path+"/activate")
-			// ignores use-supplied operation (for now).
-			// TODO: handle operation as does darwin-rebuild.
-		case "nixos":
-			run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
-		default:
-			fatal("unsupported system type: %s", spec.Type)
-		}
-
-		info("✔ Deployed %s#%s to %s", flake, spec.Output, target)
-	}
-
+	wg.Wait()
 	info("✔ Deployments complete.")
 }
