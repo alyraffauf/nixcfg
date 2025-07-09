@@ -149,8 +149,10 @@ func main() {
 			switch spec.Type {
 			case "darwin":
 				run("ssh", target, "sudo", path+"/activate")
-				// ignores user-supplied operation (for now).
-				// TODO: handle operation as does darwin-rebuild.
+
+				if op == "switch" {
+					run("ssh", target, "sudo", "nix-env", "-p", "/nix/var/nix/profiles/system", "--set", path)
+				}
 			case "nixos":
 				run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
 			default:
