@@ -28,6 +28,10 @@ type BuildResult struct {
 	Outputs map[string]string `json:"outputs"`
 }
 
+func warn(format string, args ...any) {
+	fmt.Fprintf(os.Stderr, "[deployer] Warning: "+format+"\n", args...)
+}
+
 func fatal(format string, args ...any) {
 	fmt.Fprintf(os.Stderr, "[deployer] Error: "+format+"\n", args...)
 	os.Exit(1)
@@ -149,9 +153,11 @@ func main() {
 			switch spec.Type {
 			case "darwin":
 				switch op {
+				case "test":
+					warn("nix-darwin does not support 'test' operation, using 'switch' instead.")
+					fallthrough
 				case "switch":
 					run("ssh", target, "sudo", "nix-env", "-p", "/nix/var/nix/profiles/system", "--set", path)
-
 					fallthrough // we always want to activate
 				case "activate":
 					run("ssh", target, "sudo", path+"/activate")
