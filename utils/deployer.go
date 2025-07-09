@@ -148,10 +148,15 @@ func main() {
 
 			switch spec.Type {
 			case "darwin":
-				run("ssh", target, "sudo", path+"/activate")
-
-				if op == "switch" {
+				switch op {
+				case "switch":
 					run("ssh", target, "sudo", "nix-env", "-p", "/nix/var/nix/profiles/system", "--set", path)
+
+					fallthrough // we always want to activate
+				case "activate":
+					run("ssh", target, "sudo", path+"/activate")
+				default:
+					fatal("unsupported darwin operation: %s", op)
 				}
 			case "nixos":
 				run("ssh", target, "sudo", path+"/bin/switch-to-configuration", op)
