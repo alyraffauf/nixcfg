@@ -35,6 +35,19 @@
     programs.system-config-printer.enable = true;
 
     services = {
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+
+        publish = {
+          enable = true;
+          addresses = true;
+          userServices = true;
+          workstation = true;
+        };
+      };
+
       gnome.gnome-keyring.enable = true;
       gvfs.enable = true; # Mount, trash, etc.
       libinput.enable = true;
