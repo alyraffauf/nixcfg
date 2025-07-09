@@ -25,7 +25,7 @@
             "vesktop.desktop"
             "obsidian.desktop"
             "com.mitchellh.ghostty.desktop"
-            "code.desktop"
+            "dev.zed.Zed.desktop"
             "plexamp.desktop"
             "org.gnome.Nautilus.desktop"
           ];
