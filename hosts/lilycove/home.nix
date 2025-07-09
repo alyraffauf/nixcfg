@@ -33,6 +33,8 @@
       };
 
       home-manager.enable = true;
+
+      zed-editor.installRemoteServer = true;
     };
 
     myHome = {
