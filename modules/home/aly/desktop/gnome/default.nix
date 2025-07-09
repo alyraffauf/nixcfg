@@ -19,7 +19,7 @@
       settings = {
         "org/gnome/shell" = {
           favorite-apps = [
-            "zen-twilight.desktop"
+            "zen-beta.desktop"
             "thunderbird.desktop"
             "signal.desktop"
             "vesktop.desktop"

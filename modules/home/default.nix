@@ -6,6 +6,6 @@
     ./programs
     ./services
     self.homeManagerModules.snippets
-    self.inputs.zen-browser.homeModules.twilight
+    self.inputs.zen-browser.homeModules.beta
   ];
 }
