@@ -965,11 +965,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752113263,
-        "narHash": "sha256-qb23xaq4x70BLCZjLaQ0sIeBgaPI0B2nMfudXHJo7jU=",
+        "lastModified": 1752168867,
+        "narHash": "sha256-xcCaYXZcEb/g5T91MnXbM6gr6Yyn9b0P5JydjdOc9Ro=",
         "owner": "alyraffauf",
         "repo": "nynx",
-        "rev": "6dcfb69a72f4760f0770a33f57c9a17544cd546c",
+        "rev": "215d7f989883c8a30b147424ace363cc1cf8ebe0",
         "type": "github"
       },
       "original": {
