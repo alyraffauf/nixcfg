@@ -48,6 +48,11 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nur.url = "github:nix-community/NUR";
 
+    nynx = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:alyraffauf/nynx";
+    };
+
     self2025 = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:alyraffauf/self2025";
@@ -202,8 +207,6 @@
             bash-language-server
             deadnix
             git
-            go
-            gopls
             nh
             nix-update
             nixd
@@ -216,8 +219,8 @@
           ++ [
             self.inputs.agenix.packages.${pkgs.system}.default
             self.inputs.disko.packages.${pkgs.system}.disko-install
+            self.inputs.nynx.packages.${pkgs.system}.nynx
             self.packages.${pkgs.system}.default
-            self.packages.${pkgs.system}.deployer
           ];
 
         shellHook = ''
@@ -290,27 +293,6 @@
     packages = forAllSystems ({pkgs}: rec {
       default = installer;
 
-      deployer = pkgs.stdenv.mkDerivation {
-        pname = "deployer";
-        version = "0.1.0";
-        src = self + /utils; # directory with deployer.go
-
-        nativeBuildInputs = [pkgs.go];
-        dontConfigure = true;
-
-        buildPhase = ''
-          export GO111MODULE=off               # GOPATH mode
-          export GOCACHE="$TMPDIR/go-cache"    # writable cache
-          mkdir -p "$GOCACHE"
-
-          go build -o deployer .
-        '';
-
-        installPhase = ''
-          install -Dm755 deployer $out/bin/deployer
-        '';
-      };
-
       installer = pkgs.writeShellApplication {
         name = "installer";
         text = builtins.readFile ./utils/installer.sh;
@@ -324,8 +306,6 @@
           deadnix
           diffutils
           findutils
-          go
-          gopls
           nodePackages.prettier
           rubocop
           shfmt

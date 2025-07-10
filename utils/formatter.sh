@@ -9,7 +9,6 @@ PRETTIER_ARGS=()
 RUBOCOP_ARGS=()
 SHFMT_ARGS=("-i" "2")
 STATIX_ARGS=()
-GOPLS_ARGS=()
 
 # Check if "-c" is present in any argument
 CHECK_MODE=false
@@ -33,7 +32,6 @@ else
   PRETTIER_ARGS+=("--write")
   SHFMT_ARGS+=("-w")
   STATIX_ARGS+=("fix")
-  GOPLS_ARGS+=("-w")
 fi
 
 # Lint all nix files
@@ -59,17 +57,3 @@ find . -type f -name "*.rb" -exec rubocop "${RUBOCOP_ARGS[@]}" {} +
 
 # Format all shell files
 find . -type f -name "*.sh" -exec shfmt "${SHFMT_ARGS[@]}" {} +
-
-# Format go files using gopls
-readarray -d '' GO_FILES < <(find . -type f -name '*.go' -print0)
-
-if ((${#GO_FILES[@]})); then
-  if $CHECK_MODE; then
-    if gopls format -d "${GO_FILES[@]}" | grep -q .; then
-      echo "Go files not formatted"
-      exit 1
-    fi
-  else
-    gopls format -w "${GO_FILES[@]}"
-  fi
-fi

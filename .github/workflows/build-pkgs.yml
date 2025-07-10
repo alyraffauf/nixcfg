@@ -12,16 +12,6 @@ on:
       - "flake.lock"
   workflow_dispatch:
 jobs:
-  build-deployer:
-    runs-on: nixos-x86_64_linux
-    steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - name: Setup Cachix
-        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - name: Build deployer package
-        run: nix build --accept-flake-config .#packages.x86_64-linux.deployer --no-link --print-out-paths | cachix push alyraffauf
   build-formatter:
     runs-on: nixos-x86_64_linux
     steps:

@@ -958,6 +958,26 @@
         "type": "github"
       }
     },
+    "nynx": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752113263,
+        "narHash": "sha256-qb23xaq4x70BLCZjLaQ0sIeBgaPI0B2nMfudXHJo7jU=",
+        "owner": "alyraffauf",
+        "repo": "nynx",
+        "rev": "6dcfb69a72f4760f0770a33f57c9a17544cd546c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "nynx",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "flake": false,
       "locked": {
@@ -1019,6 +1039,7 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
+        "nynx": "nynx",
         "secrets": "secrets",
         "self2025": "self2025",
         "stylix": "stylix",
