@@ -10,12 +10,16 @@
   config = lib.mkMerge [
     {
       home = {
-        packages = with pkgs; [
-          curl
-          nixos-rebuild-ng
-          rclone
-          wget
-        ];
+        packages = with pkgs;
+          [
+            curl
+            nixos-rebuild-ng
+            rclone
+            wget
+          ]
+          ++ [
+            self.inputs.nynx.packages.${pkgs.system}.nynx
+          ];
 
         username = "aly";
       };
