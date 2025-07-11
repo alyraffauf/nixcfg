@@ -98,7 +98,7 @@
 
         profiles.defaultApps = {
           enable = true;
-          editor.package = config.programs.vscode.package;
+          editor.package = config.programs.zed-editor.package;
           terminal.package = config.programs.ghostty.package;
 
           webBrowser = {
