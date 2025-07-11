@@ -128,16 +128,23 @@
     stateVersion = 6;
   };
 
-  users.users.aly = {
-    description = "Aly Raffauf";
-    home = "/Users/aly";
+  users.users = {
+    aly = {
+      description = "Aly Raffauf";
+      home = "/Users/aly";
 
-    openssh.authorizedKeys.keyFiles =
+      openssh.authorizedKeys.keyFiles =
+        lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+        (lib.filter (file: lib.hasPrefix "aly_" file)
+          (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
+
+      shell = pkgs.zsh;
+    };
+
+    root.openssh.authorizedKeys.keyFiles =
       lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
       (lib.filter (file: lib.hasPrefix "aly_" file)
         (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
-
-    shell = pkgs.zsh;
   };
 
   myDarwin = {
