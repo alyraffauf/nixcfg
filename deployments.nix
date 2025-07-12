@@ -30,10 +30,10 @@
     user = "root";
   };
 
-  # slateport = {
-  #   type = "nixos";
-  #   user = "root";
-  # };
+  slateport = {
+    type = "nixos";
+    user = "root";
+  };
 
   verdanturf = {
     type = "nixos";
