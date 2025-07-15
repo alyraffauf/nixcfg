@@ -2,14 +2,29 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   options.myHome.profiles.shell.enable = lib.mkEnableOption "basic shell environment";
 
   config = lib.mkIf config.myHome.profiles.shell.enable {
-    home.packages = with pkgs; [
-      (lib.hiPrio uutils-coreutils-noprefix)
-    ];
+    home = {
+      packages = with pkgs;
+        [
+          (lib.hiPrio uutils-coreutils-noprefix)
+          curl
+          htop
+          nixos-rebuild
+          wget
+        ]
+        ++ [self.inputs.nynx.packages.${pkgs.system}.nynx];
+
+      shellAliases = {
+        l = "eza - lah";
+        tree = "eza --tree";
+        top = "htop";
+      };
+    };
 
     programs = {
       bash = {

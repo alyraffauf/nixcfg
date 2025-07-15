@@ -12,10 +12,7 @@
       home = {
         packages = with pkgs;
           [
-            curl
-            nixos-rebuild-ng
             rclone
-            wget
           ]
           ++ [
             self.inputs.nynx.packages.${pkgs.system}.nynx
