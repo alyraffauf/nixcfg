@@ -246,7 +246,49 @@
 
     nynxDeployments = {
       evergrande = {
-        output = self.nixsConfigurations.evergrande.config.system.build.toplevel;
+        output = self.nixosConfigurations.evergrande.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+
+      # fortree = {
+      #   output = self.darwinConfigurations.fortree.config.system.build.toplevel;
+      #   user = "aly";
+      #   type = "darwin";
+      # };
+
+      lavaridge = {
+        output = self.nixosConfigurations.lavaridge.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+
+      lilycove = {
+        output = self.nixosConfigurations.lilycove.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+
+      mauville = {
+        output = self.nixosConfigurations.mauville.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+
+      mossdeep = {
+        output = self.nixosConfigurations.mossdeep.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+
+      slateport = {
+        output = self.nixosConfigurations.slateport.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+
+      verdanturf = {
+        output = self.nixosConfigurations.verdanturf.config.system.build.toplevel;
         type = "nixos";
         user = "root";
       };
