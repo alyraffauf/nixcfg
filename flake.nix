@@ -244,6 +244,14 @@
       snippets = ./modules/snippets;
     };
 
+    nynxDeployments = {
+      evergrande = {
+        output = self.nixsConfigurations.evergrande.config.system.build.toplevel;
+        type = "nixos";
+        user = "root";
+      };
+    };
+
     nixosModules = {
       hardware = ./modules/nixos/hardware;
       locale-en-us = ./modules/nixos/locale/en-us;
