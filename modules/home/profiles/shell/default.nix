@@ -20,7 +20,7 @@
         ++ [self.inputs.nynx.packages.${pkgs.system}.nynx];
 
       shellAliases = {
-        l = "eza - lah";
+        l = "eza -lah";
         tree = "eza --tree";
         top = "htop";
       };
