@@ -50,7 +50,7 @@
       (greedy "signal")
       (greedy "slack")
       (greedy "thunderbird")
-      (greedy "todoist")
+      (greedy "todoist-app")
       (greedy "vlc")
       (greedy "zen")
     ];
