@@ -10,7 +10,6 @@
         experimental-features = [
           "flakes"
           "nix-command"
-          "pipe-operator"
         ];
 
         substituters = [

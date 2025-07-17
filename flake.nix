@@ -174,7 +174,7 @@
         self.darwinModules.default
         self.inputs.agenix.darwinModules.default
         self.inputs.home-manager.darwinModules.home-manager
-        self.inputs.lix-module.nixosModules.default
+        # self.inputs.lix-module.nixosModules.default
         self.inputs.nix-homebrew.darwinModules.nix-homebrew
         self.inputs.stylix.darwinModules.stylix
         self.nixosModules.snippets
@@ -306,7 +306,7 @@
             self.inputs.disko.nixosModules.disko
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.lanzaboote.nixosModules.lanzaboote
-            self.inputs.lix-module.nixosModules.default
+            # self.inputs.lix-module.nixosModules.default
             self.inputs.stylix.nixosModules.stylix
             self.inputs.vscode-server.nixosModules.default
             self.nixosModules.hardware
