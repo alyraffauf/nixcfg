@@ -10,7 +10,7 @@
         ghostty.enable = true;
         helix.enable = true;
         vscode.enable = true;
-        zed.enable = true;
+        # zed.enable = true;
         zellij.enable = true;
       };
     }
