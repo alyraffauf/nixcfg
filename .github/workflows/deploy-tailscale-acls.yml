@@ -33,8 +33,8 @@ jobs:
 
       - uses: DeterminateSystems/nix-installer-action@main
 
-      - name: Convert tailscale.nix to tailscale.json
-        run: nix eval --json -f tailscale.nix > tailscale.json
+      - name: Convert .#tailscaleACLs to tailscale.json
+        run: nix eval --json .#tailscaleACLs > tailscale.json
 
       - name: Deploy ACL
         if: >
