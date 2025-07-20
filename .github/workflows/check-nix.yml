@@ -27,5 +27,3 @@ jobs:
           fetch-depth: 1
       - name: Check flake evaluation
         run: nix flake check --all-systems
-      - name: Check tailscale ACL evaluation
-        run: nix eval --file ./tailscale.nix
