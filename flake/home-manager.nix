@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.homeManagerModules = {
     aly = ../homes/aly;
     dustin = ../homes/dustin;

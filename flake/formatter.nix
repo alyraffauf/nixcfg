@@ -1,5 +1,5 @@
 {self, ...}: {
   perSystem = {pkgs, ...}: {
-    formatter = self.packages.${pkgs.system}.formatter;
+    inherit (self.packages.${pkgs.system}) formatter;
   };
 }
