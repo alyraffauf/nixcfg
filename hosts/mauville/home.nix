@@ -6,7 +6,7 @@
   home-manager.users.aly = lib.mkForce (
     {pkgs, ...}: {
       imports = [
-        self.homeManagerModules.default
+        self.homeModules.default
         self.inputs.agenix.homeManagerModules.default
       ];
 

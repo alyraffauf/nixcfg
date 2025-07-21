@@ -1,5 +1,5 @@
 {self, ...}: {
-  home-manager.users.aly = self.homeManagerModules.aly;
+  home-manager.users.aly = self.homeConfigurations.aly;
 
   home-manager.sharedModules = [
     {

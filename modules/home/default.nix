@@ -5,7 +5,7 @@
     ./profiles
     ./programs
     ./services
-    self.homeManagerModules.snippets
+    self.homeModules.snippets
     self.inputs.zen-browser.homeModules.beta
   ];
 }

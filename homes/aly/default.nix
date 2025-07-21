@@ -5,7 +5,7 @@
   self,
   ...
 }: {
-  imports = [self.homeManagerModules.default];
+  imports = [self.homeModules.default];
 
   config = lib.mkMerge [
     {

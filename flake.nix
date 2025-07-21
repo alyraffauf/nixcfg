@@ -139,6 +139,7 @@
         ./flake/overlays.nix
         ./flake/packages.nix
         ./flake/tailscale.nix
+        inputs.home-manager.flakeModules.home-manager
       ];
     };
 }
