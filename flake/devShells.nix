@@ -25,6 +25,7 @@
         ];
 
       shellHook = ''
+        ${config.pre-commit.installationScript}
         export FLAKE="." NH_FLAKE="."
       '';
     };

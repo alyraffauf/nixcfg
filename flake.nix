@@ -52,6 +52,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     self2025 = {
       url = "github:alyraffauf/self2025";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -139,7 +144,7 @@
       imports = [
         ./flake/darwin.nix
         ./flake/devShells.nix
-        # ./flake/formatter.nix
+        ./flake/git-hooks-nix.nix
         ./flake/home-manager.nix
         ./flake/nixos.nix
         ./flake/nynx.nix
@@ -147,6 +152,7 @@
         ./flake/packages.nix
         ./flake/tailscale.nix
         ./flake/treefmt.nix
+        inputs.git-hooks-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager
         inputs.treefmt-nix.flakeModule
       ];
