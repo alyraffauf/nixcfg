@@ -19,7 +19,6 @@
           self.inputs.agenix.packages.${pkgs.system}.default
           self.inputs.disko.packages.${pkgs.system}.disko-install
           self.inputs.nynx.packages.${pkgs.system}.nynx
-          self.packages.${pkgs.system}.default
         ];
 
       shellHook = ''
