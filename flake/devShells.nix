@@ -1,6 +1,7 @@
 {self, ...}: {
   perSystem = {
     config,
+    lib,
     pkgs,
     ...
   }: {
@@ -15,7 +16,7 @@
           nixd
           shellcheck
         ])
-        ++ (map (formatter: pkgs.${formatter}) (builtins.attrNames config.treefmt.build.programs))
+        ++ lib.attrValues config.treefmt.build.programs
         ++ [
           self.inputs.agenix.packages.${pkgs.system}.default
           self.inputs.disko.packages.${pkgs.system}.disko-install
