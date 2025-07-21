@@ -12,9 +12,7 @@
           bash-language-server
           git
           nh
-          nix-update
           nixd
-          shellcheck
         ])
         ++ lib.attrValues config.treefmt.build.programs
         ++ [
