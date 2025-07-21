@@ -5,8 +5,9 @@ concurrency:
 on:
   push:
     paths:
-      - "flake.nix"
       - "flake.lock"
+      - "flake.nix"
+      - "flake/"
   workflow_dispatch:
 jobs:
   build-devShell:
