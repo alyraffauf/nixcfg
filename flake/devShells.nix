@@ -1,22 +1,21 @@
 {self, ...}: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    config,
+    pkgs,
+    ...
+  }: {
     devShells.default = pkgs.mkShell {
       packages =
         (with pkgs; [
           (lib.hiPrio uutils-coreutils-noprefix)
-          alejandra
           bash-language-server
-          deadnix
           git
           nh
           nix-update
           nixd
-          nodePackages.prettier
-          rubocop
           shellcheck
-          shfmt
-          statix
         ])
+        ++ (map (formatter: pkgs.${formatter}) (builtins.attrNames config.treefmt.build.programs))
         ++ [
           self.inputs.agenix.packages.${pkgs.system}.default
           self.inputs.disko.packages.${pkgs.system}.disko-install

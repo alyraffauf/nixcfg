@@ -1077,6 +1077,7 @@
         "secrets": "secrets",
         "self2025": "self2025",
         "stylix": "stylix",
+        "treefmt-nix": "treefmt-nix",
         "vscode-server": "vscode-server",
         "wallpapers": "wallpapers",
         "zen-browser": "zen-browser"
@@ -1332,6 +1333,26 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753006367,
+        "narHash": "sha256-tzbhc4XttkyEhswByk5R38l+ztN9UDbnj0cTcP6Hp9A=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "421b56313c65a0815a52b424777f55acf0b56ddf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     },

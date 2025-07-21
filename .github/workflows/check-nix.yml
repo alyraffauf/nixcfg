@@ -11,14 +11,6 @@ on:
       - "_img/**"
   workflow_dispatch:
 jobs:
-  check-fmt:
-    runs-on: nixos-x86_64_linux
-    steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - name: Check formatting
-        run: nix fmt -- -c .
   check-eval:
     runs-on: nixos-x86_64_linux
     steps:

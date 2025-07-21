@@ -60,6 +60,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     zen-browser = {
@@ -132,14 +137,16 @@
       imports = [
         ./flake/darwin.nix
         ./flake/devShells.nix
-        ./flake/formatter.nix
+        # ./flake/formatter.nix
         ./flake/home-manager.nix
         ./flake/nixos.nix
         ./flake/nynx.nix
         ./flake/overlays.nix
         ./flake/packages.nix
         ./flake/tailscale.nix
+        ./flake/treefmt.nix
         inputs.home-manager.flakeModules.home-manager
+        inputs.treefmt-nix.flakeModule
       ];
     };
 }
