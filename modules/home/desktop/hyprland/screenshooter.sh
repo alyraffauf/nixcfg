@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# shellcheck shell=bash
+
 FILENAME="$XDG_PICTURES_DIR"/screenshots/$(date +'%Y-%m-%d-%H:%M:%S_grim.png')
 MAKO_MODE=$(makoctl mode)
 
