@@ -22,4 +22,4 @@ jobs:
           name: alyraffauf
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build fortree
-        run: nix build --accept-flake-config .#darwinConfigurations.fortree.config.system.build.toplevel
+        run: nix build --accept-flake-config --print-out-paths .#darwinConfigurations.fortree.config.system.build.toplevel

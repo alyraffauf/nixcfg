@@ -5,12 +5,12 @@ on:
     branches: ["master"]
     paths:
       - ".github/workflows/deploy-tailscale-acls.yml"
-      - "tailscale.nix"
+      - "flake/tailscale.nix"
   pull_request:
     branches: ["master"]
     paths:
       - ".github/workflows/deploy-tailscale-acls.yml"
-      - "tailscale.nix"
+      - "flake/tailscale.nix"
   workflow_dispatch:
     inputs:
       action:
@@ -30,12 +30,9 @@ jobs:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-
       - uses: DeterminateSystems/nix-installer-action@main
-
       - name: Convert .#tailscaleACLs to tailscale.json
         run: nix eval --json .#tailscaleACLs > tailscale.json
-
       - name: Deploy ACL
         if: >
           github.event_name == 'push'

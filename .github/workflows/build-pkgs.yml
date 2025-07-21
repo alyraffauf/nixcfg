@@ -11,12 +11,15 @@ on:
   workflow_dispatch:
 jobs:
   build-devShell:
-    runs-on: nixos-x86_64_linux
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
         with:
           fetch-depth: 1
-      - name: Setup Cachix
-        run: cachix authtoken ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@master
+        with:
+          name: alyraffauf
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build devShell
-        run: nix build --accept-flake-config .#devShells.x86_64-linux.default --no-link --print-out-paths | cachix push alyraffauf
+        run: nix build --accept-flake-config --print-out-paths .#devShells.x86_64-linux.default
