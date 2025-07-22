@@ -4,11 +4,6 @@
 // see the documentation: https://zed.dev/docs/configuring-zed#settings-files
 
 {
-  "auto_install_extensions": {
-    "basher": true,
-    "nix": true
-  },
-
   "languages": {
     "JSON": {
       "format_on_save": "on",
