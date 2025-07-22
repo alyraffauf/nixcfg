@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myHome.aly.programs.zed-editor.enable = lib.mkEnableOption "zed editor";
@@ -8,7 +9,26 @@
   config = lib.mkIf config.myHome.aly.programs.zed-editor.enable {
     programs.zed-editor = {
       enable = true;
+
+      extraPackages = with pkgs; [
+        gopls
+        nixd
+      ];
+
       installRemoteServer = true;
+
+      userKeymaps = [
+        {
+          context = "Workspace";
+
+          bindings = {
+            cmd-p = "command_palette::Toggle";
+            cmd-shift-p = "file_finder::Toggle";
+            ctrl-p = "command_palette::Toggle";
+            ctrl-shift-p = "file_finder::Toggle";
+          };
+        }
+      ];
 
       userSettings = {
         auto_indent_on_paste = true;
