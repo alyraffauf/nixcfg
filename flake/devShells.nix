@@ -1,8 +1,9 @@
-{self, ...}: {
+_: {
   perSystem = {
     config,
     lib,
     pkgs,
+    inputs',
     ...
   }: {
     devShells.default = pkgs.mkShell {
@@ -16,9 +17,9 @@
         ])
         ++ lib.attrValues config.treefmt.build.programs
         ++ [
-          self.inputs.agenix.packages.${pkgs.system}.default
-          self.inputs.disko.packages.${pkgs.system}.disko-install
-          self.inputs.nynx.packages.${pkgs.system}.nynx
+          inputs'.agenix.packages.default
+          inputs'.disko.packages.disko-install
+          inputs'.nynx.packages.nynx
         ];
 
       shellHook = ''
