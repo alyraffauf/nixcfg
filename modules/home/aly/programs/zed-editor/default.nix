@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.myHome.aly.programs.zed-editor.enable = lib.mkEnableOption "zed editor";
@@ -9,12 +8,6 @@
   config = lib.mkIf config.myHome.aly.programs.zed-editor.enable {
     programs.zed-editor = {
       enable = true;
-
-      extraPackages = with pkgs; [
-        gopls
-        nixd
-      ];
-
       installRemoteServer = true;
 
       userKeymaps = [
