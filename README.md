@@ -2,7 +2,7 @@
 
 Welcome to my **nixcfg**!
 
-This repository contains my NixOS and Home-Manager configurations, along with custom modules and packages. It is modular, declarative, and tailored for multi-device setups.
+This repository contains my Darwin, NixOS and home-manager configurations, along with whatever custom modules and packages they require. It is modular, declarative, and tailored for multi-device setups. Hopefully, it's as useful to you as it is to me!
 
 ---
 
@@ -12,13 +12,15 @@ This repository contains my NixOS and Home-Manager configurations, along with cu
 
 ## ✨ Features
 
-- **Encryption:** Encrypted boot drives with Secure Boot, LUKS, and TPM decryption.
-- **Hardware Configuration**: Robust hardware support for all hosts.
-- **Home-Manager**: Unified management of user environments.
-- **Hyprland:** Dynamic tiling Wayland compositor and window manager.
-- **Modular Configuration**: Organized and reusable modules for simplicity.
-- **Multi-Device Support**: Written with multiple hosts in mind.
-- **Stylix:** Auto-generated base16 themes for the whole desktop.
+- **Declarative System & Dotfiles:** Fully declarative management of my macOS (Darwin) + Linux installations and user environments (dotfiles, packages) using Flakes, NixOS, nix-darwin, and home-manager.
+- **Multi-Host Configs:** Seamlessly configures my diverse hosts including bare-metal PCs, laptops (Framework, ThinkPad), mini-servers (Beelink), and virtual private servers (Hetzner, Netcup, AWS).
+- **Secure Boot & Encryption:** Encrypted boot drives with Secure Boot via `lanzaboote` and automatic LUKS decryption using TPM.
+- **Comprehensive Hardware Support:** Meticulously crafted configurations for my (sometimes unique) devices, including custom audio enhancements (Pipewire filter chains) and device-specific power optimizations.
+- **Hybrid Cloud Services:** Declarative setup for all the hosts and services that make up my overly complicated homelab, including the \*arr stack, Audiobookshelf, Caddy, Forgejo (my Git forge), Grafana + Loki + Prometheus, Immich, Karakeep, self-hosted AI inference with Ollama, Plex, qBittorrent, Vaultwarden, and more.
+- **Automatic Monitoring & Backups:** Easy Prometheus + Loki and Uptime-Kuma setups for system and service monitoring, plus automated Restic backups to Backblaze B2.
+- **Robust Networking:** Secure and flexible networking with Tailscale (it's WireGuard), declarative WiFi profiles, and NFS/Samba sharing.
+- **Productivity & Development:** Pre-configured tools for development (Git, Helix, VS Code, Zed), shell enhancements (fastfetch, oh-my-posh, zsh), etc.
+- **System-Wide Theming:** Consistent aesthetics across devices with stylix, which auto-generates application themes from base16 color schemes.
 
 ---
 
@@ -26,56 +28,21 @@ This repository contains my NixOS and Home-Manager configurations, along with cu
 
 ```plaintext
 .
+├── flake/             # Organized flake components
+│   ├── darwin.nix     # macOS-specific configurations
+│   ├── home-manager.nix # Home-manager configurations
+│   ├── nixos.nix      # NixOS-specific configurations
+│   └── ...            # Other flake components
 ├── flake.nix          # Main entry point
 ├── homes/             # home-manager configurations
-├── hosts/             # NixOS host configurations
-├── modules/           # Modules for NixOS and home-manager
-├── overlays/          # Custom Nixpkgs overlays
-├── pkgs/              # Custom packages
-└── README.md          # This README
+├── hosts/             # NixOS and Darwin host configurations
+├── modules/           # Modular configurations
+│   ├── darwin/        # macOS-specific modules
+│   ├── home/          # home-manager modules
+│   ├── nixos/         # NixOS-specific modules
+│   └── snippets/      # Reusable configuration snippets
+└── overlays/          # Custom Nixpkgs overlays
 ```
-
-### Key Files and Directories
-
-- **`flake.nix`**: Central file linking all configurations using Nix Flakes.
-- **`homes/`**: User-specific home-manager configurations.
-- **`hosts/`**: Host configurations for NixOS.
-- **`modules/`**: Modules for NixOS and home-manager.
-- **`overlays/`**: Defines custom overlays to extend or override Nixpkgs.
-- **`pkgs/`**: Houses custom or patched package definitions.
-- **`secrets/`**: Securely stores encrypted credentials or sensitive data.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- A working Nix installation with Flakes enabled.
-- Familiarity with NixOS, Home-Manager, and declarative configurations.
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/alyraffauf/nixcfg.git
-cd nixcfg
-```
-
-### Apply the Configuration
-
-For **NixOS** systems:
-
-```bash
-sudo nixos-rebuild switch --flake .#<hostname>
-```
-
-For **Home-Manager** setups:
-
-```bash
-home-manager switch --flake .
-```
-
-> Replace `<hostname>` with the desired system configuration from your modules.
 
 ---
 
