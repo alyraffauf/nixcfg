@@ -2,6 +2,7 @@ _: {
   perSystem = {pkgs, ...}: {
     files.files = [
       {
+        checkFile = false;
         path_ = ".zed/settings.json";
 
         drv = (pkgs.formats.json {}).generate "zed-setting.json" {

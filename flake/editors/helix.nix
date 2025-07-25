@@ -2,6 +2,7 @@ _: {
   perSystem = {pkgs, ...}: {
     files.files = [
       {
+        checkFile = false;
         path_ = ".helix/languages.toml";
 
         drv = (pkgs.formats.toml {}).generate "helix-languages.toml" {

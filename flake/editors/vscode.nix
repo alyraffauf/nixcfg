@@ -2,6 +2,7 @@ _: {
   perSystem = {pkgs, ...}: {
     files.files = [
       {
+        checkFile = false;
         path_ = ".vscode/extensions.json";
 
         drv = (pkgs.formats.json {}).generate "vscode-extensions.json" {
@@ -15,6 +16,7 @@ _: {
         };
       }
       {
+        checkFile = false;
         path_ = ".vscode/settings.json";
 
         drv = (pkgs.formats.json {}).generate "vscode-setting.json" {
@@ -54,6 +56,7 @@ _: {
         };
       }
       {
+        checkFile = false;
         path_ = ".vscode/tasks.json";
 
         drv = (pkgs.formats.json {}).generate "vscode-tasks.json" {

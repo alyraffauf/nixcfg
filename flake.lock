@@ -221,15 +221,15 @@
     },
     "files": {
       "locked": {
-        "lastModified": 1750263550,
-        "narHash": "sha256-EW/QJ8i/13GgiynBb6zOMxhLU1uEkRqmzbIDEP23yVA=",
-        "owner": "mightyiam",
+        "lastModified": 1753414454,
+        "narHash": "sha256-IMdHZjva8z354/TAjkKqgHJ0k7qGZeaf460EPq/awDA=",
+        "owner": "alyraffauf",
         "repo": "files",
-        "rev": "5f4ef1fd1f9012354a9748be093e277675d10f07",
+        "rev": "fdfd673e34933a6836e6dccda820e448300e4c05",
         "type": "github"
       },
       "original": {
-        "owner": "mightyiam",
+        "owner": "alyraffauf",
         "repo": "files",
         "type": "github"
       }
