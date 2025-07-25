@@ -4,6 +4,7 @@ _: {
     lib,
     pkgs,
     inputs',
+    self',
     ...
   }: {
     devShells.default = pkgs.mkShell {
@@ -20,11 +21,15 @@ _: {
           inputs'.agenix.packages.default
           inputs'.disko.packages.disko-install
           inputs'.nynx.packages.nynx
+          self'.packages.gen-files
         ];
 
       shellHook = ''
+        echo "Installing pre-commit hooks..."
         ${config.pre-commit.installationScript}
+        ${lib.getExe self'.packages.gen-files}
         export FLAKE="." NH_FLAKE="."
+        echo "👋 Welcome to the nixcfg devShell!"
       '';
     };
   };

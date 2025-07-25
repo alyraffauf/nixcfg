@@ -1,4 +1,7 @@
 .DS_Store
 .direnv
+.helix/
 .pre-commit-config.yaml
+.vscode/
+.zed/
 result

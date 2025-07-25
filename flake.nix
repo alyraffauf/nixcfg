@@ -18,6 +18,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    files.url = "github:mightyiam/files";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,11 +60,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    git-hooks-nix = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     self2025 = {
       url = "github:alyraffauf/self2025";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -78,8 +81,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Non-flake inputs
     absolute = {
@@ -144,6 +145,7 @@
       imports = [
         ./flake/darwin.nix
         ./flake/devShells.nix
+        ./flake/editors
         ./flake/git-hooks-nix.nix
         ./flake/home-manager.nix
         ./flake/nixos.nix
@@ -152,6 +154,7 @@
         ./flake/packages.nix
         ./flake/tailscale.nix
         ./flake/treefmt.nix
+        inputs.files.flakeModules.default
         inputs.git-hooks-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager
         inputs.treefmt-nix.flakeModule

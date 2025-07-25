@@ -1,7 +1,21 @@
 {
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
+  "[markdown]": {
+    "editor": {
+      "defaultFormatter": "esbenp.prettier-vscode",
+      "formatOnSave": true
+    }
+  },
+  "[shellscript]": {
+    "editor": {
+      "defaultFormatter": "foxundermoon.shell-format",
+      "formatOnSave": true
+    }
+  },
+  "editor": {
+    "formatOnPaste": true,
+    "formatOnSave": true,
+    "formatOnType": true
+  },
   "nix": {
     "enableLanguageServer": true,
     "formatterPath": "alejandra",
@@ -9,21 +23,15 @@
     "serverSettings": {
       "nixd": {
         "formatting": {
-          "command": ["alejandra"]
+          "command": [
+            "alejandra"
+          ]
         }
       }
     }
   },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
-    "editor.formatOnSave": true
-  },
   "shellformat": {
-    "path": "shfmt",
-    "flag": "-i 2"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "flag": "-i 2",
+    "path": "shfmt"
   }
 }
