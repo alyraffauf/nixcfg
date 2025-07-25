@@ -1,11 +1,7 @@
 {
   "tasks": [
     {
-      "args": [
-        "flake",
-        "check",
-        "--all-systems"
-      ],
+      "args": ["flake", "check", "--all-systems"],
       "command": "nix",
       "group": {
         "isDefault": true,
@@ -22,10 +18,7 @@
       "type": "shell"
     },
     {
-      "args": [
-        "os",
-        "test"
-      ],
+      "args": ["os", "test"],
       "command": "nh",
       "group": {
         "isDefault": false,
@@ -42,11 +35,7 @@
       "type": "shell"
     },
     {
-      "args": [
-        "darwin",
-        "switch",
-        "."
-      ],
+      "args": ["darwin", "switch", "."],
       "command": "nh",
       "group": {
         "isDefault": false,
@@ -63,9 +52,7 @@
       "type": "shell"
     },
     {
-      "args": [
-        "fmt"
-      ],
+      "args": ["fmt"],
       "command": "nix",
       "group": {
         "isDefault": false,
