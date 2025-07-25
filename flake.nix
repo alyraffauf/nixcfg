@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
+    actions-nix.url = "github:alyraffauf/actions.nix";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -148,6 +148,7 @@
         inputs.git-hooks-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager
         inputs.treefmt-nix.flakeModule
+        inputs.actions-nix.flakeModules.default
       ];
     };
 }

@@ -1,21 +1,21 @@
-name: check-nix
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-on:
-  push:
-    paths-ignore:
-      - "**/*.md"
-      - ".github/**"
-      - "_img/**"
-  workflow_dispatch:
+  group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
-  check-eval:
+  check-flake:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - name: Check flake evaluation
-        run: nix -Lv flake check --all-systems
+    - uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - uses: DeterminateSystems/nix-installer-action@main
+    - name: Check flake evaluation
+      run: nix -Lv flake check --all-systems
+name: check-nix
+'on':
+  push:
+    paths-ignore:
+    - '**/*.md'
+    - .github/**
+    - _img/**
+  workflow_dispatch: {}

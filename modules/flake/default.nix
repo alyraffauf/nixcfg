@@ -1,8 +1,9 @@
 {
   imports = [
+    ./actions.nix
     ./darwin.nix
     ./devShells.nix
-    ./editors
+    ./files
     ./git-hooks-nix.nix
     ./home-manager.nix
     ./nixos.nix

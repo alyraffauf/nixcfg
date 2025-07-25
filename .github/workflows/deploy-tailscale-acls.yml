@@ -1,56 +1,56 @@
-name: deploy-tailscale-acls
-
-on:
-  push:
-    branches: ["master"]
-    paths:
-      - ".github/workflows/deploy-tailscale-acls.yml"
-      - "flake/tailscale.nix"
-  pull_request:
-    branches: ["master"]
-    paths:
-      - ".github/workflows/deploy-tailscale-acls.yml"
-      - "flake/tailscale.nix"
-  workflow_dispatch:
-    inputs:
-      action:
-        description: "Which action to run"
-        required: true
-        type: choice
-        default: deploy
-        options:
-          - deploy
-          - test
-
 jobs:
   acls:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - name: Convert .#tailscaleACLs to tailscale.json
-        run: nix eval --json .#tailscaleACLs > tailscale.json
-      - name: Deploy ACL
-        if: >
-          github.event_name == 'push'
-          || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'deploy')
-        uses: tailscale/gitops-acl-action@v1
-        with:
-          api-key: ${{ secrets.TS_API_KEY }}
-          tailnet: alyraffauf.github
-          policy-file: tailscale.json
-          action: apply
-
-      - name: Test ACL
-        if: >
-          github.event_name == 'pull_request'
-          || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'test')
-        uses: tailscale/gitops-acl-action@v1
-        with:
-          api-key: ${{ secrets.TS_API_KEY }}
-          tailnet: alyraffauf.github
-          policy-file: tailscale.json
-          action: test
+    - uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - uses: DeterminateSystems/nix-installer-action@main
+    - name: Convert .#tailscaleACLs to tailscale.json
+      run: nix eval --json .#tailscaleACLs > tailscale.json
+    - if: |-
+        github.event_name == 'push' ||
+        (github.event_name == 'workflow_dispatch' &&
+         github.event.inputs.action == 'deploy')
+      name: Deploy ACL
+      uses: tailscale/gitops-acl-action@v1
+      with:
+        action: apply
+        api-key: ${{ secrets.TS_API_KEY }}
+        policy-file: tailscale.json
+        tailnet: alyraffauf.github
+    - if: |-
+        github.event_name == 'pull_request' ||
+        (github.event_name == 'workflow_dispatch' &&
+         github.event.inputs.action == 'test')
+      name: Test ACL
+      uses: tailscale/gitops-acl-action@v1
+      with:
+        action: test
+        api-key: ${{ secrets.TS_API_KEY }}
+        policy-file: tailscale.json
+        tailnet: alyraffauf.github
+name: deploy-tailscale-acls
+'on':
+  pull_request:
+    branches:
+    - master
+    paths:
+    - .github/workflows/deploy-tailscale-acls.yml
+    - flake/tailscale.nix
+  push:
+    branches:
+    - master
+    paths:
+    - .github/workflows/deploy-tailscale-acls.yml
+    - flake/tailscale.nix
+  workflow_dispatch:
+    inputs:
+      action:
+        default: deploy
+        description: Which action to run
+        options:
+        - deploy
+        - test
+        required: true
+        type: choice

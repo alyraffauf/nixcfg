@@ -1,235 +1,264 @@
-name: build-nixos
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-on:
-  push:
-    paths-ignore:
-      - "**/*.md"
-      - ".github/**"
-      - "_img/**"
-  workflow_dispatch:
+  group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   build-dewford:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build dewford
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.dewford.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build dewford
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.dewford.config.system.build.toplevel
   build-evergrande:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build evergrande
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.evergrande.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build evergrande
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.evergrande.config.system.build.toplevel
   build-fallarbor:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build fallarbor
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.fallarbor.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build fallarbor
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.fallarbor.config.system.build.toplevel
   build-lavaridge:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build lavaridge
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.lavaridge.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build lavaridge
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.lavaridge.config.system.build.toplevel
   build-lilycove:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build lilycove
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.lilycove.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build lilycove
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.lilycove.config.system.build.toplevel
   build-littleroot:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build littleroot
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.littleroot.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build littleroot
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.littleroot.config.system.build.toplevel
   build-mauville:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build mauville
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.mauville.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build mauville
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.mauville.config.system.build.toplevel
   build-mossdeep:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build mossdeep
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.mossdeep.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build mossdeep
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.mossdeep.config.system.build.toplevel
   build-oldale:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build oldale
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.oldale.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build oldale
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.oldale.config.system.build.toplevel
   build-petalburg:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build petalburg
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.petalburg.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build petalburg
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.petalburg.config.system.build.toplevel
   build-rustboro:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build rustboro
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.rustboro.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build rustboro
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.rustboro.config.system.build.toplevel
   build-slateport:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build slateport
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.slateport.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build slateport
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.slateport.config.system.build.toplevel
   build-sootopolis:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build sootopolis
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.sootopolis.config.system.build.toplevel
-
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build sootopolis
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.sootopolis.config.system.build.toplevel
   build-verdanturf:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: cachix/cachix-action@master
-        with:
-          name: alyraffauf
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build verdanturf
-        run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.verdanturf.config.system.build.toplevel
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build verdanturf
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.verdanturf.config.system.build.toplevel
+name: build-nixos
+'on':
+  push:
+    paths-ignore:
+    - '**/*.md'
+    - .github/**
+    - _img/**
+  workflow_dispatch: {}
