@@ -10,7 +10,6 @@ _: {
         name = "gen-files";
 
         text = ''
-          echo "Configuring your editors..."
           ${lib.getExe config.files.writer.drv}
         '';
       };

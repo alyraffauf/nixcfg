@@ -27,6 +27,7 @@ _: {
       shellHook = ''
         echo "Installing pre-commit hooks..."
         ${config.pre-commit.installationScript}
+        echo "Generating files..."
         ${lib.getExe self'.packages.gen-files}
         export FLAKE="." NH_FLAKE="."
         echo "👋 Welcome to the nixcfg devShell!"
