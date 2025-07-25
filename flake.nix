@@ -143,17 +143,7 @@
       ];
 
       imports = [
-        ./flake/darwin.nix
-        ./flake/devShells.nix
-        ./flake/editors
-        ./flake/git-hooks-nix.nix
-        ./flake/home-manager.nix
-        ./flake/nixos.nix
-        ./flake/nynx.nix
-        ./flake/overlays.nix
-        ./flake/packages.nix
-        ./flake/tailscale.nix
-        ./flake/treefmt.nix
+        ./modules/flake
         inputs.files.flakeModules.default
         inputs.git-hooks-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager

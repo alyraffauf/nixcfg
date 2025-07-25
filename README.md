@@ -28,17 +28,17 @@ This repository contains my Darwin, NixOS and home-manager configurations, along
 
 ```plaintext
 .
-├── flake/             # Organized flake components
-│   ├── darwin.nix     # macOS-specific configurations
-│   ├── home-manager.nix # Home-manager configurations
-│   ├── nixos.nix      # NixOS-specific configurations
-│   └── ...            # Other flake components
 ├── flake.nix          # Main entry point
 ├── homes/             # home-manager configurations
 ├── hosts/             # NixOS and Darwin host configurations
 ├── modules/           # Modular configurations
 │   ├── darwin/        # macOS-specific modules
 │   ├── home/          # home-manager modules
+│   ├── flake/         # Organized flake components
+│   │   ├── darwin.nix       # macOS-specific configurations
+│   │   ├── home-manager.nix # Home-manager configurations
+│   │   ├── nixos.nix        # NixOS-specific configurations
+│   │   └── ...              # Other flake components
 │   ├── nixos/         # NixOS-specific modules
 │   └── snippets/      # Reusable configuration snippets
 └── overlays/          # Custom Nixpkgs overlays

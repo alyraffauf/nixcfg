@@ -5,17 +5,17 @@
 }: {
   flake = {
     diskoConfigurations = {
-      btrfs-subvolumes = ../modules/nixos/disko/btrfs-subvolumes;
-      luks-btrfs-subvolumes = ../modules/nixos/disko/luks-btrfs-subvolumes;
-      lvm-ext4 = ../modules/nixos/disko/lvm-ext4;
+      btrfs-subvolumes = ../disko/btrfs-subvolumes;
+      luks-btrfs-subvolumes = ../disko/luks-btrfs-subvolumes;
+      lvm-ext4 = ../disko/lvm-ext4;
     };
 
     nixosModules = {
-      hardware = ../modules/nixos/hardware;
-      locale-en-us = ../modules/nixos/locale/en-us;
-      nixos = ../modules/nixos/os;
-      snippets = ../modules/snippets;
-      users = ../modules/nixos/users;
+      hardware = ../hardware;
+      locale-en-us = ../locale/en-us;
+      nixos = ../nixos;
+      snippets = ../snippets;
+      users = ../users;
     };
 
     nixosConfigurations = let
@@ -40,7 +40,7 @@
         host:
           inputs.nixpkgs.lib.nixosSystem {
             modules = [
-              ../hosts/${host}
+              ../../hosts/${host}
               inputs.agenix.nixosModules.default
               inputs.chaotic.homeManagerModules.default
               inputs.disko.nixosModules.disko

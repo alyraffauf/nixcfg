@@ -4,11 +4,11 @@
   ...
 }: {
   flake = {
-    darwinModules.default = ../modules/darwin;
+    darwinModules.default = ../darwin;
 
     darwinConfigurations.fortree = inputs.nix-darwin.lib.darwinSystem {
       modules = [
-        ../hosts/fortree
+        ../../hosts/fortree
         self.darwinModules.default
         inputs.agenix.darwinModules.default
         inputs.home-manager.darwinModules.home-manager
