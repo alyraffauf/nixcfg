@@ -1,0 +1,21 @@
+[[language]]
+auto-format = true
+language-servers = ["nixd"]
+name = "nix"
+
+[language.formatter]
+command = "alejandra"
+
+[[language]]
+auto-format = true
+file-types = ["sh", "bash", "dash", "ksh", "mksh"]
+language-servers = ["bash-language-server"]
+name = "bash"
+
+[language.formatter]
+args = ["-i", "2"]
+command = "shfmt"
+
+[language-server.bash-language-server]
+args = ["start"]
+command = "bash-language-server"

@@ -1,0 +1,81 @@
+{
+  "auto_install_extensions": {
+    "basher": true,
+    "nix": true
+  },
+  "languages": {
+    "JSON": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ],
+          "command": "prettier"
+        }
+      }
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ],
+          "command": "prettier"
+        }
+      }
+    },
+    "Nix": {
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "language_servers": [
+        "nixd",
+        "!nil"
+      ]
+    },
+    "Shell Script": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "arguments": [
+            "--filename",
+            "{buffer_path}",
+            "-i",
+            "2"
+          ],
+          "command": "shfmt"
+        }
+      },
+      "hard_tabs": false,
+      "tab_size": 2
+    },
+    "YAML": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ],
+          "command": "prettier"
+        }
+      }
+    }
+  },
+  "lsp": {
+    "nixd": {
+      "settings": {
+        "formatting": {
+          "command": [
+            "alejandra",
+            "--quiet",
+            "--"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "[markdown]": {
+    "editor": {
+      "defaultFormatter": "esbenp.prettier-vscode",
+      "formatOnSave": true
+    }
+  },
+  "[shellscript]": {
+    "editor": {
+      "defaultFormatter": "foxundermoon.shell-format",
+      "formatOnSave": true
+    }
+  },
+  "editor": {
+    "formatOnPaste": true,
+    "formatOnSave": true,
+    "formatOnType": true
+  },
+  "nix": {
+    "enableLanguageServer": true,
+    "formatterPath": "alejandra",
+    "serverPath": "nixd",
+    "serverSettings": {
+      "nixd": {
+        "formatting": {
+          "command": [
+            "alejandra"
+          ]
+        }
+      }
+    }
+  },
+  "shellformat": {
+    "flag": "-i 2",
+    "path": "shfmt"
+  }
+}
