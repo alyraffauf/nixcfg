@@ -11,12 +11,10 @@ _: {
       packages =
         (with pkgs; [
           (lib.hiPrio uutils-coreutils-noprefix)
-          bash-language-server
           git
           nh
-          nixd
         ])
-        ++ lib.attrValues config.treefmt.build.programs
+        # ++ lib.attrValues config.treefmt.build.programs
         ++ [
           inputs'.agenix.packages.default
           inputs'.disko.packages.disko-install

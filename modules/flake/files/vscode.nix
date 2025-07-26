@@ -1,5 +1,9 @@
 _: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    lib,
+    pkgs,
+    ...
+  }: {
     files.files = [
       {
         checkFile = false;
@@ -28,15 +32,9 @@ _: {
 
           nix = {
             enableLanguageServer = true;
-            formatterPath = "alejandra";
-            serverPath = "nixd";
-            serverSettings = {
-              nixd = {
-                formatting = {
-                  command = ["alejandra"];
-                };
-              };
-            };
+            formatterPath = lib.getExe pkgs.alejandra;
+            serverPath = lib.getExe pkgs.nixd;
+            serverSettings.nixd.formatting.command = [(lib.getExe pkgs.alejandra)];
           };
 
           "[shellscript]" = {
@@ -45,7 +43,7 @@ _: {
           };
 
           shellformat = {
-            path = "shfmt";
+            path = lib.getExe pkgs.shfmt;
             flag = "-i 2";
           };
 
@@ -67,16 +65,19 @@ _: {
               type = "shell";
               command = "nix";
               args = ["flake" "check" "--all-systems"];
+
               group = {
                 kind = "build";
                 isDefault = true;
               };
+
               presentation = {
                 echo = true;
                 reveal = "silent";
                 focus = false;
                 panel = "shared";
               };
+
               problemMatcher = [];
             }
             {
@@ -84,16 +85,19 @@ _: {
               type = "shell";
               command = "nh";
               args = ["os" "test"];
+
               group = {
                 kind = "build";
                 isDefault = false;
               };
+
               presentation = {
                 echo = true;
                 reveal = "always";
                 focus = true;
                 panel = "shared";
               };
+
               problemMatcher = [];
             }
             {
@@ -101,16 +105,19 @@ _: {
               type = "shell";
               command = "nh";
               args = ["darwin" "switch" "."];
+
               group = {
                 kind = "build";
                 isDefault = false;
               };
+
               presentation = {
                 echo = true;
                 reveal = "always";
                 focus = true;
                 panel = "shared";
               };
+
               problemMatcher = [];
             }
             {
@@ -118,16 +125,19 @@ _: {
               type = "shell";
               command = "nix";
               args = ["fmt"];
+
               group = {
                 kind = "none";
                 isDefault = false;
               };
+
               presentation = {
                 echo = true;
                 reveal = "silent";
                 focus = false;
                 panel = "shared";
               };
+
               problemMatcher = [];
             }
           ];
