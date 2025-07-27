@@ -315,7 +315,7 @@
       };
     };
 
-    meilisearch.dumplessUpgrade = true;
+    meilisearch.settings.experimental_dumpless_upgrade = true;
 
     # open-webui = {
     #   enable = true;
