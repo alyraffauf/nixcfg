@@ -1,8 +1,6 @@
-{self, ...}: {
+_: {
   flake.overlays = {
     default = _final: prev: {
-      inherit (self.inputs.nixpkgs-staging-next.legacyPackages.${prev.system}) couchdb3;
-
       ghostty = prev.ghostty.overrideAttrs (_: {
         preBuild = ''
           shopt -s globstar

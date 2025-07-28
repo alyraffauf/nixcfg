@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
     actions-nix.url = "github:alyraffauf/actions.nix";
 
     agenix = {
