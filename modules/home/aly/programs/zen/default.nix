@@ -12,7 +12,7 @@ in {
     programs.zen-browser = {
       enable = true;
       nativeMessagingHosts = lib.optionals pkgs.stdenv.isLinux [pkgs.bitwarden-desktop];
-      package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
+      # package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
 
       profiles = {
         default = {
