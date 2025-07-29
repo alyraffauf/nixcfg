@@ -1,5 +1,8 @@
 {self, ...}: {
   flake.nynxDeployments = {
+    dewford.output = self.nixosConfigurations.dewford.config.system.build.toplevel;
+    dewford.user = "root";
+
     evergrande.output = self.nixosConfigurations.evergrande.config.system.build.toplevel;
     evergrande.user = "root";
 
