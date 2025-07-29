@@ -1,6 +1,5 @@
 {
   config,
-  modulesPath,
   pkgs,
   self,
   ...
@@ -9,20 +8,29 @@
     ./proxy.nix
     ./secrets.nix
     ./stylix.nix
-    "${modulesPath}/profiles/qemu-guest.nix"
     self.diskoConfigurations.lvm-ext4
     self.nixosModules.locale-en-us
   ];
 
   boot = {
-    initrd.availableKernelModules = [
-      "ahci"
-      "sd_mod"
-      "sr_mod"
-      "virtio_pci"
-      "virtio_scsi"
-      "xhci_pci"
-    ];
+    initrd = {
+      availableKernelModules = [
+        "virtio_net"
+        "virtio_pci"
+        "virtio_mmio"
+        "virtio_blk"
+        "virtio_scsi"
+        "9p"
+        "9pnet_virtio"
+      ];
+
+      kernelModules = [
+        "virtio_balloon"
+        "virtio_console"
+        "virtio_rng"
+        "virtio_gpu"
+      ];
+    };
 
     loader.grub = {
       efiSupport = true;
@@ -128,6 +136,8 @@
         };
       };
     };
+
+    qemuGuest.enable = true;
 
     uptime-kuma = {
       enable = true;
