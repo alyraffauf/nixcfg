@@ -17,7 +17,7 @@
         "aly.codes" = {
           extraConfig = ''
             encode gzip zstd
-            reverse_proxy localhost${config.services.anubis.instances.alycodes.settings.BIND}
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.aly-codes.hostName}:${toString config.mySnippets.cute-haus.networkMap.aly-codes.port}
           '';
         };
 
