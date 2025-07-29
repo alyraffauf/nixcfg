@@ -6,9 +6,7 @@
   ...
 }: {
   imports = [
-    ./proxy.nix
     ./secrets.nix
-    ./services.nix
     ./stylix.nix
     "${modulesPath}/virtualisation/amazon-image.nix"
     self.nixosModules.locale-en-us

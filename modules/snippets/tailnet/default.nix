@@ -22,7 +22,7 @@
         };
 
         couchdb = {
-          hostName = "verdanturf";
+          hostName = "dewford";
           port = 5984;
           vHost = "couchdb.${config.mySnippets.tailnet.name}";
         };
@@ -94,7 +94,7 @@
         };
 
         uptime-kuma = {
-          hostName = "verdanturf";
+          hostName = "dewford";
           port = 3001;
           vHost = "uptime-kuma.${config.mySnippets.tailnet.name}";
         };

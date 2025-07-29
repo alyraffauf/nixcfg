@@ -61,12 +61,12 @@
 
       uptime-kuma = {
         # Only used for status pages
-        hostName = "verdanturf";
+        hostName = "dewford";
         port = 3001;
       };
 
       vaultwarden = {
-        hostName = "verdanturf";
+        hostName = "dewford";
         port = 8222;
         vHost = "vault.cute.haus";
       };
