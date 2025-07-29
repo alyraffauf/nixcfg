@@ -20,8 +20,5 @@
 
     slateport.output = self.nixosConfigurations.slateport.config.system.build.toplevel;
     slateport.user = "root";
-
-    verdanturf.output = self.nixosConfigurations.verdanturf.config.system.build.toplevel;
-    verdanturf.user = "root";
   };
 }

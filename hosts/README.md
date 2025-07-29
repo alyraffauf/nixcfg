@@ -20,8 +20,7 @@ hosts/
 ├── petalburg/     # Custom ATX Desktop
 ├── rustboro/      # ThinkPad T440p
 ├── slateport/     # Lenovo ThinkCentre M700 Tiny
-├── sootopolis/    # ThinkPad X1 Carbon Gen 9
-└── verdanturf/    # Amazon EC2 t2.micro
+└── sootopolis/    # ThinkPad X1 Carbon Gen 9
 ```
 
 ---

@@ -22,8 +22,7 @@
         rootMe "dewford"
         // rootMe "evergrande"
         // rootMe "mossdeep"
-        // rootMe "slateport"
-        // rootMe "verdanturf";
+        // rootMe "slateport";
 
       package = pkgs.openssh;
     };

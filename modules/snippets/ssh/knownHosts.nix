@@ -68,11 +68,6 @@
         hostNames = ["sootopolis" "sootopolis.local" "sootopolis.${config.mySnippets.tailnet.name}"];
         publicKeyFile = "${self.inputs.secrets}/publicKeys/root_sootopolis.pub";
       };
-
-      verdanturf = {
-        hostNames = ["verdanturf" "verdanturf.local" "verdanturf.${config.mySnippets.tailnet.name}"];
-        publicKeyFile = "${self.inputs.secrets}/publicKeys/root_verdanturf.pub";
-      };
     };
   };
 }

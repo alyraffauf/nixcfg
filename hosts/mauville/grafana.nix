@@ -201,10 +201,6 @@
               targets = ["slateport:3021"];
               labels.instance = "slateport";
             }
-            {
-              targets = ["verdanturf:3021"];
-              labels.instance = "verdanturf";
-            }
           ];
         }
       ];

@@ -35,7 +35,6 @@
         "rustboro"
         "slateport"
         "sootopolis"
-        "verdanturf"
       ] (
         host:
           inputs.nixpkgs.lib.nixosSystem {
