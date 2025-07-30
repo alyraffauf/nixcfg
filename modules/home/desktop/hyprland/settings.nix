@@ -191,6 +191,7 @@ in {
 
     groupbar = {
       height = 24;
+      gradients = true;
       text_color = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
       font_size = config.stylix.fonts.sizes.desktop;
       "col.active" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
