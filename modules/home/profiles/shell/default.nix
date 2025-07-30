@@ -27,24 +27,6 @@
     };
 
     programs = {
-      bash = {
-        enable = true;
-        enableCompletion = true;
-        enableVteIntegration = true;
-
-        shellOptions = [
-          "autocd"
-          "cdspell"
-          "checkjobs"
-          "checkwinsize"
-          "dirspell"
-          "dotglob"
-          "extglob"
-          "globstar"
-          "histappend"
-        ];
-      };
-
       bat.enable = true;
 
       direnv = {
@@ -67,11 +49,19 @@
 
       eza = {
         enable = true;
-        enableBashIntegration = true;
+        enableFishIntegration = true;
         enableZshIntegration = true;
         extraOptions = ["--group-directories-first" "--header"];
         git = true;
         icons = "auto";
+      };
+
+      fish = {
+        enable = true;
+
+        shellInit = ''
+          function fish_greeting; end
+        '';
       };
 
       fzf.enable = true;
@@ -92,13 +82,14 @@
 
       zellij = {
         enable = true;
-        enableBashIntegration = false;
         enableZshIntegration = false;
         enableFishIntegration = false;
       };
 
       zoxide = {
         enable = true;
+        enableFishIntegration = true;
+        enableZshIntegration = true;
         options = ["--cmd cd"];
       };
 
