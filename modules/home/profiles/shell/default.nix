@@ -61,6 +61,7 @@
 
         shellInit = ''
           function fish_greeting; end
+          function fish_title; end
         '';
       };
 
