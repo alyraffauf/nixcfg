@@ -10,11 +10,18 @@
     ./stylix.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    (lib.hiPrio uutils-coreutils-noprefix)
-    eza
-    git
-  ];
+  environment = {
+    shells = with pkgs; [
+      fish
+      zsh
+    ];
+
+    systemPackages = with pkgs; [
+      (lib.hiPrio uutils-coreutils-noprefix)
+      eza
+      git
+    ];
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
@@ -85,6 +92,7 @@
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
+  programs.fish.enable = true;
 
   security.sudo.extraConfig = ''
     root ALL=(ALL) NOPASSWD: ALL
@@ -136,7 +144,7 @@
         (lib.filter (file: lib.hasPrefix "aly_" file)
           (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
 
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
     };
 
     root.openssh.authorizedKeys.keyFiles =
