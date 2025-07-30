@@ -19,7 +19,12 @@ in {
 
       gc = {
         automatic = true;
-        options = "--delete-older-than 10d";
+
+        options =
+          if isBuildMachine
+          then "--delete-older-than 20d"
+          else "--delete-older-than 3d";
+
         persistent = true;
         randomizedDelaySec = "60min";
       };

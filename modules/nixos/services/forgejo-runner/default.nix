@@ -30,7 +30,6 @@
     ];
 
     age.secrets.act-runner.file = "${self.inputs.secrets}/act-runner.age";
-    nix.gc.options = lib.mkForce "--delete-older-than 20d";
 
     services.gitea-actions-runner = let
       arch = lib.replaceStrings ["-"] ["_"] pkgs.system;
