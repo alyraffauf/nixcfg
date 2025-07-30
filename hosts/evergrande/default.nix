@@ -45,17 +45,17 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
 
-  system = {
-    autoUpgrade.operation = "switch";
-    stateVersion = "25.05";
-  };
-
+  system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
 
   myNixOS = {
     profiles = {
-      autoUpgrade.enable = true;
+      autoUpgrade = {
+        enable = true;
+        operation = "switch";
+      };
+
       backups.enable = true;
       base.enable = true;
       server.enable = true;

@@ -44,17 +44,17 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
 
-  system = {
-    autoUpgrade.operation = "switch";
-    stateVersion = "24.11";
-  };
-
+  system.stateVersion = "24.11";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_62292463";
 
   myNixOS = {
     profiles = {
-      autoUpgrade.enable = true;
+      autoUpgrade = {
+        enable = true;
+        operation = "switch";
+      };
+
       backups.enable = true;
       base.enable = true;
       server.enable = true;

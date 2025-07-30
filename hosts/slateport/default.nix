@@ -14,18 +14,18 @@
     image = "${self.inputs.wallpapers}/wallhaven-mp886k.jpg";
   };
 
-  system = {
-    autoUpgrade.operation = "switch";
-    stateVersion = "24.05";
-  };
-
+  system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
   myHardware.lenovo.thinkcentre.m700.enable = true;
 
   myNixOS = {
     profiles = {
-      autoUpgrade.enable = true;
+      autoUpgrade = {
+        enable = true;
+        operation = "switch";
+      };
+
       backups.enable = true;
       base.enable = true;
       btrfs.enable = true;

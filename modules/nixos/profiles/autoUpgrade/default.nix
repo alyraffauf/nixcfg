@@ -4,18 +4,27 @@
   pkgs,
   ...
 }: {
-  options.myNixOS.profiles.autoUpgrade.enable = lib.mkEnableOption "auto-upgrade system";
+  options.myNixOS.profiles.autoUpgrade = {
+    enable = lib.mkEnableOption "auto-upgrade system";
+
+    operation = lib.mkOption {
+      type = lib.types.str;
+      default = "boot";
+      description = "Operation to perform on auto-upgrade. Can be 'boot', 'switch', or 'test'.";
+    };
+  };
 
   config = lib.mkIf config.myNixOS.profiles.autoUpgrade.enable {
     system.autoUpgrade = {
+      inherit (config.myNixOS.profiles.autoUpgrade) operation;
+
       enable = true;
       allowReboot = lib.mkDefault true;
       dates = "02:00";
       flags = ["--accept-flake-config"];
       flake = config.environment.variables.FLAKE or "github:alyraffauf/nixcfg";
-      operation = lib.mkDefault "boot";
       persistent = true;
-      randomizedDelaySec = "60min";
+      randomizedDelaySec = "120min";
 
       rebootWindow = {
         lower = "02:00";

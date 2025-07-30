@@ -95,17 +95,17 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
   };
 
-  system = {
-    autoUpgrade.operation = "switch";
-    stateVersion = "25.05";
-  };
-
+  system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
   myHardware.beelink.mini.s12pro.enable = true;
 
   myNixOS = {
     profiles = {
-      autoUpgrade.enable = true;
+      autoUpgrade = {
+        enable = true;
+        operation = "switch";
+      };
+
       base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;

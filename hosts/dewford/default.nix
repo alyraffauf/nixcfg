@@ -92,11 +92,7 @@
   networking.hostName = "dewford";
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
-
-  system = {
-    autoUpgrade.operation = "switch";
-    stateVersion = "25.11";
-  };
+  system.stateVersion = "25.11";
 
   services = {
     couchdb = {
@@ -169,7 +165,11 @@
 
   myNixOS = {
     profiles = {
-      autoUpgrade.enable = true;
+      autoUpgrade = {
+        enable = true;
+        operation = "switch";
+      };
+
       backups.enable = true;
       base.enable = true;
       data-share.enable = true;
