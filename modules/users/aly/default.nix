@@ -17,7 +17,7 @@
         (lib.filter (file: lib.hasPrefix "aly_" file)
           (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
 
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
       uid = 1000;
     };
   };
