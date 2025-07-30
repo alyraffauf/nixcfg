@@ -390,6 +390,6 @@ in {
       }
     '';
 
-    stylix.targets.waybar.font = "sansSerif";
+    stylix.targets.waybar.font = "monospace";
   };
 }
