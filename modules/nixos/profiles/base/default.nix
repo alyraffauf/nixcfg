@@ -68,6 +68,7 @@
         '';
       };
 
+      dbus.implementation = "broker";
       vscode-server.enable = true;
 
       openssh = {
