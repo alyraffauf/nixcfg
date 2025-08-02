@@ -15,6 +15,16 @@ in {
 
   config = lib.mkIf config.myNixOS.profiles.backups.enable {
     services.restic.backups = {
+      audiobookshelf = lib.mkIf config.services.audiobookshelf.enable (
+        config.mySnippets.restic
+        // {
+          backupCleanupCommand = start "audiobookshelf";
+          backupPrepareCommand = stop "audiobookshelf";
+          paths = [config.services.audiobookshelf.dataDir];
+          repository = mkRepo "audiobookshelf";
+        }
+      );
+
       bazarr = lib.mkIf config.services.bazarr.enable (
         config.mySnippets.restic
         // {
