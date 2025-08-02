@@ -12,7 +12,6 @@
 
   environment = {
     shells = with pkgs; [
-      fish
       zsh
     ];
 
@@ -144,7 +143,7 @@
         (lib.filter (file: lib.hasPrefix "aly_" file)
           (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
 
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
     };
 
     root.openssh.authorizedKeys.keyFiles =

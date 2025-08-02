@@ -12,10 +12,7 @@
   ];
 
   config = lib.mkIf (config.myUsers.root.enable or config.myUsers.aly.enable or config.myUsers.dustin.enable) {
-    programs = {
-      fish.enable = true;
-      zsh.enable = true;
-    };
+    programs.zsh.enable = true;
 
     users = {
       defaultUserShell = pkgs.zsh;

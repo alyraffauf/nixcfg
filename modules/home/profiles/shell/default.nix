@@ -56,15 +56,6 @@
         icons = "auto";
       };
 
-      fish = {
-        enable = true;
-
-        shellInit = ''
-          function fish_greeting; end
-          function fish_title; end
-        '';
-      };
-
       fzf.enable = true;
       htop.enable = true;
 
