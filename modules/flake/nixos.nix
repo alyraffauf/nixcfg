@@ -32,7 +32,6 @@
         "mossdeep"
         "oldale"
         "petalburg"
-        "rustboro"
         "slateport"
         "sootopolis"
       ] (
