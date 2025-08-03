@@ -7,7 +7,6 @@
   imports = [
     ./proxy.nix
     ./secrets.nix
-    ./stylix.nix
     self.diskoConfigurations.lvm-ext4
     self.nixosModules.locale-en-us
   ];

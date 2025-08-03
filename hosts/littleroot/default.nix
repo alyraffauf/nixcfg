@@ -10,7 +10,6 @@
   isoImage.isoBaseName = lib.mkForce "littleroot";
   networking.hostName = "littleroot";
   nixpkgs.hostPlatform = "x86_64-linux";
-  stylix.enable = false;
 
   myNixOS = {
     profiles.iso.enable = true;

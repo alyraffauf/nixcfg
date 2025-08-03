@@ -5,7 +5,6 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-    ./stylix.nix
   ];
 
   isoImage.isoBaseName = lib.mkForce "oldale";
