@@ -10,15 +10,15 @@ The `hosts/` directory is organized as follows:
 
 ```plaintext
 hosts/
-├── evergrande/    # Hetzner VPS
 ├── dewford/       # Netcap VPS
-├── fallarbor/     # Framework Laptop 13 (11th Gen Intel)
+├── evergrande/    # Hetzner VPS
+├── fallarbor/     # ThinkPad X1 Carbon Gen 9
 ├── fortree/       # MacBook Air M2
+├── lavaridge/     # Framework Laptop 13 (11th Gen Intel)
 ├── lilycove/      # Custom Mini-ITX NAS
 ├── mauville/      # Beelink Mini S12 Pro
 ├── mossdeep/      # Hetzner VPS
 ├── petalburg/     # Custom ATX Desktop
-├── rustboro/      # ThinkPad T440p
 ├── slateport/     # Lenovo ThinkCentre M700 Tiny
 └── sootopolis/    # ThinkPad X1 Carbon Gen 9
 ```
