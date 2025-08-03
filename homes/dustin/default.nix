@@ -62,8 +62,6 @@
     };
   };
 
-  stylix.targets.firefox.profileNames = ["default"];
-
   wayland.windowManager = {
     hyprland.settings = {
       bind = ["SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"];
