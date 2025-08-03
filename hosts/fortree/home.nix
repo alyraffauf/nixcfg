@@ -61,7 +61,6 @@
       helix.enable = true;
       ghostty.enable = true;
       vesktop.enable = true;
-      vscode.profiles.default.enable = true;
 
       zed = {
         enable = true;
