@@ -39,9 +39,13 @@
     fonts = {
       fontDir.enable = true;
       packages = with pkgs; [
+        adwaita-fonts
+        nerd-fonts.caskaydia-cove
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
+        source-code-pro
+        source-sans-pro
       ];
       # ++ lib.optionals config.stylix.enable [
       #   config.stylix.fonts.sansSerif.package
