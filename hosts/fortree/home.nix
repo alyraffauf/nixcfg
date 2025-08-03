@@ -9,7 +9,6 @@
       self.homeConfigurations.aly
       self.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
-      self.inputs.fontix.homeModules.default
       self.inputs.catppuccin.homeModules.catppuccin
     ];
 

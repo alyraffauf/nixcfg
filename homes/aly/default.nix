@@ -5,7 +5,10 @@
   self,
   ...
 }: {
-  imports = [self.homeModules.default];
+  imports = [
+    self.homeModules.default
+    self.inputs.fontix.homeModules.default
+  ];
 
   config = lib.mkMerge [
     {
@@ -23,7 +26,6 @@
 
       programs.home-manager.enable = true;
       xdg.enable = true;
-      # stylix.targets.firefox.profileNames = ["default"];
 
       myHome = {
         aly = {
