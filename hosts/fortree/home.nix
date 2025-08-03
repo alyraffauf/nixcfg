@@ -10,6 +10,7 @@
       self.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
       self.inputs.fontix.homeModules.default
+      self.inputs.catppuccin.homeModules.catppuccin
     ];
 
     age.secrets = {
@@ -20,14 +21,14 @@
     home.stateVersion = "25.05";
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
-    programs = {
-      ghostty.settings.theme = "catppuccin-macchiato";
+    # programs = {
+    #   ghostty.settings.theme = "catppuccin-macchiato";
 
-      zed-editor.userSettings = {
-        "icon-theme" = "Catppuccin Macchiato";
-        "theme" = "Catppuccin Macchiato - No Italics";
-      };
-    };
+    #   zed-editor.userSettings = {
+    #     "icon-theme" = "Catppuccin Macchiato";
+    #     "theme" = "Catppuccin Macchiato - No Italics";
+    #   };
+    # };
 
     services.syncthing = let
       inherit (config.mySnippets.syncthing) devices;
@@ -63,6 +64,21 @@
 
         inherit devices folders;
       };
+    };
+
+    catppuccin = {
+      flavor = "macchiato";
+      helix.enable = true;
+      ghostty.enable = true;
+      vesktop.enable = true;
+
+      zed = {
+        enable = true;
+        icons.enable = true;
+        italics = false;
+      };
+
+      zellij.enable = true;
     };
 
     fontix = {
