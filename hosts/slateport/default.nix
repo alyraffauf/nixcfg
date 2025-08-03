@@ -8,12 +8,6 @@
 
   networking.hostName = "slateport";
   powerManagement.powertop.enable = true;
-
-  stylix = {
-    enable = false;
-    image = "${self.inputs.wallpapers}/wallhaven-mp886k.jpg";
-  };
-
   system.stateVersion = "24.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";

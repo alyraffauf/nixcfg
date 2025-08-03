@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./home.nix
-    ./stylix.nix
   ];
 
   environment = {

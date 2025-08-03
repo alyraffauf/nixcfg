@@ -13,7 +13,6 @@ in {
     ./prometheus.nix
     ./secrets.nix
     ./services.nix
-    ./stylix.nix
     self.diskoConfigurations.luks-btrfs-subvolumes
     self.nixosModules.locale-en-us
   ];

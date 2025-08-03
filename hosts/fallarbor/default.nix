@@ -6,7 +6,6 @@
   imports = [
     ./home.nix
     ./secrets.nix
-    ./stylix.nix
     self.diskoConfigurations.luks-btrfs-subvolumes
     self.nixosModules.locale-en-us
   ];
