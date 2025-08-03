@@ -4,7 +4,7 @@
   ...
 }: {
   stylix = {
-    enable = true;
+    enable = false;
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     image = "${self.inputs.wallpapers}/wallhaven-yxdrex.png";
