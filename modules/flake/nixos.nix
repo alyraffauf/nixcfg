@@ -44,7 +44,6 @@
               inputs.disko.nixosModules.disko
               inputs.home-manager.nixosModules.home-manager
               inputs.lanzaboote.nixosModules.lanzaboote
-              inputs.stylix.nixosModules.stylix
               inputs.vscode-server.nixosModules.default
               modules.hardware
               modules.nixos
