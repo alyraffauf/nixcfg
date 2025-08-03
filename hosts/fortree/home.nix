@@ -2,12 +2,14 @@
   home-manager.users.aly = {
     config,
     lib,
+    pkgs,
     ...
   }: {
     imports = [
       self.homeConfigurations.aly
       self.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
+      self.inputs.fontix.homeModules.default
     ];
 
     age.secrets = {
@@ -17,6 +19,15 @@
 
     home.stateVersion = "25.05";
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
+
+    programs = {
+      ghostty.settings.theme = "catppuccin-macchiato";
+
+      zed-editor.userSettings = {
+        "icon-theme" = "Catppuccin Macchiato";
+        "theme" = "Catppuccin Macchiato - No Italics";
+      };
+    };
 
     services.syncthing = let
       inherit (config.mySnippets.syncthing) devices;
@@ -54,14 +65,34 @@
       };
     };
 
-    stylix.targets = {
-      bat.enable = true;
+    fontix = {
+      fonts = {
+        monospace = {
+          name = "CaskaydiaCove Nerd Font";
+          package = pkgs.nerd-fonts.caskaydia-cove;
+        };
+
+        sansSerif = {
+          name = "UbuntuSans Nerd Font";
+          package = pkgs.nerd-fonts.ubuntu-sans;
+        };
+
+        serif = {
+          name = "Source Serif Pro";
+          package = pkgs.source-serif-pro;
+        };
+      };
+
+      sizes = {
+        applications = 11;
+        desktop = 10;
+      };
+
+      zed-editor.enable = true;
+      ghostty.enable = true;
+      halloy.enable = true;
       font-packages.enable = true;
       fontconfig.enable = true;
-      ghostty.enable = true;
-      helix.enable = true;
-      vscode.enable = true;
-      zellij.enable = true;
     };
   };
 }

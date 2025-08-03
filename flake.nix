@@ -20,6 +20,11 @@
     files.url = "github:alyraffauf/files";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    fontix = {
+      url = "github:alyraffauf/fontix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
