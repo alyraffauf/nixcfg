@@ -21,15 +21,6 @@
     home.stateVersion = "25.05";
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
-    # programs = {
-    #   ghostty.settings.theme = "catppuccin-macchiato";
-
-    #   zed-editor.userSettings = {
-    #     "icon-theme" = "Catppuccin Macchiato";
-    #     "theme" = "Catppuccin Macchiato - No Italics";
-    #   };
-    # };
-
     services.syncthing = let
       inherit (config.mySnippets.syncthing) devices;
 
@@ -71,6 +62,7 @@
       helix.enable = true;
       ghostty.enable = true;
       vesktop.enable = true;
+      vscode.profiles.default.enable = true;
 
       zed = {
         enable = true;
