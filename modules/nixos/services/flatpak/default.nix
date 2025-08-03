@@ -17,12 +17,11 @@
 
       aggregatedIcons = pkgs.buildEnv {
         name = "system-icons";
-        paths =
-          (with pkgs; [
-            adwaita-icon-theme
-            gnome-themes-extra
-          ])
-          ++ lib.optional config.stylix.enable config.stylix.cursor.package;
+        paths = with pkgs; [
+          adwaita-icon-theme
+          gnome-themes-extra
+        ];
+        # ++ lib.optional config.stylix.enable config.stylix.cursor.package;
 
         pathsToLink = ["/share/icons"];
       };
