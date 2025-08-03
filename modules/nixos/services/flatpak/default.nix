@@ -39,17 +39,16 @@
 
     fonts = {
       fontDir.enable = true;
-      packages =
-        (with pkgs; [
-          noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-emoji
-        ])
-        ++ lib.optionals config.stylix.enable [
-          config.stylix.fonts.sansSerif.package
-          config.stylix.fonts.monospace.package
-          config.stylix.fonts.serif.package
-        ];
+      packages = with pkgs; [
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-emoji
+      ];
+      # ++ lib.optionals config.stylix.enable [
+      #   config.stylix.fonts.sansSerif.package
+      #   config.stylix.fonts.monospace.package
+      #   config.stylix.fonts.serif.package
+      # ];
     };
 
     services.flatpak.enable = true;
