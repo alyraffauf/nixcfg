@@ -177,7 +177,6 @@ in {
     gaps_in = 5;
     gaps_out = 6;
     layout = "dwindle";
-    "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0D}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
   };
 
   gestures = {
@@ -187,14 +186,9 @@ in {
   };
 
   group = {
-    "col.border_active" = lib.mkForce "rgb(${config.lib.stylix.colors.base0D}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
-
     groupbar = {
       height = 24;
       gradients = true;
-      text_color = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
-      font_size = config.stylix.fonts.sizes.desktop;
-      "col.active" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
     };
   };
 
@@ -204,7 +198,6 @@ in {
     enable_anr_dialog = false;
     enable_swallow = true;
     focus_on_activate = true;
-    font_family = config.stylix.fonts.sansSerif.name;
     key_press_enables_dpms = true;
     mouse_move_enables_dpms = true;
     swallow_regex = "^(Alacritty|kitty|footclient|foot|com\.mitchellh\.ghostty|org\.wezfurlong\.wezterm|codium|code)$";
@@ -215,22 +208,6 @@ in {
     [",preferred,auto,auto"]
     ++ cfg.desktop.hyprland.monitors
     ++ lib.lists.optional (cfg.desktop.hyprland.laptopMonitor != null) cfg.desktop.hyprland.laptopMonitor;
-
-  # plugin = {
-  #   overview = {
-  #     exitOnSwitch = true;
-  #     gapps_in = 5;
-  #     gaps_out = 6;
-  #     onBottom = true;
-  #     overrideGaps = true;
-  #     showEmptyWorkspace = true;
-  #     showNewWorkspace = true;
-  #     workspaceActiveBorder = "rgb(${config.lib.stylix.colors.base0D})";
-  #     workspaceBorderSize = 4;
-  #     workspaceInactiveBorder = "rgb(${config.lib.stylix.colors.base03})";
-  #     workspaceMargin = 40;
-  #   };
-  # };
 
   windowrulev2 = [
     "center(1),class:(.blueman-manager-wrapped)"
