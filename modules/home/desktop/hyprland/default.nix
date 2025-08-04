@@ -40,7 +40,7 @@
     ];
 
     dconf.settings = {
-      "org/gnome/desktop/wm/preferences".button-layout = "";
+      # "org/gnome/desktop/wm/preferences".button-layout = "";
 
       "org/nemo/preferences" = {
         show-image-thumbnails = "always";

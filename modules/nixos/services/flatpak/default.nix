@@ -21,7 +21,6 @@
           adwaita-icon-theme
           gnome-themes-extra
         ];
-        # ++ lib.optional config.stylix.enable config.stylix.cursor.package;
 
         pathsToLink = ["/share/icons"];
       };
@@ -47,11 +46,6 @@
         source-code-pro
         source-sans-pro
       ];
-      # ++ lib.optionals config.stylix.enable [
-      #   config.stylix.fonts.sansSerif.package
-      #   config.stylix.fonts.monospace.package
-      #   config.stylix.fonts.serif.package
-      # ];
     };
 
     services.flatpak.enable = true;

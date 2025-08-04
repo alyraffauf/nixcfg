@@ -75,7 +75,5 @@
         };
       };
     };
-
-    stylix.targets.vscode.profileNames = lib.mkIf config.stylix.enable ["default"];
   };
 }
