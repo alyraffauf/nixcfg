@@ -250,90 +250,82 @@ in {
       };
 
       style = lib.mkAfter ''
-        ${
-          lib.optionalString (config.stylix.polarity == "light") "
-          tooltip {
-            background: alpha(@base05, ${builtins.toString config.stylix.opacity.desktop});
-            color: ${config.lib.stylix.colors.withHashtag.base00};
-          }"
+        tooltip {
+          border-radius: ${toString 10}px;
         }
 
-          tooltip {
-            border-radius: ${toString 10}px;
-          }
+        #battery,
+        #bluetooth,
+        #clock,
+        #custom-dnd,
+        #custom-app-close,
+        #custom-logout,
+        #custom-menu,
+        #custom-virtual-keyboard,
+        #idle_inhibitor,
+        #mode,
+        #network,
+        #power-profiles-daemon,
+        #pulseaudio,
+        #submap,
+        #tray,
+        #wireplumber {
+          margin: 0px 5px;
+          padding: 0px 5px;
+        }
 
-          #battery,
-          #bluetooth,
-          #clock,
-          #custom-dnd,
-          #custom-app-close,
-          #custom-logout,
-          #custom-menu,
-          #custom-virtual-keyboard,
-          #idle_inhibitor,
-          #mode,
-          #network,
-          #power-profiles-daemon,
-          #pulseaudio,
-          #submap,
-          #tray,
-          #wireplumber {
-            margin: 0px 5px;
-            padding: 0px 5px;
-          }
+        #clock,
+        #tablet,
+        #hardware,
+        #mode,
+        #scratchpad,
+        #session,
+        #submap,
+        #workspaces {
+          margin: 0px 5px;
+          padding: 0px 2.5px;
+        }
 
-          #clock,
-          #tablet,
-          #hardware,
-          #mode,
-          #scratchpad,
-          #session,
-          #submap,
-          #workspaces {
-            margin: 0px 5px;
-            padding: 0px 2.5px;
-          }
+        #workspaces button {
+          border-radius: 0px;
+        }
 
-          #workspaces button {
-            border-radius: 0px;
-          }
+        #workspaces button.active,
+        #workspaces button.focused {
+          color: green;
+        }
 
-          #workspaces button.active,
-          #workspaces button.focused {
-            color: ${config.lib.stylix.colors.withHashtag.base0D};
-          }
+        #battery.charging,
+        #power-profiles-daemon.power-saver {
+          color: green;
+        }
 
-          #battery.charging,
-          #power-profiles-daemon.power-saver {
-            color: ${config.lib.stylix.colors.withHashtag.base0B};
-          }
+        #battery.critical:not(.charging),
+        #custom-dnd.on,
+        #idle_inhibitor.activated,
+        #network.disabled,
+        #network.disconnected,
+        #power-profiles-daemon.performance,
+        #pulseaudio.muted {
+          color: red;
+        }
 
-          #battery.critical:not(.charging),
-          #custom-dnd.on,
-          #idle_inhibitor.activated,
-          #network.disabled,
-          #network.disconnected,
-          #power-profiles-daemon.performance,
-          #pulseaudio.muted {
-            color: ${config.lib.stylix.colors.withHashtag.base08};
-          }
+        #submap,
+        #mode {
+          background-color: red;
+          border-radius: ${toString 10}px;
+          color: white;
+          font-weight: bold;
+        }
 
-          #submap,
-          #mode {
-            background-color: ${config.lib.stylix.colors.withHashtag.base08};
-            border-radius: ${toString 10}px;
-            color: ${config.lib.stylix.colors.withHashtag.base00};
-            font-weight: bold;
-          }
+        #tray {
+          margin: 0px 5px 2px 5px;
+          padding: 0px 2.5px;
+        }
 
-          #tray {
-            margin: 0px 5px 2px 5px;
-            padding: 0px 2.5px;
-          }
-
-          #waybar {
-            border-radius: 0;
-          }
+        #waybar {
+          border-radius: 0;
+        }
       '';
 
       systemd.enable = true;
@@ -346,50 +338,5 @@ in {
 
       Unit.BindsTo = lib.optional config.wayland.windowManager.hyprland.enable "hyprland-session.target";
     };
-
-    xdg.configFile."nwg-drawer/drawer.css".text = ''
-      window {
-        background-color: alpha (${config.lib.stylix.colors.withHashtag.base00}, ${toString config.stylix.opacity.popups});
-        color: ${config.lib.stylix.colors.withHashtag.base05}
-      }
-
-      /* search entry */
-      entry {
-        background-color: rgba (0, 0, 0, 0.2);
-        border: alpha(${config.lib.stylix.colors.withHashtag.base07}, ${toString config.stylix.opacity.popups});
-        border-radius: ${toString 10}px
-      }
-
-      button, image {
-        background: none;
-        border: none;
-        border-radius: ${toString 10}px
-      }
-
-      button:active, button:hover, button:focused {
-        background-color: alpha (${config.lib.stylix.colors.withHashtag.base05}, 0.2);
-        border: none;
-        border-radius: ${toString 10}px;
-        color: ${config.lib.stylix.colors.withHashtag.base0D}
-      }
-
-      #category-button {
-        margin: 0 10px 0 10px;
-        border-radius: ${toString 10}px
-      }
-
-      #pinned-box {
-        padding-bottom: 5px;
-        border-bottom: 1px dotted gray
-      }
-
-      #files-box {
-        padding: 5px;
-        border: 1px dotted gray;
-        border-radius: ${toString 10}px
-      }
-    '';
-
-    stylix.targets.waybar.font = "monospace";
   };
 }
