@@ -20,11 +20,6 @@
   myHardware.lenovo.thinkpad.X1.gen-9.enable = true;
 
   myNixOS = {
-    desktop.hyprland = {
-      enable = true;
-      laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
-    };
-
     desktop.gnome.enable = true;
 
     profiles = {
