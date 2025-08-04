@@ -11,7 +11,10 @@
         boot.kernel.sysctl."kernel.nmi_watchdog" = lib.mkDefault 0;
 
         services = {
-          power-profiles-daemon.enable = true;
+          tuned = {
+            enable = lib.mkDefault true;
+            settings.dynamic_tuning = true;
+          };
 
           # udev.extraRules = lib.mkIf config.services.power-profiles-daemon.enable ''
           #   ## Automatically switch power profiles based on AC power status.
