@@ -6,6 +6,7 @@
 }: {
   imports = [
     self.homeModules.default
+    self.inputs.fontix.homeModules.default
   ];
 
   home = {
@@ -70,6 +71,33 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications."application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
+  };
+
+  fontix = {
+    fonts = {
+      monospace = {
+        name = "CaskaydiaCove Nerd Font";
+        package = pkgs.nerd-fonts.caskaydia-cove;
+      };
+
+      sansSerif = {
+        name = "UbuntuSans Nerd Font";
+        package = pkgs.nerd-fonts.ubuntu-sans;
+      };
+
+      serif = {
+        name = "Source Serif Pro";
+        package = pkgs.source-serif-pro;
+      };
+    };
+
+    sizes = {
+      applications = 12;
+      desktop = 11;
+    };
+
+    font-packages.enable = true;
+    fontconfig.enable = true;
   };
 
   myHome = {
