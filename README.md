@@ -20,7 +20,7 @@ This repository contains my Darwin, NixOS and home-manager configurations, along
 - **Automatic Monitoring & Backups:** Easy Prometheus + Loki and Uptime-Kuma setups for system and service monitoring, plus automated Restic backups to Backblaze B2.
 - **Robust Networking:** Secure and flexible networking with Tailscale (it's WireGuard), declarative WiFi profiles, and NFS/Samba sharing.
 - **Productivity & Development:** Pre-configured tools for development (Git, Helix, VS Code, Zed), shell enhancements (fastfetch, oh-my-posh, zsh), etc.
-- **System-Wide Theming:** Consistent aesthetics across devices with stylix, which auto-generates application themes from base16 color schemes.
+<!-- - **System-Wide Theming:** Consistent aesthetics across devices with stylix, which auto-generates application themes from base16 color schemes. -->
 
 ---
 
