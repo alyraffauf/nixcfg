@@ -148,11 +148,11 @@
 
       imports = [
         ./modules/flake
+        inputs.actions-nix.flakeModules.default
         inputs.files.flakeModules.default
         inputs.git-hooks-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager
         inputs.treefmt-nix.flakeModule
-        inputs.actions-nix.flakeModules.default
       ];
     };
 }
