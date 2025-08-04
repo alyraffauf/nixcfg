@@ -62,6 +62,7 @@
         gnome.enable = lib.mkIf pkgs.stdenv.isLinux true;
         gtk.enable = lib.mkIf pkgs.stdenv.isLinux true;
         halloy.enable = true;
+        vscode.enable = true;
         zed-editor.enable = true;
       };
 
