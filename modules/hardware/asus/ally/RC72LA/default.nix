@@ -101,7 +101,11 @@
         )
       ];
 
-      power-profiles-daemon.enable = lib.mkDefault true;
+      tuned = {
+        enable = lib.mkDefault true;
+        settings.dynamic_tuning = true;
+      };
+
       upower.enable = lib.mkDefault true;
     };
 
