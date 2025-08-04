@@ -556,11 +556,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1754337554,
-        "narHash": "sha256-7iMn51qmDfSbM+hACsWNKX5rduegc3t78YTmxOPSg/I=",
+        "lastModified": 1754337782,
+        "narHash": "sha256-FvfAst8yY3GUqEWwqlWF/Pxy+ZTwB3v95exRJ1jDuOw=",
         "owner": "alyraffauf",
         "repo": "fontix",
-        "rev": "4a843fed3cc31763fe8329c174f3240f02708421",
+        "rev": "51c33cc317ea8cc7e3f1adebf1735db6d54274d2",
         "type": "github"
       },
       "original": {
