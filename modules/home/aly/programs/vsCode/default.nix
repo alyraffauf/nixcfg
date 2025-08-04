@@ -15,6 +15,7 @@
         enableExtensionUpdateCheck = false;
 
         extensions = with pkgs.vscode-extensions; [
+          github.copilot
           github.vscode-pull-request-github
           ms-vscode-remote.remote-ssh
         ];
