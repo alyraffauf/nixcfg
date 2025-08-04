@@ -28,20 +28,16 @@ in {
         };
 
         input-field = {
-          font_family = config.stylix.fonts.sansSerif.name;
           rounding = 10;
         };
 
         shape = [
           {
-            border_color = "rgb(${config.lib.stylix.colors.base0D})";
             border_size = 8;
-            color = "rgb(${config.lib.stylix.colors.base00})";
             halign = "center";
             position = "-33%, 0";
             rotate = 0;
             rounding = 10;
-            shadow_color = "rgb(${config.lib.stylix.colors.base01})";
             shadow_passes = 3;
             size = "600, 600";
             valign = "center";
@@ -51,8 +47,6 @@ in {
 
         label = [
           {
-            color = "rgb(${config.lib.stylix.colors.base05})";
-            font_family = config.stylix.fonts.sansSerif.name;
             font_size = 40;
             halign = "center";
             position = "-33%, 200";
@@ -61,8 +55,6 @@ in {
             valign = "center";
           }
           {
-            color = "rgb(${config.lib.stylix.colors.base05})";
-            font_family = config.stylix.fonts.sansSerif.name;
             font_size = 40;
             halign = "center";
             position = "-33%, -200";
@@ -71,8 +63,6 @@ in {
             valign = "center";
           }
           {
-            color = "rgb(${config.lib.stylix.colors.base05})";
-            font_family = config.stylix.fonts.sansSerif.name;
             font_size = 24;
             halign = "center";
             position = "-33%, 0";
