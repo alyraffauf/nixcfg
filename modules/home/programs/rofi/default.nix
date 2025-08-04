@@ -15,8 +15,6 @@ in {
       pkgs.rofi-rbw-wayland
     ];
 
-    stylix.targets.rofi.enable = false;
-
     programs.rofi = {
       enable = true;
       font = "${config.stylix.fonts.monospace.name} ${toString config.stylix.fonts.sizes.popups}";
