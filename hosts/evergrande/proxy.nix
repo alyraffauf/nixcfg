@@ -19,6 +19,8 @@
             encode gzip zstd
             reverse_proxy ${config.mySnippets.cute-haus.networkMap.aly-codes.hostName}:${toString config.mySnippets.cute-haus.networkMap.aly-codes.port}
           '';
+
+          serverAliases = ["www.aly.codes"];
         };
 
         "aly.social" = {
@@ -45,6 +47,8 @@
             encode zstd gzip
             reverse_proxy ${config.mySnippets.cute-haus.networkMap.glance.hostName}:${toString config.mySnippets.cute-haus.networkMap.glance.port}
           '';
+
+          serverAliases = ["www.cute.haus"];
         };
 
         "${config.mySnippets.cute-haus.networkMap.forgejo.vHost}" = {
