@@ -2,6 +2,7 @@
   home-manager.users.aly = {
     config,
     lib,
+    pkgs,
     ...
   }: {
     imports = [
@@ -18,6 +19,18 @@
 
     home.stateVersion = "25.05";
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
+
+    programs.vscode.profiles.default = {
+      extensions = [
+        pkgs.vscode-extensions.catppuccin.catppuccin-vsc
+        pkgs.vscode-extensions.catppuccin.catppuccin-vsc-icons
+      ];
+
+      userSettings = {
+        "workbench.colorTheme" = "Catppuccin Macchiato";
+        "workbench.iconTheme" = "catppuccin-macchiato";
+      };
+    };
 
     services.syncthing = let
       inherit (config.mySnippets.syncthing) devices;
