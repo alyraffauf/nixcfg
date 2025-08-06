@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.myHome.aly.programs.git.enable = lib.mkEnableOption "git version control";
@@ -12,7 +11,6 @@
         enable = true;
         delta.enable = true;
         lfs.enable = true;
-        package = pkgs.gitFull;
         userName = "Aly Raffauf";
         userEmail = "aly@aly.codes";
 
