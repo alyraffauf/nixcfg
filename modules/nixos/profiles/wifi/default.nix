@@ -50,7 +50,7 @@
           );
         in {
           "Atolls_Atlanta" = mkWPA2WiFi "Atolls_Atlanta" "$Atolls_AtlantaPSK";
-          "DevonCorp" = mkWPA2WiFi "DevonCorp" "$DevonCorpPSK";
+          # "DevonCorp" = mkWPA2WiFi "DevonCorp" "$DevonCorpPSK";
           "Dustin's A54" = mkWPA2WiFi "Dustin's A54" "$DustinsA54PSK";
           "East Pole Coffee Co." = mkWPA2WiFi "East Pole Coffee Co." "$EastPolePSK";
           "InmanPerkCustomer" = mkWPA2WiFi "InmanPerkCustomer" "$InmanPerkCustomerPSK";
