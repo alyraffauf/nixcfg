@@ -12,6 +12,7 @@
 
   environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "fallarbor";
+  nix.daemonCPUSchedPolicy = "idle";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
   myHardware.lenovo.thinkpad.X1.gen-9.enable = true;
