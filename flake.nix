@@ -3,7 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    actions-nix.url = "github:alyraffauf/actions.nix";
+
+    actions-nix = {
+      url = "github:alyraffauf/actions.nix";
+
+      inputs = {
+        git-hooks.follows = "git-hooks-nix";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     agenix = {
       url = "github:ryantm/agenix";
