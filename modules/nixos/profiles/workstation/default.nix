@@ -32,7 +32,7 @@
         "kernel.sched_wakeup_granularity_ns" = lib.mkDefault 500000;
         "kernel.soft_watchdog" = lib.mkDefault 0;
         "kernel.split_lock_mitigate" = lib.mkDefault 0;
-        "kernel.unprivileged_userns_clone" = lib.mkDefault 1;
+        # "kernel.unprivileged_userns_clone" = lib.mkDefault 1;
         "kernel.watchdog" = lib.mkDefault 0;
 
         # Network optimizations
@@ -45,7 +45,7 @@
         "net.ipv4.tcp_mtu_probing" = lib.mkForce 1;
         "net.ipv4.tcp_rfc1337" = lib.mkDefault 1; # Protect against tcp time-wait assassination hazards, drop RST packets for sockets in the time-wait state. Not widely supported outside of Linux, but conforms to RFC.
         "net.ipv4.tcp_slow_start_after_idle" = 0; # Disable TCP slow start after idle
-        "net.ipv4.tcp_timestamps" = lib.mkDefault 0; # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_real_time/7/html/tuning_guide/reduce_tcp_performance_spikes
+        # "net.ipv4.tcp_timestamps" = lib.mkDefault 0; # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_real_time/7/html/tuning_guide/reduce_tcp_performance_spikes
 
         # Memory management
         "vm.dirty_background_bytes" = lib.mkDefault 134217728;
@@ -91,14 +91,14 @@
         ## SSDs use kyber scheduler.
         ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
 
-        ## HHDs use BFW scheduler.
+        ## HDDs use BFQ scheduler.
         ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
 
         ## Allow @audio to write to /dev/cpu_dma_latency.
         DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root",GROUP="audio", MODE="0660"
 
         ## Allow users to write to /dev/ntsync.
-        KERNEL=="ntsync", MODE="0644"
+        # KERNEL=="ntsync", MODE="0644"
       '';
     };
 

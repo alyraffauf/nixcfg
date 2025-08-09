@@ -24,4 +24,4 @@ NixOS profile with performance optimizations for gaming, media, and desktop use.
 
 ⚠️ **Ananicy and GameMode are incompatible** - this profile enables Ananicy by default, so don't enable GameMode simultaneously.
 
-Some optimizations trade system resiliency for performance (e.g., disabled watchdogs).
+⚠️ **Security and stability trade-offs**: Some optimizations trade system resiliency for performance (e.g., disabled watchdogs). This profile prioritizes performance over maximum security.
