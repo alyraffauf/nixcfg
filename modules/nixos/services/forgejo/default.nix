@@ -6,7 +6,7 @@
   ...
 }: {
   options.myNixOS.services.forgejo = {
-    enable = lib.mkEnableOption "forgejo git forge";
+    enable = lib.mkEnableOption "forĝejo git forge";
 
     db = lib.mkOption {
       description = "Database to use (sqlite or postgresql).";
