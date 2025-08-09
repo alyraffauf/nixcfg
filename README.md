@@ -68,7 +68,7 @@ This repository is licensed under the **[GNU General Public License](LICENSE.md)
 - [hyprland](https://github.com/hyprwm/Hyprland): great dynamic tiling wayland compositor.
 - [lanzaboote](https://github.com/nix-community/lanzaboote): secure boot for NixOS.
 - [nur](https://github.com/nix-community/NUR): extra packages from the nix user repository.
-- [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.
+<!--- [stylix](https://github.com/danth/stylix): system-wide color schemes and typography.-->
 
 ---
 
