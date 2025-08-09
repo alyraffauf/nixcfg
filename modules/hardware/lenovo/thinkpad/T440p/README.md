@@ -1,20 +1,20 @@
 # Lenovo ThinkPad T440p
 
-Optimized nix modules for Lenovo T440p hardware.
+## Audio Enhancement
 
----
+Includes an EasyEffects preset to significantly improve the notoriously poor speaker quality:
 
-## Audio
+- **30-band equalizer** - Custom frequency response tuning.
+- **Harmonic exciter** - Adds presence and clarity to muddy speakers.
+- **Auto-gain and limiting** - Prevents distortion while maximizing volume.
 
-- **Workaround**: Terrible speaker quality.
-  - Speakers can be improved significantly with an EasyEffects preset: [`T440p.json`](./easyeffects.json).
+The preset is automatically configured through home-manager when the module is enabled.
 
----
+```nix
+myHardware.lenovo.thinkpad.T440p.enable = true;
+```
 
-## Platform
+## Performance Tweaks
 
-- Kernel module `thinkpad_acpi` is force-loaded with specific options:
-  - `force_load=1`: Ensures the module loads even if not automatically detected, providing access to ThinkPad-specific hardware controls.
-  - `fan_control=1`: Enables manual control over fan speeds, allowing users to adjust cooling behavior and reduce noise or manage thermals more effectively.
-
----
+- **CPU governor** - Set to `ondemand` for balanced performance/power on older hardware. For some reason, it's performance by default, even on battery.
+- **ZRAM compression** - Uses fast `lz4` algorithm for better swap performance.
