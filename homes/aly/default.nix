@@ -8,6 +8,7 @@
   imports = [
     self.homeModules.default
     self.inputs.fontix.homeModules.default
+    self.inputs.catppuccin.homeModules.catppuccin
   ];
 
   config = lib.mkMerge [
@@ -64,6 +65,23 @@
         halloy.enable = true;
         vscode.enable = true;
         zed-editor.enable = true;
+      };
+
+      catppuccin = {
+        flavor = "macchiato";
+        helix.enable = true;
+        ghostty.enable = true;
+        lazygit.enable = true;
+        vesktop.enable = true;
+        # vscode.profiles.default.enable = true;
+
+        zed = {
+          enable = true;
+          icons.enable = true;
+          italics = false;
+        };
+
+        zellij.enable = true;
       };
 
       myHome = {

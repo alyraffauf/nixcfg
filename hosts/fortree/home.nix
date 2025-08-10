@@ -2,14 +2,12 @@
   home-manager.users.aly = {
     config,
     lib,
-    pkgs,
     ...
   }: {
     imports = [
       self.homeConfigurations.aly
       self.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
-      self.inputs.catppuccin.homeModules.catppuccin
     ];
 
     age.secrets = {
@@ -19,18 +17,6 @@
 
     home.stateVersion = "25.05";
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
-
-    programs.vscode.profiles.default = {
-      extensions = [
-        pkgs.vscode-extensions.catppuccin.catppuccin-vsc
-        pkgs.vscode-extensions.catppuccin.catppuccin-vsc-icons
-      ];
-
-      userSettings = {
-        "workbench.colorTheme" = "Catppuccin Macchiato";
-        "workbench.iconTheme" = "catppuccin-macchiato";
-      };
-    };
 
     services.syncthing = let
       inherit (config.mySnippets.syncthing) devices;
@@ -66,22 +52,6 @@
 
         inherit devices folders;
       };
-    };
-
-    catppuccin = {
-      flavor = "macchiato";
-      helix.enable = true;
-      ghostty.enable = true;
-      vesktop.enable = true;
-      # vscode.profiles.default.enable = true;
-
-      zed = {
-        enable = true;
-        icons.enable = true;
-        italics = false;
-      };
-
-      zellij.enable = true;
     };
   };
 }
