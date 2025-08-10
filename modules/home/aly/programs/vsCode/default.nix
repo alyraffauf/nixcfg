@@ -15,6 +15,8 @@
         enableExtensionUpdateCheck = false;
 
         extensions = with pkgs.vscode-extensions; [
+          catppuccin.catppuccin-vsc
+          catppuccin.catppuccin-vsc-icons
           github.copilot
           github.vscode-pull-request-github
           ms-vscode-remote.remote-ssh
@@ -73,6 +75,9 @@
             if config.myHome.desktop.hyprland.enable
             then "native"
             else "custom";
+
+          "workbench.colorTheme" = "Catppuccin Macchiato";
+          "workbench.iconTheme" = "catppuccin-macchiato";
         };
       };
     };
