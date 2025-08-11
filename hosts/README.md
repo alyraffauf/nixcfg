@@ -38,22 +38,14 @@ To add a new device to this configuration, follow these steps:
 1. **Update `flake.nix`**:
    - Add the new host to the `nixosConfigurations` section in `flake.nix`.
 
-1. **(Optional) Configure Syncthing**:
-   - Generate Syncthing certificates and device ID:
-     ```bash
-     syncthing -generate="$HOSTNAME"
-     ```
-   - Locate the device ID in the generated `config.xml` and add it to `modules/nixos/services/syncthing/default.nix`.
-   - Encrypt the `cert.pem` and `key.pem` using `agenix` and set them appropriately in the host configuration.
-
 1. **Install NixOS**:
    - Install NixOS on the new device using this flake. Note that secrets will not be available on the first boot without a valid SSH private key.
 
 1. **Authorize SSH Key**:
-   - On a separate machine, copy the new system's public SSH key (`/etc/ssh/ssh_host_ed25519_key.pub`) to the upstream secrets repository (`secrets/publicKeys/root_$HOSTNAME.pub`).
+   - On a separate machine, copy the new system's public SSH key (`/etc/ssh/ssh_host_ed25519_key.pub`) to the secrets repository at `github.com/alyraffauf/secrets` (`secrets/publicKeys/root_$HOSTNAME.pub`).
 
 1. **Rekey Secrets**:
-   - Add the new public key to upstream `secrets.nix`.
+   - Add the new public key to `secrets.nix` in the secrets repository.
    - Rekey all secrets:
      ```bash
      agenix --rekey
@@ -64,6 +56,6 @@ To add a new device to this configuration, follow these steps:
    - On the new device, rebuild the system from the repository. Secrets will be automatically decrypted and available in `/run/agenix/` for NixOS and `$XDG_RUNTIME_DIR/agenix/` for users.
 
 1. **(Optional) Configure User SSH Key**:
-   - Generate a new user SSH key and copy it to `secrets/publicKeys/$USER_$HOSTNAME.pub` to enable passwordless logins to other hosts.
+   - Generate a new user SSH key and copy it to the secrets repository at `secrets/publicKeys/$USER_$HOSTNAME.pub` to enable passwordless logins to other hosts.
 
 ---
