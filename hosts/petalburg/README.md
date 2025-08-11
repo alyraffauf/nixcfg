@@ -2,6 +2,22 @@
 
 ## Overview
 
+Custom ATX desktop optimized for gaming and media.
+
+---
+
+## Specs
+
+| Component   | Details            |
+| ----------- | ------------------ |
+| **Model**   | Custom ATX Desktop |
+| **CPU**     | AMD Ryzen 5700x    |
+| **GPU**     | AMD Radeon RX 6700 |
+| **RAM**     | 32GB DDR4.         |
+| **Storage** | 1TB NVMe SSD       |
+
+---
+
 ## 🗂 Filesystems
 
 ### `/` (Root)
