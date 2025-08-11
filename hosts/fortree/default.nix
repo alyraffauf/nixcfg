@@ -48,6 +48,8 @@
       };
     in [
       (greedy "aws-vpn-client")
+      (greedy "choosy")
+      (greedy "google-chrome")
       (greedy "obsidian")
       (greedy "plexamp")
       (greedy "signal")
