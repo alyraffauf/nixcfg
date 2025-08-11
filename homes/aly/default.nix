@@ -69,6 +69,7 @@
 
       catppuccin = {
         flavor = "macchiato";
+        bat.enable = true;
         helix.enable = true;
         ghostty.enable = true;
         lazygit.enable = true;
