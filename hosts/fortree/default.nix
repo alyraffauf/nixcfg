@@ -49,6 +49,7 @@
     in [
       (greedy "aws-vpn-client")
       (greedy "choosy")
+      (greedy "firefox")
       (greedy "google-chrome")
       (greedy "obsidian")
       (greedy "plexamp")
@@ -57,6 +58,7 @@
       (greedy "thunderbird")
       (greedy "todoist-app")
       (greedy "vlc")
+      (greedy "zen")
     ];
 
     masApps = {
@@ -102,7 +104,7 @@
     defaults = {
       dock.persistent-apps = [
         {app = "/System/Applications/Launchpad.app";}
-        {app = "${self.inputs.zen-browser.packages.${pkgs.system}.beta}/Applications/Zen Browser (Beta).app";}
+        {app = "/Applications/Zen.app";}
         {app = "/Applications/Signal.app";}
         {app = "${pkgs.vesktop}/Applications/Vesktop.app";}
         {app = "/Applications/Slack.app";}
