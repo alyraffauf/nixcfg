@@ -1110,6 +1110,22 @@
         "type": "github"
       }
     },
+    "nixos-unstable-small": {
+      "locked": {
+        "lastModified": 1755489199,
+        "narHash": "sha256-uSjMCgoKm5TxVRMD5eP0q1868+yTwmqwaTd+4a2YW6Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "627fcea102810633972cf2c06949901c748e4b35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1755027561,
@@ -1419,6 +1435,7 @@
         "lix-module": "lix-module",
         "nix-darwin": "nix-darwin_2",
         "nix-homebrew": "nix-homebrew",
+        "nixos-unstable-small": "nixos-unstable-small",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
