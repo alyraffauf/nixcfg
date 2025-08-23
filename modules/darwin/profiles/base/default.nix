@@ -9,6 +9,7 @@
 
   config = lib.mkIf config.myDarwin.profiles.base.enable {
     environment = {
+      etc."nix-darwin".source = self;
       systemPackages = with pkgs; [nh];
 
       variables = {
