@@ -109,5 +109,7 @@
         };
       };
     };
+
+    xdg.configFile."home-manager".source = self;
   };
 }
