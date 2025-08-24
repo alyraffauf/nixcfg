@@ -101,5 +101,6 @@
     };
 
     profiles.shell.enable = true;
+    programs.ghostty.enable = true;
   };
 }
