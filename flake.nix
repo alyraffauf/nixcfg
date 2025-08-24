@@ -68,6 +68,12 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur.url = "github:nix-community/NUR";
 
     nynx = {
