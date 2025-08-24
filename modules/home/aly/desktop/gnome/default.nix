@@ -19,7 +19,7 @@
       settings = {
         "org/gnome/shell" = {
           favorite-apps = [
-            "zen-beta.desktop"
+            "firefox.desktop"
             "thunderbird.desktop"
             "signal.desktop"
             "vesktop.desktop"
@@ -34,6 +34,8 @@
         "org/gnome/shell/extensions/auto-move-windows" = {
           application-list = [
             "code.desktop:3"
+            "dev.zed.Zed.desktop:3"
+            "firefox.desktop:1"
             "obsidian.desktop:2"
             "plexamp.desktop:1"
             "signal.desktop:1"
