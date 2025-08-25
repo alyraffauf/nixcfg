@@ -65,11 +65,7 @@
           path = "/home/aly/music";
         };
 
-        "roms" = {
-          enable = lib.mkForce false;
-          path = "/home/aly/ROMs";
-        };
-
+        "roms".path = "/home/aly/ROMs";
         "screenshots".enable = lib.mkForce false;
         "sync".path = lib.mkForce "/home/aly/sync";
       }
