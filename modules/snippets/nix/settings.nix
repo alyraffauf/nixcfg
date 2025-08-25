@@ -8,7 +8,6 @@
         builders-use-substitutes = true;
 
         experimental-features = [
-          "ca-derivations"
           "fetch-closure"
           "flakes"
           "nix-command"
