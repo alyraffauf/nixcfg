@@ -25,6 +25,18 @@
     username = "aly";
   };
 
+  nix = {
+    inherit (config.mySnippets.nix) settings;
+    package = pkgs.nix;
+
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 3d";
+      persistent = true;
+      randomizedDelaySec = "60min";
+    };
+  };
+
   nixGL = {
     inherit (self.inputs.nixgl) packages;
     vulkan.enable = true;
