@@ -33,6 +33,7 @@
   programs = {
     home-manager.enable = true;
     firefox.package = lib.mkForce (config.lib.nixGL.wrap pkgs.firefox);
+    ghostty.package = lib.mkForce (config.lib.nixGL.wrap pkgs.ghostty);
     zed-editor.package = config.lib.nixGL.wrap pkgs.zed-editor;
   };
 
