@@ -11,6 +11,11 @@
     self.inputs.catppuccin.homeModules.catppuccin
   ];
 
+  age.secrets = {
+    syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/pacifidlog/cert.age";
+    syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/pacifidlog/key.age";
+  };
+
   home = {
     homeDirectory = "/home/aly";
 
@@ -47,6 +52,42 @@
     firefox.package = lib.mkForce (config.lib.nixGL.wrap pkgs.firefox);
     ghostty.package = lib.mkForce (config.lib.nixGL.wrap pkgs.ghostty);
     zed-editor.package = config.lib.nixGL.wrap pkgs.zed-editor;
+  };
+
+  services.syncthing = let
+    inherit (config.mySnippets.syncthing) devices;
+
+    folders = lib.mkMerge [
+      config.mySnippets.syncthing.folders
+      {
+        "music" = {
+          enable = lib.mkForce false;
+          path = "/home/aly/music";
+        };
+
+        "roms" = {
+          enable = lib.mkForce false;
+          path = "/home/aly/ROMs";
+        };
+
+        "screenshots".enable = lib.mkForce false;
+        "sync".path = lib.mkForce "/home/aly/sync";
+      }
+    ];
+  in {
+    enable = true;
+    cert = config.age.secrets.syncthingCert.path;
+    key = config.age.secrets.syncthingKey.path;
+
+    settings = {
+      options = {
+        localAnnounceEnabled = true;
+        relaysEnabled = true;
+        urAccepted = -1;
+      };
+
+      inherit devices folders;
+    };
   };
 
   xdg.enable = true;
