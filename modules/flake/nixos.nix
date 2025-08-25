@@ -31,6 +31,7 @@
         "mauville"
         "mossdeep"
         "oldale"
+        "pacifidlog"
         "petalburg"
         "slateport"
         "sootopolis"
