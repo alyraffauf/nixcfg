@@ -108,7 +108,25 @@
       };
     };
 
-    profiles.shell.enable = true;
-    programs.ghostty.enable = true;
+    desktop.gnome.enable = true;
+
+    profiles = {
+      defaultApps = {
+        enable = true;
+        editor.package = config.programs.zed-editor.package;
+        terminal.package = config.programs.ghostty.package;
+
+        webBrowser = {
+          exec = lib.getExe config.programs.firefox.finalPackage;
+          package = config.programs.firefox.finalPackage;
+        };
+      };
+      shell.enable = true;
+    };
+
+    programs = {
+      fastfetch.enable = true;
+      ghostty.enable = true;
+    };
   };
 }
