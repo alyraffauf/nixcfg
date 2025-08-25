@@ -13,6 +13,13 @@
 
   home = {
     homeDirectory = "/home/aly";
+
+    packages = with pkgs; [
+      obsidian
+      plexamp
+      signal-desktop-bin
+    ];
+
     sessionVariables.NIXOS_OZONE_WL = "1";
     stateVersion = "25.11";
     username = "aly";
