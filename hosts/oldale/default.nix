@@ -7,7 +7,7 @@
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
   ];
 
-  isoImage.isoBaseName = lib.mkForce "oldale";
+  image.baseName = lib.mkForce "oldale";
   networking.hostName = "oldale";
   nixpkgs.hostPlatform = "x86_64-linux";
 

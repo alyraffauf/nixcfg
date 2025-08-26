@@ -108,12 +108,12 @@ in {
         }
       );
 
-      pds = lib.mkIf config.services.pds.enable (
+      pds = lib.mkIf config.services.bluesky-pds.enable (
         config.mySnippets.restic
         // {
           backupCleanupCommand = start "pds";
           backupPrepareCommand = stop "pds";
-          paths = [config.services.pds.settings.PDS_DATA_DIRECTORY];
+          paths = [config.services.bluesky-pds.settings.PDS_DATA_DIRECTORY];
           repository = mkRepo "pds";
         }
       );
