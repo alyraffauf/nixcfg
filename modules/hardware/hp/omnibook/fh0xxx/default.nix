@@ -1,17 +1,22 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myHardware.hp.omnibook.fh0xxx.enable = lib.mkEnableOption "HP OmniBook Ultra Flip 14-fh0xx hardware configuration.";
 
   config = lib.mkIf config.myHardware.hp.omnibook.fh0xxx.enable {
-    boot.initrd.availableKernelModules = [
-      "intel_ishtp_hid"
-      "nvme"
-      "thunderbolt"
-      "xhci_pci"
-    ];
+    boot = {
+      initrd.availableKernelModules = [
+        "intel_ishtp_hid"
+        "nvme"
+        "thunderbolt"
+        "xhci_pci"
+      ];
+
+      kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.16") (lib.mkDefault pkgs.linuxPackages_latest);
+    };
 
     hardware.sensor.iio.enable = true;
 
