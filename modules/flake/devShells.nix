@@ -17,7 +17,6 @@ _: {
         # ++ lib.attrValues config.treefmt.build.programs
         ++ [
           inputs'.agenix.packages.default
-          inputs'.disko.packages.disko-install
           inputs'.nynx.packages.nynx
           self'.packages.gen-files
         ];
