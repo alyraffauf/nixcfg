@@ -38,9 +38,9 @@
     services = {
       fstrim.enable = true;
 
-      logind = {
-        powerKey = "suspend";
-        powerKeyLongPress = "poweroff";
+      logind.settings.Login = {
+        HandlePowerKey = "suspend";
+        HandlePowerKeyLongPress = "poweroff";
       };
 
       xserver.xkb = {
