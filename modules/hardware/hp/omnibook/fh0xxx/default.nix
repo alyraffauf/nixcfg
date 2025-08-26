@@ -35,7 +35,11 @@
     myHardware = {
       intel = {
         cpu.enable = true;
-        gpu.enable = true;
+
+        gpu = {
+          enable = true;
+          driver = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "6.8") "xe";
+        };
       };
 
       profiles = {
