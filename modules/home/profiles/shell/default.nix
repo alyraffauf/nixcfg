@@ -14,11 +14,13 @@
           (lib.hiPrio uutils-coreutils-noprefix)
           curl
           htop
-          (inxi.override {withRecommends = true;})
           nixos-rebuild
           wget
         ]
-        ++ [self.inputs.nynx.packages.${pkgs.system}.nynx];
+        ++ [self.inputs.nynx.packages.${pkgs.system}.nynx]
+        ++ lib.optionals pkgs.stdenv.isLinux [
+          (pkgs.inxi.override {withRecommends = true;})
+        ];
 
       shellAliases = {
         l = "eza -lah";
