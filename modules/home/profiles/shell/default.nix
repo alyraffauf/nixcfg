@@ -14,6 +14,7 @@
           (lib.hiPrio uutils-coreutils-noprefix)
           curl
           htop
+          (inxi.override {withRecommends = true;})
           nixos-rebuild
           wget
         ]
