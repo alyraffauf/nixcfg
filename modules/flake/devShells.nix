@@ -19,6 +19,9 @@ _: {
           inputs'.agenix.packages.default
           inputs'.nynx.packages.nynx
           self'.packages.gen-files
+        ]
+        ++ lib.optionals pkgs.stdenv.isLinux [
+          inputs'.disko.packages.disko-install
         ];
 
       shellHook = ''
