@@ -20,6 +20,15 @@
 
     hardware.sensor.iio.enable = true;
 
+    home-manager.sharedModules = [
+      {
+        services.easyeffects = {
+          enable = true;
+          preset = "AdvancedAutoGain.json";
+        };
+      }
+    ];
+
     nixpkgs.overlays = [
       (_final: prev: {
         linux-firmware = prev.linux-firmware.overrideAttrs (_old: {
