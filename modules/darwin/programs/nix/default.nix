@@ -24,20 +24,20 @@
         options = "--delete-older-than 7d"; # Free when >20GB space left and when older than 10 days.
       };
 
-      linux-builder = {
-        enable = true;
+      # linux-builder = {
+      #   enable = true;
 
-        config.virtualisation = {
-          cores = 6;
+      #   config.virtualisation = {
+      #     cores = 6;
 
-          darwin-builder = {
-            diskSize = 40 * 1024;
-            memorySize = 8 * 1024;
-          };
-        };
+      #     darwin-builder = {
+      #       diskSize = 40 * 1024;
+      #       memorySize = 8 * 1024;
+      #     };
+      #   };
 
-        maxJobs = 4;
-      };
+      #   maxJobs = 4;
+      # };
 
       inherit (config.mySnippets.nix) settings;
     };
