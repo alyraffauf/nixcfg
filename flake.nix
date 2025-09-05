@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixos-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     actions-nix = {
       url = "github:alyraffauf/actions.nix";
