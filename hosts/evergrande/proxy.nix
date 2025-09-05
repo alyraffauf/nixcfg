@@ -23,6 +23,20 @@
           serverAliases = ["www.aly.codes"];
         };
 
+        "bsky.aly.codes" = {
+          extraConfig = ''
+            encode gzip zstd
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.aly-codes.hostName}:5739
+          '';
+        };
+
+        "vibes.aly.codes" = {
+          extraConfig = ''
+            encode gzip zstd
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.aly-codes.hostName}:5738
+          '';
+        };
+
         "aly.social" = {
           extraConfig = ''
             encode zstd gzip
