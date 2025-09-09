@@ -1,9 +1,6 @@
 {self, ...}: {
   flake = {
     homeConfigurations = {
-      aly = ../../homes/aly;
-      dustin = ../../homes/dustin;
-
       "aly@pacifidlog" = self.inputs.home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit self;};
 
@@ -26,6 +23,8 @@
 
     homeModules = {
       default = ../home;
+      aly = ../../homes/aly;
+      dustin = ../../homes/dustin;
       snippets = ../snippets;
     };
   };

@@ -5,7 +5,7 @@
     ...
   }: {
     imports = [
-      self.homeConfigurations.aly
+      self.homeModules.aly
       self.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
     ];
