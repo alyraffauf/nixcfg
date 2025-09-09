@@ -21,6 +21,7 @@ hosts/
 ├── mossdeep/      # Hetzner VPS
 ├── oldale/        # Graphical installation ISO
 ├── petalburg/     # Custom ATX Desktop
+├── pacifidlog/    # HP Omnibook Ultra Flip 14
 ├── slateport/     # Lenovo ThinkCentre M700 Tiny
 └── sootopolis/    # ThinkPad X1 Carbon Gen 9
 ```
