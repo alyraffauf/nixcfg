@@ -29,6 +29,7 @@
     home-manager.sharedModules = [
       {
         services.easyeffects = {
+          # Adds DSP for the included speakers.
           enable = true;
           preset = "AdvancedAutoGain.json";
         };
@@ -38,6 +39,7 @@
     nixpkgs.overlays = [
       (_final: prev: {
         linux-firmware = prev.linux-firmware.overrideAttrs (_old: {
+          # Adds Intel ISH firmware for various accelerometers + tablet mode.
           postInstall = ''
             cp ${./ishC_0207.bin} $out/lib/firmware/intel/ish/ish_lnlm_12128606.bin
           '';
@@ -53,7 +55,12 @@
 
         gpu = {
           enable = true;
-          driver = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "6.8") "xe";
+
+          driver = lib.mkIf (
+            lib.versionAtLeast
+            config.boot.kernelPackages.kernel.version "6.8"
+            # You probably don't want to run this laptop on a kernel this old.
+          ) "xe";
         };
       };
 
