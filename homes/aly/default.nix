@@ -38,7 +38,7 @@
           sansSerif =
             if pkgs.stdenv.isLinux
             then {
-              name = "Adwaita";
+              name = "Adwaita Sans";
               package = pkgs.adwaita-fonts;
             }
             else {
