@@ -21,7 +21,6 @@
 
     packages = with pkgs; [
       obsidian
-      plexamp
       signal-desktop-bin
     ];
 
