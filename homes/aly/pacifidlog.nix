@@ -96,7 +96,7 @@
       };
 
       sansSerif = {
-        name = "Adwaita";
+        name = "Adwaita Sans";
         package = pkgs.adwaita-fonts;
       };
 
