@@ -127,7 +127,6 @@
     ghostty.enable = true;
     lazygit.enable = true;
     vesktop.enable = true;
-    # vscode.profiles.default.enable = true;
 
     zed = {
       enable = true;
@@ -151,7 +150,6 @@
         ssh.enable = true;
         thunderbird.enable = true;
         vesktop.enable = true;
-        vsCode.enable = true;
         zed-editor.enable = true;
       };
     };
