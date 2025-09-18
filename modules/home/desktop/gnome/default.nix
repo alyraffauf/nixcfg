@@ -19,6 +19,7 @@
           webBrowser = config.myHome.profiles.defaultApps.webBrowser.exec or (lib.getExe config.programs.firefox.finalPackage);
           fileManager = config.myHome.profiles.defaultApps.fileManager.exec or (lib.getExe pkgs.nautilus);
           editor = config.myHome.profiles.defaultApps.editor.exec or (lib.getExe pkgs.gnome-text-editor);
+          videoPlayer = config.myHome.profiles.defaultApps.videoPlayer.exec or (lib.getExe pkgs.showtime);
         };
       in {
         "org/gnome/desktop/datetime".automatic-timezone = true;
@@ -185,7 +186,7 @@
       imageViewer.package = lib.mkDefault pkgs.loupe;
       pdfViewer.package = lib.mkDefault pkgs.papers;
       terminal.package = lib.mkDefault pkgs.ptyxis;
-      videoPlayer.package = lib.mkDefault pkgs.celluloid;
+      videoPlayer.package = lib.mkDefault pkgs.showtime;
     };
   };
 }

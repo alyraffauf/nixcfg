@@ -14,7 +14,7 @@ in {
     audioPlayer = {
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.celluloid;
+        default = pkgs.showtime;
         description = "The default audio player package.";
       };
 
@@ -112,7 +112,7 @@ in {
     videoPlayer = {
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.celluloid;
+        default = pkgs.showtime;
         description = "The default video player package.";
       };
 
