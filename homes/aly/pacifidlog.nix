@@ -85,6 +85,7 @@
     };
   };
 
+  targets.genericLinux.enable = true;
   xdg.enable = true;
 
   fontix = {
