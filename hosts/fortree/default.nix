@@ -58,6 +58,7 @@
       (greedy "thunderbird")
       (greedy "todoist-app")
       (greedy "vlc")
+      (greedy "zed")
       (greedy "zen")
     ];
 
@@ -110,7 +111,7 @@
         {app = "/Applications/Slack.app";}
         {app = "/Applications/Thunderbird.app";}
         {app = "/Applications/Obsidian.app";}
-        {app = "${pkgs.zed-editor}/Applications/Zed.app";}
+        {app = "/Applications/Zed.app";}
         {app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";}
         {app = "/System/Applications/Music.app";}
         {app = "/Applications/Plexamp.app";}
