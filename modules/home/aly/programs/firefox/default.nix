@@ -74,7 +74,6 @@ in {
             (import ./betterfox/fastfox.nix)
             // (import ./betterfox/peskyfox.nix)
             // (import ./betterfox/securefox.nix)
-            // (import ./betterfox/smoothfox.nix)
             // {
               "browser.tabs.groups.enabled" = true;
               "browser.tabs.groups.smart.enabled" = true;
