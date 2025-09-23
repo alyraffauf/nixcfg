@@ -50,6 +50,11 @@
     home-manager.enable = true;
     firefox.package = lib.mkForce (config.lib.nixGL.wrap pkgs.firefox);
     ghostty.package = lib.mkForce (config.lib.nixGL.wrap pkgs.ghostty);
+
+    gnome-shell.extensions = [
+      {package = pkgs.gnomeExtensions.tailscale-qs;}
+    ];
+
     zed-editor.package = config.lib.nixGL.wrap pkgs.zed-editor;
   };
 
