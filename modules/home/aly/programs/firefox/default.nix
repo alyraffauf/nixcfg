@@ -80,7 +80,6 @@ in {
               "browser.tabs.groups.smart.enabled" = true;
               "browser.toolbars.bookmarks.visibility" = "newtab";
               "sidebar.revamp" = true;
-              "sidebar.verticalTabs" = true;
               "svg.context-properties.content.enabled" = true;
             };
         };
