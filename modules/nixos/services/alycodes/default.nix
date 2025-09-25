@@ -24,11 +24,11 @@
           ports = ["0.0.0.0:${toString config.myNixOS.services.alycodes.port}:80"];
         };
 
-        alycodes-react = {
-          extraOptions = ["--pull=always"];
-          image = "ghcr.io/alyraffauf/alycodes-react";
-          ports = ["0.0.0.0:5738:80"];
-        };
+        # alycodes-react = {
+        #   extraOptions = ["--pull=always"];
+        #   image = "ghcr.io/alyraffauf/alycodes-react";
+        #   ports = ["0.0.0.0:5738:80"];
+        # };
 
         myatmosphere = {
           extraOptions = ["--pull=always"];
