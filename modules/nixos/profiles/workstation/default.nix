@@ -9,13 +9,6 @@
   };
 
   config = lib.mkIf config.myNixOS.profiles.workstation.enable {
-    assertions = [
-      {
-        assertion = !(config.programs.gamemode.enable && config.services.ananicy.enable);
-        message = "Ananicy and GameMode cannot be enabled at the same time.";
-      }
-    ];
-
     boot = {
       kernel.sysctl = {
         # Improved file monitoring
