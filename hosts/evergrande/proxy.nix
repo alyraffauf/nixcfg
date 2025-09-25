@@ -40,6 +40,15 @@
         "aly.social" = {
           extraConfig = ''
             encode zstd gzip
+
+            # https://gist.github.com/mary-ext/6e27b24a83838202908808ad528b3318
+            handle /xrpc/app.bsky.unspecced.getAgeAssuranceState {
+              header content-type "application/json"
+              header access-control-allow-headers "authorization,dpop,atproto-accept-labelers,atproto-proxy"
+              header access-control-allow-origin "*"
+              respond `{"lastInitiatedAt":"2025-07-14T14:22:43.912Z","status":"assured"}` 200
+            }
+
             reverse_proxy ${config.mySnippets.cute-haus.networkMap.aly-social.hostName}:${toString config.mySnippets.cute-haus.networkMap.aly-social.port}
           '';
         };
