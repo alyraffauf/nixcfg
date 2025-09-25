@@ -17,6 +17,7 @@
 
       aggregatedIcons = pkgs.buildEnv {
         name = "system-icons";
+
         paths = with pkgs; [
           adwaita-icon-theme
           gnome-themes-extra
@@ -37,6 +38,7 @@
 
     fonts = {
       fontDir.enable = true;
+
       packages = with pkgs; [
         adwaita-fonts
         nerd-fonts.caskaydia-cove

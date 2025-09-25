@@ -55,7 +55,6 @@
     };
 
     system.nixos.tags = ["hyprland"];
-
     myNixOS.desktop.enable = true;
   };
 }

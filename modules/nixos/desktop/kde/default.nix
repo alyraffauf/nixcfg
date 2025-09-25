@@ -7,17 +7,6 @@
   options.myNixOS.desktop.kde.enable = lib.mkEnableOption "KDE desktop environment";
 
   config = lib.mkIf config.myNixOS.desktop.kde.enable {
-    # environment.plasma6.excludePackages = lib.attrsets.attrValues {
-    #   inherit
-    #     (pkgs.kdePackages)
-    #     elisa
-    #     gwenview
-    #     krdp
-    #     okular
-    #     oxygen
-    #     ;
-    # };
-
     environment.systemPackages = with pkgs; [
       kdePackages.sddm-kcm
       maliit-keyboard
