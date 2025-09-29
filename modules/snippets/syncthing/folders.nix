@@ -54,6 +54,7 @@
           devices = [
             "lilycove"
             "mauville"
+            "pacifidlog"
             "rustboro"
             "sootopolis"
           ];
