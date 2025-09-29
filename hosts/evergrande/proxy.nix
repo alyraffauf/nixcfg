@@ -83,7 +83,7 @@
               request_body { max_size 2GB }
             }
 
-            reverse_proxy localhost${config.services.anubis.instances.forgejo.settings.BIND} {
+            reverse_proxy ${config.mySnippets.cute-haus.networkMap.forgejo.hostName}:${toString config.mySnippets.cute-haus.networkMap.forgejo.port} {
               header_up X-Real-Ip {remote_host}
             }
           '';
