@@ -47,6 +47,7 @@
     };
 
     services = {
+      flatpak.enable = true;
       gdm.enable = true;
       promtail.enable = true;
 
