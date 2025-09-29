@@ -91,6 +91,7 @@
 
           programs = {
             awscli.enable = true;
+            firefox.enable = true;
             git.enable = true;
             halloy.enable = true;
             helix.enable = true;
