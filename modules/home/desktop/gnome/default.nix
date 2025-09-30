@@ -34,7 +34,7 @@
 
         "org/gnome/desktop/wm/preferences" = {
           auto-raise = true;
-          button-layout = "appmenu:minimize,maximize,close";
+          button-layout = "appmenu:close";
           num-workspaces = 10;
           resize-with-right-button = true;
         };
