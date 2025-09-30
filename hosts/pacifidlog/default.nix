@@ -13,12 +13,7 @@
   boot.initrd.luks.devices."crypted".crypttabExtraOpts = ["fido2-device=auto" "token-timeout=20"];
   environment.variables.GDK_SCALE = "2.0";
   networking.hostName = "pacifidlog";
-
-  nix = {
-    daemonCPUSchedPolicy = "idle";
-    settings.max-jobs = 0;
-  };
-
+  nix.daemonCPUSchedPolicy = "idle";
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "25.11";
   time.timeZone = "America/New_York";
