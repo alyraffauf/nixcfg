@@ -104,7 +104,7 @@
   system = {
     defaults = {
       dock.persistent-apps = [
-        {app = "/System/Applications/Apps.app";}
+        # {app = "/System/Applications/Apps.app";}
         {app = "/Applications/Zen.app";}
         {app = "/Applications/Signal.app";}
         {app = "${pkgs.vesktop}/Applications/Vesktop.app";}
