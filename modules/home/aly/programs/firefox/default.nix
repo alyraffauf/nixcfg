@@ -52,7 +52,7 @@ in {
 
           search = {
             inherit engines;
-            default = "ddg";
+            default = "Kagi";
             force = true;
 
             order = [
