@@ -30,7 +30,6 @@
         "littleroot"
         "mauville"
         "mossdeep"
-        "oldale"
         "pacifidlog"
         "petalburg"
         "slateport"
