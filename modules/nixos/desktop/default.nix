@@ -32,7 +32,14 @@
       }
     ];
 
-    programs.system-config-printer.enable = true;
+    programs = {
+      appimage = {
+        enable = true;
+        binfmt = true;
+      };
+
+      system-config-printer.enable = true;
+    };
 
     services = {
       avahi = {
