@@ -1,6 +1,13 @@
-_: {
+{self, ...}: {
   flake.overlays = {
-    default = _final: prev: {
+    default = _final: prev: let
+      nixos-unstable-small = import self.inputs.nixpkgs-unstable-small {
+        config.allowUnfree = true;
+        inherit (prev) system;
+      };
+    in {
+      inherit (nixos-unstable-small) firefox plex plexRaw thunderbird zed-editor;
+
       linuxPackages_latest = prev.linuxPackagesFor (prev.linux_6_16.override {
         argsOverride = rec {
           src = prev.fetchurl {
