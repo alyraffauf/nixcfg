@@ -59,6 +59,7 @@
                   {
                     type = "search";
                     autofocus = true;
+                    search-engine = "kagi";
                   }
                   {
                     type = "monitor";
