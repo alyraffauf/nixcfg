@@ -135,6 +135,7 @@
 
         packages = with pkgs; [
           bitwarden-desktop
+          google-chrome
           nicotine-plus
           obsidian
           plexamp
