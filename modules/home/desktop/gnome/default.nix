@@ -41,7 +41,7 @@
 
         "org/gnome/mutter" = {
           dynamic-workspaces = false;
-          edge-tiling = false;
+          edge-tiling = true;
 
           experimental-features = [
             "scale-monitor-framebuffer"
@@ -100,10 +100,6 @@
           dock-postion = "LEFT";
           extend-height = false;
           hot-keys = false;
-        };
-
-        "org/gnome/shell/extensions/tilingshell" = {
-          tiling-system-activation-key = ["2"];
         };
 
         "org/gnome/shell/keybindings" = {
@@ -175,7 +171,6 @@
           {package = pkgs.gnomeExtensions.auto-move-windows;}
           {package = pkgs.gnomeExtensions.caffeine;}
           {package = pkgs.gnomeExtensions.night-theme-switcher;}
-          {package = pkgs.gnomeExtensions.tiling-shell;}
         ];
       };
     };
