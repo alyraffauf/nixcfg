@@ -117,20 +117,20 @@ in {
       '';
     };
 
-    ollama = {
-      enable = true;
-      acceleration = "rocm";
-      host = "0.0.0.0";
+    # ollama = {
+    #   enable = true;
+    #   acceleration = "rocm";
+    #   host = "0.0.0.0";
 
-      loadModels = [
-        "gemma3:12b"
-        "gemma3:4b"
-        "nomic-embed-text"
-      ];
+    #   loadModels = [
+    #     "gemma3:12b"
+    #     "gemma3:4b"
+    #     "nomic-embed-text"
+    #   ];
 
-      openFirewall = true;
-      rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700.
-    };
+    #   openFirewall = true;
+    #   rocmOverrideGfx = "10.3.0"; # We play pretend because ollama/ROCM does not support the 6700.
+    # };
 
     ombi = {
       inherit (config.mySnippets.cute-haus.networkMap.ombi) port;
