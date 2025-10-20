@@ -7,17 +7,24 @@
 
   config = lib.mkIf config.myHome.aly.programs.git.enable {
     programs = {
+      delta = {
+        enable = true;
+        enableGitIntegration = true;
+      };
+
       git = {
         enable = true;
-        delta.enable = true;
         lfs.enable = true;
-        userName = "Aly Raffauf";
-        userEmail = "aly@aly.codes";
 
-        extraConfig = {
+        settings = {
           color.ui = true;
           github.user = "alyraffauf";
           push.autoSetupRemote = true;
+
+          user = {
+            name = "Aly Raffauf";
+            email = "aly@aly.codes";
+          };
         };
       };
 
