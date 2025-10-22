@@ -139,6 +139,7 @@
           plexamp
           protonvpn-gui
           signal-desktop-bin
+          todoist-electron
         ];
 
         stateVersion = "25.05";
