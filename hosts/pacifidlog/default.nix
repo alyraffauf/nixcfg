@@ -20,7 +20,7 @@
   myHardware.hp.omnibook.fh0xxx.enable = true;
 
   myNixOS = {
-    desktop.gnome.enable = true;
+    desktop.cosmic.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
