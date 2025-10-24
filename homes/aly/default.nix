@@ -133,6 +133,7 @@
 
         packages = with pkgs; [
           bitwarden-desktop
+          cider-2
           google-chrome
           nicotine-plus
           obsidian
