@@ -12,7 +12,7 @@
       editor.package = lib.mkDefault pkgs.cosmic-edit;
       fileManager.package = lib.mkDefault pkgs.cosmic-files;
       imageViewer.package = lib.mkDefault pkgs.loupe;
-      pdfViewer.package = lib.mkDefault pkgs.evince;
+      pdfViewer.package = lib.mkDefault pkgs.papers;
       terminal.package = lib.mkDefault pkgs.cosmic-term;
       videoPlayer.package = lib.mkDefault pkgs.cosmic-player;
     };
