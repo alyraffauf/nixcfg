@@ -23,6 +23,28 @@
       };
     };
 
+    # programs.cosmic-term.settings.app_theme = cosmicLib.cosmic.mkRON "enum" "Dark";
+
+    programs.cosmic-term = {
+      enable = true;
+
+      profiles = [
+        {
+          hold = true;
+          is_default = true;
+          name = "Default";
+          syntax_theme_dark = "COSMIC Dark";
+          syntax_theme_light = "COSMIC Light";
+          working_directory = config.home.homeDirectory;
+        }
+      ];
+
+      settings = {
+        app_theme = cosmicLib.cosmic.mkRON "enum" "Dark";
+        show_headerbar = false;
+      };
+    };
+
     wayland.desktopManager.cosmic = {
       enable = true;
 
