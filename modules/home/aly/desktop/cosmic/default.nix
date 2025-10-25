@@ -30,7 +30,7 @@
 
       profiles = [
         {
-          hold = true;
+          hold = false;
           is_default = true;
           name = "Default";
           syntax_theme_dark = "COSMIC Dark";
