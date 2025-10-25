@@ -12,6 +12,7 @@
       settings = {
         appBadge = false;
         arRPC = true;
+        customTitleBar = true;
         disableMinSize = true;
         minimizeToTray = false;
         tray = true;
