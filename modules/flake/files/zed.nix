@@ -38,7 +38,11 @@ _: {
 
             Nix = {
               format_on_save = "on";
-              formatter = "language_server";
+              formatter.external = {
+                command = lib.getExe pkgs.alejandra;
+                arguments = ["--quiet" "--"];
+              };
+
               language_servers = ["nixd"];
             };
 
@@ -65,10 +69,7 @@ _: {
             };
           };
 
-          lsp.nixd = {
-            binary.path = lib.getExe pkgs.nixd;
-            settings.formatting.command = [(lib.getExe pkgs.alejandra) "--quiet" "--"];
-          };
+          lsp.nixd.binary.path = lib.getExe pkgs.nixd;
         };
       }
     ];
