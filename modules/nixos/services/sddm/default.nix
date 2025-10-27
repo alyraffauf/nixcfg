@@ -16,6 +16,7 @@
   config = lib.mkIf config.myNixOS.services.sddm.enable {
     security.pam.services.sddm = {
       enableGnomeKeyring = true;
+      fprintAuth = false;
       gnupg.enable = true;
       kwallet.enable = true;
     };
