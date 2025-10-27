@@ -31,6 +31,7 @@
 
     security.pam.services.gdm = {
       enableGnomeKeyring = true;
+      fprintAuth = false;
       gnupg.enable = true;
       kwallet.enable = true;
     };
