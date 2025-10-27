@@ -25,7 +25,7 @@
   myHardware.lenovo.thinkpad.X1.gen-9.enable = true;
 
   myNixOS = {
-    desktop.gnome.enable = true;
+    desktop.cosmic.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
@@ -47,8 +47,8 @@
 
     services = {
       caddy.enable = true;
+      cosmic-greeter.enable = true;
       flatpak.enable = true;
-      gdm.enable = true;
       promtail.enable = true;
 
       syncthing = {
