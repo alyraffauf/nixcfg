@@ -39,10 +39,10 @@
     };
 
     programs = {
-      lanzaboote.enable = true;
       nix.enable = true;
       podman.enable = true;
       steam.enable = true;
+      systemd-boot.enable = true;
     };
 
     services = {
