@@ -23,6 +23,7 @@
   config = lib.mkIf config.myNixOS.services.greetd.enable {
     security.pam.services.greetd = {
       enableGnomeKeyring = true;
+      fprintAuth = false;
       gnupg.enable = true;
       kwallet.enable = true;
     };
