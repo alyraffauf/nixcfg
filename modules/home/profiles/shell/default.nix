@@ -64,7 +64,7 @@
 
       oh-my-posh = {
         enable = true;
-        useTheme = "xtoys";
+        useTheme = "onehalf.minimal";
       };
 
       ripgrep = {
