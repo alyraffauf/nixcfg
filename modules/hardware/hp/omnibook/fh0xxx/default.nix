@@ -17,11 +17,13 @@
 
       kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.16") (lib.mkDefault pkgs.linuxPackages_latest);
 
-      kernelParams =
+      kernelParams = lib.mkIf (lib.versionOlder pkgs.linux.version "6.17") (
         # Eliminates flicker on dark screens when VRR is not enabled.
+        # Seems to be fixed in linux >= 6.17.
         if config.myHardware.intel.gpu.driver == "xe"
         then ["xe.enable_psr=0"]
-        else ["i915.enable_psr=0"];
+        else ["i915.enable_psr=0"]
+      );
     };
 
     hardware.sensor.iio.enable = true;
