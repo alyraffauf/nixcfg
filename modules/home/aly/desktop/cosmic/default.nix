@@ -81,6 +81,7 @@
           autohide = cosmicLib.cosmic.mkRON "optional" {
             handle_size = 4;
             transition_time = 200;
+            unhide_delay = 200;
             wait_time = 1000;
           };
 
