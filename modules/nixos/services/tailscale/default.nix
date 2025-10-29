@@ -87,13 +87,13 @@
     };
 
     myNixOS.programs.njust.recipes.tailscale = ''
-      # Connect to Mullvad NYC exit node
+      # Connect to Mullvad NYC
       [group('tailscale')]
       enable-mullvad:
           @echo "Connecting to Mullvad NYC exit node..."
           tailscale set --exit-node=us-nyc-wg-301.mullvad.ts.net
 
-      # Disconnect from Mullvad NYC exit node
+      # Disconnect from Mullvad NYC
       [group('tailscale')]
       disable-mullvad:
           @echo "Disconnecting from exit node..."
