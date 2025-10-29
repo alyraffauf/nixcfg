@@ -81,5 +81,7 @@
       configurationRevision = self.rev or self.dirtyRev or null;
       nixos.tags = ["base"];
     };
+
+    myNixOS.programs.njust.enable = true;
   };
 }
