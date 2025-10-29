@@ -85,24 +85,27 @@ in {
       '';
 
       updates = ''
-        # Variables for flatpak conditional logic
-        flatpak_check := "command -v flatpak >/dev/null 2>&1"
-        flatpak_skip := "echo 'Flatpak not available, skipping'"
-
         # Update everything
         [group('system')]
-        update: update-nixos update-flatpaks
+        update: update-nixos update-nix-profile update-flatpaks
 
         # Update Flatpak apps
         [group('flatpak')]
         update-flatpaks:
-            @{{flatpak_check}} && echo "Updating Flatpak applications..." && flatpak update -y || {{flatpak_skip}}
+            @echo "Updating Flatpak applications..."
+            -flatpak update -y
 
         # Update NixOS system
         [group('nix')]
         update-nixos action="switch":
             @echo "Updating NixOS..."
             sudo nixos-rebuild {{action}} --flake "${config.myNixOS.profiles.base.flakeUrl}"
+
+        # Update Nix user profile
+        [group('nix')]
+        update-nix-profile:
+            @echo "Updating Nix user profile..."
+            nix profile upgrade --all
       '';
 
       secureboot = ''
