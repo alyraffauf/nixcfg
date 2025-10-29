@@ -12,6 +12,7 @@ _: {
         (with pkgs; [
           (lib.hiPrio uutils-coreutils-noprefix)
           git
+          just
           nh
         ])
         # ++ lib.attrValues config.treefmt.build.programs
