@@ -91,16 +91,16 @@ in {
 
         # Update everything
         [group('system')]
-        update: nix-update flatpak-update
+        update: update-nix update-flatpaks
 
         # Update Flatpak apps
         [group('flatpak')]
-        flatpak-update:
+        update-flatpaks:
             @{{flatpak_check}} && echo "Updating Flatpak applications..." && flatpak update -y || {{flatpak_skip}}
 
         # Update NixOS system
         [group('nix')]
-        nix-update action="switch":
+        update-nix action="switch":
             @echo "Updating NixOS..."
             sudo nixos-rebuild {{action}} --flake "${config.environment.variables.FLAKE or "github:alyraffauf/nixcfg"}"
       '';
@@ -113,13 +113,13 @@ in {
 
         # Generate Secure Boot keys
         [group('secureboot')]
-        sb-gen-keys:
+        gen-sb-keys:
             @echo "Generating Secure Boot keys..."
             sudo sbctl create-keys
 
         # Enroll Secure Boot keys
         [group('secureboot')]
-        sb-enroll-keys:
+        enroll-sb-keys:
             @echo "Enrolling Secure Boot keys..."
             sudo sbctl enroll-keys --microsoft
       '';
@@ -127,13 +127,8 @@ in {
       debugging = ''
         # List failed services
         [group('debugging')]
-        failed:
+        failed-units:
             systemctl --failed
-
-        # Repair nix store
-        [group('debugging')]
-        repair:
-            sudo nix-store --repair --verify --check-contents
       '';
     };
 

@@ -65,19 +65,24 @@ in {
     myNixOS.programs.njust.recipes.nix = ''
       # Garbage collect Nix store
       [group('nix')]
-      nix-gc days="3":
+      gc-nix days="3":
           @echo "Cleaning up Nix generations older than {{days}} days..."
           sudo nix-collect-garbage --delete-older-than {{days}}d
 
       # Optimize Nix store
       [group('nix')]
-      nix-optimize:
+      optimize-nix:
           @echo "Optimizing Nix store..."
           sudo nix-store --optimise
 
       # Garbage collect and optimize Nix store
       [group('nix')]
-      nix-cleanup: nix-gc && nix-optimize
+      cleanup-nix: gc-nix && optimize-nix
+
+      # Repair Nix store
+      [group('debugging')]
+      repair-nix:
+          sudo nix-store --repair --verify --check-contents
     '';
   };
 }
