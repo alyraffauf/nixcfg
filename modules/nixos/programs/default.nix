@@ -4,6 +4,7 @@
     ./lanzaboote
     ./nicotine-plus
     ./nix
+    ./njust
     ./podman
     ./retroarch
     ./steam

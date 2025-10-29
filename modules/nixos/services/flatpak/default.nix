@@ -53,5 +53,12 @@
     services.flatpak.enable = true;
     system.fsPackages = [pkgs.bindfs];
     xdg.portal.enable = true;
+
+    myNixOS.programs.njust.recipes.flatpak = ''
+      # Add Flathub repository
+      [group('flatpak')]
+      add-flathub:
+          flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    '';
   };
 }

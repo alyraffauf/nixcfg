@@ -5,7 +5,15 @@
   self,
   ...
 }: {
-  options.myNixOS.profiles.base.enable = lib.mkEnableOption "base system configuration";
+  options.myNixOS.profiles.base = {
+    enable = lib.mkEnableOption "base system configuration";
+
+    flakeUrl = lib.mkOption {
+      type = lib.types.str;
+      default = "github:alyraffauf/nixcfg";
+      description = "Default flake URL for the system";
+    };
+  };
 
   config = lib.mkIf config.myNixOS.profiles.base.enable {
     environment = {
@@ -22,8 +30,8 @@
       ];
 
       variables = {
-        FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
-        NH_FLAKE = lib.mkDefault "github:alyraffauf/nixcfg";
+        FLAKE = config.myNixOS.profiles.base.flakeUrl;
+        NH_FLAKE = config.myNixOS.profiles.base.flakeUrl;
       };
     };
 
@@ -81,5 +89,7 @@
       configurationRevision = self.rev or self.dirtyRev or null;
       nixos.tags = ["base"];
     };
+
+    myNixOS.programs.njust.enable = true;
   };
 }
