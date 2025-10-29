@@ -45,7 +45,7 @@
 
   njustScript = pkgs.writeShellApplication {
     name = "njust";
-    runtimeInputs = [pkgs.just];
+    runtimeInputs = [pkgs.jq pkgs.just];
 
     text = ''
       exec just --working-directory "$PWD" --justfile ${mergedJustfile} "$@"
@@ -78,10 +78,11 @@ in {
         # Show system info
         [group('system')]
         info:
-            @echo "System: $(uname -a)"
+            @echo "Hostname: $(hostname)"
             @echo "NixOS Version: $(nixos-version)"
             @echo "Kernel: $(uname -r)"
-            @nix --version
+            @echo "Generation: $(sudo nix-env --list-generations -p /nix/var/nix/profiles/system | tail -1 | awk '{print $1}')"
+            @echo "Revision: $(nixos-version --json | jq -r '.configurationRevision // "unknown"')"
       '';
 
       updates = ''
