@@ -75,7 +75,7 @@ in {
           @echo "Optimizing Nix store..."
           sudo nix-store --optimise
 
-      # Garbage collect and optimize Nix store
+      # Free space from Nix store
       [group('nix')]
       cleanup-nix: gc-nix && optimize-nix
 
