@@ -80,7 +80,7 @@ in {
       cleanup-nix: gc-nix && optimize-nix
 
       # Repair Nix store
-      [group('debugging')]
+      [group('nix')]
       repair-nix:
           sudo nix-store --repair --verify --check-contents
     '';
