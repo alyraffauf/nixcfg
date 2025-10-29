@@ -22,7 +22,7 @@
       allowReboot = lib.mkDefault true;
       dates = "02:00";
       flags = ["--accept-flake-config"];
-      flake = config.environment.variables.FLAKE or "github:alyraffauf/nixcfg";
+      flake = config.myNixOS.profiles.base.flakeUrl;
       persistent = true;
       randomizedDelaySec = "120min";
 

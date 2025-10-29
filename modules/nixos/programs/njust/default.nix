@@ -102,7 +102,7 @@ in {
         [group('nix')]
         update-nix action="switch":
             @echo "Updating NixOS..."
-            sudo nixos-rebuild {{action}} --flake "${config.environment.variables.FLAKE or "github:alyraffauf/nixcfg"}"
+            sudo nixos-rebuild {{action}} --flake "${config.myNixOS.profiles.base.flakeUrl}"
       '';
 
       secureboot = ''
