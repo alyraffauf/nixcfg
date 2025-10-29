@@ -8,12 +8,11 @@
 
   # Merge all recipe files into a single justfile
   mergedJustfileContent = ''
-    default:
-        @printf '\033[1;36mnjust — NixOS Recipes\033[0m\n\n'
-        @printf 'A just-based recipe runner for NixOS.\n'
-        @printf 'Provides convenient shortcuts for common tasks.\n\n'
-        @printf '\033[1;33mUsage:\033[0m  njust <recipe> [args...]\n\n'
-        @printf '\033[1;33mExplore available recipes:\033[0m  njust --list\n'
+    _default:
+        @printf '\033[1;36mnjust\033[0m\n'
+        @printf 'Just-based recipe runner for NixOS.\n\n'
+        @printf '\033[1;33mUsage:\033[0m njust <recipe> [args...]\n\n'
+        @njust --list --list-heading $'Available recipes:\n\n'
 
     ${lib.concatStringsSep "\n" (lib.attrValues cfg.recipes)}
   '';
