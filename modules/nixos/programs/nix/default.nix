@@ -61,5 +61,23 @@ in {
     };
 
     users.groups.nixbuild = lib.mkIf isBuildMachine {};
+
+    myNixOS.programs.njust.recipes.nix = ''
+      # Garbage collect Nix store
+      [group('nix')]
+      nix-gc days="3":
+          @echo "Cleaning up Nix generations older than {{days}} days..."
+          sudo nix-collect-garbage --delete-older-than {{days}}d
+
+      # Optimize Nix store
+      [group('nix')]
+      nix-optimize:
+          @echo "Optimizing Nix store..."
+          sudo nix-store --optimise
+
+      # Garbage collect and optimize Nix store
+      [group('nix')]
+      nix-cleanup: nix-gc && nix-optimize
+    '';
   };
 }
