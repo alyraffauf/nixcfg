@@ -123,13 +123,6 @@ in {
             @echo "Enrolling Secure Boot keys..."
             sudo sbctl enroll-keys --microsoft
       '';
-
-      debugging = ''
-        # List failed services
-        [group('debugging')]
-        failed-units:
-            systemctl --failed
-      '';
     };
 
     environment.systemPackages = [njustScript];
