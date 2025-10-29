@@ -91,7 +91,7 @@ in {
 
         # Update everything
         [group('system')]
-        update: update-nix update-flatpaks
+        update: update-nixos update-flatpaks
 
         # Update Flatpak apps
         [group('flatpak')]
@@ -100,7 +100,7 @@ in {
 
         # Update NixOS system
         [group('nix')]
-        update-nix action="switch":
+        update-nixos action="switch":
             @echo "Updating NixOS..."
             sudo nixos-rebuild {{action}} --flake "${config.myNixOS.profiles.base.flakeUrl}"
       '';
