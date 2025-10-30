@@ -1,5 +1,4 @@
 # just is a command runner, Justfile is very similar to Makefile, but simpler.
-
 ############################################################################
 #
 #  Common recipes
@@ -7,10 +6,10 @@
 ############################################################################
 
 # List all recipes
-default:
-    @printf '\e[1;36m%s\e[0m\n' "nixcfg — Recipes"; \
-    printf '\e[1;33mUsage:\e[0m  just <recipe> [-- args]\n\n'; \
-    just --list | sed 's/^/  /'
+_default:
+    @printf '\033[1;36mnixcfg recipes\033[0m\n\n'
+    @printf '\033[1;33mUsage:\033[0m just <recipe> [args...]\n\n'
+    @just --list --list-heading $'Available recipes:\n\n'
 
 # Generate {ci,edconfig} files
 [group('flake')]
@@ -19,19 +18,18 @@ gen target:
 
 # Update flake inputs
 [group('flake')]
-up *inputs:
+update *inputs:
     nix flake update {{ inputs }} --commit-lock-file
 
 # Update all nixpkgs inputs
 [group('flake')]
-upnix: (up "nixpkgs" "nixpkgs-unstable-small")
+update-nixpkgs: (update "nixpkgs" "nixpkgs-unstable-small")
 
 ############################################################################
 #
 #  NixOS
 #
 ############################################################################
-
 ############################################################################
 #
 #  Darwin
@@ -55,3 +53,13 @@ reset-launchpad:
 [group('servers')]
 deploy jobs='':
     nynx --operation switch {{ if jobs == "" { "" } else { "--jobs " + jobs } }}
+
+# Pull latest aly.codes OCI on mossdeep
+[group('servers')]
+update-alycodes:
+    ssh root@mossdeep systemctl restart podman-alycodes.service
+
+# Pull latest myAtmosphere OCI on mossdeep
+[group('servers')]
+update-myatmosphere:
+    ssh root@mossdeep systemctl restart podman-myatmosphere.service
