@@ -44,7 +44,7 @@
         nerd-fonts.caskaydia-cove
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         source-code-pro
         source-sans-pro
       ];
