@@ -12,12 +12,7 @@
 
   environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "sootopolis";
-
-  nix = {
-    daemonCPUSchedPolicy = "idle";
-    settings.max-jobs = 0;
-  };
-
+  nix.daemonCPUSchedPolicy = "idle";
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "25.05";
   time.timeZone = "America/New_York";
