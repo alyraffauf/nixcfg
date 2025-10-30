@@ -1,13 +1,6 @@
-{self, ...}: {
+_: {
   flake.overlays = {
-    default = _final: prev: let
-      nixos-unstable-small = import self.inputs.nixpkgs-unstable-small {
-        config.allowUnfree = true;
-        inherit (prev) system;
-      };
-    in {
-      inherit (nixos-unstable-small) firefox plex plexRaw thunderbird zed-editor;
-
+    default = _final: prev: {
       qbittorrent-nox = prev.qbittorrent-nox.overrideAttrs (_old: rec {
         version = "5.1.2";
 
