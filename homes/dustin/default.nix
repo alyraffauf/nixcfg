@@ -58,7 +58,7 @@
 
     zen-browser = {
       enable = true;
-      nativeMessagingHosts = [pkgs.bitwarden];
+      nativeMessagingHosts = [pkgs.bitwarden-desktop];
     };
   };
 
