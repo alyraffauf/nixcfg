@@ -131,17 +131,23 @@
       home = {
         homeDirectory = "/home/aly";
 
-        packages = with pkgs; [
-          bitwarden-desktop
-          cider-2
-          google-chrome
-          nicotine-plus
-          obsidian
-          plexamp
-          protonvpn-gui
-          signal-desktop-bin
-          todoist-electron
-        ];
+        packages = with pkgs;
+          [
+            bitwarden-desktop
+            cider-2
+            google-chrome
+            nicotine-plus
+            obsidian
+            plexamp
+            protonvpn-gui
+            signal-desktop-bin
+            todoist-electron
+          ]
+          ++ [
+            (pkgs.writeShellScriptBin "aws-cvpn" ''
+              exec ${self.inputs.aws-cvpn-client.packages.${pkgs.system}.default}/bin/aws-start-vpn.sh "$@"
+            '')
+          ];
 
         stateVersion = "25.05";
         username = "aly";

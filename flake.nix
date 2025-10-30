@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    aws-cvpn-client = {
+      url = "github:alyraffauf/aws-cvpn-client";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin.url = "github:catppuccin/nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
