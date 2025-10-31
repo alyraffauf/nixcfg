@@ -102,12 +102,6 @@ in {
       create-snapshot config="home" desc="manual":
           @echo "Creating snapshot '{{desc}}' for config {{config}}"
           snapper -c {{config}} create --description "{{desc}}"
-
-      # Delete old snapshots
-      [group('btrfs')]
-      cleanup-snapshots config="home" days="7":
-          @echo "Deleting snapshots older than {{days}} days for config {{config}}"
-          snapper -c {{config}} cleanup number --pre-num={{days}} --post-num={{days}}
     '';
   };
 }
