@@ -126,6 +126,27 @@ in {
             @echo "Enrolling Secure Boot keys..."
             sudo sbctl enroll-keys --microsoft
       '';
+
+      full-disk-encryption = ''
+        # List encrypted volumes
+        [group('encryption')]
+        fde-status:
+            @echo "Checking Full Disk Encryption status..."
+            lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,TYPE,UUID | grep crypt
+
+        # Enable TPM2 disk unlock
+        [group('encryption')]
+        [confirm("Make sure Secure Boot status is active before continuing.")]
+        enable-tpm2-unlock crypt="/dev/nvme0n1p2":
+            @echo "Setting up TPM2 disk unlocking for {{crypt}}..."
+            sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 {{crypt}}
+
+        # Enable FIDO2 disk unlock
+        [group('encryption')]
+        enable-fido2-unlock crypt="/dev/nvme0n1p2":
+            @echo "Setting up FIDO2 disk unlocking for {{crypt}}..."
+            sudo systemd-cryptenroll --fido2-device=auto {{crypt}}
+      '';
     };
 
     environment.systemPackages = [njustScript];
