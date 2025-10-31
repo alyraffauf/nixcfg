@@ -37,6 +37,7 @@
             "lavaridge"
             "lilycove"
             "mauville"
+            "pacifidlog"
             "rustboro"
             "slateport"
             "sootopolis"
