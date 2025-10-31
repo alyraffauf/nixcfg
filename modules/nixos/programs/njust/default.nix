@@ -136,7 +136,7 @@ in {
 
         # Enable TPM2 disk unlock
         [group('encryption')]
-        [confirm("Make sure Secure Boot status is active before continuing.")]
+        [confirm("Verify ecure Boot is active before continuing!")]
         enable-tpm2-unlock crypt="/dev/nvme0n1p2":
             @echo "Setting up TPM2 disk unlocking for {{crypt}}..."
             sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 {{crypt}}
