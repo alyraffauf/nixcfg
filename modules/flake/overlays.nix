@@ -8,9 +8,6 @@
     in {
       inherit
         (nixos-unstable-small)
-        plex
-        firefox
-        plexRaw
         cosmic-bg
         cosmic-osd
         zed-editor
@@ -18,7 +15,6 @@
         cosmic-edit
         cosmic-idle
         cosmic-term
-        thunderbird
         cosmic-files
         cosmic-icons
         cosmic-panel
