@@ -5,6 +5,7 @@
       type = lib.types.attrs;
 
       default = {
+        "allyx" = {id = "XTEVJX2-DBEFN4X-UCG43YR-V4FOQYU-DMM2WH4-AMCC5FS-42UB3DM-KUDVHQL";}; # ROG Ally X
         "dewford" = {id = "INSM2ED-2HTKFWC-BXMUOHQ-EFHK7CJ-A44HIG4-LYTGMGU-FRLA2ZS-RZBHAAJ";}; # Retroid Pocket 5
         "fallarbor" = {id = "P4URLH4-YWLMO6J-W62ET7H-TQAO3Y6-T2FAYOY-C2VTI65-VQXHVGG-NQ76PAZ";}; # Framework 13 Intel 11th gen
         "fortree" = {id = "S6PVA3I-EKOCGIU-GFX7AE6-FXM45OW-JTYN5LJ-UZ4LADZ-NNAJGDD-KST2VAG";}; # MacBook Air M2

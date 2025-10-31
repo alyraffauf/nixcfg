@@ -7,6 +7,7 @@
       default = {
         "sync" = {
           devices = [
+            "allyx"
             "dewford"
             "fallarbor"
             "fortree"
