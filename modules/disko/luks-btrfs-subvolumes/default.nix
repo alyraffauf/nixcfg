@@ -81,6 +81,12 @@
                       };
                     };
                   };
+
+                  settings = {
+                    allowDiscards = true;
+                    bypassWorkqueues = true;
+                    crypttabExtraOpts = ["fido2-device=auto" "token-timeout=20"];
+                  };
                 };
               };
             };
