@@ -42,24 +42,3 @@ update-nixpkgs: (update "nixpkgs" "nixpkgs-unstable-small")
 reset-launchpad:
     defaults write com.apple.dock ResetLaunchPad -bool true
     killall Dock
-
-############################################################################
-#
-#  Servers
-#
-############################################################################
-
-# Deploy hosts with nynx
-[group('servers')]
-deploy jobs='':
-    nynx --operation switch {{ if jobs == "" { "" } else { "--jobs " + jobs } }}
-
-# Pull latest aly.codes OCI on mossdeep
-[group('servers')]
-update-alycodes:
-    ssh root@mossdeep systemctl restart podman-alycodes.service
-
-# Pull latest myAtmosphere OCI on mossdeep
-[group('servers')]
-update-myatmosphere:
-    ssh root@mossdeep systemctl restart podman-myatmosphere.service
