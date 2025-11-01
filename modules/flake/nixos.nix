@@ -22,17 +22,10 @@
       modules = self.nixosModules;
     in
       inputs.nixpkgs.lib.genAttrs [
-        "dewford"
-        "evergrande"
         "fallarbor"
-        "lavaridge"
-        "lilycove"
         "littleroot"
-        "mauville"
-        "mossdeep"
         "pacifidlog"
         "petalburg"
-        "slateport"
         "sootopolis"
       ] (
         host:

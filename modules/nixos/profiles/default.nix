@@ -1,8 +1,6 @@
 {...}: {
   imports = [
-    ./arr
     ./autoUpgrade
-    ./backups
     ./base
     ./btrfs
     ./data-share
@@ -10,7 +8,6 @@
     ./hardened
     ./iso
     ./media-share
-    ./server
     ./swap
     ./wifi
     ./workstation

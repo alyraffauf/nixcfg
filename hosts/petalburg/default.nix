@@ -46,7 +46,6 @@
 
     profiles = {
       autoUpgrade.enable = true;
-      backups.enable = true;
       base.enable = true;
       btrfs.enable = true;
       swap.enable = true;
