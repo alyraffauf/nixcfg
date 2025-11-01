@@ -10,7 +10,6 @@
     ./nynx.nix
     ./overlays.nix
     ./packages.nix
-    ./tailscale.nix
     ./treefmt.nix
   ];
 }
