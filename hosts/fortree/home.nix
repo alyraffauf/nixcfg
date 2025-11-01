@@ -15,7 +15,7 @@
       syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/fortree/key.age";
     };
 
-    home.stateVersion = "25.05";
+    home.stateVersion = "25.11";
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
     services.syncthing = let

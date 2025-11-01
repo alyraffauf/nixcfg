@@ -12,7 +12,7 @@
   home = {
     username = "dustin";
     homeDirectory = "/home/dustin";
-    stateVersion = "24.05";
+    stateVersion = "25.11";
 
     packages = with pkgs; [
       calibre

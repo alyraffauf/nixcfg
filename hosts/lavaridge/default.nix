@@ -61,7 +61,7 @@
 
   networking.hostName = "lavaridge";
   services.xserver.xkb.options = "ctrl:nocaps";
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   time.timeZone = "America/New_York";
   myHardware.framework.laptop13.intel-11th.enable = true;
 

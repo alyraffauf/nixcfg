@@ -16,7 +16,7 @@
         restic
       ];
 
-      stateVersion = "25.05";
+      stateVersion = "25.11";
       username = "aly";
     };
     programs = {

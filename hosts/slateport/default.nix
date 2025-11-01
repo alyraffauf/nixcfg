@@ -8,7 +8,7 @@
 
   networking.hostName = "slateport";
   powerManagement.powertop.enable = true;
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.11";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
   myHardware.lenovo.thinkcentre.m700.enable = true;

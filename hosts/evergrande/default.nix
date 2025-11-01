@@ -44,7 +44,7 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   programs.ssh.knownHosts = config.mySnippets.ssh.knownHosts;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/sda";
 
