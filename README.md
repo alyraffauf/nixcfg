@@ -6,18 +6,15 @@ This repository contains my Darwin, NixOS and home-manager configurations, along
 
 ---
 
-![](./_img/hyprland.png)
+![](./_img/cosmic.png)
 
 ---
 
 ## ✨ Features
 
 - **Declarative System & Dotfiles:** Fully declarative management of my macOS (Darwin) + Linux installations and user environments (dotfiles, packages) using Flakes, NixOS, nix-darwin, and home-manager.
-- **Multi-Host Configs:** Seamlessly configures my diverse hosts including bare-metal PCs, laptops (Framework, ThinkPad), mini-servers (Beelink), and virtual private servers (Hetzner, Netcup, AWS).
 - **Secure Boot & Encryption:** Encrypted boot drives with Secure Boot via `lanzaboote` and automatic LUKS decryption using TPM.
 - **Comprehensive Hardware Support:** Meticulously crafted configurations for my (sometimes unique) devices, including custom audio enhancements (Pipewire filter chains) and device-specific power optimizations.
-- **Hybrid Cloud Services:** Declarative setup for all the hosts and services that make up my overly complicated homelab, including the \*arr stack, Audiobookshelf, Caddy, Forgejo (my Git forge), Grafana + Loki + Prometheus, Immich, Karakeep, self-hosted AI inference with Ollama, Plex, qBittorrent, Vaultwarden, and more.
-- **Automatic Monitoring & Backups:** Easy Prometheus + Loki and Uptime-Kuma setups for system and service monitoring, plus automated Restic backups to Backblaze B2.
 - **Robust Networking:** Secure and flexible networking with Tailscale (it's WireGuard), declarative WiFi profiles, and NFS/Samba sharing.
 - **Productivity & Development:** Pre-configured tools for development (Git, Helix, VS Code, Zed), shell enhancements (fastfetch, oh-my-posh, zsh), etc.
 <!-- - **System-Wide Theming:** Consistent aesthetics across devices with stylix, which auto-generates application themes from base16 color schemes. -->
@@ -59,8 +56,9 @@ This repository is licensed under the **[GNU General Public License](LICENSE.md)
 
 ---
 
-## 🙌 Acknowledgments
+## 🙌 Links
 
+- [cute.haus](https://github.com/alyraffauf/cute.haus): homelab configuration previously located in this repoistory.
 - [nixpkgs](https://github.com/nixos/nixpkgs): 'nough said.
 - [agenix](https://github.com/ryantm/agenix): secrets storage and orchestration.
 - [disko](https://github.com/nix-community/disko): declarative partitions and disk configuration.
