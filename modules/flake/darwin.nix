@@ -11,9 +11,9 @@
         ../../hosts/fortree
         self.darwinModules.default
         inputs.agenix.darwinModules.default
+        inputs.snippets.nixosModules.snippets
         inputs.home-manager.darwinModules.home-manager
         inputs.nix-homebrew.darwinModules.nix-homebrew
-        self.nixosModules.snippets
 
         {
           home-manager = {

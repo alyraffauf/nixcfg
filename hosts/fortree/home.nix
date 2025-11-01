@@ -6,7 +6,7 @@
   }: {
     imports = [
       self.homeModules.aly
-      self.homeModules.snippets
+      self.inputs.snippets.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
     ];
 

@@ -5,8 +5,8 @@
     ./profiles
     ./programs
     ./services
-    self.homeModules.snippets
     self.inputs.cosmic-manager.homeManagerModules.cosmic-manager
+    self.inputs.snippets.homeModules.snippets
     self.inputs.zen-browser.homeModules.beta
   ];
 }
