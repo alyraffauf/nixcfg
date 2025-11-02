@@ -117,10 +117,7 @@
         shellAliases."docker" = "podman";
       };
 
-      myHome = {
-        aly.desktop.macos.enable = true;
-        services.raycast.enable = true;
-      };
+      myHome.aly.desktop.macos.enable = true;
     })
 
     (lib.mkIf pkgs.stdenv.isLinux {
