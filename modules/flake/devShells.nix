@@ -17,7 +17,6 @@ _: {
         ])
         # ++ lib.attrValues config.treefmt.build.programs
         ++ [
-          inputs'.agenix.packages.default
           self'.packages.gen-files
         ]
         ++ lib.optionals pkgs.stdenv.isLinux [
