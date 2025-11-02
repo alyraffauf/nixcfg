@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.myHome.aly.programs.vesktop.enable = lib.mkEnableOption "vesktop";
@@ -12,9 +13,20 @@
       settings = {
         appBadge = false;
         arRPC = true;
-        customTitleBar = true;
+
+        customTitleBar =
+          if pkgs.stdenv.isLinux
+          then true
+          else false;
+
         disableMinSize = true;
-        minimizeToTray = false;
+        enableSplashScreen = false;
+
+        minimizeToTray =
+          if pkgs.stdenv.isLinux
+          then true
+          else false;
+
         tray = true;
         hardwareAcceleration = true;
         discordBranch = "stable";
