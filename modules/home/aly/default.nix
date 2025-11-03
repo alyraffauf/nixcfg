@@ -3,6 +3,5 @@
     ./desktop
     ./profiles
     ./programs
-    ./services
   ];
 }
