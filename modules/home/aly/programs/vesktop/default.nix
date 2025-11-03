@@ -10,27 +10,23 @@
     programs.vesktop = {
       enable = true;
 
-      settings = {
-        appBadge = false;
-        arRPC = true;
+      settings = lib.mkMerge [
+        {
+          appBadge = false;
+          arRPC = true;
+          disableMinSize = true;
+          enableSplashScreen = false;
+          tray = true;
+          hardwareAcceleration = true;
+          discordBranch = "stable";
+        }
 
-        customTitleBar =
-          if pkgs.stdenv.isLinux
-          then true
-          else false;
-
-        disableMinSize = true;
-        enableSplashScreen = false;
-
-        minimizeToTray =
-          if pkgs.stdenv.isLinux
-          then true
-          else false;
-
-        tray = true;
-        hardwareAcceleration = true;
-        discordBranch = "stable";
-      };
+        (lib.mkIf pkgs.stdenv.isLinux {
+          autoStartMinimized = true;
+          customTitleBar = true;
+          minimizeToTray = true;
+        })
+      ];
 
       vencord.settings = {
         autoUpdate = true;
