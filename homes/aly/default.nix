@@ -9,6 +9,7 @@
     self.homeModules.default
     self.inputs.fontix.homeModules.default
     self.inputs.catppuccin.homeModules.catppuccin
+    self.inputs.safari.homeModules.default
   ];
 
   config = lib.mkMerge [
@@ -93,7 +94,6 @@
             firefox.enable = true;
             git.enable = true;
             halloy.enable = true;
-            helix.enable = true;
             ssh.enable = true;
             thunderbird.enable = true;
             vesktop.enable = true;
@@ -102,12 +102,7 @@
           };
         };
 
-        profiles.shell.enable = true;
-
-        programs = {
-          fastfetch.enable = true;
-          ghostty.enable = true;
-        };
+        programs.ghostty.enable = true;
       };
     }
 
@@ -151,6 +146,7 @@
       };
 
       systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
+      safari.enable = true;
 
       myHome = {
         aly.programs.chromium.enable = true;

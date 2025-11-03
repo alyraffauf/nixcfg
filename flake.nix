@@ -103,6 +103,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    safari = {
+      url = "github:alyraffauf/safari";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     self2025 = {
       url = "github:alyraffauf/self2025";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -7,6 +7,7 @@
   imports = [
     self.homeModules.default
     self.inputs.fontix.homeModules.default
+    self.inputs.safari.homeModules.default
   ];
 
   home = {
@@ -100,12 +101,6 @@
     fontconfig.enable = true;
   };
 
-  myHome = {
-    profiles = {
-      defaultApps.enable = true;
-      shell.enable = true;
-    };
-
-    programs.fastfetch.enable = true;
-  };
+  safari.enable = true;
+  myHome.profiles.defaultApps.enable = true;
 }

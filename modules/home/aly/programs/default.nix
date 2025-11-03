@@ -5,7 +5,6 @@
     ./firefox
     ./git
     ./halloy
-    ./helix
     ./ssh
     ./thunderbird
     ./vesktop
