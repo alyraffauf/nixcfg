@@ -15,13 +15,10 @@
   config = lib.mkMerge [
     {
       home = {
-        packages = with pkgs;
-          [
-            rclone
-          ]
-          ++ [
-            self.inputs.nynx.packages.${pkgs.system}.nynx
-          ];
+        packages = [
+          pkgs.rclone
+          self.inputs.nynx.packages.${pkgs.system}.nynx
+        ];
 
         username = "aly";
       };
