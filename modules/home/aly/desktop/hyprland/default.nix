@@ -16,7 +16,6 @@
         "$mod SHIFT,D,movetoworkspace,special:discord"
         "$mod,D,togglespecialworkspace,discord"
         "$mod,N,exec,${lib.getExe' pkgs.obsidian "obsidian"}"
-        "$mod,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"
       ];
 
       windowrulev2 = [

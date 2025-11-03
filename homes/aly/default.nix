@@ -153,10 +153,7 @@
       systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
       myHome = {
-        aly.programs = {
-          chromium.enable = true;
-          rbw.enable = true;
-        };
+        aly.programs.chromium.enable = true;
 
         profiles.defaultApps = {
           enable = true;

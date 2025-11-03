@@ -6,7 +6,6 @@
     ./git
     ./halloy
     ./helix
-    ./rbw
     ./ssh
     ./thunderbird
     ./vesktop
