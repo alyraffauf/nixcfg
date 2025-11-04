@@ -5,7 +5,7 @@ jobs:
   build-devShell-default:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 1
     - uses: DeterminateSystems/nix-installer-action@main
@@ -18,7 +18,7 @@ jobs:
   build-package-gen-files:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 1
     - uses: DeterminateSystems/nix-installer-action@main
@@ -31,7 +31,7 @@ jobs:
   build-package-render-workflows:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 1
     - uses: DeterminateSystems/nix-installer-action@main
