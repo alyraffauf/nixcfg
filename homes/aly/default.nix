@@ -82,6 +82,8 @@
         zellij.enable = true;
       };
 
+      safari.enable = true;
+
       myHome = {
         aly = {
           profiles.mail.enable = true;
@@ -143,7 +145,6 @@
       };
 
       systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
-      safari.enable = true;
 
       myHome = {
         aly.programs.chromium.enable = true;
