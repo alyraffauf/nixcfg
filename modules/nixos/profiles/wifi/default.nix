@@ -69,6 +69,11 @@
         };
       };
 
+      # Fix autoconnect with iwd + ensureProfiles
+      settings = lib.mkIf (config.networking.networkmanager.wifi.backend == "iwd") {
+        device."wifi.iwd.autoconnect" = false;
+      };
+
       wifi = {
         backend = "iwd";
         powersave = true;
