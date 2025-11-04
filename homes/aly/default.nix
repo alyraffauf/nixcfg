@@ -17,7 +17,7 @@
       home = {
         packages = [
           pkgs.rclone
-          self.inputs.nynx.packages.${pkgs.system}.nynx
+          self.inputs.nynx.packages.${pkgs.stdenv.hostPlatform.system}.nynx
         ];
 
         username = "aly";
@@ -136,7 +136,7 @@
           ]
           ++ [
             (pkgs.writeShellScriptBin "aws-cvpn" ''
-              exec ${self.inputs.aws-cvpn-client.packages.${pkgs.system}.default}/bin/aws-start-vpn.sh "$@"
+              exec ${self.inputs.aws-cvpn-client.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/aws-start-vpn.sh "$@"
             '')
           ];
 
