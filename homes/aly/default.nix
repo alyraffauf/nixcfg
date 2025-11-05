@@ -64,24 +64,6 @@
         zed-editor.enable = true;
       };
 
-      catppuccin = {
-        flavor = "macchiato";
-        bat.enable = true;
-        helix.enable = true;
-        ghostty.enable = true;
-        lazygit.enable = true;
-        vesktop.enable = true;
-        # vscode.profiles.default.enable = true;
-
-        zed = {
-          enable = true;
-          icons.enable = true;
-          italics = false;
-        };
-
-        zellij.enable = true;
-      };
-
       safari.enable = true;
 
       myHome = {
