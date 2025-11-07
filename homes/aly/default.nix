@@ -64,7 +64,11 @@
         zed-editor.enable = true;
       };
 
-      safari.enable = true;
+      safari = {
+        enable = true;
+        zsh.enable = true;
+        fish.enable = true;
+      };
 
       myHome = {
         aly = {

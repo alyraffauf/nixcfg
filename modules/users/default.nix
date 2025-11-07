@@ -12,10 +12,10 @@
   ];
 
   config = lib.mkIf (config.myUsers.root.enable or config.myUsers.aly.enable or config.myUsers.dustin.enable) {
-    programs.zsh.enable = true;
+    programs.fish.enable = true;
 
     users = {
-      defaultUserShell = pkgs.zsh;
+      defaultUserShell = pkgs.fish;
       mutableUsers = false;
 
       users.root.openssh.authorizedKeys.keyFiles =
