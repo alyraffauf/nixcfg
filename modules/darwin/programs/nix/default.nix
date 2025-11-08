@@ -11,6 +11,7 @@
       buildMachines =
         lib.filter (m: m.hostName != "${config.networking.hostName}") config.mySnippets.nix.buildMachines;
 
+      channel.enable = false;
       distributedBuilds = true;
 
       gc = {

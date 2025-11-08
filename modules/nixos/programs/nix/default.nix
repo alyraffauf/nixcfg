@@ -16,6 +16,7 @@ in {
         config.mySnippets.nix.buildMachines
       );
 
+      channel.enable = false;
       distributedBuilds = true;
 
       gc = {
