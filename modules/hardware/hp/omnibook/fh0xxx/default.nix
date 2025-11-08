@@ -40,11 +40,20 @@
 
     nixpkgs.overlays = [
       (_final: prev: {
-        linux-firmware = prev.linux-firmware.overrideAttrs (_old: {
-          # Adds Intel ISH firmware for various accelerometers + tablet mode.
-          postInstall = ''
-            cp ${./ishC_0207.bin} $out/lib/firmware/intel/ish/ish_lnlm_12128606.bin
-          '';
+        # linux-firmware = prev.linux-firmware.overrideAttrs (_old: {
+        #   # Adds Intel ISH firmware for various accelerometers + tablet mode.
+        #   postInstall = ''
+        #     cp ${./ishC_0207.bin} $out/lib/firmware/intel/ish/ish_lnlm_12128606.bin
+        #   '';
+        # });
+        #
+        linux-firmware = prev.linux-firmware.overrideAttrs (_oldAttrs: {
+          src = builtins.fetchGit {
+            url = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
+            rev = "b918d0b3cb97a9a93fe9f48459ee61d4a10bf64d";
+          };
+
+          version = "b918d0b3cb97a9a93fe9f48459ee61d4a10bf64d";
         });
       })
     ];
