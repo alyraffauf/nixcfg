@@ -11,9 +11,13 @@
       enable = true;
       package = lib.mkIf pkgs.stdenv.isDarwin pkgs.ghostty-bin;
 
-      settings = {
-        gtk-single-instance = lib.mkIf pkgs.stdenv.isLinux true;
-        quit-after-last-window-closed = lib.mkIf pkgs.stdenv.isLinux false;
+      settings = lib.mkIf pkgs.stdenv.isLinux {
+        # gtk-single-instance = true;
+        # quit-after-last-window-closed = false;
+        theme = "Adwaita Dark";
+        # gtk-titlebar = false;
+        window-padding-x = 6;
+        window-padding-y = 4;
       };
     };
   };
