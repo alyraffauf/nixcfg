@@ -41,7 +41,7 @@
 
       settings = {
         app_theme = cosmicLib.cosmic.mkRON "enum" "Dark";
-        show_headerbar = false;
+        show_headerbar = true;
       };
     };
 
