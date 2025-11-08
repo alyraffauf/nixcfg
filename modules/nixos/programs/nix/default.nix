@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: let
@@ -40,6 +41,7 @@ in {
         randomizedDelaySec = "60min";
       };
 
+      package = pkgs.lix;
       inherit (config.mySnippets.nix) settings;
     };
 
