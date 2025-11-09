@@ -25,7 +25,6 @@
       stellarium
       teams-for-linux
       trayscale
-      webcord
       zoom-us
     ];
   };
@@ -56,6 +55,8 @@
         pinentry = pkgs.pinentry-gnome3;
       };
     };
+
+    vesktop.enable = true;
 
     zen-browser = {
       enable = true;
