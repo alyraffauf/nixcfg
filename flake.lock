@@ -2163,11 +2163,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1762047252,
-        "narHash": "sha256-iapsJesDq6gpopN864Cks1RP7HVD3+JGsscf/DCq4cM=",
+        "lastModified": 1762784959,
+        "narHash": "sha256-Pyws9FDiPaDlzY8BL6BeS31MoH69K15ryCGQfUpoxwk=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "6736123f0af91b555e0ecf334e77345f3419bd10",
+        "rev": "71324d0e06a5b4db07eb49a2dc6b8199a970a8b2",
         "type": "github"
       },
       "original": {
@@ -2211,11 +2211,11 @@
         "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
-        "lastModified": 1762559006,
-        "narHash": "sha256-/z1z3zAYhCo2WfPs8boL1LH1geTXoA0JnV2AR+T3oqM=",
+        "lastModified": 1762785034,
+        "narHash": "sha256-vRkcpa2JqTrvc7zPzqr3te9qr0Q8sAfYXMUA+iKa0hs=",
         "owner": "alyraffauf",
         "repo": "snippets",
-        "rev": "630039aca31579cc7d2360519f9cb4eddb89d1db",
+        "rev": "2385894b03370e2352158329e6325cb11fb9228c",
         "type": "github"
       },
       "original": {
