@@ -2211,11 +2211,11 @@
         "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
-        "lastModified": 1762785034,
-        "narHash": "sha256-vRkcpa2JqTrvc7zPzqr3te9qr0Q8sAfYXMUA+iKa0hs=",
+        "lastModified": 1762786355,
+        "narHash": "sha256-MM/mg/kv6BYKcHd3WQftgk4RWeVxq4Mn3W/Iid/FyGQ=",
         "owner": "alyraffauf",
         "repo": "snippets",
-        "rev": "2385894b03370e2352158329e6325cb11fb9228c",
+        "rev": "b775baec9dd9d275233a862c52d2a96314548152",
         "type": "github"
       },
       "original": {
