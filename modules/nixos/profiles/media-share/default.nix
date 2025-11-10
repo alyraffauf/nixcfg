@@ -9,7 +9,7 @@
     assertions = [
       {
         assertion = config.services.tailscale.enable;
-        message = "NFS connects to lilycove shares over tailscale, but services.tailscale.enable != true.";
+        message = "NFS connects to jubilife shares over tailscale, but services.tailscale.enable != true.";
       }
     ];
 
@@ -35,7 +35,7 @@
     in {
       "/mnt/Media" = {
         inherit options fsType;
-        device = "lilycove:/mnt/Media";
+        device = "jubilife:/mnt/Media";
       };
     };
 
