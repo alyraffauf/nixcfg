@@ -19,10 +19,9 @@
           };
         };
       in
-        rootMe "dewford"
-        // rootMe "evergrande"
-        // rootMe "mossdeep"
-        // rootMe "slateport"
+        rootMe "snowpoint"
+        // rootMe "celestic"
+        // rootMe "solaceon"
         // {
           "*" = {
             forwardAgent = false;
