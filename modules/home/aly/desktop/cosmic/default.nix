@@ -87,6 +87,7 @@
 
           background = cosmicLib.cosmic.mkRON "enum" "ThemeDefault";
           expand_to_edges = false;
+          margin = 0;
           name = "Dock";
           opacity = 1.0;
           output = cosmicLib.cosmic.mkRON "enum" "All";
@@ -110,6 +111,7 @@
           autohide = cosmicLib.cosmic.mkRON "optional" null;
           background = cosmicLib.cosmic.mkRON "enum" "ThemeDefault";
           expand_to_edges = true;
+          margin = 0;
           name = "Panel";
           opacity = 1.0;
           output = cosmicLib.cosmic.mkRON "enum" "All";
