@@ -11,12 +11,13 @@
       enable = true;
 
       extensions = [
+        {id = "cdglnehniifkbagbbombnjghhcihifij";} # kagi
         {id = "ddkjiahejlhfcafbddmgiahcphecmpfh";} # ublock origin lite
         {id = "dnhpnfgdlenaccegplpojghhmaamnnfp";} # augmented steam
         {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist
+        {id = "kgcjekpmcjjogibpjebkhaanilehneje";} # karakeep
         {id = "mdjildafknihdffpkfmmpnpoiajfjnjd";} # consent-o-matic
         {id = "nngceckbapebfimnlniiiahkandclblb";} # bitwarden
-        {id = "kgcjekpmcjjogibpjebkhaanilehneje";} # karakeep
 
         rec {
           id = "lkbebcjgcmobigpeffafkodonchffocl"; # bypass-paywalls-clean
