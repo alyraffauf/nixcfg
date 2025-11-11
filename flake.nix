@@ -25,7 +25,7 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     cosmic-manager = {
       url = "github:HeitorAugustoLN/cosmic-manager";
