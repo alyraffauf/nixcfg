@@ -24,7 +24,7 @@
       };
 
       programs = {
-        chromium.package = pkgs.brave;
+        chromium.package = lib.mkForce pkgs.brave;
         home-manager.enable = true;
       };
 
