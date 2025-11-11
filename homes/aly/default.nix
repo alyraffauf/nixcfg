@@ -23,7 +23,11 @@
         username = "aly";
       };
 
-      programs.home-manager.enable = true;
+      programs = {
+        chromium.package = pkgs.brave;
+        home-manager.enable = true;
+      };
+
       xdg.enable = true;
 
       fontix = {
@@ -73,6 +77,7 @@
       myHome = {
         aly = {
           profiles.mail.enable = true;
+          programs.chromium.enable = true;
 
           programs = {
             awscli.enable = true;
@@ -133,8 +138,6 @@
       systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
       myHome = {
-        aly.programs.chromium.enable = true;
-
         profiles.defaultApps = {
           enable = true;
           editor.package = config.programs.zed-editor.package;
