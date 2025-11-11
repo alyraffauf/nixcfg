@@ -16,6 +16,7 @@
     {
       home = {
         packages = [
+          pkgs.brave
           pkgs.rclone
           self.inputs.nynx.packages.${pkgs.stdenv.hostPlatform.system}.nynx
         ];
@@ -23,10 +24,7 @@
         username = "aly";
       };
 
-      programs = {
-        chromium.package = lib.mkForce pkgs.brave;
-        home-manager.enable = true;
-      };
+      programs.home-manager.enable = true;
 
       xdg.enable = true;
 
