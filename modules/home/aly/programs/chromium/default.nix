@@ -16,7 +16,7 @@
         {id = "jldhpllghnbhlbpcmnajkpdmadaolakh";} # todoist
         {id = "mdjildafknihdffpkfmmpnpoiajfjnjd";} # consent-o-matic
         {id = "nngceckbapebfimnlniiiahkandclblb";} # bitwarden
-        {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
+        {id = "kgcjekpmcjjogibpjebkhaanilehneje";} # karakeep
 
         rec {
           id = "lkbebcjgcmobigpeffafkodonchffocl"; # bypass-paywalls-clean
@@ -31,7 +31,7 @@
 
       package =
         if pkgs.stdenv.isDarwin
-        then (pkgs.runCommand "chromium-0.0.0" {} "mkdir $out")
+        then (lib.mkDefault (pkgs.runCommand "chromium-0.0.0" {} "mkdir $out"))
         else pkgs.chromium;
     };
   };
