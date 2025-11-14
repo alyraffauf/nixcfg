@@ -14,7 +14,6 @@
   myNixOS = {
     desktop.gnome.enable = true;
     programs.firefox.enable = true;
-    profiles.workstation.enable = true;
     profiles.iso.enable = true;
     programs.nix.enable = true;
   };

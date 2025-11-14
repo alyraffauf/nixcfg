@@ -10,6 +10,5 @@
     ./media-share
     ./swap
     ./wifi
-    ./workstation
   ];
 }
