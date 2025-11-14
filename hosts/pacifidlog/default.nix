@@ -19,7 +19,7 @@
   myHardware.hp.omnibook.fh0xxx.enable = true;
 
   myNixOS = {
-    desktop.cosmic.enable = true;
+    desktop.kde.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
@@ -40,7 +40,7 @@
     };
 
     services = {
-      cosmic-greeter.enable = true;
+      sddm.enable = true;
       flatpak.enable = true;
       promtail.enable = true;
 
