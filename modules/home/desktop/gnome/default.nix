@@ -176,7 +176,7 @@
     };
 
     myHome.profiles.defaultApps = {
-      audioPlayer.package = lib.mkDefault pkgs.rhythmbox;
+      audioPlayer.package = lib.mkDefault pkgs.gapless;
       editor.package = lib.mkDefault pkgs.gnome-text-editor;
       fileManager.package = lib.mkDefault pkgs.nautilus;
       imageViewer.package = lib.mkDefault pkgs.loupe;
