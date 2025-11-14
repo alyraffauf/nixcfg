@@ -59,14 +59,6 @@
     services = {
       ananicy = {
         enable = true; # Incompatible/not recommended with gamemode.
-
-        extraRules = [
-          {
-            name = ".easyeffects-wr";
-            type = "LowLatency_RT";
-          }
-        ];
-
         package = pkgs.ananicy-cpp;
         rulesProvider = pkgs.ananicy-rules-cachyos;
       };
