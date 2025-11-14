@@ -95,8 +95,6 @@
       '';
     };
 
-    system.nixos.tags = ["workstation"];
-
     systemd.oomd = {
       enable = true;
       enableRootSlice = true;

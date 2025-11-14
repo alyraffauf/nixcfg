@@ -104,7 +104,5 @@
         excludePackages = with pkgs; [xterm];
       };
     };
-
-    system.nixos.tags = ["desktop"];
   };
 }

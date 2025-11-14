@@ -67,7 +67,5 @@
 
       # switcherooControl.enable = true; # For dual GPU configs
     };
-
-    system.nixos.tags = ["gaming"];
   };
 }
