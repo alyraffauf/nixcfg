@@ -68,17 +68,6 @@
       };
     };
 
-    lix = {
-      url = "git+https://git.lix.systems/lix-project/lix.git?ref=release-2.93";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module.git?ref=release-2.93";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.lix.follows = "lix";
-    };
-
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
