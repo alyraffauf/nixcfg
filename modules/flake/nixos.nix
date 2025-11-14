@@ -36,7 +36,6 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.lanzaboote.nixosModules.lanzaboote
               inputs.snippets.nixosModules.snippets
-              inputs.vscode-server.nixosModules.default
               modules.hardware
               modules.nixos
               modules.users
