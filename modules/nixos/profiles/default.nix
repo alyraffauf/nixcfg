@@ -5,7 +5,6 @@
     ./btrfs
     ./data-share
     ./gaming
-    ./hardened
     ./iso
     ./media-share
     ./wifi
