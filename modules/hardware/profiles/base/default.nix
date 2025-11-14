@@ -20,7 +20,7 @@
 
       logitech.wireless = {
         enable = true;
-        enableGraphical = lib.mkDefault config.services.xserver.enable;
+        enableGraphical = true;
       };
     };
 

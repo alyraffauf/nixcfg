@@ -98,11 +98,6 @@
       };
 
       system-config-printer.enable = true;
-
-      xserver = {
-        enable = true;
-        excludePackages = with pkgs; [xterm];
-      };
     };
   };
 }
