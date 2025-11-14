@@ -8,7 +8,7 @@
 
   config = lib.mkIf config.myHome.desktop.cosmic.enable {
     myHome.profiles.defaultApps = {
-      audioPlayer.package = lib.mkDefault pkgs.rhythmbox;
+      audioPlayer.package = lib.mkDefault pkgs.gapless;
       editor.package = lib.mkDefault pkgs.cosmic-edit;
       fileManager.package = lib.mkDefault pkgs.cosmic-files;
       imageViewer.package = lib.mkDefault pkgs.loupe;
