@@ -14,7 +14,6 @@
     };
 
     environment.systemPackages = lib.optionals config.services.xserver.enable (with pkgs; [
-      protonvpn-gui
       tor-browser
       veracrypt
     ]);

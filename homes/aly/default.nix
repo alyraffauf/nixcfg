@@ -121,7 +121,6 @@
             nicotine-plus
             obsidian
             plexamp
-            protonvpn-gui
             signal-desktop-bin
             todoist-electron
           ]
