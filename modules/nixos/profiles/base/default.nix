@@ -158,6 +158,15 @@
       '';
     };
 
+    swapDevices = [
+      {
+        device = "/.swap";
+        priority = 0;
+        randomEncryption.enable = true;
+        size = 8192;
+      }
+    ];
+
     system.configurationRevision = self.rev or self.dirtyRev or null;
 
     systemd.oomd = {

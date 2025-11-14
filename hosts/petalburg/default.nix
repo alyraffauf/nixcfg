@@ -48,7 +48,6 @@
       autoUpgrade.enable = true;
       base.enable = true;
       btrfs.enable = true;
-      swap.enable = true;
       wifi.enable = true;
     };
 

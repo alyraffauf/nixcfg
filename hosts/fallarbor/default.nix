@@ -32,7 +32,6 @@
       base.enable = true;
       btrfs.enable = true;
       gaming.enable = true;
-      swap.enable = true;
       wifi.enable = true;
     };
 

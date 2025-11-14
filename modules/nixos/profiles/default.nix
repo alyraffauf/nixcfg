@@ -8,7 +8,6 @@
     ./hardened
     ./iso
     ./media-share
-    ./swap
     ./wifi
   ];
 }
