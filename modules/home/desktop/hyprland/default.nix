@@ -32,8 +32,9 @@
 
   config = lib.mkIf config.myHome.desktop.hyprland.enable {
     home.packages = with pkgs; [
-      blueberry
+      bluetuith
       file-roller
+      impala
       libnotify
       nemo
       networkmanagerapplet

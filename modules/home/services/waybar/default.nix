@@ -12,20 +12,18 @@ in {
   config = lib.mkIf cfg.services.waybar.enable {
     home.packages =
       (with pkgs; [
-        blueberry
-        bluez
+        bluetuith
         getopt
         gnugrep
+        impala
         libnotify
         mako
-        networkmanager
-        networkmanager_dmenu
         nwg-drawer
-        pwvucontrol
         procps
         rofi-power-menu
         systemd
         uutils-coreutils-noprefix
+        wiremix
       ])
       ++ lib.optional config.wayland.windowManager.hyprland.enable config.wayland.windowManager.hyprland.package;
 
@@ -139,7 +137,7 @@ in {
             format = "";
             format-connected = "　{num_connections}";
             format-disabled = ""; # an empty format will hide the module
-            on-click = "blueberry";
+            on-click = "${config.myHome.profiles.defaultApps.terminal.exec} -e bluetuith";
             tooltip-format = "{controller_alias}	{controller_address}";
 
             tooltip-format-connected = ''
@@ -163,7 +161,7 @@ in {
             };
 
             ignored-sinks = ["Easy Effects Sink"];
-            on-click = "pwvucontrol";
+            on-click = "${config.myHome.profiles.defaultApps.terminal.exec} -e wiremix --tab output";
             on-click-middle = helpers.volume.micMute;
             on-click-right = helpers.volume.mute;
             scroll-step = 5;
@@ -175,7 +173,7 @@ in {
             format-ethernet = "󰈀";
             format-icons = ["󰤟" "󰤢" "󰤥" "󰤨"];
             format-wifi = "{icon}";
-            on-click = "networkmanager_dmenu -i";
+            on-click = "${config.myHome.profiles.defaultApps.terminal.exec} -e impala";
             tooltip-format = "{ifname} via {gwaddr} 󰊗";
             tooltip-format-disconnected = "Disconnected";
             tooltip-format-ethernet = "{ifname} ";
