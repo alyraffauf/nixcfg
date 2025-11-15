@@ -28,23 +28,27 @@
         })
       ];
 
-      vencord.settings = {
-        autoUpdate = true;
-        autoUpdateNotification = false;
-        disableMinSize = true;
-        notifyAboutUpdates = false;
+      vencord = {
+        settings = {
+          autoUpdate = true;
+          autoUpdateNotification = false;
+          disableMinSize = true;
+          notifyAboutUpdates = false;
 
-        plugins = {
-          AlwaysTrust.enabled = true;
-          BlurNSFW.enabled = true;
-          ClearURLs.enabled = true;
-          FakeNitro.enabled = true;
-          PinDMs.enabled = true;
-          WebKeybinds.enabled = true;
-          WebScreenShareFixes.enabled = true;
+          plugins = {
+            AlwaysTrust.enabled = true;
+            BlurNSFW.enabled = true;
+            ClearURLs.enabled = true;
+            FakeNitro.enabled = true;
+            PinDMs.enabled = true;
+            WebKeybinds.enabled = true;
+            WebScreenShareFixes.enabled = true;
+          };
+
+          useQuickCss = true;
         };
 
-        useQuickCss = true;
+        useSystem = true;
       };
     };
   };
