@@ -114,10 +114,8 @@
 
         packages = with pkgs;
           [
-            bitwarden-desktop
             cider-2
             google-chrome
-            nicotine-plus
             obsidian
             plexamp
             signal-desktop-bin
@@ -132,8 +130,6 @@
         stateVersion = "25.11";
         username = "aly";
       };
-
-      systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
       myHome = {
         profiles.defaultApps = {
