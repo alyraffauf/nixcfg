@@ -102,11 +102,6 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
-
-      # plugins = [
-      #   pkgs.hyprlandPlugins.hyprspace
-      # ];
-
       settings = import ./settings.nix {inherit config lib pkgs;};
 
       systemd = {
@@ -127,7 +122,7 @@
 
     myHome = {
       desktop.enable = true;
-      programs.rofi.enable = true;
+      programs.vicinae.enable = true;
 
       services = {
         hypridle.enable = true;

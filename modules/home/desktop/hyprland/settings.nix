@@ -46,7 +46,6 @@ in {
 
   bind =
     [
-      ''$mod,M,exec,${lib.getExe config.programs.rofi.package} -show power-menu -modi "power-menu:${lib.getExe pkgs.rofi-power-menu} --choices=logout/lockscreen/suspend/shutdown/reboot"''
       ",PRINT,exec,${lib.getExe helpers.screenshot}"
       "$mod CTRL,L,exec,${lib.getExe' pkgs.systemd "loginctl"} lock-session"
       "$mod SHIFT,backslash,togglesplit"
@@ -54,9 +53,7 @@ in {
       "$mod SHIFT,G,togglegroup"
       "$mod SHIFT,M,layoutmsg,swapwithmaster master"
       "$mod SHIFT,period,exec,${lib.getExe pkgs.hyprnome} --move"
-      "$mod SHIFT,R,exec,${lib.getExe config.programs.rofi.package} -show run"
       "$mod SHIFT,S,movetoworkspace,special:magic"
-      "$mod SHIFT,Tab,exec,${lib.getExe config.programs.rofi.package} -show window"
       "$mod SHIFT,V,togglefloating"
       "$mod SHIFT,W,fullscreen"
       "$mod,B,exec,${defaultApps.webBrowser}"
@@ -71,13 +68,12 @@ in {
       "$mod,mouse_down,workspace,+1"
       "$mod,mouse_up,workspace,-1"
       "$mod,period,exec,${lib.getExe pkgs.hyprnome}"
-      "$mod,R,exec,${lib.getExe config.programs.rofi.package} -show combi"
+      "$mod,R,exec,${lib.getExe config.programs.vicinae.package} toggle"
       "$mod,Right,changegroupactive,f"
       "$mod,S,togglespecialworkspace,magic"
       "$mod,T,exec,${defaultApps.terminal}"
-      "ALT,space,exec,${lib.getExe config.programs.rofi.package} -show combi"
+      "ALT,space,exec,${lib.getExe config.programs.vicinae.package} toggle"
       "CTRL,F12,exec,${lib.getExe helpers.screenshot}"
-      # "$mod,Tab,overview:toggle"
     ]
     ++ builtins.map (x: "$mod SHIFT,${toString x},movetoworkspace,${toString x}") [1 2 3 4 5 6 7 8 9]
     ++ builtins.map (x: "$mod,${toString x},workspace,${toString x}") [1 2 3 4 5 6 7 8 9]
