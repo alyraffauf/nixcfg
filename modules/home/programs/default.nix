@@ -2,5 +2,6 @@
   imports = [
     ./ghostty
     ./rofi
+    ./vicinae
   ];
 }
