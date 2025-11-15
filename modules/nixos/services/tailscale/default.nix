@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   options.myNixOS.services.tailscale = {
@@ -35,8 +34,6 @@
       }
     ];
 
-    age.secrets.tailscaleCaddyAuth.file = "${self.inputs.secrets}/tailscale/caddyAuth.age";
-
     home-manager.sharedModules = [
       {
         programs.gnome-shell.extensions = [
@@ -50,40 +47,17 @@
       trustedInterfaces = [config.services.tailscale.interfaceName];
     };
 
-    services = {
-      caddy = lib.mkIf config.myNixOS.services.tailscale.enableCaddy {
-        enable = true;
+    services.tailscale = {
+      enable = true;
+      inherit (config.myNixOS.services.tailscale) authKeyFile;
 
-        virtualHosts = {
-          "${config.networking.hostName}.${config.mySnippets.tailnet.name}".extraConfig = let
-            syncthing = ''
-              redir /syncthing /syncthing/
-              handle_path /syncthing/* {
-                reverse_proxy localhost:8384 {
-                  header_up Host localhost
-                }
-              }
-            '';
-          in
-            lib.concatLines (
-              lib.optional config.services.syncthing.enable syncthing
-            );
-        };
-      };
+      extraUpFlags =
+        ["--ssh"]
+        ++ lib.optional (config.myNixOS.services.tailscale.operator != null)
+        "--operator ${config.myNixOS.services.tailscale.operator}";
 
-      tailscale = {
-        enable = true;
-        inherit (config.myNixOS.services.tailscale) authKeyFile;
-
-        extraUpFlags =
-          ["--ssh"]
-          ++ lib.optional (config.myNixOS.services.tailscale.operator != null)
-          "--operator ${config.myNixOS.services.tailscale.operator}";
-
-        openFirewall = true;
-        permitCertUid = lib.mkIf config.services.caddy.enable "caddy";
-        useRoutingFeatures = "both";
-      };
+      openFirewall = true;
+      useRoutingFeatures = "both";
     };
 
     myNixOS.programs.njust.recipes.tailscale = ''

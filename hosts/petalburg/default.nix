@@ -59,7 +59,6 @@
     };
 
     services = {
-      caddy.enable = true;
       cosmic-greeter.enable = true;
       flatpak.enable = true;
       prometheusNode.enable = true;

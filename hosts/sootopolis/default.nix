@@ -39,7 +39,6 @@
     };
 
     services = {
-      caddy.enable = true;
       cosmic-greeter.enable = true;
       flatpak.enable = true;
       promtail.enable = true;

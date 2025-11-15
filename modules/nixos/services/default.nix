@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./caddy
     ./cosmic-greeter
     ./flatpak
     ./gdm
