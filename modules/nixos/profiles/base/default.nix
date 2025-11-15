@@ -82,6 +82,17 @@
       };
     };
 
+    hardware.block = {
+      # Default schedulers for rotational and non-rotational devices
+      defaultScheduler = "kyber";
+      defaultSchedulerRotational = "bfq";
+
+      scheduler = {
+        "mmcblk[0-9]*" = "bfq";
+        "nvme[0-9]*" = "kyber";
+      };
+    };
+
     programs = {
       dconf.enable = true; # Needed for home-manager
 
@@ -138,18 +149,6 @@
       };
 
       udev.extraRules = ''
-        ## SD cards use BFQ scheduler.
-        ACTION=="add|change", KERNEL=="mmcblk[0-9]p[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
-
-        ## NVMe SSDs use kyber scheduler.
-        ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
-
-        ## SSDs use kyber scheduler.
-        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
-
-        ## HDDs use BFQ scheduler.
-        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
-
         ## Allow @audio to write to /dev/cpu_dma_latency.
         DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root",GROUP="audio", MODE="0660"
 
