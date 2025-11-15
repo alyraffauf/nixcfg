@@ -124,11 +124,11 @@
     };
 
     services = {
-      ananicy = {
-        enable = true; # Incompatible/not recommended with gamemode.
-        package = pkgs.ananicy-cpp;
-        rulesProvider = pkgs.ananicy-rules-cachyos;
-      };
+      # ananicy = {
+      #   enable = true; # Incompatible/not recommended with gamemode.
+      #   package = pkgs.ananicy-cpp;
+      #   rulesProvider = pkgs.ananicy-rules-cachyos;
+      # };
 
       bpftune.enable = true;
 
@@ -146,6 +146,11 @@
         enable = true;
         openFirewall = true;
         settings.PasswordAuthentication = false;
+      };
+
+      scx = {
+        enable = true;
+        scheduler = "scx_bpfland";
       };
 
       udev.extraRules = ''
