@@ -175,11 +175,10 @@ in {
     layout = "dwindle";
   };
 
-  gestures = {
-    workspace_swipe = true;
-    workspace_swipe_cancel_ratio = 0.1;
-    workspace_swipe_touch = true;
-  };
+  gesture = [
+    "3,horizontal,workspace"
+    "4,horizontal,workspace"
+  ];
 
   group = {
     groupbar = {
