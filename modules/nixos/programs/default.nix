@@ -2,7 +2,6 @@
   imports = [
     ./firefox
     ./lanzaboote
-    ./nicotine-plus
     ./nix
     ./njust
     ./podman
