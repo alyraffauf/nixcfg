@@ -79,11 +79,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    self2025 = {
-      url = "github:alyraffauf/self2025";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     snippets = {
       url = "github:alyraffauf/snippets";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,20 +95,6 @@
     };
 
     # Non-flake inputs
-    absolute = {
-      url = "github:ZeroQI/Absolute-Series-Scanner";
-      flake = false;
-    };
-
-    audnexus = {
-      url = "github:djdembeck/Audnexus.bundle";
-      flake = false;
-    };
-
-    hama = {
-      url = "github:ZeroQI/Hama.bundle";
-      flake = false;
-    };
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -127,11 +108,6 @@
 
     secrets = {
       url = "github:alyraffauf/secrets";
-      flake = false;
-    };
-
-    wallpapers = {
-      url = "github:alyraffauf/wallpapers";
       flake = false;
     };
   };

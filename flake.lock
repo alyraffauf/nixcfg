@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "absolute": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1758606772,
-        "narHash": "sha256-BgwLzvzV4+jWePgZPOkbY2jnO4qwL8cgaTBl4R4uMRA=",
-        "owner": "ZeroQI",
-        "repo": "Absolute-Series-Scanner",
-        "rev": "a3af601f8e127c027edc387c1e4d64927c9f25fc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ZeroQI",
-        "repo": "Absolute-Series-Scanner",
-        "type": "github"
-      }
-    },
     "actions-nix": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -181,22 +165,6 @@
       "original": {
         "owner": "ryantm",
         "repo": "agenix",
-        "type": "github"
-      }
-    },
-    "audnexus": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1723487877,
-        "narHash": "sha256-BpwyedIjkXS+bHBsIeCpSoChyWCX5A38ywe71qo3tEI=",
-        "owner": "djdembeck",
-        "repo": "Audnexus.bundle",
-        "rev": "0e0caf6d27cf0b31c81d491c56d864986d33617e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "djdembeck",
-        "repo": "Audnexus.bundle",
         "type": "github"
       }
     },
@@ -1049,22 +1017,6 @@
         "type": "github"
       }
     },
-    "hama": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752787517,
-        "narHash": "sha256-PgZAqK3Ooz8JgMqCW7hZOBzuaVjCywA6ytx33J/WqC4=",
-        "owner": "ZeroQI",
-        "repo": "Hama.bundle",
-        "rev": "adee212b7b419790f89ed127e59e13a8e1ff63f5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ZeroQI",
-        "repo": "Hama.bundle",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1582,10 +1534,8 @@
     },
     "root": {
       "inputs": {
-        "absolute": "absolute",
         "actions-nix": "actions-nix",
         "agenix": "agenix",
-        "audnexus": "audnexus",
         "aws-cvpn-client": "aws-cvpn-client",
         "cosmic-manager": "cosmic-manager",
         "disko": "disko",
@@ -1593,7 +1543,6 @@
         "flake-parts": "flake-parts_3",
         "fontix": "fontix",
         "git-hooks-nix": "git-hooks-nix_2",
-        "hama": "hama",
         "home-manager": "home-manager_3",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
@@ -1606,10 +1555,8 @@
         "nynx": "nynx",
         "safari": "safari",
         "secrets": "secrets",
-        "self2025": "self2025",
         "snippets": "snippets",
         "treefmt-nix": "treefmt-nix_5",
-        "wallpapers": "wallpapers",
         "zen-browser": "zen-browser"
       }
     },
@@ -1694,26 +1641,6 @@
       "original": {
         "owner": "alyraffauf",
         "repo": "secrets",
-        "type": "github"
-      }
-    },
-    "self2025": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1749926797,
-        "narHash": "sha256-6azD+7EgAEsXflJInJG1BPP7c7sMLXqVDm/xFjf1CgY=",
-        "owner": "alyraffauf",
-        "repo": "self2025",
-        "rev": "33aac37dd81bfa27630e6955f31952f51b85a91e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alyraffauf",
-        "repo": "self2025",
         "type": "github"
       }
     },
@@ -1906,22 +1833,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739746511,
-        "narHash": "sha256-FZO1h1BK6A2A43DmxhhTBnhWNaZApRLEyDKaHY5i+64=",
-        "owner": "alyraffauf",
-        "repo": "wallpapers",
-        "rev": "48bcff23d5efd65d0b57970c89b8ba0229ae4db1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alyraffauf",
-        "repo": "wallpapers",
         "type": "github"
       }
     },
