@@ -8,7 +8,6 @@
   imports = [
     self.homeModules.default
     self.inputs.fontix.homeModules.default
-    self.inputs.catppuccin.homeModules.catppuccin
     self.inputs.safari.homeModules.default
   ];
 

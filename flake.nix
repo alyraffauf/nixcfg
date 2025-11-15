@@ -24,9 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
-    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     cosmic-manager = {
       url = "github:HeitorAugustoLN/cosmic-manager";
 
@@ -60,12 +57,8 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
+      url = "github:nix-community/lanzaboote/v0.4.3";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
@@ -74,21 +67,10 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nur.url = "github:nix-community/NUR";
 
     nynx = {
       url = "github:alyraffauf/nynx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
