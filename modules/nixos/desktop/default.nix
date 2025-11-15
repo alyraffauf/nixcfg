@@ -12,7 +12,7 @@
   ];
 
   options.myNixOS.desktop.enable = lib.mkOption {
-    default = config.myNixOS.desktop.gnome.enable or config.myNixOS.desktop.hyprland.enable or config.myNixOS.desktop.kde.enable;
+    default = config.myNixOS.desktop.cosmic.enable or  config.myNixOS.desktop.gnome.enable or config.myNixOS.desktop.hyprland.enable or config.myNixOS.desktop.kde.enable;
     description = "Desktop environment configuration.";
     type = lib.types.bool;
   };
