@@ -16,15 +16,9 @@
     stateVersion = "25.11";
 
     packages = with pkgs; [
-      calibre
       fractal
-      libreoffice-still
-      marp-cli
       plexamp
       signal-desktop-bin
-      stellarium
-      teams-for-linux
-      trayscale
       zoom-us
     ];
   };
@@ -45,17 +39,6 @@
 
     firefox.enable = true;
     home-manager.enable = true;
-
-    rbw = {
-      enable = true;
-
-      settings = {
-        email = "dustinmraffauf@gmail.com";
-        lock_timeout = 14400;
-        pinentry = pkgs.pinentry-gnome3;
-      };
-    };
-
     vesktop.enable = true;
 
     zen-browser = {
@@ -68,11 +51,6 @@
     hyprland.settings = {
       bind = ["SUPER,P,exec,${lib.getExe pkgs.rofi-rbw-wayland}"];
     };
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications."application/epub+zip" = "com.calibre_ebook.calibre.desktop;org.gnome.Evince.desktop;com.calibre_ebook.calibre.ebook-viewer.desktop;";
   };
 
   fontix = {
