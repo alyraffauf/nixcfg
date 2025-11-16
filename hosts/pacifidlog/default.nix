@@ -38,9 +38,13 @@
     };
 
     services = {
-      sddm.enable = true;
       flatpak.enable = true;
       promtail.enable = true;
+
+      sddm = {
+        enable = true;
+        autoLogin = "aly";
+      };
 
       syncthing = {
         enable = true;
