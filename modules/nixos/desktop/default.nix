@@ -99,5 +99,7 @@
 
       system-config-printer.enable = true;
     };
+
+    systemd.user.services.orca.wantedBy = lib.mkForce [];
   };
 }
