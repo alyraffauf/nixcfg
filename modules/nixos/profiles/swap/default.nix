@@ -23,7 +23,7 @@
     };
 
     zramSwap = {
-      enable = lib.mkDefault true;
+      enable = true;
       algorithm = "zstd";
       writebackDevice = "/.swap";
     };
