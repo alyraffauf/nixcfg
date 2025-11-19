@@ -99,7 +99,7 @@ in {
         [group('nix')]
         update-nixos action="switch":
             @echo "Updating NixOS..."
-            sudo nixos-rebuild {{action}} --flake "${config.myNixOS.profiles.base.flakeUrl}"
+            sudo nixos-rebuild {{action}} --flake "${config.myNixOS.FLAKE}"
 
         # Update Nix user profile
         [group('nix')]

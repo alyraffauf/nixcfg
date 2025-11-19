@@ -46,5 +46,7 @@
         ];
       }
     ];
+
+    myNixOS.services.cachefilesd.enable = true;
   };
 }

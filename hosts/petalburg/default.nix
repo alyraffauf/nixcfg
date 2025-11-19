@@ -42,11 +42,11 @@
   };
 
   myNixOS = {
+    base.enable = true;
     desktop.cosmic.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
-      base.enable = true;
       btrfs.enable = true;
       wifi.enable = true;
     };

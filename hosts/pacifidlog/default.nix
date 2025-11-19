@@ -19,11 +19,11 @@
   myHardware.hp.omnibook.fh0xxx.enable = true;
 
   myNixOS = {
+    base.enable = true;
     desktop.kde.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
-      base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
       media-share.enable = true;

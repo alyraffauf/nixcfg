@@ -20,11 +20,11 @@
   myHardware.lenovo.thinkpad.X1.gen-9.enable = true;
 
   myNixOS = {
+    base.enable = true;
     desktop.cosmic.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
-      base.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
       media-share.enable = true;

@@ -8,6 +8,7 @@
     ./retroarch
     ./steam
     ./systemd-boot
+    ./uutils
     ./virt-manager
   ];
 }

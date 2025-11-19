@@ -7,6 +7,8 @@
   options.myNixOS.profiles.gaming.enable = lib.mkEnableOption "gaming optimizations";
 
   config = lib.mkIf config.myNixOS.profiles.gaming.enable {
+    boot.kernelModules = ["ntsync"];
+
     environment.systemPackages = with pkgs; [
       dualsensectl
       heroic
@@ -63,6 +65,12 @@
         ATTRS{name}=="Sony Interactive Entertainment DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
         # Bluetooth
         ATTRS{name}=="DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+
+        ## Allow @audio to write to /dev/cpu_dma_latency.
+        DEVPATH=="/devices/virtual/misc/cpu_dma_latency", OWNER="root",GROUP="audio", MODE="0660"
+
+        ## Allow users to write to /dev/ntsync.
+        # KERNEL=="ntsync", MODE="0644"
       '';
 
       # switcherooControl.enable = true; # For dual GPU configs
