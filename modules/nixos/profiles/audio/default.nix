@@ -19,6 +19,17 @@
         };
 
         pulse.enable = true;
+        raopOpenFirewall = true;
+
+        extraConfig.pipewire = {
+          "10-airplay" = {
+            "context.modules" = [
+              {
+                name = "libpipewire-module-raop-discover";
+              }
+            ];
+          };
+        };
       };
 
       pulseaudio = {
@@ -33,5 +44,7 @@
         support32Bit = true;
       };
     };
+
+    myNixOS.services.avahi.enable = true;
   };
 }
