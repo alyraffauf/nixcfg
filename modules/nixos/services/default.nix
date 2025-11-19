@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./avahi
     ./cosmic-greeter
     ./flatpak
     ./gdm
