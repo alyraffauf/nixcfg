@@ -6,16 +6,8 @@
   options.myHardware.profiles.base.enable = lib.mkEnableOption "Base common hardware configuration";
 
   config = lib.mkIf config.myHardware.profiles.base.enable {
-    console.useXkbConfig = true;
-
     hardware = {
       enableAllFirmware = true;
-
-      bluetooth = {
-        enable = true;
-        powerOnBoot = true;
-      };
-
       keyboard.qmk.enable = true;
 
       logitech.wireless = {
@@ -37,21 +29,9 @@
 
     services = {
       fstrim.enable = true;
-
-      logind.settings.Login = {
-        HandlePowerKey = "suspend";
-        HandlePowerKeyLongPress = "poweroff";
-      };
-
       usbmuxd.enable = true;
-
-      xserver.xkb = {
-        layout = "us";
-        variant = "altgr-intl";
-      };
     };
 
-    zramSwap.enable = lib.mkDefault true;
     myHardware.lenovo.thinkpad.kb5D50X.enable = true;
   };
 }

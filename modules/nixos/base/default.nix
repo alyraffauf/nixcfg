@@ -10,6 +10,8 @@
   };
 
   config = lib.mkIf config.myNixOS.base.enable {
+    console.useXkbConfig = true;
+
     environment = {
       etc."nixos".source = self;
 
@@ -52,10 +54,23 @@
       };
     };
 
+    services = {
+      logind.settings.Login = {
+        HandlePowerKey = "suspend";
+        HandlePowerKeyLongPress = "poweroff";
+      };
+
+      xserver.xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+      };
+    };
+
     system.configurationRevision = self.rev or self.dirtyRev or null;
 
     myNixOS = {
       profiles = {
+        bluetooth.enable = true;
         performance.enable = true;
         swap.enable = true;
       };

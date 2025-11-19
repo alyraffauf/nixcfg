@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.myNixOS.profiles.audio.enable = lib.mkEnableOption "audio support";
@@ -32,19 +31,12 @@
         };
       };
 
-      pulseaudio = {
-        package = pkgs.pulseaudioFull; # Use extra Bluetooth codecs like aptX
-
-        extraConfig = ''
-          load-module module-bluetooth-discover
-          load-module module-bluetooth-policy
-          load-module module-switch-on-connect
-        '';
-
-        support32Bit = true;
-      };
+      pulseaudio.support32Bit = true;
     };
 
-    myNixOS.services.avahi.enable = true;
+    myNixOS = {
+      profiles.bluetooth.enable = true;
+      services.avahi.enable = true;
+    };
   };
 }

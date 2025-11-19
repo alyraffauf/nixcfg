@@ -3,6 +3,7 @@
     ./appimage
     ./audio
     ./autoUpgrade
+    ./bluetooth
     ./btrfs
     ./data-share
     ./gaming
