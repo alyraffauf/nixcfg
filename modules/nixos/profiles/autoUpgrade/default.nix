@@ -5,21 +5,21 @@
   ...
 }: {
   options.myNixOS.profiles.autoUpgrade = {
-    enable = lib.mkEnableOption "auto-upgrade system";
+    enable = lib.mkEnableOption "automatic upgrades";
+    allowReboot = lib.mkEnableOption "automatic reboots when necessary for updates";
 
     operation = lib.mkOption {
       type = lib.types.str;
       default = "boot";
-      description = "Operation to perform on auto-upgrade. Can be 'boot', 'switch', or 'test'.";
+      description = "Operation to perform on upgrade. Can be 'boot', 'switch', or 'test'.";
     };
   };
 
   config = lib.mkIf config.myNixOS.profiles.autoUpgrade.enable {
     system.autoUpgrade = {
-      inherit (config.myNixOS.profiles.autoUpgrade) operation;
+      inherit (config.myNixOS.profiles.autoUpgrade) allowReboot operation;
 
       enable = true;
-      allowReboot = lib.mkDefault false;
       dates = "02:00";
       flags = ["--accept-flake-config"];
       flake = config.myNixOS.FLAKE;
