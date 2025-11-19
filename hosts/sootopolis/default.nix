@@ -24,7 +24,6 @@
     desktop.cosmic.enable = true;
 
     profiles = {
-      autoUpgrade.enable = true;
       btrfs.enable = true;
       data-share.enable = true;
       media-share.enable = true;
