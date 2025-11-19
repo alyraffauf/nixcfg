@@ -15,5 +15,6 @@
     programs.firefox.policies.Preferences."browser.tabs.inTitlebar" = lib.mkIf config.programs.firefox.enable 1;
     services.desktopManager.cosmic.enable = true;
     system.nixos.tags = ["cosmic"];
+    myNixOS.desktop.enable = true;
   };
 }
