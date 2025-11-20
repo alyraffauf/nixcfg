@@ -25,7 +25,6 @@
     zramSwap = {
       enable = true;
       algorithm = "zstd";
-      writebackDevice = "/.swap";
     };
   };
 }
