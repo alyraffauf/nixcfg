@@ -5,24 +5,16 @@
   self,
   ...
 }: {
-  options.myDarwin.profiles.base = {
-    enable = lib.mkEnableOption "base system configuration";
+  options.myDarwin.base.enable = lib.mkEnableOption "base system configuration";
 
-    flakeUrl = lib.mkOption {
-      type = lib.types.str;
-      default = "github:alyraffauf/nixcfg";
-      description = "Default flake URL for the system";
-    };
-  };
-
-  config = lib.mkIf config.myDarwin.profiles.base.enable {
+  config = lib.mkIf config.myDarwin.base.enable {
     environment = {
       etc."nix-darwin".source = self;
       systemPackages = with pkgs; [nh];
 
       variables = {
-        FLAKE = config.myDarwin.profiles.base.flakeUrl;
-        NH_FLAKE = config.myDarwin.profiles.base.flakeUrl;
+        inherit (config.myDarwin) FLAKE;
+        NH_FLAKE = config.myDarwin.FLAKE;
       };
     };
 

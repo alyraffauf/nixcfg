@@ -156,7 +156,7 @@
   };
 
   myDarwin = {
-    profiles.base.enable = true;
+    base.enable = true;
     programs.nix.enable = true;
   };
 }
