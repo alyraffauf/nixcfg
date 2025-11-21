@@ -18,7 +18,7 @@
         };
 
         "com.apple.dock" = {
-          autohide = true; # hide dock
+          autohide = false; # don't hide dock
           expose-group-apps = true;
           minimize-to-application = true;
           mru-spaces = false; # do not rearrange spaces based on most recent use
