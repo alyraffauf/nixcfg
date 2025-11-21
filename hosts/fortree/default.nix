@@ -62,10 +62,10 @@
       (greedy "zen")
     ];
 
-    masApps = {
-      "Bitwarden" = 1352778147;
-      "Photomator" = 1444636541;
-    };
+    # masApps = {
+    #   "Bitwarden" = 1352778147;
+    #   "Photomator" = 1444636541;
+    # };
 
     onActivation = {
       cleanup = "zap";
