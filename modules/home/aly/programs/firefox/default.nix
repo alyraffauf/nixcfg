@@ -44,7 +44,6 @@ in {
             augmented-steam
             bitwarden
             consent-o-matic
-            simple-tab-groups
             ublock-origin
           ];
 
