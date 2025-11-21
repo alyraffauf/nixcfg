@@ -36,8 +36,8 @@
       "vm.dirty_writeback_centisecs" = lib.mkDefault 1500;
       "vm.max_map_count" = lib.mkOverride 100 2147483642;
       "vm.page-cluster" = lib.mkDefault 0;
-      "vm.swappiness" = lib.mkDefault 150;
-      "vm.vfs_cache_pressure" = lib.mkDefault 50;
+      "vm.swappiness" = lib.mkDefault 100;
+      "vm.vfs_cache_pressure" = lib.mkDefault 75;
       "vm.watermark_boost_factor" = lib.mkDefault 0;
       "vm.watermark_scale_factor" = lib.mkDefault 125;
     };
