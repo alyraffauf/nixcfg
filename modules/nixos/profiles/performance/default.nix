@@ -13,12 +13,6 @@
       "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
 
       "kernel.nmi_watchdog" = lib.mkOverride 100 0; # Disable watchdogs for maximum performance at the cost of resiliency
-      "kernel.sched_cfs_bandwidth_slice_u" = lib.mkDefault 3000;
-      "kernel.sched_latency_ns" = lib.mkDefault 3000000;
-      "kernel.sched_migration_cost_ns" = lib.mkDefault 50000;
-      "kernel.sched_min_granularity_ns" = lib.mkDefault 300000;
-      "kernel.sched_nr_migrate" = lib.mkDefault 128;
-      "kernel.sched_wakeup_granularity_ns" = lib.mkDefault 500000;
       "kernel.soft_watchdog" = lib.mkDefault 0;
       "kernel.split_lock_mitigate" = lib.mkDefault 0;
       # "kernel.unprivileged_userns_clone" = lib.mkDefault 1;
