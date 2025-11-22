@@ -1,4 +1,4 @@
-# HP OmniBook Ultra Flip 14-fh0xx
+# HP OmniBook Ultra Flip 14-fh0xxx
 
 ## Usage
 
@@ -10,9 +10,9 @@ myHardware.hp.omnibook.fh0xxx.enable = true;
 
 - **Graphics**: Uses xe driver on kernel 6.8+, disables PSR to fix screen flicker.
 - **Audio**: Adds EasyEffects preset for better speaker sound.
-- **Sensors**: Enables auto-rotate and tablet mode with Intel ISH firmware extracted from Widnows drivers.
+- **Sensors**: Enables auto-rotate and tablet mode.
 - **Fingerprint**: Enables fprintd service.
-- **Kernel**: Uses latest kernel if older than 6.16.
+- **Kernel**: Uses latest kernel if older than 6.18.
 
 ## Haptic Touchpad
 
