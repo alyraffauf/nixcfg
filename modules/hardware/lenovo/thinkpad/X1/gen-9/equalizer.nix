@@ -379,9 +379,9 @@ in {
         ];
       };
   in {
-    services.pipewire.wireplumber.configPackages = [configPackage];
-
-    # Pipewire is needed for this.
-    services.pipewire.enable = lib.mkDefault true;
+    services.pipewire = {
+      enable = true;
+      wireplumber.configPackages = [configPackage];
+    };
   });
 }
