@@ -62,6 +62,8 @@
         HandlePowerKeyLongPress = "poweroff";
       };
 
+      usbmuxd.enable = true;
+
       xserver.xkb = {
         layout = "us";
         variant = "altgr-intl";

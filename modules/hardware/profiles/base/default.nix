@@ -27,11 +27,7 @@
       )
     ];
 
-    services = {
-      fstrim.enable = true;
-      usbmuxd.enable = true;
-    };
-
+    services.fstrim.enable = true;
     myHardware.lenovo.thinkpad.kb5D50X.enable = true;
   };
 }
