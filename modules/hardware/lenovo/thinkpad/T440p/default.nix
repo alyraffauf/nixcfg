@@ -31,11 +31,15 @@
       ];
     };
 
-    hardware.trackpoint = {
-      enable = true;
-      emulateWheel = true;
-      sensitivity = 64;
-      speed = 40;
+    hardware = {
+      enableAllFirmware = true;
+
+      trackpoint = {
+        enable = true;
+        emulateWheel = true;
+        sensitivity = 64;
+        speed = 40;
+      };
     };
 
     home-manager = {
@@ -61,7 +65,6 @@
       };
 
       profiles = {
-        base.enable = true;
         laptop.enable = true;
         ssd.enable = true;
       };

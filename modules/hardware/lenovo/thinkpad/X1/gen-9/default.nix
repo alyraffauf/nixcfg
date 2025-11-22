@@ -15,11 +15,15 @@
       "thunderbolt"
     ];
 
-    hardware.trackpoint = {
-      enable = true;
-      emulateWheel = true;
-      sensitivity = 64;
-      speed = 40;
+    hardware = {
+      enableAllFirmware = true;
+
+      trackpoint = {
+        enable = true;
+        emulateWheel = true;
+        sensitivity = 64;
+        speed = 40;
+      };
     };
 
     services.fprintd.enable = true;
@@ -31,7 +35,6 @@
       };
 
       profiles = {
-        base.enable = true;
         laptop.enable = true;
         ssd.enable = true;
       };

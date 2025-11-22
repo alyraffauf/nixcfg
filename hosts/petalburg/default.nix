@@ -38,7 +38,7 @@
       gpu.enable = true;
     };
 
-    profiles.base.enable = true;
+    profiles.ssd.enable = true;
   };
 
   myNixOS = {

@@ -9,6 +9,8 @@
   config = lib.mkIf config.myHardware.asus.ally.RC72LA.enable {
     boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.11") (lib.mkDefault pkgs.linuxPackages_latest);
 
+    hardware.enableAllFirmware = true;
+
     services = {
       handheld-daemon = {
         enable = lib.mkDefault true;
@@ -115,10 +117,7 @@
         gpu.enable = true;
       };
 
-      profiles = {
-        base.enable = true;
-        ssd.enable = true;
-      };
+      profiles.ssd.enable = true;
     };
   };
 }

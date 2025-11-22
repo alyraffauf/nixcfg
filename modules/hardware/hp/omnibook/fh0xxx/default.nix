@@ -34,7 +34,10 @@
       );
     };
 
-    hardware.sensor.iio.enable = true;
+    hardware = {
+      enableAllFirmware = true;
+      sensor.iio.enable = true;
+    };
 
     home-manager.sharedModules = [
       (
@@ -72,7 +75,6 @@
       };
 
       profiles = {
-        base.enable = true;
         laptop.enable = true;
         ssd.enable = true;
       };

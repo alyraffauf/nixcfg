@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./base
     ./laptop
     ./ssd
   ];

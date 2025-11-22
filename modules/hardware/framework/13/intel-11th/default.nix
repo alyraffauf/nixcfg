@@ -17,7 +17,10 @@
       ];
     };
 
-    hardware.acpilight.enable = true;
+    hardware = {
+      enableAllFirmware = true;
+      acpilight.enable = true;
+    };
 
     services.udev.extraRules = ''
       ## Framework 13 -- Fix headphone noise when on powersave
@@ -32,7 +35,6 @@
       };
 
       profiles = {
-        base.enable = true;
         laptop.enable = true;
         ssd.enable = true;
       };

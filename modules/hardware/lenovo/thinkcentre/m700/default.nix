@@ -12,16 +12,15 @@
       "xhci_pci"
     ];
 
+    hardware.enableAllFirmware = true;
+
     myHardware = {
       intel = {
         cpu.enable = true;
         gpu.enable = true;
       };
 
-      profiles = {
-        base.enable = true;
-        ssd.enable = true;
-      };
+      profiles.ssd.enable = true;
     };
   };
 }
