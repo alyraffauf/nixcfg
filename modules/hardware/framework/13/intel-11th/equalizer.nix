@@ -4,16 +4,16 @@
   pkgs,
   ...
 }: {
-  options.myHardware.framework.laptop13.amd-7000.equalizer.enable = lib.mkOption {
-    default = config.myHardware.framework.laptop13.amd-7000.enable;
+  options.myHardware.framework.laptop13.amd-7000.equalizer = lib.mkOption {
+    default = config.myHardware.framework.laptop13.intel-11th.enable;
     type = lib.types.bool;
-    description = "Enable Framework Laptop 13 AMD 7000 equalizer configuration.";
+    description = "Enable Framework Laptop 13 equalizer.";
   };
 
   config = lib.mkIf config.myHardware.framework.laptop13.amd-7000.equalizer.enable {
     # https://github.com/NixOS/nixos-hardware/blob/master/framework/13-inch/common/audio.nix
     services.pipewire.wireplumber.configPackages = let
-      outputName = "alsa_output.pci-0000_c1_00.6.analog-stereo";
+      outputName = "alsa_output.pci-0000_00_1f.3.analog-stereo";
       prettyName = "Framework Speakers";
 
       # These are pre-made decibel to linear value conversions, since Nix doesn't have pow().

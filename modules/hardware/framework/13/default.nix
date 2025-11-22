@@ -5,13 +5,12 @@
   ...
 }: {
   imports = [
-    ./amd-7000
     ./intel-11th
   ];
 
   options.myHardware.framework.laptop13.enable = lib.mkOption {
     type = lib.types.bool;
-    default = config.myHardware.framework.laptop13.amd-7000.enable || config.myHardware.framework.laptop13.intel-11th.enable;
+    default = config.myHardware.framework.laptop13.intel-11th.enable;
     description = "Framework Laptop 13 specific hardware configuration";
   };
 
