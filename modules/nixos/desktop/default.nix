@@ -28,8 +28,6 @@
       libinput.enable = true;
     };
 
-    systemd.user.services.orca.wantedBy = lib.mkForce [];
-
     myNixOS = {
       profiles = {
         appimage.enable = true;
