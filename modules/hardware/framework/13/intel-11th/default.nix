@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./equalizer.nix
-  ];
-
   options.myHardware.framework.laptop13.intel-11th.enable = lib.mkEnableOption "Framework Laptop 13 Intel 11th gen hardware configuration.";
 
   config = lib.mkIf config.myHardware.framework.laptop13.intel-11th.enable {
