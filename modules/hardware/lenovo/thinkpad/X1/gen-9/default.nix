@@ -22,19 +22,6 @@
       speed = 40;
     };
 
-    # home-manager = {
-    #   sharedModules = [
-    #     {
-    #       services.easyeffects = {
-    #         enable = true;
-    #         preset = "X1C.json";
-    #       };
-
-    #       xdg.configFile."easyeffects/output/X1C.json".source = ./easyeffects.json;
-    #     }
-    #   ];
-    # };
-
     services.fprintd.enable = true;
 
     myHardware = {
