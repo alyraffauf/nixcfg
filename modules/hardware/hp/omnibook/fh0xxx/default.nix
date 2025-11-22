@@ -42,9 +42,13 @@
         config.myHardware.hp.omnibook.fh0xxx.equalizer
         {
           services.easyeffects = {
-            # Adds DSP for the included speakers.
             enable = true;
-            preset = "AdvancedAutoGain.json";
+
+            extraPresets.OmniBook = builtins.fromJSON (
+              builtins.readFile ./easyeffects.json
+            );
+
+            preset = "OmniBook";
           };
         }
       )
