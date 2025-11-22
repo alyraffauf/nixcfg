@@ -28,6 +28,11 @@
       };
     };
 
+    hardware = {
+      keyboard.qmk.enable = true;
+      logitech.wireless.enable = true;
+    };
+
     programs = {
       dconf.enable = true; # Needed for home-manager
 

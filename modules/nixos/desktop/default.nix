@@ -14,6 +14,7 @@
 
   config = lib.mkIf config.myNixOS.desktop.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
+    hardware.logitech.wireless.enableGraphical = true;
 
     home-manager.sharedModules = [
       {

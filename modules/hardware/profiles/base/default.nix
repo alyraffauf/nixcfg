@@ -6,15 +6,7 @@
   options.myHardware.profiles.base.enable = lib.mkEnableOption "Base common hardware configuration";
 
   config = lib.mkIf config.myHardware.profiles.base.enable {
-    hardware = {
-      enableAllFirmware = true;
-      keyboard.qmk.enable = true;
-
-      logitech.wireless = {
-        enable = true;
-        enableGraphical = true;
-      };
-    };
+    hardware.enableAllFirmware = true;
 
     home-manager.sharedModules = [
       (
