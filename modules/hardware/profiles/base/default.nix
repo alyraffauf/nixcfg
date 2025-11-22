@@ -7,7 +7,6 @@
 
   config = lib.mkIf config.myHardware.profiles.base.enable {
     hardware.enableAllFirmware = true;
-    services.fstrim.enable = true;
     myHardware.lenovo.thinkpad.kb5D50X.enable = true;
   };
 }
