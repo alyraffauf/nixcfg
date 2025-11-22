@@ -52,7 +52,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:hauskens/home-manager/fix/easy-effects";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
