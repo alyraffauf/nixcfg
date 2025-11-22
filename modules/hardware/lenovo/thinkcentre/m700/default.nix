@@ -12,8 +12,6 @@
       "xhci_pci"
     ];
 
-    services.fwupd.enable = true;
-
     myHardware = {
       intel = {
         cpu.enable = true;

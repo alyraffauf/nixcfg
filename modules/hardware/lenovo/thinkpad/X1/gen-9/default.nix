@@ -35,10 +35,7 @@
     #   ];
     # };
 
-    services = {
-      fprintd.enable = true;
-      fwupd.enable = true;
-    };
+    services.fprintd.enable = true;
 
     myHardware = {
       intel = {

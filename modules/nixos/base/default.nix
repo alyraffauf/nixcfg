@@ -55,6 +55,8 @@
     };
 
     services = {
+      fwupd.enable = true;
+
       logind.settings.Login = {
         HandlePowerKey = "suspend";
         HandlePowerKeyLongPress = "poweroff";

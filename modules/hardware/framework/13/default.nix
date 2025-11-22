@@ -34,7 +34,6 @@
 
     services = {
       fprintd.enable = true;
-      fwupd.enable = true;
 
       udev.extraRules = ''
         ## Framework ethernet expansion card support
