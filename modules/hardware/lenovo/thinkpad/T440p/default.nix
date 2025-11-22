@@ -3,7 +3,15 @@
   lib,
   ...
 }: {
-  options.myHardware.lenovo.thinkpad.T440p.enable = lib.mkEnableOption "Lenovo ThinkPad T440p hardware configuration.";
+  options.myHardware.lenovo.thinkpad.T440p = {
+    enable = lib.mkEnableOption "Lenovo ThinkPad T440p hardware configuration.";
+
+    equalizer = lib.mkOption {
+      type = lib.types.bool;
+      default = config.myHardware.lenovo.thinkpad.T440p.enable;
+      description = "Enable EasyEffects equalizer preset for Lenovo ThinkPad T440p.";
+    };
+  };
 
   config = lib.mkIf config.myHardware.lenovo.thinkpad.T440p.enable {
     boot = {
@@ -32,19 +40,19 @@
 
     home-manager = {
       sharedModules = [
-        {
-          services.easyeffects = {
-            enable = true;
-            preset = "T440p.json";
-          };
+        (lib.mkIf config.myHardware.lenovo.thinkpad.T440p.equalizer
+          {
+            services.easyeffects = {
+              enable = true;
+              preset = "T440p.json";
+            };
 
-          xdg.configFile."easyeffects/output/T440p.json".source = ./easyeffects.json;
-        }
+            xdg.configFile."easyeffects/output/T440p.json".source = ./easyeffects.json;
+          })
       ];
     };
 
     powerManagement.cpuFreqGovernor = "ondemand";
-    zramSwap.algorithm = "lz4";
 
     myHardware = {
       intel = {
