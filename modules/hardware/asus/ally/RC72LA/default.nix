@@ -115,7 +115,10 @@
         gpu.enable = true;
       };
 
-      profiles.base.enable = true;
+      profiles = {
+        base.enable = true;
+        ssd.enable = true;
+      };
     };
   };
 }

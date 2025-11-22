@@ -74,6 +74,7 @@
       profiles = {
         base.enable = true;
         laptop.enable = true;
+        ssd.enable = true;
       };
     };
   };

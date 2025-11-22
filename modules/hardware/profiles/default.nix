@@ -2,5 +2,6 @@
   imports = [
     ./base
     ./laptop
+    ./ssd
   ];
 }
