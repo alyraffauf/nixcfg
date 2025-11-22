@@ -16,7 +16,7 @@
       ];
     };
 
-    hardware.cpu.amd.updateMicrocode = true;
+    hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   };
 }
