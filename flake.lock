@@ -1068,11 +1068,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763803143,
-        "narHash": "sha256-Jtqhzbtj/H7732SlcMhMGZtYQfc13inVpfBRD5XIea0=",
+        "lastModified": 1763912116,
+        "narHash": "sha256-a5GI3BiA6i6vUUfKQuv/OfFomsZ/XFxYrZ9ktLtX2Fs=",
         "owner": "hauskens",
         "repo": "home-manager",
-        "rev": "9c1fe22b1a2371d3f099a87da0baf3c8155f7303",
+        "rev": "c53fb425296bf4f318632ffb0f6ed6f0da68036b",
         "type": "github"
       },
       "original": {
