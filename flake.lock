@@ -1068,16 +1068,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1763912116,
-        "narHash": "sha256-a5GI3BiA6i6vUUfKQuv/OfFomsZ/XFxYrZ9ktLtX2Fs=",
-        "owner": "hauskens",
+        "lastModified": 1764007004,
+        "narHash": "sha256-OnonWWGrUGPc3y1TES/RVCe4Gd75YgdU8aIp07Au4lc=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c53fb425296bf4f318632ffb0f6ed6f0da68036b",
+        "rev": "125e40fa68b340aee9d474a46b540907e2537b5c",
         "type": "github"
       },
       "original": {
-        "owner": "hauskens",
-        "ref": "fix/easy-effects",
+        "owner": "nix-community",
+        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
