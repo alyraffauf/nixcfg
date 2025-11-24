@@ -79,7 +79,6 @@
           programs.chromium.enable = true;
 
           programs = {
-            awscli.enable = true;
             firefox.enable = true;
             git.enable = true;
             halloy.enable = true;
