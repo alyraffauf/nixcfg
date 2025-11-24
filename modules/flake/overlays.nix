@@ -10,7 +10,6 @@
         (nixos-unstable-small)
         cosmic-bg
         cosmic-osd
-        zed-editor
         cosmic-comp
         cosmic-edit
         cosmic-idle
