@@ -20,7 +20,7 @@
 
   myNixOS = {
     base.enable = true;
-    desktop.kde.enable = true;
+    desktop.gnome.enable = true;
 
     profiles = {
       btrfs.enable = true;
@@ -40,7 +40,7 @@
       flatpak.enable = true;
       promtail.enable = true;
 
-      sddm = {
+      gdm = {
         enable = true;
         autoLogin = "aly";
       };
