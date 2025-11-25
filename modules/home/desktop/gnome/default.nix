@@ -58,6 +58,7 @@
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
           ];
 
           play = ["<Super>AudioMute"];
@@ -87,6 +88,12 @@
           binding = "<Super>e";
           command = "${defaultApps.editor}";
           name = "Text Editor";
+        };
+
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
+          binding = "<Super>r";
+          command = "${lib.getExe config.programs.vicinae.package} toggle";
+          name = "Vicinae";
         };
 
         "org/gnome/shell" = {
@@ -171,18 +178,23 @@
           {package = pkgs.gnomeExtensions.auto-move-windows;}
           {package = pkgs.gnomeExtensions.caffeine;}
           {package = pkgs.gnomeExtensions.night-theme-switcher;}
+          {package = pkgs.gnomeExtensions.vicinae;}
         ];
       };
     };
 
-    myHome.profiles.defaultApps = {
-      audioPlayer.package = lib.mkDefault pkgs.gapless;
-      editor.package = lib.mkDefault pkgs.gnome-text-editor;
-      fileManager.package = lib.mkDefault pkgs.nautilus;
-      imageViewer.package = lib.mkDefault pkgs.loupe;
-      pdfViewer.package = lib.mkDefault pkgs.papers;
-      terminal.package = lib.mkDefault pkgs.ptyxis;
-      videoPlayer.package = lib.mkDefault pkgs.showtime;
+    myHome = {
+      profiles.defaultApps = {
+        audioPlayer.package = lib.mkDefault pkgs.gapless;
+        editor.package = lib.mkDefault pkgs.gnome-text-editor;
+        fileManager.package = lib.mkDefault pkgs.nautilus;
+        imageViewer.package = lib.mkDefault pkgs.loupe;
+        pdfViewer.package = lib.mkDefault pkgs.papers;
+        terminal.package = lib.mkDefault pkgs.ptyxis;
+        videoPlayer.package = lib.mkDefault pkgs.showtime;
+      };
+
+      programs.vicinae.enable = true;
     };
   };
 }
