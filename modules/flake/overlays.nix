@@ -1,38 +1,45 @@
 {self, ...}: {
   flake.overlays = {
     default = _final: prev: let
-      nixos-unstable-small = import self.inputs.nixpkgs-unstable-small {
+      nixos-unstable = import self.inputs.nixpkgs-unstable {
         config.allowUnfree = true;
         inherit (prev) system;
       };
     in {
       inherit
-        (nixos-unstable-small)
+        (nixos-unstable)
+        cosmic-applets
+        cosmic-applibrary
         cosmic-bg
-        cosmic-osd
         cosmic-comp
         cosmic-edit
-        cosmic-idle
-        cosmic-term
         cosmic-files
-        cosmic-icons
-        cosmic-panel
-        cosmic-randr
-        cosmic-store
-        cosmic-player
-        cosmic-applets
         cosmic-greeter
-        cosmic-session
-        cosmic-launcher
-        cosmic-settings
-        cosmic-applibrary
-        cosmic-screenshot
-        cosmic-wallpapers
+        cosmic-icons
+        cosmic-idle
         cosmic-initial-setup
+        cosmic-launcher
         cosmic-notifications
+        cosmic-osd
+        cosmic-panel
+        cosmic-player
+        cosmic-randr
+        cosmic-screenshot
+        cosmic-session
+        cosmic-settings
         cosmic-settings-daemon
+        cosmic-store
+        cosmic-term
+        cosmic-wallpapers
         cosmic-workspaces-epoch
+        ghostty
+        obsidian
+        signal-desktop-bin
+        uutils-coreutils-noprefix
+        uutils-diffutils
+        uutils-findutils
         xdg-desktop-portal-cosmic
+        zed-editor
         ;
     };
   };

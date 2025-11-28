@@ -1401,7 +1401,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable-small": {
+    "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1763966396,
         "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
@@ -1417,7 +1417,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable-small_2": {
+    "nixpkgs-unstable-small": {
       "locked": {
         "lastModified": 1761994314,
         "narHash": "sha256-IOZofbuQ+gnM4t/nkN9wc1LvRDLKNhEftLILRBa+1Gc=",
@@ -1550,7 +1550,7 @@
         "nix-darwin": "nix-darwin_2",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unstable-small": "nixpkgs-unstable-small",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "nynx": "nynx",
         "safari": "safari",
@@ -1655,7 +1655,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-unstable-small": "nixpkgs-unstable-small_2",
+        "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
