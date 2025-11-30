@@ -9,11 +9,7 @@
     (lib.mkIf config.myHardware.profiles.laptop.enable
       {
         services = {
-          tuned = {
-            enable = lib.mkDefault true;
-            settings.dynamic_tuning = true;
-          };
-
+          tuned.enable = lib.mkDefault true;
           upower.enable = true;
         };
       })
