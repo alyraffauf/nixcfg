@@ -90,6 +90,17 @@
           in
             derivedPkg;
         };
+
+      headsetcontrol = prev.headsetcontrol.overrideAttrs (_oldAttrs: {
+        src = prev.fetchFromGitHub {
+          owner = "alyraffauf";
+          repo = "HeadsetControl";
+          rev = "d8582ac1d80cead8d1dffd0ab6544eb59293c1f8";
+          sha256 = "sha256-Y2dpT666pyWC5Pdb1zYgQcrZM9aspIFJtyZi24iuieQ=";
+        };
+
+        version = "dev-arctis-7x";
+      });
     };
   };
 }
