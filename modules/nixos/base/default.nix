@@ -17,6 +17,7 @@
 
       systemPackages = with pkgs; [
         (inxi.override {withRecommends = true;})
+        headsetcontrol
         helix
         lm_sensors
         wget
@@ -67,6 +68,7 @@
         HandlePowerKeyLongPress = "poweroff";
       };
 
+      udev.packages = [pkgs.headsetcontrol];
       usbmuxd.enable = true;
 
       xserver.xkb = {
