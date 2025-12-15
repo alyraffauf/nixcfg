@@ -4,15 +4,11 @@
   pkgs,
   ...
 }: {
-  options.myHardware.hp.omnibook.fh0xxx = {
-    enable = lib.mkEnableOption "HP OmniBook Ultra Flip 14-fh0xx hardware configuration.";
+  imports = [
+    ./dsp.nix
+  ];
 
-    equalizer = lib.mkOption {
-      type = lib.types.bool;
-      default = config.myHardware.hp.omnibook.fh0xxx.enable;
-      description = "Enable EasyEffects equalizer for the built-in speakers.";
-    };
-  };
+  options.myHardware.hp.omnibook.fh0xxx.enable = lib.mkEnableOption "HP OmniBook Ultra Flip 14-fh0xx hardware configuration.";
 
   config = lib.mkIf config.myHardware.hp.omnibook.fh0xxx.enable {
     boot = {
@@ -38,24 +34,6 @@
       enableAllFirmware = true;
       sensor.iio.enable = true;
     };
-
-    home-manager.sharedModules = [
-      (
-        lib.mkIf
-        config.myHardware.hp.omnibook.fh0xxx.equalizer
-        {
-          services.easyeffects = {
-            enable = true;
-
-            extraPresets.OmniBook = builtins.fromJSON (
-              builtins.readFile ./easyeffects.json
-            );
-
-            preset = "OmniBook";
-          };
-        }
-      )
-    ];
 
     services.fprintd.enable = true;
 
