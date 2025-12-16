@@ -16,13 +16,13 @@ Creates a virtual "ThinkPad Speakers" device that processes all audio.
 ```nix
 myHardware.lenovo.thinkpad.X1.gen-9 = {
   enable = true;
-  equalizer.enable = true;  # Enable audio processing
+  audio.enable = true;  # Enable audio processing
 };
 ```
 
 ### Notes
 
-- Before enabling the equalizer, set speaker volume to 100% (filter-chain creates a fake audio output that handles volume control)
+- Before enabling the audio enhancement, set speaker volume to 100% (filter-chain creates a fake audio output that handles volume control)
 - May need to select "ThinkPad Speakers" as default output device
 
 ### Credits
