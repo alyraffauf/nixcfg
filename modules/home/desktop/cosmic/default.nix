@@ -20,7 +20,6 @@
     programs = {
       cosmic-ext-ctl.enable = true;
       cosmic-ext-tweaks.enable = true;
-      cosmic-manager.enable = true;
     };
   };
 }
