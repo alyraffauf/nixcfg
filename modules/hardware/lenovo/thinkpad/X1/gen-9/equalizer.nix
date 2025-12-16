@@ -202,9 +202,9 @@ in {
             control = {
               mode = 0;
               ce_0 = 1;
-              sla_0 = 5.0;
+              sla_0 = 10.0;
               cr_0 = 1.75;
-              al_0 = 0.725;
+              al_0 = 1.5;
               at_0 = 1.0;
               rt_0 = 100;
               kn_0 = 0.125;
@@ -228,11 +228,11 @@ in {
             plugin = "http://lsp-plug.in/plugins/lv2/compressor_stereo";
             name = "woofer_lim";
             control = {
-              sla = 5.0;
-              al = 1.0;
+              sla = 10.0;
+              al = 1.5;
               at = 1.0;
               rt = 100.0;
-              cr = 15.0;
+              cr = 4.0;
               kn = 0.5;
             };
           }
@@ -319,7 +319,7 @@ in {
         # and hand over to this instead of the speakers when they disconnect.
         "priority.session" = 1500;
         "priority.driver" = 1500;
-        "state.default-volume" = 0.6;
+        "state.default-volume" = 1.0;
         "device.icon-name" = "audio-card-analog-pci";
       };
       "playback.props" = {
