@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./dsp.nix
+    ./audio
   ];
 
   options.myHardware.hp.omnibook.fh0xxx.enable = lib.mkEnableOption "HP OmniBook Ultra Flip 14-fh0xx hardware configuration.";

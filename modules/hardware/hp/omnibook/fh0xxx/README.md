@@ -3,13 +3,16 @@
 ## Usage
 
 ```nix
-myHardware.hp.omnibook.fh0xxx.enable = true;
+myHardware.hp.omnibook.fh0xxx = {
+  enable = true;
+  audio.enable = true;  # Optional: Enhanced speaker audio
+};
 ```
 
 ## What It Does
 
 - **Graphics**: Uses xe driver on kernel 6.8+, disables PSR to fix screen flicker.
-- **Audio**: Adds EasyEffects preset for better speaker sound.
+- **Audio**: Optional PipeWire DSP filter chain for enhanced speaker sound (see `audio/README.md`).
 - **Sensors**: Enables auto-rotate and tablet mode.
 - **Fingerprint**: Enables fprintd service.
 - **Kernel**: Uses latest kernel if older than 6.18.
