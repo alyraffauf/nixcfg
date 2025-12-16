@@ -1,5 +1,5 @@
 #!/bin/bash
-# Installation script for ThinkPad X1 Carbon Gen 9 audio enhancement on Fedora Kinoite
+# Installation script for ThinkPad X1 Carbon Gen 9 audio DSP on non-NixOS distros
 # This script sets up PipeWire/WirePlumber filter chain with EQ, bass enhancement, and compression
 # Installs system-wide (requires sudo)
 
