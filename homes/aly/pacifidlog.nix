@@ -7,8 +7,7 @@
 }: {
   imports = [
     self.homeModules.default
-    self.inputs.fontix.homeModules.default
-    self.inputs.catppuccin.homeModules.catppuccin
+    self.inputs.safari.homeModules.default
   ];
 
   age.secrets = {
@@ -19,10 +18,17 @@
   home = {
     homeDirectory = "/home/aly";
 
-    packages = with pkgs; [
-      obsidian
-      signal-desktop-bin
-    ];
+    packages = with pkgs;
+      [
+        cider-2
+        obsidian
+        signal-desktop-bin
+      ]
+      ++ [
+        (pkgs.writeShellScriptBin "aws-cvpn" ''
+          exec ${self.inputs.aws-cvpn-client.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/aws-start-vpn.sh "$@"
+        '')
+      ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
     stateVersion = "25.11";
@@ -41,20 +47,9 @@
     };
   };
 
-  nixGL = {
-    inherit (self.inputs.nixgl) packages;
-    vulkan.enable = true;
-  };
-
   programs = {
     home-manager.enable = true;
-    firefox.package = lib.mkForce (config.lib.nixGL.wrap pkgs.firefox);
-    ghostty.package = lib.mkForce (config.lib.nixGL.wrap pkgs.ghostty);
-
-    gnome-shell.extensions = [
-      {package = pkgs.gnomeExtensions.tailscale-qs;}
-    ];
-
+    # firefox.package = lib.mkForce (config.lib.nixGL.wrap pkgs.firefox);
     zed-editor.package = config.lib.nixGL.wrap pkgs.zed-editor;
   };
 
@@ -70,7 +65,6 @@
         };
 
         "roms".path = "/home/aly/ROMs";
-        "screenshots".enable = lib.mkForce false;
         "sync".path = lib.mkForce "/home/aly/sync";
       }
     ];
@@ -90,57 +84,20 @@
     };
   };
 
-  targets.genericLinux.enable = true;
-  xdg.enable = true;
+  targets.genericLinux = {
+    enable = true;
 
-  fontix = {
-    fonts = {
-      monospace = {
-        name = "CaskaydiaCove Nerd Font";
-        package = pkgs.nerd-fonts.caskaydia-cove;
-      };
-
-      sansSerif = {
-        name = "Adwaita Sans";
-        package = pkgs.adwaita-fonts;
-      };
-
-      serif = {
-        name = "Source Serif Pro";
-        package = pkgs.source-serif-pro;
-      };
+    nixGL = {
+      inherit (self.inputs.nixgl) packages;
+      vulkan.enable = true;
     };
-
-    sizes = {
-      applications = 10;
-      desktop = 10;
-    };
-
-    font-packages.enable = true;
-    fontconfig.enable = true;
-    ghostty.enable = true;
-    gnome.enable = true;
-    gtk.enable = true;
-    halloy.enable = true;
-    vscode.enable = true;
-    zed-editor.enable = true;
   };
 
-  catppuccin = {
-    flavor = "macchiato";
-    bat.enable = true;
-    helix.enable = true;
-    ghostty.enable = true;
-    lazygit.enable = true;
-    vesktop.enable = true;
+  xdg.enable = true;
 
-    zed = {
-      enable = true;
-      icons.enable = true;
-      italics = false;
-    };
-
-    zellij.enable = true;
+  safari = {
+    enable = true;
+    bash.enable = true;
   };
 
   myHome = {
@@ -148,37 +105,12 @@
       profiles.mail.enable = true;
 
       programs = {
-        awscli.enable = true;
-        firefox.enable = true;
         git.enable = true;
-        halloy.enable = true;
-        helix.enable = true;
-        ssh.enable = true;
+        # ssh.enable = true;
         thunderbird.enable = true;
         vesktop.enable = true;
         zed-editor.enable = true;
       };
-    };
-
-    desktop.gnome.enable = true;
-
-    profiles = {
-      defaultApps = {
-        enable = true;
-        editor.package = config.programs.zed-editor.package;
-        terminal.package = config.programs.ghostty.package;
-
-        webBrowser = {
-          exec = lib.getExe config.programs.firefox.finalPackage;
-          package = config.programs.firefox.finalPackage;
-        };
-      };
-      shell.enable = true;
-    };
-
-    programs = {
-      fastfetch.enable = true;
-      ghostty.enable = true;
     };
   };
 }
