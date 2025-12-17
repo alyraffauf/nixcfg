@@ -18,6 +18,7 @@
           - Psychoacoustic bass enhancement
           - Loudness compensation
           - Slight compression
+          - Audio suspend disabled to prevent popping
 
         This option has been optimised for the HP OmniBook FH0xxx series.
 

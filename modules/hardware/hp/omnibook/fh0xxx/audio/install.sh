@@ -62,6 +62,7 @@ sudo sed -i "s|@DEVICE_NAME@|$DEVICE_NAME|g" /etc/wireplumber/wireplumber.conf.d
 sudo sed -i "s|@FILTER_PATH@|/etc/wireplumber/wireplumber.conf.d/omnibook-fh0xxx-filter-chain.json|g" /etc/wireplumber/wireplumber.conf.d/99-omnibook.conf
 sudo sed -i "s|@HIDE_PARENT@|$HIDE_PARENT|g" /etc/wireplumber/wireplumber.conf.d/99-omnibook.conf
 echo "✓ Installed 99-omnibook.conf with device: $DEVICE_NAME (hide-parent: $HIDE_PARENT)"
+echo "  (includes buffer size configuration to prevent audio popping)"
 
 echo ""
 echo "Step 5: Restarting PipeWire and WirePlumber..."
@@ -80,6 +81,7 @@ echo "Configuration files installed:"
 echo "  - /etc/wireplumber/wireplumber.conf.d/omnibook-fh0xxx-filter-chain.json"
 echo "  - /etc/wireplumber/wireplumber.conf.d/99-omnibook.conf"
 echo ""
-echo "To uninstall: sudo rm /etc/wireplumber/wireplumber.conf.d/{omnibook-fh0xxx-filter-chain.json,99-omnibook.conf}"
+echo "To uninstall:"
+echo "  sudo rm /etc/wireplumber/wireplumber.conf.d/{omnibook-fh0xxx-filter-chain.json,99-omnibook.conf}"
 echo "Then restart pipewire/wireplumber."
 echo ""
