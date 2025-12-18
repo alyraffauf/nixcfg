@@ -72,18 +72,11 @@
       };
 
       myHome = {
-        aly = {
-          profiles.mail.enable = true;
-
-          programs = {
-            firefox.enable = true;
-            git.enable = true;
-            ssh.enable = true;
-            thunderbird.enable = true;
-            vesktop.enable = true;
-            zed-editor.enable = true;
-            zen.enable = true;
-          };
+        aly.programs = {
+          git.enable = true;
+          ssh.enable = true;
+          vesktop.enable = true;
+          zed-editor.enable = true;
         };
 
         programs.ghostty.enable = true;
