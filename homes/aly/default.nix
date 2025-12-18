@@ -15,9 +15,7 @@
     {
       home = {
         packages = [
-          pkgs.brave
           pkgs.rclone
-          self.inputs.nynx.packages.${pkgs.stdenv.hostPlatform.system}.nynx
         ];
 
         username = "aly";
@@ -76,12 +74,10 @@
       myHome = {
         aly = {
           profiles.mail.enable = true;
-          programs.chromium.enable = true;
 
           programs = {
             firefox.enable = true;
             git.enable = true;
-            halloy.enable = true;
             ssh.enable = true;
             thunderbird.enable = true;
             vesktop.enable = true;
