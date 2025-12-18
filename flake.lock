@@ -1671,11 +1671,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1765939035,
-        "narHash": "sha256-Xs0gGpC68QeP/7mld8lHyI5EaWD/UlaQgdfmyw8afuc=",
+        "lastModified": 1766029279,
+        "narHash": "sha256-SP9QS/s/o6RI4X1W0VsTKscoXJgpyFaWty/ZGwY0ZxE=",
         "owner": "alyraffauf",
         "repo": "secrets",
-        "rev": "059426f45f3986aed62c948f2a4c2e96c3833cc5",
+        "rev": "8a4b32c3e1e14ad6ed76beba3147c48fb65a3fcf",
         "type": "github"
       },
       "original": {
