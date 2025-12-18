@@ -54,6 +54,7 @@
       "slack"
       "thunderbird"
       "todoist-app"
+      "vesktop"
       "vlc"
       "zed"
     ];
