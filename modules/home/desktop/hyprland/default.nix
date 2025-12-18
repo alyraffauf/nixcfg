@@ -68,6 +68,8 @@
       ];
     };
 
+    programs.firefox.enable = true;
+
     services = {
       batsignal = {
         enable = true;

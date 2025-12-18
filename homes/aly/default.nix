@@ -118,19 +118,6 @@
         stateVersion = "25.11";
         username = "aly";
       };
-
-      myHome = {
-        profiles.defaultApps = {
-          enable = true;
-          editor.package = config.programs.zed-editor.package;
-          terminal.package = config.programs.ghostty.package;
-
-          webBrowser = {
-            exec = lib.getExe config.programs.zen-browser.finalPackage;
-            package = config.programs.zen-browser.finalPackage;
-          };
-        };
-      };
     })
   ];
 }

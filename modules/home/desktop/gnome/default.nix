@@ -167,7 +167,10 @@
     home.packages = with pkgs; [adw-gtk3];
 
     programs = {
-      firefox.nativeMessagingHosts = [pkgs.gnome-browser-connector];
+      firefox = {
+        enable = true;
+        nativeMessagingHosts = [pkgs.gnome-browser-connector];
+      };
 
       gnome-shell = {
         enable = true;
