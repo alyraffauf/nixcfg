@@ -5,7 +5,7 @@
     ...
   }: {
     imports = [
-      self.homeModules.aly
+      self.homeModules.default
       self.inputs.snippets.homeModules.snippets
       self.inputs.agenix.homeManagerModules.default
     ];
@@ -15,7 +15,13 @@
       syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/fortree/key.age";
     };
 
-    home.stateVersion = "25.11";
+    home = {
+      homeDirectory = "/Users/aly";
+      stateVersion = "25.11";
+      username = "aly";
+    };
+
+    myHome.aly.desktop.macos.enable = true;
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
     services.syncthing = let

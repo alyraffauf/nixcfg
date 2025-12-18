@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   self,
@@ -47,6 +46,7 @@
       "brave-browser"
       "choosy"
       "firefox"
+      "ghostty"
       "google-chrome"
       "obsidian"
       "plexamp"
@@ -68,7 +68,7 @@
       upgrade = true;
     };
 
-    taps = builtins.attrNames config.nix-homebrew.taps;
+    # taps = builtins.attrNames config.nix-homebrew.taps;
   };
 
   networking = {
@@ -77,17 +77,17 @@
     localHostName = "fortree";
   };
 
-  nix-homebrew = {
-    enable = true;
-    mutableTaps = false;
+  # nix-homebrew = {
+  #   enable = true;
+  #   mutableTaps = false;
 
-    taps = {
-      "homebrew/homebrew-core" = self.inputs.homebrew-core;
-      "homebrew/homebrew-cask" = self.inputs.homebrew-cask;
-    };
+  #   taps = {
+  #     "homebrew/homebrew-core" = self.inputs.homebrew-core;
+  #     "homebrew/homebrew-cask" = self.inputs.homebrew-cask;
+  #   };
 
-    user = "aly";
-  };
+  #   user = "aly";
+  # };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
   programs.fish.enable = true;
@@ -105,12 +105,12 @@
         {app = "/Applications/Brave Browser.app";}
         {app = "/Applications/Google Chrome.app";}
         {app = "/Applications/Signal.app";}
-        {app = "/Users/aly/Applications/Home Manager Apps/Vesktop.app";}
+        {app = "/Applications/Vesktop.app";}
         {app = "/Applications/Slack.app";}
         {app = "/Applications/Thunderbird.app";}
         {app = "/Applications/Obsidian.app";}
         {app = "/Applications/Zed.app";}
-        {app = "/Users/aly/Applications/Home Manager Apps/Ghostty.app";}
+        {app = "/Applications/Ghostty.app";}
         {app = "/System/Applications/Music.app";}
         {app = "/Applications/Plexamp.app";}
         {app = "/System/Applications/iPhone Mirroring.app";}
