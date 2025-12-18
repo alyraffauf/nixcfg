@@ -19,6 +19,25 @@
           ];
         };
       };
+
+      "aly@sootopolis" = self.inputs.home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit self;};
+
+        modules = [
+          ../../homes/aly/sootopolis.nix
+        ];
+
+        pkgs = import self.inputs.nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+
+          overlays = [
+            self.inputs.nixgl.overlay
+            self.inputs.nur.overlays.default
+            self.overlays.default
+          ];
+        };
+      };
     };
 
     homeModules = {
