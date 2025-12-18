@@ -13,7 +13,7 @@
         inputs.agenix.darwinModules.default
         inputs.snippets.nixosModules.snippets
         inputs.home-manager.darwinModules.home-manager
-        inputs.nix-homebrew.darwinModules.nix-homebrew
+        # inputs.nix-homebrew.darwinModules.nix-homebrew
 
         {
           home-manager = {

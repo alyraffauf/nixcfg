@@ -71,7 +71,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nur.url = "github:nix-community/NUR";
 
     nynx = {
@@ -101,15 +101,15 @@
 
     # Non-flake inputs
 
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
+    # homebrew-core = {
+    #   url = "github:homebrew/homebrew-core";
+    #   flake = false;
+    # };
 
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
+    # homebrew-cask = {
+    #   url = "github:homebrew/homebrew-cask";
+    #   flake = false;
+    # };
 
     secrets = {
       url = "github:alyraffauf/secrets";
