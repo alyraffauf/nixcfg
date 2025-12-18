@@ -18,17 +18,11 @@
   home = {
     homeDirectory = "/home/aly";
 
-    packages = with pkgs;
-      [
-        cider-2
-        obsidian
-        signal-desktop-bin
-      ]
-      ++ [
-        (pkgs.writeShellScriptBin "aws-cvpn" ''
-          exec ${self.inputs.aws-cvpn-client.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/aws-start-vpn.sh "$@"
-        '')
-      ];
+    packages = [
+      (pkgs.writeShellScriptBin "aws-cvpn" ''
+        exec ${self.inputs.aws-cvpn-client.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/aws-start-vpn.sh "$@"
+      '')
+    ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
     stateVersion = "25.11";
@@ -49,8 +43,7 @@
 
   programs = {
     home-manager.enable = true;
-    # firefox.package = lib.mkForce (config.lib.nixGL.wrap pkgs.firefox);
-    zed-editor.package = config.lib.nixGL.wrap pkgs.zed-editor;
+    # zed-editor.package = config.lib.nixGL.wrap pkgs.zed-editor;
   };
 
   services.syncthing = let
@@ -94,23 +87,4 @@
   };
 
   xdg.enable = true;
-
-  safari = {
-    enable = true;
-    bash.enable = true;
-  };
-
-  myHome = {
-    aly = {
-      profiles.mail.enable = true;
-
-      programs = {
-        git.enable = true;
-        # ssh.enable = true;
-        thunderbird.enable = true;
-        vesktop.enable = true;
-        zed-editor.enable = true;
-      };
-    };
-  };
 }
