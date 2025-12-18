@@ -30,6 +30,7 @@
   homebrew = {
     enable = true;
     global.autoUpdate = false;
+    greedyCasks = true;
 
     brews = [
       "mas"
@@ -41,34 +42,29 @@
       }
     ];
 
-    casks = let
-      greedy = name: {
-        inherit name;
-        greedy = true;
-      };
-    in [
-      (greedy "aws-vpn-client")
-      (greedy "choosy")
-      (greedy "firefox")
-      (greedy "google-chrome")
-      (greedy "obsidian")
-      (greedy "plexamp")
-      (greedy "signal")
-      (greedy "slack")
-      (greedy "thunderbird")
-      (greedy "todoist-app")
-      (greedy "vlc")
-      (greedy "zed")
-      (greedy "zen")
+    casks = [
+      "aws-vpn-client"
+      "brave-browser"
+      "choosy"
+      "firefox"
+      "google-chrome"
+      "obsidian"
+      "plexamp"
+      "signal"
+      "slack"
+      "thunderbird"
+      "todoist-app"
+      "vlc"
+      "zed"
     ];
 
-    # masApps = {
-    #   "Bitwarden" = 1352778147;
-    #   "Photomator" = 1444636541;
-    # };
+    masApps = {
+      "Bitwarden" = 1352778147;
+      "Photomator" = 1444636541;
+    };
 
     onActivation = {
-      cleanup = "zap";
+      # cleanup = "zap";
       upgrade = true;
     };
 
@@ -105,7 +101,9 @@
     defaults = {
       dock.persistent-apps = [
         {app = "/System/Applications/Apps.app";}
-        {app = "/Applications/Zen.app";}
+        {app = "/Applications/Firefox.app";}
+        {app = "/Applications/Brave Browser.app";}
+        {app = "/Applications/Google Chrome.app";}
         {app = "/Applications/Signal.app";}
         {app = "/Users/aly/Applications/Home Manager Apps/Vesktop.app";}
         {app = "/Applications/Slack.app";}
