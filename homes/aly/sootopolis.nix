@@ -17,13 +17,6 @@
 
   home = {
     homeDirectory = "/home/aly";
-
-    packages = [
-      (pkgs.writeShellScriptBin "aws-cvpn" ''
-        exec ${self.inputs.aws-cvpn-client.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/aws-start-vpn.sh "$@"
-      '')
-    ];
-
     sessionVariables.NIXOS_OZONE_WL = "1";
     stateVersion = "25.11";
     username = "aly";
