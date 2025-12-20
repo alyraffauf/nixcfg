@@ -15,16 +15,9 @@
 
     systemPackages = with pkgs; [
       (lib.hiPrio uutils-coreutils-noprefix)
-      eza
       git
     ];
   };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.caskaydia-cove
-    nerd-fonts.ubuntu-sans
-    source-serif-pro
-  ];
 
   homebrew = {
     enable = true;
@@ -55,8 +48,6 @@
       # cleanup = "zap";
       upgrade = true;
     };
-
-    # taps = builtins.attrNames config.nix-homebrew.taps;
   };
 
   networking = {
@@ -64,18 +55,6 @@
     hostName = "fortree";
     localHostName = "fortree";
   };
-
-  # nix-homebrew = {
-  #   enable = true;
-  #   mutableTaps = false;
-
-  #   taps = {
-  #     "homebrew/homebrew-core" = self.inputs.homebrew-core;
-  #     "homebrew/homebrew-cask" = self.inputs.homebrew-cask;
-  #   };
-
-  #   user = "aly";
-  # };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
   programs.fish.enable = true;
