@@ -103,7 +103,6 @@
       dock.persistent-apps = [
         {app = "/System/Applications/Apps.app";}
         {app = "/Applications/Firefox.app";}
-        {app = "/Applications/Brave Browser.app";}
         {app = "/Applications/Google Chrome.app";}
         {app = "/Applications/Signal.app";}
         {app = "/Applications/Vesktop.app";}
@@ -112,7 +111,7 @@
         {app = "/Applications/Obsidian.app";}
         {app = "/Applications/Zed.app";}
         {app = "/Applications/Ghostty.app";}
-        {app = "/System/Applications/Music.app";}
+        {app = "/Applications/Cider.app";}
         {app = "/Applications/Plexamp.app";}
         {app = "/System/Applications/iPhone Mirroring.app";}
       ];
