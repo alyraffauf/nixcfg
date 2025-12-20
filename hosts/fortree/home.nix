@@ -21,7 +21,6 @@
       username = "aly";
     };
 
-    myHome.aly.desktop.macos.enable = true;
     launchd.agents.syncthing.config.EnvironmentVariables.HOME = config.home.homeDirectory;
 
     services.syncthing = let

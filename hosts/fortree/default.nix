@@ -43,20 +43,7 @@
 
     casks = [
       "aws-vpn-client"
-      "brave-browser"
-      "choosy"
-      "firefox"
-      "ghostty"
-      "google-chrome"
-      "obsidian"
-      "plexamp"
-      "signal"
-      "slack"
-      "thunderbird"
       "todoist-app"
-      "vesktop"
-      "vlc"
-      "zed"
     ];
 
     masApps = {
@@ -99,26 +86,6 @@
   '';
 
   system = {
-    defaults = {
-      dock.persistent-apps = [
-        {app = "/System/Applications/Apps.app";}
-        {app = "/Applications/Firefox.app";}
-        {app = "/Applications/Google Chrome.app";}
-        {app = "/Applications/Signal.app";}
-        {app = "/Applications/Vesktop.app";}
-        {app = "/Applications/Slack.app";}
-        {app = "/Applications/Thunderbird.app";}
-        {app = "/Applications/Obsidian.app";}
-        {app = "/Applications/Zed.app";}
-        {app = "/Applications/Ghostty.app";}
-        {app = "/Applications/Cider.app";}
-        {app = "/Applications/Plexamp.app";}
-        {app = "/System/Applications/iPhone Mirroring.app";}
-      ];
-
-      SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
-    };
-
     keyboard = {
       enableKeyMapping = true;
 
