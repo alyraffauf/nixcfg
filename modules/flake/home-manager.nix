@@ -20,6 +20,25 @@
         };
       };
 
+      "aly@petalburg" = self.inputs.home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit self;};
+
+        modules = [
+          ../../homes/aly/petalburg.nix
+        ];
+
+        pkgs = import self.inputs.nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+
+          overlays = [
+            self.inputs.nixgl.overlay
+            self.inputs.nur.overlays.default
+            self.overlays.default
+          ];
+        };
+      };
+
       "aly@rustboro" = self.inputs.home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit self;};
 
