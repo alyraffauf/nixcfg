@@ -1629,11 +1629,11 @@
         "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
-        "lastModified": 1766857334,
-        "narHash": "sha256-+dsAn0y68nEqsyhb+S0XHXIWCqudoF1i2uxdY1evDfs=",
+        "lastModified": 1766874466,
+        "narHash": "sha256-0jU3FXnRjsHYG7l4MnI6Pm1DIlnDMT0Tvx99zhZiciU=",
         "owner": "alyraffauf",
         "repo": "snippets",
-        "rev": "8c38360144443a1bde93a0da25132fa836fa0ebf",
+        "rev": "349618e42fd549181dc697b745d0a90899289320",
         "type": "github"
       },
       "original": {
