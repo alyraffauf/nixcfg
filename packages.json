@@ -1,0 +1,43 @@
+{
+  "all": {
+    "include": {
+      "all": [
+        "ansible",
+        "chezmoi",
+        "fish",
+        "ifuse",
+        "lm_sensors",
+        "lsp-plugins-lv2",
+        "lv2-bankstown",
+        "pipewire-module-filter-chain-lv2",
+        "ptyxis",
+        "syncthing"
+      ],
+      "silverblue": [],
+      "kinoite": ["kcm-fcitx5", "ksystemlog", "plasma-wallpapers-dynamic"]
+    },
+    "exclude": {
+      "all": [],
+      "silverblue": [],
+      "kinoite": [
+        "akonadi-server",
+        "akonadi-server-mysql",
+        "fedora-bookmarks",
+        "fedora-chromium-config",
+        "fedora-chromium-config-kde",
+        "firefox",
+        "firefox-langpacks",
+        "firewall-config",
+        "kcharselect",
+        "khelpcenter",
+        "krfb",
+        "krfb-libs",
+        "mariadb",
+        "mariadb-common",
+        "mariadb-errmsg",
+        "plasma-discover-kns",
+        "plasma-welcome-fedora"
+      ]
+    }
+  }
+}
