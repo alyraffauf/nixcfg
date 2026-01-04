@@ -36,6 +36,7 @@ This repository contains my Darwin, NixOS and home-manager configurations, along
 ```plaintext
 .
 ├── flake.nix                # Main entry point
+├── files/                   # Files to be copied to the final file system
 ├── homes/                   # home-manager configurations
 ├── hosts/                   # NixOS and Darwin host configurations
 ├── modules/                 # Modular configurations
