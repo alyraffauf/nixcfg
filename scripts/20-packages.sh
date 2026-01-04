@@ -32,6 +32,12 @@ if ! jq empty "${PACKAGES_JSON}" 2>/dev/null; then
 fi
 
 # Build list of all packages requested for inclusion
+# The jq query:
+# 1. Gets packages from .all.include.all
+# 2. Gets packages from .all.include.<IMAGE_NAME>
+# 3. Gets packages from .<FEDORA_MAJOR_VERSION>.include.all
+# 4. Gets packages from .<FEDORA_MAJOR_VERSION>.include.<IMAGE_NAME>
+# 5. Sorts and deduplicates the combined list
 readarray -t INCLUDED_PACKAGES < <(jq -r "[(.all.include | (.all, select(.\"$IMAGE_NAME\" != null).\"$IMAGE_NAME\")[]), \
                              (select(.\"$FEDORA_MAJOR_VERSION\" != null).\"$FEDORA_MAJOR_VERSION\".include | (.all, select(.\"$IMAGE_NAME\" != null).\"$IMAGE_NAME\")[])] \
                              | sort | unique[]" "${PACKAGES_JSON}")
@@ -46,6 +52,7 @@ else
 fi
 
 # Build list of all packages requested for exclusion
+# The jq query follows the same pattern as INCLUDED_PACKAGES but for .exclude
 readarray -t EXCLUDED_PACKAGES < <(jq -r "[(.all.exclude | (.all, select(.\"$IMAGE_NAME\" != null).\"$IMAGE_NAME\")[]), \
                              (select(.\"$FEDORA_MAJOR_VERSION\" != null).\"$FEDORA_MAJOR_VERSION\".exclude | (.all, select(.\"$IMAGE_NAME\" != null).\"$IMAGE_NAME\")[])] \
                              | sort | unique[]" "${PACKAGES_JSON}")
@@ -72,9 +79,9 @@ fi
 
 # Install tailscale package from their repo
 echo "Installing tailscale from official repo..."
-dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-dnf config-manager setopt tailscale-stable.enabled=0
-dnf -y install --enablerepo='tailscale-stable' tailscale
+dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+dnf5 config-manager setopt tailscale-stable.enabled=0
+dnf5 -y install --enablerepo='tailscale-stable' tailscale
 
 # Install packages from COPR repositories
 echo "Installing packages from COPR repositories..."
