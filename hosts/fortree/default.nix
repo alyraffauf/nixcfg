@@ -4,19 +4,19 @@
   self,
   ...
 }: {
-  imports = [
-    ./home.nix
-  ];
+  # imports = [
+  #   ./home.nix
+  # ];
 
   environment = {
     shells = with pkgs; [
       fish
     ];
 
-    systemPackages = with pkgs; [
-      (lib.hiPrio uutils-coreutils-noprefix)
-      git
-    ];
+    # systemPackages = with pkgs; [
+    #   (lib.hiPrio uutils-coreutils-noprefix)
+    #   git
+    # ];
   };
 
   homebrew = {
@@ -34,15 +34,10 @@
       }
     ];
 
-    casks = [
-      "aws-vpn-client"
-      "todoist-app"
-    ];
-
-    masApps = {
-      "Bitwarden" = 1352778147;
-      "Photomator" = 1444636541;
-    };
+    # masApps = {
+    #   "Bitwarden" = 1352778147;
+    #   "Photomator" = 1444636541;
+    # };
 
     onActivation = {
       # cleanup = "zap";
