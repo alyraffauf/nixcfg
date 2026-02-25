@@ -62,8 +62,8 @@ in {
     # These are pre-made decibel to linear value conversions, since Nix doesn't have pow().
     # Use the formula `10 ** (db / 20)` to calculate.
     # Read the shared filter chain template and substitute the device name
-    filter-chain-template = builtins.readFile ./x1c-gen9-filter-chain.json;
-    filter-chain = pkgs.writeText "x1c-gen9-filter-chain.json" (
+    filter-chain-template = builtins.readFile ./x1c-gen7-filter-chain.json;
+    filter-chain = pkgs.writeText "x1c-gen7-filter-chain.json" (
       builtins.replaceStrings
       ["@DEVICE_NAME@"]
       [outputName]
