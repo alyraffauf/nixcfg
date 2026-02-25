@@ -25,6 +25,7 @@
         "littleroot"
         "pacifidlog"
         "petalburg"
+	"rustboro"
         "sootopolis"
       ] (
         host:

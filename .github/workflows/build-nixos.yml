@@ -74,6 +74,24 @@ jobs:
         name: alyraffauf
     - name: Build petalburg
       run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.petalburg.config.system.build.toplevel
+  build-rustboro:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build rustboro
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.rustboro.config.system.build.toplevel
   build-sootopolis:
     runs-on: ubuntu-latest
     steps:
