@@ -25,7 +25,7 @@
   home = {
     homeDirectory = "/home/aly";
     sessionVariables.NIXOS_OZONE_WL = "1";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     username = "aly";
   };
 

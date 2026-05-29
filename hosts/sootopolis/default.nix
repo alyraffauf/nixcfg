@@ -14,7 +14,7 @@
   networking.hostName = "sootopolis";
   nix.daemonCPUSchedPolicy = "idle";
   services.xserver.xkb.options = "ctrl:nocaps";
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/disk/by-id/nvme-SHPP41-1000GM_ANCAN50211160B42I";
   myHardware.lenovo.thinkpad.X1.gen-9.enable = true;

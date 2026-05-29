@@ -29,7 +29,7 @@
     rocmOverrideGfx = "10.3.0"; # Wepretend because ollama/ROCM does not support the 6700.
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/nvm0n1";
 

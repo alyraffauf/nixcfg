@@ -13,7 +13,7 @@
   home = {
     username = "dustin";
     homeDirectory = "/home/dustin";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
 
     packages = with pkgs; [
       fractal

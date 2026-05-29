@@ -13,7 +13,7 @@
   networking.hostName = "pacifidlog";
   nix.daemonCPUSchedPolicy = "idle";
   services.xserver.xkb.options = "ctrl:nocaps";
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   time.timeZone = "America/New_York";
   myDisko.installDrive = "/dev/disk/by-id/nvme-SK_hynix_PC801_HFS002TEJ9X101N_BDE4N54161OA05A2VI";
   myHardware.hp.omnibook.fh0xxx.enable = true;
