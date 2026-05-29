@@ -14,6 +14,8 @@ _: {
           git
           just
           nh
+          sops
+          ssh-to-age
         ])
         # ++ lib.attrValues config.treefmt.build.programs
         ++ [
