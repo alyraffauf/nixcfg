@@ -4,7 +4,7 @@
   ...
 }: {
   options.myNixOS.services.promtail = {
-    enable = lib.mkEnableOption "promtail for tailing logs";
+    enable = lib.mkEnableOption "log forwarding to Loki via Grafana Alloy";
 
     lokiUrl = lib.mkOption {
       description = "Loki URL to report to";
@@ -14,51 +14,41 @@
   };
 
   config = lib.mkIf config.myNixOS.services.promtail.enable {
-    services.promtail = {
+    services.alloy = {
       enable = true;
 
-      configuration = {
-        server = {
-          http_listen_port = 3031;
-          grpc_listen_port = 0;
-        };
-
-        positions = {
-          filename = "/tmp/positions.yaml";
-        };
-
-        clients = [
-          {
-            url = config.myNixOS.services.promtail.lokiUrl;
+      configPath = builtins.toFile "alloy-config.alloy" ''
+        loki.write "default" {
+          endpoint {
+            url = "${config.myNixOS.services.promtail.lokiUrl}"
           }
-        ];
+        }
 
-        scrape_configs = [
-          {
-            job_name = "journal";
+        loki.relabel "journal" {
+          forward_to = []
 
-            journal = {
-              max_age = "12h";
-
-              labels = {
-                job = "systemd-journal";
-                host = config.networking.hostName;
-              };
-            };
-
-            relabel_configs = [
-              {
-                source_labels = ["__journal__systemd_unit"];
-                target_label = "unit";
-              }
-              {
-                source_labels = ["__journal__systemd_user_unit"];
-                target_label = "user_unit";
-              }
-            ];
+          rule {
+            source_labels = ["__journal__systemd_unit"]
+            target_label  = "unit"
           }
-        ];
-      };
+
+          rule {
+            source_labels = ["__journal__systemd_user_unit"]
+            target_label  = "user_unit"
+          }
+        }
+
+        loki.source.journal "journal" {
+          forward_to    = [loki.write.default.receiver]
+          max_age       = "12h"
+          relabel_rules = loki.relabel.journal.rules
+
+          labels = {
+            job  = "systemd-journal",
+            host = "${config.networking.hostName}",
+          }
+        }
+      '';
     };
   };
 }

@@ -1,9 +1,12 @@
 _: {
-  perSystem = _: {
+  perSystem = {pkgs, ...}: {
     pre-commit.settings.hooks = {
       alejandra.enable = true;
       deadnix.enable = true;
-      prettier.enable = true;
+      prettier = {
+        enable = true;
+        package = pkgs.prettier;
+      };
       shellcheck.enable = true;
 
       shfmt = {

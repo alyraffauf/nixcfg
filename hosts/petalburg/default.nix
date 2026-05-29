@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   self,
   ...
 }: {
@@ -15,7 +16,7 @@
 
   services.ollama = {
     enable = true;
-    acceleration = "rocm";
+    package = pkgs.ollama-rocm;
     host = "0.0.0.0";
 
     loadModels = [

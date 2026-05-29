@@ -106,7 +106,7 @@
             google-chrome
             obsidian
             plexamp
-            signal-desktop-bin
+            signal-desktop
             todoist-electron
           ]
           ++ [

@@ -34,7 +34,7 @@
         cosmic-workspaces-epoch
         ghostty
         obsidian
-        signal-desktop-bin
+        signal-desktop
         uutils-coreutils-noprefix
         uutils-diffutils
         uutils-findutils

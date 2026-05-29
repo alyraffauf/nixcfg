@@ -11,6 +11,7 @@ in {
   config = lib.mkIf config.myHome.aly.programs.firefox.enable {
     programs.firefox = {
       enable = true;
+      configPath = ".mozilla/firefox";
       package = lib.mkIf pkgs.stdenv.isDarwin null;
 
       profiles = {

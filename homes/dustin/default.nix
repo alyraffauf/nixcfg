@@ -18,7 +18,7 @@
     packages = with pkgs; [
       fractal
       plexamp
-      signal-desktop-bin
+      signal-desktop
       zoom-us
     ];
   };
@@ -37,14 +37,14 @@
       package = pkgs.brave;
     };
 
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = ".mozilla/firefox";
+    };
     home-manager.enable = true;
     vesktop.enable = true;
 
-    zen-browser = {
-      enable = true;
-      nativeMessagingHosts = [pkgs.bitwarden-desktop];
-    };
+    zen-browser.enable = true;
   };
 
   wayland.windowManager = {
