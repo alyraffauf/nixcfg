@@ -5,26 +5,40 @@
   ...
 }: {
   options.myNixOS.profiles.autoUpgrade = {
-    enable = lib.mkEnableOption "automatic upgrades";
-    allowReboot = lib.mkEnableOption "automatic reboots when necessary for updates";
+    enable = lib.mkEnableOption "auto-upgrade system";
 
     operation = lib.mkOption {
       type = lib.types.str;
-      default = "boot";
-      description = "Operation to perform on upgrade. Can be 'boot', 'switch', or 'test'.";
+      default = "switch";
+      description = "Operation to perform on auto-upgrade. Can be 'boot', 'switch', or 'test'.";
+    };
+
+    dates = lib.mkOption {
+      type = lib.types.str;
+      default = "02:00";
+      description = ''
+        systemd OnCalendar expression for when the upgrade fires.
+      '';
+    };
+
+    randomizedDelaySec = lib.mkOption {
+      type = lib.types.str;
+      default = "0";
+      description = ''
+        Random delay added on top of `dates`.
+      '';
     };
   };
 
   config = lib.mkIf config.myNixOS.profiles.autoUpgrade.enable {
     system.autoUpgrade = {
-      inherit (config.myNixOS.profiles.autoUpgrade) allowReboot operation;
+      inherit (config.myNixOS.profiles.autoUpgrade) operation dates randomizedDelaySec;
 
       enable = true;
-      dates = "02:00";
+      allowReboot = true;
       flags = ["--accept-flake-config"];
       flake = config.myNixOS.FLAKE;
       persistent = true;
-      randomizedDelaySec = "120min";
 
       rebootWindow = {
         lower = "02:00";

@@ -56,7 +56,7 @@ in {
 
   config = lib.mkIf config.myNixOS.profiles.btrfs.enable {
     boot.supportedFilesystems = ["btrfs"];
-    environment.systemPackages = [pkgs.snapper-gui];
+    environment.systemPackages = lib.optionals config.services.xserver.enable [pkgs.snapper-gui];
 
     services = lib.mkIf (btrfsFSDevices != []) {
       beesd.filesystems = lib.mkIf config.myNixOS.profiles.btrfs.deduplicate beesdConfig;

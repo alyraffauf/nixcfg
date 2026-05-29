@@ -12,6 +12,8 @@
 
       lanzaboote = {
         enable = true;
+        autoEnrollKeys.enable = true;
+        autoGenerateKeys.enable = true;
         configurationLimit = 10;
         pkiBundle = lib.mkDefault "/var/lib/sbctl";
       };

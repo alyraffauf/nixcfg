@@ -12,7 +12,7 @@
       "xhci_pci"
     ];
 
-    hardware.enableAllFirmware = true;
+    services.fwupd.enable = true;
 
     myHardware = {
       intel = {
@@ -20,7 +20,7 @@
         gpu.enable = true;
       };
 
-      profiles.ssd.enable = true;
+      profiles.base.enable = true;
     };
   };
 }

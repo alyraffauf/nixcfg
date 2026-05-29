@@ -8,8 +8,14 @@
   config = lib.mkMerge [
     (lib.mkIf config.myHardware.profiles.laptop.enable
       {
+        boot.kernel.sysctl."kernel.nmi_watchdog" = lib.mkDefault 0;
+
         services = {
-          tuned.enable = lib.mkDefault true;
+          tuned = {
+            enable = lib.mkDefault true;
+            settings.dynamic_tuning = true;
+          };
+
           upower.enable = true;
         };
       })
