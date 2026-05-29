@@ -8,7 +8,7 @@
 
     authKeyFile = lib.mkOption {
       description = "Key file to use for authentication";
-      default = config.age.secrets.tailscaleAuthKey.path or null;
+      default = config.sops.secrets.tailscaleAuthKey.path or null;
       type = lib.types.nullOr lib.types.path;
     };
 

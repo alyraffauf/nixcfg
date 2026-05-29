@@ -7,12 +7,18 @@
     imports = [
       self.homeModules.default
       self.inputs.snippets.homeModules.snippets
-      self.inputs.agenix.homeManagerModules.default
     ];
 
-    age.secrets = {
-      syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/fortree/cert.age";
-      syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/fortree/key.age";
+    sops.secrets = {
+      syncthingCert = {
+        sopsFile = ../../secrets/syncthing/fortree.yaml;
+        key = "cert";
+      };
+
+      syncthingKey = {
+        sopsFile = ../../secrets/syncthing/fortree.yaml;
+        key = "key";
+      };
     };
 
     home = {
@@ -45,8 +51,8 @@
       ];
     in {
       enable = true;
-      cert = config.age.secrets.syncthingCert.path;
-      key = config.age.secrets.syncthingKey.path;
+      cert = config.sops.secrets.syncthingCert.path;
+      key = config.sops.secrets.syncthingKey.path;
 
       settings = {
         options = {

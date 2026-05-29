@@ -10,7 +10,7 @@
       modules = [
         ../../hosts/fortree
         self.darwinModules.default
-        inputs.agenix.darwinModules.default
+        inputs.sops-nix.nixosModules.sops
         inputs.snippets.nixosModules.snippets
         inputs.home-manager.darwinModules.home-manager
         # inputs.nix-homebrew.darwinModules.nix-homebrew

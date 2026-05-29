@@ -2,21 +2,23 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: let
   mkPassword = secret: "${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${secret}";
 in {
-  imports = [
-    self.inputs.agenix.homeManagerModules.default
-  ];
-
   options.myHome.aly.profiles.mail.enable = lib.mkEnableOption "mail";
 
   config = lib.mkIf config.myHome.aly.profiles.mail.enable {
-    age.secrets = {
-      achacegaGmail.file = "${self.inputs.secrets}/aly/mail/gmail.age";
-      alyraffaufFastmail.file = "${self.inputs.secrets}/aly/mail/fastmail.age";
+    sops.secrets = {
+      achacegaGmail = {
+        sopsFile = ../../../../../secrets/mail.yaml;
+        key = "gmail";
+      };
+
+      alyraffaufFastmail = {
+        sopsFile = ../../../../../secrets/mail.yaml;
+        key = "fastmail";
+      };
     };
 
     accounts.email.accounts = {
@@ -25,7 +27,7 @@ in {
         aliases = ["aly@aly.codes" "aly@raffauflabs.com"];
         flavor = "fastmail.com";
         himalaya.enable = true;
-        passwordCommand = mkPassword config.age.secrets.alyraffaufFastmail.path;
+        passwordCommand = mkPassword config.sops.secrets.alyraffaufFastmail.path;
         primary = true;
         realName = "Aly Raffauf";
 
@@ -52,7 +54,7 @@ in {
         aliases = ["alyraffauf@gmail.com"];
         flavor = "gmail.com";
         himalaya.enable = true;
-        passwordCommand = mkPassword config.age.secrets.achacegaGmail.path;
+        passwordCommand = mkPassword config.sops.secrets.achacegaGmail.path;
         realName = "Aly Raffauf";
 
         signature = {

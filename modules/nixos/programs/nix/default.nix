@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  self,
   ...
 }: let
   isBuildMachine = let buildHosts = lib.map (m: m.hostName) config.mySnippets.nix.buildMachines; in lib.elem config.networking.hostName buildHosts;
@@ -54,11 +53,11 @@ in {
       group = "nixbuild";
 
       openssh.authorizedKeys.keyFiles = let
-        pubDir = "${self.inputs.secrets}/publicKeys";
-        aly = lib.filter (file: lib.hasPrefix "aly_" file) (builtins.attrNames (builtins.readDir pubDir));
-        root = lib.filter (file: lib.hasPrefix "root_" file) (builtins.attrNames (builtins.readDir pubDir));
+        keysDir = ../../../../keys;
+        aly = lib.filter (file: lib.hasPrefix "aly_" file) (builtins.attrNames (builtins.readDir keysDir));
+        root = lib.filter (file: lib.hasPrefix "root_" file) (builtins.attrNames (builtins.readDir keysDir));
       in
-        lib.map (file: "${pubDir}/${file}") (aly ++ root);
+        lib.map (file: "${keysDir}/${file}") (aly ++ root);
     };
 
     users.groups.nixbuild = lib.mkIf isBuildMachine {};

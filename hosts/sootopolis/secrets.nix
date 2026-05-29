@@ -1,7 +1,18 @@
-{self, ...}: {
-  age.secrets = {
-    tailscaleAuthKey.file = "${self.inputs.secrets}/tailscale/auth.age";
-    syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/sootopolis/cert.age";
-    syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/sootopolis/key.age";
+_: {
+  sops.secrets = {
+    tailscaleAuthKey = {
+      sopsFile = ../../secrets/tailscale.yaml;
+      key = "auth";
+    };
+
+    syncthingCert = {
+      sopsFile = ../../secrets/syncthing/sootopolis.yaml;
+      key = "cert";
+    };
+
+    syncthingKey = {
+      sopsFile = ../../secrets/syncthing/sootopolis.yaml;
+      key = "key";
+    };
   };
 }

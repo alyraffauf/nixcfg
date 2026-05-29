@@ -47,8 +47,8 @@
 
       syncthing = {
         enable = true;
-        certFile = config.age.secrets.syncthingCert.path;
-        keyFile = config.age.secrets.syncthingKey.path;
+        certFile = config.sops.secrets.syncthingCert.path;
+        keyFile = config.sops.secrets.syncthingKey.path;
         syncMusic = true;
         syncROMs = true;
         user = "aly";

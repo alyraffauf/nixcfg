@@ -14,13 +14,8 @@
       };
     };
 
-    agenix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:yaxitech/ragenix";
-    };
-
-    aws-cvpn-client = {
-      url = "github:alyraffauf/aws-cvpn-client";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -101,6 +96,12 @@
 
     # Non-flake inputs
 
+    # Kept for snippets SSH known-host public keys (not used for secrets).
+    secrets = {
+      url = "github:alyraffauf/secrets";
+      flake = false;
+    };
+
     # homebrew-core = {
     #   url = "github:homebrew/homebrew-core";
     #   flake = false;
@@ -110,11 +111,6 @@
     #   url = "github:homebrew/homebrew-cask";
     #   flake = false;
     # };
-
-    secrets = {
-      url = "github:alyraffauf/secrets";
-      flake = false;
-    };
   };
 
   nixConfig = {

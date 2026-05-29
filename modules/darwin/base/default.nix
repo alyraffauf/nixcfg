@@ -32,6 +32,7 @@
 
     security.pam.services.sudo_local.touchIdAuth = true;
     services.openssh.enable = true;
+    sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     system.configurationRevision = self.rev or self.dirtyRev or null;
   };
 }

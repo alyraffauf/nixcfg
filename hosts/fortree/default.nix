@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  self,
   ...
 }: {
   # imports = [
@@ -81,17 +80,17 @@
       home = "/Users/aly";
 
       openssh.authorizedKeys.keyFiles =
-        lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+        lib.map (file: "${../../keys}/${file}")
         (lib.filter (file: lib.hasPrefix "aly_" file)
-          (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
+          (builtins.attrNames (builtins.readDir ../../keys)));
 
       shell = pkgs.fish;
     };
 
     root.openssh.authorizedKeys.keyFiles =
-      lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+      lib.map (file: "${../../keys}/${file}")
       (lib.filter (file: lib.hasPrefix "aly_" file)
-        (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
+        (builtins.attrNames (builtins.readDir ../../keys)));
   };
 
   myDarwin = {

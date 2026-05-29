@@ -100,20 +100,14 @@
       home = {
         homeDirectory = "/home/aly";
 
-        packages = with pkgs;
-          [
-            cider-2
-            google-chrome
-            obsidian
-            plexamp
-            signal-desktop
-            todoist-electron
-          ]
-          ++ [
-            (pkgs.writeShellScriptBin "aws-cvpn" ''
-              exec ${self.inputs.aws-cvpn-client.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/aws-start-vpn.sh "$@"
-            '')
-          ];
+        packages = with pkgs; [
+          cider-2
+          google-chrome
+          obsidian
+          plexamp
+          signal-desktop
+          todoist-electron
+        ];
 
         stateVersion = "25.11";
         username = "aly";

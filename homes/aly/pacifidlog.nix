@@ -10,9 +10,16 @@
     self.inputs.safari.homeModules.default
   ];
 
-  age.secrets = {
-    syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/pacifidlog/cert.age";
-    syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/pacifidlog/key.age";
+  sops.secrets = {
+    syncthingCert = {
+      sopsFile = ../../secrets/syncthing/pacifidlog.yaml;
+      key = "cert";
+    };
+
+    syncthingKey = {
+      sopsFile = ../../secrets/syncthing/pacifidlog.yaml;
+      key = "key";
+    };
   };
 
   home = {
@@ -56,8 +63,8 @@
     ];
   in {
     enable = true;
-    cert = config.age.secrets.syncthingCert.path;
-    key = config.age.secrets.syncthingKey.path;
+    cert = config.sops.secrets.syncthingCert.path;
+    key = config.sops.secrets.syncthingKey.path;
 
     settings = {
       options = {

@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [
@@ -19,9 +18,9 @@
       mutableUsers = false;
 
       users.root.openssh.authorizedKeys.keyFiles =
-        lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+        lib.map (file: "${../../keys}/${file}")
         (lib.filter (file: lib.hasPrefix "aly_" file)
-          (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
+          (builtins.attrNames (builtins.readDir ../../keys)));
     };
   };
 }

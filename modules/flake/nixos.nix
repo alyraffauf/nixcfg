@@ -32,7 +32,7 @@
           inputs.nixpkgs.lib.nixosSystem {
             modules = [
               ../../hosts/${host}
-              inputs.agenix.nixosModules.default
+              inputs.sops-nix.nixosModules.sops
               inputs.disko.nixosModules.disko
               inputs.home-manager.nixosModules.home-manager
               inputs.lanzaboote.nixosModules.lanzaboote

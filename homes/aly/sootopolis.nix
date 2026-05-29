@@ -10,9 +10,16 @@
     self.inputs.safari.homeModules.default
   ];
 
-  age.secrets = {
-    syncthingCert.file = "${self.inputs.secrets}/aly/syncthing/sootopolis/cert.age";
-    syncthingKey.file = "${self.inputs.secrets}/aly/syncthing/sootopolis/key.age";
+  sops.secrets = {
+    syncthingCert = {
+      sopsFile = ../../secrets/syncthing/sootopolis.yaml;
+      key = "cert";
+    };
+
+    syncthingKey = {
+      sopsFile = ../../secrets/syncthing/sootopolis.yaml;
+      key = "key";
+    };
   };
 
   home = {
@@ -56,8 +63,8 @@
     ];
   in {
     enable = true;
-    cert = config.age.secrets.syncthingCert.path;
-    key = config.age.secrets.syncthingKey.path;
+    cert = config.sops.secrets.syncthingCert.path;
+    key = config.sops.secrets.syncthingKey.path;
 
     settings = {
       options = {

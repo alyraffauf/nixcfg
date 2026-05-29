@@ -1,19 +1,21 @@
 {
   config,
   lib,
-  self,
   ...
 }: {
   options.myNixOS.profiles.wifi.enable = lib.mkEnableOption "wifi configuration";
 
   config = lib.mkIf config.myNixOS.profiles.wifi.enable {
-    age.secrets.wifi.file = "${self.inputs.secrets}/wifi.age";
+    sops.secrets.wifi = {
+      sopsFile = ../../../../secrets/wifi.yaml;
+      key = "env";
+    };
 
     networking.networkmanager = {
       enable = true;
 
       ensureProfiles = {
-        environmentFiles = [config.age.secrets.wifi.path];
+        environmentFiles = [config.sops.secrets.wifi.path];
 
         profiles = let
           mkOpenWiFi = ssid: {

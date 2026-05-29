@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  self,
   ...
 }: {
   config = lib.mkIf config.myUsers.aly.enable {
@@ -12,9 +11,9 @@
       isNormalUser = true;
 
       openssh.authorizedKeys.keyFiles =
-        lib.map (file: "${self.inputs.secrets}/publicKeys/${file}")
+        lib.map (file: "${../../../keys}/${file}")
         (lib.filter (file: lib.hasPrefix "aly_" file)
-          (builtins.attrNames (builtins.readDir "${self.inputs.secrets}/publicKeys")));
+          (builtins.attrNames (builtins.readDir ../../../keys)));
 
       uid = 1000;
     };
