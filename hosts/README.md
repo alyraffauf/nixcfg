@@ -13,9 +13,8 @@ hosts/
 ├── fallarbor/     # ThinkPad X1 Carbon Gen 9
 ├── fortree/       # MacBook Air M2
 ├── littleroot/    # Installation ISO
-├── petalburg/     # Custom ATX Desktop
 ├── pacifidlog/    # HP Omnibook Ultra Flip 14
-└── sootopolis/    # ThinkPad X1 Carbon Gen 9
+└── rustboro/      # ThinkPad X1 Carbon Gen 7
 ```
 
 ---

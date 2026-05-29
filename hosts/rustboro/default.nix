@@ -10,7 +10,6 @@
     self.nixosModules.locale-en-us
   ];
 
-  # environment.variables.GDK_SCALE = "1.25";
   networking.hostName = "rustboro";
   nix.daemonCPUSchedPolicy = "idle";
   services.xserver.xkb.options = "ctrl:nocaps";

@@ -24,9 +24,7 @@
         "fallarbor"
         "littleroot"
         "pacifidlog"
-        "petalburg"
         "rustboro"
-        "sootopolis"
       ] (
         host:
           inputs.nixpkgs.lib.nixosSystem {
