@@ -8,6 +8,7 @@
     ./data-share
     ./gaming
     ./graphical-boot
+    ./homebrew
     ./iso
     ./media-share
     ./performance

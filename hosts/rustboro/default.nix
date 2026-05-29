@@ -25,6 +25,12 @@
     profiles = {
       btrfs.enable = true;
       data-share.enable = true;
+
+      homebrew = {
+        enable = true;
+        user = "aly";
+      };
+
       media-share.enable = true;
       wifi.enable = true;
     };
