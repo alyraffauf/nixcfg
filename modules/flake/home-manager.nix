@@ -14,7 +14,6 @@
 
           overlays = [
             self.inputs.nixgl.overlay
-            self.inputs.nur.overlays.default
             self.overlays.default
           ];
         };
@@ -33,7 +32,6 @@
 
           overlays = [
             self.inputs.nixgl.overlay
-            self.inputs.nur.overlays.default
             self.overlays.default
           ];
         };
@@ -52,7 +50,6 @@
 
           overlays = [
             self.inputs.nixgl.overlay
-            self.inputs.nur.overlays.default
             self.overlays.default
           ];
         };
@@ -71,7 +68,6 @@
 
           overlays = [
             self.inputs.nixgl.overlay
-            self.inputs.nur.overlays.default
             self.overlays.default
           ];
         };

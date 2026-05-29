@@ -37,7 +37,6 @@
     };
 
     programs = {
-      firefox.enable = true;
       nix.enable = true;
       steam.enable = true;
       lanzaboote.enable = true;

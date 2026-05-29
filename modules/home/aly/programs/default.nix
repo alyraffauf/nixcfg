@@ -2,7 +2,6 @@
   imports = [
     ./awscli
     ./chromium
-    ./firefox
     ./git
     ./halloy
     ./ssh
@@ -10,6 +9,5 @@
     ./vesktop
     ./vsCode
     ./zed-editor
-    ./zen
   ];
 }

@@ -1,47 +1,6 @@
-{self, ...}: {
+_: {
   flake.overlays = {
-    default = _final: prev: let
-      nixos-unstable = import self.inputs.nixpkgs-unstable {
-        config.allowUnfree = true;
-        inherit (prev) system;
-      };
-    in {
-      inherit
-        (nixos-unstable)
-        cosmic-applets
-        cosmic-applibrary
-        cosmic-bg
-        cosmic-comp
-        cosmic-edit
-        cosmic-files
-        cosmic-greeter
-        cosmic-icons
-        cosmic-idle
-        cosmic-initial-setup
-        cosmic-launcher
-        cosmic-notifications
-        cosmic-osd
-        cosmic-panel
-        cosmic-player
-        cosmic-randr
-        cosmic-screenshot
-        cosmic-session
-        cosmic-settings
-        cosmic-settings-daemon
-        cosmic-store
-        cosmic-term
-        cosmic-wallpapers
-        cosmic-workspaces-epoch
-        ghostty
-        obsidian
-        signal-desktop
-        uutils-coreutils-noprefix
-        uutils-diffutils
-        uutils-findutils
-        xdg-desktop-portal-cosmic
-        zed-editor
-        ;
-
+    default = _final: prev: {
       # https://github.com/NixOS/nixpkgs/issues/126590#issuecomment-3194531220
       kdePackages =
         prev.kdePackages
@@ -90,17 +49,6 @@
           in
             derivedPkg;
         };
-
-      headsetcontrol = prev.headsetcontrol.overrideAttrs (_oldAttrs: {
-        src = prev.fetchFromGitHub {
-          owner = "alyraffauf";
-          repo = "HeadsetControl";
-          rev = "d8582ac1d80cead8d1dffd0ab6544eb59293c1f8";
-          sha256 = "sha256-Y2dpT666pyWC5Pdb1zYgQcrZM9aspIFJtyZi24iuieQ=";
-        };
-
-        version = "dev-arctis-7x";
-      });
     };
   };
 }

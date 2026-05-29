@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./firefox
     ./lanzaboote
     ./nix
     ./njust

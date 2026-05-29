@@ -43,8 +43,6 @@
     };
     home-manager.enable = true;
     vesktop.enable = true;
-
-    zen-browser.enable = true;
   };
 
   wayland.windowManager = {

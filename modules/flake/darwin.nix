@@ -25,7 +25,6 @@
 
           nixpkgs = {
             overlays = [
-              self.inputs.nur.overlays.default
               self.overlays.default
             ];
 

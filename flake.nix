@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     actions-nix = {
       url = "github:alyraffauf/actions.nix";
@@ -67,7 +66,6 @@
     };
 
     # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    nur.url = "github:nix-community/NUR";
 
     nynx = {
       url = "github:alyraffauf/nynx";
@@ -86,11 +84,6 @@
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
