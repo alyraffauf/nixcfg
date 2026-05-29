@@ -8,7 +8,6 @@
     ./greetd
     ./openssh
     ./prometheusNode
-    ./promtail
     ./sddm
     ./sunshine
     ./syncthing

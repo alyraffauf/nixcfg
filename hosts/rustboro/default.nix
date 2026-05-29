@@ -40,7 +40,6 @@
     services = {
       cosmic-greeter.enable = true;
       flatpak.enable = true;
-      promtail.enable = true;
 
       syncthing = {
         enable = true;

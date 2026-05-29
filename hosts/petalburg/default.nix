@@ -63,7 +63,6 @@
       cosmic-greeter.enable = true;
       flatpak.enable = true;
       prometheusNode.enable = true;
-      promtail.enable = true;
 
       syncthing = {
         enable = true;
