@@ -24,7 +24,7 @@
 
   myNixOS = {
     base.enable = true;
-    desktop.gnome.enable = true;
+    desktop.kde.enable = true;
 
     profiles = {
       btrfs.enable = true;
@@ -46,8 +46,8 @@
     };
 
     services = {
-      gdm.enable = true;
       flatpak.enable = true;
+      plasma-login-manager.enable = true;
       tailscale.enable = true;
     };
   };
