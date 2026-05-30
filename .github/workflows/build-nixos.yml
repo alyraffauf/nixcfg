@@ -38,24 +38,6 @@ jobs:
         name: alyraffauf
     - name: Build littleroot
       run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.littleroot.config.system.build.toplevel
-  build-pacifidlog:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Free Disk Space (Ubuntu)
-      uses: jlumbroso/free-disk-space@main
-    - name: Checkout
-      uses: actions/checkout@v5
-      with:
-        fetch-depth: 1
-    - name: Install Nix
-      uses: DeterminateSystems/nix-installer-action@main
-    - name: Cachix
-      uses: cachix/cachix-action@master
-      with:
-        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-        name: alyraffauf
-    - name: Build pacifidlog
-      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.pacifidlog.config.system.build.toplevel
   build-rustboro:
     runs-on: ubuntu-latest
     steps:
