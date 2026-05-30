@@ -11,7 +11,7 @@
   services.xserver.xkb.options = "ctrl:nocaps";
   system.stateVersion = "26.05";
   time.timeZone = "America/New_York";
-  myDisko.installDrive = "/dev/disk/by-id/nvme-SHPP41-1000GM_ANCAN50211160B42I";
+  myDisko.installDrive = "/dev/disk/by-id/nvme-SAMSUNG_MZVL8512HELU-00BH1_S79SNX4XA30638";
   myHardware.lenovo.thinkpad.X1.gen-7.enable = true;
 
   myNixOS = {

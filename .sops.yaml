@@ -18,7 +18,7 @@ keys:
   - &host_fortree age1f9hd8fu0694rc3tr6hwxz3ldfpepref937rmvqdxvvsr0kfcjdxswyzvw3
   - &host_pacifidlog age1axn36h9356ena7rq6y2xa4rcm250w9h0m9pz6x0677gla0v4f4dsj92yfm
   - &host_petalburg age1kgp3x48wn0dmzwqp0vdpfsdw42rej0ypkj0qavs7c2t2tgdud5zqcmhl40
-  - &host_rustboro age1tmzw0gsq0fm27x3l7zvad5fxgj6xdykgz5whhh8axtphmlpl3ccqj2fhf6
+  - &host_rustboro age1sukfru07msq8fm5ddgym23yal9lfm99090p999p09mxgrrwh9aqs6zp4fy
   - &host_sootopolis age1s7ecrfntus8rvyprzhffjpqk2tmrc259knf9xqajlrqvewfp8d6svwp9pp
 
 creation_rules:
