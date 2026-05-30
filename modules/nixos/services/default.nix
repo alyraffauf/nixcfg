@@ -7,7 +7,7 @@
     ./gdm
     ./greetd
     ./openssh
-    ./sddm
+    ./plasma-login-manager
     ./sunshine
     ./syncthing
     ./tailscale

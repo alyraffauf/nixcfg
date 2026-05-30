@@ -36,7 +36,7 @@
 
     services = {
       flatpak.enable = true;
-      sddm.enable = true;
+      plasma-login-manager.enable = true;
 
       syncthing = {
         enable = true;
