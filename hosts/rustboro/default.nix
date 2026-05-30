@@ -1,9 +1,17 @@
-{self, ...}: {
+{
+  pkgs,
+  self,
+  ...
+}: {
   imports = [
     # ./home.nix
     ./secrets.nix
     self.diskoConfigurations.luks-btrfs-subvolumes
     self.nixosModules.locale-en-us
+  ];
+
+  environment.systemPackages = [
+    pkgs.ghostty
   ];
 
   networking.hostName = "rustboro";

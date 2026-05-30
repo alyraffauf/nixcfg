@@ -11,7 +11,6 @@
     ./homebrew
     ./iso
     ./media-share
-    ./performance
     ./printing
     ./swap
     ./wifi

@@ -10,6 +10,13 @@
   };
 
   config = lib.mkIf config.myNixOS.base.enable {
+    boot.kernel.sysctl = {
+      # Improved file monitoring
+      "fs.file-max" = lib.mkDefault 2097152;
+      "fs.inotify.max_user_instances" = lib.mkOverride 100 8192;
+      "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
+    };
+
     console.useXkbConfig = true;
 
     environment = {
@@ -30,6 +37,14 @@
     };
 
     hardware = {
+      block = {
+        defaultScheduler = "mq-deadline";
+        defaultSchedulerRotational = "bfq";
+        scheduler = {
+          "mmcblk[0-9]*" = "bfq";
+          "nvme[0-9]*" = "none";
+        };
+      };
       keyboard.qmk.enable = true;
       logitech.wireless.enable = true;
     };
@@ -79,12 +94,16 @@
 
     sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
+    systemd.oomd = {
+      enable = true;
+      enableUserSlices = true;
+    };
+
     system.configurationRevision = self.rev or self.dirtyRev or null;
 
     myNixOS = {
       profiles = {
         bluetooth.enable = true;
-        performance.enable = true;
         swap.enable = true;
       };
 
