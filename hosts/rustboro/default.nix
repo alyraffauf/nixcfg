@@ -16,7 +16,7 @@
 
   myNixOS = {
     base.enable = true;
-    desktop.cosmic.enable = true;
+    desktop.gnome.enable = true;
 
     profiles = {
       btrfs.enable = true;
@@ -38,7 +38,7 @@
     };
 
     services = {
-      cosmic-greeter.enable = true;
+      gdm.enable = true;
       flatpak.enable = true;
       tailscale.enable = true;
     };
