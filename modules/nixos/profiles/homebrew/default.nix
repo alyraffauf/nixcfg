@@ -9,6 +9,30 @@
   mkdir = "${pkgs.coreutils}/bin/mkdir";
   chown = "${pkgs.coreutils}/bin/chown";
   chmod = "${pkgs.coreutils}/bin/chmod";
+
+  # Brew sanitizes PATH to /usr/bin:/bin:/usr/sbin:/sbin, so the tools its
+  # shims invoke must exist there. Aggregate everything brew touches into
+  # one buildEnv and symlink the resulting bin/ contents into /bin and
+  # /usr/bin during activation.
+  compatEnv = pkgs.buildEnv {
+    name = "linuxbrew-compat";
+    paths = with pkgs; [
+      bash
+      coreutils
+      curl
+      file
+      findutils
+      gawk
+      git
+      glibc.bin
+      gnugrep
+      gnused
+      gnutar
+      gzip
+      util-linux
+    ];
+    pathsToLink = ["/bin"];
+  };
 in {
   options.myNixOS.profiles.homebrew = {
     enable = lib.mkEnableOption "Homebrew on Linux";
@@ -30,6 +54,12 @@ in {
         ruby
       ];
 
+      # Pin curl/git so brew doesn't hunt for them on a sanitized PATH
+      variables = {
+        HOMEBREW_CURL_PATH = "/run/current-system/sw/bin/curl";
+        HOMEBREW_GIT_PATH = "/run/current-system/sw/bin/git";
+      };
+
       # bash/zsh PATH wiring
       shellInit = ''
         [ -d "${brewPrefix}/bin" ] && export PATH="${brewPrefix}/bin:${brewPrefix}/sbin:$PATH"
@@ -49,33 +79,13 @@ in {
         ${chown} ${config.myNixOS.profiles.homebrew.user}: /home/linuxbrew /home/linuxbrew/.linuxbrew
         ${chmod} 755 /home/linuxbrew /home/linuxbrew/.linuxbrew
 
-        # Compat symlinks the Homebrew installer expects on standard Linux
+        # Populate /bin and /usr/bin with the compat tools brew expects
         ${mkdir} -p /bin /usr/bin
-        ${ln} -sf ${pkgs.bash}/bin/bash          /bin/bash
-        ${ln} -sf ${pkgs.coreutils}/bin/basename /bin/basename
-        ${ln} -sf ${pkgs.coreutils}/bin/cat      /bin/cat
-        ${ln} -sf ${pkgs.coreutils}/bin/chmod    /bin/chmod
-        ${ln} -sf ${pkgs.coreutils}/bin/chown    /bin/chown
-        ${ln} -sf ${pkgs.coreutils}/bin/chgrp    /bin/chgrp
-        ${ln} -sf ${pkgs.coreutils}/bin/dirname  /bin/dirname
-        ${ln} -sf ${pkgs.coreutils}/bin/ln       /bin/ln
-        ${ln} -sf ${pkgs.coreutils}/bin/mkdir    /bin/mkdir
-        ${ln} -sf ${pkgs.coreutils}/bin/mv       /bin/mv
-        ${ln} -sf ${pkgs.coreutils}/bin/readlink /bin/readlink
-        ${ln} -sf ${pkgs.coreutils}/bin/rm       /bin/rm
-        ${ln} -sf ${pkgs.coreutils}/bin/sha256sum /bin/sha256sum
-        ${ln} -sf ${pkgs.coreutils}/bin/sort     /bin/sort
-        ${ln} -sf ${pkgs.coreutils}/bin/touch    /bin/touch
-        ${ln} -sf ${pkgs.coreutils}/bin/uname    /bin/uname
-        ${ln} -sf ${pkgs.gnugrep}/bin/grep       /bin/grep
-        ${ln} -sf ${pkgs.gnutar}/bin/tar         /bin/tar
-        ${ln} -sf ${pkgs.gzip}/bin/gzip          /bin/gzip
-        ${ln} -sf ${pkgs.coreutils}/bin/cut      /usr/bin/cut
-        ${ln} -sf ${pkgs.coreutils}/bin/dirname  /usr/bin/dirname
-        ${ln} -sf ${pkgs.coreutils}/bin/sha256sum /usr/bin/sha256sum
-        ${ln} -sf ${pkgs.coreutils}/bin/stat     /usr/bin/stat
-        ${ln} -sf ${pkgs.glibc.bin}/bin/ldd      /usr/bin/ldd
-        ${ln} -sf ${pkgs.util-linux}/bin/flock   /usr/bin/flock
+        for src in ${compatEnv}/bin/*; do
+          name=$(${pkgs.coreutils}/bin/basename "$src")
+          ${ln} -sfn "$src" "/bin/$name"
+          ${ln} -sfn "$src" "/usr/bin/$name"
+        done
       '';
     };
   };
