@@ -21,7 +21,6 @@
       })
 
     (lib.mkIf ((lib.elem "kvm-intel" config.boot.kernelModules) && config.myHardware.profiles.laptop.enable) {
-      # powerManagement.powertop.enable = true;
       services.thermald.enable = true;
     })
 
