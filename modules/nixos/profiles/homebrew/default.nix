@@ -10,10 +10,7 @@
   chown = "${pkgs.coreutils}/bin/chown";
   chmod = "${pkgs.coreutils}/bin/chmod";
 
-  # Brew sanitizes PATH to /usr/bin:/bin:/usr/sbin:/sbin, so the tools its
-  # shims invoke must exist there. Aggregate everything brew touches into
-  # one buildEnv and symlink the resulting bin/ contents into /bin and
-  # /usr/bin during activation.
+  # Brew sanitizes PATH to /usr/bin:/bin:/usr/sbin:/sbin
   compatEnv = pkgs.buildEnv {
     name = "linuxbrew-compat";
     paths = with pkgs; [
@@ -23,7 +20,7 @@
       file
       findutils
       gawk
-      gcc # provides /usr/bin/cc; brew's gcc postinstall calls it for crti.o
+      gcc
       git
       glibc.bin
       gnugrep
@@ -46,7 +43,6 @@ in {
 
   config = lib.mkIf config.myNixOS.profiles.homebrew.enable {
     environment = {
-      # Packages the Homebrew installer needs at runtime
       systemPackages = with pkgs; [
         curl
         glibc.bin
@@ -55,22 +51,76 @@ in {
         ruby
       ];
 
-      # Pin curl/git so brew doesn't hunt for them on a sanitized PATH
       variables = {
         HOMEBREW_CURL_PATH = "/run/current-system/sw/bin/curl";
         HOMEBREW_GIT_PATH = "/run/current-system/sw/bin/git";
       };
 
-      # bash/zsh PATH wiring
       shellInit = ''
         [ -d "${brewPrefix}/bin" ] && export PATH="${brewPrefix}/bin:${brewPrefix}/sbin:$PATH"
       '';
     };
 
-    # fish PATH wiring
     programs.fish.shellInit = lib.mkIf config.programs.fish.enable ''
       fish_add_path ${brewPrefix}/bin ${brewPrefix}/sbin
     '';
+
+    # Runtime libraries nix-ld exposes to dynamically-linked binaries
+    programs.nix-ld.libraries = with pkgs; [
+      alsa-lib
+      at-spi2-atk
+      at-spi2-core
+      atk
+      cairo
+      cups
+      curl
+      dbus
+      expat
+      fontconfig
+      freetype
+      fuse3
+      gdk-pixbuf
+      glib
+      gtk3
+      icu
+      libGL
+      libappindicator-gtk3
+      libdrm
+      libgcrypt
+      libglvnd
+      libnotify
+      libpulseaudio
+      libsecret
+      libunwind
+      libusb1
+      libuuid
+      libxkbcommon
+      mesa
+      nspr
+      nss
+      openssl
+      pango
+      pipewire
+      stdenv.cc.cc
+      systemd
+      vulkan-loader
+      wayland
+      libx11
+      libxcb
+      libxcomposite
+      libxcursor
+      libxdamage
+      libxext
+      libxfixes
+      libxi
+      libxkbfile
+      libxrandr
+      libxrender
+      libxscrnsaver
+      libxshmfence
+      libxtst
+      zlib
+    ];
 
     system.activationScripts.linuxbrew = {
       deps = ["users"];
@@ -87,6 +137,10 @@ in {
           ${ln} -sfn "$src" "/bin/$name"
           ${ln} -sfn "$src" "/usr/bin/$name"
         done
+
+        # xkb data at the FHS path libxkbcommon defaults to
+        ${mkdir} -p /usr/share/X11
+        ${ln} -sfn ${pkgs.xkeyboard-config}/share/X11/xkb /usr/share/X11/xkb
       '';
     };
   };
