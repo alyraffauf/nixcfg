@@ -39,14 +39,6 @@
       };
     };
 
-    home-manager.sharedModules = [
-      {
-        gtk.gtk3.bookmarks = [
-          "file:///mnt/Media"
-        ];
-      }
-    ];
-
     myNixOS.services.cachefilesd.enable = true;
   };
 }

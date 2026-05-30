@@ -12,12 +12,6 @@
       maliit-keyboard
     ];
 
-    home-manager.sharedModules = [
-      {
-        config.myHome.desktop.kde.enable = true;
-      }
-    ];
-
     programs.dconf.profiles.user.databases = [
       {
         settings = {

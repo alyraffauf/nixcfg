@@ -23,7 +23,6 @@
       inputs.nixpkgs.lib.genAttrs [
         "fallarbor"
         "littleroot"
-        "pacifidlog"
         "rustboro"
       ] (
         host:
