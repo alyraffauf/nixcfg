@@ -15,6 +15,15 @@
       "fs.file-max" = lib.mkDefault 2097152;
       "fs.inotify.max_user_instances" = lib.mkOverride 100 8192;
       "fs.inotify.max_user_watches" = lib.mkOverride 100 524288;
+      # Aggressively use zram before falling back to disk swap
+      "vm.swappiness" = 180;
+      "vm.page-cluster" = 0;
+    };
+
+    zramSwap = {
+      enable = true;
+      algorithm = "zstd";
+      priority = 100;
     };
 
     console.useXkbConfig = true;
