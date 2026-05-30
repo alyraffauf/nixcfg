@@ -7,7 +7,6 @@
     ./gdm
     ./greetd
     ./openssh
-    ./prometheusNode
     ./sddm
     ./sunshine
     ./syncthing
