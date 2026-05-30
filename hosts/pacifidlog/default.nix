@@ -53,10 +53,7 @@
         user = "aly";
       };
 
-      tailscale = {
-        enable = true;
-        operator = "aly";
-      };
+      tailscale.enable = true;
     };
   };
 

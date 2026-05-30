@@ -40,11 +40,7 @@
     services = {
       cosmic-greeter.enable = true;
       flatpak.enable = true;
-
-      tailscale = {
-        enable = true;
-        operator = "aly";
-      };
+      tailscale.enable = true;
     };
   };
 
