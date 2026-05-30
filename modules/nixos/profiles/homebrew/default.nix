@@ -23,6 +23,7 @@
       file
       findutils
       gawk
+      gcc # provides /usr/bin/cc; brew's gcc postinstall calls it for crti.o
       git
       glibc.bin
       gnugrep
