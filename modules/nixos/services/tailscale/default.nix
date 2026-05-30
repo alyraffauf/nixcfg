@@ -17,12 +17,6 @@
       default = true;
       type = lib.types.bool;
     };
-
-    operator = lib.mkOption {
-      description = "Tailscale operator name";
-      default = null;
-      type = lib.types.nullOr lib.types.str;
-    };
   };
 
   config = lib.mkIf config.myNixOS.services.tailscale.enable {
@@ -42,11 +36,7 @@
       enable = true;
       inherit (config.myNixOS.services.tailscale) authKeyFile;
 
-      extraUpFlags =
-        ["--ssh"]
-        ++ lib.optional (config.myNixOS.services.tailscale.operator != null)
-        "--operator ${config.myNixOS.services.tailscale.operator}";
-
+      extraUpFlags = ["--ssh"];
       openFirewall = true;
       useRoutingFeatures = "both";
     };
