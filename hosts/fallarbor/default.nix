@@ -19,15 +19,7 @@
 
   myNixOS = {
     base.enable = true;
-
-    desktop = {
-      hyprland = {
-        # enable = true;
-        laptopMonitor = "desc:Chimei Innolux Corporation 0x1417,preferred,auto,1.25";
-      };
-
-      kde.enable = true;
-    };
+    desktop.kde.enable = true;
 
     profiles = {
       autoUpgrade.enable = true;
