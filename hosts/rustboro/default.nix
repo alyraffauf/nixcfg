@@ -1,10 +1,6 @@
-{
-  config,
-  self,
-  ...
-}: {
+{self, ...}: {
   imports = [
-    ./home.nix
+    # ./home.nix
     ./secrets.nix
     self.diskoConfigurations.luks-btrfs-subvolumes
     self.nixosModules.locale-en-us
@@ -36,24 +32,14 @@
     };
 
     programs = {
+      lanzaboote.enable = true;
       nix.enable = true;
       podman.enable = true;
-      steam.enable = true;
-      systemd-boot.enable = true;
     };
 
     services = {
       cosmic-greeter.enable = true;
       flatpak.enable = true;
-
-      syncthing = {
-        enable = true;
-        certFile = config.sops.secrets.syncthingCert.path;
-        keyFile = config.sops.secrets.syncthingKey.path;
-        syncMusic = false;
-        syncROMs = true;
-        user = "aly";
-      };
 
       tailscale = {
         enable = true;
