@@ -78,7 +78,7 @@
 
       wifi = {
         backend = "iwd";
-        powersave = true;
+        # powersave = true;
       };
     };
   };
