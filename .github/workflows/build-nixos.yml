@@ -60,6 +60,8 @@ name: build-nixos
 'on':
   pull_request:
   push:
+    branches:
+    - master
     paths-ignore:
     - '**/*.md'
     - .github/**

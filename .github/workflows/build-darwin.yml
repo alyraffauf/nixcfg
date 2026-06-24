@@ -22,6 +22,8 @@ name: build-darwin
 'on':
   pull_request:
   push:
+    branches:
+    - master
     paths-ignore:
     - '**/*.md'
     - .github/**
