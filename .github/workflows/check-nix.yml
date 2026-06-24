@@ -13,6 +13,7 @@ jobs:
       run: nix -Lv flake check
 name: check-nix
 'on':
+  pull_request:
   push:
     paths-ignore:
     - '**/*.md'

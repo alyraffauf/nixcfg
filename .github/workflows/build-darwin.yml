@@ -20,6 +20,7 @@ jobs:
       run: nix build --accept-flake-config --print-out-paths .#darwinConfigurations.fortree.config.system.build.toplevel
 name: build-darwin
 'on':
+  pull_request:
   push:
     paths-ignore:
     - '**/*.md'

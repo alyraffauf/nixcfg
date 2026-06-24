@@ -58,6 +58,7 @@ jobs:
       run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.rustboro.config.system.build.toplevel
 name: build-nixos
 'on':
+  pull_request:
   push:
     paths-ignore:
     - '**/*.md'
