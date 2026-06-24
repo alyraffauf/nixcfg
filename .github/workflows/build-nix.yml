@@ -28,19 +28,6 @@ jobs:
         name: alyraffauf
     - name: Build package gen-files
       run: nix build --accept-flake-config --print-out-paths .#packages.x86_64-linux.gen-files
-  build-package-render-workflows:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v5
-      with:
-        fetch-depth: 1
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: cachix/cachix-action@master
-      with:
-        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-        name: alyraffauf
-    - name: Build package render-workflows
-      run: nix build --accept-flake-config --print-out-paths .#packages.x86_64-linux.render-workflows
 name: build-nix
 'on':
   pull_request:

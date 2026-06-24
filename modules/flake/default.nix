@@ -1,6 +1,5 @@
 {
   imports = [
-    ./actions.nix
     ./darwin.nix
     ./devShells.nix
     ./files

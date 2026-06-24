@@ -4,15 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    actions-nix = {
-      url = "github:alyraffauf/actions.nix";
-
-      inputs = {
-        git-hooks.follows = "git-hooks-nix";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -131,7 +122,6 @@
 
       imports = [
         ./modules/flake
-        inputs.actions-nix.flakeModules.default
         inputs.files.flakeModules.default
         inputs.git-hooks-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager

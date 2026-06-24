@@ -2,31 +2,7 @@
   "nodes": {
     "actions-nix": {
       "inputs": {
-        "flake-parts": "flake-parts",
-        "git-hooks": [
-          "git-hooks-nix"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1754669222,
-        "narHash": "sha256-4PbaZ5m2boVVzgSEGp+/HdcyHhW7UZkw/Wji5k4ICGw=",
-        "owner": "alyraffauf",
-        "repo": "actions.nix",
-        "rev": "f2c78ac1a9cfab8f8bce5aa1fd72e221395f0798",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alyraffauf",
-        "repo": "actions.nix",
-        "type": "github"
-      }
-    },
-    "actions-nix_2": {
-      "inputs": {
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_3",
         "git-hooks": "git-hooks",
         "nixpkgs": "nixpkgs"
       },
@@ -44,9 +20,9 @@
         "type": "github"
       }
     },
-    "actions-nix_3": {
+    "actions-nix_2": {
       "inputs": {
-        "flake-parts": "flake-parts_7",
+        "flake-parts": "flake-parts_6",
         "git-hooks": [
           "safari",
           "git-hooks-nix"
@@ -70,9 +46,9 @@
         "type": "github"
       }
     },
-    "actions-nix_4": {
+    "actions-nix_3": {
       "inputs": {
-        "flake-parts": "flake-parts_9",
+        "flake-parts": "flake-parts_8",
         "git-hooks": [
           "snippets",
           "git-hooks-nix"
@@ -122,7 +98,7 @@
     },
     "cosmic-manager": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts",
         "home-manager": [
           "home-manager"
         ],
@@ -346,45 +322,6 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "actions-nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1738453229,
-        "narHash": "sha256-7H9XgNiGLKN1G1CgRh0vUL4AheZSYzPm+zmZ7vxbJdo=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "32ea77a06711b758da0ad9bd6a844c5740a87abd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_10": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_5"
-      },
-      "locked": {
-        "lastModified": 1760948891,
-        "narHash": "sha256-TmWcdiUUaWk8J4lpjzu4gCGxWY6/Ok7mOK4fIFfBuU4=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "864599284fc7c0ba6357ed89ed5e2cd5040f0c04",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_2": {
-      "inputs": {
-        "nixpkgs-lib": [
           "cosmic-manager",
           "nixpkgs"
         ]
@@ -403,7 +340,7 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
@@ -421,7 +358,7 @@
         "type": "github"
       }
     },
-    "flake-parts_4": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
           "fontix",
@@ -443,7 +380,7 @@
         "type": "github"
       }
     },
-    "flake-parts_5": {
+    "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
@@ -461,7 +398,7 @@
         "type": "github"
       }
     },
-    "flake-parts_6": {
+    "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_3"
       },
@@ -479,7 +416,7 @@
         "type": "github"
       }
     },
-    "flake-parts_7": {
+    "flake-parts_6": {
       "inputs": {
         "nixpkgs-lib": [
           "safari",
@@ -501,7 +438,7 @@
         "type": "github"
       }
     },
-    "flake-parts_8": {
+    "flake-parts_7": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_4"
       },
@@ -519,7 +456,7 @@
         "type": "github"
       }
     },
-    "flake-parts_9": {
+    "flake-parts_8": {
       "inputs": {
         "nixpkgs-lib": [
           "snippets",
@@ -533,6 +470,24 @@
         "owner": "hercules-ci",
         "repo": "flake-parts",
         "rev": "32ea77a06711b758da0ad9bd6a844c5740a87abd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_9": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_5"
+      },
+      "locked": {
+        "lastModified": 1760948891,
+        "narHash": "sha256-TmWcdiUUaWk8J4lpjzu4gCGxWY6/Ok7mOK4fIFfBuU4=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "864599284fc7c0ba6357ed89ed5e2cd5040f0c04",
         "type": "github"
       },
       "original": {
@@ -561,9 +516,9 @@
     },
     "fontix": {
       "inputs": {
-        "actions-nix": "actions-nix_2",
+        "actions-nix": "actions-nix",
         "files": "files_2",
-        "flake-parts": "flake-parts_5",
+        "flake-parts": "flake-parts_4",
         "git-hooks-nix": "git-hooks-nix",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
@@ -1177,7 +1132,7 @@
     },
     "nynx": {
       "inputs": {
-        "flake-parts": "flake-parts_6",
+        "flake-parts": "flake-parts_5",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -1222,11 +1177,10 @@
     },
     "root": {
       "inputs": {
-        "actions-nix": "actions-nix",
         "cosmic-manager": "cosmic-manager",
         "disko": "disko",
         "files": "files",
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_2",
         "fontix": "fontix",
         "git-hooks-nix": "git-hooks-nix_2",
         "home-manager": "home-manager_2",
@@ -1265,9 +1219,9 @@
     },
     "safari": {
       "inputs": {
-        "actions-nix": "actions-nix_3",
+        "actions-nix": "actions-nix_2",
         "flake-files": "flake-files",
-        "flake-parts": "flake-parts_8",
+        "flake-parts": "flake-parts_7",
         "git-hooks-nix": "git-hooks-nix_3",
         "home-manager": "home-manager_3",
         "nixpkgs": [
@@ -1307,9 +1261,9 @@
     },
     "snippets": {
       "inputs": {
-        "actions-nix": "actions-nix_4",
+        "actions-nix": "actions-nix_3",
         "agenix": "agenix",
-        "flake-parts": "flake-parts_10",
+        "flake-parts": "flake-parts_9",
         "git-hooks-nix": "git-hooks-nix_4",
         "home-manager": "home-manager_5",
         "nix-darwin": "nix-darwin_3",
