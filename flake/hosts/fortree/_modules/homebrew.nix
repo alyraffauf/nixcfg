@@ -10,7 +10,7 @@ _: {
     ];
 
     casks = [
-     "ghostty"
+      "ghostty"
     ];
 
     masApps = {
