@@ -5,7 +5,7 @@
       ({pkgs, ...}: {
         environment.systemPackages = with pkgs; [
           ghostty
-          inputs.system-manager.packages.x86_64-linux.default
+          system-manager
           vscode
         ];
 
