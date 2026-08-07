@@ -1,0 +1,69 @@
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  build-fallarbor:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build fallarbor
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.fallarbor.config.system.build.toplevel
+  build-littleroot:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build littleroot
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.littleroot.config.system.build.toplevel
+  build-rustboro:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 1
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Cachix
+      uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
+    - name: Build rustboro
+      run: nix build --accept-flake-config --print-out-paths .#nixosConfigurations.rustboro.config.system.build.toplevel
+name: build-nixos
+'on':
+  pull_request:
+  push:
+    branches:
+    - master
+    paths-ignore:
+    - '**/*.md'
+    - .github/**
+    - _img/**
+  workflow_dispatch: {}

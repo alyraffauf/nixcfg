@@ -1,0 +1,39 @@
+{
+  self,
+  inputs,
+  ...
+}: {
+  flake = {
+    darwinModules.default = ../darwin;
+
+    darwinConfigurations.fortree = inputs.nix-darwin.lib.darwinSystem {
+      modules = [
+        ../../hosts/fortree
+        self.darwinModules.default
+        inputs.sops-nix.darwinModules.sops
+        inputs.snippets.nixosModules.snippets
+        inputs.home-manager.darwinModules.home-manager
+        # inputs.nix-homebrew.darwinModules.nix-homebrew
+
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit self;};
+            backupFileExtension = "backup";
+          };
+
+          nixpkgs = {
+            overlays = [
+              self.overlays.default
+            ];
+
+            config.allowUnfree = true;
+          };
+        }
+      ];
+
+      specialArgs = {inherit self;};
+    };
+  };
+}

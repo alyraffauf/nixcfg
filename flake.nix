@@ -1,10 +1,55 @@
 {
-  description = "nix-darwin flake";
+  description = "Aly's NixOS flake with flake-parts";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    import-tree.url = "github:denful/import-tree";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    files.url = "github:alyraffauf/files";
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    fontix = {
+      url = "github:alyraffauf/fontix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixgl = {
+      url = "github:nix-community/nixgl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
@@ -13,8 +58,18 @@
 
     # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    nynx = {
+      url = "github:alyraffauf/nynx";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    safari = {
+      url = "github:alyraffauf/safari";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    snippets = {
+      url = "github:alyraffauf/snippets";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,6 +77,24 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Non-flake inputs
+
+    # Kept for snippets SSH known-host public keys (not used for secrets).
+    secrets = {
+      url = "github:alyraffauf/secrets";
+      flake = false;
+    };
+
+    # homebrew-core = {
+    #   url = "github:homebrew/homebrew-core";
+    #   flake = false;
+    # };
+
+    # homebrew-cask = {
+    #   url = "github:homebrew/homebrew-cask";
+    #   flake = false;
+    # };
   };
 
   nixConfig = {
@@ -29,11 +102,13 @@
 
     extra-substituters = [
       "https://alyraffauf.cachix.org"
+      "https://chaotic-nyx.cachix.org/"
       "https://nix-community.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "alyraffauf.cachix.org-1:GQVrRGfjTtkPGS8M6y7Ik0z4zLt77O0N25ynv2gWzDM="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8"
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
@@ -45,10 +120,11 @@
         "x86_64-linux"
       ];
 
-      imports = let
-        flakeModules = inputs.import-tree ./flake;
-      in [
-        flakeModules
+      imports = [
+        ./modules/flake
+        inputs.files.flakeModules.default
+        inputs.git-hooks-nix.flakeModule
+        inputs.home-manager.flakeModules.home-manager
         inputs.treefmt-nix.flakeModule
       ];
     };

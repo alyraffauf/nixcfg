@@ -1,0 +1,30 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  options.myNixOS.desktop.kde.enable = lib.mkEnableOption "KDE desktop environment";
+
+  config = lib.mkIf config.myNixOS.desktop.kde.enable {
+    environment.systemPackages = with pkgs; [
+      kdePackages.sddm-kcm
+      maliit-keyboard
+    ];
+
+    programs.dconf.profiles.user.databases = [
+      {
+        settings = {
+          "org.maliit.keyboard.maliit" = {
+            key-press-haptic-feedback = true;
+            theme = "BreezeDark";
+          };
+        };
+      }
+    ];
+
+    services.desktopManager.plasma6.enable = true;
+    system.nixos.tags = ["kde"];
+    myNixOS.desktop.enable = true;
+  };
+}

@@ -1,0 +1,213 @@
+{
+  "node.description": "ThinkPad Speakers",
+  "media.name": "ThinkPad Speakers",
+  "filter.graph": {
+    "nodes": [
+      {
+        "type": "lv2",
+        "plugin": "https://chadmed.au/bankstown",
+        "name": "bassex",
+        "control": {
+          "bypass": 0,
+          "amt": 0.2,
+          "sat_second": 0.5,
+          "sat_third": 0.8,
+          "blend": 0.2,
+          "ceil": 100.0,
+          "floor": 40.0
+        }
+      },
+      {
+        "type": "lv2",
+        "plugin": "http://lsp-plug.in/plugins/lv2/loud_comp_stereo",
+        "name": "el",
+        "control": {
+          "enabled": 1,
+          "input": 1.0,
+          "fft": 4
+        }
+      },
+      {
+        "type": "lv2",
+        "plugin": "http://lsp-plug.in/plugins/lv2/para_equalizer_x8_lr",
+        "name": "fw13eq",
+        "control": {
+          "mode": 0,
+          "react": 0.2,
+          "zoom": 0.015848931924611134,
+          "fl_0": 101.0,
+          "fml_0": 0,
+          "ftl_0": 5,
+          "gl_0": 0.0,
+          "huel_0": 0.0,
+          "ql_0": 4.36,
+          "sl_0": 0,
+          "wl_0": 4.0,
+          "fl_1": 451.0,
+          "fml_1": 0,
+          "ftl_1": 1,
+          "gl_1": 0.5321082592667942,
+          "huel_1": 0.03125,
+          "ql_1": 2.46,
+          "sl_1": 0,
+          "wl_1": 4.0,
+          "fl_2": 918.0,
+          "fml_2": 0,
+          "ftl_2": 1,
+          "gl_2": 0.5780960474057181,
+          "huel_2": 0.0625,
+          "ql_2": 2.44,
+          "sl_2": 0,
+          "wl_2": 4.0,
+          "fl_3": 9700.0,
+          "fml_3": 0,
+          "ftl_3": 1,
+          "gl_3": 2.5409727055493048,
+          "huel_3": 0.09375,
+          "ql_3": 2.0,
+          "sl_3": 0,
+          "wl_3": 4.0,
+          "fr_0": 101.0,
+          "fmr_0": 0,
+          "ftr_0": 5,
+          "gr_0": 0.05,
+          "huer_0": 0.0,
+          "qr_0": 4.36,
+          "sr_0": 0,
+          "wr_0": 4.0,
+          "fr_1": 451.0,
+          "fmr_1": 0,
+          "ftr_1": 1,
+          "gr_1": 0.5321082592667942,
+          "huer_1": 0.03125,
+          "qr_1": 2.46,
+          "sr_1": 0,
+          "wr_1": 4.0,
+          "fr_2": 918.0,
+          "fmr_2": 0,
+          "ftr_2": 1,
+          "gr_2": 0.5780960474057181,
+          "huer_2": 0.0625,
+          "qr_2": 2.44,
+          "sr_2": 0,
+          "wr_2": 4.0,
+          "fr_3": 9700.0,
+          "fmr_3": 0,
+          "ftr_3": 1,
+          "gr_3": 2.5409727055493048,
+          "huer_3": 0.09375,
+          "qr_3": 2.0,
+          "sr_3": 0,
+          "wr_3": 4.0
+        }
+      },
+      {
+        "type": "lv2",
+        "plugin": "http://lsp-plug.in/plugins/lv2/mb_compressor_stereo",
+        "name": "woofer_bp",
+        "control": {
+          "mode": 0,
+          "ce_0": 1,
+          "sla_0": 10.0,
+          "cr_0": 1.2,
+          "al_0": 1.1,
+          "at_0": 1.0,
+          "rt_0": 100,
+          "kn_0": 0.125,
+          "cbe_1": 1,
+          "sf_1": 200.0,
+          "ce_1": 0,
+          "cbe_2": 0,
+          "ce_2": 0,
+          "cbe_3": 0,
+          "ce_3": 0,
+          "cbe_4": 0,
+          "ce_4": 0,
+          "cbe_5": 0,
+          "ce_5": 0,
+          "cbe_6": 0,
+          "ce_6": 0
+        }
+      },
+      {
+        "type": "lv2",
+        "plugin": "http://lsp-plug.in/plugins/lv2/compressor_stereo",
+        "name": "woofer_lim",
+        "control": {
+          "sla": 10.0,
+          "al": 1.5,
+          "at": 1.0,
+          "rt": 100.0,
+          "cr": 4.0,
+          "kn": 0.5
+        }
+      }
+    ],
+    "links": [
+      {
+        "output": "bassex:out_l",
+        "input": "el:in_l"
+      },
+      {
+        "output": "bassex:out_r",
+        "input": "el:in_r"
+      },
+      {
+        "output": "el:out_l",
+        "input": "fw13eq:in_l"
+      },
+      {
+        "output": "el:out_r",
+        "input": "fw13eq:in_r"
+      },
+      {
+        "output": "fw13eq:out_l",
+        "input": "woofer_bp:in_l"
+      },
+      {
+        "output": "fw13eq:out_r",
+        "input": "woofer_bp:in_r"
+      },
+      {
+        "output": "woofer_bp:out_l",
+        "input": "woofer_lim:in_l"
+      },
+      {
+        "output": "woofer_bp:out_r",
+        "input": "woofer_lim:in_r"
+      }
+    ],
+    "inputs": ["bassex:in_l", "bassex:in_r"],
+    "outputs": ["woofer_lim:out_l", "woofer_lim:out_r"],
+    "capture.volumes": [
+      {
+        "control": "el:volume",
+        "min": -47.5,
+        "max": 0.0,
+        "scale": "cubic"
+      }
+    ]
+  },
+  "capture.props": {
+    "node.name": "audio_effect.laptop-convolver",
+    "media.class": "Audio/Sink",
+    "audio.channels": 2,
+    "audio.position": ["FL", "FR"],
+    "audio.allowed-rates": [44100, 48000, 88200, 96000, 176400, 192000],
+    "device.api": "dsp",
+    "node.virtual": false,
+    "priority.session": 1500,
+    "priority.driver": 1500,
+    "state.default-volume": 1.0,
+    "device.icon-name": "audio-card-analog-pci"
+  },
+  "playback.props": {
+    "node.name": "audio_effect.laptop-convolver",
+    "target.object": "@DEVICE_NAME@",
+    "node.passive": true,
+    "audio.channels": 2,
+    "audio.allowed-rates": [44100, 48000, 88200, 96000, 176400, 192000],
+    "audio.position": ["FL", "FR"],
+    "device.icon-name": "audio-card-analog-pci"
+  }
+}

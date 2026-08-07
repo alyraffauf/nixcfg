@@ -1,0 +1,61 @@
+{
+  config,
+  self,
+  ...
+}: {
+  imports = [
+    ./home.nix
+    ./secrets.nix
+    self.diskoConfigurations.luks-btrfs-subvolumes
+    self.nixosModules.locale-en-us
+  ];
+
+  environment.variables.GDK_SCALE = "1.25";
+  networking.hostName = "fallarbor";
+  nix.daemonCPUSchedPolicy = "idle";
+  system.stateVersion = "25.11";
+  time.timeZone = "America/New_York";
+  myHardware.lenovo.thinkpad.X1.gen-9.enable = true;
+
+  myNixOS = {
+    base.enable = true;
+    desktop.kde.enable = true;
+
+    profiles = {
+      autoUpgrade.enable = true;
+      btrfs.enable = true;
+      gaming.enable = true;
+      wifi.enable = true;
+    };
+
+    programs = {
+      nix.enable = true;
+      steam.enable = true;
+      lanzaboote.enable = true;
+    };
+
+    services = {
+      flatpak.enable = true;
+      plasma-login-manager.enable = true;
+
+      syncthing = {
+        enable = true;
+        certFile = config.sops.secrets.syncthingCert.path;
+        keyFile = config.sops.secrets.syncthingKey.path;
+        user = "aly";
+      };
+    };
+  };
+
+  myUsers = {
+    aly = {
+      enable = true;
+      password = "$y$j9T$0p6rc4p5sn0LJ/6XyAGP7.$.wmTafwMMscdW1o8kqqoHJP7U8kF.4WBmzzcPYielR3";
+    };
+
+    dustin = {
+      enable = true;
+      password = "$y$j9T$OXQYhj4IWjRJWWYsSwcqf.$lCcdq9S7m0EAdej9KMHWj9flH8K2pUb2gitNhLTlLG/";
+    };
+  };
+}
