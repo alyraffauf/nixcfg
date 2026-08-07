@@ -5,6 +5,7 @@ _: {
     greedyCasks = true;
 
     brews = [
+      "ghostty"
       "mas"
       "podman"
     ];
