@@ -5,9 +5,12 @@ _: {
     greedyCasks = true;
 
     brews = [
-      "ghostty"
       "mas"
       "podman"
+    ];
+
+    casks = [
+     "ghostty"
     ];
 
     masApps = {
@@ -15,7 +18,7 @@ _: {
     };
 
     onActivation = {
-      cleanup = "zap";
+      # cleanup = "zap";
       upgrade = true;
     };
   };
