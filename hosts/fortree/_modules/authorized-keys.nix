@@ -10,12 +10,7 @@
   );
 in {
   users.users = {
-    aly = {
-      description = "Aly Raffauf";
-      home = "/Users/aly";
-      openssh.authorizedKeys.keyFiles = alyKeyFiles;
-    };
-
+    aly.openssh.authorizedKeys.keyFiles = alyKeyFiles;
     root.openssh.authorizedKeys.keyFiles = alyKeyFiles;
   };
 }

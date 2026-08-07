@@ -1,0 +1,7 @@
+_: {
+  homebrew = {
+    brews = [
+      "podman"
+    ];
+  };
+}

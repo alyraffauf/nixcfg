@@ -1,6 +1,10 @@
 _: {
   security = {
-    pam.services.sudo_local.touchIdAuth = true;
+    pam.services.sudo_local = {
+      reattach = true;
+      touchIdAuth = true;
+      watchIdAuth = true;
+    };
 
     sudo.extraConfig = ''
       root ALL=(ALL) NOPASSWD: ALL
