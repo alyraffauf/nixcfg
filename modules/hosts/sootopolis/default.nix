@@ -2,9 +2,11 @@
   flake.systemConfigs.sootopolis = inputs.system-manager.lib.makeSystemConfig {
     modules = [
       inputs.nix-system-graphics.systemModules.default
-      {
-        environment.systemPackages = [
+      ({pkgs, ...}: {
+        environment.systemPackages = with pkgs; [
+          ghostty
           inputs.system-manager.packages.x86_64-linux.default
+          vscode
         ];
 
         nixpkgs = {
@@ -13,7 +15,7 @@
         };
         system-manager.allowAnyDistro = true;
         system-graphics.enable = true;
-      }
+      })
     ];
   };
 }
