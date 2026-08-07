@@ -9,10 +9,10 @@ jobs:
       with:
         fetch-depth: 1
     - uses: DeterminateSystems/nix-installer-action@main
-    # - uses: cachix/cachix-action@master
-    #   with:
-    #     authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-    #     name: alyraffauf
+    - uses: cachix/cachix-action@master
+      with:
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        name: alyraffauf
     - name: Build devShell default
       run: nix build --accept-flake-config --print-out-paths .#devShells.x86_64-linux.default
 name: build-nix
