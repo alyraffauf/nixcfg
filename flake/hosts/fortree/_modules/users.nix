@@ -6,7 +6,7 @@
   keysDirectory = self + "/keys";
   alyKeyFiles = lib.map (file: "${keysDirectory}/${file}") (
     lib.filter (file: lib.hasPrefix "aly_" file)
-      (builtins.attrNames (builtins.readDir keysDirectory))
+    (builtins.attrNames (builtins.readDir keysDirectory))
   );
 in {
   users.users = {
