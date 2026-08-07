@@ -14,14 +14,17 @@
 
         environment.systemPackages = with pkgs; [
           ghostty
+          opencode-desktop
           system-manager
           vscode
+          zed-editor
         ];
 
         nixpkgs = {
           config.allowUnfree = true;
           hostPlatform = "x86_64-linux";
         };
+
         system-manager.allowAnyDistro = true;
         system-graphics.enable = true;
       })
