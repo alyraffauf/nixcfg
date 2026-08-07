@@ -1,5 +1,5 @@
 _: {
-  flake.systemModules.sootopolis = {pkgs, ...}: {
+  flake.systemModules.default = {pkgs, ...}: {
     environment.systemPackages = [pkgs.system-manager];
   };
 }
