@@ -1,7 +1,0 @@
-_: {
-  homebrew = {
-    casks = [
-      "ghostty"
-    ];
-  };
-}

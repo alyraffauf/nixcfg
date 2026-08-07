@@ -45,12 +45,8 @@
         "x86_64-linux"
       ];
 
-      imports = let
-        flakeModules = inputs.import-tree ./flake;
-        hostModules = inputs.import-tree ./hosts;
-      in [
-        flakeModules
-        hostModules
+      imports = [
+        (inputs.import-tree ./modules)
         inputs.treefmt-nix.flakeModule
       ];
     };
