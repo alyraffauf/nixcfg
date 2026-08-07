@@ -13,6 +13,5 @@ _: {
     ];
 
     localHostName = hostName;
-    search = ["narwhal-snapper.ts.net"];
   };
 }
