@@ -108,6 +108,7 @@ _: {
           libxdamage
           libxext
           libxfixes
+          libgbm
           libxi
           libxkbcommon
           libxkbfile
