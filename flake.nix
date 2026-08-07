@@ -47,8 +47,10 @@
 
       imports = let
         flakeModules = inputs.import-tree ./flake;
+        hostModules = inputs.import-tree ./hosts;
       in [
         flakeModules
+        hostModules
         inputs.treefmt-nix.flakeModule
       ];
     };
