@@ -1,9 +1,17 @@
 _: {
   flake.nixosModules.default = {
+    config,
+    self,
+    ...
+  }: {
+    sops.secrets.aly-password = {
+      neededForUsers = true;
+      sopsFile = self + "/secrets/aly-password.yaml";
+    };
+
     users.users = {
       aly = {
         description = "Aly Raffauf";
-        home = "/home/aly";
         extraGroups = [
           "cdrom"
           "dialout"
@@ -17,6 +25,9 @@ _: {
           "video"
           "wheel"
         ];
+        hashedPasswordFile = config.sops.secrets.aly-password.path;
+        home = "/home/aly";
+        uid = 1000;
       };
     };
   };

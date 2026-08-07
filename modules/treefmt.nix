@@ -9,6 +9,8 @@ _: {
         shfmt.enable = true;
         statix.enable = true;
       };
+
+      settings.excludes = ["secrets/**"];
     };
   };
 }
