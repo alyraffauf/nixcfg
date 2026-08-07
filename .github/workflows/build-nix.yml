@@ -9,25 +9,12 @@ jobs:
       with:
         fetch-depth: 1
     - uses: DeterminateSystems/nix-installer-action@main
-    - uses: cachix/cachix-action@master
-      with:
-        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-        name: alyraffauf
+    # - uses: cachix/cachix-action@master
+    #   with:
+    #     authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+    #     name: alyraffauf
     - name: Build devShell default
       run: nix build --accept-flake-config --print-out-paths .#devShells.x86_64-linux.default
-  build-package-gen-files:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v7
-      with:
-        fetch-depth: 1
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: cachix/cachix-action@master
-      with:
-        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-        name: alyraffauf
-    - name: Build package gen-files
-      run: nix build --accept-flake-config --print-out-paths .#packages.x86_64-linux.gen-files
 name: build-nix
 'on':
   pull_request:

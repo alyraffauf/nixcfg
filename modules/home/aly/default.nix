@@ -1,7 +1,0 @@
-{...}: {
-  imports = [
-    ./desktop
-    ./profiles
-    ./programs
-  ];
-}

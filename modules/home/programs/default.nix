@@ -1,7 +1,0 @@
-{...}: {
-  imports = [
-    ./ghostty
-    ./rofi
-    ./vicinae
-  ];
-}
