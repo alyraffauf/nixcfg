@@ -1,11 +1,13 @@
 {
   inputs,
   lib,
+  self,
   ...
 }: {
   flake.systemConfigs.sootopolis = inputs.system-manager.lib.makeSystemConfig {
     modules = [
       inputs.nix-system-graphics.systemModules.default
+      self.systemModules.default
       ({pkgs, ...}: {
         environment.etc."environment.d/10-system-manager.conf".text = lib.mkForce ''
           PATH=/run/system-manager/sw/bin:/usr/local/bin:/usr/bin
