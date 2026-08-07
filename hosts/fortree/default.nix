@@ -48,6 +48,7 @@
     computerName = "fortree";
     hostName = "fortree";
     localHostName = "fortree";
+    search = ["narwhal-snapper.ts.net"];
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
