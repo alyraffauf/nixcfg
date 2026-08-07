@@ -9,8 +9,10 @@ _: {
       sopsFile = self + "/secrets/aly-password.yaml";
     };
 
-    users.users = {
-      aly = {
+    users = {
+      groups.aly = {};
+
+      users.aly = {
         description = "Aly Raffauf";
         extraGroups = [
           "cdrom"
@@ -25,8 +27,10 @@ _: {
           "video"
           "wheel"
         ];
+        group = "aly";
         hashedPasswordFile = config.sops.secrets.aly-password.path;
         home = "/home/aly";
+        isNormalUser = true;
         uid = 1000;
       };
     };
