@@ -1,5 +1,5 @@
 _: {
-  flake.nixosModules.default = {
+  flake.nixosModules.homebrew = {
     config,
     lib,
     pkgs,
@@ -34,15 +34,14 @@ _: {
     };
   in {
     options.hoenn.features.homebrew = {
-      enable = lib.mkEnableOption "Homebrew on Linux";
-
       user = lib.mkOption {
         type = lib.types.str;
+        default = "aly";
         description = "User who will own and run Homebrew.";
       };
     };
 
-    config = lib.mkIf config.hoenn.features.homebrew.enable {
+    config = {
       assertions = [
         {
           assertion = builtins.hasAttr brewUser config.users.users;

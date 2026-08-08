@@ -11,6 +11,8 @@
       inputs.sops-nix.nixosModules.sops
       self.nixosModules.default
       self.nixosModules.rustboro
+      self.nixosModules.cosmic
+      self.nixosModules.homebrew
     ];
 
     specialArgs = {inherit self;};
