@@ -2,13 +2,13 @@
   description = "nix-darwin flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     import-tree.url = "github:denful/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     nix-system-graphics = {
       url = "github:soupglasses/nix-system-graphics";
-      inputs.nixpkgs.follows = "system-manager/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {
@@ -17,7 +17,7 @@
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,6 +35,7 @@
 
     system-manager = {
       url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     treefmt-nix = {
