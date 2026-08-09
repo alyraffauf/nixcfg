@@ -1,6 +1,14 @@
-_: {
+{inputs, ...}: {
   flake.nixosModules.default = {pkgs, ...}: {
-    services.flatpak.enable = true;
+    imports = [inputs.nix-flatpak.nixosModules.nix-flatpak];
+
+    services.flatpak = {
+      enable = true;
+      update.auto = {
+        enable = true;
+        onCalendar = "weekly";
+      };
+    };
 
     xdg.portal = {
       enable = true;
