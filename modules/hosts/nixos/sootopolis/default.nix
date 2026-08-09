@@ -14,6 +14,7 @@
       self.nixosModules.sootopolis
       self.nixosModules.cosmic
       self.nixosModules.homebrew
+      self.nixosModules.tailscale
     ];
 
     specialArgs = {inherit self;};
