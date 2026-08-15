@@ -25,7 +25,6 @@ _: {
 
             content = {
               name = "cryptroot";
-              passwordFile = "/tmp/fallarbor-luks.key";
               type = "luks";
 
               content = {
