@@ -48,6 +48,11 @@ _: {
                   };
                 };
               };
+
+              settings = {
+                allowDiscards = true;
+                bypassWorkqueues = true;
+              };
             };
           };
         };
