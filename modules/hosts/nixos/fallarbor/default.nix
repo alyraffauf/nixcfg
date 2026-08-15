@@ -12,6 +12,7 @@
       inputs.sops-nix.nixosModules.sops
       self.nixosModules.cosmic
       self.nixosModules.default
+      self.nixosModules.dustin
       self.nixosModules.fallarbor
     ];
 

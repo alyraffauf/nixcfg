@@ -8,6 +8,7 @@ keys:
   - &user_aly_petalburg age162sx8kppp90mjxw88eqs78hgnpkddf8k9kgtksmmexzvcdxknpkspmkgaf
   - &user_aly_sootopolis age15td0jk5e2qeq2pexvxguhuuaxuaa7nhql7mhx9jr79caska6t4pqdv5spl
   # === host keys (root@<host>) ===
+  - &host_fallarbor age1v4x5alkmvxsx5jsrwpecx0tne0ch2rwfkk0rq5w8x578j2pf5urssg5gx2
   - &host_fortree age1f9hd8fu0694rc3tr6hwxz3ldfpepref937rmvqdxvvsr0kfcjdxswyzvw3
   - &host_pacifidlog age1axn36h9356ena7rq6y2xa4rcm250w9h0m9pz6x0677gla0v4f4dsj92yfm
   - &host_petalburg age1kgp3x48wn0dmzwqp0vdpfsdw42rej0ypkj0qavs7c2t2tgdud5zqcmhl40
@@ -22,6 +23,7 @@ creation_rules:
           - *user_aly_pacifidlog
           - *user_aly_petalburg
           - *user_aly_sootopolis
+          - *host_fallarbor
           - *host_fortree
           - *host_pacifidlog
           - *host_petalburg
