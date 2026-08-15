@@ -1,9 +1,5 @@
-{
-  config,
-  self,
-  ...
-}: {
-  flake.nixosModules.default = {
+{self, ...}: {
+  flake.nixosModules.default = {config, ...}: {
     sops.secrets.lilycove-dept-store-wifi = {
       key = "environment";
       sopsFile = self + "/secrets/wifi.yaml";
