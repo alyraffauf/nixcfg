@@ -10,9 +10,9 @@
       inputs.determinate.nixosModules.default
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
+      self.nixosModules.cosmic
       self.nixosModules.default
       self.nixosModules.fallarbor
-      self.nixosModules.kde
     ];
 
     specialArgs = {inherit self;};

@@ -1,8 +1,7 @@
 _: {
   flake.nixosModules.fallarbor = {
     disko.devices.disk.main = {
-      # Replace with Fallarbor's stable by-id path before installing.
-      device = "/dev/disk/by-id/nvme-eui.ace42e0035f3f4482ee4ac0000000001";
+      device = "/dev/disk/by-id/nvme-eui.001b448b454df541";
       type = "disk";
 
       content = {
@@ -48,6 +47,11 @@ _: {
                     mountpoint = "/nix";
                   };
                 };
+              };
+
+              settings = {
+                allowDiscards = true;
+                bypassWorkqueues = true;
               };
             };
           };
