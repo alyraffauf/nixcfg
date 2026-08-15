@@ -12,6 +12,7 @@
       inputs.sops-nix.nixosModules.sops
       self.nixosModules.default
       self.nixosModules.rustboro
+      self.nixosModules.aly
       self.nixosModules.cosmic
       self.nixosModules.homebrew
       self.nixosModules.tailscale

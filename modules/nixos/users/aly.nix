@@ -1,9 +1,17 @@
 _: {
-  flake.nixosModules.default = {
+  flake.nixosModules.aly = {
     config,
+    lib,
     self,
     ...
-  }: {
+  }: let
+    keysDirectory = self + "/keys";
+    alyKeyFiles = lib.pipe (builtins.readDir keysDirectory) [
+      builtins.attrNames
+      (lib.filter (file: lib.hasPrefix "aly_" file))
+      (lib.map (file: "${keysDirectory}/${file}"))
+    ];
+  in {
     sops.secrets.aly-password = {
       neededForUsers = true;
       sopsFile = self + "/secrets/aly-password.yaml";
@@ -31,6 +39,7 @@ _: {
         hashedPasswordFile = config.sops.secrets.aly-password.path;
         home = "/home/aly";
         isNormalUser = true;
+        openssh.authorizedKeys.keyFiles = alyKeyFiles;
         uid = 1000;
       };
     };

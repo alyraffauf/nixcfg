@@ -11,9 +11,6 @@ _: {
       (lib.map (file: "${keysDirectory}/${file}"))
     ];
   in {
-    users.users = {
-      aly.openssh.authorizedKeys.keyFiles = alyKeyFiles;
-      root.openssh.authorizedKeys.keyFiles = alyKeyFiles;
-    };
+    users.users.root.openssh.authorizedKeys.keyFiles = alyKeyFiles;
   };
 }
