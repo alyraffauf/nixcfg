@@ -5,10 +5,10 @@ jobs:
   check-flake:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         fetch-depth: 1
-    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
     - name: Check flake evaluation
       run: nix -Lv flake check
 name: check-nix
@@ -19,6 +19,5 @@ name: check-nix
     - master
     paths-ignore:
     - '**/*.md'
-    - .github/**
     - _img/**
   workflow_dispatch: {}

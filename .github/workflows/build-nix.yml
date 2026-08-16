@@ -5,11 +5,11 @@ jobs:
   build-devShell-default:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         fetch-depth: 1
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: cachix/cachix-action@master
+    - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
+    - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         name: alyraffauf
@@ -22,6 +22,7 @@ name: build-nix
     branches:
     - master
     paths:
+    - .github/**
     - flake.lock
     - flake.nix
     - flake/
