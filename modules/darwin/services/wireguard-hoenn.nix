@@ -4,21 +4,7 @@ _: {
     self,
     ...
   }: {
-    environment.etc.hosts.text = ''
-      ##
-      # Host Database
-      ##
-      127.0.0.1 localhost
-      255.255.255.255 broadcasthost
-      ::1 localhost
-
-      10.254.1.1 pastoria.hoenn
-      10.254.1.2 mauville.hoenn
-      10.254.1.3 rustboro.hoenn
-      10.254.1.4 sootopolis.hoenn
-      10.254.1.5 fortree.hoenn
-      10.254.1.6 fallarbor.hoenn
-    '';
+    environment.etc."resolver/hoenn".text = "nameserver 10.254.1.1";
 
     sops.secrets.wireguard-hoenn-private = {
       sopsFile = self + "/secrets/wireguard-hoenn.yaml";

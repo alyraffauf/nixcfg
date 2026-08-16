@@ -1,6 +1,7 @@
 _: {
   flake.nixosModules.wireguardHoenn = {
     config,
+    pkgs,
     self,
     ...
   }: let
@@ -19,20 +20,16 @@ _: {
     };
 
     networking = {
-      hosts = {
-        "10.254.1.1" = ["pastoria.hoenn"];
-        "10.254.1.2" = ["mauville.hoenn"];
-        "10.254.1.3" = ["rustboro.hoenn"];
-        "10.254.1.4" = ["sootopolis.hoenn"];
-        "10.254.1.5" = ["fortree.hoenn"];
-        "10.254.1.6" = ["fallarbor.hoenn"];
-      };
-
       firewall.trustedInterfaces = ["wg-hoenn"];
 
       wireguard.interfaces.wg-hoenn = {
         ips = ["${nodeAddress}/24"];
         privateKeyFile = config.sops.secrets.wireguard-hoenn-private.path;
+        postSetup = ''
+          ${pkgs.systemd}/bin/resolvectl dns wg-hoenn 10.254.1.1
+          ${pkgs.systemd}/bin/resolvectl domain wg-hoenn ~hoenn
+          ${pkgs.systemd}/bin/resolvectl default-route wg-hoenn false
+        '';
 
         peers = [
           {
@@ -44,5 +41,9 @@ _: {
         ];
       };
     };
+
+    services.resolved.enable = true;
+
+    systemd.services.wireguard-wg-hoenn.after = ["systemd-resolved.service"];
   };
 }
