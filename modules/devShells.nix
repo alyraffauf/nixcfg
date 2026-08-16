@@ -8,6 +8,7 @@ _: {
       packages = [
         inputs'.blzrd.packages.blzrd
         pkgs.git
+        pkgs.bun
         pkgs.just
         pkgs.nh
         pkgs.sops
