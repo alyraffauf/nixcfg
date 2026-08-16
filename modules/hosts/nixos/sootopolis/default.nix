@@ -16,6 +16,7 @@
       self.nixosModules.cosmic
       self.nixosModules.homebrew
       self.nixosModules.tailscale
+      self.nixosModules.wireguardHoenn
     ];
 
     specialArgs = {inherit self;};
