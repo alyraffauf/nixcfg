@@ -14,6 +14,7 @@
       self.nixosModules.default
       self.nixosModules.dustin
       self.nixosModules.fallarbor
+      self.nixosModules.wireguardHoenn
     ];
 
     specialArgs = {inherit self;};
