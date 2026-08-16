@@ -16,7 +16,7 @@ keys:
   - &host_pacifidlog age1axn36h9356ena7rq6y2xa4rcm250w9h0m9pz6x0677gla0v4f4dsj92yfm
   - &host_petalburg age1kgp3x48wn0dmzwqp0vdpfsdw42rej0ypkj0qavs7c2t2tgdud5zqcmhl40
   - &host_rustboro age1c62ajygt7yx5k0f85h6w3tquu4ak0gg5c9drrhh34yyyea3xtpas8knau3
-  - &host_sootopolis age1s7ecrfntus8rvyprzhffjpqk2tmrc259knf9xqajlrqvewfp8d6svwp9pp
+  - &host_sootopolis age1gz3835qckr54gn44znlefa6m7yvjx83gptq8keslyq944nfxsfzqndenmt
 
 creation_rules:
   - path_regex: ^secrets/.*\.ya?ml$
