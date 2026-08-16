@@ -1,12 +1,17 @@
 _: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    inputs',
+    pkgs,
+    ...
+  }: {
     devShells.default = pkgs.mkShell {
-      packages = with pkgs; [
-        git
-        just
-        nh
-        sops
-        ssh-to-age
+      packages = [
+        inputs'.blzrd.packages.blzrd
+        pkgs.git
+        pkgs.just
+        pkgs.nh
+        pkgs.sops
+        pkgs.ssh-to-age
       ];
 
       shellHook = ''

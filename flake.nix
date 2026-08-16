@@ -6,6 +6,13 @@
     import-tree.url = "github:denful/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    blzrd = {
+      url = "github:alyraffauf/blzrd";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
+
     nix-system-graphics = {
       url = "github:soupglasses/nix-system-graphics";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,6 +101,7 @@
 
       imports = [
         (inputs.import-tree ./modules)
+        inputs.blzrd.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
     };

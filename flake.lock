@@ -1,5 +1,31 @@
 {
   "nodes": {
+    "blzrd": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786887547,
+        "narHash": "sha256-tmzIIpngGiB9BWEp6Eyh09AemjMLIxMVwy5l4xuh0Q8=",
+        "owner": "alyraffauf",
+        "repo": "blzrd",
+        "rev": "e752854621560225e7dba8b20d7066c059a62034",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alyraffauf",
+        "repo": "blzrd",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1781825982,
@@ -529,6 +555,7 @@
     },
     "root": {
       "inputs": {
+        "blzrd": "blzrd",
         "determinate": "determinate",
         "disko": "disko",
         "flake-parts": "flake-parts_2",
