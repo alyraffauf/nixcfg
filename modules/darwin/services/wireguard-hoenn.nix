@@ -1,6 +1,8 @@
 _: {
   flake.darwinModules.default = {
     config,
+    lib,
+    pkgs,
     self,
     ...
   }: {
@@ -14,6 +16,11 @@ _: {
     networking.wg-quick.interfaces.hoenn = {
       address = ["10.254.1.5/24"];
       privateKeyFile = config.sops.secrets.wireguard-hoenn-private.path;
+      preUp = ''
+        while [ ! -r ${config.sops.secrets.wireguard-hoenn-private.path} ]; do
+          /bin/sleep 1
+        done
+      '';
 
       peers = [
         {
@@ -24,5 +31,12 @@ _: {
         }
       ];
     };
+
+    # Backport nix-darwin#1738 so launchd waits for the Nix store to mount.
+    launchd.daemons.wg-quick-hoenn.serviceConfig.ProgramArguments = lib.mkForce [
+      "/bin/sh"
+      "-c"
+      "/bin/wait4path /nix/store && exec ${pkgs.wireguard-tools}/bin/wg-quick up hoenn"
+    ];
   };
 }
