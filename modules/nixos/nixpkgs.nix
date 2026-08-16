@@ -1,6 +1,6 @@
-_: {
+{sharedPackageSets, ...}: {
   flake.nixosModules.default = {self, ...}: {
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.pkgs = sharedPackageSets.x86_64-linux;
     system.configurationRevision = self.rev or self.dirtyRev or null;
   };
 }

@@ -1,8 +1,5 @@
-_: {
-  flake.darwinModules.default = {self, ...}: {
-    nixpkgs = {
-      overlays = [self.overlays.default];
-      config.allowUnfree = true;
-    };
+{sharedPackageSets, ...}: {
+  flake.darwinModules.default = {
+    nixpkgs.pkgs = sharedPackageSets.aarch64-darwin;
   };
 }
