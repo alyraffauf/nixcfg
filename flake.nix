@@ -1,5 +1,5 @@
 {
-  description = "nix-darwin flake";
+  description = "Personal NixOS, Darwin, and system-manager configurations";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
