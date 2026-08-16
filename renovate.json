@@ -28,6 +28,12 @@
       "description": "Major bumps stay manual",
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "Lock file maintenance updates FlakeHub inputs",
+      "matchManagers": ["nix"],
+      "matchPackageNames": ["/^https:\\/\\/flakehub\\.com\\/f\\//"],
+      "enabled": false
     }
   ],
 
