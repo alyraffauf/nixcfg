@@ -1,10 +1,10 @@
 # ❄️ hoenn
 
-Personal Nix configuration for NixOS, nix-darwin, and system-manager.
+My personal Nix configuration for NixOS, nix-darwin, and system-manager.
 
 The flake is organized as small, composable modules. Shared behavior lives
 under `modules/nixos`, `modules/darwin`, and `modules/system-manager`; each
-host composes the pieces it needs under `modules/hosts`.
+host pulls together the pieces it needs under `modules/hosts`.
 
 ## Configurations
 
@@ -30,9 +30,9 @@ modules/
 └── hosts/           Per-host composition and hardware state
 ```
 
-`flake.nix` imports the `modules/` tree. Keep each Nix file there as a
-flake-parts module that declares or extends a flake output; keep standalone
-helpers outside that tree.
+`flake.nix` imports the `modules/` tree. Each Nix file there is a flake-parts
+module that declares or extends a flake output; standalone helpers live outside
+that tree.
 
 ## Common commands
 
