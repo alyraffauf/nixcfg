@@ -2,6 +2,7 @@ _: {
   flake.nixosModules.aly = {
     config,
     lib,
+    pkgs,
     self,
     ...
   }: let
@@ -13,6 +14,7 @@ _: {
     ];
   in {
     nix.settings.trusted-users = lib.mkAfter ["aly"];
+    programs.fish.enable = true;
 
     sops.secrets.aly-password = {
       neededForUsers = true;
@@ -42,6 +44,7 @@ _: {
         home = "/home/aly";
         isNormalUser = true;
         openssh.authorizedKeys.keyFiles = alyKeyFiles;
+        shell = pkgs.fish;
         uid = 1000;
       };
     };
