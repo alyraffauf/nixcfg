@@ -149,6 +149,29 @@ function specificationsFor(report: FacterReport): Specification[] {
   );
 }
 
+function renderTable(specifications: Specification[]): string {
+  const rows = specifications.map(([component, details]) => [
+    component,
+    details.replaceAll("|", "\\|"),
+  ]);
+  const componentWidth = Math.max(
+    "Component".length,
+    ...rows.map(([component]) => component.length),
+  );
+  const detailsWidth = Math.max(
+    "Details".length,
+    ...rows.map(([, details]) => details.length),
+  );
+  const formatRow = (component: string, details: string): string =>
+    `| ${component.padEnd(componentWidth)} | ${details.padEnd(detailsWidth)} |`;
+
+  return [
+    formatRow("Component", "Details"),
+    `| ${"-".repeat(componentWidth)} | ${"-".repeat(detailsWidth)} |`,
+    ...rows.map(([component, details]) => formatRow(component, details)),
+  ].join("\n");
+}
+
 function renderGeneratedSection(
   hostName: string,
   report: FacterReport,
@@ -156,15 +179,11 @@ function renderGeneratedSection(
   const model = describeModel(report);
   const overview =
     model === "" ? "NixOS host managed by Hoenn." : `${model} running NixOS.`;
-  const rows = specificationsFor(report)
-    .map(
-      ([component, details]) =>
-        `| ${component} | ${details.replaceAll("|", "\\|")} |`,
-    )
-    .join("\n");
+  const table = renderTable(specificationsFor(report));
 
   return [
     GENERATED_SECTION_START,
+    "",
     `# ${HOST_EMOJIS[hostName.toLowerCase()]} ${hostName}`,
     "",
     "## Overview",
@@ -173,9 +192,8 @@ function renderGeneratedSection(
     "",
     "## Specs",
     "",
-    "| Component | Details |",
-    "| --- | --- |",
-    rows,
+    table,
+    "",
     GENERATED_SECTION_END,
     "",
   ].join("\n");
