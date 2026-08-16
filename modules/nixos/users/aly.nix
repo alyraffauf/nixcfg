@@ -12,6 +12,8 @@ _: {
       (lib.map (file: "${keysDirectory}/${file}"))
     ];
   in {
+    nix.settings.trusted-users = lib.mkAfter ["aly"];
+
     sops.secrets.aly-password = {
       neededForUsers = true;
       sopsFile = self + "/secrets/aly-password.yaml";
