@@ -20,38 +20,28 @@ _: {
             };
           };
 
-          cryptroot = {
+          root = {
             size = "100%";
 
             content = {
-              name = "cryptroot";
-              type = "luks";
+              extraArgs = ["-f"];
+              type = "btrfs";
 
-              content = {
-                extraArgs = ["-f"];
-                type = "btrfs";
-
-                subvolumes = {
-                  "@" = {
-                    mountOptions = ["compress=zstd" "noatime"];
-                    mountpoint = "/";
-                  };
-
-                  "@home" = {
-                    mountOptions = ["compress=zstd" "noatime"];
-                    mountpoint = "/home";
-                  };
-
-                  "@nix" = {
-                    mountOptions = ["compress=zstd" "noatime"];
-                    mountpoint = "/nix";
-                  };
+              subvolumes = {
+                "@" = {
+                  mountOptions = ["compress=zstd" "noatime"];
+                  mountpoint = "/";
                 };
-              };
 
-              settings = {
-                allowDiscards = true;
-                bypassWorkqueues = true;
+                "@home" = {
+                  mountOptions = ["compress=zstd" "noatime"];
+                  mountpoint = "/home";
+                };
+
+                "@nix" = {
+                  mountOptions = ["compress=zstd" "noatime"];
+                  mountpoint = "/nix";
+                };
               };
             };
           };
