@@ -17,6 +17,7 @@ _: {
       10.254.1.3 rustboro.hoenn
       10.254.1.4 sootopolis.hoenn
       10.254.1.5 fortree.hoenn
+      10.254.1.6 fallarbor.hoenn
     '';
 
     sops.secrets.wireguard-hoenn-private = {

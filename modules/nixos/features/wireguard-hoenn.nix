@@ -8,6 +8,7 @@ _: {
       mauville = "10.254.1.2";
       rustboro = "10.254.1.3";
       sootopolis = "10.254.1.4";
+      fallarbor = "10.254.1.6";
     };
     nodeAddress = nodes.${config.networking.hostName};
   in {
@@ -23,6 +24,8 @@ _: {
         "10.254.1.2" = ["mauville.hoenn"];
         "10.254.1.3" = ["rustboro.hoenn"];
         "10.254.1.4" = ["sootopolis.hoenn"];
+        "10.254.1.5" = ["fortree.hoenn"];
+        "10.254.1.6" = ["fallarbor.hoenn"];
       };
 
       firewall.trustedInterfaces = ["wg-hoenn"];
