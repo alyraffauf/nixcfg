@@ -1,9 +1,9 @@
 _: {
   flake.nixosModules.aly = {pkgs, ...}: {
     users.users.aly.packages = with pkgs; [
-      age 
+      age
       atuin
-      bun 
+      bun
       codex
       duf
       dust
@@ -21,7 +21,7 @@ _: {
       nodejs
       opencode
       ripgrep
-      ripgrep-all 
+      ripgrep-all
       starship
       tmux
       uv
