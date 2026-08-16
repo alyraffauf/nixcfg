@@ -8,14 +8,14 @@ host composes the pieces it needs under `modules/hosts`.
 
 ## Configurations
 
-| Platform | Host | Flake output |
-| --- | --- | --- |
-| NixOS | Fallarbor | `nixosConfigurations.fallarbor` |
-| NixOS | Mauville | `nixosConfigurations.mauville` |
-| NixOS | Rustboro | `nixosConfigurations.rustboro` |
-| NixOS | Sootopolis | `nixosConfigurations.sootopolis` |
-| nix-darwin | Fortree | `darwinConfigurations.fortree` |
-| system-manager | Sootopolis | `systemConfigs.sootopolis` |
+| Platform       | Host       | Flake output                     |
+| -------------- | ---------- | -------------------------------- |
+| NixOS          | Fallarbor  | `nixosConfigurations.fallarbor`  |
+| NixOS          | Mauville   | `nixosConfigurations.mauville`   |
+| NixOS          | Rustboro   | `nixosConfigurations.rustboro`   |
+| NixOS          | Sootopolis | `nixosConfigurations.sootopolis` |
+| nix-darwin     | Fortree    | `darwinConfigurations.fortree`   |
+| system-manager | Sootopolis | `systemConfigs.sootopolis`       |
 
 Hardware discovery is captured with nixos-facter, disk layouts are declared
 with Disko, and SOPS manages encrypted secrets.
