@@ -1,5 +1,12 @@
 _: {
   flake.nixosModules.mauville = {
-    services.displayManager.gdm.autoSuspend = false;
+    services.displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "aly";
+      };
+
+      gdm.autoSuspend = false;
+    };
   };
 }
