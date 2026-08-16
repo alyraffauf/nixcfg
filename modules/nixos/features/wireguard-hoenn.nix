@@ -20,15 +20,15 @@ _: {
     };
 
     networking = {
-      firewall.trustedInterfaces = ["wg-hoenn"];
+      firewall.trustedInterfaces = ["hoenn"];
 
-      wireguard.interfaces.wg-hoenn = {
+      wireguard.interfaces.hoenn = {
         ips = ["${nodeAddress}/24"];
         privateKeyFile = config.sops.secrets.wireguard-hoenn-private.path;
         postSetup = ''
-          ${pkgs.systemd}/bin/resolvectl dns wg-hoenn 10.254.1.1
-          ${pkgs.systemd}/bin/resolvectl domain wg-hoenn ~hoenn
-          ${pkgs.systemd}/bin/resolvectl default-route wg-hoenn false
+          ${pkgs.systemd}/bin/resolvectl dns hoenn 10.254.1.1
+          ${pkgs.systemd}/bin/resolvectl domain hoenn ~hoenn
+          ${pkgs.systemd}/bin/resolvectl default-route hoenn false
         '';
 
         peers = [
@@ -44,6 +44,6 @@ _: {
 
     services.resolved.enable = true;
 
-    systemd.services.wireguard-wg-hoenn.after = ["systemd-resolved.service"];
+    systemd.services.wireguard-hoenn.after = ["systemd-resolved.service"];
   };
 }

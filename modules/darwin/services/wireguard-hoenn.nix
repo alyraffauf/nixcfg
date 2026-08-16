@@ -11,7 +11,7 @@ _: {
       key = "fortree";
     };
 
-    networking.wg-quick.interfaces.wg-hoenn = {
+    networking.wg-quick.interfaces.hoenn = {
       address = ["10.254.1.5/24"];
       privateKeyFile = config.sops.secrets.wireguard-hoenn-private.path;
 
