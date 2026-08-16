@@ -4,8 +4,10 @@
 keys:
   # === user keys (aly@<host>) ===
   - &user_aly_fortree age1w4mzwe89aqgs56mn8zg7dd2l623kwmw80k90wr2sa6dnlcdmhcnsp4kt54
+  - &user_aly_mauville age1876lthmlfq2aq6nm6z2qyu0ed4aa5ss68xvnlw5cqxcdtzslaqrqzgcmlm
   - &user_aly_pacifidlog age1j9jju3whwj72udhge7v4c77gk6v6w2cq8zjngzyppwtptfsz499qyywu9a
   - &user_aly_petalburg age162sx8kppp90mjxw88eqs78hgnpkddf8k9kgtksmmexzvcdxknpkspmkgaf
+  - &user_aly_rustboro age1fczwtlqdqq7pjyzna2yl9nvmhpe68zk5k6nyn0dt4sp0lts04anskhcmu6
   - &user_aly_sootopolis age15td0jk5e2qeq2pexvxguhuuaxuaa7nhql7mhx9jr79caska6t4pqdv5spl
   # === host keys (root@<host>) ===
   - &host_fallarbor age1v4x5alkmvxsx5jsrwpecx0tne0ch2rwfkk0rq5w8x578j2pf5urssg5gx2
@@ -21,8 +23,10 @@ creation_rules:
     key_groups:
       - age:
           - *user_aly_fortree
+          - *user_aly_mauville
           - *user_aly_pacifidlog
           - *user_aly_petalburg
+          - *user_aly_rustboro
           - *user_aly_sootopolis
           - *host_fallarbor
           - *host_fortree
