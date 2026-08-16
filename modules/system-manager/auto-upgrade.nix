@@ -5,6 +5,7 @@ _: {
       dates = "02:00";
       fixedRandomDelay = true;
       flake = "github:alyraffauf/hoenn#systemConfigs.sootopolis";
+      flags = ["--accept-flake-config"];
       persistent = true;
       randomizedDelaySec = "45min";
     };

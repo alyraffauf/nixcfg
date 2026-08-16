@@ -16,7 +16,7 @@ _: {
         /bin/sleep "$random_delay"
 
         for attempt in $(/usr/bin/jot 1 ${toString maxAttempts}); do
-          if ${config.system.build.darwin-rebuild}/bin/darwin-rebuild switch --flake ${lib.escapeShellArg "github:alyraffauf/hoenn#${config.networking.hostName}"} --refresh; then
+          if ${config.system.build.darwin-rebuild}/bin/darwin-rebuild switch --accept-flake-config --flake ${lib.escapeShellArg "github:alyraffauf/hoenn#${config.networking.hostName}"} --refresh; then
             exit 0
           fi
 
