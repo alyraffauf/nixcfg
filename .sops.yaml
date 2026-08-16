@@ -10,6 +10,7 @@ keys:
   # === host keys (root@<host>) ===
   - &host_fallarbor age1v4x5alkmvxsx5jsrwpecx0tne0ch2rwfkk0rq5w8x578j2pf5urssg5gx2
   - &host_fortree age1f9hd8fu0694rc3tr6hwxz3ldfpepref937rmvqdxvvsr0kfcjdxswyzvw3
+  - &host_mauville age1su5lre6favcv6gdc50yh7ecv33qgfp0tm6klunpuasa3q79kmqtsykaq0d
   - &host_pacifidlog age1axn36h9356ena7rq6y2xa4rcm250w9h0m9pz6x0677gla0v4f4dsj92yfm
   - &host_petalburg age1kgp3x48wn0dmzwqp0vdpfsdw42rej0ypkj0qavs7c2t2tgdud5zqcmhl40
   - &host_rustboro age1c62ajygt7yx5k0f85h6w3tquu4ak0gg5c9drrhh34yyyea3xtpas8knau3
@@ -25,6 +26,7 @@ creation_rules:
           - *user_aly_sootopolis
           - *host_fallarbor
           - *host_fortree
+          - *host_mauville
           - *host_pacifidlog
           - *host_petalburg
           - *host_rustboro
