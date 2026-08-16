@@ -1,5 +1,7 @@
 _: {
   flake.nixosModules.default = {
+    nix.daemonCPUSchedPolicy = "idle";
+
     nix.settings = {
       experimental-features = [
         "nix-command"
