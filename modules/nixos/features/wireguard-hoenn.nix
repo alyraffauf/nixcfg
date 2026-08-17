@@ -10,6 +10,7 @@ _: {
       rustboro = "10.254.1.3";
       sootopolis = "10.254.1.4";
       fallarbor = "10.254.1.6";
+      pacifidlog = "10.254.1.7";
     };
     nodeAddress = nodes.${config.networking.hostName};
   in {
