@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository manages NixOS, nix-darwin, and system-manager hosts through a flake-parts configuration. `flake.nix` defines inputs and imports the module tree. Put reusable platform configuration in `modules/nixos/`, `modules/darwin/`, or `modules/system-manager/`; compose machine-specific settings under `modules/hosts/<platform>/<hostname>/`. Shared flake modules, such as deployments, overlays, development shells, and formatting, live directly in `modules/`. Public age/SSH recipients belong in `keys/`; encrypted SOPS documents belong in `secrets/`. GitHub Actions workflows are in `.github/workflows/`.
+This repository manages NixOS, nix-darwin, and system-manager hosts through a flake-parts configuration. `flake.nix` defines inputs and imports the module tree. Put reusable platform configuration in `nix/nixos/`, `nix/darwin/`, or `nix/system-manager/`; compose machine-specific settings under `nix/hosts/<platform>/<hostname>/`. Shared flake modules, such as deployments, overlays, development shells, and formatting, live directly in `nix/`. Public age/SSH recipients belong in `keys/`; encrypted SOPS documents belong in `secrets/`. GitHub Actions workflows are in `.github/workflows/`.
 
 ## Build, Test, and Development Commands
 

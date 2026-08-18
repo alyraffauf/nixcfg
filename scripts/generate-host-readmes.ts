@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 const BYTES_PER_GIBIBYTE = 1024 ** 3;
 const KIBIBYTES_PER_GIBIBYTE = 1024 ** 2;
-const FACTER_HOSTS_DIRECTORY = "modules/hosts/nixos";
+const FACTER_HOSTS_DIRECTORY = "nix/hosts/nixos";
 const GENERATED_SECTION_START = "<!-- BEGIN GENERATED HOST SPECS -->";
 const GENERATED_SECTION_END = "<!-- END GENERATED HOST SPECS -->";
 const HOST_EMOJIS: Record<string, string> = {

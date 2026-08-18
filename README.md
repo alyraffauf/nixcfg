@@ -3,8 +3,8 @@
 My personal Nix configuration for NixOS, nix-darwin, and system-manager.
 
 The flake is organized as small, composable modules. Shared behavior lives
-under `modules/nixos`, `modules/darwin`, and `modules/system-manager`; each
-host pulls together the pieces it needs under `modules/hosts`.
+under `nix/nixos`, `nix/darwin`, and `nix/system-manager`; each host pulls
+together the pieces it needs under `nix/hosts`.
 
 ## Configurations
 
@@ -23,14 +23,14 @@ with Disko, and SOPS manages encrypted secrets.
 ## Repository layout
 
 ```text
-modules/
+nix/
 ├── nixos/           Shared NixOS modules, features, services, and users
 ├── darwin/          Shared nix-darwin modules
 ├── system-manager/  Shared system-manager modules
 └── hosts/           Per-host composition and hardware state
 ```
 
-`flake.nix` imports the `modules/` tree. Each Nix file there is a flake-parts
+`flake.nix` imports the `nix/` tree. Each Nix file there is a flake-parts
 module that declares or extends a flake output; standalone helpers live outside
 that tree.
 

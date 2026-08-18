@@ -106,7 +106,7 @@
       };
 
       imports = [
-        (inputs.import-tree ./modules)
+        (inputs.import-tree ./nix)
         inputs.blzrd.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
