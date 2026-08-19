@@ -30,6 +30,11 @@
 
   "packageRules": [
     {
+      "description": "OCI Helm charts use chart versions, not container digests",
+      "matchManagers": ["flux"],
+      "pinDigests": false
+    },
+    {
       "description": "Auto-merge routine updates after CI passes",
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
       "automerge": true
