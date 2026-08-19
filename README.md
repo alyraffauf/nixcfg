@@ -1,71 +1,105 @@
 # ❄️ hoenn
 
-My personal Nix configuration for NixOS, nix-darwin, and system-manager.
+Declarative configuration for my personal machines. Hoenn uses a flake-parts
+Nix flake to compose NixOS, nix-darwin, and system-manager configurations,
+with shared modules for packages, desktop environments, networking, secrets,
+and automatic upgrades.
 
-The flake is organized as small, composable modules. Shared behavior lives
-under `nix/nixos`, `nix/darwin`, and `nix/system-manager`; each host pulls
-together the pieces it needs under `nix/hosts`.
+For my personal homelab, see [johto](https://github.com/alyraffauf/johto). For
+my production services, see [sinnoh](https://github.com/alyraffauf/sinnoh).
 
 ## Configurations
 
-| Platform       | Host       | Flake output                     |
-| -------------- | ---------- | -------------------------------- |
-| NixOS          | Fallarbor  | `nixosConfigurations.fallarbor`  |
-| NixOS          | Mauville   | `nixosConfigurations.mauville`   |
-| NixOS          | Rustboro   | `nixosConfigurations.rustboro`   |
-| NixOS          | Sootopolis | `nixosConfigurations.sootopolis` |
-| nix-darwin     | Fortree    | `darwinConfigurations.fortree`   |
-| system-manager | Sootopolis | `systemConfigs.sootopolis`       |
+| Host                                                 | Platform       | Flake output                     |
+| ---------------------------------------------------- | -------------- | -------------------------------- |
+| [`fallarbor`](nix/hosts/nixos/fallarbor/README.md)   | NixOS          | `nixosConfigurations.fallarbor`  |
+| [`mauville`](nix/hosts/nixos/mauville/README.md)     | NixOS          | `nixosConfigurations.mauville`   |
+| [`pacifidlog`](nix/hosts/nixos/pacifidlog/README.md) | NixOS          | `nixosConfigurations.pacifidlog` |
+| [`rustboro`](nix/hosts/nixos/rustboro/README.md)     | NixOS          | `nixosConfigurations.rustboro`   |
+| [`sootopolis`](nix/hosts/nixos/sootopolis/README.md) | NixOS          | `nixosConfigurations.sootopolis` |
+| [`fortree`](nix/hosts/darwin/fortree/README.md)      | nix-darwin     | `darwinConfigurations.fortree`   |
+| `sootopolis`                                         | system-manager | `systemConfigs.sootopolis`       |
 
-Hardware discovery is captured with nixos-facter, disk layouts are declared
-with Disko, and SOPS manages encrypted secrets.
+NixOS hardware discovery is captured with nixos-facter, disk layouts are
+declared with Disko, and SOPS manages encrypted secrets. Shared WireGuard and
+Tailscale modules connect hosts to the networks they need.
 
-## Repository layout
+## Repository Layout
 
 ```text
 nix/
-├── nixos/           Shared NixOS modules, features, services, and users
-├── darwin/          Shared nix-darwin modules
+├── hosts/  Per-host composition and hardware state
+├── nixos/  Shared NixOS modules and features
+├── darwin/  Shared nix-darwin modules
 ├── system-manager/  Shared system-manager modules
-└── hosts/           Per-host composition and hardware state
+├── deployments.nix  blzrd deployment targets
+├── devShells.nix  Development tools
+└── treefmt.nix  Formatting and linting configuration
+keys/  Public SSH keys used as age recipients
+secrets/  SOPS-encrypted configuration
+scripts/  Repository maintenance utilities
+.github/workflows/  Flake checks and configuration builds
 ```
 
-`flake.nix` imports the `nix/` tree. Each Nix file there is a flake-parts
-module that declares or extends a flake output; standalone helpers live outside
-that tree.
+`flake.nix` recursively imports the modules under `nix/`. Each Nix file there
+declares or extends a flake output, so new modules do not need to be added to a
+central import list.
 
-## Common commands
+## Development
 
-Run these commands from the repository root.
+Enter the pinned toolchain with `nix develop`, or run `direnv allow` to load it
+automatically. The shell includes Bun, Just, `nh`, SOPS, `ssh-to-age`, and
+`blzrd`. Useful commands from the repository root include:
 
 ```bash
-# Format and evaluate the complete flake.
+# Format Nix, YAML, Markdown, TypeScript, and shell files.
 nix fmt
+
+# Evaluate the flake and run its configured checks.
 nix flake check
 
-# Build an output before applying it.
+# Build configurations without activating them.
 nix build .#nixosConfigurations.mauville.config.system.build.toplevel
 nix build .#darwinConfigurations.fortree.config.system.build.toplevel
 nix build .#systemConfigs.sootopolis
 
-# Apply a configuration on its target host.
-sudo nixos-rebuild switch --flake .#mauville
-darwin-rebuild switch --flake .#fortree
+# Refresh the generated NixOS host hardware documentation.
+bun scripts/generate-host-readmes.ts
+
+# Discover repository maintenance recipes.
+just
 ```
 
-The Sootopolis system-manager configuration is built as shown above and is
-also refreshed by its configured system-manager auto-upgrade service.
+CI evaluates the complete flake and separately builds the development shell
+plus NixOS, nix-darwin, and system-manager outputs.
+
+## NixOS Deployments
+
+`nix/deployments.nix` currently registers Mauville as the flake's `blzrd` node.
+From the development shell, build and deploy that node with:
+
+```bash
+blzrd switch mauville # Activate Mauville and set its boot default
+blzrd boot mauville   # Set Mauville's boot default without activating it
+```
+
+Run `nix flake check` and build the affected configuration first. Supplying no
+node name targets every registered node, so name the intended node explicitly
+to keep the command safe as the deployment set grows.
 
 ## Secrets
 
-Secrets in `secrets/` are SOPS-encrypted for every public key in `keys/`.
-NixOS and nix-darwin decrypt host secrets with
-`/etc/ssh/ssh_host_ed25519_key` during activation. Edit a secret with SOPS,
-then build and apply the affected configuration:
+Secrets are encrypted with SOPS for the recipients declared in `.sops.yaml`.
+Never commit decrypted values or private keys.
 
 ```bash
-sops secrets/tailscale.yaml
+just sops-bootstrap           # Install this machine's age key once
+just sops-edit tailscale.yaml # Edit an encrypted secret
+just sops-rekey               # Update recipients after keys/ changes
 ```
 
-When adding or removing a recipient, update `.sops.yaml` and re-encrypt every
-secret before committing the change.
+Commit `.sops.yaml` and all re-encrypted files together after changing a public
+key in `keys/`.
+
+See [AGENTS.md](AGENTS.md) for contribution and validation guidelines. This
+project is available under the [MIT License](LICENSE.md).

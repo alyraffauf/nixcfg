@@ -10,6 +10,7 @@ const GENERATED_SECTION_END = "<!-- END GENERATED HOST SPECS -->";
 const HOST_EMOJIS: Record<string, string> = {
   fallarbor: "🍃",
   mauville: "⚡",
+  pacifidlog: "🪵",
   rustboro: "🪨",
   sootopolis: "🌊",
 };
