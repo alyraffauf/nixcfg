@@ -1,20 +1,10 @@
 _: {
-  flake.homeModules.aly = {pkgs, ...}: {
-    home.packages = [pkgs.eza];
-
+  flake.homeModules.aly = {
     programs.fish = {
       enable = true;
 
       shellAliases = {
-        eza = "eza --icons auto --git --group-directories-first --header";
         grep = "grep --color=auto";
-        l = "eza -lah";
-        la = "eza -a";
-        ll = "eza -l";
-        lla = "eza -la";
-        ls = "eza";
-        lt = "eza --tree";
-        tree = "eza --tree";
       };
 
       functions = {
@@ -22,6 +12,7 @@ _: {
 
         mkcd = {
           description = "Create a directory and enter it";
+
           body = ''
             if test (count $argv) -ne 1
               echo 'usage: mkcd DIRECTORY' >&2
@@ -74,22 +65,6 @@ _: {
 
         if test "$PWD" = "/var/home/aly"
           builtin cd "$HOME"
-        end
-
-        if type -q direnv
-          direnv hook fish | source
-        end
-        if type -q fzf
-          fzf --fish | source
-        end
-        if type -q atuin
-          atuin init fish --disable-up-arrow | source
-        end
-        if type -q nix-your-shell
-          nix-your-shell fish | source
-        end
-        if type -q zoxide
-          zoxide init fish --cmd cd | source
         end
       '';
     };
