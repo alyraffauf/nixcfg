@@ -23,6 +23,7 @@ _: {
       ripgrep
       ripgrep-all
       starship
+      tmux
       uv
       yq
       zoxide
