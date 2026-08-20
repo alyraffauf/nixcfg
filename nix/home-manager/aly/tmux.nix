@@ -70,7 +70,7 @@ _: {
         set -g status-left-length 30
         set -g status-left '#{prefix_highlight}#[fg=colour39,bold] #S #[default]'
         set -g status-right-length 80
-        set -g status-right '#(git -C "#{pane_current_path}" branch --show-current 2>/dev/null | sed "s/^/ /")#(upower -i /org/freedesktop/UPower/devices/DisplayDevice 2>/dev/null | grep -q "state:" && upower -i /org/freedesktop/UPower/devices/DisplayDevice 2>/dev/null | rg -o "[0-9]+%" | head -1 | sed "s/^/  ⚡ /")#[fg=colour245]  %a %H:%M#[default]'
+        set -g status-right '#(git -C "#{pane_current_path}" branch --show-current 2>/dev/null | sed "s/^/ /")#(upower -i /org/freedesktop/UPower/devices/DisplayDevice 2>/dev/null | grep -q "state:" && upower -i /org/freedesktop/UPower/devices/DisplayDevice 2>/dev/null | rg --no-config --color=never -o "[0-9]+%" | head -1 | sed "s/^/  ⚡ /")#[fg=colour245]  %a %H:%M#[default]'
         set -g window-status-separator ' '
         setw -g monitor-activity on
         set -g visual-activity off
