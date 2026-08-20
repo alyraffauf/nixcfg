@@ -16,6 +16,7 @@
       self.nixosModules.aly
       self.nixosModules.cosmic
       self.nixosModules.tailscale
+      self.nixosModules.thermald
       self.nixosModules.wireguardHoenn
     ];
 
