@@ -1,7 +1,6 @@
 _: {
   flake.homeModules.aly = {
     home.shellAliases = {
-      eza = "eza --icons auto --git --group-directories-first --header";
       l = "eza -lah";
       la = "eza -a";
       ll = "eza -l";
