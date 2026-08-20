@@ -341,7 +341,7 @@
     ],
     "camera": [
       {
-        "index": 43,
+        "index": 42,
         "attached_to": 48,
         "class_list": ["camera", "usb"],
         "bus_type": {
@@ -423,19 +423,10 @@
         "driver_module": "uvcvideo",
         "drivers": ["uvcvideo"],
         "driver_modules": ["uvcvideo"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["uvcvideo"],
-          "active": true,
-          "modprobe": true,
-          "names": ["uvcvideo"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "usb:v0408p546Ed0010dcEFdsc02dp01ic0Eisc01ip01in00"
       },
       {
-        "index": 46,
+        "index": 45,
         "attached_to": 48,
         "class_list": ["camera", "usb"],
         "bus_type": {
@@ -520,7 +511,7 @@
         "module_alias": "usb:v0408p546Ed0010dcEFdsc02dp01ic0Eisc02ip01in03"
       },
       {
-        "index": 47,
+        "index": 46,
         "attached_to": 48,
         "class_list": ["camera", "usb"],
         "bus_type": {
@@ -687,15 +678,6 @@
         "driver_module": "uvcvideo",
         "drivers": ["uvcvideo"],
         "driver_modules": ["uvcvideo"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["uvcvideo"],
-          "active": true,
-          "modprobe": true,
-          "names": ["uvcvideo"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "usb:v0408p546Ed0010dcEFdsc02dp01ic0Eisc01ip01in02"
       }
     ],
@@ -885,7 +867,7 @@
     ],
     "disk": [
       {
-        "index": 41,
+        "index": 40,
         "attached_to": 14,
         "class_list": ["disk", "block_device", "nvme"],
         "bus_type": {
@@ -958,9 +940,18 @@
         "driver_modules": ["nvme"]
       },
       {
-        "index": 42,
-        "attached_to": 0,
-        "class_list": ["disk", "block_device"],
+        "index": 41,
+        "attached_to": 35,
+        "class_list": ["disk", "usb", "scsi", "block_device"],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
         "base_class": {
           "hex": "0106",
           "name": "Mass Storage Device",
@@ -971,21 +962,62 @@
           "name": "Disk",
           "value": 0
         },
-        "model": "Disk",
-        "sysfs_id": "/class/block/zram0",
+        "vendor": {
+          "hex": "0781",
+          "name": "USB",
+          "value": 1921
+        },
+        "device": {
+          "hex": "5595",
+          "name": "SanDisk 3.2Gen1",
+          "value": 21909
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "0101722a8f5f759a8d11",
+        "model": "USB SanDisk 3.2Gen1",
+        "sysfs_id": "/class/block/sda",
+        "sysfs_bus_id": "0:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:14.0/usb3/3-1/3-1:1.0/host0/target0:0:0/0:0:0:0",
         "unix_device_names": [
-          "/dev/disk/by-label/zram0",
-          "/dev/disk/by-uuid/608e3243-a2a7-4f09-814b-d13d2f10e059",
-          "/dev/zram0"
+          "/dev/disk/by-id/usb-USB_SanDisk_3.2Gen1_0101722a8f5f759a8d11ed34986aca695be861745fe0f609341e5551ebef38583412000000000000000000008c30dc8fff1370009555810769b0f61e-0:0",
+          "/dev/disk/by-path/pci-0000:00:14.0-usb-0:1:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-path/pci-0000:00:14.0-usbv2-0:1:1.0-scsi-0:0:0:0",
+          "/dev/sda"
         ],
+        "unix_device_name2": "/dev/sg0",
         "resources": [
+          {
+            "type": "baud",
+            "speed": 480000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          },
+          {
+            "type": "disk_geo",
+            "cylinders": 58674,
+            "heads": 64,
+            "sectors": 32,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
           {
             "type": "size",
             "unit": "sectors",
-            "value_1": 8078592,
-            "value_2": 4096
+            "value_1": 120164352,
+            "value_2": 512
           }
-        ]
+        ],
+        "driver": "usb-storage",
+        "driver_module": "usb_storage",
+        "drivers": ["sd", "usb-storage"],
+        "driver_modules": ["sd_mod", "usb_storage"],
+        "module_alias": "usb:v0781p5595d0100dc00dsc00dp00ic08isc06ip50in00"
       }
     ],
     "graphics_card": [
@@ -1053,22 +1085,13 @@
         "driver_module": "xe",
         "drivers": ["xe"],
         "driver_modules": ["xe"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["xe"],
-          "active": true,
-          "modprobe": true,
-          "names": ["xe"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d000064A0sv0000103Csd00008CDEbc03sc00i00",
         "label": "Onboard IGD"
       }
     ],
     "hub": [
       {
-        "index": 44,
+        "index": 43,
         "attached_to": 35,
         "class_list": ["usb", "hub"],
         "bus_type": {
@@ -1087,7 +1110,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd",
+          "name": "Linux 7.1.6 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -1101,7 +1124,7 @@
           "value": 0
         },
         "serial": "0000:00:14.0",
-        "model": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd xHCI Host Controller",
+        "model": "Linux 7.1.6 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-0:1.0",
         "sysfs_bus_id": "3-0:1.0",
         "resources": [
@@ -1167,7 +1190,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd",
+          "name": "Linux 7.1.6 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -1181,7 +1204,7 @@
           "value": 0
         },
         "serial": "0000:00:14.0",
-        "model": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd xHCI Host Controller",
+        "model": "Linux 7.1.6 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb4/4-0:1.0",
         "sysfs_bus_id": "4-0:1.0",
         "detail": {
@@ -1237,7 +1260,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd",
+          "name": "Linux 7.1.6 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -1251,7 +1274,7 @@
           "value": 0
         },
         "serial": "0000:00:0d.0",
-        "model": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd xHCI Host Controller",
+        "model": "Linux 7.1.6 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb1/1-0:1.0",
         "sysfs_bus_id": "1-0:1.0",
         "resources": [
@@ -1317,7 +1340,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd",
+          "name": "Linux 7.1.6 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -1331,7 +1354,7 @@
           "value": 0
         },
         "serial": "0000:00:0d.0",
-        "model": "Linux 7.1.6-201.fc44.x86_64 xhci-hcd xHCI Host Controller",
+        "model": "Linux 7.1.6 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb2/2-0:1.0",
         "sysfs_bus_id": "2-0:1.0",
         "detail": {
@@ -1493,190 +1516,11 @@
           "horizontal_flag": 45,
           "vertical_flag": 43
         }
-      },
-      {
-        "index": 40,
-        "attached_to": 34,
-        "class_list": ["monitor"],
-        "base_class": {
-          "hex": "0100",
-          "name": "Monitor",
-          "value": 256
-        },
-        "sub_class": {
-          "hex": "0002",
-          "name": "LCD Monitor",
-          "value": 2
-        },
-        "vendor": {
-          "hex": "25e3",
-          "value": 9699
-        },
-        "device": {
-          "hex": "ffff",
-          "name": "27C1U-D",
-          "value": 65535
-        },
-        "serial": "0000000000001",
-        "model": "27C1U-D",
-        "resources": [
-          {
-            "type": "monitor",
-            "width": 1024,
-            "height": 768,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 1024,
-            "height": 768,
-            "vertical_frequency": 75,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 1280,
-            "height": 1024,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 1280,
-            "height": 1024,
-            "vertical_frequency": 75,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 1280,
-            "height": 720,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 1600,
-            "height": 900,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 3840,
-            "height": 2160,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 640,
-            "height": 480,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 640,
-            "height": 480,
-            "vertical_frequency": 75,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 800,
-            "height": 600,
-            "vertical_frequency": 60,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 800,
-            "height": 600,
-            "vertical_frequency": 75,
-            "interlaced": false
-          },
-          {
-            "type": "monitor",
-            "width": 832,
-            "height": 624,
-            "vertical_frequency": 75,
-            "interlaced": false
-          },
-          {
-            "type": "size",
-            "unit": "mm",
-            "value_1": 597,
-            "value_2": 336
-          }
-        ],
-        "detail": {
-          "manufacture_year": 2022,
-          "manufacture_week": 32,
-          "vertical_sync": {
-            "min": 40,
-            "max": 60
-          },
-          "horizontal_sync": {
-            "min": 133,
-            "max": 133
-          },
-          "horizontal_sync_timings": {
-            "disp": 3840,
-            "sync_start": 3888,
-            "sync_end": 3920,
-            "total": 4000
-          },
-          "vertical_sync_timings": {
-            "disp": 2160,
-            "sync_start": 2163,
-            "sync_end": 2168,
-            "total": 2222
-          },
-          "clock": 533280,
-          "width": 3840,
-          "height": 2160,
-          "width_millimetres": 597,
-          "height_millimetres": 336,
-          "horizontal_flag": 45,
-          "vertical_flag": 43,
-          "vendor": "",
-          "name": "27C1U-D"
-        },
-        "driver_info": {
-          "type": "display",
-          "width": 3840,
-          "height": 2160,
-          "vertical_sync": {
-            "min": 40,
-            "max": 60
-          },
-          "horizontal_sync": {
-            "min": 133,
-            "max": 133
-          },
-          "bandwidth": 0,
-          "horizontal_sync_timings": {
-            "disp": 3840,
-            "sync_start": 3888,
-            "sync_end": 3920,
-            "total": 4000
-          },
-          "vertical_sync_timings": {
-            "disp": 2160,
-            "sync_start": 2163,
-            "sync_end": 2168,
-            "total": 2222
-          },
-          "horizontal_flag": 45,
-          "vertical_flag": 43
-        }
       }
     ],
     "mouse": [
       {
-        "index": 57,
+        "index": 56,
         "attached_to": 0,
         "bus_type": {
           "hex": "0081",
@@ -1701,8 +1545,8 @@
           "hex": "cfd2",
           "value": 53202
         },
-        "sysfs_id": "/devices/pci0000:00/0000:00:19.1/i2c_designware.3/i2c-3/i2c-SYNA3580:00/0018:06CB:CFD2.0003/input/input14",
-        "unix_device_names": ["/dev/input/event4", "/dev/input/ + handler"]
+        "sysfs_id": "/devices/pci0000:00/0000:00:19.1/i2c_designware.3/i2c-3/i2c-SYNA3580:00/0018:06CB:CFD2.0003/input/input30",
+        "unix_device_names": ["/dev/input/event15", "/dev/input/ + handler"]
       }
     ],
     "network_controller": [
@@ -1777,15 +1621,6 @@
         "driver_module": "iwlwifi",
         "drivers": ["iwlwifi"],
         "driver_modules": ["iwlwifi"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["iwlwifi"],
-          "active": true,
-          "modprobe": true,
-          "names": ["iwlwifi"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A840sv00008086sd000000E4bc02sc80i00"
       }
     ],
@@ -1809,7 +1644,7 @@
         "unix_device_names": ["lo"]
       },
       {
-        "index": 56,
+        "index": 55,
         "attached_to": 20,
         "class_list": ["network_interface"],
         "base_class": {
@@ -1902,15 +1737,6 @@
         "driver_module": "btintel_pcie",
         "drivers": ["btintel_pcie"],
         "driver_modules": ["btintel_pcie"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["btintel_pcie"],
-          "active": true,
-          "modprobe": true,
-          "names": ["btintel_pcie"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A876sv00008086sd0000000Ebc0Dsc11i00"
       },
       {
@@ -2029,15 +1855,6 @@
         "driver_module": "processor_thermal_device_pci",
         "drivers": ["proc_thermal_pci"],
         "driver_modules": ["processor_thermal_device_pci"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["processor_thermal_device_pci"],
-          "active": true,
-          "modprobe": true,
-          "names": ["processor_thermal_device_pci"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000641Dsv0000103Csd00008CDEbc11sc80i00"
       },
       {
@@ -2099,15 +1916,6 @@
         "driver_module": "mei_me",
         "drivers": ["mei_me"],
         "driver_modules": ["mei_me"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["mei_me"],
-          "active": true,
-          "modprobe": true,
-          "names": ["mei_me"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A870sv0000103Csd00008CDEbc07sc80i00"
       },
       {
@@ -2168,15 +1976,6 @@
         "driver_module": "spi_intel_pci",
         "drivers": ["intel-spi"],
         "driver_modules": ["spi_intel_pci"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["spi_intel_pci"],
-          "active": true,
-          "modprobe": true,
-          "names": ["spi_intel_pci"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A823sv0000103Csd00008CDEbc0Csc80i00"
       },
       {
@@ -2363,15 +2162,6 @@
         "driver_module": "intel_ish_ipc",
         "drivers": ["intel_ish_ipc"],
         "driver_modules": ["intel_ish_ipc"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["intel_ish_ipc"],
-          "active": true,
-          "modprobe": true,
-          "names": ["intel_ish_ipc"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A845sv0000103Csd00008CDEbc07sc00i00"
       },
       {
@@ -2487,15 +2277,6 @@
         "driver_module": "intel_vpu",
         "drivers": ["intel_vpu"],
         "driver_modules": ["intel_vpu"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["intel_vpu"],
-          "active": true,
-          "modprobe": true,
-          "names": ["intel_vpu"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000643Esv0000103Csd00008CDEbc12sc00i00"
       },
       {
@@ -2557,15 +2338,6 @@
         "driver_module": "intel_pmc_ssram_telemetry",
         "drivers": ["intel_pmc_ssram_telemetry"],
         "driver_modules": ["intel_pmc_ssram_telemetry"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["intel_pmc_ssram_telemetry"],
-          "active": true,
-          "modprobe": true,
-          "names": ["intel_pmc_ssram_telemetry"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A87Fsv0000103Csd00008CDEbc05sc00i00"
       },
       {
@@ -2753,15 +2525,6 @@
         "driver_module": "intel_vsec",
         "drivers": ["intel_vsec"],
         "driver_modules": ["intel_vsec"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["intel_vsec"],
-          "active": true,
-          "modprobe": true,
-          "names": ["intel_vsec"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000647Dsv0000103Csd00008CDEbc11sc80i00"
       }
     ],
@@ -2825,15 +2588,6 @@
         "driver_module": "snd_sof_pci_intel_lnl",
         "drivers": ["sof-audio-pci-intel-lnl"],
         "driver_modules": ["snd_sof_pci_intel_lnl"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["snd_sof_pci_intel_lnl"],
-          "active": true,
-          "modprobe": true,
-          "names": ["snd_sof_pci_intel_lnl"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A828sv0000103Csd00008CDEbc04sc01i00"
       }
     ],
@@ -2895,15 +2649,6 @@
         "driver_module": "nvme",
         "drivers": ["nvme"],
         "driver_modules": ["nvme"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["nvme"],
-          "active": true,
-          "modprobe": true,
-          "names": ["nvme"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00001C5Cd00001959sv00001C5Csd00001959bc01sc08i02"
       }
     ],
@@ -2912,7 +2657,7 @@
     },
     "usb": [
       {
-        "index": 45,
+        "index": 44,
         "attached_to": 48,
         "class_list": ["usb", "unknown"],
         "bus_type": {
@@ -2984,7 +2729,7 @@
       },
       {
         "index": 49,
-        "attached_to": 44,
+        "attached_to": 43,
         "class_list": ["usb", "unknown"],
         "bus_type": {
           "hex": "0086",
@@ -3261,15 +3006,6 @@
         "driver_module": "thunderbolt",
         "drivers": ["thunderbolt"],
         "driver_modules": ["thunderbolt"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["thunderbolt"],
-          "active": true,
-          "modprobe": true,
-          "names": ["thunderbolt"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A834sv0000103Csd00008CDEbc0Csc03i40"
       },
       {
@@ -3326,7 +3062,7 @@
         "sysfs_iommu_group_id": 10,
         "detail": {
           "function": 0,
-          "command": 1026,
+          "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
           "prog_if": 48
@@ -3400,15 +3136,6 @@
         "driver_module": "thunderbolt",
         "drivers": ["thunderbolt"],
         "driver_modules": ["thunderbolt"],
-        "driver_info": {
-          "type": "module",
-          "db_entry_0": ["thunderbolt"],
-          "active": true,
-          "modprobe": true,
-          "names": ["thunderbolt"],
-          "module_args": [""],
-          "conf": ""
-        },
         "module_alias": "pci:v00008086d0000A833sv0000103Csd00008CDEbc0Csc03i40"
       }
     ]
@@ -3806,7 +3533,7 @@
         "name": "Firmware Version Info",
         "handles": [
           51539607563, 55834574860, 60129542157, 64424509454, 68719476751,
-          1172526071824
+          279172874256
         ]
       }
     ],

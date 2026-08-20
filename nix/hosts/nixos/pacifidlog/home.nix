@@ -1,6 +1,6 @@
 {inputs, ...}: {
-  flake.darwinModules.fortree = {self, ...}: {
-    imports = [inputs.home-manager.darwinModules.home-manager];
+  flake.nixosModules.pacifidlog = {self, ...}: {
+    imports = [inputs.home-manager.nixosModules.home-manager];
 
     home-manager = {
       backupFileExtension = "backup";
@@ -10,7 +10,7 @@
 
       users.aly = {
         home = {
-          homeDirectory = "/Users/aly";
+          homeDirectory = "/home/aly";
           stateVersion = "26.05";
           username = "aly";
         };

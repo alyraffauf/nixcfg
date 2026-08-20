@@ -1,5 +1,7 @@
-_: {
+{inputs, ...}: {
   flake.nixosModules.sootopolis = {self, ...}: {
+    imports = [inputs.home-manager.nixosModules.home-manager];
+
     home-manager = {
       backupFileExtension = "backup";
       extraSpecialArgs = {inherit self;};
