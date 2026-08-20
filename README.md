@@ -1,7 +1,7 @@
 # ❄️ hoenn
 
 Declarative configuration for my personal machines. Hoenn uses a flake-parts
-Nix flake to compose NixOS, nix-darwin, and system-manager configurations,
+Nix flake to compose NixOS, nix-darwin, Home Manager, and system-manager configurations,
 with shared modules for packages, desktop environments, networking, secrets,
 and automatic upgrades.
 
@@ -31,6 +31,7 @@ nix/
 ├── hosts/  Per-host composition and hardware state
 ├── nixos/  Shared NixOS modules and features
 ├── darwin/  Shared nix-darwin modules
+├── homes/  Home Manager modules
 ├── system-manager/  Shared system-manager modules
 ├── deployments.nix  blzrd deployment targets
 ├── devShells.nix  Development tools

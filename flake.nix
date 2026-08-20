@@ -1,5 +1,5 @@
 {
-  description = "Personal NixOS, Darwin, and system-manager configurations";
+  description = "Personal NixOS, Darwin, Home Manager, and system-manager configurations";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -27,6 +27,11 @@
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -108,6 +113,7 @@
       imports = [
         (inputs.import-tree ./nix)
         inputs.blzrd.flakeModule
+        inputs.home-manager.flakeModules.home-manager
         inputs.treefmt-nix.flakeModule
       ];
     };

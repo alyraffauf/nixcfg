@@ -4,7 +4,8 @@
 
 `flake.nix` recursively imports the flake-parts modules under `nix/`. Shared
 platform settings live in `nix/nixos/`, `nix/darwin/`, and
-`nix/system-manager/`; host composition and hardware state live in
+`nix/system-manager/`; Home Manager configurations live in
+`nix/homes/home-manager/<user>/`; host composition and hardware state live in
 `nix/hosts/<platform>/<host>/`. Shared flake concerns such as deployments,
 overlays, development shells, and formatting live directly in `nix/`.
 Utilities belong in `scripts/`, public SSH keys in `keys/`, SOPS-encrypted
@@ -57,8 +58,9 @@ There is no separate unit-test suite or coverage threshold. Treat successful
 flake evaluation and affected-output builds as required validation. Changes to
 shared NixOS modules should build for every consuming NixOS host; changes to
 Darwin or system-manager modules should build Fortree or the Sootopolis
-system-manager output, respectively. Never switch or deploy a configuration
-merely to test it.
+system-manager output, respectively. Changes to Home Manager modules should
+build Sootopolis's NixOS output. Never switch or deploy a configuration merely
+to test it.
 
 ## Commit & Pull Request Guidelines
 
