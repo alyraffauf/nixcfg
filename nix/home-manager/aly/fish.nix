@@ -68,5 +68,7 @@ _: {
         end
       '';
     };
+
+    programs.man.generateCaches = false;
   };
 }
