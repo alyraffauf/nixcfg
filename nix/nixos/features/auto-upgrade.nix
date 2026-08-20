@@ -1,5 +1,5 @@
 _: {
-  flake.nixosModules.default = {config, ...}: {
+  flake.nixosModules.autoUpgrade = {config, ...}: {
     system.autoUpgrade = {
       enable = true;
       allowReboot = false;
