@@ -1,5 +1,5 @@
 _: {
-  flake.nixosModules.sootopolis = {self, ...}: {
+  flake.nixosModules.rustboro = {self, ...}: {
     home-manager = {
       backupFileExtension = "backup";
       extraSpecialArgs = {inherit self;};
