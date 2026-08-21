@@ -4,6 +4,7 @@
 keys:
   # === user keys (aly@<host>) ===
   - &user_aly_fortree age1tgm3rcc2glqjxl5al2r780aweywv5tc2u065fzqlntwjzws4kckqepz7nl
+  - &user_aly_goldenrod age1e5a0aaueyk34klry2qk094zrwfsvga0uft93mwweye30xhqhvfzs3jgqku
   - &user_aly_mauville age1876lthmlfq2aq6nm6z2qyu0ed4aa5ss68xvnlw5cqxcdtzslaqrqzgcmlm
   - &user_aly_pacifidlog age1j9jju3whwj72udhge7v4c77gk6v6w2cq8zjngzyppwtptfsz499qyywu9a
   - &user_aly_petalburg age162sx8kppp90mjxw88eqs78hgnpkddf8k9kgtksmmexzvcdxknpkspmkgaf
@@ -23,6 +24,7 @@ creation_rules:
     key_groups:
       - age:
           - *user_aly_fortree
+          - *user_aly_goldenrod
           - *user_aly_mauville
           - *user_aly_pacifidlog
           - *user_aly_petalburg
