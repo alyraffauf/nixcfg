@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "astrocommunity": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786355808,
+        "narHash": "sha256-oS+SR4IhqWGLtS+LVWCH+zthjqacYLYYoBoa+jOoET8=",
+        "owner": "AstroNvim",
+        "repo": "astrocommunity",
+        "rev": "fe1aabf613f8480bc6414940e018e0215ba93117",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AstroNvim",
+        "repo": "astrocommunity",
+        "type": "github"
+      }
+    },
+    "astronvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785977107,
+        "narHash": "sha256-PYlfTdj3ERbep5MMQzCM3gCJ9SYnJA2S3OSDu/6Go3A=",
+        "owner": "AstroNvim",
+        "repo": "AstroNvim",
+        "rev": "11ac246aae7218ad077f94a2807e142c48d2510c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AstroNvim",
+        "repo": "AstroNvim",
+        "type": "github"
+      }
+    },
     "blzrd": {
       "inputs": {
         "flake-parts": [
@@ -652,6 +684,8 @@
     },
     "root": {
       "inputs": {
+        "astrocommunity": "astrocommunity",
+        "astronvim": "astronvim",
         "blzrd": "blzrd",
         "determinate": "determinate",
         "disko": "disko",

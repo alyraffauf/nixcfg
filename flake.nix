@@ -52,6 +52,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    astronvim = {
+      url = "github:AstroNvim/AstroNvim";
+      flake = false;
+    };
+
+    astrocommunity = {
+      url = "github:AstroNvim/astrocommunity";
+      flake = false;
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
