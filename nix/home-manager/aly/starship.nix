@@ -55,7 +55,6 @@ _: {
           modified = "!";
           renamed = "»";
           staged = "+";
-          stashed = "$";
           untracked = "?";
         };
 
