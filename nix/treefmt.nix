@@ -8,6 +8,7 @@ _: {
         shellcheck.enable = true;
         shfmt.enable = true;
         statix.enable = true;
+        stylua.enable = true;
       };
 
       settings.excludes = ["secrets/**"];
