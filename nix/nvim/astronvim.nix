@@ -618,6 +618,7 @@ in {
           taplo
           terraform-ls
           texlab
+          tree-sitter
           tinymist
           ty
           typescript-language-server
