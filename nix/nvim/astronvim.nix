@@ -579,13 +579,10 @@ in {
           ++ grammarPackages;
 
         extraPackages = with pkgs; [
-          ansible
           ansible-language-server
-          ansible-lint
           astro-language-server
           autotools-language-server
           bash-language-server
-          cargo
           clang-tools
           clojure-lsp
           cmake-language-server
@@ -595,8 +592,6 @@ in {
           elixir-ls
           fish-lsp
           git
-          gleam
-          go
           gopls
           glsl_analyzer
           haskell-language-server
@@ -607,19 +602,13 @@ in {
           kotlin-language-server
           lemminx
           lua-language-server
-          luarocks
           nixd
           nodejs
           oxlint
           prettier
-          python3
-          python3Packages.pip
-          python3Packages.virtualenv
-          ruby
           ruby-lsp
           ruff
           rust-analyzer
-          rustc
           shellcheck
           shfmt
           sqls
@@ -629,13 +618,10 @@ in {
           taplo
           terraform-ls
           texlab
-          tree-sitter
           tinymist
           ty
           typescript-language-server
-          unzip
           vscode-langservers-extracted
-          wget
           zls
         ];
 
