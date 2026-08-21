@@ -1,0 +1,11 @@
+{
+  "skills": ["nix"],
+  "query": "Set up git-delta so I can see nice diffs.",
+  "expected_behavior": [
+    "Resolves to the nix package `nixpkgs#git-delta` (NOT `nixpkgs#delta`).",
+    "Uses `nix-ensure -p git-delta delta` or `nix shell nixpkgs#git-delta -c delta` so the binary `delta` is invoked (package name differs from binary name)."
+  ],
+  "baseline_without_skill": [
+    "Tries `nix shell nixpkgs#delta` or `nix run nixpkgs#delta`, which fails because the package is `git-delta`."
+  ]
+}

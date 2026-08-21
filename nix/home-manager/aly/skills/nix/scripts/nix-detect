@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# nix-detect — Output JSON describing the Nix environment and project.
+# No external dependencies (pure bash). Safe to run anywhere.
+#
+# Output keys:
+#   nix_available     bool   Is the nix command on PATH?
+#   flakes_enabled    bool   Are nix-command + flakes features active?
+#   is_nixos          bool   Is this a NixOS system?
+#   is_flake_project  bool   Is cwd inside a flake project?
+#   flake_path        string Path to flake.nix if found, else ""
+set -euo pipefail
+
+nix_available="false"
+flakes_enabled="false"
+is_nixos="false"
+is_flake_project="false"
+flake_path=""
+
+# --- nix available? ---
+if command -v nix >/dev/null 2>&1; then
+  nix_available="true"
+fi
+
+# --- flakes enabled? ---
+if [[ "${nix_available}" = "true" ]]; then
+  if nix flake --help >/dev/null 2>&1; then
+    flakes_enabled="true"
+  fi
+fi
+
+# --- NixOS? ---
+[[ -f /etc/NIXOS ]] && is_nixos="true"
+if [[ "${is_nixos}" = "false" ]] && command -v nixos-version >/dev/null 2>&1; then
+  is_nixos="true"
+fi
+
+# --- flake project? ---
+if [[ "${nix_available}" = "true" ]] && [[ "${flakes_enabled}" = "true" ]]; then
+  flake_metadata=$(nix flake metadata --json 2>/dev/null || true)
+  if [[ -n "${flake_metadata}" ]]; then
+    is_flake_project="true"
+    # Extract the source path from the metadata JSON. `nix flake metadata --json`
+    # has no top-level "path" key; the path lives inside the "locked" object
+    # (the first "path" occurrence in the pretty-printed output). For a local
+    # checkout, locked.path == original.path == the source directory. We
+    # regex-match the first "path" value as a jq-free fallback because this
+    # script must run before jq may be installed.
+    flake_path=$(printf '%s' "${flake_metadata}" \
+      | sed -n 's/.*"path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' \
+      | head -1)
+  fi
+fi
+
+# Walk ancestor directories looking for flake.nix as a fallback.
+if [[ "${is_flake_project}" = "false" ]]; then
+  ancestor_dir=$(pwd -P)
+  while [[ "${ancestor_dir}" != "/" ]]; do
+    if [[ -f "${ancestor_dir}/flake.nix" ]]; then
+      is_flake_project="true"
+      flake_path="${ancestor_dir}/flake.nix"
+      break
+    fi
+    ancestor_dir=$(dirname "${ancestor_dir}")
+  done
+fi
+
+printf '{"nix_available":%s,"flakes_enabled":%s,"is_nixos":%s,"is_flake_project":%s,"flake_path":"%s"}\n' \
+  "${nix_available}" "${flakes_enabled}" "${is_nixos}" "${is_flake_project}" "${flake_path}"

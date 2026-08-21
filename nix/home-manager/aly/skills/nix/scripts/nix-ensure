@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+# nix-ensure — Run a command, fetching it via Nix if not already installed.
+#
+# Usage:
+#   nix-ensure <command> [args...]           # auto: direct or nixpkgs#cmd
+#   nix-ensure <flake-ref> [args...]         # ref contains # or : → nix run
+#   nix-ensure -p <package> <cmd> [args...]  # package name ≠ binary name
+#
+# Examples:
+#   nix-ensure jq -r '.key' file.json
+#   nix-ensure nixpkgs#ripgrep -l TODO src/
+#   nix-ensure github:DeterminateSystems/nix-installer
+#   nix-ensure -p git-delta delta file.diff
+#   nix-ensure -p yq-go yq '.key' file.yaml
+#   nix-ensure -p procps watch -n1 date
+#
+# Logic:
+#   1. If command exists on PATH → exec directly (fast path, no nix overhead)
+#   2. If -p specified → nix shell nixpkgs#$package -c $command <args>
+#   3. If ref is a flake ref (contains # or :) → nix run $ref -- <args>
+#   4. Otherwise → nix run nixpkgs#$command -- <args>
+#
+# When to use -p:
+#   - Package name differs from binary name: git-delta→delta, yq-go→yq
+#   - Binary is inside a larger package: procps→watch, procps→ps
+#   - Package has no app output, only binaries: most library packages
+
+set -euo pipefail
+
+fail_usage() { echo "nix-ensure: $*" >&2; exit 2; }
+fail_no_nix() {
+  local missing_command="${1:-}"
+  echo "nix-ensure: '${missing_command}' not found and nix is not available." >&2
+  exit 1
+}
+
+package_ref=""
+command_name=""
+use_nix_shell=false
+
+# --- parse -p flag ---
+if [[ "${1:-}" = "-p" ]]; then
+  [[ $# -ge 3 ]] || fail_usage "-p requires <package> <command> [args...]"
+  package_ref="$2"
+  command_name="$3"
+  shift 3
+  use_nix_shell=true
+fi
+
+# --- determine command ---
+if [[ -z "${command_name}" ]]; then
+  [[ $# -ge 1 ]] || fail_usage "no command specified"
+  command_name="$1"
+  case "${command_name}" in
+    *[#:]*)  # flake ref: nixpkgs#pkg, github:owner/repo#pkg, /path#pkg
+      package_ref="${command_name}"
+      command_name="${package_ref##*#}"
+      command_name="${command_name##*:}"
+      shift ;;
+    *)
+      package_ref="${command_name}"
+      shift ;;
+  esac
+fi
+
+# --- fast path: command already on PATH (only when package_ref == command_name) ---
+if [[ "${use_nix_shell}" = false ]] && [[ "${package_ref}" = "${command_name}" ]]; then
+  command -v "${command_name}" >/dev/null 2>&1 && exec "${command_name}" "$@"
+fi
+
+# --- nix not available? ---
+command -v nix >/dev/null 2>&1 || fail_no_nix "${command_name}"
+
+# --- build nix ref ---
+case "${package_ref}" in
+  *[#:]*) nix_ref="${package_ref}" ;;
+  *)      nix_ref="nixpkgs#${package_ref}" ;;
+esac
+
+# --- run via nix ---
+if ${use_nix_shell}; then
+  exec nix shell "${nix_ref}" -c "${command_name}" "$@"
+else
+  exec nix run "${nix_ref}" -- "$@"
+fi

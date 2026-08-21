@@ -1,0 +1,13 @@
+{
+  "skills": ["nix"],
+  "query": "Figure out whether this machine has Nix and flakes set up before I rely on it.",
+  "expected_behavior": [
+    "Runs scripts/nix-detect and reads its JSON output rather than probing ad-hoc.",
+    "Output is a single JSON object with exactly the keys: nix_available, flakes_enabled, is_nixos, is_flake_project, flake_path.",
+    "Does not crash when nix is absent (all booleans false, flake_path empty).",
+    "When run inside a flake checkout, reports is_flake_project=true and a non-empty flake_path."
+  ],
+  "baseline_without_skill": [
+    "Runs several separate `command -v nix` / `nix flake --help` probes and summarizes in prose, with no machine-readable result."
+  ]
+}

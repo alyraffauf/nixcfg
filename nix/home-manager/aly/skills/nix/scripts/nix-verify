@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# nix-verify — Smoke-test that Nix and flakes are operational.
+# Use this when nix commands fail unexpectedly or on first setup.
+#
+# Checks (in order):
+#   0. nix binary on PATH & version
+#   1. Flake features enabled
+#   2. nixpkgs registry resolves
+#   3. Can build a trivial package (hello) — validates cache connectivity
+#
+# Exit 0 if all checks pass, non-zero otherwise.
+set -euo pipefail
+
+COLOR_RED=''; COLOR_GREEN=''; COLOR_RESET=''
+if [[ -t 2 ]]; then
+  COLOR_RED='\033[0;31m'
+  COLOR_GREEN='\033[0;32m'
+  COLOR_RESET='\033[0m'
+fi
+pass() { printf "${COLOR_GREEN}PASS${COLOR_RESET} %s\n" "$*" >&2; }
+fail() { printf "${COLOR_RED}FAIL${COLOR_RESET} %s\n" "$*" >&2; failure_count=$((failure_count + 1)); }
+failure_count=0
+
+echo "=== nix-verify ===" >&2
+
+# 0. nix binary
+echo -n "[0] nix binary ... " >&2
+if command -v nix >/dev/null 2>&1; then
+  nix_version=$(nix --version 2>&1)
+  pass "${nix_version}"
+else
+  fail "nix not found on PATH"
+fi
+
+# 1. Flake features
+echo -n "[1] flakes enabled ... " >&2
+if nix flake --help >/dev/null 2>&1; then
+  pass "yes"
+else
+  fail "flakes not enabled — pass '--extra-experimental-features nix-command flakes' to nix commands"
+fi
+
+# 2. nixpkgs registry
+echo -n "[2] nixpkgs registry ... " >&2
+if nix registry list 2>/dev/null | grep -q '^global flake:nixpkgs '; then
+  pass "ok"
+else
+  fail "nixpkgs registry entry missing — run: nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable"
+fi
+
+# 3. Build a trivial package (validates cache + network)
+echo -n "[3] build nixpkgs#hello ... " >&2
+if nix build nixpkgs#hello --no-link 2>/dev/null; then
+  pass "ok (binary cache reachable)"
+else
+  fail "cannot build nixpkgs#hello — check network and binary cache configuration"
+fi
+
+echo "" >&2
+if [[ "${failure_count}" -eq 0 ]]; then
+  echo "All checks passed. Nix is ready." >&2
+  exit 0
+else
+  echo "${failure_count} check(s) failed." >&2
+  exit 1
+fi

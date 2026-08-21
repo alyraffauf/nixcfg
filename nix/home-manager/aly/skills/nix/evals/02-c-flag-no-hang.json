@@ -1,0 +1,12 @@
+{
+  "skills": ["nix"],
+  "query": "Run the test suite for this flake-based project.",
+  "expected_behavior": [
+    "Invokes `nix develop -c <test-command>` — the -c flag is present.",
+    "Does NOT run bare `nix develop` or `nix shell` without -c (would hang waiting for input).",
+    "Uses the project's actual test command (e.g. npm test / pytest / cargo test) rather than a guessed one."
+  ],
+  "baseline_without_skill": [
+    "Runs `nix develop` with no -c and hangs, or skips running tests inside the dev shell entirely."
+  ]
+}

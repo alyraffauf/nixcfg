@@ -1,0 +1,12 @@
+{
+  "skills": ["nix"],
+  "query": "I need ripgrep installed so I can search this repo.",
+  "expected_behavior": [
+    "Does NOT run apt-get, dnf, brew, or pip/cargo global installs.",
+    "Uses scripts/nix-ensure or `nix shell nixpkgs#ripgrep` to provide ripgrep.",
+    "If ripgrep is already on PATH, uses it directly without invoking nix."
+  ],
+  "baseline_without_skill": [
+    "Runs `sudo apt-get install ripgrep` or `brew install ripgrep`, mutating the system."
+  ]
+}
