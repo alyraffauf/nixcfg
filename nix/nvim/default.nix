@@ -11,6 +11,12 @@
     description = "The standalone nvf configuration.";
   };
 
+  options.flake.neovimModules.astronvim = lib.mkOption {
+    type = lib.types.deferredModule;
+    default = {};
+    description = "The AstroNvim-compatible nvf wrapper configuration.";
+  };
+
   config = {
     flake.neovimModules.default = {
       config.vim = {
@@ -305,12 +311,63 @@
       };
     };
 
+    flake.neovimModules.astronvim = {
+      lib,
+      pkgs,
+      ...
+    }: {
+      config = {
+        # Keep AstroNvim's normal ~/.config/nvim and ~/.local/share/nvim paths.
+        mnw.appName = "nvim";
+
+        vim = {
+          lazy = {
+            enable = false;
+            enableLznAutoRequire = false;
+          };
+
+          extraPackages = with pkgs; [
+            ansible
+            ansible-lint
+            cargo
+            deadnix
+            go
+            imagemagick
+            luarocks
+            nixd
+            nodejs
+            python3
+            python3Packages.pip
+            python3Packages.virtualenv
+            ruby
+            rustc
+            statix
+            unzip
+            wget
+          ];
+
+          # nvf owns only this tiny bridge; AstroNvim owns the actual config.
+          luaConfigRC.astronvim = lib.nvim.dag.entryAfter ["mappings"] ''
+            dofile(vim.fn.expand("~/.config/nvim/init.lua"))
+          '';
+        };
+      };
+    };
+
     perSystem = {pkgs, ...}: {
-      packages.nvim =
-        (inputs.nvf.lib.neovimConfiguration {
-          inherit pkgs;
-          modules = [self.neovimModules.default];
-        }).neovim;
+      packages = {
+        nvim =
+          (inputs.nvf.lib.neovimConfiguration {
+            inherit pkgs;
+            modules = [self.neovimModules.default];
+          }).neovim;
+
+        nvim-astronvim =
+          (inputs.nvf.lib.neovimConfiguration {
+            inherit pkgs;
+            modules = [self.neovimModules.astronvim];
+          }).neovim;
+      };
     };
   };
 }
