@@ -14,7 +14,7 @@
       self.nixosModules.default
       self.nixosModules.pacifidlog
       self.nixosModules.aly
-      self.nixosModules.cosmic
+      self.nixosModules.niri
       self.nixosModules.tailscale
       self.nixosModules.thermald
       self.nixosModules.wireguardHoenn
