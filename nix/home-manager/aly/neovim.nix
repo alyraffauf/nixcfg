@@ -1,11 +1,7 @@
-_: {
-  flake.homeModules.aly = {
-    pkgs,
-    self,
-    ...
-  }: {
+{inputs, ...}: {
+  flake.homeModules.aly = {pkgs, ...}: {
     home.packages = [
-      self.packages.${pkgs.system}.nvim-astronvim
+      inputs.eevee.packages.${pkgs.stdenv.hostPlatform.system}.sylveon
     ];
   };
 }

@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    eevee = {
+      url = "github:alyraffauf/eevee";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     helium-browser = {
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,21 +55,6 @@
     nix-wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nvf = {
-      url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    astronvim = {
-      url = "github:AstroNvim/AstroNvim";
-      flake = false;
-    };
-
-    astrocommunity = {
-      url = "github:AstroNvim/astrocommunity";
-      flake = false;
     };
 
     zen-browser = {
