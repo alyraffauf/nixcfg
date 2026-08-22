@@ -26,6 +26,11 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+cursor {
+    xcursor-theme "Cosmic"
+    xcursor-size 24
+}
+
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 output "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 0000000000001" {
     mode "3840x2160@60.000"
@@ -41,7 +46,7 @@ output "AU Optronics 0x233D Unknown" {
 
 output "Samsung Display Corp. 0x41AA Unknown" {
     mode "2880x1800@120.001"
-    scale 1.8
+    scale 2.0
     transform "normal"
     variable-refresh-rate
 }
