@@ -27,7 +27,7 @@ input {
 }
 
 cursor {
-    xcursor-theme "Cosmic"
+    xcursor-theme "Adwaita"
     xcursor-size 24
 }
 

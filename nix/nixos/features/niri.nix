@@ -4,6 +4,11 @@ _: {
     self,
     ...
   }: {
+    environment.systemPackages = [
+      pkgs.adwaita-icon-theme
+      pkgs.ghostty
+    ];
+
     programs.niri = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri-aly;
@@ -19,5 +24,7 @@ _: {
       enable = true;
       settings.session.default = "Niri";
     };
+
+    xdg.icons.fallbackCursorThemes = ["Adwaita"];
   };
 }
