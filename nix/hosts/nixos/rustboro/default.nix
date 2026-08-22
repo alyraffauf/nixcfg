@@ -14,7 +14,7 @@
       self.nixosModules.default
       self.nixosModules.rustboro
       self.nixosModules.aly
-      self.nixosModules.cosmic
+      self.nixosModules.niri
       self.nixosModules.homebrew
       self.nixosModules.tailscale
       self.nixosModules.thermald

@@ -14,7 +14,7 @@
       self.nixosModules.default
       self.nixosModules.sootopolis
       self.nixosModules.aly
-      self.nixosModules.cosmic
+      self.nixosModules.niri
       self.nixosModules.homebrew
       self.nixosModules.tailscale
       self.nixosModules.thermald
