@@ -477,11 +477,11 @@
         "whichKeyNvim": "whichKeyNvim"
       },
       "locked": {
-        "lastModified": 1787406763,
-        "narHash": "sha256-+lEaQ2f5FbsvmxAQFDRd/VpV68DvBiOxmu6oSgsJ3iw=",
+        "lastModified": 1787409992,
+        "narHash": "sha256-vtjDd+Drb1pW3bn3WV4ghZ+ShQ5ValOOvXKrRDq0cNQ=",
         "owner": "alyraffauf",
         "repo": "eevee",
-        "rev": "e02e340e60539a17f5664550e82cda0abbdf8275",
+        "rev": "517b617fdbdeb32178b6043767ec964f48e53962",
         "type": "github"
       },
       "original": {
