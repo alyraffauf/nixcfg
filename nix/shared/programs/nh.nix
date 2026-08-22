@@ -17,6 +17,13 @@ in {
       programs.nh.enable = true;
     };
 
+    darwinModules.default = {pkgs, ...}: {
+      environment = environmentFor [
+        pkgs.git
+        pkgs.nh
+      ];
+    };
+
     homeModules.aly = {pkgs, ...}: {
       home = {
         packages = [pkgs.nh];
