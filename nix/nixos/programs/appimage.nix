@@ -13,10 +13,12 @@ _: {
         # Add support for AnyLinux AppImages
         anylinuxAwareAppimageRun = pkgs.writeShellApplication {
           name = "appimage-run";
+
           runtimeInputs = with pkgs; [
             coreutils
             gnugrep
           ];
+
           text = ''
             upstream_appimage_run=${lib.escapeShellArg (lib.getExe upstreamAppimageRun)}
 

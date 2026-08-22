@@ -11,7 +11,6 @@
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
       self.nixosModules.cosmic
-      self.nixosModules.autoUpgrade
       self.nixosModules.default
       self.nixosModules.dustin
       self.nixosModules.fallarbor

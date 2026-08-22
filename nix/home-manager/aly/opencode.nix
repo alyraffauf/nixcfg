@@ -9,15 +9,15 @@ _: {
           "@warp-dot-dev/opencode-warp"
         ];
 
-        small_model = "opencode/deepseek-v4-flash-free";
+        small_model = "opencode/big-pickle";
 
         agent = {
-          explore.model = "opencode/deepseek-v4-flash-free";
-          scout.model = "opencode/deepseek-v4-flash-free";
+          explore.model = "opencode/big-pickle";
+          scout.model = "opencode/big-pickle";
         };
       };
 
-      tui.theme = "one-dark";
+      tui.theme = "catppuccin-frappe";
     };
   };
 }

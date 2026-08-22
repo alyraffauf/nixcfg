@@ -1,9 +1,11 @@
-_: {
-  flake.darwinModules.default = {self, ...}: {
-    nixpkgs.hostPlatform = "aarch64-darwin";
+{sharedPackageSets, ...}: {
+  flake.darwinModules.default = {
+    nixpkgs = {
+      hostPlatform = "aarch64-darwin";
+      pkgs = sharedPackageSets.aarch64-darwin;
+    };
 
     system = {
-      configurationRevision = self.rev or self.dirtyRev or null;
       primaryUser = "aly";
     };
   };

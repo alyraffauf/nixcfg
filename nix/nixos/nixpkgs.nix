@@ -1,6 +1,5 @@
 {sharedPackageSets, ...}: {
-  flake.nixosModules.default = {self, ...}: {
+  flake.nixosModules.default = {
     nixpkgs.pkgs = sharedPackageSets.x86_64-linux;
-    system.configurationRevision = self.rev or self.dirtyRev or null;
   };
 }

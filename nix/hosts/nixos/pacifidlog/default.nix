@@ -10,7 +10,6 @@
       inputs.determinate.nixosModules.default
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
-      self.nixosModules.autoUpgrade
       self.nixosModules.default
       self.nixosModules.pacifidlog
       self.nixosModules.aly
