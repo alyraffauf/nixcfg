@@ -17,7 +17,7 @@ _: {
 
     programs.niri = {
       enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri-aly;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
       useNautilus = true;
     };
 
