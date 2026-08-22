@@ -15,9 +15,8 @@
             "PATH"
             ":"
             (lib.makeBinPath [
-              pkgs.brightnessctl
+              pkgs.noctalia
               pkgs.playerctl
-              pkgs.wireplumber
             ])
           ]
         ];
