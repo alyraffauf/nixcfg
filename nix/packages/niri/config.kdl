@@ -59,19 +59,19 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Open App Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "session" "lock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "msg" "session" "lock"; }
 
     // Media keys
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute         allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-up" "10"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-down" "10"; }
+    XF86AudioMute         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
     XF86AudioPlay         allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop         allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev         allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext         allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up" "10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "10"; }
 
     // Overview
     Mod+O repeat=false { toggle-overview; }
@@ -221,7 +221,7 @@ binds {
 // https://niri-wm.github.io/niri/Configuration:-Switch-Events
 switch-events {
     lid-close {
-        spawn "noctalia" "session" "lock"
+        spawn "noctalia" "msg" "session" "lock"
     }
 }
 
